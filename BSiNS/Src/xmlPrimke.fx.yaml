@@ -1407,7 +1407,68 @@
         Height: =50
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =
+        OnSelect: |-
+            =Set(
+                warehouseJsonData,
+                JSON(
+                    {
+                        Warehouse_Receipt_Header: {
+                            No: Text(warehouseHeader.No),
+                            Location_Code: Text(warehouseHeader.Location_Code),
+                            No_Series: Text(warehouseHeader.No_Series),
+                            Zone_Code: Text(warehouseHeader.Zone_Code),
+                            Bin_Code: Text(warehouseHeader.Bin_Code),
+                            Document_Status: Text(warehouseHeader.Document_Status),
+                            Posting_Date: Text(warehouseHeader.Posting_Date),
+                            Vendor_Shipment_No: Text(warehouseHeader.Vendor_Shipment_No),
+                            Receiving_No: Text(warehouseHeader.Receiving_No),
+                            Last_Receiving_No: Text(warehouseHeader.Last_Receiving_No),
+                            Receiving_No_Series: Text(warehouseHeader.Receiving_No_Series),                
+                            Warehouse_Receipt_Line: ForAll(colWarehouseLines, 
+                                {
+                                    No: Text(ThisRecord.No),
+                                    Line_No: Text(Line_No),
+                                    Source_Type: Text(Source_Type),
+                                    Source_No: Text(Source_No),
+                                    Source_Type: Text(Source_Type),
+                                    Source_Line_No: Text(Source_Line_No),
+                                    Source_Document: Text(Source_Document),
+                                    Location_Code: Text(Location_Code),
+                                    Shelf_No: Text(Shelf_No),
+                                    Bin_Code: Text(Bin_Code),
+                                    Zone_Code: Text(Zone_Code),
+                                    Item_No: Text(Item_No),
+                                    Quantity: Text(Quantity),
+                                    Qty_Base: Text(Qty_Base),
+                                    Qty_Outstanding: Text(Qty_Outstanding),
+                                    Qty_Outstanding_Base: Text(Qty_Outstanding_Base),
+                                    Qty_to_Receive: Text(Qty_to_Receive),
+                                    Qty_to_Receive_Base: Text(Qty_to_Receive_Base),
+                                    Qty_Received: Text(Qty_Received),
+                                    Qty_Received_Base: Text(Qty_Received_Base),
+                                    UOM_Code: Text(UOM_Code),
+                                    Qty_per_UOM: Text(Qty_per_UOM),
+                                    Description: Text(Description),
+                                    Status: Text(Status),
+                                    Sorting_Sequence_No: Text(Sorting_Sequence_No),
+                                    Due_Date: Text(Due_Date),
+                                    Starting_Date: Text(Starting_Date),
+                                    Cubage: Text(Cubage),
+                                    Weight: Text(Weight),
+                                    Not_upd_by_SDP: Text(Not_upd_by_SDP),
+                                    Posting_From_Whs_Ref: Text(Posting_From_Whs_Ref),
+                                    Qty_to_Cross_Dock: Text(Qty_to_Cross_Dock),
+                                    Qty_to_Cross_Dock_Base: Text(Qty_to_Cross_Dock_Base),
+                                    Cross_Dock_Zone_Code: Text(Cross_Dock_Zone_Code),
+                                    Cross_Dock_Bin_Code: Text(Cross_Dock_Bin_Code)
+                                }
+                            )
+                        }
+                    },JSONFormat.IgnoreUnsupportedTypes
+                )
+            );
+            
+            If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
         Text: ="Save"
         Width: =225
