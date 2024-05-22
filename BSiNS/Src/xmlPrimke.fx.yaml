@@ -1498,8 +1498,11 @@
                         Source_Line_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Line_No,
                         Source_Document: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Document,
                         Location_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Location_Code,
+                        Shelf_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Shelf_No,
+                        Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Bin_Code,
+                        Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Zone_Code,
                         Item_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Item_No,
-                        Quantity: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Quantity,
+                        Quantity: Text(warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Quantity),
                         Qty_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Base,
                         Qty_Outstanding: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding,
                         Qty_Outstanding_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding_Base,
@@ -1519,7 +1522,9 @@
                         Not_upd_by_SDP: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Not_upd_by_SDP,
                         Posting_From_Whs_Ref: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Posting_From_Whs_Ref,
                         Qty_to_Cross_Dock: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock,
-                        Qty_to_Cross_Dock_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock_Base
+                        Qty_to_Cross_Dock_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock_Base,
+                        Cross_Dock_Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Zone_Code,
+                        Cross_Dock_Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Bin_Code
                     }
                 );
                 /*
