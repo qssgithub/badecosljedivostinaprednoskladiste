@@ -1467,7 +1467,7 @@
                 )
             );
             
-            If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
+            If(!isCreated,UpdateXML.Run(warehouseJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
         Text: ="Save"
         Width: =225
