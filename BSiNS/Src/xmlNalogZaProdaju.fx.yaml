@@ -1574,6 +1574,8 @@
                     salesJson.Sales_Header
                 );
                 
+                Set(xwww, First(salesJson.Sales_Header.Sales_Line));
+                
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
                 
@@ -1604,12 +1606,13 @@
                     
                 );
                 
+                
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line.Res_Entry,
+                    salesJson.Sales_Header.Sales_Line,
                     Collect(
                         colSalesResEntries,
-                        //ForAll(
-                            //ThisRecord.Res_Entry,
+                        ForAll(
+                            ThisRecord.Res_Entry,
                             {
                                 Entry_No: Text(ThisRecord.Entry_No),
                                 Item_No: Text(ThisRecord.Item_No),
@@ -1632,7 +1635,7 @@
                                 'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
                                 'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
                             }
-                        //)
+                        )
                     )
                 );
                 
@@ -1723,6 +1726,7 @@
                 )*/
             Size: =15
             Text: ="Get file"
+            Underline: =true
             Visible: =varShowGetFileModal
             X: =761
             Y: =448
