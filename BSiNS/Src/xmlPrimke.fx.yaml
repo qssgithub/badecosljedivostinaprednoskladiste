@@ -500,7 +500,7 @@
                             FontColor: =
                             Height: =39
                             OnChange: |-
-                                =UpdateIf(colWarehouseLines, Item_No = ThisRecord.Item_No ,{Quantity: Value(warehouseQty.Value)})
+                                =UpdateIf(colWarehouseLines, Gallery4_4.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(warehouseQty.Value)})
                             Value: =ThisItem.Quantity
                             Width: =132
                             X: =959
