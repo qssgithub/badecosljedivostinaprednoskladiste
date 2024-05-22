@@ -1,11 +1,10 @@
 "scrEntry As screen.'autoLayout_Sidebar_ver1.0'":
     Fill: =RGBA(45, 128, 40, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
-    OnVisible: |+
+    OnVisible: |-
         =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
-        
-        
+        GetAll.Run("AM-01", "In progress", "01");
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -893,39 +892,135 @@
                             Y: =30
                             ZIndex: =9
 
-            Container10 As groupContainer.verticalAutoLayoutContainer:
+            vrtcon_GetAllFiles As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =10
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =10
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
                 ZIndex: =7
 
-                TextCanvas1 As Text:
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Width: =96
-                    X: =0
-                    Y: =0
+                hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =0
+                    Height: =50
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutGap: =15
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
                     ZIndex: =1
 
-                ButtonCanvas1 As Button:
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Text: ="Test"
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =2
+                    dd_Status As Dropdown.pcfdataset:
+                        DefaultSelectedItems: =["All"]
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        FontSize: =18
+                        Height: =50
+                        Items: =["All", "Ready for processing", "In progress"]
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        Width: =652
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    dd_Type As Dropdown.pcfdataset:
+                        DefaultSelectedItems: =["All"]
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        FontSize: =18
+                        Height: =50
+                        Items: =["All", "Temeljnice inventure", "Nabavni nalozi", "Prodajni nalozi", "Nalozi za prenos", "Skladišne primke", "Skladišne otpremnice", "Put-Away Request", "Pick Request"]
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        Width: =647
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    BorderColor: =RGBA(89, 0, 0, 1)
+                    DelayItemLoading: =true
+                    Height: =321
+                    Items: =CustomGallerySample
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =80
+                    X: =40
+                    ZIndex: =3
+
+                    Title4 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.SampleHeading
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 86
+                        X: =16
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =1
+
+                    NextArrow4 As icon.ChevronRight:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        Height: =50
+                        Icon: =Icon.ChevronRight
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =12
+                        PaddingLeft: =12
+                        PaddingRight: =12
+                        PaddingTop: =12
+                        Tooltip: ="View item details"
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width - 12
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =2
+
+                    Separator5 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                        ZIndex: =3
+
+                    Rectangle9 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(89, 0, 0, 1)
+                        Height: =Parent.TemplateHeight - Separator5.Height
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                        ZIndex: =4
 
     Button1 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
