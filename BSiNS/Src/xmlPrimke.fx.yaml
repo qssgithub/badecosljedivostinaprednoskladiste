@@ -1484,7 +1484,7 @@
                 );
                 Set(
                     warehouseHeader,
-                    warehouse.warehouse_receipt_header
+                    ParseJSON(warehouse.warehouse_receipt_header)
                 );
                 
                 
