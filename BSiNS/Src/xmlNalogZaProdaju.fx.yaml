@@ -1144,6 +1144,15 @@
                         Y: =121
                         ZIndex: =25
 
+                    TextCanvas5 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =328
+                        Text: =sales.response
+                        Width: =472
+                        X: =60
+                        Y: =60
+                        ZIndex: =26
+
         FooterContainer1_3 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -1596,11 +1605,11 @@
                 );
                 
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line,
+                    salesJson.Sales_Header.Sales_Line.Res_Entry,
                     Collect(
                         colSalesResEntries,
-                        ForAll(
-                            ThisRecord.Res_Entry,
+                        //ForAll(
+                            //ThisRecord.Res_Entry,
                             {
                                 Entry_No: Text(ThisRecord.Entry_No),
                                 Item_No: Text(ThisRecord.Item_No),
@@ -1623,7 +1632,7 @@
                                 'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
                                 'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
                             }
-                        )
+                        //)
                     )
                 );
                 
