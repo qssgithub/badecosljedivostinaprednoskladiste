@@ -95,17 +95,28 @@
     "dependents": [],
     "id": "410284cf-edcd-4d15-a8b8-112b30a4c4f2"
   },
-  "6ac67716-f542-4936-bf63-7befb71a5f1b": {
-    "appActions": [],
+  "4b0288ad-2039-4212-b7d7-fbc42b1b9386": {
     "connectionRef": {
-      "apiTier": "Standard",
+      "displayName": "File System",
+      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/filesystem/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "6ac67716-f542-4936-bf63-7befb71a5f1b"
+    ],
+    "id": "4b0288ad-2039-4212-b7d7-fbc42b1b9386"
+  },
+  "6ac67716-f542-4936-bf63-7befb71a5f1b": {
+    "connectionRef": {
       "displayName": "Logic flows",
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "811fb031-19be-4c2b-a23c-7c0b9cf8d2ee": {
-          "value": "shared_filesystem"
-        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -117,9 +128,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "811fb031-19be-4c2b-a23c-7c0b9cf8d2ee"
-        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -136,7 +144,7 @@
       "GetAll"
     ],
     "dependencies": {
-      "shared_filesystem": "811fb031-19be-4c2b-a23c-7c0b9cf8d2ee"
+      "shared_filesystem": "4b0288ad-2039-4212-b7d7-fbc42b1b9386"
     },
     "dependents": [],
     "id": "6ac67716-f542-4936-bf63-7befb71a5f1b"
@@ -158,7 +166,6 @@
     "dependencies": {},
     "dependents": [
       "86d258f6-a121-43a2-8cf8-c7fba38a2bdf",
-      "6ac67716-f542-4936-bf63-7befb71a5f1b",
       "f1fc3f1c-9611-4881-9c5a-0f70eaa0def0",
       "bf521643-3070-403d-9258-7254494419a7",
       "a4faf135-5319-4382-a97f-82d5eed3e82a",
