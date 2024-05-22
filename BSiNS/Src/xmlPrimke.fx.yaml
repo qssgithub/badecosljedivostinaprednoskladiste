@@ -1,0 +1,1606 @@
+"xmlPrimke As screen.'autoLayout_HeaderFooter_ver1.0'":
+    Fill: =RGBA(234, 83, 109, 1)
+    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+
+    ScreenContainer1_4 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer1_4 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =75
+            LayoutMinHeight: =75
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =1
+
+            Header1_5 As Header:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =75
+                LayoutMinHeight: =75
+                LayoutMinWidth: =Parent.Width
+                Logo: =FFLogo
+                OnSelectLogo: =Navigate(scrEntry)
+                Style: ='Header.Style'.Primary
+                Title: ="PRIMKE"
+                UserEmail: =User().Email
+                UserImage: =User().Image
+                UserName: =User().FullName
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+        MainContainer1_4 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =580
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            ZIndex: =2
+
+            Container1_4 As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                FillPortions: =0
+                Height: =Parent.Height
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =1335
+                ZIndex: =1
+
+                Container3_4 As groupContainer.manualLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    Height: =580
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Width: =1335
+                    ZIndex: =1
+
+                    "Gallery4_4 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        DelayItemLoading: =true
+                        Height: =375
+                        Items: =colWarehouseLines
+                        Layout: =Layout.Vertical
+                        LoadingSpinner: =LoadingSpinner.Data
+                        TemplatePadding: =0
+                        TemplateSize: =362
+                        Width: =1278
+                        X: =28
+                        Y: =169
+                        ZIndex: =1
+
+                        Separator1_5 As rectangle:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Fill: =RGBA(189, 49, 51, 1)
+                            Height: =2
+                            OnSelect: =Select(Parent)
+                            Width: =Parent.TemplateWidth
+                            Y: =Parent.TemplateHeight - Self.Height
+                            ZIndex: =3
+
+                        Rectangle1_4 As rectangle:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Fill: =RGBA(89, 0, 0, 1)
+                            Height: =Parent.TemplateHeight - Separator1_5.Height
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.IsSelected
+                            Width: =4
+                            ZIndex: =4
+
+                        Label2_115 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="No"
+                            X: =18
+                            Y: =17
+                            ZIndex: =12
+
+                        Label2_112 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Line_No"
+                            Width: =148
+                            X: =187
+                            Y: =16
+                            ZIndex: =14
+
+                        Label2_116 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Source_Type"
+                            Width: =141
+                            X: =356
+                            Y: =17
+                            ZIndex: =16
+
+                        Label2_118 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =21
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Source_SubType"
+                            Width: =109
+                            X: =519
+                            Y: =18
+                            ZIndex: =19
+
+                        Label2_113 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Source_No"
+                            Width: =194
+                            X: =647
+                            Y: =16
+                            ZIndex: =22
+
+                        Label2_119 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Location_Code"
+                            Width: =169
+                            X: =18
+                            Y: =87
+                            ZIndex: =25
+
+                        Label2_121 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Bin_Code"
+                            Width: =194
+                            X: =397
+                            Y: =87
+                            ZIndex: =27
+
+                        Label2_114 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =25
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Source_Line_No"
+                            Width: =167
+                            X: =862
+                            Y: =16
+                            ZIndex: =30
+
+                        Label2_122 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =22
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Zone_Code"
+                            Width: =167
+                            X: =613
+                            Y: =87
+                            ZIndex: =33
+
+                        Label2_117 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =21
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Source_Document"
+                            Width: =211
+                            X: =1049
+                            Y: =17
+                            ZIndex: =35
+
+                        "Document_No_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            Value: =ThisItem.No
+                            Width: =150
+                            X: =18
+                            Y: =40
+                            ZIndex: =36
+
+                        "Line_No_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =41
+                            Value: =ThisItem.Line_No
+                            Width: =148
+                            X: =187
+                            Y: =39
+                            ZIndex: =37
+
+                        "Item_No__2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Source_Type
+                            Width: =141
+                            X: =356
+                            Y: =42
+                            ZIndex: =38
+
+                        "'Transfer-from_Code_2' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Source_SubType
+                            Width: =109
+                            X: =519
+                            Y: =42
+                            ZIndex: =39
+
+                        "'Transfer-to_Code_2' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            Value: =ThisItem.Source_No
+                            Width: =194
+                            X: =647
+                            Y: =39
+                            ZIndex: =40
+
+                        "itemsales_1 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Source_Line_No
+                            Width: =167
+                            X: =862
+                            Y: =41
+                            ZIndex: =41
+
+                        "GP_Posting_Group_4 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Location_Code
+                            Width: =169
+                            X: =18
+                            Y: =111
+                            ZIndex: =42
+
+                        "Descriptionn_4 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            Value: =ThisItem.Bin_Code
+                            Width: =194
+                            X: =397
+                            Y: =110
+                            ZIndex: =43
+
+                        "salesQty_1 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            OnChange: =false
+                            Value: =ThisItem.Zone_Code
+                            Width: =167
+                            X: =613
+                            Y: =111
+                            ZIndex: =44
+
+                        "Quantityy_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =35
+                            OnChange: =false
+                            Value: =ThisItem.Source_Document
+                            Width: =213
+                            X: =1049
+                            Y: =42
+                            ZIndex: =45
+
+                        Label2_120 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Shelf_No"
+                            Width: =169
+                            X: =207
+                            Y: =87
+                            ZIndex: =46
+
+                        "Inv_Posting_Group_4 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Shelf_No
+                            Width: =169
+                            X: =207
+                            Y: =111
+                            ZIndex: =47
+
+                        Label2_123 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Item_No"
+                            Width: =130
+                            X: =807
+                            Y: =88
+                            ZIndex: =48
+
+                        "Quantity_Base_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Item_No
+                            Width: =132
+                            X: =807
+                            Y: =111
+                            ZIndex: =49
+
+                        Label2_124 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Quantity"
+                            Width: =130
+                            X: =959
+                            Y: =88
+                            ZIndex: =50
+
+                        "warehouseQty As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            OnChange: |-
+                                =UpdateIf(colWarehouseLines, Gallery4_4.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(warehouseQty.Value)})
+                            Value: =ThisItem.Quantity
+                            Width: =132
+                            X: =959
+                            Y: =111
+                            ZIndex: =51
+
+                        Label2_125 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Qty_Base"
+                            X: =1112
+                            Y: =88
+                            ZIndex: =52
+
+                        "'Qty-to_Receive_6' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Qty_Base
+                            Width: =153
+                            X: =1112
+                            Y: =111
+                            ZIndex: =53
+
+                        Label2_126 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_Outstanding"
+                            Width: =169
+                            X: =16
+                            Y: =157
+                            ZIndex: =54
+
+                        Label2_128 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_to_Receive"
+                            Width: =194
+                            X: =395
+                            Y: =157
+                            ZIndex: =55
+
+                        "Quantity_Shipped_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Qty_Outstanding
+                            Width: =169
+                            X: =16
+                            Y: =181
+                            ZIndex: =57
+
+                        "Outstanding_Qty_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            Value: =ThisItem.Qty_to_Receive
+                            Width: =194
+                            X: =395
+                            Y: =180
+                            ZIndex: =58
+
+                        Label2_127 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Qty_Outstanding_Base"
+                            Width: =169
+                            X: =205
+                            Y: =157
+                            ZIndex: =60
+
+                        "Quantity_Received_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Qty_Outstanding_Base
+                            Width: =169
+                            X: =205
+                            Y: =181
+                            ZIndex: =61
+
+                        Label2_138 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =22
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =9
+                            Text: ="Qty_to_Receive_Base"
+                            Width: =167
+                            X: =613
+                            Y: =157
+                            ZIndex: =65
+
+                        "salesQty_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            OnChange: =false
+                            Value: =ThisItem.Qty_to_Receive_Base
+                            Width: =167
+                            X: =613
+                            Y: =181
+                            ZIndex: =66
+
+                        Label2_139 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_Received"
+                            Width: =130
+                            X: =807
+                            Y: =158
+                            ZIndex: =67
+
+                        "Quantity_Base_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Qty_Received
+                            Width: =132
+                            X: =807
+                            Y: =181
+                            ZIndex: =68
+
+                        Label2_140 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Qty_Received_Base"
+                            Width: =130
+                            X: =959
+                            Y: =158
+                            ZIndex: =69
+
+                        "'Qty-to_Ship_6' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Qty_Received_Base
+                            Width: =132
+                            X: =959
+                            Y: =181
+                            ZIndex: =70
+
+                        Label2_141 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="UOM_Code"
+                            X: =1112
+                            Y: =161
+                            ZIndex: =71
+
+                        "'Qty-to_Receive_9' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.UOM_Code
+                            Width: =153
+                            X: =1112
+                            Y: =184
+                            ZIndex: =72
+
+                        Label2_129 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_per_UOM"
+                            Width: =169
+                            X: =18
+                            Y: =238
+                            ZIndex: =73
+
+                        Label2_130 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Status"
+                            Width: =194
+                            X: =397
+                            Y: =238
+                            ZIndex: =74
+
+                        "Quantity_Shipped_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Qty_per_UOM
+                            Width: =169
+                            X: =18
+                            Y: =262
+                            ZIndex: =75
+
+                        "Outstanding_Qty_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            Value: =ThisItem.Status
+                            Width: =194
+                            X: =397
+                            Y: =261
+                            ZIndex: =76
+
+                        Label2_131 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Description"
+                            Width: =169
+                            X: =207
+                            Y: =238
+                            ZIndex: =77
+
+                        "Quantity_Received_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            Value: =ThisItem.Description
+                            Width: =169
+                            X: =207
+                            Y: =262
+                            ZIndex: =78
+
+                        Label2_142 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =22
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =9
+                            Text: ="Sorting_Sequence_No"
+                            Width: =167
+                            X: =615
+                            Y: =238
+                            ZIndex: =79
+
+                        "salesQty_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =37
+                            OnChange: =false
+                            Value: =ThisItem.Sorting_Sequence_No
+                            Width: =167
+                            X: =615
+                            Y: =262
+                            ZIndex: =80
+
+                        Label2_143 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Due_Date"
+                            Width: =130
+                            X: =809
+                            Y: =239
+                            ZIndex: =81
+
+                        "Quantity_Base_4 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Due_Date
+                            Width: =132
+                            X: =809
+                            Y: =262
+                            ZIndex: =82
+
+                        Label2_144 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Starting_Date"
+                            Width: =130
+                            X: =959
+                            Y: =239
+                            ZIndex: =83
+
+                        "'Qty-to_Ship_7' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Starting_Date
+                            Width: =132
+                            X: =959
+                            Y: =262
+                            ZIndex: =84
+
+                        Label2_145 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =10
+                            Text: ="Cubage"
+                            X: =1112
+                            Y: =242
+                            ZIndex: =85
+
+                        "'Qty-to_Receive_10' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =39
+                            Value: =ThisItem.Cubage
+                            Width: =153
+                            X: =1112
+                            Y: =265
+                            ZIndex: =86
+
+                    Label2_97 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =13
+                        Text: ="No."
+                        X: =28
+                        Y: =40
+                        ZIndex: =4
+
+                    Label2_98 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =13
+                        Text: ="Location_Code"
+                        Width: =205
+                        X: =199
+                        Y: =40
+                        ZIndex: =7
+
+                    Label2_108 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =10
+                        Text: ="No_Series"
+                        Width: =163
+                        X: =427
+                        Y: =40
+                        ZIndex: =10
+
+                    Label2_109 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =13
+                        Text: ="Document_Status"
+                        Width: =246
+                        X: =613
+                        Y: =40
+                        ZIndex: =13
+
+                    Label2_110 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =10
+                        Text: ="Posting_Date"
+                        Width: =194
+                        X: =881
+                        Y: =40
+                        ZIndex: =15
+
+                    Label2_111 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        DisplayMode: =
+                        Height: =23
+                        OnSelect: =
+                        PaddingBottom: =10
+                        PaddingLeft: =0
+                        Size: =13
+                        Text: ="Last_Receiving_No"
+                        Width: =218
+                        X: =1095
+                        Y: =40
+                        ZIndex: =17
+
+                    "'Transfer-to_Code1_2' As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        Value: =warehouseHeader.No_Series
+                        Width: =163
+                        X: =427
+                        Y: =63
+                        ZIndex: =18
+
+                    "'Transfer-from_Code1_2' As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        Value: =warehouseHeader.Location_Code
+                        Width: =205
+                        X: =199
+                        Y: =63
+                        ZIndex: =19
+
+                    "No_3 As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        Value: =warehouseHeader.No
+                        Width: =150
+                        X: =28
+                        Y: =63
+                        ZIndex: =20
+
+                    "'Transfer-to_Name1_2' As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        Value: =warehouseHeader.Document_Status
+                        Width: =246
+                        X: =613
+                        Y: =63
+                        ZIndex: =21
+
+                    "'In-Transit_Code1_2' As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        OnChange: =false
+                        Value: =warehouseHeader.Posting_Date
+                        Width: =194
+                        X: =881
+                        Y: =63
+                        ZIndex: =22
+
+                    "Gen_Bus_Posting_Group_2 As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        FontSize: =13
+                        Height: =40
+                        Value: =warehouseHeader.Last_Receiving_No
+                        Width: =218
+                        X: =1094
+                        Y: =63
+                        ZIndex: =23
+
+                    TextCanvas2_9 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =26
+                        Size: =20
+                        Text: ="Warehouse Receipt Header"
+                        Weight: ='TextCanvas.Weight'.Bold
+                        Width: =346
+                        X: =16
+                        Y: =0
+                        ZIndex: =24
+
+                    TextCanvas2_6 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =
+                        Height: =33
+                        Size: =20
+                        Text: ="Warehouse Receipt Line"
+                        Weight: ='TextCanvas.Weight'.Bold
+                        Width: =270
+                        X: =16
+                        Y: =119
+                        ZIndex: =25
+
+        FooterContainer1_4 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(233, 79, 76, 1)
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(237, 237, 237, 1)
+            Height: =75
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =4
+
+            Button6_18 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: =Set(varShowGetFileModal,true);
+                Size: =15
+                Text: ="Get xml by name"
+                ZIndex: =1
+
+            Button6_19 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(isCreated, true);
+                    Set(Con3Visibility, false);
+                Size: =15
+                Text: ="Create xml"
+                Underline: =true
+                ZIndex: =2
+
+            Button6_20 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(varShowUploadXMLFileModal,true);
+                    Set(varXMLSaveButton, true);
+                Size: =15
+                Text: ="Upload xml"
+                ZIndex: =3
+
+            Button6_21 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(warehouseHeader, Blank());
+                    Clear(colWarehouseLines);
+                Size: =15
+                Text: ="Clear view"
+                ZIndex: =4
+
+            Button6_22 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Clear(colSalesLines);
+                    Collect(colSalesLines, colOriginalSalesLines);
+                Size: =15
+                Text: ="Reset"
+                ZIndex: =5
+
+    "'Upload xml file_4' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Rectangle4_10 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowUploadXMLFileModal
+            Width: =1366
+            ZIndex: =2
+
+        Rectangle5_9 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowUploadXMLFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =3
+
+        Button3_23 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(CountRows(attach_4.Attachments)>0, DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Set(uploadedFileName, UploadXMLFile.Run({file:{name: First(attach_4.Attachments).Name, contentBytes:First(attach_4.Attachments).Value}}));
+                Set(x, First(attach_4.Attachments).Name);
+                Set(file_Name,Left(x, Len(x)-4));
+                
+                
+                IfError(GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(transfer, GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing")));
+                
+                Set(transfer_header, ParseJSON(transfer.transfer_header));
+                Set(transfer_line, transfer.transfer_line);
+                
+                Set(varShowUploadXMLFileModal,false);
+                Clear(colTransferLines);
+                ForAll(
+                    ParseJSON(transfer_line),
+                    Collect(
+                        colTransferLines,
+                        {
+                            Transfer_Line: {
+                                Document_No: ThisRecord.Document_No,
+                                Line_No: ThisRecord.Line_No,
+                                Item_No: ThisRecord.Item_No,
+                                'Transfer-from_Code': ThisRecord.'Transfer-from_Code',
+                                'Transfer-to_Code': ThisRecord.'Transfer-to_Code',
+                                'In-Transit_Code': ThisRecord.'In-Transit_Code',
+                                GP_Posting_Group: ThisRecord.GP_Posting_Group,
+                                Inv_Posting_Group: ThisRecord.Inv_Posting_Group,
+                                Description: ThisRecord.Description,
+                                Unit_Of_Measure: ThisRecord.Unit_Of_Measure,
+                                Quantity: ThisRecord.Quantity,
+                                Quantity_Base: ThisRecord.Quantity_Base,
+                                'Qty-to_Ship': ThisRecord.'Qty-to_Ship',
+                                'Qty-to_Receive': ThisRecord.'Qty-to_Receive',
+                                Quantity_Shipped: ThisRecord.Quantity_Shipped,
+                                Quantity_Received: ThisRecord.Quantity_Received,
+                                Outstanding_Qty: ThisRecord.Outstanding_Qty,
+                                Shipment_Date: ThisRecord.Shipment_Date,
+                                Receipt_Date: ThisRecord.Receipt_Date
+                            }
+                        }
+                    )
+                );
+                
+                //Reset(attach_2);
+            Size: =15
+            Text: ="Upload file"
+            Visible: =varShowUploadXMLFileModal
+            X: =761
+            Y: =467
+            ZIndex: =4
+
+        Button3_22 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(attach_4);
+                Set(varShowUploadXMLFileModal,false)
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowUploadXMLFileModal
+            X: =515
+            Y: =467
+            ZIndex: =5
+
+        Icon7_4 As icon.AddDocument:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.AddDocument
+            Visible: =varShowUploadXMLFileModal
+            X: =686
+            Y: =206
+            ZIndex: =6
+
+        attach_4 As attachments:
+            AddAttachmentText: ="Upload file"
+            BorderColor: =
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =
+            FocusedBorderThickness: =4
+            Height: =130
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(222, 179, 184, 1)
+            IsInDataCard: =true
+            ItemColor: =RGBA(255, 255, 255, 1)
+            ItemFill: =RGBA(164, 38, 44, 1)
+            ItemHoverColor: =RGBA(0, 0, 0, 1)
+            ItemHoverFill: =RGBA(222, 179, 184, 1)
+            Items: =
+            MaxAttachments: =1
+            MaxAttachmentsText: =""
+            NoAttachmentsText: ="There is no file."
+            PaddingBottom: =5
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            PaddingRight: =5
+            PaddingTop: =5
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(89, 0, 0, 1)
+            Tooltip: =
+            Visible: =varShowUploadXMLFileModal
+            Width: =551
+            X: =428
+            Y: =299
+            ZIndex: =7
+
+    saveXml_4 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =//If(!IsBlank(purchase_header) || !IsBlank(purchase_line), DisplayMode.Edit, DisplayMode.Disabled)
+            DisplayMode.Edit
+        Fill: =RGBA(164, 38, 44, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =50
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =
+        Size: =15
+        Text: ="Save"
+        Width: =225
+        X: =1124
+        Y: =704
+        ZIndex: =15
+
+    "'Get xml file by name_4' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =15
+
+        Rectangle4_11 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowGetFileModal
+            Width: =1366
+            ZIndex: =8
+
+        Rectangle5_10 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowGetFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =9
+
+        Button3_21 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |
+                =If(!IsBlank(fileName_4.Value), DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Set(
+                    varShowGetFileModal,
+                    false
+                );
+                Set(
+                    file_Name,
+                    fileName_4.Value
+                );
+                IfError(
+                    GetXML_Primke.Run(
+                        file_Name,
+                        "ReadyForProcessing"
+                    ),
+                    Notify(
+                        "Error occurred while Get request, check if file exists.",
+                        NotificationType.Error,
+                        5000
+                    ),
+                    Set(
+                        warehouse,
+                        GetXML_Primke.Run(
+                            file_Name,
+                            "ReadyForProcessing"
+                        )
+                    )
+                );
+                
+                Set(
+                    warehouseJson,
+                    ParseJSON(warehouse.response)
+                );
+                Set(
+                    warehouseHeader,
+                    warehouseJson.Warehouse_Receipt_Header
+                );
+                Clear(colWarehouseLines);
+                ForAll(
+                    warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line,
+                    Collect(
+                        colWarehouseLines,
+                        {
+                            No: Value(ThisRecord.No),
+                            Line_No: Value(ThisRecord.Line_No),
+                            Source_Type: Text(ThisRecord.Source_Type),
+                            Source_SubType: Text(ThisRecord.Source_SubType),
+                            Source_No: Value(ThisRecord.Source_No),
+                            Source_Line_No: Text(ThisRecord.Source_Line_No),
+                            Source_Document: Text(ThisRecord.Source_Document),
+                            Location_Code: Text(ThisRecord.Location_Code),
+                            Shelf_No: Text(ThisRecord.Shelf_No),
+                            Bin_Code: Text(ThisRecord.Bin_Code),
+                            Zone_Code: Value(ThisRecord.Zone_Code),
+                            Item_No: Value(ThisRecord.Item_No),
+                            Quantity: Value(ThisRecord.Quantity),
+                            Qty_Base: Value(ThisRecord.Qty_Base),
+                            Qty_Outstanding: Value(ThisRecord.Qty_Outstanding),
+                            Qty_Outstanding_Base: Value(ThisRecord.Qty_Outstanding_Base),
+                            Qty_to_Receive: Value(ThisRecord.Qty_to_Receive),
+                            Qty_to_Receive_Base: Text(ThisRecord.Qty_to_Receive_Base),
+                            Qty_Received: Value(ThisRecord.Qty_Received),
+                            Qty_Received_Base: Value(ThisRecord.Qty_Received_Base),
+                            UOM_Code: Value(ThisRecord.UOM_Code),
+                            Qty_per_UOM: Value(ThisRecord.Qty_per_UOM),
+                            Description: Value(ThisRecord.Description),
+                            Status: Value(ThisRecord.Status),
+                            Sorting_Sequence_No: Value(ThisRecord.Sorting_Sequence_No),
+                            Due_Date: Text(ThisRecord.Due_Date),
+                            Starting_Date: Value(ThisRecord.Starting_Date),
+                            Cubage: Value(ThisRecord.Cubage),
+                            Weight: Value(ThisRecord.Weight),
+                            Not_upd_by_SDP: Value(ThisRecord.Not_upd_by_SDP),
+                            Posting_From_Whs_Ref: Value(ThisRecord.Posting_From_Whs_Ref),
+                            Qty_to_Cross_Dock: Value(ThisRecord.Qty_to_Cross_Dock),
+                            Qty_to_Cross_Dock_Base: Value(ThisRecord.Qty_to_Cross_Dock_Base),
+                            Cross_Dock_Zone_Code: Value(ThisRecord.Cross_Dock_Zone_Code),
+                            Cross_Dock_Bin_Code: Value(ThisRecord.Cross_Dock_Bin_Code)
+                        }
+                    );
+                    
+                );
+                
+                ClearCollect(
+                    colOriginalWarehouseLines,
+                    colWarehouseLines
+                );
+            Size: =15
+            Text: ="Get file"
+            Visible: =varShowGetFileModal
+            X: =761
+            Y: =458
+            ZIndex: =10
+
+        Button3_20 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(fileName_4);
+                Set(varShowGetFileModal,false);
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowGetFileModal
+            X: =515
+            Y: =458
+            ZIndex: =11
+
+        "fileName_4 As 'Text input'":
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =50
+            Visible: =varShowGetFileModal
+            Width: =476
+            X: =465
+            Y: =339
+            ZIndex: =12
+
+        Label3_4 As label:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =13
+            Text: ="File name"
+            Visible: =varShowGetFileModal
+            X: =465
+            Y: =299
+            ZIndex: =13
+
+        Icon4_4 As icon.ListScrollEmpty:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.ListScrollEmpty
+            Visible: =varShowGetFileModal
+            X: =686
+            Y: =206
+            ZIndex: =14
+
+    TextCanvas4_2 As Text:
+        DisplayMode: =DisplayMode.Edit
+        FontColor: =
+        Height: =48
+        Text: =First(colTransferLines).Transfer_Line.Quantity
+        Width: =384
+        X: =649
+        Y: =92
+        ZIndex: =16
+

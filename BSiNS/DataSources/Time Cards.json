@@ -1,0 +1,133 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "qss_timecards",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "qss_timecard",
+    "MaxGetRowsCount": 500,
+    "Name": "Time Cards",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "qss_approvalstatus": "Approval Status",
+      "qss_billdate": "Bill Date",
+      "qss_description": "Description",
+      "qss_Employee": "Employee",
+      "qss_hoursworked": "Hours Worked",
+      "qss_QSSProject": "QSSProject",
+      "qss_timecard_ActivityPointers": "Activities",
+      "qss_timecard_adx_inviteredemptions": "Invite Redemptions",
+      "qss_timecard_adx_portalcomments": "Portal Comments",
+      "qss_timecard_Appointments": "Appointments",
+      "qss_timecard_AsyncOperations": "System Jobs",
+      "qss_timecard_BulkDeleteFailures": "Bulk Delete Failures",
+      "qss_timecard_chats": "Teams chats",
+      "qss_timecard_Emails": "Email Messages",
+      "qss_timecard_Faxes": "Faxes",
+      "qss_timecard_Letters": "Letters",
+      "qss_timecard_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "qss_timecard_PhoneCalls": "Phone Calls",
+      "qss_timecard_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "qss_timecard_ProcessSession": "Process Sessions",
+      "qss_timecard_RecurringAppointmentMasters": "Recurring Appointments",
+      "qss_timecard_SyncErrors": "Sync Errors",
+      "qss_timecard_Tasks": "Tasks",
+      "qss_timecardid": "Time Card",
+      "qss_timecardnumber": "Time Card Number",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Time Cards",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Time Cards (Views)",
+    "Name": "_qss_timecard_views",
+    "RelatedEntityName": "Time Cards",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3ca36266-0ccd-4b76-b0a3-e97a368e0263": "Inactive Time Cards",
+      "8ad07c91-49fd-4f8a-970a-ed441c7af876": "Time Card Advanced Find View",
+      "97c5ff28-99ec-46fd-9980-3292fcb034c5": "Active Time Cards",
+      "9a80f947-91ac-4f2d-99a3-9f1f1714cb04": "Time Card Lookup View",
+      "f14181eb-5984-4623-87e9-55638b16ea94": "Time Card Associated View"
+    }
+  },
+  {
+    "DisplayName": "Approval Status Choice",
+    "Name": "qss_approvalstatuschoice",
+    "OptionSetInfoNameMapping": {
+      "904970000": "Pending",
+      "904970001": "Approved",
+      "904970002": "Rejected"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "qss_approvalstatus",
+        "OptionSetReferenceEntityName": "Time Cards"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "qss_approvalstatus",
+    "RelatedEntityName": "Time Cards",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Time Cards)",
+    "Name": "qss_timecard_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Time Cards"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Time Cards",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Time Cards)",
+    "Name": "qss_timecard_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Time Cards"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Time Cards",
+    "Type": "OptionSetInfo"
+  }
+]

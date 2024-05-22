@@ -1,0 +1,1304 @@
+"scrEntry As screen.'autoLayout_Sidebar_ver1.0'":
+    Fill: =RGBA(45, 128, 40, 1)
+    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |+
+        =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
+        //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
+        
+        
+
+    ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            FillPortions: =0
+            Height: =75
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            ZIndex: =1
+
+            Header1 As Header:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =75
+                LayoutMinHeight: =75
+                LayoutMinWidth: =Parent.Width
+                Logo: =FFLogo
+                OnSelectLogo: =Navigate(scrEntry)
+                Style: ='Header.Style'.Primary
+                Title: ="Time Card Entry"
+                UserEmail: =User().Email
+                UserImage: =User().Image
+                UserName: =User().FullName
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+        BottomContainer2 As groupContainer.horizontalAutoLayoutContainer:
+            Fill: =RGBA(245, 245, 245, 1)
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutGap: =16
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutWrap: =true
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =3
+
+            "'SidebarContainer2 - ne dirati' As groupContainer.verticalAutoLayoutContainer":
+                DropShadow: =DropShadow.Light
+                Fill: =RGBA(255, 255, 255, 1)
+                FillPortions: =3
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =8
+                RadiusBottomRight: =8
+                RadiusTopLeft: =8
+                RadiusTopRight: =8
+                Visible: =false
+                ZIndex: =4
+
+                "Gallery2 As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+                    '#CopilotOverlayLabel': ="Filtered"
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    BorderColor: =RGBA(89, 0, 0, 1)
+                    DelayItemLoading: =true
+                    Height: =Parent.Height
+                    Items: =QSSProjects
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    OnSelect: =NewForm(Form1);
+                    TemplatePadding: =0
+                    TemplateSize: =90
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    Title6 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.Name
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 86
+                        X: =16
+                        Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle4.Size * 1.8)) / 2
+                        ZIndex: =1
+
+                    Subtitle4 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.'Created On'
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Title6.Width
+                        X: =Title6.X
+                        Y: =Title6.Y + Title6.Height
+                        ZIndex: =2
+
+                    NextArrow6 As icon.ChevronRight:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        Height: =50
+                        Icon: =Icon.ChevronRight
+                        OnSelect: =Select(Parent); Set(varShowCreateProjectModal,true); EditForm(Form2);
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width - 12
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =3
+
+                    Separator6 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                        ZIndex: =4
+
+                    Rectangle6 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(89, 0, 0, 1)
+                        Height: =Parent.TemplateHeight - Separator6.Height
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                        ZIndex: =5
+
+                Button1_2 As button:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Fill: =RGBA(215, 58, 60, 1)
+                    FontWeight: =FontWeight.Bold
+                    HoverColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                    OnSelect: =Set(varShowCreateProjectModal,true); NewForm(Form2);
+                    Size: =15
+                    Text: ="New project"
+                    Width: =194
+                    X: =461
+                    Y: =364
+                    ZIndex: =2
+
+            "'MainContainer2 - ne dirati' As groupContainer.verticalAutoLayoutContainer":
+                DropShadow: =DropShadow.Light
+                Fill: =RGBA(255, 255, 255, 1)
+                FillPortions: =7
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =8
+                RadiusBottomRight: =8
+                RadiusTopLeft: =8
+                RadiusTopRight: =8
+                Visible: =false
+                ZIndex: =5
+
+                Container6 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =1
+
+                    Form1 As form:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        DataSource: ='Time Cards'
+                        DefaultMode: =FormMode.New
+                        Item: =Gallery3.Selected
+                        LayoutMinHeight: =250
+                        LayoutMinWidth: =400
+                        OnSuccess: =NewForm(Form1);
+                        ZIndex: =1
+
+                        "'Approval Status_DataCard3' As typedDataCard.comboBoxOptionSetSingleEditCard":
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_approvalstatus"
+                            Default: =ThisItem.'Approval Status'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_approvalstatus)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =50
+                            Required: =false
+                            Update: =DataCardValue13.Selected.Value
+                            Visible: =If(Form1.Mode = FormMode.View, true, false)
+                            Width: =306
+                            X: =0
+                            Y: =1
+                            ZIndex: =1
+
+                            DataCardKey13 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue13 As combobox:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                ChevronBackground: =RGBA(164, 38, 44, 1)
+                                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                                ChevronHoverBackground: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                DefaultSelectedItems: =[Parent.Default]
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayFields: =["Value"]
+                                DisplayMode: =Parent.DisplayMode
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
+                                IsSearchable: =false
+                                Items: =Choices('Approval Status Choice')
+                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                PressedColor: =RGBA(255, 255, 255, 1)
+                                PressedFill: =RGBA(89, 0, 0, 1)
+                                SearchFields: =["Value"]
+                                SearchItems: =[]
+                                SelectionFill: =RGBA(164, 38, 44, 1)
+                                SelectMultiple: =false
+                                Size: =13
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey13.Y + DataCardKey13.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage13 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue13.Y + DataCardValue13.Height
+                                ZIndex: =3
+
+                            StarVisible13 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey13.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey13.Y
+                                ZIndex: =4
+
+                        Employee_DataCard4 As typedDataCard.comboBoxEditCard:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_Employee"
+                            Default: =ThisItem.Employee
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_Employee)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =50
+                            Required: =false
+                            Update: =DataCardValue14.Selected
+                            Visible: =If(Form1.Mode = FormMode.View, true, false)
+                            Width: =306
+                            X: =1
+                            Y: =1
+                            ZIndex: =1
+
+                            DataCardKey14 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue14 As combobox:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                ChevronBackground: =RGBA(164, 38, 44, 1)
+                                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                                ChevronHoverBackground: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                Default: =Parent.Default
+                                DefaultSelectedItems: =conUser
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayFields: =["fullname"]
+                                DisplayMode: =Parent.DisplayMode
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
+                                Items: =Choices([@'Time Cards'].qss_Employee)
+                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                PressedColor: =RGBA(255, 255, 255, 1)
+                                PressedFill: =RGBA(89, 0, 0, 1)
+                                SearchFields: =["fullname"]
+                                SearchItems: =Search(Choices([@'Time Cards'].qss_Employee),DataCardValue14.SearchText,fullname)
+                                SelectionFill: =RGBA(164, 38, 44, 1)
+                                SelectMultiple: =false
+                                Size: =13
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey14.Y + DataCardKey14.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage14 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue14.Y + DataCardValue14.Height
+                                ZIndex: =3
+
+                            StarVisible14 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey14.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey14.Y
+                                ZIndex: =4
+
+                        QSSProject_DataCard4 As typedDataCard.comboBoxEditCard:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_QSSProject"
+                            Default: =ThisItem.QSSProject
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_QSSProject)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =50
+                            Required: =false
+                            Update: =DataCardValue15.Selected
+                            Visible: =If(Form1.Mode = FormMode.View, true, false)
+                            Width: =306
+                            X: =2
+                            Y: =1
+                            ZIndex: =1
+
+                            DataCardKey15 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue15 As combobox:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                ChevronBackground: =RGBA(164, 38, 44, 1)
+                                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                                ChevronHoverBackground: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                                Default: =Parent.Default
+                                DefaultSelectedItems: =Gallery2.Selected
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayFields: =["qss_name"]
+                                DisplayMode: =Parent.DisplayMode
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
+                                Items: =Choices([@'Time Cards'].qss_QSSProject)
+                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                PressedColor: =RGBA(255, 255, 255, 1)
+                                PressedFill: =RGBA(89, 0, 0, 1)
+                                SearchFields: =["qss_name"]
+                                SearchItems: =Search(Choices([@'Time Cards'].qss_QSSProject),DataCardValue15.SearchText,qss_name)
+                                SelectionFill: =RGBA(164, 38, 44, 1)
+                                SelectMultiple: =false
+                                Size: =13
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage15 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue15.Y + DataCardValue15.Height
+                                ZIndex: =3
+
+                            StarVisible15 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey15.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey15.Y
+                                ZIndex: =4
+
+                        Description_DataCard1 As typedDataCard.textualMultiLineEditCard:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_description"
+                            Default: =ThisItem.Description
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_description)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =131
+                            Required: =false
+                            Update: =DataCardValue4.Text
+                            Width: =306
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
+                            DataCardKey4 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue4 As text:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                BorderThickness: =2
+                                Color: =RGBA(0, 0, 0, 1)
+                                Default: =Parent.Default
+                                DelayOutput: =true
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayMode: =Parent.DisplayMode
+                                FocusedBorderThickness: =4
+                                Height: =71
+                                HoverBorderColor: =RGBA(89, 0, 0, 1)
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
+                                Mode: =TextMode.MultiLine
+                                PaddingLeft: =5
+                                RadiusBottomLeft: =0
+                                RadiusBottomRight: =0
+                                RadiusTopLeft: =0
+                                RadiusTopRight: =0
+                                Size: =13
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey4.Y + DataCardKey4.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage3 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue4.Y + DataCardValue4.Height
+                                ZIndex: =3
+
+                            StarVisible3 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey4.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey4.Y
+                                ZIndex: =4
+
+                        "'Hours Worked_DataCard1' As typedDataCard.numberEditCard":
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_hoursworked"
+                            Default: =ThisItem.'Hours Worked'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_hoursworked)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =50
+                            Required: =false
+                            Update: =Value(DataCardValue5.Text)
+                            Width: =306
+                            X: =1
+                            Y: =0
+                            ZIndex: =2
+
+                            DataCardKey5 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue5 As text:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                BorderThickness: =2
+                                Color: =RGBA(0, 0, 0, 1)
+                                Default: =Parent.Default
+                                DelayOutput: =true
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayMode: =Parent.DisplayMode
+                                FocusedBorderThickness: =4
+                                Format: =TextFormat.Number
+                                HoverBorderColor: =RGBA(89, 0, 0, 1)
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
+                                PaddingLeft: =5
+                                RadiusBottomLeft: =0
+                                RadiusBottomRight: =0
+                                RadiusTopLeft: =0
+                                RadiusTopRight: =0
+                                Size: =13
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey5.Y + DataCardKey5.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage4 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue5.Y + DataCardValue5.Height
+                                ZIndex: =3
+
+                            StarVisible4 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey5.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey5.Y
+                                ZIndex: =4
+
+                        "'Bill Date_DataCard1' As typedDataCard.dateEditCard":
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderStyle: =BorderStyle.Solid
+                            DataField: ="qss_billdate"
+                            Default: =ThisItem.'Bill Date'
+                            DisplayMode: =Parent.DisplayMode
+                            DisplayName: =DataSourceInfo([@'Time Cards'],DataSourceInfo.DisplayName,qss_billdate)
+                            Fill: =RGBA(0, 0, 0, 0)
+                            Height: =50
+                            Required: =false
+                            Update: =DataCardValue6.SelectedDate
+                            Width: =306
+                            X: =2
+                            Y: =0
+                            ZIndex: =2
+
+                            DataCardKey6 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =34
+                                Size: =13
+                                Text: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                Wrap: =false
+                                X: =30
+                                Y: =10
+                                ZIndex: =1
+
+                            DataCardValue6 As datepicker:
+                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                                Color: =RGBA(0, 0, 0, 1)
+                                DefaultDate: =If(IsBlank(Gallery3.Selected) || Form1.Mode = FormMode.New, Now(), Parent.Default)
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayMode: =Parent.DisplayMode
+                                EndYear: =Year(Today())+100
+                                HoverDateFill: =RGBA(222, 179, 184, 1)
+                                IconBackground: =RGBA(164, 38, 44, 1)
+                                IsEditable: =true
+                                PaddingBottom: =0
+                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                SelectedDateFill: =RGBA(164, 38, 44, 1)
+                                StartYear: =1899
+                                Tooltip: =Parent.DisplayName
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardKey6.Y + DataCardKey6.Height + 5
+                                ZIndex: =2
+
+                            ErrorMessage5 As label:
+                                AutoHeight: =true
+                                Color: =RGBA(168, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =FontWeight.Semibold
+                                Height: =10
+                                Live: =Live.Assertive
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Text: =Parent.Error
+                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                Width: =Parent.Width - 60
+                                X: =30
+                                Y: =DataCardValue6.Y + DataCardValue6.Height
+                                ZIndex: =3
+
+                            StarVisible5 As label:
+                                Align: =Align.Center
+                                Color: =RGBA(89, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Height: =DataCardKey6.Height
+                                Size: =13
+                                Text: ="*"
+                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                Width: =30
+                                Wrap: =false
+                                Y: =DataCardKey6.Y
+                                ZIndex: =4
+
+                Container7 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    "Gallery3 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                        '#CopilotOverlayLabel': ="Filtered"
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        DelayItemLoading: =true
+                        Fill: =RGBA(255, 235, 235, 1)
+                        Items: =Sort(Filter('Time Cards', QSSProject.QSSProject = Gallery2.Selected.QSSProject), 'Bill Date', SortOrder.Descending)
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =287
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: ={}
+                        TemplatePadding: =0
+                        TemplateSize: =104
+                        ZIndex: =1
+
+                        Title7 As label:
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =FontWeight.Bold
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =16
+                            Text: =If(!IsBlank(ThisItem), ThisItem.'Time Card Number' & " | " & ThisItem.'Bill Date',"")
+                            Underline: =true
+                            Width: =Parent.TemplateWidth - 173
+                            X: =26
+                            Y: =12
+                            ZIndex: =2
+
+                        Subtitle5 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: |
+                                =If(
+                                    Len(ThisItem.Description) > 50,
+                                    Left(ThisItem.Description, 50) & "...",
+                                    ThisItem.Description
+                                )
+                            Width: =Title7.Width
+                            X: =Title7.X
+                            Y: =60
+                            ZIndex: =3
+
+                        Separator7 As rectangle:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =8
+                            OnSelect: =Select(Parent)
+                            Width: =Parent.TemplateWidth
+                            Y: =Parent.TemplateHeight - Self.Height
+                            ZIndex: =5
+
+                        Rectangle7 As rectangle:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Fill: =RGBA(89, 0, 0, 1)
+                            Height: =Parent.TemplateHeight - Separator7.Height
+                            OnSelect: =Select(Parent)
+                            Visible: =ThisItem.IsSelected
+                            Width: =4
+                            ZIndex: =6
+
+                        Icon2 As icon.Trash:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(189, 49, 51, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =35
+                            Icon: =Icon.Trash
+                            OnSelect: =Set(varShowDeleteModal, true);
+                            Width: =44
+                            X: =850
+                            Y: =30
+                            ZIndex: =7
+
+                        Icon6 As icon.Edit:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =35
+                            Icon: =Icon.Edit
+                            OnSelect: =Select( Parent );EditForm(Form1);
+                            Width: =44
+                            X: =796
+                            Y: =30
+                            ZIndex: =8
+
+                        Icon3 As icon.View:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =30
+                            Icon: =Icon.View
+                            OnSelect: =Select(Parent); ViewForm(Form1);
+                            Width: =35
+                            X: =738
+                            Y: =30
+                            ZIndex: =9
+
+            Container10 As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =7
+
+                TextCanvas1 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+    Button1 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(215, 58, 60, 1)
+        FontWeight: =FontWeight.Bold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =SubmitForm(Form1)
+        Size: =15
+        Text: ="Save"
+        Visible: =false
+        X: =1157
+        Y: =364
+        ZIndex: =2
+
+    Button1_1 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(215, 58, 60, 1)
+        FontWeight: =FontWeight.Bold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: |
+            =NewForm(Form1); Reset(Gallery3);
+        Size: =15
+        Text: ="New time card"
+        Visible: =false
+        Width: =194
+        X: =461
+        Y: =364
+        ZIndex: =3
+
+    Button2 As button:
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =Navigate(xmlTemeljniceInventure)
+        Size: =12
+        Text: ="TEMELJNICE INVENTURE"
+        X: =442
+        Y: =33
+        ZIndex: =4
+
+    DeleteModal As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Rectangle4 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowDeleteModal
+            Width: =1366
+            ZIndex: =10
+
+        Rectangle5 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =240
+            Visible: =varShowDeleteModal
+            Width: =606
+            X: =380
+            Y: =273
+            ZIndex: =11
+
+        Icon5 As icon.Erase:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =48
+            Icon: =Icon.Erase
+            Visible: =varShowDeleteModal
+            Width: =56
+            X: =655
+            Y: =300
+            ZIndex: =12
+
+        Label1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =80
+            Size: =13
+            Text: ="Are you sure you want to delete item with id - " & Gallery3.Selected.'Time Card Number'& " ?"
+            Visible: =varShowDeleteModal
+            Width: =518
+            X: =424
+            Y: =348
+            ZIndex: =13
+
+        Button3 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |
+                =Remove('Time Cards',Gallery3.Selected);
+                Set(varShowDeleteModal,false);
+                NewForm(Form1);
+            Size: =15
+            Text: ="Delete"
+            Visible: =varShowDeleteModal
+            X: =741
+            Y: =447
+            ZIndex: =14
+
+        Button3_1 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: =Set(varShowDeleteModal,false)
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowDeleteModal
+            X: =495
+            Y: =447
+            ZIndex: =15
+
+    CreateProjectModal As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =15
+
+        Rectangle4_1 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            OnSelect: =Reset(Gallery2); NewForm(Form2);
+            Visible: =varShowCreateProjectModal
+            Width: =1366
+            ZIndex: =5
+
+        Container2 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =405
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =varShowCreateProjectModal
+            Width: =606
+            X: =380
+            Y: =201
+            ZIndex: =6
+
+            Container2_1 As groupContainer.manualLayoutContainer:
+                DropShadow: =DropShadow.Light
+                Height: =154
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =606
+                Y: =117
+                ZIndex: =1
+
+                Form2 As form:
+                    BorderColor: =RGBA(89, 0, 0, 1)
+                    DataSource: =QSSProjects
+                    Height: =158
+                    Item: =Gallery2.Selected
+                    Width: =606
+                    ZIndex: =1
+
+                    Name_DataCard1 As typedDataCard.textualEditCard:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        DataField: ="qss_name"
+                        Default: =ThisItem.Name
+                        DisplayMode: =Parent.DisplayMode
+                        DisplayName: =DataSourceInfo([@QSSProjects],DataSourceInfo.DisplayName,qss_name)
+                        Fill: =RGBA(0, 0, 0, 0)
+                        Height: =105
+                        MaxLength: =DataSourceInfo([@QSSProjects], DataSourceInfo.MaxLength, qss_name)
+                        Required: =true
+                        Update: =DataCardValue9.Text
+                        Width: =606
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                        DataCardKey9 As label:
+                            AutoHeight: =true
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =34
+                            Size: =13
+                            Text: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            Wrap: =false
+                            X: =30
+                            Y: =10
+                            ZIndex: =1
+
+                        DataCardValue9 As text:
+                            BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                            BorderThickness: =2
+                            Color: =RGBA(0, 0, 0, 1)
+                            Default: =If(Form2.Mode = FormMode.New, "" ,Gallery2.Selected.Name)
+                            DelayOutput: =true
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            DisplayMode: =Parent.DisplayMode
+                            FocusedBorderThickness: =4
+                            HoverBorderColor: =RGBA(89, 0, 0, 1)
+                            HoverColor: =RGBA(0, 0, 0, 1)
+                            HoverFill: =RGBA(222, 179, 184, 1)
+                            MaxLength: =Parent.MaxLength
+                            PaddingLeft: =5
+                            RadiusBottomLeft: =0
+                            RadiusBottomRight: =0
+                            RadiusTopLeft: =0
+                            RadiusTopRight: =0
+                            Size: =13
+                            Tooltip: =Parent.DisplayName
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardKey9.Y + DataCardKey9.Height + 5
+                            ZIndex: =2
+
+                        ErrorMessage9 As label:
+                            AutoHeight: =true
+                            Color: =RGBA(168, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =FontWeight.Semibold
+                            Height: =10
+                            Live: =Live.Assertive
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Text: =Parent.Error
+                            Visible: =Parent.DisplayMode=DisplayMode.Edit
+                            Width: =Parent.Width - 60
+                            X: =30
+                            Y: =DataCardValue9.Y + DataCardValue9.Height
+                            ZIndex: =3
+
+                        StarVisible9 As label:
+                            Align: =Align.Center
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =DataCardKey9.Height
+                            Size: =13
+                            Text: ="*"
+                            Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                            Width: =30
+                            Wrap: =false
+                            Y: =DataCardKey9.Y
+                            ZIndex: =4
+
+        Icon1 As icon.AddLibrary:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.AddLibrary
+            Visible: =varShowCreateProjectModal
+            X: =651
+            Y: =217
+            ZIndex: =7
+
+        Button3_3 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =SubmitForm(Form2);
+                Set(varShowCreateProjectModal,false);
+            Size: =15
+            Text: ="Save"
+            Visible: =varShowCreateProjectModal
+            Width: =157
+            X: =742
+            Y: =513
+            ZIndex: =8
+
+        Button3_2 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: =Set(varShowCreateProjectModal,false)
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowCreateProjectModal
+            Width: =157
+            X: =461
+            Y: =513
+            ZIndex: =9
+
+    Button2_1 As button:
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =Navigate(xmlNabavniNalog)
+        Size: =12
+        Text: ="NABAVNI NALOG"
+        X: =264
+        Y: =33
+        ZIndex: =16
+
+    Button2_2 As button:
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =Navigate(xmlNalogZaPrenos)
+        Size: =12
+        Text: ="NALOG ZA PRENOS"
+        X: =618
+        Y: =33
+        ZIndex: =17
+
+    Button2_3 As button:
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =Navigate(xmlNalogZaProdaju)
+        Size: =12
+        Text: ="NALOG ZA PRODAJU"
+        X: =799
+        Y: =33
+        ZIndex: =18
+
+    Button2_4 As button:
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Semibold
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: =Navigate(xmlPrimke)
+        Size: =12
+        Text: ="PRIMKE"
+        X: =986
+        Y: =33
+        ZIndex: =19
+

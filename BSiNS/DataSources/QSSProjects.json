@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "qss_qssprojects",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "qss_qssproject",
+    "MaxGetRowsCount": 500,
+    "Name": "QSSProjects",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "qss_name": "Name",
+      "qss_qssproject_AsyncOperations": "System Jobs",
+      "qss_qssproject_BulkDeleteFailures": "Bulk Delete Failures",
+      "qss_qssproject_DuplicateBaseRecord": "Duplicate Records (qss_qssproject_DuplicateBaseRecord)",
+      "qss_qssproject_DuplicateMatchingRecord": "Duplicate Records (qss_qssproject_DuplicateMatchingRecord)",
+      "qss_qssproject_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "qss_qssproject_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "qss_qssproject_ProcessSession": "Process Sessions",
+      "qss_qssproject_SyncErrors": "Sync Errors",
+      "qss_qssprojectid": "QSSProject",
+      "qss_timecard_QSSProject_qss_qssproject": "Time Cards",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "QSSProjects",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "QSSProjects (Views)",
+    "Name": "_qss_qssproject_views",
+    "RelatedEntityName": "QSSProjects",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3ffcc899-5586-45ae-9d8d-50f8cec69632": "QSSProject Lookup View",
+      "49de89a3-347f-420b-a52a-a3b8f60d8549": "Inactive QSSProjects",
+      "aee5e57d-7227-4aed-97e7-ad4bfcf44c9b": "QSSProject Associated View",
+      "cfec3718-eb07-4aef-b93b-6819ea148a89": "QSSProject Advanced Find View",
+      "e380e0a7-af31-4575-ae87-4d30e968100d": "Active QSSProjects"
+    }
+  },
+  {
+    "DisplayName": "Status (QSSProjects)",
+    "Name": "qss_qssproject_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "QSSProjects"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "QSSProjects",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (QSSProjects)",
+    "Name": "qss_qssproject_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "QSSProjects"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "QSSProjects",
+    "Type": "OptionSetInfo"
+  }
+]

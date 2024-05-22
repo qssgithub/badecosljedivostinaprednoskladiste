@@ -1,0 +1,15 @@
+App As appinfo:
+    BackEnabled: =true
+    Formulas: |-
+        =conPrimary = ColorValue("#0AA9FF");
+        conAccent = ColorValue("#676767");
+        conUser = LookUp(Contacts,Email = User().Email);
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
