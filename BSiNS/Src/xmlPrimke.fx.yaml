@@ -1484,53 +1484,13 @@
                 );
                 Set(
                     warehouseHeader,
-                    warehouseJson.Warehouse_Receipt_Header
+                    warehouse.warehouse_receipt_header
                 );
                 
-                ClearCollect(
-                    colWarehouseLines,
-                    {
-                        No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.No,
-                        Line_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Line_No,
-                        Source_Type: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Type,
-                        Source_SubType: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_SubType,
-                        Source_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_No,
-                        Source_Line_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Line_No,
-                        Source_Document: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Document,
-                        Location_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Location_Code,
-                        Shelf_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Shelf_No,
-                        Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Bin_Code,
-                        Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Zone_Code,
-                        Item_No: Text(warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Item_No),
-                        Quantity: Text(warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Quantity),
-                        Qty_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Base,
-                        Qty_Outstanding: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding,
-                        Qty_Outstanding_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding_Base,
-                        Qty_to_Receive: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive,
-                        Qty_to_Receive_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive_Base,
-                        Qty_Received: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received,
-                        Qty_Received_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received_Base,
-                        UOM_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.UOM_Code,
-                        Qty_per_UOM: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_per_UOM,
-                        Description: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Description,
-                        Status: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Status,
-                        Sorting_Sequence_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Sorting_Sequence_No,
-                        Due_Date: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Due_Date,
-                        Starting_Date: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Starting_Date,
-                        Cubage: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cubage,
-                        Weight: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Weight,
-                        Not_upd_by_SDP: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Not_upd_by_SDP,
-                        Posting_From_Whs_Ref: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Posting_From_Whs_Ref,
-                        Qty_to_Cross_Dock: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock,
-                        Qty_to_Cross_Dock_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock_Base,
-                        Cross_Dock_Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Zone_Code,
-                        Cross_Dock_Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Bin_Code
-                    }
-                );
-                /*
+                
                 Clear(colWarehouseLines);
                 ForAll(
-                    warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line,
+                    ParseJSON(warehouse.warehouse_receipt_line),
                     Collect(
                         colWarehouseLines,
                         {
@@ -1574,10 +1534,52 @@
                     
                 );
                 
+                /*
+                ClearCollect(
+                    colWarehouseLines,
+                    {
+                        No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.No,
+                        Line_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Line_No,
+                        Source_Type: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Type,
+                        Source_SubType: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_SubType,
+                        Source_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_No,
+                        Source_Line_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Line_No,
+                        Source_Document: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Document,
+                        Location_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Location_Code,
+                        Shelf_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Shelf_No,
+                        Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Bin_Code,
+                        Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Zone_Code,
+                        Item_No: Text(warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Item_No),
+                        Quantity: Text(warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Quantity),
+                        Qty_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Base,
+                        Qty_Outstanding: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding,
+                        Qty_Outstanding_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding_Base,
+                        Qty_to_Receive: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive,
+                        Qty_to_Receive_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive_Base,
+                        Qty_Received: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received,
+                        Qty_Received_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received_Base,
+                        UOM_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.UOM_Code,
+                        Qty_per_UOM: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_per_UOM,
+                        Description: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Description,
+                        Status: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Status,
+                        Sorting_Sequence_No: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Sorting_Sequence_No,
+                        Due_Date: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Due_Date,
+                        Starting_Date: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Starting_Date,
+                        Cubage: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cubage,
+                        Weight: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Weight,
+                        Not_upd_by_SDP: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Not_upd_by_SDP,
+                        Posting_From_Whs_Ref: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Posting_From_Whs_Ref,
+                        Qty_to_Cross_Dock: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock,
+                        Qty_to_Cross_Dock_Base: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock_Base,
+                        Cross_Dock_Zone_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Zone_Code,
+                        Cross_Dock_Bin_Code: warehouseJson.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Bin_Code
+                    }
+                );*/
+                
                 ClearCollect(
                     colOriginalWarehouseLines,
                     colWarehouseLines
-                );*/
+                );
             Size: =15
             Text: ="Get file"
             Visible: =varShowGetFileModal
