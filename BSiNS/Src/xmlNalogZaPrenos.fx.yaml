@@ -1458,8 +1458,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |
-            =Set(
-                transferJsonData,
+            =UpdateContext({
+                transferJsonData:
                 JSON(
                     {
                         Transfer_Header: {
@@ -1529,7 +1529,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             If(!isCreated,UpdateXML.Run(transferJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
@@ -1583,11 +1583,12 @@
                         NotificationType.Error,
                         5000
                     ),
-                    Set(transfer,GetXML_Nalog_Za_Prenos.Run(file_Name,"ReadyForProcessing"))
+                    UpdateContext({transfer:GetXML_Nalog_Za_Prenos.Run(file_Name,"ReadyForProcessing")})
                 );
-                Set(transfer_header, ParseJSON(transfer.transfer_header));
-                Set(transfer_lines,transfer.transfer_line);
-                Set(transfer_res_entry,transfer.res_entry);
+                
+                UpdateContext({transfer_header: ParseJSON(transfer.transfer_header)});
+                UpdateContext({transfer_lines:transfer.transfer_line});
+                UpdateContext({transfer_res_entry:transfer.res_entry});
                 
                 Clear(colTransferLines);
                 Clear(colResEntries);
