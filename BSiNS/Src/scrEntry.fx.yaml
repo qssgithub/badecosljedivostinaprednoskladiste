@@ -1,8 +1,7 @@
 "scrEntry As screen.'autoLayout_Sidebar_ver1.0'":
     Fill: =RGBA(45, 128, 40, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
-    OnHidden: |-
-        =UpdateContext({Status: "All", FileType: "All",XMLFiles:Blank()});
+    OnHidden: =
     OnVisible: |
         =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
