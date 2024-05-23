@@ -1408,8 +1408,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |-
-            =Set(
-                warehouseJsonData,
+            =UpdateContext({
+                warehouseJsonData:
                 JSON(
                     {
                         Warehouse_Receipt_Header: {
@@ -1466,7 +1466,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             If(!isCreated,UpdateXML.Run(warehouseJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
@@ -1530,19 +1530,19 @@
                         NotificationType.Error,
                         5000
                     ),
-                    Set(
-                        warehouse,
+                    UpdateContext({
+                        warehouse:
                         GetXML_Primke.Run(
                             file_Name,
                             "ReadyForProcessing"
                         )
-                    )
+                    })
                 );
                 
-                Set(
-                    warehouseHeader,
+                UpdateContext({
+                    warehouseHeader:
                     ParseJSON(warehouse.warehouse_receipt_header)
-                );
+                });
                 
                 Clear(colWarehouseLines);
                 ForAll(
