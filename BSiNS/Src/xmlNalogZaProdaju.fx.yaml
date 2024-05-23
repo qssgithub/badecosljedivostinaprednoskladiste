@@ -1401,8 +1401,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |
-            =Set(
-                salesJsonData,
+            =UpdateContext({
+                salesJsonData:
                 JSON(
                     {
                         Sales_Header: {
@@ -1505,7 +1505,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
@@ -1569,27 +1569,27 @@
                         NotificationType.Error,
                         5000
                     ),
-                    Set(
-                        sales,
+                    UpdateContext({
+                        sales:
                         GetXML_Nalog_Za_Prodaju.Run(
                             file_Name,
                             "ReadyForProcessing"
                         )
-                    )
+                    })
                 );
                 
-                Set(
-                    sales_header,
+                UpdateContext({
+                    sales_header:
                     ParseJSON(sales.sales_header)
-                );
-                Set(
-                    sales_lines,
+                });
+                UpdateContext({
+                    sales_lines:
                     sales.sales_line
-                );
-                Set(
-                    salesResEntry,
+                });
+                UpdateContext({
+                    salesResEntry:
                     sales.res_entry
-                );
+                });
                 
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
