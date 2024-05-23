@@ -77,7 +77,8 @@
       "638c511f-dbf1-4522-8af2-53521a00ea50",
       "cfee3a12-5e02-4d92-8d52-414857a67d51",
       "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637",
-      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
+      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
+      "606b24e4-b1be-4add-b4c8-85480ae5d3c1"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
   },
@@ -219,6 +220,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "4e283bb6-bf79-4f23-9b01-ae9854476c88": {
+          "value": "shared_filesystem"
+        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -230,6 +234,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "4e283bb6-bf79-4f23-9b01-ae9854476c88"
+        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
