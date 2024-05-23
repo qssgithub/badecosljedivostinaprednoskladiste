@@ -1,6 +1,47 @@
 "xmlTemeljniceInventure As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |
+        =IfError(GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder)}));
+        
+        UpdateContext({journal_line: temeljniceResponse.item_journal_line});
+        
+        Clear(colJournalLine);
+        
+        ForAll(
+            ParseJSON(journal_line),
+            Collect(
+                colJournalLine,
+                {
+                    Journal_Template_Name: Text(ThisRecord.Journal_Template_Name),
+                    Journal_Batch_Name: Text(ThisRecord.Journal_Batch_Name),
+                    'Line_No.': Text(ThisRecord.'Line_No.'),
+                    'Document_No.': Text(ThisRecord.'Document_No.'),
+                    Description: Text(ThisRecord.Description),
+                    Source_Type: Text(ThisRecord.Source_Type),
+                    'Source_No.': Text(ThisRecord.'Source_No.'),
+                    Source_Code: Text(ThisRecord.Source_Code),
+                    'Item_No.': Text(ThisRecord.'Item_No.'),
+                    'Phys._Inventory': Text(ThisRecord.'Phys._Inventory'),
+                    Location_Code: Text(ThisRecord.Location_Code),
+                    Posting_Date: Text(ThisRecord.Posting_Date),
+                    Document_Date: Text(ThisRecord.Document_Date),
+                    Sales_Price: Text(ThisRecord.Sales_Price),
+                    Qty_Calculated: Text(ThisRecord.Qty_Calculated),
+                    Qty_Calculated_Ext: Text(ThisRecord.Qty_Calculated_Ext),
+                    Quantity: Value(ThisRecord.Quantity),
+                    Entry_Type: Text(ThisRecord.Entry_Type),
+                    Qty_Phys_Inventory: Text(ThisRecord.Qty_Phys_Inventory),
+                    Qty_Phys_Inventory_Ext: Text(ThisRecord.Qty_Phys_Inventory_Ext),
+                    Gen_Bus_Posting_Group: Text(ThisRecord.Gen_Bus_Posting_Group),
+                    Lot_No: Text(ThisRecord.Lot_No),
+                    Item_Expiration_Date: Text(ThisRecord.Item_Expiration_Date)
+                }
+            )
+        );
+        
+        
+        //Reset(fileName_1);
 
     ScreenContainer1_1 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -1150,7 +1191,7 @@
                 =Set(varShowGetFileModal, false);
                 Set(file_Name, fileName_1.Value);
                 
-                IfError(GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(temeljniceResponse, GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing")));
+                IfError(GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing")}));
                 
                 UpdateContext({journal_line: temeljniceResponse.item_journal_line});
                 

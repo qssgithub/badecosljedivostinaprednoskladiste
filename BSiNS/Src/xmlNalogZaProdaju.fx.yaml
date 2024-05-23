@@ -1,6 +1,105 @@
 "xmlNalogZaProdaju As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =IfError(
+            GetXML_Nalog_Za_Prodaju.Run(
+                SelectedFile,
+                SelectedFolder
+            ),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            ),
+            UpdateContext({
+                sales:
+                GetXML_Nalog_Za_Prodaju.Run(
+                    SelectedFile,
+                    SelectedFolder
+                )
+            })
+        );
+        
+        UpdateContext({
+            sales_header:
+            ParseJSON(sales.sales_header)
+        });
+        UpdateContext({
+            sales_lines:
+            sales.sales_line
+        });
+        UpdateContext({
+            salesResEntry:
+            sales.res_entry
+        });
+        
+        Clear(colSalesLines);
+        Clear(colSalesResEntries);
+        
+        ForAll(
+            ParseJSON(sales_lines),
+            Collect(
+                colSalesLines,
+                {
+                    Document_Type: Value(ThisRecord.Document_Type),
+                    'Sell-to_Customer_No.': Text(ThisRecord.'Sell-to_Customer_No.'),
+                    Document_No: Text(ThisRecord.Document_No),
+                    Line_No: Value(ThisRecord.Line_No),
+                    Type: Value(ThisRecord.Type),
+                    Item_No: Text(ThisRecord.Item_No),
+                    Location_Code: Text(ThisRecord.Location_Code),
+                    Posting_Group: Text(ThisRecord.Posting_Group),
+                    Description: Text(ThisRecord.Description),
+                    Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                    Quantity: Value(ThisRecord.Quantity),
+                    Unit_Price: Value(ThisRecord.Unit_Price),
+                    Line_Amount: Value(ThisRecord.Line_Amount),
+                    Line_Discount_Amount: Value(ThisRecord.Line_Discount_Amount),
+                    'Qty-to_Invoice': Value(ThisRecord.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Value(ThisRecord.'Qty-to_Ship'),
+                    Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
+                }
+            );
+            
+        );
+        
+        
+        ForAll(
+            ParseJSON(salesResEntry),
+            Collect(
+                colSalesResEntries,
+                {
+                    Entry_No: Text(ThisRecord.Entry_No),
+                        Item_No: Text(ThisRecord.Item_No),
+                        Positive: Text(ThisRecord.Positive),
+                        Quantity: Value(ThisRecord.Quantity),
+                        Quantity_Base: Value(ThisRecord.Quantity_Base),
+                        Location_Code: Text(ThisRecord.Location_Code),
+                        Res_Status: Text(ThisRecord.Res_Status),
+                        Source_Type: Text(ThisRecord.Source_Type),
+                        Source_SubType: Text(ThisRecord.Source_SubType),
+                        Source_ID: Text(ThisRecord.Source_ID),
+                        Source_Ref_No: Text(ThisRecord.Source_Ref_No),
+                        Item_Tracking: Text(ThisRecord.Item_Tracking),
+                        LOT_No: Text(ThisRecord.LOT_No),
+                        Exp_Date: Text(ThisRecord.Exp_Date),
+                        Creation_Date: Text(ThisRecord.Creation_Date),
+                        Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
+                        Shipment_Date: Text(ThisRecord.Shipment_Date),
+                        Created_By: Text(ThisRecord.Created_By),
+                        'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
+                    }            
+            )
+        );
+        
+        
+        ClearCollect(
+            colOriginalSalesLines,
+            colSalesLines
+        );
+        //za reset
 
     ScreenContainer1_3 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -1401,8 +1500,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |
-            =Set(
-                salesJsonData,
+            =UpdateContext({
+                salesJsonData:
                 JSON(
                     {
                         Sales_Header: {
@@ -1505,7 +1604,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
@@ -1569,27 +1668,27 @@
                         NotificationType.Error,
                         5000
                     ),
-                    Set(
-                        sales,
+                    UpdateContext({
+                        sales:
                         GetXML_Nalog_Za_Prodaju.Run(
                             file_Name,
                             "ReadyForProcessing"
                         )
-                    )
+                    })
                 );
                 
-                Set(
-                    sales_header,
+                UpdateContext({
+                    sales_header:
                     ParseJSON(sales.sales_header)
-                );
-                Set(
-                    sales_lines,
+                });
+                UpdateContext({
+                    sales_lines:
                     sales.sales_line
-                );
-                Set(
-                    salesResEntry,
+                });
+                UpdateContext({
+                    salesResEntry:
                     sales.res_entry
-                );
+                });
                 
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
@@ -1715,24 +1814,4 @@
             X: =686
             Y: =206
             ZIndex: =14
-
-    TextCanvas4_1 As Text:
-        DisplayMode: =DisplayMode.Edit
-        FontColor: =
-        Height: =48
-        Text: =First(colTransferLines).Transfer_Line.Quantity
-        Width: =384
-        X: =649
-        Y: =92
-        ZIndex: =16
-
-    TextCanvas3 As Text:
-        DisplayMode: =DisplayMode.Edit
-        FontColor: =
-        Height: =32
-        Text: =fileName_4.Value
-        Width: =148
-        X: =793
-        Y: =238
-        ZIndex: =17
 

@@ -1,6 +1,80 @@
 "xmlPrimke As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =IfError(
+            GetXML_Primke.Run(
+                SelectedFile,
+                SelectedFolder
+            ),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            ),
+            UpdateContext({
+                warehouse:
+                GetXML_Primke.Run(
+                    SelectedFile,
+                    SelectedFolder
+                )
+            })
+        );
+        
+        UpdateContext({
+            warehouseHeader:
+            ParseJSON(warehouse.warehouse_receipt_header)
+        });
+        
+        Clear(colWarehouseLines);
+        ForAll(
+            ParseJSON(warehouse.warehouse_receipt_line),
+            Collect(
+                colWarehouseLines,
+                {
+                    No: Text(ThisRecord.No),
+                    Line_No: Text(ThisRecord.Line_No),
+                    Source_Type: Text(ThisRecord.Source_Type),
+                    Source_SubType: Text(ThisRecord.Source_SubType),
+                    Source_No: Text(ThisRecord.Source_No),
+                    Source_Line_No: Text(ThisRecord.Source_Line_No),
+                    Source_Document: Text(ThisRecord.Source_Document),
+                    Location_Code: Text(ThisRecord.Location_Code),
+                    Shelf_No: Text(ThisRecord.Shelf_No),
+                    Bin_Code: Text(ThisRecord.Bin_Code),
+                    Zone_Code: Text(ThisRecord.Zone_Code),
+                    Item_No: Text(ThisRecord.Item_No),
+                    Quantity: Text(ThisRecord.Quantity),
+                    Qty_Base: Text(ThisRecord.Qty_Base),
+                    Qty_Outstanding: Text(ThisRecord.Qty_Outstanding),
+                    Qty_Outstanding_Base: Text(ThisRecord.Qty_Outstanding_Base),
+                    Qty_to_Receive: Text(ThisRecord.Qty_to_Receive),
+                    Qty_to_Receive_Base: Text(ThisRecord.Qty_to_Receive_Base),
+                    Qty_Received: Text(ThisRecord.Qty_Received),
+                    Qty_Received_Base: Text(ThisRecord.Qty_Received_Base),
+                    UOM_Code: Text(ThisRecord.UOM_Code),
+                    Qty_per_UOM: Text(ThisRecord.Qty_per_UOM),
+                    Description: Text(ThisRecord.Description),
+                    Status: Text(ThisRecord.Status),
+                    Sorting_Sequence_No: Text(ThisRecord.Sorting_Sequence_No),
+                    Due_Date: Text(ThisRecord.Due_Date),
+                    Starting_Date: Text(ThisRecord.Starting_Date),
+                    Cubage: Text(ThisRecord.Cubage),
+                    Weight: Text(ThisRecord.Weight),
+                    Not_upd_by_SDP: Text(ThisRecord.Not_upd_by_SDP),
+                    Posting_From_Whs_Ref: Text(ThisRecord.Posting_From_Whs_Ref),
+                    Qty_to_Cross_Dock: Text(ThisRecord.Qty_to_Cross_Dock),
+                    Qty_to_Cross_Dock_Base: Text(ThisRecord.Qty_to_Cross_Dock_Base),
+                    Cross_Dock_Zone_Code: Text(ThisRecord.Cross_Dock_Zone_Code),
+                    Cross_Dock_Bin_Code: Text(ThisRecord.Cross_Dock_Bin_Code)
+                }
+            );
+        );
+        
+        ClearCollect(
+            colOriginalWarehouseLines,
+            colWarehouseLines
+        );
 
     ScreenContainer1_4 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -1408,8 +1482,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |-
-            =Set(
-                warehouseJsonData,
+            =UpdateContext({
+                warehouseJsonData:
                 JSON(
                     {
                         Warehouse_Receipt_Header: {
@@ -1466,7 +1540,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             If(!isCreated,UpdateXML.Run(warehouseJsonData, file_Name, "ReadyForProcessing"));
         Size: =15
@@ -1530,19 +1604,19 @@
                         NotificationType.Error,
                         5000
                     ),
-                    Set(
-                        warehouse,
+                    UpdateContext({
+                        warehouse:
                         GetXML_Primke.Run(
                             file_Name,
                             "ReadyForProcessing"
                         )
-                    )
+                    })
                 );
                 
-                Set(
-                    warehouseHeader,
+                UpdateContext({
+                    warehouseHeader:
                     ParseJSON(warehouse.warehouse_receipt_header)
-                );
+                });
                 
                 Clear(colWarehouseLines);
                 ForAll(
@@ -1650,14 +1724,4 @@
             X: =686
             Y: =206
             ZIndex: =14
-
-    TextCanvas4_2 As Text:
-        DisplayMode: =DisplayMode.Edit
-        FontColor: =
-        Height: =48
-        Text: =First(colTransferLines).Transfer_Line.Quantity
-        Width: =384
-        X: =649
-        Y: =92
-        ZIndex: =16
 
