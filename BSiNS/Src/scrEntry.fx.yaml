@@ -3,7 +3,7 @@
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnHidden: |-
         =UpdateContext({Status: "All", FileType: "All"});
-    OnVisible: |
+    OnVisible: |-
         =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
         UpdateContext(
@@ -15,11 +15,13 @@
         );
         UpdateContext(
             {
-                XMLFiles: GetAll.Run(
-                    WarehouseCode,
-                    Status,
-                    FileType
-                ).xmlfiles
+                XMLFiles: 
+                    GetAll.Run(
+                        WarehouseCode,
+                        Status,
+                        FileType
+                    ).xmlfiles
+                
             }
         );
 
@@ -957,11 +959,11 @@
                             =UpdateContext({Status: dd_Status.Selected.Value});
                             UpdateContext(
                                 {
-                                    XMLFiles: GetAll.Run(
+                                    XMLFiles: Split(GetAll.Run(
                                         WarehouseCode,
                                         Status,
                                         FileType
-                                    ).xmlfiles
+                                    ).xmlfiles, ",")
                                 }
                             );
                         Width: =652
@@ -982,11 +984,11 @@
                             =UpdateContext({FileType: dd_FileType.Selected.Value});
                             UpdateContext(
                                 {
-                                    XMLFiles: GetAll.Run(
+                                    XMLFiles: Split(GetAll.Run(
                                         WarehouseCode,
                                         Status,
                                         FileType
-                                    ).xmlfiles
+                                    ).xmlfiles, ",")
                                 }
                             );
                         Width: =647

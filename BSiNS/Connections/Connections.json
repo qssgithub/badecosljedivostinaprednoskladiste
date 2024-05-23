@@ -197,22 +197,6 @@
     "dependents": [],
     "id": "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637"
   },
-  "b4d66abc-d1b5-4dc3-9eed-dffa82d83827": {
-    "connectionRef": {
-      "displayName": "File System",
-      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/filesystem/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
-      "isOnPremiseConnection": true
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "bc3b9f8c-f674-4701-9059-bd6e1736d1e3"
-    ],
-    "id": "b4d66abc-d1b5-4dc3-9eed-dffa82d83827"
-  },
   "bc3b9f8c-f674-4701-9059-bd6e1736d1e3": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -388,5 +372,21 @@
     },
     "dependents": [],
     "id": "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
+  },
+  "e9fb72c8-041c-45da-8222-45c34526688a": {
+    "connectionRef": {
+      "displayName": "File System",
+      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/filesystem/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "bc3b9f8c-f674-4701-9059-bd6e1736d1e3"
+    ],
+    "id": "e9fb72c8-041c-45da-8222-45c34526688a"
   }
 }
