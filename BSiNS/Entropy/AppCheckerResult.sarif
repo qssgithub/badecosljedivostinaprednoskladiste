@@ -5918,6 +5918,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.journal_line_header"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.journal_line_header",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "journal_line_header",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.746033371"
                 }
               ],
