@@ -35,8 +35,7 @@
     },
     "datasets": {},
     "dataSources": [
-      "GetXML_Nalog_Za_Prenos",
-      "GetXML_Nalog_Za_Prenos_1"
+      "GetXML_Nalog_Za_Prenos"
     ],
     "dependencies": {
       "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
@@ -190,8 +189,7 @@
     },
     "datasets": {},
     "dataSources": [
-      "GetXML_Nabavni_Nalog",
-      "GetXML_Nabavni_Nalog_1"
+      "GetXML_Nabavni_Nalog"
     ],
     "dependencies": {
       "shared_filesystem_1": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
@@ -249,6 +247,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -260,6 +261,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
