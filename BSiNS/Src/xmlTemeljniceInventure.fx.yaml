@@ -110,10 +110,7 @@
                         BorderThickness: =0.5
                         DelayItemLoading: =true
                         Height: =527
-                        Items: |-
-                            =//Table(ParseJSON(purchase_line))
-                            //colPurchaseHeader
-                            colJournalLine
+                        Items: =colJournalLine
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -330,7 +327,7 @@
                             FontColor: =
                             Height: =40
                             OnChange: |-
-                                =UpdateIf(colJournalLine, Gallery4_1.Selected.'Item_No.' = ThisItem.'Item_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
+                                =UpdateIf(colJournalLine, Gallery4_1.Selected.'Line_No.' = ThisItem.'Line_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
                             Value: =ThisItem.Journal_Batch_Name
                             Width: =208
                             X: =218
@@ -820,6 +817,23 @@
                             Y: =Parent.TemplateHeight - Self.Height
                             ZIndex: =72
 
+                    TextCanvas1 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Text: =Gallery4_1.Selected.'Line_No.'
+                        Width: =148
+                        X: =584
+                        Y: =6
+                        ZIndex: =4
+
+                    TextCanvas7 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Width: =96
+                        X: =778
+                        Y: =6
+                        ZIndex: =5
+
         FooterContainer1_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -1065,7 +1079,31 @@
                 JSON(
                     {
                         Lines: {
-                            Item_Journal_Line: colJournalLine
+                            Item_Journal_Line: ForAll(colJournalLine,{
+                                Description: Text(Description),
+                                Document_Date: Text(Document_Date),
+                                'Document_No.': Text('Document_No.'),
+                                Entry_Type: Text(Entry_Type),
+                                Gen_Bus_Posting_Group: Text(Gen_Bus_Posting_Group),
+                                Item_Expiration_Date: Text(Item_Expiration_Date),
+                                'Item_No.': Text('Item_No.'),
+                                Journal_Batch_Name: Text(Journal_Batch_Name),
+                                Journal_Template_Name: Text(Journal_Template_Name),
+                                'Line_No.': Text('Line_No.'),
+                                Location_Code: Text(Location_Code),
+                                Lot_No: Text(Lot_No),
+                                'Phys._Inventory': Text('Phys._Inventory'),
+                                Posting_Date: Text(Posting_Date),
+                                Qty_Calculated: Text(Qty_Calculated),
+                                Qty_Calculated_Ext: Text(Qty_Calculated_Ext),
+                                Qty_Phys_Inventory: Text(Qty_Phys_Inventory),
+                                Qty_Phys_Inventory_Ext: Text(Qty_Phys_Inventory_Ext),
+                                Quantity: Text(Quantity),
+                                Sales_Price: Text(Sales_Price),
+                                Source_Code: Text(Source_Code),
+                                'Source_No.': Text('Source_No.'),
+                                Source_Type: Text(Source_Type)
+                            })
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
