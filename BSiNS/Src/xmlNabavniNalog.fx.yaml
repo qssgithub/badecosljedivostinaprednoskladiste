@@ -921,7 +921,21 @@
                             'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
                             Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
                             Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                            Purchase_Line: colPurchaseLines
+                            Purchase_Line: ForAll(colPurchaseLines,{
+                                'Buy-from_Vendor_No.': Text('Buy-from_Vendor_No.'),
+                                Description: Text(Description),
+                                Document_No:Text(Document_No),
+                                Document_Type:Text(Document_Type),
+                                Exp_Date:Text(Exp_Date),
+                                Item_No:Text(Item_No),
+                                LOT_No:Text(LOT_No),
+                                Line_No:Text(Line_No),
+                                Location_Code:Text(Location_Code),
+                                Posting_Group:Text(Posting_Group),
+                                Quantity:Text(Quantity),
+                                Type:Text(Type),
+                                Unit_Of_Measure:Text(Unit_Of_Measure)
+                            })
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
