@@ -1000,9 +1000,8 @@
                     Set(purchase, GetXML_Nabavni_Nalog.Run(file_Name, "ReadyForProcessing"))
                 );
                 
-                Set(purchase_line, purchase.purchase_line); 
-                Set(purchase_header, ParseJSON(purchase.purchase_header));
-                
+                UpdateContext({purchase_line: purchase.purchase_line});
+                UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
                 
                 Clear(colPurchaseLines);
                 ForAll(

@@ -1144,16 +1144,6 @@
                         Y: =121
                         ZIndex: =25
 
-                    TextCanvas5 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =328
-                        Text: =sales.response
-                        Width: =472
-                        X: =60
-                        Y: =60
-                        ZIndex: =26
-
         FooterContainer1_3 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -1468,26 +1458,48 @@
                             Shipp_Agent_Service_Code: Text(sales_header.Shipp_Agent_Service_Code),
                             Tax_Area_Code: Text(sales_header.Tax_Area_Code),
                             Shipp_Date: DateValue(sales_header.Shipp_Date),
-                            Sales_Line: ForAll(colSalesLines, 
+                            Sales_Line: ForAll(colSalesLines As sl, 
                                 {
-                                    Document_Type: Text(ThisRecord.Document_Type),
-                                    'Sell-to_Customer_No.': Text('Sell-to_Customer_No.'),
-                                    Document_No: Text(Document_No),
-                                    Line_No: Text(Line_No),
-                                    Type: Text(Type),
-                                    Item_No: Text(Item_No),
-                                    Location_Code: Text(Location_Code),
-                                    Posting_Group: Text(Posting_Group),
-                                    Description: Text(Description),
-                                    Unit_Of_Measure: Text(Unit_Of_Measure),
-                                    Quantity: Text(Quantity),
-                                    Unit_Price: Text(Unit_Price),
-                                    Line_Amount: Text(Line_Amount),
-                                    Line_Discount_Amount: Text(Line_Discount_Amount),
-                                    'Qty-to_Invoice': Text('Qty-to_Invoice'),
-                                    'Qty-to_Ship': Text('Qty-to_Ship'),
-                                    Outstand_Quantity: Text(Outstand_Quantity),                        
-                                    Res_Entry: colSalesResEntries 
+                                    Document_Type: Text(sl.Document_Type),
+                                    'Sell-to_Customer_No.': Text(sl.'Sell-to_Customer_No.'),
+                                    Document_No: Text(sl.Document_No),
+                                    Line_No: Text(sl.Line_No),
+                                    Type: Text(sl.Type),
+                                    Item_No: Text(sl.Item_No),
+                                    Location_Code: Text(sl.Location_Code),
+                                    Posting_Group: Text(sl.Posting_Group),
+                                    Description: Text(sl.Description),
+                                    Unit_Of_Measure: Text(sl.Unit_Of_Measure),
+                                    Quantity: Text(sl.Quantity),
+                                    Unit_Price: Text(sl.Unit_Price),
+                                    Line_Amount: Text(sl.Line_Amount),
+                                    Line_Discount_Amount: Text(sl.Line_Discount_Amount),
+                                    'Qty-to_Invoice': Text(sl.'Qty-to_Invoice'),
+                                    'Qty-to_Ship': Text(sl.'Qty-to_Ship'),
+                                    Outstand_Quantity: Text(sl.Outstand_Quantity),                        
+                                    Res_Entry: ForAll(Filter(colSalesResEntries, ThisRecord.Item_No = sl.Item_No),
+                                    {
+                                        Created_By: Text(Created_By),
+                                        Creation_Date: Text(Creation_Date),
+                                        Entry_No: Text(Entry_No),
+                                        Exp_Date: Text(Exp_Date),
+                                        Exp_Receipt_Date: Text(Exp_Receipt_Date),
+                                        Item_No: Text(Item_No),
+                                        Item_Tracking: Text(Item_Tracking),
+                                        LOT_No: Text(LOT_No),
+                                        Location_Code: Text(Location_Code),
+                                        Positive: Text(Positive),
+                                        'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
+                                        Quantity: Text(Quantity),
+                                        Quantity_Base: Text(Quantity_Base),
+                                        Res_Status: Text(Res_Status),
+                                        Shipment_Date: Text(Shipment_Date),
+                                        Source_ID: Text(Source_ID),
+                                        Source_Ref_No: Text(Source_Ref_No),
+                                        Source_SubType: Text(Source_SubType),
+                                        Source_Type: Text(Source_Type)
+                                    }) 
                                 }
                             )
                         }
@@ -1538,7 +1550,7 @@
             FontWeight: =FontWeight.Bold
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-            OnSelect: |-
+            OnSelect: |
                 =Set(
                     varShowGetFileModal,
                     false
@@ -1565,20 +1577,25 @@
                         )
                     )
                 );
-                Set(
-                    salesJson,
-                    ParseJSON(sales.response)
-                );
+                
                 Set(
                     sales_header,
-                    salesJson.Sales_Header
+                    ParseJSON(sales.sales_header)
+                );
+                Set(
+                    sales_lines,
+                    sales.sales_line
+                );
+                Set(
+                    salesResEntry,
+                    sales.res_entry
                 );
                 
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
                 
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line,
+                    ParseJSON(sales_lines),
                     Collect(
                         colSalesLines,
                         {
@@ -1606,13 +1623,11 @@
                 
                 
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line,
+                    ParseJSON(salesResEntry),
                     Collect(
                         colSalesResEntries,
-                        ForAll(
-                            ThisRecord.Res_Entry,
-                            {
-                                Entry_No: Text(ThisRecord.Entry_No),
+                        {
+                            Entry_No: Text(ThisRecord.Entry_No),
                                 Item_No: Text(ThisRecord.Item_No),
                                 Positive: Text(ThisRecord.Positive),
                                 Quantity: Value(ThisRecord.Quantity),
@@ -1632,8 +1647,7 @@
                                 Created_By: Text(ThisRecord.Created_By),
                                 'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
                                 'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
-                            }
-                        )
+                            }            
                     )
                 );
                 
@@ -1643,85 +1657,6 @@
                     colSalesLines
                 );
                 //za reset
-                
-                /*
-                UpdateContext(
-                    {
-                        Sales_Header: {
-                            Document_Type: Text(salesJson.Document_Type),
-                            'No.': Text(salesJson.'No.'),
-                            'Sell-To_Customer_No.': Text(salesJson.Sell_to_Customer_No),
-                            'Sell-To_Contact_No.': Text(salesJson.Sell_to_Contact_No),
-                            'Sell-to_Customer_Name': Text(salesJson.Sell_to_Customer_Name),
-                            'Sell-to_Address': Text(salesJson.Sell_to_Address),
-                            'Sell-to_PostCode': Text(salesJson.Sell_to_PostCode),
-                            'Sell-to_City': Text(salesJson.Sell_to_City),
-                            'Sell-to_Contact': Text(salesJson.Sell_to_Contact),
-                            Posting_Date: Text(salesJson.Posting_Date),
-                            Order_Date: Text(salesJson.Order_Date),
-                            Document_Date: Text(salesJson.Document_Date),
-                            VAT_Date: Text(salesJson.VAT_Date),
-                            Quote_No: Text(salesJson.Quote_No),
-                            Ext_Doc_No: Text(salesJson.Ext_Doc_No),
-                            Salesperson_Code: Text(salesJson.Salesperson_Code),
-                            Status: Text(salesJson.Status),
-                            'Bill-to_Cust_No': Text(salesJson.Bill_to_Cust_No),
-                            'Bill-to_Contact_No.': Text(salesJson.Bill_to_Contact_No),
-                            Customer_Price_Group: Text(salesJson.Customer_Price_Group),
-                            'Bill-to_Name': Text(salesJson.Bill_to_Name),
-                            'Bill-to_Address': Text(salesJson.Bill_to_Address),
-                            'Bill-to_PostCode': Text(salesJson.Bill_to_PostCode),
-                            'Bill-to_City': Text(salesJson.Bill_to_City),
-                            'Bill-to_Contact': Text(salesJson.Bill_to_Contact),
-                            Payment_Terms_Code: Text(salesJson.Payment_Terms_Code),
-                            Due_Date: Text(salesJson.Due_Date),
-                            Bank_No: Text(salesJson.Bank_No),
-                            Bank_Name: Text(salesJson.Bank_Name),
-                            Shortcut_Dimension_1_Code: Text(salesJson.Shortcut_Dimension_1_Code),
-                            Payement_Disc: Text(salesJson.Payement_Disc),
-                            Pmt_Discount_Date: Text(salesJson.Pmt_Discount_Date),
-                            Payement_Method_Code: Text(salesJson.Payement_Method_Code),
-                            Amount_Including_VAT: Text(salesJson.Amount_Including_VAT),
-                            Amount: Text(salesJson.Amount),
-                            'VAT_Registration_No.': Text(salesJson.VAT_Registration_No),
-                            'Gen._Bus._Posting_Group': Text(salesJson.Gen_Bus_Posting_Group),
-                            'VAT_Bus._Posting_Group': Text(salesJson.VAT_Bus_Posting_Group),
-                            Transport_Method: Text(salesJson.Transport_Method),
-                            VAT_Country_Code: Text(salesJson.VAT_Country_Code),
-                            'Ship-to_Code': Text(salesJson.Ship_to_Code),
-                            'Ship-to_Name': Text(salesJson.Ship_to_Name),
-                            'Ship-to_Address': Text(salesJson.Ship_to_Address),
-                            'Ship-to_Post_Code': Text(salesJson.Ship_to_Post_Code),
-                            'Ship-to_City': Text(salesJson.Ship_to_City),
-                            'Ship-to_Contact': Text(salesJson.Ship_to_Contact),
-                            Location_Code: Text(salesJson.Location_Code),
-                            Shipp_Method_Code: Text(salesJson.Shipp_Method_Code),
-                            Shipp_Agent_Code: Text(salesJson.Shipp_Agent_Code),
-                            Shipp_Agent_Service_Code: Text(salesJson.Shipp_Agent_Service_Code),
-                            Tax_Area_Code: Text(salesJson.Tax_Area_Code),
-                            Shipp_Date: DateValue(salesJson.Shipp_Date),
-                            Sales_Line: {
-                                            Document_Type: Value(ThisRecord.Document_Type),
-                            Sell_to_Customer_No: Text(ThisRecord.Sell_to_Customer_No),
-                            Document_No: Text(ThisRecord.Document_No),
-                            Line_No: Value(ThisRecord.Line_No),
-                            Type: Value(ThisRecord.Type),
-                            Item_No: Text(ThisRecord.Item_No),
-                            Location_Code: Text(ThisRecord.Location_Code),
-                            Posting_Group: Text(ThisRecord.Posting_Group),
-                            Description: Text(ThisRecord.Description),
-                            Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                            Quantity: Value(ThisRecord.Quantity),
-                            Unit_Price: Value(ThisRecord.Unit_Price),
-                            Line_Amount: Value(ThisRecord.Line_Amount),
-                            Line_Discount_Amount: Value(ThisRecord.Line_Discount_Amount),
-                            Qty_to_Invoice: Value(ThisRecord.Qty_to_Invoice),
-                            Qty_to_Ship: Value(ThisRecord.Qty_to_Ship),
-                            Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
-                            }
-                        }
-                    }
-                )*/
             Size: =15
             Text: ="Get file"
             Underline: =true
