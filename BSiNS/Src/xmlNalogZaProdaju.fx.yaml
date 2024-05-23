@@ -1550,7 +1550,7 @@
             FontWeight: =FontWeight.Bold
             HoverColor: =RGBA(255, 255, 255, 1)
             HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-            OnSelect: |-
+            OnSelect: |
                 =Set(
                     varShowGetFileModal,
                     false
@@ -1660,85 +1660,6 @@
                     colSalesLines
                 );
                 //za reset
-                
-                /*
-                UpdateContext(
-                    {
-                        Sales_Header: {
-                            Document_Type: Text(salesJson.Document_Type),
-                            'No.': Text(salesJson.'No.'),
-                            'Sell-To_Customer_No.': Text(salesJson.Sell_to_Customer_No),
-                            'Sell-To_Contact_No.': Text(salesJson.Sell_to_Contact_No),
-                            'Sell-to_Customer_Name': Text(salesJson.Sell_to_Customer_Name),
-                            'Sell-to_Address': Text(salesJson.Sell_to_Address),
-                            'Sell-to_PostCode': Text(salesJson.Sell_to_PostCode),
-                            'Sell-to_City': Text(salesJson.Sell_to_City),
-                            'Sell-to_Contact': Text(salesJson.Sell_to_Contact),
-                            Posting_Date: Text(salesJson.Posting_Date),
-                            Order_Date: Text(salesJson.Order_Date),
-                            Document_Date: Text(salesJson.Document_Date),
-                            VAT_Date: Text(salesJson.VAT_Date),
-                            Quote_No: Text(salesJson.Quote_No),
-                            Ext_Doc_No: Text(salesJson.Ext_Doc_No),
-                            Salesperson_Code: Text(salesJson.Salesperson_Code),
-                            Status: Text(salesJson.Status),
-                            'Bill-to_Cust_No': Text(salesJson.Bill_to_Cust_No),
-                            'Bill-to_Contact_No.': Text(salesJson.Bill_to_Contact_No),
-                            Customer_Price_Group: Text(salesJson.Customer_Price_Group),
-                            'Bill-to_Name': Text(salesJson.Bill_to_Name),
-                            'Bill-to_Address': Text(salesJson.Bill_to_Address),
-                            'Bill-to_PostCode': Text(salesJson.Bill_to_PostCode),
-                            'Bill-to_City': Text(salesJson.Bill_to_City),
-                            'Bill-to_Contact': Text(salesJson.Bill_to_Contact),
-                            Payment_Terms_Code: Text(salesJson.Payment_Terms_Code),
-                            Due_Date: Text(salesJson.Due_Date),
-                            Bank_No: Text(salesJson.Bank_No),
-                            Bank_Name: Text(salesJson.Bank_Name),
-                            Shortcut_Dimension_1_Code: Text(salesJson.Shortcut_Dimension_1_Code),
-                            Payement_Disc: Text(salesJson.Payement_Disc),
-                            Pmt_Discount_Date: Text(salesJson.Pmt_Discount_Date),
-                            Payement_Method_Code: Text(salesJson.Payement_Method_Code),
-                            Amount_Including_VAT: Text(salesJson.Amount_Including_VAT),
-                            Amount: Text(salesJson.Amount),
-                            'VAT_Registration_No.': Text(salesJson.VAT_Registration_No),
-                            'Gen._Bus._Posting_Group': Text(salesJson.Gen_Bus_Posting_Group),
-                            'VAT_Bus._Posting_Group': Text(salesJson.VAT_Bus_Posting_Group),
-                            Transport_Method: Text(salesJson.Transport_Method),
-                            VAT_Country_Code: Text(salesJson.VAT_Country_Code),
-                            'Ship-to_Code': Text(salesJson.Ship_to_Code),
-                            'Ship-to_Name': Text(salesJson.Ship_to_Name),
-                            'Ship-to_Address': Text(salesJson.Ship_to_Address),
-                            'Ship-to_Post_Code': Text(salesJson.Ship_to_Post_Code),
-                            'Ship-to_City': Text(salesJson.Ship_to_City),
-                            'Ship-to_Contact': Text(salesJson.Ship_to_Contact),
-                            Location_Code: Text(salesJson.Location_Code),
-                            Shipp_Method_Code: Text(salesJson.Shipp_Method_Code),
-                            Shipp_Agent_Code: Text(salesJson.Shipp_Agent_Code),
-                            Shipp_Agent_Service_Code: Text(salesJson.Shipp_Agent_Service_Code),
-                            Tax_Area_Code: Text(salesJson.Tax_Area_Code),
-                            Shipp_Date: DateValue(salesJson.Shipp_Date),
-                            Sales_Line: {
-                                            Document_Type: Value(ThisRecord.Document_Type),
-                            Sell_to_Customer_No: Text(ThisRecord.Sell_to_Customer_No),
-                            Document_No: Text(ThisRecord.Document_No),
-                            Line_No: Value(ThisRecord.Line_No),
-                            Type: Value(ThisRecord.Type),
-                            Item_No: Text(ThisRecord.Item_No),
-                            Location_Code: Text(ThisRecord.Location_Code),
-                            Posting_Group: Text(ThisRecord.Posting_Group),
-                            Description: Text(ThisRecord.Description),
-                            Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                            Quantity: Value(ThisRecord.Quantity),
-                            Unit_Price: Value(ThisRecord.Unit_Price),
-                            Line_Amount: Value(ThisRecord.Line_Amount),
-                            Line_Discount_Amount: Value(ThisRecord.Line_Discount_Amount),
-                            Qty_to_Invoice: Value(ThisRecord.Qty_to_Invoice),
-                            Qty_to_Ship: Value(ThisRecord.Qty_to_Ship),
-                            Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
-                            }
-                        }
-                    }
-                )*/
             Size: =15
             Text: ="Get file"
             Underline: =true
