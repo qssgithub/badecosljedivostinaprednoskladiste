@@ -1,6 +1,85 @@
 "xmlNalogZaPrenos As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            ),
+            UpdateContext({transfer:GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder)})
+        );
+        
+        UpdateContext({transfer_header: ParseJSON(transfer.transfer_header)});
+        UpdateContext({transfer_lines:transfer.transfer_line});
+        UpdateContext({transfer_res_entry:transfer.res_entry});
+        
+        Clear(colTransferLines);
+        Clear(colResEntries);
+        
+        ForAll(
+            ParseJSON(transfer_lines),
+            Collect(
+                colTransferLines,
+                {
+                    Document_No: Text(ThisRecord.Document_No),
+                    Line_No: Text(ThisRecord.Line_No),
+                    Item_No: Text(ThisRecord.Item_No),
+                    'Transfer-from_Code': Text(ThisRecord.'Transfer-from_Code'),
+                    'Transfer-to_Code': Text(ThisRecord.'Transfer-to_Code'),
+                    'In-Transit_Code': Text(ThisRecord.'In-Transit_Code'),
+                    GP_Posting_Group: Text(ThisRecord.GP_Posting_Group),
+                    Inv_Posting_Group: Text(ThisRecord.Inv_Posting_Group),
+                    Description: Text(ThisRecord.Description),
+                    Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                    Quantity: Value(ThisRecord.Quantity),
+                    Quantity_Base: Value(ThisRecord.Quantity_Base),
+                    'Qty-to_Ship': Value(ThisRecord.'Qty-to_Ship'),
+                    'Qty-to_Receive': Value(ThisRecord.'Qty-to_Receive'),
+                    Quantity_Shipped: Value(ThisRecord.Quantity_Shipped),
+                    Quantity_Received: Value(ThisRecord.Quantity_Received),
+                    Outstanding_Qty: Value(ThisRecord.Outstanding_Qty),
+                    Shipment_Date: Text(ThisRecord.Shipment_Date),
+                    Receipt_Date: Text(ThisRecord.Receipt_Date)
+                }
+            );
+        );
+        
+        ForAll(
+            ParseJSON(transfer_res_entry),
+            Collect(
+                colResEntries,
+                    {
+                        Entry_No: Text(ThisRecord.Entry_No),
+                        Item_No: Text(ThisRecord.Item_No),
+                        Positive: Text(ThisRecord.Positive),
+                        Quantity: Value(ThisRecord.Quantity),
+                        Quantity_Base: Value(ThisRecord.Quantity_Base),
+                        Location_Code: Text(ThisRecord.Location_Code),
+                        Res_Status: Text(ThisRecord.Res_Status),
+                        Source_Type: Text(ThisRecord.Source_Type),
+                        Source_SubType: Text(ThisRecord.Source_SubType),
+                        Source_ID: Text(ThisRecord.Source_ID),
+                        Source_Ref_No: Text(ThisRecord.Source_Ref_No),
+                        Item_Tracking: Text(ThisRecord.Item_Tracking),
+                        LOT_No: Text(ThisRecord.LOT_No),
+                        Exp_Date: Text(ThisRecord.Exp_Date),
+                        Creation_Date: Text(ThisRecord.Creation_Date),
+                        Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
+                        Shipment_Date: Text(ThisRecord.Shipment_Date),
+                        Created_By: Text(ThisRecord.Created_By),
+                        'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
+                    }
+            )
+        );
+        
+        ClearCollect(
+            colOriginalTransferLines,
+            colTransferLines
+        );
+        //za reset
 
     ScreenContainer1_2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -1712,14 +1791,4 @@
             X: =686
             Y: =206
             ZIndex: =14
-
-    TextCanvas4 As Text:
-        DisplayMode: =DisplayMode.Edit
-        FontColor: =
-        Height: =48
-        Text: =First(colTransferLines).Transfer_Line.Quantity
-        Width: =384
-        X: =649
-        Y: =92
-        ZIndex: =16
 
