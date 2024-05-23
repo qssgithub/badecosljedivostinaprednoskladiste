@@ -1574,8 +1574,6 @@
                     salesJson.Sales_Header
                 );
                 
-                Set(xwww, First(salesJson.Sales_Header.Sales_Line));
-                
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
                 

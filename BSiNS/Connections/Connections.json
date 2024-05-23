@@ -55,6 +55,7 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
+      "f71eca1b-935c-44ef-91fd-938e4f1f7262",
       "cc77c4fb-5da2-4007-8003-2a71ef9049e6",
       "35464e44-34aa-4790-a955-6be22fa1f25e",
       "638c511f-dbf1-4522-8af2-53521a00ea50",
@@ -63,6 +64,50 @@
       "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+  },
+  "606b24e4-b1be-4add-b4c8-85480ae5d3c1": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
+        },
+        "workflowDisplayName": {
+          "value": "Upload XML File"
+        },
+        "workflowEntityId": {
+          "value": "980cd898-3206-ef11-9f89-000d3a2dfc81"
+        },
+        "workflowName": {
+          "value": "3a48961a-68a9-5e46-40af-51c1b70466d1"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+        },
+        "workflowDisplayName": {
+          "value": "Upload XML File"
+        },
+        "workflowEntityId": {
+          "value": "980cd898-3206-ef11-9f89-000d3a2dfc81"
+        },
+        "workflowName": {
+          "value": "3a48961a-68a9-5e46-40af-51c1b70466d1"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "UploadXMLFile"
+    ],
+    "dependencies": {
+      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+    },
+    "dependents": [],
+    "id": "606b24e4-b1be-4add-b4c8-85480ae5d3c1"
   },
   "638c511f-dbf1-4522-8af2-53521a00ea50": {
     "connectionRef": {
@@ -185,7 +230,7 @@
       "GetAll"
     ],
     "dependencies": {
-      "shared_filesystem_1": "be87e702-5487-4493-8dbb-a60190ec500f"
+      "shared_filesystem": "4e283bb6-bf79-4f23-9b01-ae9854476c88"
     },
     "dependents": [],
     "id": "bd1c5dbd-5617-48d3-99fb-4ea406b51d91"
