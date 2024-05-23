@@ -962,6 +962,8 @@
                     Height: =321
                     Items: =CustomGallerySample
                     Layout: =Layout.Vertical
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
                     LoadingSpinner: =LoadingSpinner.Data
                     TemplatePadding: =0
                     TemplateSize: =80
@@ -1353,7 +1355,8 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(xmlNabavniNalog)
+        OnSelect: |
+            =Navigate(xmlNabavniNalog)
         Size: =12
         Text: ="NABAVNI NALOG"
         X: =264
