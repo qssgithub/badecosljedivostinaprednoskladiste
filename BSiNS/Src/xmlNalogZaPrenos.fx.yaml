@@ -1201,16 +1201,6 @@
                         Y: =63
                         ZIndex: =23
 
-                    TextCanvas15 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =151
-                        Text: =transferJsonData
-                        Width: =367
-                        X: =37
-                        Y: =0
-                        ZIndex: =24
-
         FooterContainer1_2 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -1631,7 +1621,7 @@
                 );
                 
                 ForAll(
-                    ParseJSON(transfer_res_entry),
+                    ParseJSON(transfer_lines),
                     Collect(
                         colResEntries,
                         ForAll(
