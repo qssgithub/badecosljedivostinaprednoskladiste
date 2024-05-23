@@ -4,6 +4,11 @@
     OnVisible: |-
         =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
+        UpdateContext({
+            WarehouseCode: "AM-01",
+            Status: "All",
+            
+        });
         GetAll.Run("AM-01", "In progress", "01");
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:

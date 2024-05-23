@@ -107,7 +107,6 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
-      "6ac67716-f542-4936-bf63-7befb71a5f1b",
       "bc47b079-4356-4eac-b083-34217afc8807"
     ],
     "id": "4b0288ad-2039-4212-b7d7-fbc42b1b9386"
@@ -240,6 +239,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "4b0288ad-2039-4212-b7d7-fbc42b1b9386": {
+          "value": "shared_filesystem"
+        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -251,6 +253,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "4b0288ad-2039-4212-b7d7-fbc42b1b9386"
+        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
