@@ -1487,7 +1487,29 @@
                                     'Qty-to_Invoice': Text('Qty-to_Invoice'),
                                     'Qty-to_Ship': Text('Qty-to_Ship'),
                                     Outstand_Quantity: Text(Outstand_Quantity),                        
-                                    Res_Entry: colSalesResEntries 
+                                    Res_Entry: ForAll(Filter(colSalesResEntries, ThisRecord.Item_No = Item_No),
+                                    {
+                                        Created_By: Text(Created_By),
+                                        Creation_Date: Text(Creation_Date),
+                                        Entry_No: Text(Entry_No),
+                                        Exp_Date: Text(Exp_Date),
+                                        Exp_Receipt_Date: Text(Exp_Receipt_Date),
+                                        Item_No: Text(Item_No),
+                                        Item_Tracking: Text(Item_Tracking),
+                                        LOT_No: Text(LOT_No),
+                                        Location_Code: Text(Location_Code),
+                                        Positive: Text(Positive),
+                                        'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
+                                        Quantity: Text(Quantity),
+                                        Quantity_Base: Text(Quantity_Base),
+                                        Res_Status: Text(Res_Status),
+                                        Shipment_Date: Text(Shipment_Date),
+                                        Source_ID: Text(Source_ID),
+                                        Source_Ref_No: Text(Source_Ref_No),
+                                        Source_SubType: Text(Source_SubType),
+                                        Source_Type: Text(Source_Type)
+                                    }) 
                                 }
                             )
                         }
