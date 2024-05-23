@@ -330,7 +330,7 @@
                             FontColor: =
                             Height: =40
                             OnChange: |-
-                                =UpdateIf(colJournalLine, Gallery4_1.Selected.'Item_No.' = ThisItem.'Item_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
+                                =UpdateIf(colJournalLine, Gallery4_1.Selected.'Line_No.' = ThisItem.'Line_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
                             Value: =ThisItem.Journal_Batch_Name
                             Width: =208
                             X: =218
