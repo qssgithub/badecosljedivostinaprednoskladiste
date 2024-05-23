@@ -1,6 +1,37 @@
 "xmlNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),
+            Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
+            UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder)})
+        );
+        
+        UpdateContext({purchase_line: purchase.purchase_line});
+        UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
+        
+        Clear(colPurchaseLines);
+        ForAll(
+            ParseJSON(purchase_line),
+            Collect(
+                colPurchaseLines,
+                {
+                     Document_Type: Text(ThisRecord.Document_Type),
+                      'Buy-from_Vendor_No.': Text(ThisRecord.'Buy-from_Vendor_No.'),
+                      Document_No: Text(ThisRecord.Document_No),
+                      Line_No: Text(ThisRecord.Line_No),
+                      Type: Text(ThisRecord.Type),
+                      Item_No: Text(ThisRecord.Item_No),
+                      Location_Code: Text(ThisRecord.Location_Code),
+                      Posting_Group: Text(ThisRecord.Posting_Group),
+                      Description: Text(ThisRecord.Description),
+                      Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                      Quantity: Text(ThisRecord.Quantity),
+                      LOT_No: Text(ThisRecord.LOT_No),
+                      Exp_Date: Text(ThisRecord.Exp_Date)
+                }
+            );
+        );
 
     ScreenContainer1 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
