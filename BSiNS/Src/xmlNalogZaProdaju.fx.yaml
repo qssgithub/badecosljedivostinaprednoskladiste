@@ -1144,16 +1144,6 @@
                         Y: =121
                         ZIndex: =25
 
-                    TextCanvas5 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =328
-                        Text: =sales.response
-                        Width: =472
-                        X: =60
-                        Y: =60
-                        ZIndex: =26
-
         FooterContainer1_3 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -1468,26 +1458,26 @@
                             Shipp_Agent_Service_Code: Text(sales_header.Shipp_Agent_Service_Code),
                             Tax_Area_Code: Text(sales_header.Tax_Area_Code),
                             Shipp_Date: DateValue(sales_header.Shipp_Date),
-                            Sales_Line: ForAll(colSalesLines, 
+                            Sales_Line: ForAll(colSalesLines As sl, 
                                 {
-                                    Document_Type: Text(ThisRecord.Document_Type),
-                                    'Sell-to_Customer_No.': Text('Sell-to_Customer_No.'),
-                                    Document_No: Text(Document_No),
-                                    Line_No: Text(Line_No),
-                                    Type: Text(Type),
-                                    Item_No: Text(Item_No),
-                                    Location_Code: Text(Location_Code),
-                                    Posting_Group: Text(Posting_Group),
-                                    Description: Text(Description),
-                                    Unit_Of_Measure: Text(Unit_Of_Measure),
-                                    Quantity: Text(Quantity),
-                                    Unit_Price: Text(Unit_Price),
-                                    Line_Amount: Text(Line_Amount),
-                                    Line_Discount_Amount: Text(Line_Discount_Amount),
-                                    'Qty-to_Invoice': Text('Qty-to_Invoice'),
-                                    'Qty-to_Ship': Text('Qty-to_Ship'),
-                                    Outstand_Quantity: Text(Outstand_Quantity),                        
-                                    Res_Entry: ForAll(Filter(colSalesResEntries, ThisRecord.Item_No = Item_No),
+                                    Document_Type: Text(sl.Document_Type),
+                                    'Sell-to_Customer_No.': Text(sl.'Sell-to_Customer_No.'),
+                                    Document_No: Text(sl.Document_No),
+                                    Line_No: Text(sl.Line_No),
+                                    Type: Text(sl.Type),
+                                    Item_No: Text(sl.Item_No),
+                                    Location_Code: Text(sl.Location_Code),
+                                    Posting_Group: Text(sl.Posting_Group),
+                                    Description: Text(sl.Description),
+                                    Unit_Of_Measure: Text(sl.Unit_Of_Measure),
+                                    Quantity: Text(sl.Quantity),
+                                    Unit_Price: Text(sl.Unit_Price),
+                                    Line_Amount: Text(sl.Line_Amount),
+                                    Line_Discount_Amount: Text(sl.Line_Discount_Amount),
+                                    'Qty-to_Invoice': Text(sl.'Qty-to_Invoice'),
+                                    'Qty-to_Ship': Text(sl.'Qty-to_Ship'),
+                                    Outstand_Quantity: Text(sl.Outstand_Quantity),                        
+                                    Res_Entry: ForAll(Filter(colSalesResEntries, ThisRecord.Item_No = sl.Item_No),
                                     {
                                         Created_By: Text(Created_By),
                                         Creation_Date: Text(Creation_Date),
