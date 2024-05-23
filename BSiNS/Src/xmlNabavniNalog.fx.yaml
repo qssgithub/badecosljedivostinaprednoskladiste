@@ -867,8 +867,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |+
-            =Set(
-                purchaseJsonData,
+            =UpdateContext({
+                purchaseJsonData:
                 JSON(
                     {
                         Purchase_Header: {
@@ -939,7 +939,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
+            });
             
             /*
             If(!isCreated, 
@@ -994,7 +994,7 @@
             OnSelect: |
                 =Set(varShowGetFileModal, false);
                 Set(file_Name, fileName.Value);
-                Set(isCreated, false);
+                
                 IfError(GetXML_Nabavni_Nalog.Run(file_Name, "ReadyForProcessing"),
                     Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
                     Set(purchase, GetXML_Nabavni_Nalog.Run(file_Name, "ReadyForProcessing"))
