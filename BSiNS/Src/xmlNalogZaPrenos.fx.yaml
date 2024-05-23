@@ -1595,14 +1595,15 @@
                     ),
                     Set(transfer,GetXML_Nalog_Za_Prenos.Run( file_Name,"ReadyForProcessing"))
                 );
-                Set(transfJson,ParseJSON(transfer.transfer));
-                Set(transfer_header,transfJson.Transfer_Header);
+                Set(transfer_header, ParseJSON(transfer.transfer_header));
+                Set(transfer_lines,transfer.transfer_line);
+                Set(transfer_res_entry,transfer.res_entry);
                 
                 Clear(colTransferLines);
                 Clear(colResEntries);
                 
                 ForAll(
-                    transfJson.Transfer_Header.Transfer_Line,
+                    ParseJSON(transfer_lines),
                     Collect(
                         colTransferLines,
                         {
@@ -1630,7 +1631,7 @@
                 );
                 
                 ForAll(
-                    transfJson.Transfer_Header.Transfer_Line,
+                    ParseJSON(transfer_res_entry),
                     Collect(
                         colResEntries,
                         ForAll(
