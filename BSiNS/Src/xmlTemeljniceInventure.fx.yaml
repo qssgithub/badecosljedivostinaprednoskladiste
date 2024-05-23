@@ -1067,8 +1067,8 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |+
-            =Set(
-                journalJsonData,
+            =UpdateContext({
+                journalJsonData:
                 JSON(
                     {
                         Lines: {
@@ -1100,8 +1100,7 @@
                         }
                     },JSONFormat.IgnoreUnsupportedTypes
                 )
-            );
-            
+            });
             
             If(!isCreated,UpdateXML.Run(journalJsonData, file_Name, "ReadyForProcessing"));
             
@@ -1153,7 +1152,7 @@
                 
                 IfError(GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(temeljniceResponse, GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing")));
                 
-                Set(journal_line, temeljniceResponse.item_journal_line);
+                UpdateContext({journal_line: temeljniceResponse.item_journal_line});
                 
                 Clear(colJournalLine);
                 
