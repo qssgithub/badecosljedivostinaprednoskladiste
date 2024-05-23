@@ -99,10 +99,7 @@
                         BorderThickness: =0.5
                         DelayItemLoading: =true
                         Height: =375
-                        Items: |-
-                            =//Table(ParseJSON(purchase_line))
-                            //colPurchaseHeader
-                            colPurchaseLines
+                        Items: =colPurchaseLines
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
