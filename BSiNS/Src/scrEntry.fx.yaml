@@ -1,16 +1,27 @@
 "scrEntry As screen.'autoLayout_Sidebar_ver1.0'":
     Fill: =RGBA(45, 128, 40, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
-    OnHidden: =UpdateContext(Blank());
-    OnVisible: |-
+    OnHidden: |-
+        =UpdateContext({Status: "All", FileType: "All"});
+    OnVisible: |
         =//IfError(GetAll.Run("AM-01"),Notify("Error occurred while Get All files request.",NotificationType.Error,2000),Set(getAllFiles, GetAll.Run("AM-01")));
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
-        UpdateContext({
-            WarehouseCode: "AM-01",
-            Status: "All",
-            FileType: "All",
-            XMLFiles: GetAll.Run(WarehouseCode, Status, FileType).xmlfiles
-        });
+        UpdateContext(
+            {
+                WarehouseCode: "AM-01",
+                Status: "All",
+                FileType: "All"
+            }
+        );
+        UpdateContext(
+            {
+                XMLFiles: GetAll.Run(
+                    WarehouseCode,
+                    Status,
+                    FileType
+                ).xmlfiles
+            }
+        );
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -291,7 +302,7 @@
                                 PressedColor: =RGBA(255, 255, 255, 1)
                                 PressedFill: =RGBA(89, 0, 0, 1)
                                 SearchFields: =["Value"]
-                                SearchItems: =[]
+                                SearchItems: =Choices('Approval Status Choice',DataCardValue13.SearchText)
                                 SelectionFill: =RGBA(164, 38, 44, 1)
                                 SelectMultiple: =false
                                 Size: =13
@@ -942,9 +953,17 @@
                         Items: =["All", "Ready for processing", "In progress"]
                         LayoutMinHeight: =32
                         LayoutMinWidth: =320
-                        OnChange: |-
+                        OnChange: |
                             =UpdateContext({Status: dd_Status.Selected.Value});
-                            GetAll.Run(WarehouseCode, Status, FileType);
+                            UpdateContext(
+                                {
+                                    XMLFiles: GetAll.Run(
+                                        WarehouseCode,
+                                        Status,
+                                        FileType
+                                    ).xmlfiles
+                                }
+                            );
                         Width: =652
                         X: =0
                         Y: =0
@@ -959,9 +978,17 @@
                         Items: =["All", "Temeljnice inventure", "Nabavni nalozi", "Prodajni nalozi", "Nalozi za prenos", "Skladišne primke", "Skladišne otpremnice", "Put-Away Request", "Pick Request"]
                         LayoutMinHeight: =32
                         LayoutMinWidth: =320
-                        OnChange: |-
+                        OnChange: |
                             =UpdateContext({FileType: dd_FileType.Selected.Value});
-                            GetAll.Run(WarehouseCode, Status, FileType);
+                            UpdateContext(
+                                {
+                                    XMLFiles: GetAll.Run(
+                                        WarehouseCode,
+                                        Status,
+                                        FileType
+                                    ).xmlfiles
+                                }
+                            );
                         Width: =647
                         X: =0
                         Y: =0
@@ -972,7 +999,6 @@
                     BorderColor: =RGBA(89, 0, 0, 1)
                     DelayItemLoading: =true
                     Height: =321
-                    Items: =XMLFiles
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
