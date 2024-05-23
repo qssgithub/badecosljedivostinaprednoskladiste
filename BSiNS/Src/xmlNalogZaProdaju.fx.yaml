@@ -1623,7 +1623,7 @@
                 
                 
                 ForAll(
-                    ParseJSON(sales_lines),
+                    ParseJSON(salesResEntry),
                     Collect(
                         colSalesResEntries,
                         ForAll(
