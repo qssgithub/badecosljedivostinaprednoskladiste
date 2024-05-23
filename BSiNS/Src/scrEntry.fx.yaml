@@ -6,7 +6,7 @@
         //Set(ReadyForProcessingFiles,getAllFiles.allreadyforprocessing);
         UpdateContext({
             WarehouseCode: "AM-01",
-            Status: "All",
+            Status: "All"
             
         });
         GetAll.Run("AM-01", "In progress", "01");
