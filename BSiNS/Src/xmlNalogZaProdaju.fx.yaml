@@ -1626,10 +1626,8 @@
                     ParseJSON(salesResEntry),
                     Collect(
                         colSalesResEntries,
-                        ForAll(
-                            ThisRecord.Res_Entry,
-                            {
-                                Entry_No: Text(ThisRecord.Entry_No),
+                        {
+                            Entry_No: Text(ThisRecord.Entry_No),
                                 Item_No: Text(ThisRecord.Item_No),
                                 Positive: Text(ThisRecord.Positive),
                                 Quantity: Value(ThisRecord.Quantity),
@@ -1649,8 +1647,7 @@
                                 Created_By: Text(ThisRecord.Created_By),
                                 'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
                                 'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
-                            }
-                        )
+                            }            
                     )
                 );
                 
