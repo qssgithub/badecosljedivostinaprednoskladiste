@@ -1565,20 +1565,25 @@
                         )
                     )
                 );
-                Set(
-                    salesJson,
-                    ParseJSON(sales.response)
-                );
+                
                 Set(
                     sales_header,
-                    salesJson.Sales_Header
+                    ParseJSON(sales.sales_header)
+                );
+                Set(
+                    sales_lines,
+                    sales.sales_line
+                );
+                Set(
+                    salesResEntry,
+                    sales.res_entry
                 );
                 
                 Clear(colSalesLines);
                 Clear(colSalesResEntries);
                 
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line,
+                    ParseJSON(sales_lines),
                     Collect(
                         colSalesLines,
                         {
@@ -1606,7 +1611,7 @@
                 
                 
                 ForAll(
-                    salesJson.Sales_Header.Sales_Line,
+                    ParseJSON(sales_lines),
                     Collect(
                         colSalesResEntries,
                         ForAll(
