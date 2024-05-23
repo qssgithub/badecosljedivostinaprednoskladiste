@@ -1621,7 +1621,7 @@
                 );
                 
                 ForAll(
-                    ParseJSON(transfer_lines),
+                    ParseJSON(transfer_res_entry),
                     Collect(
                         colResEntries,
                             {
