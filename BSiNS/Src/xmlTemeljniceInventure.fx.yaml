@@ -1122,14 +1122,12 @@
                 
                 IfError(GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(temeljniceResponse, GetXML_Temeljnice_Inventure.Run(file_Name, "ReadyForProcessing")));
                 
-                //Set(journal_line, temeljniceResponse.item_journal_line);
-                Set(journal_lineJson,ParseJSON(temeljniceResponse.response));
-                Set(journal_line_header,journal_lineJson.Lines);
+                Set(journal_line, temeljniceResponse.item_journal_line);
                 
                 Clear(colJournalLine);
                 
                 ForAll(
-                    journal_lineJson.Lines.Item_Journal_Line,
+                    ParseJSON(journal_line),
                     Collect(
                         colJournalLine,
                         {
