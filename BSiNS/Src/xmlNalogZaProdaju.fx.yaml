@@ -627,7 +627,7 @@
                             DelayItemLoading: =true
                             Height: =102
                             Items: |
-                                =Filter(colSalesResEntries, Gallery4_3.Selected.Item_No = ThisItem.Item_No)
+                                =Filter(colSalesResEntries, Item_No = ThisItem.Item_No)
                             Layout: =Layout.Vertical
                             LoadingSpinner: =LoadingSpinner.Data
                             TemplatePadding: =0
