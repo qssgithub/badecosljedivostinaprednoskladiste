@@ -5988,6 +5988,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.purchase_line"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.purchase_line",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "purchase_line",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.746033371"
                 }
               ],
