@@ -248,6 +248,7 @@ scr_XMLOtpremnice As screen:
         hdr_Otpremnice As Header:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
             DisplayMode: =DisplayMode.Edit
+            FontColor: =
             Height: =75
             LayoutMinHeight: =75
             LayoutMinWidth: =
@@ -526,6 +527,7 @@ scr_XMLOtpremnice As screen:
                     ZIndex: =1
 
                 "Progress1 As 'Progress Bar'":
+                    BasePaletteColor: =
                     DisplayMode: =DisplayMode.Edit
                     Height: =45
                     LayoutMinHeight: =45
@@ -817,6 +819,7 @@ scr_XMLOtpremnice As screen:
 
                     txt_Quantity As Text:
                         DisplayMode: =DisplayMode.Edit
+                        FontColor: =
                         Height: =32
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
@@ -827,7 +830,9 @@ scr_XMLOtpremnice As screen:
                         ZIndex: =1
 
                     "inp_Quantity As 'Text input'":
+                        BasePaletteColor: =
                         DisplayMode: =DisplayMode.Edit
+                        FontColor: =
                         Height: =32
                         LayoutMinHeight: =32
                         LayoutMinWidth: =320
@@ -854,8 +859,10 @@ scr_XMLOtpremnice As screen:
                         ZIndex: =3
 
         Spinner2 As Spinner:
+            BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
             FillPortions: =1
+            FontColor: =
             Height: =200
             LayoutMinHeight: =200
             LayoutMinWidth: =200
