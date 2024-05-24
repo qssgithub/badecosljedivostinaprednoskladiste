@@ -101,7 +101,7 @@
         );
         //za reset
 
-    ScreenContainer1_3 As groupContainer.verticalAutoLayoutContainer:
+    NalogZaProdajuScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -120,7 +120,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        HeaderContainer1_3 As groupContainer.horizontalAutoLayoutContainer:
+        NalogZaProdajuHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Fill: =RGBA(255, 255, 255, 1)
@@ -154,7 +154,7 @@
                 Y: =0
                 ZIndex: =1
 
-        MainContainer1_3 As groupContainer.verticalAutoLayoutContainer:
+        NalogZaProdajuMainContainer As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Fill: =RGBA(255, 255, 255, 1)
@@ -1243,7 +1243,7 @@
                         Y: =121
                         ZIndex: =25
 
-        FooterContainer1_3 As groupContainer.horizontalAutoLayoutContainer:
+        NalogZaProdajuFooterContainer As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
             DropShadow: =DropShadow.Light
@@ -1295,6 +1295,7 @@
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
                 Fill: =RGBA(164, 38, 44, 1)
                 FontWeight: =FontWeight.Semibold
                 Height: =50
