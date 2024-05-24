@@ -1094,12 +1094,13 @@
                     icn_ReloadFiles As icon.Reload:
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Color: =RGBA(89, 0, 0, 1)
-                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(214, 221, 224, 1)
                         Icon: =Icon.Reload
                         LayoutMinHeight: =16
-                        OnSelect: |-
-                            =UpdateContext(
+                        OnSelect: |
+                            =DisplayMode.Disabled;
+                            UpdateContext(
                                 {
                                     WarehouseCode: "AM-01",
                                     IsLoadingGetAllFiles: true
@@ -1149,6 +1150,7 @@
                                 )
                             );
                             UpdateContext({IsLoadingGetAllFiles: false});
+                            DisplayMode.Edit;
                         PaddingBottom: =5
                         PaddingLeft: =5
                         PaddingRight: =5

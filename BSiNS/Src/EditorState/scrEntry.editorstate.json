@@ -9062,7 +9062,7 @@
       "MetaDataIDKey": "",
       "Name": "dd_FileType",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13552,14 +13552,28 @@
       "ControlPropertyState": [
         "Icon",
         "Color",
-        "DisabledColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "DisabledColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "PressedColor",
         "HoverColor",
         "Fill",
         "DisabledFill",
         "PressedFill",
         "HoverFill",
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "X",
         "Y",
         {
@@ -13573,7 +13587,14 @@
         "Height",
         "BorderStyle",
         "BorderColor",
-        "DisabledBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "DisabledBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "PressedBorderColor",
         "HoverBorderColor",
         "FocusedBorderColor",
@@ -13617,6 +13638,14 @@
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "false",
           "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "AutoDisableOnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -13684,7 +13713,7 @@
       "MetaDataIDKey": "",
       "Name": "icn_ReloadFiles",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13823,9 +13852,14 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Design",
+          "PropertyName": "AutoDisableOnSelect",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "defaultIconStyle",
