@@ -3,8 +3,13 @@ App As appinfo:
     Formulas: |-
         =conPrimary = ColorValue("#0AA9FF");
         conAccent = ColorValue("#676767");
-        conUser = LookUp(Contacts,Email = User().Email);
+        conUser = LookUp(
+            Contacts,
+            Email = User().Email
+        );
+        warehouseCode = "SGP-TEST";
     OnStart: =
+    StartScreen: =
     Theme: =PowerAppsTheme
 
     Host As hostControl.DefaultHostControlVariant:

@@ -1,4 +1,21 @@
 {
+  "284b6345-90ab-434a-aeae-c3dd54bf2eec": {
+    "connectionRef": {
+      "displayName": "File System",
+      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1693/1.0.1693.3738/filesystem/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "9ad3cbfc-3320-4ebe-8eaa-83fdfd7b0d3e",
+      "4301330a-d452-44bd-aef1-0fbcc18ac3d4"
+    ],
+    "id": "284b6345-90ab-434a-aeae-c3dd54bf2eec"
+  },
   "35464e44-34aa-4790-a955-6be22fa1f25e": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -76,10 +93,54 @@
       "GetAll"
     ],
     "dependencies": {
-      "shared_filesystem_1": "c36aefdb-659b-407a-a9b3-af0ad12de8c3"
+      "shared_filesystem_1": "caba3c0d-bfd5-4737-8c88-0bf67f12b87c"
     },
     "dependents": [],
     "id": "407bedcb-ae46-459d-a26e-3177ba0ed36e"
+  },
+  "4301330a-d452-44bd-aef1-0fbcc18ac3d4": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "284b6345-90ab-434a-aeae-c3dd54bf2eec": {
+          "value": "shared_filesystem_1"
+        },
+        "workflowDisplayName": {
+          "value": "GetSkladisnaOtpremnica"
+        },
+        "workflowEntityId": {
+          "value": "d4fee77a-c519-ef11-9f89-00224887e568"
+        },
+        "workflowName": {
+          "value": "6b54d652-503a-4db2-99fd-3fdb61e6f155"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_filesystem_1": {
+          "value": "284b6345-90ab-434a-aeae-c3dd54bf2eec"
+        },
+        "workflowDisplayName": {
+          "value": "GetSkladisnaOtpremnica"
+        },
+        "workflowEntityId": {
+          "value": "d4fee77a-c519-ef11-9f89-00224887e568"
+        },
+        "workflowName": {
+          "value": "6b54d652-503a-4db2-99fd-3fdb61e6f155"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetSkladisnaOtpremnica"
+    ],
+    "dependencies": {
+      "shared_filesystem_1": "284b6345-90ab-434a-aeae-c3dd54bf2eec"
+    },
+    "dependents": [],
+    "id": "4301330a-d452-44bd-aef1-0fbcc18ac3d4"
   },
   "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
     "connectionRef": {
@@ -235,7 +296,7 @@
     "dependents": [],
     "id": "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637"
   },
-  "c36aefdb-659b-407a-a9b3-af0ad12de8c3": {
+  "caba3c0d-bfd5-4737-8c88-0bf67f12b87c": {
     "connectionRef": {
       "displayName": "File System",
       "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
@@ -249,7 +310,7 @@
     "dependents": [
       "407bedcb-ae46-459d-a26e-3177ba0ed36e"
     ],
-    "id": "c36aefdb-659b-407a-a9b3-af0ad12de8c3"
+    "id": "caba3c0d-bfd5-4737-8c88-0bf67f12b87c"
   },
   "cc77c4fb-5da2-4007-8003-2a71ef9049e6": {
     "connectionRef": {

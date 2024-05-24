@@ -9173,7 +9173,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "OnChange"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(\n    dd_Status.Selected.Id = \"All\",\n    UpdateContext({filteredFiles: XMLFiles}),\n    UpdateContext(\n        {\n            filteredFiles: Filter(\n                XMLFiles,\n                dd_Status.Selected.Id = ThisRecord.FolderName\n            )\n        }\n    )\n);\n",
+          "InvariantPropertyName": "OnChange",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
@@ -9282,7 +9289,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnChange",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "",
@@ -15457,7 +15464,14 @@
         "PressedBorderColor",
         "HoverBorderColor",
         "FocusedBorderColor",
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Select(Parent);\nSwitch(\n    Parent.Selected.FileType,\n    \"01\",\n    Navigate(xmlTemeljniceInventure),\n    \"02\",\n    Navigate(xmlNabavniNalog),\n    \"03\",\n    Navigate(xmlNalogZaProdaju),\n    \"04\",\n    Navigate(xmlNalogZaPrenos),\n    \"05\",\n    Navigate(xmlPrimke)\n);\nSet(SelectedFile, ThisItem.FileName);\nSet(SelectedFolder, ThisItem.FolderName);",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ZIndex",
         "BorderThickness",
         "FocusedBorderThickness",
@@ -15636,7 +15650,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "defaultIconStyle",
@@ -21165,8 +21179,22 @@
         "Fill",
         "X",
         "Y",
-        "Width",
-        "Height",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "500",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "200",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisplayMode",
         "ChildTabPriority",
         "LayoutMode",
@@ -21317,12 +21345,12 @@
         {
           "Category": "Design",
           "PropertyName": "Width",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
           "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",

@@ -3,19 +3,14 @@
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnHidden: =
     OnVisible: |
-        =UpdateContext(
-            {
-                WarehouseCode: "AM-01",
-                IsLoadingGetAllFiles: true
-            }
-        );
+        =UpdateContext({IsLoadingGetAllFiles: true});
         UpdateContext(
             {
                 XMLFiles: Table(
                     ForAll(
                         ParseJSON(
                             GetAll.Run(
-                                WarehouseCode,
+                                warehouseCode,
                                 dd_Status.Selected.Text,
                                 dd_FileType.Selected.Text
                             ).xmlfiles
@@ -46,7 +41,7 @@
             UpdateContext(
                 {
                     filteredFiles: Filter(
-                        XMLFiles,
+                        filteredFiles,
                         dd_FileType.Selected.Id = ThisRecord.FileType
                     )
                 }
@@ -942,6 +937,7 @@
 
             vrtcon_GetAllFiles As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.Light
+                Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
                 LayoutGap: =10
@@ -957,6 +953,7 @@
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
+                Width: =Parent.Width
                 ZIndex: =7
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
@@ -986,14 +983,25 @@
                             =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
                         LayoutMinHeight: =32
                         LayoutMinWidth: =320
-                        OnChange: |
+                        OnChange: |-
                             =If(
-                                dd_Status.Selected.Id = "All",
-                                UpdateContext({filteredFiles: XMLFiles}),
+                                Not(dd_FileType.Selected.Id = "0"),
                                 UpdateContext(
                                     {
                                         filteredFiles: Filter(
                                             XMLFiles,
+                                            dd_FileType.Selected.Id = ThisRecord.FileType
+                                        )
+                                    }
+                                ),
+                                UpdateContext({filteredFiles: XMLFiles})
+                            );
+                            If(
+                                Not(dd_Status.Selected.Id = "All"),
+                                UpdateContext(
+                                    {
+                                        filteredFiles: Filter(
+                                            filteredFiles,
                                             dd_Status.Selected.Id = ThisRecord.FolderName
                                         )
                                     }
@@ -1065,10 +1073,9 @@
                             ]
                         LayoutMinHeight: =32
                         LayoutMinWidth: =320
-                        OnChange: |-
+                        OnChange: |
                             =If(
-                                dd_FileType.Selected.Id = "0",
-                                UpdateContext({filteredFiles: XMLFiles}),
+                                Not(dd_FileType.Selected.Id = "0"),
                                 UpdateContext(
                                     {
                                         filteredFiles: Filter(
@@ -1076,8 +1083,20 @@
                                             dd_FileType.Selected.Id = ThisRecord.FileType
                                         )
                                     }
+                                ),
+                                UpdateContext({filteredFiles: XMLFiles})
+                            );
+                            If(
+                                Not(dd_Status.Selected.Id = "All"),
+                                UpdateContext(
+                                    {
+                                        filteredFiles: Filter(
+                                            filteredFiles,
+                                            dd_Status.Selected.Id = ThisRecord.FolderName
+                                        )
+                                    }
                                 )
-                            )
+                            );
                         Width: =647
                         X: =0
                         Y: =0
@@ -1097,22 +1116,16 @@
                         DisabledBorderColor: =RGBA(0, 0, 0, 0)
                         DisabledColor: =RGBA(214, 221, 224, 1)
                         Icon: =Icon.Reload
-                        LayoutMinHeight: =16
+                        LayoutMinHeight: =32
                         OnSelect: |
-                            =DisplayMode.Disabled;
-                            UpdateContext(
-                                {
-                                    WarehouseCode: "AM-01",
-                                    IsLoadingGetAllFiles: true
-                                }
-                            );
+                            =UpdateContext({IsLoadingGetAllFiles: true});
                             UpdateContext(
                                 {
                                     XMLFiles: Table(
                                         ForAll(
                                             ParseJSON(
                                                 GetAll.Run(
-                                                    WarehouseCode,
+                                                    warehouseCode,
                                                     dd_Status.Selected.Text,
                                                     dd_FileType.Selected.Text
                                                 ).xmlfiles
@@ -1132,7 +1145,7 @@
                                 UpdateContext(
                                     {
                                         filteredFiles: Filter(
-                                            XMLFiles,
+                                            filteredFiles,
                                             dd_Status.Selected.Id = ThisRecord.FolderName
                                         )
                                     }
@@ -1143,14 +1156,13 @@
                                 UpdateContext(
                                     {
                                         filteredFiles: Filter(
-                                            XMLFiles,
+                                            filteredFiles,
                                             dd_FileType.Selected.Id = ThisRecord.FileType
                                         )
                                     }
                                 )
                             );
                             UpdateContext({IsLoadingGetAllFiles: false});
-                            DisplayMode.Edit;
                         PaddingBottom: =5
                         PaddingLeft: =5
                         PaddingRight: =5
@@ -1212,7 +1224,9 @@
                                 "04",
                                 Navigate(xmlNalogZaPrenos),
                                 "05",
-                                Navigate(xmlPrimke)
+                                Navigate(xmlPrimke),
+                                "06",
+                                Navigate(scr_XMLOtpremnice)
                             );
                             Set(SelectedFile, ThisItem.FileName);
                             Set(SelectedFolder, ThisItem.FolderName);
