@@ -9062,7 +9062,7 @@
       "MetaDataIDKey": "",
       "Name": "dd_FileType",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9173,14 +9173,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "UpdateContext({IsLoadingGetAllFiles: true});\nUpdateContext(\n    {\n        XMLFiles: Table(\n            ForAll(\n                ParseJSON(\n                    GetAll.Run(\n                        WarehouseCode,\n                        dd_Status.Selected.Value,\n                        dd_FileType.Selected.Value\n                    ).xmlfiles\n                ) As file,\n                {\n                    FileName: Text(file.FileName),\n                    FileType: Text(file.FileType),\n                    FolderName: Text(file.FolderName)\n                }\n            )\n        )\n    }\n);\nUpdateContext({IsLoadingGetAllFiles: false});\n",
-          "InvariantPropertyName": "OnChange",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        }
+        "OnChange"
       ],
       "DynamicProperties": [
         {
@@ -9238,7 +9231,7 @@
       "MetaDataIDKey": "",
       "Name": "dd_Status",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9289,7 +9282,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnChange",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
@@ -12535,14 +12528,7 @@
     "gl_XMLFiles": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "XMLFiles",
-          "InvariantPropertyName": "Items",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "Items",
         "WrapCount",
         "TemplateSize",
         "TemplatePadding",
