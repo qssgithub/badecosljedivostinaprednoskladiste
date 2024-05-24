@@ -62,7 +62,7 @@
       "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637",
       "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
       "606b24e4-b1be-4add-b4c8-85480ae5d3c1",
-      "ef5b0796-4fa3-45b3-8ed5-22465dcfc1c7"
+      "9ad3cbfc-3320-4ebe-8eaa-83fdfd7b0d3e"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
   },
@@ -253,6 +253,7 @@
       "GetAll"
     ],
     "dependencies": {
+      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f",
       "shared_filesystem_1": "6943ac48-b76d-48d0-8e78-df9568b74904"
     },
     "dependents": [],
@@ -389,49 +390,5 @@
     },
     "dependents": [],
     "id": "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
-  },
-  "ef5b0796-4fa3-45b3-8ed5-22465dcfc1c7": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-          "value": "shared_filesystem"
-        },
-        "workflowDisplayName": {
-          "value": "GetAll"
-        },
-        "workflowEntityId": {
-          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
-        },
-        "workflowName": {
-          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
-        "workflowDisplayName": {
-          "value": "GetAll"
-        },
-        "workflowEntityId": {
-          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
-        },
-        "workflowName": {
-          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "GetAll"
-    ],
-    "dependencies": {
-      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-    },
-    "dependents": [],
-    "id": "ef5b0796-4fa3-45b3-8ed5-22465dcfc1c7"
   }
 }
