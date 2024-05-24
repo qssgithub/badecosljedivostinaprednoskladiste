@@ -114,11 +114,9 @@
             RadiusTopRight: =8
             ZIndex: =2
 
-            Container1_1 As groupContainer.manualLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
+            Container3_1 As groupContainer.manualLayoutContainer:
                 DropShadow: =DropShadow.Light
-                FillPortions: =0
-                Height: =Parent.Height
+                Height: =580
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 RadiusBottomLeft: =4
@@ -126,62 +124,69 @@
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
                 Width: =1335
-                ZIndex: =1
+                ZIndex: =2
 
-                Container3_1 As groupContainer.manualLayoutContainer:
-                    DropShadow: =DropShadow.Light
-                    Height: =580
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    Width: =1335
-                    ZIndex: =1
+                TextCanvas2_2 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =34
+                    Size: =20
+                    Text: ="Journal Line"
+                    Weight: ='TextCanvas.Weight'.Bold
+                    Width: =262
+                    X: =12
+                    Y: =4
+                    ZIndex: =2
 
-                    TextCanvas2_2 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =34
-                        Size: =20
-                        Text: ="Journal Line"
-                        Weight: ='TextCanvas.Weight'.Bold
-                        Width: =262
-                        X: =12
-                        Y: =4
-                        ZIndex: =2
+                "JournalLineGallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                    BorderColor: =RGBA(89, 0, 0, 1)
+                    BorderThickness: =0.5
+                    DelayItemLoading: =true
+                    Height: =527
+                    Items: =colJournalLine
+                    Layout: =Layout.Vertical
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =349
+                    Width: =1334
+                    Y: =52
+                    ZIndex: =3
 
-                    "Gallery4_1 As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                    Separator1_1 As rectangle:
                         BorderColor: =RGBA(89, 0, 0, 1)
                         BorderThickness: =0.5
-                        DelayItemLoading: =true
-                        Height: =527
-                        Items: =colJournalLine
-                        Layout: =Layout.Vertical
-                        LoadingSpinner: =LoadingSpinner.Data
-                        TemplatePadding: =0
-                        TemplateSize: =349
-                        Width: =1334
-                        Y: =52
+                        Fill: =RGBA(189, 49, 51, 1)
+                        Height: =0
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
                         ZIndex: =3
 
-                        Separator1_1 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Fill: =RGBA(189, 49, 51, 1)
-                            Height: =0
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =3
+                    Rectangle1_1 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(89, 0, 0, 1)
+                        Height: =Parent.TemplateHeight - Separator1_1.Height
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                        ZIndex: =4
 
-                        Rectangle1_1 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
-                            Height: =Parent.TemplateHeight - Separator1_1.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =4
-                            ZIndex: =4
+                    Separator1_2 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderThickness: =0.5
+                        Fill: =RGBA(189, 49, 51, 1)
+                        Height: =2
+                        OnSelect: =Select(Parent)
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                        ZIndex: =72
+
+                    Group58 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_7 As label:
                             Align: =Align.Center
@@ -200,6 +205,25 @@
                             Y: =17
                             ZIndex: =12
 
+                        "Journal_Template_Name As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =36
+                            Value: =ThisItem.Journal_Template_Name
+                            Width: =175
+                            X: =17
+                            Y: =40
+                            ZIndex: =36
+
+                    Group57 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_9 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -216,6 +240,27 @@
                             X: =218
                             Y: =17
                             ZIndex: =14
+
+                        "Journal_Batch_Name_ As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =40
+                            OnChange: |-
+                                =UpdateIf(colJournalLine, JournalLineGallery.Selected.'Line_No.' = ThisItem.'Line_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
+                            Value: =ThisItem.Journal_Batch_Name
+                            Width: =208
+                            X: =218
+                            Y: =40
+                            ZIndex: =37
+
+                    Group56 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_11 As label:
                             Align: =Align.Center
@@ -234,6 +279,25 @@
                             Y: =17
                             ZIndex: =16
 
+                        "Line_No3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.'Line_No.'
+                            Width: =122
+                            X: =455
+                            Y: =42
+                            ZIndex: =38
+
+                    Group55 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_13 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -250,6 +314,25 @@
                             X: =604
                             Y: =17
                             ZIndex: =19
+
+                        "Document_No3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =36
+                            Value: =ThisItem.'Document_No.'
+                            Width: =158
+                            X: =604
+                            Y: =40
+                            ZIndex: =39
+
+                    Group54 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_15 As label:
                             Align: =Align.Center
@@ -268,39 +351,24 @@
                             Y: =17
                             ZIndex: =22
 
-                        Label2_17 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =21
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Description"
-                            Width: =314
-                            X: =17
-                            Y: =100
-                            ZIndex: =25
+                        "Source_Type As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =30
+                            Value: =ThisItem.Source_Type
+                            Width: =136
+                            X: =794
+                            Y: =40
+                            ZIndex: =40
 
-                        Label2_19 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Source_Code"
-                            Width: =194
-                            X: =1097
-                            Y: =17
-                            ZIndex: =27
+                    Group51 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_21 As label:
                             Align: =Align.Center
@@ -319,102 +387,6 @@
                             Y: =17
                             ZIndex: =30
 
-                        Label2_23 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Item_No."
-                            Width: =145
-                            X: =363
-                            Y: =100
-                            ZIndex: =33
-
-                        Label2_25 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Phys._Inventory"
-                            Width: =164
-                            X: =530
-                            Y: =100
-                            ZIndex: =35
-
-                        "Journal_Template_Name As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =36
-                            Value: =ThisItem.Journal_Template_Name
-                            Width: =175
-                            X: =17
-                            Y: =40
-                            ZIndex: =36
-
-                        "Journal_Batch_Name_ As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =40
-                            OnChange: |-
-                                =UpdateIf(colJournalLine, Gallery4_1.Selected.'Line_No.' = ThisItem.'Line_No.' ,{Journal_Batch_Name: Text(Journal_Batch_Name_.Value)})
-                            Value: =ThisItem.Journal_Batch_Name
-                            Width: =208
-                            X: =218
-                            Y: =40
-                            ZIndex: =37
-
-                        "Line_No3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.'Line_No.'
-                            Width: =122
-                            X: =455
-                            Y: =42
-                            ZIndex: =38
-
-                        "Document_No3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =36
-                            Value: =ThisItem.'Document_No.'
-                            Width: =158
-                            X: =604
-                            Y: =40
-                            ZIndex: =39
-
-                        "Source_Type As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =30
-                            Value: =ThisItem.Source_Type
-                            Width: =136
-                            X: =794
-                            Y: =40
-                            ZIndex: =40
-
                         "Source_No As 'Text input'":
                             Align: ='TextInputCanvas.Align'.Center
                             BasePaletteColor: =
@@ -427,17 +399,29 @@
                             Y: =39
                             ZIndex: =41
 
-                        "Description3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Description
-                            Width: =314
-                            X: =17
-                            Y: =123
-                            ZIndex: =42
+                    Group52 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_19 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Source_Code"
+                            Width: =194
+                            X: =1097
+                            Y: =17
+                            ZIndex: =27
 
                         "Source_Code As 'Text input'":
                             Align: ='TextInputCanvas.Align'.Center
@@ -451,87 +435,12 @@
                             Y: =40
                             ZIndex: =43
 
-                        "Item_No3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.'Item_No.'
-                            Width: =145
-                            X: =363
-                            Y: =123
-                            ZIndex: =44
-
-                        "'Phys._Inventory' As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.'Phys._Inventory'
-                            Width: =164
-                            X: =530
-                            Y: =123
-                            ZIndex: =45
-
-                        Label2_27 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Location_Code"
-                            Width: =131
-                            X: =720
-                            Y: =100
-                            ZIndex: =46
-
-                        "Location_Code As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Location_Code
-                            Width: =131
-                            X: =720
-                            Y: =123
-                            ZIndex: =47
-
-                        Label2_29 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Posting_Date"
-                            Width: =131
-                            X: =875
-                            Y: =100
-                            ZIndex: =48
-
-                        "Posting_Date As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Posting_Date
-                            Width: =131
-                            X: =875
-                            Y: =123
-                            ZIndex: =49
+                    Group46 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_31 As label:
                             Align: =Align.Center
@@ -562,6 +471,193 @@
                             Y: =123
                             ZIndex: =51
 
+                    Group53 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_17 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =21
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Description"
+                            Width: =314
+                            X: =17
+                            Y: =100
+                            ZIndex: =25
+
+                        "Description3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Description
+                            Width: =314
+                            X: =17
+                            Y: =123
+                            ZIndex: =42
+
+                    Group50 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_23 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Item_No."
+                            Width: =145
+                            X: =363
+                            Y: =100
+                            ZIndex: =33
+
+                        "Item_No3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.'Item_No.'
+                            Width: =145
+                            X: =363
+                            Y: =123
+                            ZIndex: =44
+
+                    Group49 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_25 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Phys._Inventory"
+                            Width: =164
+                            X: =530
+                            Y: =100
+                            ZIndex: =35
+
+                        "'Phys._Inventory' As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.'Phys._Inventory'
+                            Width: =164
+                            X: =530
+                            Y: =123
+                            ZIndex: =45
+
+                    Group48 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_27 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Location_Code"
+                            Width: =131
+                            X: =720
+                            Y: =100
+                            ZIndex: =46
+
+                        "Location_Code As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Location_Code
+                            Width: =131
+                            X: =720
+                            Y: =123
+                            ZIndex: =47
+
+                    Group47 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_29 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Posting_Date"
+                            Width: =131
+                            X: =875
+                            Y: =100
+                            ZIndex: =48
+
+                        "Posting_Date As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Posting_Date
+                            Width: =131
+                            X: =875
+                            Y: =123
+                            ZIndex: =49
+
+                    Group45 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_32 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -591,92 +687,12 @@
                             Y: =123
                             ZIndex: =53
 
-                        Label2_33 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Qty_Calculated"
-                            Width: =146
-                            X: =17
-                            Y: =187
-                            ZIndex: =54
-
-                        "Qty_Calculated As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Qty_Calculated
-                            Width: =146
-                            X: =17
-                            Y: =210
-                            ZIndex: =55
-
-                        Label2_34 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Qty_Calculated_Ext"
-                            Width: =163
-                            X: =185
-                            Y: =187
-                            ZIndex: =56
-
-                        "Qty_Calculated_Ext As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Qty_Calculated_Ext
-                            Width: =163
-                            X: =185
-                            Y: =210
-                            ZIndex: =57
-
-                        Label2_35 As label:
-                            Align: =Align.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =23
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =10
-                            PaddingLeft: =0
-                            Size: =13
-                            Text: ="Quantity"
-                            Width: =101
-                            X: =363
-                            Y: =187
-                            ZIndex: =58
-
-                        "Quantity3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =38
-                            Value: =ThisItem.Qty_Calculated_Ext
-                            Width: =101
-                            X: =363
-                            Y: =210
-                            ZIndex: =59
+                    Group6 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_36 As label:
                             Align: =Align.Center
@@ -707,6 +723,13 @@
                             Y: =209
                             ZIndex: =61
 
+                    Group5 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_37 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -735,6 +758,13 @@
                             X: =607
                             Y: =209
                             ZIndex: =63
+
+                    Group4 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_38 As label:
                             Align: =Align.Center
@@ -765,6 +795,121 @@
                             Y: =209
                             ZIndex: =65
 
+                    Group44 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_33 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_Calculated"
+                            Width: =146
+                            X: =17
+                            Y: =187
+                            ZIndex: =54
+
+                        "Qty_Calculated As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Qty_Calculated
+                            Width: =146
+                            X: =17
+                            Y: =210
+                            ZIndex: =55
+
+                    Group43 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_34 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Qty_Calculated_Ext"
+                            Width: =163
+                            X: =185
+                            Y: =187
+                            ZIndex: =56
+
+                        "Qty_Calculated_Ext As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Qty_Calculated_Ext
+                            Width: =163
+                            X: =185
+                            Y: =210
+                            ZIndex: =57
+
+                    Group42 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
+                        Label2_35 As label:
+                            Align: =Align.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderThickness: =0.5
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =23
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =10
+                            PaddingLeft: =0
+                            Size: =13
+                            Text: ="Quantity"
+                            Width: =101
+                            X: =363
+                            Y: =187
+                            ZIndex: =58
+
+                        "Quantity3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =38
+                            Value: =ThisItem.Qty_Calculated_Ext
+                            Width: =101
+                            X: =363
+                            Y: =210
+                            ZIndex: =59
+
+                    Group3 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_39 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -793,6 +938,13 @@
                             X: =1055
                             Y: =210
                             ZIndex: =67
+
+                    Group2 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
 
                         Label2_40 As label:
                             Align: =Align.Center
@@ -823,6 +975,13 @@
                             Y: =298
                             ZIndex: =69
 
+                    Group1 As group:
+                        Height: =5
+                        Width: =5
+                        X: =60
+                        Y: =60
+                        ZIndex: =73
+
                         Label2_41 As label:
                             Align: =Align.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -852,25 +1011,15 @@
                             Y: =298
                             ZIndex: =71
 
-                        Separator1_2 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            BorderThickness: =0.5
-                            Fill: =RGBA(189, 49, 51, 1)
-                            Height: =2
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =72
-
-                    TextCanvas1 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =32
-                        Text: =Gallery4_1.Selected.'Line_No.'
-                        Width: =148
-                        X: =584
-                        Y: =6
-                        ZIndex: =4
+                TextCanvas1 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =
+                    Height: =32
+                    Text: =JournalLineGallery.Selected.'Line_No.'
+                    Width: =148
+                    X: =584
+                    Y: =6
+                    ZIndex: =4
 
         FooterContainer1_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
