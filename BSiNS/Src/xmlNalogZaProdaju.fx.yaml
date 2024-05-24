@@ -2,7 +2,8 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =IfError(
+        =If(!IsBlank(SelectedFile),
+        IfError(
             GetXML_Nalog_Za_Prodaju.Run(
                 SelectedFile,
                 SelectedFolder
@@ -98,7 +99,7 @@
         ClearCollect(
             colOriginalSalesLines,
             colSalesLines
-        );
+        );)
         //za reset
 
     NalogZaProdajuScreenContainer As groupContainer.verticalAutoLayoutContainer:

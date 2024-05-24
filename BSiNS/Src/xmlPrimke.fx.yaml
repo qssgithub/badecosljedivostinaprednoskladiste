@@ -2,7 +2,8 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =IfError(
+        =If(!IsBlank(SelectedFile),
+        IfError(
             GetXML_Primke.Run(
                 SelectedFile,
                 SelectedFolder
@@ -74,7 +75,7 @@
         ClearCollect(
             colOriginalWarehouseLines,
             colWarehouseLines
-        );
+        );)
 
     ScreenContainer1_4 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light

@@ -2,7 +2,8 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |
-        =IfError(GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder)}));
+        =If(!IsBlank(SelectedFile),
+        IfError(GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder)}));
         
         UpdateContext({journal_line: temeljniceResponse.item_journal_line});
         
@@ -43,7 +44,7 @@
         ClearCollect(
             colOriginalJournalLine,
             colJournalLine
-        );
+        );)
         //Reset(fileName_1);
 
     ScreenContainer1_1 As groupContainer.verticalAutoLayoutContainer:

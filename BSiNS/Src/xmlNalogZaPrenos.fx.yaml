@@ -2,7 +2,9 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
+        =
+        If(!IsBlank(SelectedFile),
+        IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
             Notify(
                 "Error occurred while Get request, check if file exists.",
                 NotificationType.Error,
@@ -78,7 +80,7 @@
         ClearCollect(
             colOriginalTransferLines,
             colTransferLines
-        );
+        );)
         //za reset
 
     NalogZaPrenosScreenContainer As groupContainer.verticalAutoLayoutContainer:
