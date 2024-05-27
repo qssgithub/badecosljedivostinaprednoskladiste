@@ -255,7 +255,9 @@ scr_XMLOtpremnice As screen:
             Logo: =FFLogo
             LogoTooltip: =
             OnSelectLogo: =Navigate(scrEntry)
+            Style: ='Header.Style'.Primary
             Title: ="SKLADIŠNE OTPREMNICE"
+            TitleFontSize: =24
             UserEmail: =User().Email
             UserImage: =User().Image
             UserName: =User().FullName
@@ -292,252 +294,6 @@ scr_XMLOtpremnice As screen:
                 RadiusTopRight: =4
                 Width: =Parent.Width
                 ZIndex: =3
-
-                icn_Refresh As icon.Reload:
-                    AlignInContainer: =AlignInContainer.End
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    Color: =RGBA(89, 0, 0, 1)
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledColor: =RGBA(139, 154, 159, 1)
-                    Icon: =Icon.Reload
-                    OnSelect: |
-                        =UpdateContext({isLoadingGetOtpremnica: true});
-                        UpdateContext(
-                            {
-                                xmlData: ParseJSON(
-                                    GetSkladisnaOtpremnica.Run(
-                                        "ReadyForProcessing",
-                                        "SGP-TEST_06_SOTP-24-00002"
-                                    ).xmlfile
-                                )
-                            }
-                        );
-                        UpdateContext(
-                            {
-                                Otpremnice: {
-                                    No: Text(xmlData.No),
-                                    Location_Code: Text(xmlData.Location_Code),
-                                    No_Series: Text(xmlData.No_Series),
-                                    Zone_Code: Text(xmlData.Zone_Code),
-                                    Bin_Code: Text(xmlData.Bin_Code),
-                                    Document_Status: Text(xmlData.Document_Status),
-                                    Posting_Date: Text(xmlData.Posting_Date),
-                                    Shipping_Agent_Code: Text(xmlData.Shipping_Agent_Code),
-                                    Shipping_Agent_Service_Code: Text(xmlData.Shipping_Agent_Service_Code),
-                                    Shipment_Method_Code: Text(xmlData.Shipment_Method_Code),
-                                    Shipment_Date: Text(xmlData.Shipment_Date),
-                                    Completely_Picked: Text(xmlData.Completely_Picked),
-                                    Status: Text(xmlData.Status),
-                                    'External_Document_No.': Text(xmlData.'External_Document_No.'),
-                                    Shipping_No: Text(xmlData.Shipping_No),
-                                    Shipping_No_Series: Text(xmlData.Shipping_No_Series),
-                                    Create_Posted_Header: Text(xmlData.Create_Posted_Header),
-                                    Warehouse_Shipment_Line: IfError(
-                                        ForAll(
-                                            xmlData.Warehouse_Shipment_Line As line,
-                                            {
-                                                No: Text(line.No),
-                                                Line_No: Text(line.Line_No),
-                                                Source_Type: Text(line.Source_Type),
-                                                Source_SubType: Text(line.Source_SubType),
-                                                Source_No: Text(line.Source_No),
-                                                Source_Line_No: Text(line.Source_Line_No),
-                                                Source_Document: Text(line.Source_Document),
-                                                Location_Code: Text(line.Location_Code),
-                                                Shelf_No: Text(line.Shelf_No),
-                                                Bin_Code: Text(line.Bin_Code),
-                                                Zone_Code: Text(line.Zone_Code),
-                                                Item_No: Text(line.Item_No),
-                                                Quantity: Text(line.Quantity),
-                                                Qty_Base: Text(line.Qty_Base),
-                                                Qty_Outstanding: Text(line.Qty_Outstanding),
-                                                Qty_Outstanding_Base: Text(line.Qty_Outstanding_Base),
-                                                Qty_to_Ship: Text(line.Qty_to_Ship),
-                                                Qty_to_Ship_Base: Text(line.Qty_to_Ship_Base),
-                                                Qty_Shipped: Text(line.Qty_Shipped),
-                                                Qty_Shipped_Base: Text(line.Qty_Shipped_Base),
-                                                Qty_Picked: Text(line.Qty_Picked),
-                                                Qty_Picked_Base: Text(line.Qty_Picked_Base),
-                                                Pick_Qty: Text(line.Pick_Qty),
-                                                Pick_Qty_Base: Text(line.Pick_Qty_Base),
-                                                UOM_Code: Text(line.UOM_Code),
-                                                Qty_per_UOM: Text(line.Qty_per_UOM),
-                                                Description: Text(line.Description),
-                                                Status: Text(line.Status),
-                                                Sorting_Sequence_No: Text(line.Sorting_Sequence_No),
-                                                Due_Date: Text(line.Due_Date),
-                                                Destination_Type: Text(line.Destination_Type),
-                                                Destination_No: Text(line.Destination_No),
-                                                Cubage: Text(line.Cubage),
-                                                Weight: Text(line.Weight),
-                                                Shipping_Advice: Text(line.Shipping_Advice),
-                                                Shipment_Date: Text(line.Shipment_Date),
-                                                Completely_Picked: Text(line.Completely_Picked),
-                                                'Not_upd._by_SDPost': Text(line.'Not_upd._by_SDPost'),
-                                                Posting_from_Whse_Ref: Text(line.Posting_from_Whse_Ref),
-                                                Res_Entry: IfError(
-                                                    ForAll(
-                                                        line.Res_Entry As entry,
-                                                        {
-                                                            Entry_No: Text(entry.Res_Entry.Entry_No),
-                                                            Item_No: Text(entry.Res_Entry.Item_No),
-                                                            Positive: Text(entry.Res_Entry.Positive),
-                                                            Quantity: Text(entry.Res_Entry.Quantity),
-                                                            Quantity_Base: Text(entry.Res_Entry.Quantity_Base),
-                                                            Location_Code: Text(entry.Res_Entry.Location_Code),
-                                                            Res_Status: Text(entry.Res_Entry.Res_Status),
-                                                            Source_Type: Text(entry.Res_Entry.Source_Type),
-                                                            Source_SubType: Text(entry.Res_Entry.Source_SubType),
-                                                            Source_ID: Text(entry.Res_Entry.Source_ID),
-                                                            Source_Ref_No: Text(entry.Res_Entry.Source_Ref_No),
-                                                            Item_Tracking: Text(entry.Res_Entry.Item_Tracking),
-                                                            LOT_No: Text(entry.Res_Entry.LOT_No),
-                                                            Exp_Date: Text(entry.Res_Entry.Exp_Date),
-                                                            Creation_Date: Text(entry.Res_Entry.Creation_Date),
-                                                            Exp_Receipt_Date: Text(entry.Res_Entry.Exp_Receipt_Date),
-                                                            Shipment_Date: Text(entry.Res_Entry.Shipment_Date),
-                                                            Created_By: Text(entry.Res_Entry.Created_By),
-                                                            'Qty-to-Handle_Base': Text(entry.Res_Entry.'Qty-to-Handle_Base'),
-                                                            'Qty-to-Invoice_Base': Text(entry.Res_Entry.'Qty-to-Invoice_Base')
-                                                        }
-                                                    ),
-                                                    {
-                                                        Entry_No: Text(line.Res_Entry.Entry_No),
-                                                        Item_No: Text(line.Res_Entry.Item_No),
-                                                        Positive: Text(line.Res_Entry.Positive),
-                                                        Quantity: Text(line.Res_Entry.Quantity),
-                                                        Quantity_Base: Text(line.Res_Entry.Quantity_Base),
-                                                        Location_Code: Text(line.Res_Entry.Location_Code),
-                                                        Res_Status: Text(line.Res_Entry.Res_Status),
-                                                        Source_Type: Text(line.Res_Entry.Source_Type),
-                                                        Source_SubType: Text(line.Res_Entry.Source_SubType),
-                                                        Source_ID: Text(line.Res_Entry.Source_ID),
-                                                        Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
-                                                        Item_Tracking: Text(line.Res_Entry.Item_Tracking),
-                                                        LOT_No: Text(line.Res_Entry.LOT_No),
-                                                        Exp_Date: Text(line.Res_Entry.Exp_Date),
-                                                        Creation_Date: Text(line.Res_Entry.Creation_Date),
-                                                        Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
-                                                        Shipment_Date: Text(line.Res_Entry.Shipment_Date),
-                                                        Created_By: Text(line.Res_Entry.Created_By),
-                                                        'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
-                                                        'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base')
-                                                    }
-                                                )
-                                            }
-                                        ),
-                                        {
-                                            No: Text(xmlData.Warehouse_Shipment_Line.No),
-                                            Line_No: Text(xmlData.Warehouse_Shipment_Line.Line_No),
-                                            Source_Type: Text(xmlData.Warehouse_Shipment_Line.Source_Type),
-                                            Source_SubType: Text(xmlData.Warehouse_Shipment_Line.Source_SubType),
-                                            Source_No: Text(xmlData.Warehouse_Shipment_Line.Source_No),
-                                            Source_Line_No: Text(xmlData.Warehouse_Shipment_Line.Source_Line_No),
-                                            Source_Document: Text(xmlData.Warehouse_Shipment_Line.Source_Document),
-                                            Location_Code: Text(xmlData.Warehouse_Shipment_Line.Location_Code),
-                                            Shelf_No: Text(xmlData.Warehouse_Shipment_Line.Shelf_No),
-                                            Bin_Code: Text(xmlData.Warehouse_Shipment_Line.Bin_Code),
-                                            Zone_Code: Text(xmlData.Warehouse_Shipment_Line.Zone_Code),
-                                            Item_No: Text(xmlData.Warehouse_Shipment_Line.Item_No),
-                                            Quantity: Text(xmlData.Warehouse_Shipment_Line.Quantity),
-                                            Qty_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Base),
-                                            Qty_Outstanding: Text(xmlData.Warehouse_Shipment_Line.Qty_Outstanding),
-                                            Qty_Outstanding_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Outstanding_Base),
-                                            Qty_to_Ship: Text(xmlData.Warehouse_Shipment_Line.Qty_to_Ship),
-                                            Qty_to_Ship_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_to_Ship_Base),
-                                            Qty_Shipped: Text(xmlData.Warehouse_Shipment_Line.Qty_Shipped),
-                                            Qty_Shipped_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Shipped_Base),
-                                            Qty_Picked: Text(xmlData.Warehouse_Shipment_Line.Qty_Picked),
-                                            Qty_Picked_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Picked_Base),
-                                            Pick_Qty: Text(xmlData.Warehouse_Shipment_Line.Pick_Qty),
-                                            Pick_Qty_Base: Text(xmlData.Warehouse_Shipment_Line.Pick_Qty_Base),
-                                            UOM_Code: Text(xmlData.Warehouse_Shipment_Line.UOM_Code),
-                                            Qty_per_UOM: Text(xmlData.Warehouse_Shipment_Line.Qty_per_UOM),
-                                            Description: Text(xmlData.Warehouse_Shipment_Line.Description),
-                                            Status: Text(xmlData.Warehouse_Shipment_Line.Status),
-                                            Sorting_Sequence_No: Text(xmlData.Warehouse_Shipment_Line.Sorting_Sequence_No),
-                                            Due_Date: Text(xmlData.Warehouse_Shipment_Line.Due_Date),
-                                            Destination_Type: Text(xmlData.Warehouse_Shipment_Line.Destination_Type),
-                                            Destination_No: Text(xmlData.Warehouse_Shipment_Line.Destination_No),
-                                            Cubage: Text(xmlData.Warehouse_Shipment_Line.Cubage),
-                                            Weight: Text(xmlData.Warehouse_Shipment_Line.Weight),
-                                            Shipping_Advice: Text(xmlData.Warehouse_Shipment_Line.Shipping_Advice),
-                                            Shipment_Date: Text(xmlData.Warehouse_Shipment_Line.Shipment_Date),
-                                            Completely_Picked: Text(xmlData.Warehouse_Shipment_Line.Completely_Picked),
-                                            'Not_upd._by_SDPost': Text(xmlData.Warehouse_Shipment_Line.'Not_upd._by_SDPost'),
-                                            Posting_from_Whse_Ref: Text(xmlData.Warehouse_Shipment_Line.Posting_from_Whse_Ref),
-                                            Res_Entry: IfError(
-                                                ForAll(
-                                                    xmlData.Warehouse_Shipment_Line.Res_Entry As entry,
-                                                    {
-                                                        Entry_No: Text(entry.Res_Entry.Entry_No),
-                                                        Item_No: Text(entry.Res_Entry.Item_No),
-                                                        Positive: Text(entry.Res_Entry.Positive),
-                                                        Quantity: Text(entry.Res_Entry.Quantity),
-                                                        Quantity_Base: Text(entry.Res_Entry.Quantity_Base),
-                                                        Location_Code: Text(entry.Res_Entry.Location_Code),
-                                                        Res_Status: Text(entry.Res_Entry.Res_Status),
-                                                        Source_Type: Text(entry.Res_Entry.Source_Type),
-                                                        Source_SubType: Text(entry.Res_Entry.Source_SubType),
-                                                        Source_ID: Text(entry.Res_Entry.Source_ID),
-                                                        Source_Ref_No: Text(entry.Res_Entry.Source_Ref_No),
-                                                        Item_Tracking: Text(entry.Res_Entry.Item_Tracking),
-                                                        LOT_No: Text(entry.Res_Entry.LOT_No),
-                                                        Exp_Date: Text(entry.Res_Entry.Exp_Date),
-                                                        Creation_Date: Text(entry.Res_Entry.Creation_Date),
-                                                        Exp_Receipt_Date: Text(entry.Res_Entry.Exp_Receipt_Date),
-                                                        Shipment_Date: Text(entry.Res_Entry.Shipment_Date),
-                                                        Created_By: Text(entry.Res_Entry.Created_By),
-                                                        'Qty-to-Handle_Base': Text(entry.Res_Entry.'Qty-to-Handle_Base'),
-                                                        'Qty-to-Invoice_Base': Text(entry.Res_Entry.'Qty-to-Invoice_Base')
-                                                    }
-                                                ),
-                                                {
-                                                    Entry_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Entry_No),
-                                                    Item_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Item_No),
-                                                    Positive: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Positive),
-                                                    Quantity: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Quantity),
-                                                    Quantity_Base: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Quantity_Base),
-                                                    Location_Code: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Location_Code),
-                                                    Res_Status: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Res_Status),
-                                                    Source_Type: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_Type),
-                                                    Source_SubType: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_SubType),
-                                                    Source_ID: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_ID),
-                                                    Source_Ref_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_Ref_No),
-                                                    Item_Tracking: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Item_Tracking),
-                                                    LOT_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.LOT_No),
-                                                    Exp_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Exp_Date),
-                                                    Creation_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Creation_Date),
-                                                    Exp_Receipt_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Exp_Receipt_Date),
-                                                    Shipment_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Shipment_Date),
-                                                    Created_By: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Created_By),
-                                                    'Qty-to-Handle_Base': Text(xmlData.Warehouse_Shipment_Line.Res_Entry.'Qty-to-Handle_Base'),
-                                                    'Qty-to-Invoice_Base': Text(xmlData.Warehouse_Shipment_Line.Res_Entry.'Qty-to-Invoice_Base')
-                                                }
-                                            )
-                                        }
-                                    )
-                                }
-                            }
-                        );
-                        UpdateContext({wizardStep: 1});
-                        UpdateContext({isLoadingGetOtpremnica: false});
-                    X: =Parent.Width - 100
-                    Y: =Parent.Height - 100
-                    ZIndex: =1
-
-                "Progress1 As 'Progress Bar'":
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =45
-                    LayoutMinHeight: =45
-                    LayoutMinWidth: =450
-                    Max: =3
-                    Value: =wizardStep
-                    Width: =450
-                    X: =0
-                    Y: =0
-                    ZIndex: =2
 
                 vrt_Lines As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -616,7 +372,7 @@ scr_XMLOtpremnice As screen:
                         TemplateSize: =80
                         ZIndex: =3
 
-                        Title2 As label:
+                        lbl_LinesItem As label:
                             Color: =RGBA(50, 49, 48, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -633,7 +389,7 @@ scr_XMLOtpremnice As screen:
                             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                             ZIndex: =1
 
-                        NextArrow2 As icon.ChevronRight:
+                        icn_LinesNext As icon.ChevronRight:
                             AccessibleLabel: =Self.Tooltip
                             BorderColor: =RGBA(89, 0, 0, 1)
                             Color: =RGBA(166, 166, 166, 1)
@@ -654,7 +410,7 @@ scr_XMLOtpremnice As screen:
                             Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                             ZIndex: =2
 
-                        Separator3 As rectangle:
+                        rct_LinesSeperator As rectangle:
                             BorderColor: =RGBA(89, 0, 0, 1)
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =8
@@ -663,10 +419,10 @@ scr_XMLOtpremnice As screen:
                             Y: =Parent.TemplateHeight - Self.Height
                             ZIndex: =3
 
-                        Rectangle3 As rectangle:
+                        rct_LinesSelected As rectangle:
                             BorderColor: =RGBA(89, 0, 0, 1)
                             Fill: =RGBA(89, 0, 0, 1)
-                            Height: =Parent.TemplateHeight - Separator3.Height
+                            Height: =Parent.TemplateHeight - rct_LinesSeperator.Height
                             OnSelect: =Select(Parent)
                             Visible: =ThisItem.IsSelected
                             Width: =4
@@ -805,6 +561,7 @@ scr_XMLOtpremnice As screen:
                             ZIndex: =4
 
                 vrt_EditForm As groupContainer.verticalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
                     LayoutDirection: =LayoutDirection.Vertical
                     LayoutGap: =10
                     LayoutMinHeight: =100
@@ -821,8 +578,7 @@ scr_XMLOtpremnice As screen:
                     Visible: =wizardStep = 3
                     ZIndex: =5
 
-                    Container1 As groupContainer.horizontalAutoLayoutContainer:
-                        DropShadow: =DropShadow.Light
+                    hrz_EditFormHeader As groupContainer.horizontalAutoLayoutContainer:
                         FillPortions: =0
                         Height: =50
                         LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -840,34 +596,7 @@ scr_XMLOtpremnice As screen:
                         RadiusTopRight: =4
                         ZIndex: =1
 
-                        icn_BackEditForm As arrow.backArrow:
-                            AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            Fill: =RGBA(164, 38, 44, 1)
-                            Height: =36
-                            LayoutMinHeight: =36
-                            OnSelect: |-
-                                =UpdateContext({wizardStep: 2})
-                            Width: =36
-                            ZIndex: =1
-
-                        txt_EditForm As Text:
-                            DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
-                            FontColor: =
-                            Height: =32
-                            LayoutMinHeight: =50
-                            LayoutMinWidth: =96
-                            Size: =36
-                            Text: ="Edit Form"
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =2
-
-                    Container3 As groupContainer.verticalAutoLayoutContainer:
-                        DropShadow: =DropShadow.Light
+                    vrt_EditFormBody As groupContainer.verticalAutoLayoutContainer:
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutGap: =15
                         LayoutMinHeight: =100
@@ -883,7 +612,8 @@ scr_XMLOtpremnice As screen:
                         RadiusTopRight: =4
                         ZIndex: =5
 
-                        Container4 As groupContainer.horizontalAutoLayoutContainer:
+                        hrz_EditFormValues As groupContainer.horizontalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
                             LayoutGap: =15
                             LayoutMinHeight: =100
                             LayoutMinWidth: =250
@@ -895,7 +625,7 @@ scr_XMLOtpremnice As screen:
                             RadiusTopRight: =4
                             ZIndex: =1
 
-                            Container5 As groupContainer.verticalAutoLayoutContainer:
+                            vrt_Quantity As groupContainer.verticalAutoLayoutContainer:
                                 AlignInContainer: =AlignInContainer.SetByContainer
                                 FillPortions: =0
                                 Height: =75
@@ -911,35 +641,7 @@ scr_XMLOtpremnice As screen:
                                 Width: =150
                                 ZIndex: =5
 
-                                txt_Quantity As Text:
-                                    DisplayMode: =DisplayMode.Edit
-                                    FontColor: =
-                                    Height: =32
-                                    LayoutMinHeight: =32
-                                    LayoutMinWidth: =96
-                                    Size: =20
-                                    Text: ="Quantity"
-                                    Width: =96
-                                    X: =0
-                                    Y: =0
-                                    ZIndex: =1
-
-                                "inp_Quantity As 'Text input'":
-                                    Align: ='TextInputCanvas.Align'.End
-                                    BasePaletteColor: =
-                                    DisplayMode: =DisplayMode.Edit
-                                    FontColor: =
-                                    FontSize: =18
-                                    Height: =32
-                                    LayoutMinHeight: =32
-                                    LayoutMinWidth: =320
-                                    Value: =glr_Lines.Selected.Quantity
-                                    Width: =150
-                                    X: =0
-                                    Y: =0
-                                    ZIndex: =2
-
-                            Container8 As groupContainer.verticalAutoLayoutContainer:
+                            vrt_LOTNo As groupContainer.verticalAutoLayoutContainer:
                                 AlignInContainer: =AlignInContainer.SetByContainer
                                 FillPortions: =0
                                 Height: =75
@@ -955,52 +657,64 @@ scr_XMLOtpremnice As screen:
                                 Width: =150
                                 ZIndex: =6
 
-                                txt_LOTNo As Text:
-                                    DisplayMode: =DisplayMode.Edit
-                                    FontColor: =
-                                    Height: =32
-                                    LayoutMinHeight: =32
-                                    LayoutMinWidth: =96
-                                    Size: =20
-                                    Text: ="LOT No"
-                                    Width: =96
-                                    X: =0
-                                    Y: =0
-                                    ZIndex: =1
-
-                                "inp_LOTNo As 'Text input'":
-                                    Align: ='TextInputCanvas.Align'.End
-                                    BasePaletteColor: =
-                                    DisplayMode: =DisplayMode.Edit
-                                    FontColor: =
-                                    FontSize: =18
-                                    Height: =32
-                                    LayoutMinHeight: =32
-                                    LayoutMinWidth: =320
-                                    Value: =glr_ResEntries.Selected.LOT_No
-                                    Width: =150
-                                    X: =0
-                                    Y: =0
-                                    ZIndex: =2
-
-                        btn_Save As Button:
-                            AlignInContainer: =AlignInContainer.End
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
+                        hrz_EditFormFooter As groupContainer.horizontalAutoLayoutContainer:
+                            FillPortions: =0
                             Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            OnSelect: |
-                                =UpdateContext({exportData: "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}"});
-                            Text: ="Spasi"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
+                            LayoutAlignItems: =LayoutAlignItems.End
+                            LayoutGap: =10
+                            LayoutJustifyContent: =LayoutJustifyContent.End
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =250
+                            ZIndex: =5
+
+                            btn_Save_1 As Button:
+                                Appearance: ='ButtonCanvas.Appearance'.Primary
+                                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =
+                                Height: =32
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: |
+                                    =UpdateContext({IsSaving: true});
+                                    UpdateXML.Run(
+                                        "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}",
+                                        SelectedFile,
+                                        SelectedFolder
+                                    );
+                                    UpdateContext({IsSaving: false});
+                                Text: ="Sačuvaj u toku"
+                                Visible: =!IsSaving
+                                Width: =120
+                                X: =40
+                                Y: =40
+                                ZIndex: =1
+
+                            Spinner3 As Spinner:
+                                Appearance: ='Spinner.Appearance'.Primary
+                                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =
+                                Height: =20
+                                Label: ="Saving"
+                                LabelPosition: ='Spinner.LabelPosition'.After
+                                LayoutMinHeight: =200
+                                LayoutMinWidth: =200
+                                SpinnerSize: ='Spinner.SpinnerSize'.Tiny
+                                Visible: =IsSaving
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =3
 
         Spinner2 As Spinner:
-            BasePaletteColor: =
+            BasePaletteColor: =RGBA(249, 83, 109, 1)
             DisplayMode: =DisplayMode.Edit
             FillPortions: =1
             FontColor: =

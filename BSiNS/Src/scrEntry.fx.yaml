@@ -988,6 +988,7 @@
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
+                            BasePaletteColor: =RGBA(249, 83, 109, 1)
                             DefaultSelectedItems: |-
                                 =[{Id: "All", Text: "All"}]
                             DisplayMode: =DisplayMode.Edit
@@ -1046,6 +1047,7 @@
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
+                            BasePaletteColor: =RGBA(249, 83, 109, 1)
                             DefaultSelectedItems: |-
                                 =[
                                     {
@@ -1301,7 +1303,7 @@
 
                 Spinner1 As Spinner:
                     Appearance: ='Spinner.Appearance'.Primary
-                    BasePaletteColor: =
+                    BasePaletteColor: =RGBA(249, 83, 109, 1)
                     DisplayMode: =DisplayMode.Edit
                     FillPortions: =1
                     FontColor: =
