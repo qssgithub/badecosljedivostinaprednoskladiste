@@ -865,7 +865,8 @@ scr_XMLOtpremnice As screen:
                             Y: =0
                             ZIndex: =2
 
-                    vrt_EditFormBody As groupContainer.verticalAutoLayoutContainer:
+                    Container3 As groupContainer.verticalAutoLayoutContainer:
+                        DropShadow: =DropShadow.Light
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutGap: =15
                         LayoutMinHeight: =100
@@ -931,15 +932,13 @@ scr_XMLOtpremnice As screen:
                                     Height: =32
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =320
-                                    OnChange: |-
-                                        =UpdateIf(Otpremnice.Warehouse_Shipment_Line As line, line.Line_No = glr_Lines.Selected.Line_No, {Quantity: inp_Quantity.Value})
                                     Value: =glr_Lines.Selected.Quantity
                                     Width: =150
                                     X: =0
                                     Y: =0
                                     ZIndex: =2
 
-                            vrt_LOTNo As groupContainer.verticalAutoLayoutContainer:
+                            Container8 As groupContainer.verticalAutoLayoutContainer:
                                 AlignInContainer: =AlignInContainer.SetByContainer
                                 FillPortions: =0
                                 Height: =75
@@ -977,99 +976,27 @@ scr_XMLOtpremnice As screen:
                                     Height: =32
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =320
-                                    OnChange: |-
-                                        =UpdateIf(
-                                            LookUp(
-                                                Otpremnice.Warehouse_Shipment_Line As line,
-                                                line.Line_No = glr_Lines.Selected.Line_No
-                                            ).Res_Entry As entry,
-                                            entry.Item_No = glr_ResEntries.Selected.Item_No,
-                                            {LOT_No: inp_LOTNo.Value}
-                                        )
                                     Value: =glr_ResEntries.Selected.LOT_No
                                     Width: =150
                                     X: =0
                                     Y: =0
                                     ZIndex: =2
 
-                        hrz_EditFormFooter As groupContainer.horizontalAutoLayoutContainer:
-                            FillPortions: =0
+                        btn_Save As Button:
+                            AlignInContainer: =AlignInContainer.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
                             Height: =32
-                            LayoutAlignItems: =LayoutAlignItems.End
-                            LayoutGap: =10
-                            LayoutJustifyContent: =LayoutJustifyContent.End
-                            LayoutMinHeight: =100
-                            LayoutMinWidth: =250
-                            LayoutMode: =LayoutMode.Auto
-                            RadiusBottomLeft: =4
-                            RadiusBottomRight: =4
-                            RadiusTopLeft: =4
-                            RadiusTopRight: =4
-                            Width: =250
-                            ZIndex: =5
-
-                            btn_Save_1 As Button:
-                                Appearance: ='ButtonCanvas.Appearance'.Primary
-                                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                                DisplayMode: =DisplayMode.Edit
-                                FontColor: =
-                                Height: =32
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                OnSelect: |
-                                    =UpdateContext({IsSaving: true});
-                                    UpdateXML.Run(
-                                        "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}",
-                                        SelectedFile,
-                                        SelectedFolder
-                                    );
-                                    UpdateContext({IsSaving: false});
-                                Text: ="Sačuvaj u toku"
-                                Visible: =!IsSaving
-                                Width: =120
-                                X: =40
-                                Y: =40
-                                ZIndex: =1
-
-                            btn_Save As Button:
-                                Appearance: ='ButtonCanvas.Appearance'.Primary
-                                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                                DisplayMode: =DisplayMode.Edit
-                                FontColor: =
-                                Height: =32
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                OnSelect: |
-                                    =UpdateContext({IsSaving: true});
-                                    UpdateXML.Run(
-                                        "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}",
-                                        SelectedFile,
-                                        SelectedFolder
-                                    );
-                                    UpdateContext({IsSaving: false});
-                                Text: ="Sačuvaj i Finaliziraj"
-                                Visible: =!IsSaving
-                                Width: =150
-                                X: =40
-                                Y: =40
-                                ZIndex: =2
-
-                            Spinner3 As Spinner:
-                                Appearance: ='Spinner.Appearance'.Primary
-                                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                                DisplayMode: =DisplayMode.Edit
-                                FontColor: =
-                                Height: =20
-                                Label: ="Saving"
-                                LabelPosition: ='Spinner.LabelPosition'.After
-                                LayoutMinHeight: =200
-                                LayoutMinWidth: =200
-                                SpinnerSize: ='Spinner.SpinnerSize'.Tiny
-                                Visible: =IsSaving
-                                Width: =96
-                                X: =0
-                                Y: =0
-                                ZIndex: =3
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            OnSelect: |
+                                =UpdateContext({exportData: "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}"});
+                            Text: ="Spasi"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
 
         Spinner2 As Spinner:
             BasePaletteColor: =
