@@ -1106,13 +1106,6 @@
                 )
             });
             
-            /*
-            If(!isCreated, 
-            UpdateXML.Run(xmlFile, file_Name, "ReadyForProcessing"); Set(purchase, GetXML_Nabavni_Nalog.Run(file_Name, "ReadyForProcessing")); Set(purchase_line, purchase.purchase_line); Set(purchase_header, ParseJSON(purchase.purchase_header)););
-            
-            Notify(file_Name);*/
-            
-            //If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true));
             UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
         Size: =15
         Text: ="Save"
