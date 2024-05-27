@@ -12962,7 +12962,7 @@
       "MetaDataIDKey": "",
       "Name": "gl_XMLFiles",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13802,7 +13802,7 @@
       "MetaDataIDKey": "",
       "Name": "hrzcon_GetAllFilesDDs",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -15866,14 +15866,7 @@
         "PressedBorderColor",
         "HoverBorderColor",
         "FocusedBorderColor",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Select(Parent);\nSwitch(\n    Parent.Selected.FileType,\n    \"01\",\n    Navigate(xmlTemeljniceInventure),\n    \"02\",\n    Navigate(xmlNabavniNalog),\n    \"03\",\n    Navigate(xmlNalogZaProdaju),\n    \"04\",\n    Navigate(xmlNalogZaPrenos),\n    \"05\",\n    Navigate(xmlPrimke),\n    \"06\",\n    Navigate(scr_XMLOtpremnice)\n);\nSet(SelectedFile, ThisItem.FileName);\nSet(SelectedFolder, ThisItem.FolderName);",
-          "InvariantPropertyName": "OnSelect",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "OnSelect",
         "ZIndex",
         "BorderThickness",
         "FocusedBorderThickness",
@@ -18151,7 +18144,7 @@
       "MetaDataIDKey": "",
       "Name": "Spinner1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
