@@ -6,19 +6,38 @@
         =UpdateContext({IsLoadingGetAllFiles: true});
         UpdateContext(
             {
+                Files: ParseJSON(
+                    GetAll.Run(
+                        warehouseCode,
+                        dd_Status.Selected.Text,
+                        dd_FileType.Selected.Text
+                    ).xmlfiles
+                )
+            }
+        );
+        UpdateContext(
+            {
+                ReadyForProcessing: Files.ReadyForProcessing,
+                InProgress: Files.InProgress
+            }
+        );
+        UpdateContext(
+            {
                 XMLFiles: Table(
                     ForAll(
-                        ParseJSON(
-                            GetAll.Run(
-                                warehouseCode,
-                                dd_Status.Selected.Text,
-                                dd_FileType.Selected.Text
-                            ).xmlfiles
-                        ) As file,
+                        ReadyForProcessing As file,
                         {
                             FileName: Text(file.FileName),
-                            FileType: Text(file.FileType),
-                            FolderName: Text(file.FolderName)
+                            FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                            FolderName: "ReadyForProcessing"
+                        }
+                    ),
+                    ForAll(
+                        InProgress As file,
+                        {
+                            FileName: Text(file.Name),
+                            FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                            FolderName: "InProgress"
                         }
                     )
                 )
@@ -30,7 +49,7 @@
             UpdateContext(
                 {
                     filteredFiles: Filter(
-                        XMLFiles,
+                        filteredFiles,
                         dd_Status.Selected.Id = ThisRecord.FolderName
                     )
                 }
@@ -1144,19 +1163,34 @@
                             =UpdateContext({IsLoadingGetAllFiles: true});
                             UpdateContext(
                                 {
+                                    Files: ParseJSON(
+                                        GetAll.Run(
+                                            warehouseCode,
+                                            dd_Status.Selected.Text,
+                                            dd_FileType.Selected.Text
+                                        ).xmlfiles
+                                    )
+                                }
+                            );
+                            UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
+                            //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
+                            UpdateContext(
+                                {
                                     XMLFiles: Table(
                                         ForAll(
-                                            ParseJSON(
-                                                GetAll.Run(
-                                                    warehouseCode,
-                                                    dd_Status.Selected.Text,
-                                                    dd_FileType.Selected.Text
-                                                ).xmlfiles
-                                            ) As file,
+                                            Files.ReadyForProcessing As file,
                                             {
-                                                FileName: Text(file.FileName),
-                                                FileType: Text(file.FileType),
-                                                FolderName: Text(file.FolderName)
+                                                FileName: Text(file.Name),
+                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                                FolderName: "ReadyForProcessing"
+                                            }
+                                        ),
+                                        ForAll(
+                                            Files.InProgress As file,
+                                            {
+                                                FileName: Text(file.Name),
+                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                                FolderName: "InProgress"
                                             }
                                         )
                                     )
@@ -1257,15 +1291,15 @@
                             Switch(
                                 Parent.Selected.FileType,
                                 "01",
-                                Navigate(xmlTemeljniceInventure),
+                                Navigate(scr_XMLTemeljniceInventure),
                                 "02",
-                                Navigate(xmlNabavniNalog),
+                                Navigate(scr_XMLNabavniNalog),
                                 "03",
-                                Navigate(xmlNalogZaProdaju),
+                                Navigate(scr_XMLNalogZaProdaju),
                                 "04",
-                                Navigate(xmlNalogZaPrenos),
+                                Navigate(scr_XMLNalogZaPrenos),
                                 "05",
-                                Navigate(xmlPrimke),
+                                Navigate(scr_XMLPrimke),
                                 "06",
                                 Navigate(scr_XMLOtpremnice)
                             );
