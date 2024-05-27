@@ -862,6 +862,22 @@
                 Text: ="Reset"
                 ZIndex: =5
 
+            nabavniNalogReadyForNavCheckbox As Checkbox:
+                AlignInContainer: =AlignInContainer.Start
+                DisplayMode: =DisplayMode.Edit
+                FontUnderline: =false
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
+
     "'Upload xml file - modal (brisati poslije)' As group":
         Height: =5
         Width: =5
@@ -1096,7 +1112,7 @@
             
             Notify(file_Name);*/
             
-            If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, "ReadyForProcessing"));
+            If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked));
             
         Size: =15
         Text: ="Save"

@@ -5,10 +5,12 @@
       <string name="ManualTriggerInput_text_def" />
       <string name="ManualTriggerInput_text_1_def" />
       <string name="ManualTriggerInput_text_2_def" />
+      <boolean name="ManualTriggerInput_boolean_def" />
       <object name="ManualTriggerInput">
         <property name="text" type="string" />
         <property name="text_1" type="string" />
         <property name="text_2" type="string" />
+        <property name="boolean" type="boolean" />
       </object>
     </jsonTypes>
   </grammars>
@@ -30,6 +32,9 @@
             </param>
             <param style="plain" name="text_2" path="/text_2" type="xs:string" required="true">
               <doc title="FileLocation" />
+            </param>
+            <param style="plain" name="boolean" path="/boolean" type="xs:boolean" required="true">
+              <doc title="ReadyForNavision" />
             </param>
           </representation>
         </request>
