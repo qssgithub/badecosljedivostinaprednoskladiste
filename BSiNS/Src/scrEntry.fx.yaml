@@ -1203,6 +1203,24 @@
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
                     LoadingSpinner: =LoadingSpinner.Data
+                    OnSelect: |-
+                        =Switch(
+                            Parent.Selected.FileType,
+                            "01",
+                            Navigate(xmlTemeljniceInventure),
+                            "02",
+                            Navigate(xmlNabavniNalog),
+                            "03",
+                            Navigate(xmlNalogZaProdaju),
+                            "04",
+                            Navigate(xmlNalogZaPrenos),
+                            "05",
+                            Navigate(xmlPrimke),
+                            "06",
+                            Navigate(scr_XMLOtpremnice)
+                        );
+                        Set(SelectedFile, ThisItem.FileName);
+                        Set(SelectedFolder, ThisItem.FolderName);
                     TemplatePadding: =0
                     TemplateSize: =80
                     Visible: =!IsLoadingGetAllFiles
