@@ -1040,7 +1040,7 @@
         Height: =50
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: |+
+        OnSelect: |
             =UpdateContext({
                 purchaseJsonData:
                 JSON(
@@ -1121,8 +1121,8 @@
             
             Notify(file_Name);*/
             
-            If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true));
-            
+            //If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true));
+            UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true);
         Size: =15
         Text: ="Save"
         Width: =225
