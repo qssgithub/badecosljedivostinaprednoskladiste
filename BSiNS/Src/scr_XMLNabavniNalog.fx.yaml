@@ -1108,44 +1108,14 @@
                 )
             });
             
+            /*
+            If(!isCreated, 
+            UpdateXML.Run(xmlFile, file_Name, "ReadyForProcessing"); Set(purchase, GetXML_Nabavni_Nalog.Run(file_Name, "ReadyForProcessing")); Set(purchase_line, purchase.purchase_line); Set(purchase_header, ParseJSON(purchase.purchase_header)););
             
-            UpdateContext({response : UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
+            Notify(file_Name);*/
             
-            Reset(nabavniNalogReadyForNavCheckbox);
-            If(!IsBlank(SelectedFile),
-            IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, response.newfilelocation),
-                Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
-                UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, response.newfilelocation)})
-            );
-            
-            UpdateContext({purchase_line: purchase.purchase_line});
-            UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
-            
-            Clear(colPurchaseLines);
-            ForAll(
-                ParseJSON(purchase_line),
-                Collect(
-                    colPurchaseLines,
-                    {
-                         Document_Type: Text(ThisRecord.Document_Type),
-                          'Buy-from_Vendor_No.': Text(ThisRecord.'Buy-from_Vendor_No.'),
-                          Document_No: Text(ThisRecord.Document_No),
-                          Line_No: Text(ThisRecord.Line_No),
-                          Type: Text(ThisRecord.Type),
-                          Item_No: Text(ThisRecord.Item_No),
-                          Location_Code: Text(ThisRecord.Location_Code),
-                          Posting_Group: Text(ThisRecord.Posting_Group),
-                          Description: Text(ThisRecord.Description),
-                          Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                          Quantity: Text(ThisRecord.Quantity),
-                          LOT_No: Text(ThisRecord.LOT_No),
-                          Exp_Date: Text(ThisRecord.Exp_Date)
-                    }
-                );
-            );
-            
-            ClearCollect(colOriginalPurchaseLines, colPurchaseLines);
-            )
+            //If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true));
+            UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
         Size: =15
         Text: ="Save"
         Width: =225
