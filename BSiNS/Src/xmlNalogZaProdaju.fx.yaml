@@ -1,0 +1,743 @@
+"xmlNalogZaProdaju As screen.'autoLayout_HeaderFooter_ver1.0'":
+    Fill: =RGBA(234, 83, 109, 1)
+    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =If(!IsBlank(SelectedFile),
+        IfError(
+            GetXML_Nalog_Za_Prodaju.Run(
+                SelectedFile,
+                SelectedFolder
+            ),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            ),
+            UpdateContext({
+                sales:
+                GetXML_Nalog_Za_Prodaju.Run(
+                    SelectedFile,
+                    SelectedFolder
+                )
+            })
+        );
+        
+        UpdateContext({
+            sales_header:
+            ParseJSON(sales.sales_header)
+        });
+        UpdateContext({
+            sales_lines:
+            sales.sales_line
+        });
+        UpdateContext({
+            salesResEntry:
+            sales.res_entry
+        });
+        
+        Clear(colSalesLines);
+        Clear(colSalesResEntries);
+        
+        ForAll(
+            ParseJSON(sales_lines),
+            Collect(
+                colSalesLines,
+                {
+                    Document_Type: Value(ThisRecord.Document_Type),
+                    'Sell-to_Customer_No.': Text(ThisRecord.'Sell-to_Customer_No.'),
+                    Document_No: Text(ThisRecord.Document_No),
+                    Line_No: Value(ThisRecord.Line_No),
+                    Type: Value(ThisRecord.Type),
+                    Item_No: Text(ThisRecord.Item_No),
+                    Location_Code: Text(ThisRecord.Location_Code),
+                    Posting_Group: Text(ThisRecord.Posting_Group),
+                    Description: Text(ThisRecord.Description),
+                    Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                    Quantity: Value(ThisRecord.Quantity),
+                    Unit_Price: Value(ThisRecord.Unit_Price),
+                    Line_Amount: Value(ThisRecord.Line_Amount),
+                    Line_Discount_Amount: Value(ThisRecord.Line_Discount_Amount),
+                    'Qty-to_Invoice': Value(ThisRecord.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Value(ThisRecord.'Qty-to_Ship'),
+                    Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
+                }
+            );
+            
+        );
+        
+        
+        ForAll(
+            ParseJSON(salesResEntry),
+            Collect(
+                colSalesResEntries,
+                {
+                    Entry_No: Text(ThisRecord.Entry_No),
+                        Item_No: Text(ThisRecord.Item_No),
+                        Positive: Text(ThisRecord.Positive),
+                        Quantity: Value(ThisRecord.Quantity),
+                        Quantity_Base: Value(ThisRecord.Quantity_Base),
+                        Location_Code: Text(ThisRecord.Location_Code),
+                        Res_Status: Text(ThisRecord.Res_Status),
+                        Source_Type: Text(ThisRecord.Source_Type),
+                        Source_SubType: Text(ThisRecord.Source_SubType),
+                        Source_ID: Text(ThisRecord.Source_ID),
+                        Source_Ref_No: Text(ThisRecord.Source_Ref_No),
+                        Item_Tracking: Text(ThisRecord.Item_Tracking),
+                        LOT_No: Text(ThisRecord.LOT_No),
+                        Exp_Date: Text(ThisRecord.Exp_Date),
+                        Creation_Date: Text(ThisRecord.Creation_Date),
+                        Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
+                        Shipment_Date: Text(ThisRecord.Shipment_Date),
+                        Created_By: Text(ThisRecord.Created_By),
+                        'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
+                    }            
+            )
+        );
+        
+        
+        ClearCollect(
+            colOriginalSalesLines,
+            colSalesLines
+        );)
+        //za reset
+
+    NalogZaProdajuScreenContainer As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        NalogZaProdajuHeaderContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =75
+            LayoutMinHeight: =75
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =1
+
+            Header1_4 As Header:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =75
+                LayoutMinHeight: =75
+                LayoutMinWidth: =Parent.Width
+                Logo: =FFLogo
+                OnSelectLogo: =Navigate(scrEntry)
+                Style: ='Header.Style'.Primary
+                Title: ="NALOG ZA PRODAJU"
+                UserEmail: =User().Email
+                UserImage: =User().Image
+                UserName: =User().FullName
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+        NalogZaProdajuMainContainer As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =580
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            ZIndex: =2
+
+        NalogZaProdajuFooterContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(233, 79, 76, 1)
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(237, 237, 237, 1)
+            Height: =75
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =4
+
+            Button6_13 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: =Set(varShowGetFileModal,true);
+                Size: =15
+                Text: ="Get xml by name"
+                ZIndex: =1
+
+            Button6_14 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(isCreated, true);
+                    Set(Con3Visibility, false);
+                Size: =15
+                Text: ="Create xml"
+                ZIndex: =2
+
+            Button6_15 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(varShowUploadXMLFileModal,true);
+                    Set(varXMLSaveButton, true);
+                Size: =15
+                Text: ="Upload xml"
+                ZIndex: =3
+
+            Button6_16 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(sales_header, Blank());
+                    Clear(colSalesLines);
+                Size: =15
+                Text: ="Clear view"
+                ZIndex: =4
+
+            Button6_17 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Clear(colSalesLines);
+                    Collect(colSalesLines, colOriginalSalesLines);
+                Size: =15
+                Text: ="Reset"
+                ZIndex: =5
+
+    "'Upload xml file_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Rectangle4_8 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowUploadXMLFileModal
+            Width: =1366
+            ZIndex: =2
+
+        Rectangle5_7 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowUploadXMLFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =3
+
+        Button3_19 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(CountRows(attach_3.Attachments)>0, DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Set(uploadedFileName, UploadXMLFile.Run({file:{name: First(attach_3.Attachments).Name, contentBytes:First(attach_3.Attachments).Value}}));
+                Set(x, First(attach_3.Attachments).Name);
+                Set(file_Name,Left(x, Len(x)-4));
+                
+                
+                IfError(GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(transfer, GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing")));
+                
+                Set(transfer_header, ParseJSON(transfer.transfer_header));
+                Set(transfer_line, transfer.transfer_line);
+                
+                Set(varShowUploadXMLFileModal,false);
+                Clear(colTransferLines);
+                ForAll(
+                    ParseJSON(transfer_line),
+                    Collect(
+                        colTransferLines,
+                        {
+                            Transfer_Line: {
+                                Document_No: ThisRecord.Document_No,
+                                Line_No: ThisRecord.Line_No,
+                                Item_No: ThisRecord.Item_No,
+                                'Transfer-from_Code': ThisRecord.'Transfer-from_Code',
+                                'Transfer-to_Code': ThisRecord.'Transfer-to_Code',
+                                'In-Transit_Code': ThisRecord.'In-Transit_Code',
+                                GP_Posting_Group: ThisRecord.GP_Posting_Group,
+                                Inv_Posting_Group: ThisRecord.Inv_Posting_Group,
+                                Description: ThisRecord.Description,
+                                Unit_Of_Measure: ThisRecord.Unit_Of_Measure,
+                                Quantity: ThisRecord.Quantity,
+                                Quantity_Base: ThisRecord.Quantity_Base,
+                                'Qty-to_Ship': ThisRecord.'Qty-to_Ship',
+                                'Qty-to_Receive': ThisRecord.'Qty-to_Receive',
+                                Quantity_Shipped: ThisRecord.Quantity_Shipped,
+                                Quantity_Received: ThisRecord.Quantity_Received,
+                                Outstanding_Qty: ThisRecord.Outstanding_Qty,
+                                Shipment_Date: ThisRecord.Shipment_Date,
+                                Receipt_Date: ThisRecord.Receipt_Date
+                            }
+                        }
+                    )
+                );
+                
+                //Reset(attach_2);
+            Size: =15
+            Text: ="Upload file"
+            Visible: =varShowUploadXMLFileModal
+            X: =761
+            Y: =467
+            ZIndex: =4
+
+        Button3_17 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(attach_3);
+                Set(varShowUploadXMLFileModal,false)
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowUploadXMLFileModal
+            X: =515
+            Y: =467
+            ZIndex: =5
+
+        Icon7_3 As icon.AddDocument:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.AddDocument
+            Visible: =varShowUploadXMLFileModal
+            X: =686
+            Y: =206
+            ZIndex: =6
+
+        attach_3 As attachments:
+            AddAttachmentText: ="Upload file"
+            BorderColor: =
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =
+            FocusedBorderThickness: =4
+            Height: =130
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(222, 179, 184, 1)
+            IsInDataCard: =true
+            ItemColor: =RGBA(255, 255, 255, 1)
+            ItemFill: =RGBA(164, 38, 44, 1)
+            ItemHoverColor: =RGBA(0, 0, 0, 1)
+            ItemHoverFill: =RGBA(222, 179, 184, 1)
+            Items: =
+            MaxAttachments: =1
+            MaxAttachmentsText: =""
+            NoAttachmentsText: ="There is no file."
+            PaddingBottom: =5
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            PaddingRight: =5
+            PaddingTop: =5
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(89, 0, 0, 1)
+            Tooltip: =
+            Visible: =varShowUploadXMLFileModal
+            Width: =551
+            X: =428
+            Y: =299
+            ZIndex: =7
+
+    saveXml_3 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =//If(!IsBlank(purchase_header) || !IsBlank(purchase_line), DisplayMode.Edit, DisplayMode.Disabled)
+            DisplayMode.Edit
+        Fill: =RGBA(164, 38, 44, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =50
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: |
+            =UpdateContext({
+                salesJsonData:
+                JSON(
+                    {
+                        Sales_Header: {
+                            Document_Type: Text(sales_header.Document_Type),
+                            'No.': Text(sales_header.'No.'),
+                            'Sell-To_Customer_No.': Text(sales_header.'Sell-To_Customer_No.'),
+                            'Sell-To_Contact_No.': Text(sales_header.'Sell-To_Contact_No.'),
+                            'Sell-to_Customer_Name': Text(sales_header.'Sell-to_Customer_Name'),
+                            'Sell-to_Address': Text(sales_header.'Sell-to_Address'),
+                            'Sell-to_PostCode': Text(sales_header.'Sell-to_PostCode'),
+                            'Sell-to_City': Text(sales_header.'Sell-to_City'),
+                            'Sell-to_Contact': Text(sales_header.'Sell-to_Contact'),
+                            Posting_Date: Text(sales_header.Posting_Date),
+                            Order_Date: Text(sales_header.Order_Date),
+                            Document_Date: Text(sales_header.Document_Date),
+                            VAT_Date: Text(sales_header.VAT_Date),
+                            Quote_No: Text(sales_header.Quote_No),
+                            Ext_Doc_No: Text(sales_header.Ext_Doc_No),
+                            Salesperson_Code: Text(sales_header.Salesperson_Code),
+                            Status: Text(sales_header.Status),
+                            'Bill-to_Cust_No': Text(sales_header.'Bill-to_Cust_No'),
+                            'Bill-to_Contact_No.': Text(sales_header.'Bill-to_Contact_No.'),
+                            Customer_Price_Group: Text(sales_header.Customer_Price_Group),
+                            'Bill-to_Name': Text(sales_header.'Bill-to_Name'),
+                            'Bill-to_Address': Text(sales_header.'Bill-to_Address'),
+                            'Bill-to_PostCode': Text(sales_header.'Bill-to_PostCode'),
+                            'Bill-to_City': Text(sales_header.'Bill-to_City'),
+                            'Bill-to_Contact': Text(sales_header.'Bill-to_Contact'),
+                            Payment_Terms_Code: Text(sales_header.Payment_Terms_Code),
+                            Due_Date: Text(sales_header.Due_Date),
+                            Bank_No: Text(sales_header.Bank_No),
+                            Bank_Name: Text(sales_header.Bank_Name),
+                            Shortcut_Dimension_1_Code: Text(sales_header.Shortcut_Dimension_1_Code),
+                            Payement_Disc: Text(sales_header.Payement_Disc),
+                            Pmt_Discount_Date: Text(sales_header.Pmt_Discount_Date),
+                            Payement_Method_Code: Text(sales_header.Payement_Method_Code),
+                            Amount_Including_VAT: Text(sales_header.Amount_Including_VAT),
+                            Amount: Text(sales_header.Amount),
+                            'VAT_Registration_No.': Text(sales_header.'VAT_Registration_No.'),
+                            'Gen._Bus._Posting_Group': Text(sales_header.'Gen._Bus._Posting_Group'),
+                            'VAT_Bus._Posting_Group': Text(sales_header.'VAT_Bus._Posting_Group'),
+                            Transport_Method: Text(sales_header.Transport_Method),
+                            VAT_Country_Code: Text(sales_header.VAT_Country_Code),
+                            'Ship-to_Code': Text(sales_header.'Ship-to_Code'),
+                            'Ship-to_Name': Text(sales_header.'Ship-to_Name'),
+                            'Ship-to_Address': Text(sales_header.'Ship-to_Address'),
+                            'Ship-to_Post_Code': Text(sales_header.'Ship-to_Post_Code'),
+                            'Ship-to_City': Text(sales_header.'Ship-to_City'),
+                            'Ship-to_Contact': Text(sales_header.'Ship-to_Contact'),
+                            Location_Code: Text(sales_header.Location_Code),
+                            Shipp_Method_Code: Text(sales_header.Shipp_Method_Code),
+                            Shipp_Agent_Code: Text(sales_header.Shipp_Agent_Code),
+                            Shipp_Agent_Service_Code: Text(sales_header.Shipp_Agent_Service_Code),
+                            Tax_Area_Code: Text(sales_header.Tax_Area_Code),
+                            Shipp_Date: DateValue(sales_header.Shipp_Date),
+                            Sales_Line: ForAll(colSalesLines As sl, 
+                                {
+                                    Document_Type: Text(sl.Document_Type),
+                                    'Sell-to_Customer_No.': Text(sl.'Sell-to_Customer_No.'),
+                                    Document_No: Text(sl.Document_No),
+                                    Line_No: Text(sl.Line_No),
+                                    Type: Text(sl.Type),
+                                    Item_No: Text(sl.Item_No),
+                                    Location_Code: Text(sl.Location_Code),
+                                    Posting_Group: Text(sl.Posting_Group),
+                                    Description: Text(sl.Description),
+                                    Unit_Of_Measure: Text(sl.Unit_Of_Measure),
+                                    Quantity: Text(sl.Quantity),
+                                    Unit_Price: Text(sl.Unit_Price),
+                                    Line_Amount: Text(sl.Line_Amount),
+                                    Line_Discount_Amount: Text(sl.Line_Discount_Amount),
+                                    'Qty-to_Invoice': Text(sl.'Qty-to_Invoice'),
+                                    'Qty-to_Ship': Text(sl.'Qty-to_Ship'),
+                                    Outstand_Quantity: Text(sl.Outstand_Quantity),                        
+                                    Res_Entry: ForAll(Filter(colSalesResEntries, ThisRecord.Item_No = sl.Item_No),
+                                    {
+                                        Created_By: Text(Created_By),
+                                        Creation_Date: Text(Creation_Date),
+                                        Entry_No: Text(Entry_No),
+                                        Exp_Date: Text(Exp_Date),
+                                        Exp_Receipt_Date: Text(Exp_Receipt_Date),
+                                        Item_No: Text(Item_No),
+                                        Item_Tracking: Text(Item_Tracking),
+                                        LOT_No: Text(LOT_No),
+                                        Location_Code: Text(Location_Code),
+                                        Positive: Text(Positive),
+                                        'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
+                                        Quantity: Text(Quantity),
+                                        Quantity_Base: Text(Quantity_Base),
+                                        Res_Status: Text(Res_Status),
+                                        Shipment_Date: Text(Shipment_Date),
+                                        Source_ID: Text(Source_ID),
+                                        Source_Ref_No: Text(Source_Ref_No),
+                                        Source_SubType: Text(Source_SubType),
+                                        Source_Type: Text(Source_Type)
+                                    }) 
+                                }
+                            )
+                        }
+                    },JSONFormat.IgnoreUnsupportedTypes
+                )
+            });
+            
+            If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
+        Size: =15
+        Text: ="Save"
+        Width: =225
+        X: =1124
+        Y: =704
+        ZIndex: =15
+
+    "'Get xml file by name_3' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =15
+
+        Rectangle4_9 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowGetFileModal
+            Width: =1366
+            ZIndex: =8
+
+        Rectangle5_8 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowGetFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =9
+
+        Button3_16 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |
+                =If(!IsBlank(fileName_3.Value), DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |
+                =Set(
+                    varShowGetFileModal,
+                    false
+                );
+                Set(
+                    file_Name,
+                    fileName_3.Value
+                );
+                IfError(
+                    GetXML_Nalog_Za_Prodaju.Run(
+                        file_Name,
+                        "ReadyForProcessing"
+                    ),
+                    Notify(
+                        "Error occurred while Get request, check if file exists.",
+                        NotificationType.Error,
+                        5000
+                    ),
+                    UpdateContext({
+                        sales:
+                        GetXML_Nalog_Za_Prodaju.Run(
+                            file_Name,
+                            "ReadyForProcessing"
+                        )
+                    })
+                );
+                
+                UpdateContext({
+                    sales_header:
+                    ParseJSON(sales.sales_header)
+                });
+                UpdateContext({
+                    sales_lines:
+                    sales.sales_line
+                });
+                UpdateContext({
+                    salesResEntry:
+                    sales.res_entry
+                });
+                
+                Clear(colSalesLines);
+                Clear(colSalesResEntries);
+                
+                ForAll(
+                    ParseJSON(sales_lines),
+                    Collect(
+                        colSalesLines,
+                        {
+                            Document_Type: Value(ThisRecord.Document_Type),
+                            'Sell-to_Customer_No.': Text(ThisRecord.'Sell-to_Customer_No.'),
+                            Document_No: Text(ThisRecord.Document_No),
+                            Line_No: Value(ThisRecord.Line_No),
+                            Type: Value(ThisRecord.Type),
+                            Item_No: Text(ThisRecord.Item_No),
+                            Location_Code: Text(ThisRecord.Location_Code),
+                            Posting_Group: Text(ThisRecord.Posting_Group),
+                            Description: Text(ThisRecord.Description),
+                            Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                            Quantity: Value(ThisRecord.Quantity),
+                            Unit_Price: Value(ThisRecord.Unit_Price),
+                            Line_Amount: Value(ThisRecord.Line_Amount),
+                            Line_Discount_Amount: Value(ThisRecord.Line_Discount_Amount),
+                            'Qty-to_Invoice': Value(ThisRecord.'Qty-to_Invoice'),
+                            'Qty-to_Ship': Value(ThisRecord.'Qty-to_Ship'),
+                            Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
+                        }
+                    );
+                    
+                );
+                
+                
+                ForAll(
+                    ParseJSON(salesResEntry),
+                    Collect(
+                        colSalesResEntries,
+                        {
+                            Entry_No: Text(ThisRecord.Entry_No),
+                                Item_No: Text(ThisRecord.Item_No),
+                                Positive: Text(ThisRecord.Positive),
+                                Quantity: Value(ThisRecord.Quantity),
+                                Quantity_Base: Value(ThisRecord.Quantity_Base),
+                                Location_Code: Text(ThisRecord.Location_Code),
+                                Res_Status: Text(ThisRecord.Res_Status),
+                                Source_Type: Text(ThisRecord.Source_Type),
+                                Source_SubType: Text(ThisRecord.Source_SubType),
+                                Source_ID: Text(ThisRecord.Source_ID),
+                                Source_Ref_No: Text(ThisRecord.Source_Ref_No),
+                                Item_Tracking: Text(ThisRecord.Item_Tracking),
+                                LOT_No: Text(ThisRecord.LOT_No),
+                                Exp_Date: Text(ThisRecord.Exp_Date),
+                                Creation_Date: Text(ThisRecord.Creation_Date),
+                                Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
+                                Shipment_Date: Text(ThisRecord.Shipment_Date),
+                                Created_By: Text(ThisRecord.Created_By),
+                                'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
+                            }            
+                    )
+                );
+                
+                
+                ClearCollect(
+                    colOriginalSalesLines,
+                    colSalesLines
+                );
+                //za reset
+            Size: =15
+            Text: ="Get file"
+            Underline: =true
+            Visible: =varShowGetFileModal
+            X: =761
+            Y: =448
+            ZIndex: =10
+
+        Button3_18 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(fileName_3);
+                Set(varShowGetFileModal,false);
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowGetFileModal
+            X: =515
+            Y: =448
+            ZIndex: =11
+
+        "fileName_3 As 'Text input'":
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =50
+            Visible: =varShowGetFileModal
+            Width: =476
+            X: =465
+            Y: =339
+            ZIndex: =12
+
+        Label3_3 As label:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =13
+            Text: ="File name"
+            Visible: =varShowGetFileModal
+            X: =465
+            Y: =299
+            ZIndex: =13
+
+        Icon4_3 As icon.ListScrollEmpty:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.ListScrollEmpty
+            Visible: =varShowGetFileModal
+            X: =686
+            Y: =206
+            ZIndex: =14
+

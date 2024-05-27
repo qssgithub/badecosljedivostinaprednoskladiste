@@ -1207,15 +1207,15 @@
                         =Switch(
                             Parent.Selected.FileType,
                             "01",
-                            Navigate(scr_XMLTemeljniceInventure),
+                            Navigate(xmlTemeljniceInventure),
                             "02",
-                            Navigate(scr_XMLNabavniNalog),
+                            Navigate(xmlNabavniNalog),
                             "03",
-                            Navigate(scr_XMLNalogZaProdaju),
+                            Navigate(xmlNalogZaProdaju),
                             "04",
-                            Navigate(scr_XMLNalogZaPrenos),
+                            Navigate(xmlNalogZaPrenos),
                             "05",
-                            Navigate(scr_XMLPrimke),
+                            Navigate(xmlPrimke),
                             "06",
                             Navigate(scr_XMLOtpremnice)
                         );
@@ -1257,15 +1257,15 @@
                             Switch(
                                 Parent.Selected.FileType,
                                 "01",
-                                Navigate(scr_XMLTemeljniceInventure),
+                                Navigate(xmlTemeljniceInventure),
                                 "02",
-                                Navigate(scr_XMLNabavniNalog),
+                                Navigate(xmlNabavniNalog),
                                 "03",
-                                Navigate(scr_XMLNalogZaProdaju),
+                                Navigate(xmlNalogZaProdaju),
                                 "04",
-                                Navigate(scr_XMLNalogZaPrenos),
+                                Navigate(xmlNalogZaPrenos),
                                 "05",
-                                Navigate(scr_XMLPrimke),
+                                Navigate(xmlPrimke),
                                 "06",
                                 Navigate(scr_XMLOtpremnice)
                             );
@@ -1358,7 +1358,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLTemeljniceInventure)
+        OnSelect: =Navigate(xmlTemeljniceInventure)
         Size: =12
         Text: ="TEMELJNICE INVENTURE"
         X: =442
@@ -1647,7 +1647,7 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |
-            =Navigate(scr_XMLNabavniNalog)
+            =Navigate(xmlNabavniNalog)
         Size: =12
         Text: ="NABAVNI NALOG"
         X: =264
@@ -1663,7 +1663,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaPrenos)
+        OnSelect: =Navigate(xmlNalogZaPrenos)
         Size: =12
         Text: ="NALOG ZA PRENOS"
         X: =618
@@ -1679,7 +1679,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaProdaju)
+        OnSelect: =Navigate(xmlNalogZaProdaju)
         Size: =12
         Text: ="NALOG ZA PRODAJU"
         X: =799
@@ -1695,7 +1695,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLPrimke)
+        OnSelect: =Navigate(xmlPrimke)
         Size: =12
         Text: ="PRIMKE"
         X: =986

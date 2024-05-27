@@ -1,0 +1,646 @@
+"xmlPrimke As screen.'autoLayout_HeaderFooter_ver1.0'":
+    Fill: =RGBA(234, 83, 109, 1)
+    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    OnVisible: |-
+        =If(!IsBlank(SelectedFile),
+        IfError(
+            GetXML_Primke.Run(
+                SelectedFile,
+                SelectedFolder
+            ),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            ),
+            UpdateContext({
+                warehouse:
+                GetXML_Primke.Run(
+                    SelectedFile,
+                    SelectedFolder
+                )
+            })
+        );
+        
+        UpdateContext({
+            warehouseHeader:
+            ParseJSON(warehouse.warehouse_receipt_header)
+        });
+        
+        Clear(colWarehouseLines);
+        ForAll(
+            ParseJSON(warehouse.warehouse_receipt_line),
+            Collect(
+                colWarehouseLines,
+                {
+                    No: Text(ThisRecord.No),
+                    Line_No: Text(ThisRecord.Line_No),
+                    Source_Type: Text(ThisRecord.Source_Type),
+                    Source_SubType: Text(ThisRecord.Source_SubType),
+                    Source_No: Text(ThisRecord.Source_No),
+                    Source_Line_No: Text(ThisRecord.Source_Line_No),
+                    Source_Document: Text(ThisRecord.Source_Document),
+                    Location_Code: Text(ThisRecord.Location_Code),
+                    Shelf_No: Text(ThisRecord.Shelf_No),
+                    Bin_Code: Text(ThisRecord.Bin_Code),
+                    Zone_Code: Text(ThisRecord.Zone_Code),
+                    Item_No: Text(ThisRecord.Item_No),
+                    Quantity: Text(ThisRecord.Quantity),
+                    Qty_Base: Text(ThisRecord.Qty_Base),
+                    Qty_Outstanding: Text(ThisRecord.Qty_Outstanding),
+                    Qty_Outstanding_Base: Text(ThisRecord.Qty_Outstanding_Base),
+                    Qty_to_Receive: Text(ThisRecord.Qty_to_Receive),
+                    Qty_to_Receive_Base: Text(ThisRecord.Qty_to_Receive_Base),
+                    Qty_Received: Text(ThisRecord.Qty_Received),
+                    Qty_Received_Base: Text(ThisRecord.Qty_Received_Base),
+                    UOM_Code: Text(ThisRecord.UOM_Code),
+                    Qty_per_UOM: Text(ThisRecord.Qty_per_UOM),
+                    Description: Text(ThisRecord.Description),
+                    Status: Text(ThisRecord.Status),
+                    Sorting_Sequence_No: Text(ThisRecord.Sorting_Sequence_No),
+                    Due_Date: Text(ThisRecord.Due_Date),
+                    Starting_Date: Text(ThisRecord.Starting_Date),
+                    Cubage: Text(ThisRecord.Cubage),
+                    Weight: Text(ThisRecord.Weight),
+                    Not_upd_by_SDP: Text(ThisRecord.Not_upd_by_SDP),
+                    Posting_From_Whs_Ref: Text(ThisRecord.Posting_From_Whs_Ref),
+                    Qty_to_Cross_Dock: Text(ThisRecord.Qty_to_Cross_Dock),
+                    Qty_to_Cross_Dock_Base: Text(ThisRecord.Qty_to_Cross_Dock_Base),
+                    Cross_Dock_Zone_Code: Text(ThisRecord.Cross_Dock_Zone_Code),
+                    Cross_Dock_Bin_Code: Text(ThisRecord.Cross_Dock_Bin_Code)
+                }
+            );
+        );
+        
+        ClearCollect(
+            colOriginalWarehouseLines,
+            colWarehouseLines
+        );)
+
+    ScreenContainer1_4 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        HeaderContainer1_4 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =75
+            LayoutMinHeight: =75
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =1
+
+            Header1_5 As Header:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                Height: =75
+                LayoutMinHeight: =75
+                LayoutMinWidth: =Parent.Width
+                Logo: =FFLogo
+                OnSelectLogo: =Navigate(scrEntry)
+                Style: ='Header.Style'.Primary
+                Title: ="PRIMKE"
+                UserEmail: =User().Email
+                UserImage: =User().Image
+                UserName: =User().FullName
+                Width: =Parent.Width
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+        MainContainer1_4 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =580
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            ZIndex: =2
+
+        FooterContainer1_4 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(233, 79, 76, 1)
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(237, 237, 237, 1)
+            Height: =75
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =1335
+            ZIndex: =4
+
+            Button6_18 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: =Set(varShowGetFileModal,true);
+                Size: =15
+                Text: ="Get xml by name"
+                ZIndex: =1
+
+            Button6_19 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(isCreated, true);
+                    Set(Con3Visibility, false);
+                Size: =15
+                Text: ="Create xml"
+                ZIndex: =2
+
+            Button6_20 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(varShowUploadXMLFileModal,true);
+                    Set(varXMLSaveButton, true);
+                Size: =15
+                Text: ="Upload xml"
+                ZIndex: =3
+
+            Button6_21 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(warehouseHeader, Blank());
+                    Clear(colWarehouseLines);
+                Size: =15
+                Text: ="Clear view"
+                ZIndex: =4
+
+            Button6_22 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Clear(colSalesLines);
+                    Collect(colSalesLines, colOriginalSalesLines);
+                Size: =15
+                Text: ="Reset"
+                ZIndex: =5
+
+    "'Upload xml file_4' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =9
+
+        Rectangle4_10 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowUploadXMLFileModal
+            Width: =1366
+            ZIndex: =2
+
+        Rectangle5_9 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowUploadXMLFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =3
+
+        Button3_23 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =If(CountRows(attach_4.Attachments)>0, DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Set(uploadedFileName, UploadXMLFile.Run({file:{name: First(attach_4.Attachments).Name, contentBytes:First(attach_4.Attachments).Value}}));
+                Set(x, First(attach_4.Attachments).Name);
+                Set(file_Name,Left(x, Len(x)-4));
+                
+                
+                IfError(GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing"),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),Set(transfer, GetXML_Nalog_Za_Prenos.Run(file_Name, "ReadyForProcessing")));
+                
+                Set(transfer_header, ParseJSON(transfer.transfer_header));
+                Set(transfer_line, transfer.transfer_line);
+                
+                Set(varShowUploadXMLFileModal,false);
+                Clear(colTransferLines);
+                ForAll(
+                    ParseJSON(transfer_line),
+                    Collect(
+                        colTransferLines,
+                        {
+                            Transfer_Line: {
+                                Document_No: ThisRecord.Document_No,
+                                Line_No: ThisRecord.Line_No,
+                                Item_No: ThisRecord.Item_No,
+                                'Transfer-from_Code': ThisRecord.'Transfer-from_Code',
+                                'Transfer-to_Code': ThisRecord.'Transfer-to_Code',
+                                'In-Transit_Code': ThisRecord.'In-Transit_Code',
+                                GP_Posting_Group: ThisRecord.GP_Posting_Group,
+                                Inv_Posting_Group: ThisRecord.Inv_Posting_Group,
+                                Description: ThisRecord.Description,
+                                Unit_Of_Measure: ThisRecord.Unit_Of_Measure,
+                                Quantity: ThisRecord.Quantity,
+                                Quantity_Base: ThisRecord.Quantity_Base,
+                                'Qty-to_Ship': ThisRecord.'Qty-to_Ship',
+                                'Qty-to_Receive': ThisRecord.'Qty-to_Receive',
+                                Quantity_Shipped: ThisRecord.Quantity_Shipped,
+                                Quantity_Received: ThisRecord.Quantity_Received,
+                                Outstanding_Qty: ThisRecord.Outstanding_Qty,
+                                Shipment_Date: ThisRecord.Shipment_Date,
+                                Receipt_Date: ThisRecord.Receipt_Date
+                            }
+                        }
+                    )
+                );
+                
+                //Reset(attach_2);
+            Size: =15
+            Text: ="Upload file"
+            Visible: =varShowUploadXMLFileModal
+            X: =761
+            Y: =467
+            ZIndex: =4
+
+        Button3_22 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(attach_4);
+                Set(varShowUploadXMLFileModal,false)
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowUploadXMLFileModal
+            X: =515
+            Y: =467
+            ZIndex: =5
+
+        Icon7_4 As icon.AddDocument:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.AddDocument
+            Visible: =varShowUploadXMLFileModal
+            X: =686
+            Y: =206
+            ZIndex: =6
+
+        attach_4 As attachments:
+            AddAttachmentText: ="Upload file"
+            BorderColor: =
+            BorderThickness: =2
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: =
+            FocusedBorderThickness: =4
+            Height: =130
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(222, 179, 184, 1)
+            IsInDataCard: =true
+            ItemColor: =RGBA(255, 255, 255, 1)
+            ItemFill: =RGBA(164, 38, 44, 1)
+            ItemHoverColor: =RGBA(0, 0, 0, 1)
+            ItemHoverFill: =RGBA(222, 179, 184, 1)
+            Items: =
+            MaxAttachments: =1
+            MaxAttachmentsText: =""
+            NoAttachmentsText: ="There is no file."
+            PaddingBottom: =5
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            PaddingRight: =5
+            PaddingTop: =5
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(89, 0, 0, 1)
+            Tooltip: =
+            Visible: =varShowUploadXMLFileModal
+            Width: =551
+            X: =428
+            Y: =299
+            ZIndex: =7
+
+    saveXml_4 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        DisplayMode: |-
+            =//If(!IsBlank(purchase_header) || !IsBlank(purchase_line), DisplayMode.Edit, DisplayMode.Disabled)
+            DisplayMode.Edit
+        Fill: =RGBA(164, 38, 44, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =50
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+        OnSelect: |-
+            =UpdateContext({
+                warehouseJsonData:
+                JSON(
+                    {
+                        Warehouse_Receipt_Header: {
+                            No: Text(warehouseHeader.No),
+                            Location_Code: Text(warehouseHeader.Location_Code),
+                            No_Series: Text(warehouseHeader.No_Series),
+                            Zone_Code: Text(warehouseHeader.Zone_Code),
+                            Bin_Code: Text(warehouseHeader.Bin_Code),
+                            Document_Status: Text(warehouseHeader.Document_Status),
+                            Posting_Date: Text(warehouseHeader.Posting_Date),
+                            Vendor_Shipment_No: Text(warehouseHeader.Vendor_Shipment_No),
+                            Receiving_No: Text(warehouseHeader.Receiving_No),
+                            Last_Receiving_No: Text(warehouseHeader.Last_Receiving_No),
+                            Receiving_No_Series: Text(warehouseHeader.Receiving_No_Series),                
+                            Warehouse_Receipt_Line: ForAll(colWarehouseLines, 
+                                {
+                                    No: Text(No),
+                                    Line_No: Text(Line_No),
+                                    Source_Type: Text(Source_Type),
+                                    Source_SubType: Text(Source_SubType),
+                                    Source_No: Text(Source_No),
+                                    Source_Line_No: Text(Source_Line_No),
+                                    Source_Document: Text(Source_Document),
+                                    Location_Code: Text(Location_Code),
+                                    Shelf_No: Text(Shelf_No),
+                                    Bin_Code: Text(Bin_Code),
+                                    Zone_Code: Text(Zone_Code),
+                                    Item_No: Text(Item_No),
+                                    Quantity: Text(Quantity),
+                                    Qty_Base: Text(Qty_Base),
+                                    Qty_Outstanding: Text(Qty_Outstanding),
+                                    Qty_Outstanding_Base: Text(Qty_Outstanding_Base),
+                                    Qty_to_Receive: Text(Qty_to_Receive),
+                                    Qty_to_Receive_Base: Text(Qty_to_Receive_Base),
+                                    Qty_Received: Text(Qty_Received),
+                                    Qty_Received_Base: Text(Qty_Received_Base),
+                                    UOM_Code: Text(UOM_Code),
+                                    Qty_per_UOM: Text(Qty_per_UOM),
+                                    Description: Text(Description),
+                                    Status: Text(Status),
+                                    Sorting_Sequence_No: Text(Sorting_Sequence_No),
+                                    Due_Date: Text(Due_Date),
+                                    Starting_Date: Text(Starting_Date),
+                                    Cubage: Text(Cubage),
+                                    Weight: Text(Weight),
+                                    Not_upd_by_SDP: Text(Not_upd_by_SDP),
+                                    Posting_From_Whs_Ref: Text(Posting_From_Whs_Ref),
+                                    Qty_to_Cross_Dock: Text(Qty_to_Cross_Dock),
+                                    Qty_to_Cross_Dock_Base: Text(Qty_to_Cross_Dock_Base),
+                                    Cross_Dock_Zone_Code: Text(Cross_Dock_Zone_Code),
+                                    Cross_Dock_Bin_Code: Text(Cross_Dock_Bin_Code)
+                                }
+                            )
+                        }
+                    },JSONFormat.IgnoreUnsupportedTypes
+                )
+            });
+            
+            If(!isCreated,UpdateXML.Run(warehouseJsonData, file_Name, "ReadyForProcessing"));
+        Size: =15
+        Text: ="Save"
+        Width: =225
+        X: =1124
+        Y: =704
+        ZIndex: =15
+
+    "'Get xml file by name_4' As group":
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =15
+
+        Rectangle4_11 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(179, 118, 118, 0.21)
+            Height: =768
+            Visible: =varShowGetFileModal
+            Width: =1366
+            ZIndex: =8
+
+        Rectangle5_10 As rectangle:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =350
+            Visible: =varShowGetFileModal
+            Width: =606
+            X: =400
+            Y: =182
+            ZIndex: =9
+
+        Button3_21 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            DisplayMode: |
+                =If(!IsBlank(fileName_4.Value), DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =RGBA(164, 38, 44, 1)
+            FontWeight: =FontWeight.Bold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Set(
+                    varShowGetFileModal,
+                    false
+                );
+                Set(
+                    file_Name,
+                    fileName_4.Value
+                );
+                IfError(
+                    GetXML_Primke.Run(
+                        file_Name,
+                        "ReadyForProcessing"
+                    ),
+                    Notify(
+                        "Error occurred while Get request, check if file exists.",
+                        NotificationType.Error,
+                        5000
+                    ),
+                    UpdateContext({
+                        warehouse:
+                        GetXML_Primke.Run(
+                            file_Name,
+                            "ReadyForProcessing"
+                        )
+                    })
+                );
+                
+                UpdateContext({
+                    warehouseHeader:
+                    ParseJSON(warehouse.warehouse_receipt_header)
+                });
+                
+                Clear(colWarehouseLines);
+                ForAll(
+                    ParseJSON(warehouse.warehouse_receipt_line),
+                    Collect(
+                        colWarehouseLines,
+                        {
+                            No: Text(ThisRecord.No),
+                            Line_No: Text(ThisRecord.Line_No),
+                            Source_Type: Text(ThisRecord.Source_Type),
+                            Source_SubType: Text(ThisRecord.Source_SubType),
+                            Source_No: Text(ThisRecord.Source_No),
+                            Source_Line_No: Text(ThisRecord.Source_Line_No),
+                            Source_Document: Text(ThisRecord.Source_Document),
+                            Location_Code: Text(ThisRecord.Location_Code),
+                            Shelf_No: Text(ThisRecord.Shelf_No),
+                            Bin_Code: Text(ThisRecord.Bin_Code),
+                            Zone_Code: Text(ThisRecord.Zone_Code),
+                            Item_No: Text(ThisRecord.Item_No),
+                            Quantity: Text(ThisRecord.Quantity),
+                            Qty_Base: Text(ThisRecord.Qty_Base),
+                            Qty_Outstanding: Text(ThisRecord.Qty_Outstanding),
+                            Qty_Outstanding_Base: Text(ThisRecord.Qty_Outstanding_Base),
+                            Qty_to_Receive: Text(ThisRecord.Qty_to_Receive),
+                            Qty_to_Receive_Base: Text(ThisRecord.Qty_to_Receive_Base),
+                            Qty_Received: Text(ThisRecord.Qty_Received),
+                            Qty_Received_Base: Text(ThisRecord.Qty_Received_Base),
+                            UOM_Code: Text(ThisRecord.UOM_Code),
+                            Qty_per_UOM: Text(ThisRecord.Qty_per_UOM),
+                            Description: Text(ThisRecord.Description),
+                            Status: Text(ThisRecord.Status),
+                            Sorting_Sequence_No: Text(ThisRecord.Sorting_Sequence_No),
+                            Due_Date: Text(ThisRecord.Due_Date),
+                            Starting_Date: Text(ThisRecord.Starting_Date),
+                            Cubage: Text(ThisRecord.Cubage),
+                            Weight: Text(ThisRecord.Weight),
+                            Not_upd_by_SDP: Text(ThisRecord.Not_upd_by_SDP),
+                            Posting_From_Whs_Ref: Text(ThisRecord.Posting_From_Whs_Ref),
+                            Qty_to_Cross_Dock: Text(ThisRecord.Qty_to_Cross_Dock),
+                            Qty_to_Cross_Dock_Base: Text(ThisRecord.Qty_to_Cross_Dock_Base),
+                            Cross_Dock_Zone_Code: Text(ThisRecord.Cross_Dock_Zone_Code),
+                            Cross_Dock_Bin_Code: Text(ThisRecord.Cross_Dock_Bin_Code)
+                        }
+                    );
+                );
+                
+                ClearCollect(
+                    colOriginalWarehouseLines,
+                    colWarehouseLines
+                );
+            Size: =15
+            Text: ="Get file"
+            Visible: =varShowGetFileModal
+            X: =761
+            Y: =458
+            ZIndex: =10
+
+        Button3_20 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(139, 154, 159, 1)
+            FontWeight: =FontWeight.Semibold
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+            OnSelect: |-
+                =Reset(fileName_4);
+                Set(varShowGetFileModal,false);
+            Size: =15
+            Text: ="Cancel"
+            Visible: =varShowGetFileModal
+            X: =515
+            Y: =458
+            ZIndex: =11
+
+        "fileName_4 As 'Text input'":
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =
+            Height: =50
+            Visible: =varShowGetFileModal
+            Width: =476
+            X: =465
+            Y: =339
+            ZIndex: =12
+
+        Label3_4 As label:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =13
+            Text: ="File name"
+            Visible: =varShowGetFileModal
+            X: =465
+            Y: =299
+            ZIndex: =13
+
+        Icon4_4 As icon.ListScrollEmpty:
+            BorderColor: =RGBA(89, 0, 0, 1)
+            Color: =RGBA(89, 0, 0, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.ListScrollEmpty
+            Visible: =varShowGetFileModal
+            X: =686
+            Y: =206
+            ZIndex: =14
+
