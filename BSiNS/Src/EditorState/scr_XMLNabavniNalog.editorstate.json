@@ -4231,7 +4231,7 @@
       "MetaDataIDKey": "",
       "Name": "HeaderTitle",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 14,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4834,7 +4834,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6630,7 +6630,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7832,7 +7832,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_26",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8143,7 +8143,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_28",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8454,7 +8454,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_30",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 7,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8765,7 +8765,7 @@
       "MetaDataIDKey": "",
       "Name": "Label2_4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9984,7 +9984,7 @@
       "MetaDataIDKey": "",
       "Name": "LinesTitle",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11686,7 +11686,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_BuyFromVendorNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11802,7 +11802,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_DocumentType",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11918,7 +11918,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_No",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 10,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12034,7 +12034,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_OrderDate",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 13,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12150,7 +12150,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_ShipToName",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 11,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12266,7 +12266,7 @@
       "MetaDataIDKey": "",
       "Name": "NN_ShipToName2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 12,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13772,7 +13772,14 @@
         "Orientation",
         "LoadingSpinner",
         "LoadingSpinnerColor",
-        "OnVisible"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "If(!IsBlank(SelectedFile),\nIfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),\n    Notify(\"Error occurred while Get request, check if file exists.\",NotificationType.Error,5000),\n    UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder)})\n);\n\nUpdateContext({purchase_line: purchase.purchase_line});\nUpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});\n\nClear(colPurchaseLines);\nForAll(\n    ParseJSON(purchase_line),\n    Collect(\n        colPurchaseLines,\n        {\n             Document_Type: Text(ThisRecord.Document_Type),\n              'Buy-from_Vendor_No.': Text(ThisRecord.'Buy-from_Vendor_No.'),\n              Document_No: Text(ThisRecord.Document_No),\n              Line_No: Text(ThisRecord.Line_No),\n              Type: Text(ThisRecord.Type),\n              Item_No: Text(ThisRecord.Item_No),\n              Location_Code: Text(ThisRecord.Location_Code),\n              Posting_Group: Text(ThisRecord.Posting_Group),\n              Description: Text(ThisRecord.Description),\n              Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),\n              Quantity: Text(ThisRecord.Quantity),\n              LOT_No: Text(ThisRecord.LOT_No),\n              Exp_Date: Text(ThisRecord.Exp_Date)\n        }\n    );\n);\n\nClearCollect(colOriginalPurchaseLines, colPurchaseLines);\n)",
+          "InvariantPropertyName": "OnVisible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "IsAutoGenerated": false,
       "IsComponentDefinition": false,
@@ -13830,7 +13837,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnVisible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "defaultScreenStyle",
@@ -14108,7 +14115,7 @@
       "MetaDataIDKey": "",
       "Name": "TextCanvas2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
