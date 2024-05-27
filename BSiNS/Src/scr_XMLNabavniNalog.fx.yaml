@@ -1121,7 +1121,7 @@
             
             Notify(file_Name);*/
             
-            If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked));
+            If(!isCreated,UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, true));
             
         Size: =15
         Text: ="Save"
