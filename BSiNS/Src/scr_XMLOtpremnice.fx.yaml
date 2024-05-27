@@ -576,6 +576,7 @@ scr_XMLOtpremnice As screen:
                         ZIndex: =1
 
                         icn_BackLines As arrow.backArrow:
+                            AlignInContainer: =AlignInContainer.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             Fill: =RGBA(164, 38, 44, 1)
@@ -693,7 +694,9 @@ scr_XMLOtpremnice As screen:
                     hrz_ResEntriesHeader As groupContainer.horizontalAutoLayoutContainer:
                         FillPortions: =0
                         Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutGap: =10
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                         LayoutMinHeight: =100
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -706,6 +709,7 @@ scr_XMLOtpremnice As screen:
                         ZIndex: =1
 
                         icn_BackResEntries As arrow.backArrow:
+                            AlignInContainer: =AlignInContainer.Center
                             BorderColor: =RGBA(89, 0, 0, 1)
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             Fill: =RGBA(164, 38, 44, 1)
@@ -801,8 +805,8 @@ scr_XMLOtpremnice As screen:
                             ZIndex: =4
 
                 vrt_EditForm As groupContainer.verticalAutoLayoutContainer:
-                    DropShadow: =DropShadow.Light
                     LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =10
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
@@ -817,46 +821,182 @@ scr_XMLOtpremnice As screen:
                     Visible: =wizardStep = 3
                     ZIndex: =5
 
-                    txt_Quantity As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: ="Quantity"
-                        Width: =96
-                        X: =0
-                        Y: =0
+                    Container1 As groupContainer.horizontalAutoLayoutContainer:
+                        DropShadow: =DropShadow.Light
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutGap: =10
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        LayoutWrap: =true
+                        PaddingLeft: =10
+                        PaddingRight: =10
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
                         ZIndex: =1
 
-                    "inp_Quantity As 'Text input'":
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =320
-                        Value: =glr_Lines.Selected.Quantity
-                        Width: =320
-                        X: =0
-                        Y: =0
-                        ZIndex: =2
+                        icn_BackEditForm As arrow.backArrow:
+                            AlignInContainer: =AlignInContainer.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            Fill: =RGBA(164, 38, 44, 1)
+                            Height: =36
+                            LayoutMinHeight: =36
+                            OnSelect: |-
+                                =UpdateContext({wizardStep: 2})
+                            Width: =36
+                            ZIndex: =1
 
-                    btn_Save As Button:
-                        AlignInContainer: =AlignInContainer.End
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        OnSelect: |
-                            =UpdateContext({exportData: "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}"});
-                        Text: ="Spasi"
-                        Width: =96
-                        X: =40
-                        Y: =40
-                        ZIndex: =3
+                        txt_EditForm As Text:
+                            DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
+                            Height: =32
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =96
+                            Size: =36
+                            Text: ="Edit Form"
+                            Width: =96
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
+                    Container3 As groupContainer.verticalAutoLayoutContainer:
+                        DropShadow: =DropShadow.Light
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =15
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingLeft: =15
+                        PaddingRight: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =5
+
+                        Container4 As groupContainer.horizontalAutoLayoutContainer:
+                            LayoutGap: =15
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            LayoutWrap: =true
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            ZIndex: =1
+
+                            Container5 As groupContainer.verticalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                FillPortions: =0
+                                Height: =75
+                                LayoutDirection: =LayoutDirection.Vertical
+                                LayoutGap: =5
+                                LayoutMinHeight: =100
+                                LayoutMinWidth: =200
+                                LayoutMode: =LayoutMode.Auto
+                                RadiusBottomLeft: =4
+                                RadiusBottomRight: =4
+                                RadiusTopLeft: =4
+                                RadiusTopRight: =4
+                                Width: =150
+                                ZIndex: =5
+
+                                txt_Quantity As Text:
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =96
+                                    Size: =20
+                                    Text: ="Quantity"
+                                    Width: =96
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =1
+
+                                "inp_Quantity As 'Text input'":
+                                    Align: ='TextInputCanvas.Align'.End
+                                    BasePaletteColor: =
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    FontSize: =18
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =320
+                                    Value: =glr_Lines.Selected.Quantity
+                                    Width: =150
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =2
+
+                            Container8 As groupContainer.verticalAutoLayoutContainer:
+                                AlignInContainer: =AlignInContainer.SetByContainer
+                                FillPortions: =0
+                                Height: =75
+                                LayoutDirection: =LayoutDirection.Vertical
+                                LayoutGap: =5
+                                LayoutMinHeight: =100
+                                LayoutMinWidth: =300
+                                LayoutMode: =LayoutMode.Auto
+                                RadiusBottomLeft: =4
+                                RadiusBottomRight: =4
+                                RadiusTopLeft: =4
+                                RadiusTopRight: =4
+                                Width: =150
+                                ZIndex: =6
+
+                                txt_LOTNo As Text:
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =96
+                                    Size: =20
+                                    Text: ="LOT No"
+                                    Width: =96
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =1
+
+                                "inp_LOTNo As 'Text input'":
+                                    Align: ='TextInputCanvas.Align'.End
+                                    BasePaletteColor: =
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    FontSize: =18
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =320
+                                    Value: =glr_ResEntries.Selected.LOT_No
+                                    Width: =150
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =2
+
+                        btn_Save As Button:
+                            AlignInContainer: =AlignInContainer.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            OnSelect: |
+                                =UpdateContext({exportData: "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}"});
+                            Text: ="Spasi"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
 
         Spinner2 As Spinner:
             BasePaletteColor: =
