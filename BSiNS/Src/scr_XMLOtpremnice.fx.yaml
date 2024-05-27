@@ -596,6 +596,31 @@ scr_XMLOtpremnice As screen:
                         RadiusTopRight: =4
                         ZIndex: =1
 
+                        icn_BackEditForm As arrow.backArrow:
+                            AlignInContainer: =AlignInContainer.Center
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            Fill: =RGBA(164, 38, 44, 1)
+                            Height: =36
+                            LayoutMinHeight: =36
+                            OnSelect: |-
+                                =UpdateContext({wizardStep: 2})
+                            Width: =36
+                            ZIndex: =1
+
+                        txt_EditForm As Text:
+                            DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
+                            Height: =32
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =96
+                            Size: =36
+                            Text: ="Edit Form"
+                            Width: =96
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
                     vrt_EditFormBody As groupContainer.verticalAutoLayoutContainer:
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutGap: =15
@@ -641,6 +666,36 @@ scr_XMLOtpremnice As screen:
                                 Width: =150
                                 ZIndex: =5
 
+                                txt_Quantity As Text:
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =96
+                                    Size: =20
+                                    Text: ="Quantity"
+                                    Width: =96
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =1
+
+                                "inp_Quantity As 'Text input'":
+                                    Align: ='TextInputCanvas.Align'.End
+                                    BasePaletteColor: =
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    FontSize: =18
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =320
+                                    OnChange: |-
+                                        =UpdateIf(Otpremnice.Warehouse_Shipment_Line As line, line.Line_No = glr_Lines.Selected.Line_No, {Quantity: inp_Quantity.Value})
+                                    Value: =glr_Lines.Selected.Quantity
+                                    Width: =150
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =2
+
                             vrt_LOTNo As groupContainer.verticalAutoLayoutContainer:
                                 AlignInContainer: =AlignInContainer.SetByContainer
                                 FillPortions: =0
@@ -656,6 +711,43 @@ scr_XMLOtpremnice As screen:
                                 RadiusTopRight: =4
                                 Width: =150
                                 ZIndex: =6
+
+                                txt_LOTNo As Text:
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =96
+                                    Size: =20
+                                    Text: ="LOT No"
+                                    Width: =96
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =1
+
+                                "inp_LOTNo As 'Text input'":
+                                    Align: ='TextInputCanvas.Align'.End
+                                    BasePaletteColor: =
+                                    DisplayMode: =DisplayMode.Edit
+                                    FontColor: =
+                                    FontSize: =18
+                                    Height: =32
+                                    LayoutMinHeight: =32
+                                    LayoutMinWidth: =320
+                                    OnChange: |-
+                                        =UpdateIf(
+                                            LookUp(
+                                                Otpremnice.Warehouse_Shipment_Line As line,
+                                                line.Line_No = glr_Lines.Selected.Line_No
+                                            ).Res_Entry As entry,
+                                            entry.Item_No = glr_ResEntries.Selected.Item_No,
+                                            {LOT_No: inp_LOTNo.Value}
+                                        )
+                                    Value: =glr_ResEntries.Selected.LOT_No
+                                    Width: =150
+                                    X: =0
+                                    Y: =0
+                                    ZIndex: =2
 
                         hrz_EditFormFooter As groupContainer.horizontalAutoLayoutContainer:
                             FillPortions: =0
@@ -695,6 +787,29 @@ scr_XMLOtpremnice As screen:
                                 X: =40
                                 Y: =40
                                 ZIndex: =1
+
+                            btn_Save As Button:
+                                Appearance: ='ButtonCanvas.Appearance'.Primary
+                                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =
+                                Height: =32
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: |
+                                    =UpdateContext({IsSaving: true});
+                                    UpdateXML.Run(
+                                        "{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}",
+                                        SelectedFile,
+                                        SelectedFolder
+                                    );
+                                    UpdateContext({IsSaving: false});
+                                Text: ="Sačuvaj i Finaliziraj"
+                                Visible: =!IsSaving
+                                Width: =150
+                                X: =40
+                                Y: =40
+                                ZIndex: =2
 
                             Spinner3 As Spinner:
                                 Appearance: ='Spinner.Appearance'.Primary
