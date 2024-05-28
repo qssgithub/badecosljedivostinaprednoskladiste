@@ -3798,6 +3798,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.typic"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.typic",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "typic",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.purchase"
                 }
               ],
