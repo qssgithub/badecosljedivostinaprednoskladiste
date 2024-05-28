@@ -1,42 +1,4 @@
 {
-  "34928938-44f1-4393-b360-f97bffe0223a": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "workflowDisplayName": {
-          "value": "GetAll"
-        },
-        "workflowEntityId": {
-          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
-        },
-        "workflowName": {
-          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
-        }
-      },
-      "parameterHintsV2": {
-        "workflowDisplayName": {
-          "value": "GetAll"
-        },
-        "workflowEntityId": {
-          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
-        },
-        "workflowName": {
-          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "GetAll"
-    ],
-    "dependencies": {
-      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-    },
-    "dependents": [],
-    "id": "34928938-44f1-4393-b360-f97bffe0223a"
-  },
   "35464e44-34aa-4790-a955-6be22fa1f25e": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -296,6 +258,44 @@
     "dependents": [],
     "id": "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637"
   },
+  "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "GetAll"
+        },
+        "workflowEntityId": {
+          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
+        },
+        "workflowName": {
+          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "GetAll"
+        },
+        "workflowEntityId": {
+          "value": "a5928383-f011-ef11-9f89-6045bd9a2f6a"
+        },
+        "workflowName": {
+          "value": "1b13b924-40ec-f970-e834-a1381f5d2e40"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "GetAll"
+    ],
+    "dependencies": {
+      "shared_filesystem_1": "f0d5e08d-0d9a-4a24-98f8-8dc684089395"
+    },
+    "dependents": [],
+    "id": "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
+  },
   "cc77c4fb-5da2-4007-8003-2a71ef9049e6": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -431,5 +431,21 @@
     },
     "dependents": [],
     "id": "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
+  },
+  "f0d5e08d-0d9a-4a24-98f8-8dc684089395": {
+    "connectionRef": {
+      "displayName": "File System",
+      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1693/1.0.1693.3738/filesystem/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
+    ],
+    "id": "f0d5e08d-0d9a-4a24-98f8-8dc684089395"
   }
 }
