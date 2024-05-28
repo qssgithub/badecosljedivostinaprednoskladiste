@@ -1288,6 +1288,7 @@
                         Icon: =Icon.ChevronRight
                         OnSelect: |-
                             =Select(Parent);
+                            Parent.Selected.FileType = "02";
                             Switch(
                                 Parent.Selected.FileType,
                                 "01",
