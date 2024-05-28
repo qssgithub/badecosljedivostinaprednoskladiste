@@ -5,9 +5,6 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "4eae375e-baf0-4bab-acc6-3e393a17ded3": {
-          "value": "shared_filesystem"
-        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -19,12 +16,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
-        },
-        "shared_filesystem_1": {
-          "value": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
-        },
         "workflowDisplayName": {
           "value": "GetAll"
         },
@@ -41,8 +32,7 @@
       "GetAll"
     ],
     "dependencies": {
-      "shared_filesystem": "4eae375e-baf0-4bab-acc6-3e393a17ded3",
-      "shared_filesystem_1": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
+      "shared_filesystem": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
     },
     "dependents": [],
     "id": "34928938-44f1-4393-b360-f97bffe0223a"
@@ -147,8 +137,8 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
-      "34928938-44f1-4393-b360-f97bffe0223a",
-      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
+      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
+      "34928938-44f1-4393-b360-f97bffe0223a"
     ],
     "id": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
   },
@@ -415,6 +405,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "4eae375e-baf0-4bab-acc6-3e393a17ded3": {
+          "value": "shared_filesystem_1"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -426,6 +419,12 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
+        },
+        "shared_filesystem_1": {
+          "value": "4eae375e-baf0-4bab-acc6-3e393a17ded3"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
