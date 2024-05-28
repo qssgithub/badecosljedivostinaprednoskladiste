@@ -1116,6 +1116,8 @@
             
             Navigate(scrEntry,ScreenTransition.Fade);
             
+            Notify(message,NotificationType.Success,2000);
+            
         Size: =15
         Text: ="Save"
         Width: =225
