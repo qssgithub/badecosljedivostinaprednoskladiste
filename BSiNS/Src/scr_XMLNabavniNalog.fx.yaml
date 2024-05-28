@@ -1107,7 +1107,7 @@
                 )
             });
             
-            UpdateXML.Run(purchaseJsonData, file_Name, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
+            UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
         Size: =15
         Text: ="Save"
         Width: =225
