@@ -4,17 +4,7 @@
     OnHidden: =
     OnVisible: |
         =UpdateContext({IsLoadingGetAllFiles: true});
-        UpdateContext(
-            {
-                Files: ParseJSON(
-                    GetAll.Run(
-                        warehouseCode,
-                        dd_Status.Selected.Text,
-                        dd_FileType.Selected.Text
-                    ).xmlfiles
-                )
-            }
-        );
+        UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
         //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
         //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
         UpdateContext(
@@ -1159,17 +1149,7 @@
                         LayoutMinHeight: =32
                         OnSelect: |
                             =UpdateContext({IsLoadingGetAllFiles: true});
-                            UpdateContext(
-                                {
-                                    Files: ParseJSON(
-                                        GetAll.Run(
-                                            warehouseCode,
-                                            dd_Status.Selected.Text,
-                                            dd_FileType.Selected.Text
-                                        ).xmlfiles
-                                    )
-                                }
-                            );
+                            UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
                             //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
                             //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
                             UpdateContext(
@@ -1226,6 +1206,18 @@
                         PaddingTop: =5
                         Width: =32
                         ZIndex: =3
+
+                    ButtonCanvas1 As Button:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =UpdateContext({flowOutputs: GetAll.Run(warehouseCode)});
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     AlignInContainer: =AlignInContainer.SetByContainer
