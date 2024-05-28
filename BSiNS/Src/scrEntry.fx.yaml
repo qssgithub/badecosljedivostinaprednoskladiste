@@ -1392,7 +1392,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(xmlTemeljniceInventure)
+        OnSelect: =Navigate(scr_XMLTemeljniceInventure)
         Size: =12
         Text: ="TEMELJNICE INVENTURE"
         X: =442
@@ -1681,7 +1681,7 @@
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
         OnSelect: |
-            =Navigate(xmlNabavniNalog)
+            =Navigate(scr_XMLNabavniNalog)
         Size: =12
         Text: ="NABAVNI NALOG"
         X: =264
@@ -1697,7 +1697,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(xmlNalogZaPrenos)
+        OnSelect: =Navigate(scr_XMLNalogZaPrenos)
         Size: =12
         Text: ="NALOG ZA PRENOS"
         X: =618
@@ -1713,7 +1713,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(xmlNalogZaProdaju)
+        OnSelect: =Navigate(scr_XMLNalogZaProdaju)
         Size: =12
         Text: ="NALOG ZA PRODAJU"
         X: =799
@@ -1729,7 +1729,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(xmlPrimke)
+        OnSelect: =Navigate(scr_XMLPrimke)
         Size: =12
         Text: ="PRIMKE"
         X: =986
