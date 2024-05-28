@@ -1110,6 +1110,7 @@
             
             UpdateContext({responseData: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
             UpdateContext({parsedResponse : ParseJSON(responseData.response)});
+            
             Set(status, parsedResponse.Status);
             Set(message, parsedResponse.Message);
             
