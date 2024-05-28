@@ -2,7 +2,9 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =If(!IsBlank(SelectedFile),
+        =Reset(nalogZaProdajuReadyForNavCheckbox);
+        
+        If(!IsBlank(SelectedFile),
         IfError(
             GetXML_Nalog_Za_Prodaju.Run(
                 SelectedFile,
@@ -261,9 +263,27 @@
                 OnSelect: |-
                     =Clear(colSalesLines);
                     Collect(colSalesLines, colOriginalSalesLines);
+                    Reset(nalogZaProdajuReadyForNavCheckbox);
                 Size: =15
                 Text: ="Reset"
                 ZIndex: =5
+
+            nalogZaProdajuReadyForNavCheckbox As Checkbox:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
 
     "'Upload xml file_3' As group":
         Height: =5
@@ -532,7 +552,9 @@
                 )
             });
             
-            If(!isCreated,UpdateXML.Run(salesJsonData, file_Name, "ReadyForProcessing"));
+            If(!isCreated,UpdateXML.Run(salesJsonData, SelectedFile, SelectedFolder,nalogZaProdajuReadyForNavCheckbox.Checked));
+            
+            Navigate(scrEntry,ScreenTransition.Fade);
         Size: =15
         Text: ="Save"
         Width: =225

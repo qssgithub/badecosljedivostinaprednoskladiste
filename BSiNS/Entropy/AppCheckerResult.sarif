@@ -14,47 +14,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.saveXml_3.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.saveXml_3.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 61,
-                  "charOffset": 6387,
-                  "snippet": {
-                    "text": "UpdateXML.Run(salesJsonData, file_Name, \"ReadyForProcessing\")"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju.saveXml_3"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "3",
-              "4"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scr_XMLPrimke.saveXml_4.OnSelect"
                 }
               ],
@@ -3759,6 +3718,36 @@
                 "member": "AccessibleLabel",
                 "module": "scr_XMLTemeljniceInventure",
                 "type": "scr_XMLTemeljniceInventure.ScreenContainer1_1.FooterContainer1_1.temeljniceReadyForNavCheckbox"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer.NalogZaProdajuFooterContainer.nalogZaProdajuReadyForNavCheckbox.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer.NalogZaProdajuFooterContainer.nalogZaProdajuReadyForNavCheckbox.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_XMLNalogZaProdaju",
+                "type": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer.NalogZaProdajuFooterContainer.nalogZaProdajuReadyForNavCheckbox"
               }
             }
           ],
