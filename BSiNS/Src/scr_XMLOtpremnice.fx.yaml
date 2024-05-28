@@ -811,6 +811,7 @@ scr_XMLOtpremnice As screen:
                             ButtonCanvas2 As Button:
                                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                                 DisplayMode: =DisplayMode.Edit
+                                FontColor: =
                                 Height: =32
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
@@ -832,7 +833,9 @@ scr_XMLOtpremnice As screen:
                                 ZIndex: =2
 
                             Spinner3 As Spinner:
+                                BasePaletteColor: =
                                 DisplayMode: =DisplayMode.Edit
+                                FontColor: =
                                 Height: =32
                                 Label: ="Sačuvanje u toku"
                                 LayoutMinHeight: =200

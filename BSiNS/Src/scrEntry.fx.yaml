@@ -1236,19 +1236,19 @@
                         =Switch(
                             Parent.Selected.FileType,
                             "01",
-                            Navigate(xmlTemeljniceInventure),
+                            Navigate(scr_XMLTemeljniceInventure),
                             "02",
-                            Navigate(xmlNabavniNalog),
+                            Navigate(scr_XMLNabavniNalog),
                             "03",
-                            Navigate(xmlNalogZaProdaju),
+                            Navigate(scr_XMLNalogZaProdaju),
                             "04",
-                            Navigate(xmlNalogZaPrenos),
+                            Navigate(scr_XMLNalogZaPrenos),
                             "05",
-                            Navigate(xmlPrimke),
+                            Navigate(scr_XMLPrimke),
                             "06",
                             Navigate(scr_XMLOtpremnice)
                         );
-                        Set(SelectedFile, ThisItem.FileName);
+                        Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
                         Set(SelectedFolder, ThisItem.FolderName);
                     TemplatePadding: =0
                     TemplateSize: =80

@@ -3856,7 +3856,8 @@
           "NameMapSourceSchema": "?"
         },
         "BasePaletteColor",
-        "FontColor"
+        "FontColor",
+        "Visible"
       ],
       "DynamicProperties": [
         {
@@ -3918,6 +3919,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -12990,7 +12996,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "defaultGalleryTemplateStyle",
