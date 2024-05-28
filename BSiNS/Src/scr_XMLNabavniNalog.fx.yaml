@@ -862,8 +862,6 @@
                 OnSelect: |-
                     =ClearCollect(colPurchaseLines, colOriginalPurchaseLines);
                     Reset(nabavniNalogReadyForNavCheckbox);
-                    
-                    UpdateContext({scannedItem:"20000"})
                 Size: =15
                 Text: ="Reset"
                 ZIndex: =5
