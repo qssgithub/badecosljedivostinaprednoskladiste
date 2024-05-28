@@ -15,31 +15,29 @@
                 )
             }
         );
-        UpdateContext(
-            {
-                ReadyForProcessing: Files.ReadyForProcessing,
-                InProgress: Files.InProgress
-            }
-        );
+        //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
+        //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
         UpdateContext(
             {
                 XMLFiles: Table(
                     ForAll(
-                        ReadyForProcessing As file,
+                        Files As file,
                         {
                             FileName: Text(file.FileName),
-                            FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-                            FolderName: "ReadyForProcessing"
+                            FileType: Text(file.FileType),
+                            FolderName: Text(file.FolderName)
+                            //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+        //FolderName: "ReadyForProcessing"
                         }
-                    ),
+                    )/*,
                     ForAll(
-                        InProgress As file,
+                        Files.InProgress As file,
                         {
                             FileName: Text(file.Name),
                             FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
                             FolderName: "InProgress"
                         }
-                    )
+                    )*/
                 )
             }
         );
@@ -1172,19 +1170,21 @@
                                     )
                                 }
                             );
-                            UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
+                            //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
                             //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
                             UpdateContext(
                                 {
                                     XMLFiles: Table(
                                         ForAll(
-                                            Files.ReadyForProcessing As file,
+                                            Files As file,
                                             {
-                                                FileName: Text(file.Name),
-                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-                                                FolderName: "ReadyForProcessing"
+                                                FileName: Text(file.FileName),
+                                                FileType: Text(file.FileType),
+                                                FolderName: Text(file.FolderName)
+                                                //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                            //FolderName: "ReadyForProcessing"
                                             }
-                                        ),
+                                        )/*,
                                         ForAll(
                                             Files.InProgress As file,
                                             {
@@ -1192,7 +1192,7 @@
                                                 FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
                                                 FolderName: "InProgress"
                                             }
-                                        )
+                                        )*/
                                     )
                                 }
                             );
@@ -1353,6 +1353,7 @@
 
                 TextCanvas6 As Text:
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =32
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
@@ -1364,6 +1365,7 @@
 
                 TextCanvas7 As Text:
                     DisplayMode: =DisplayMode.Edit
+                    FontColor: =
                     Height: =32
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
