@@ -2,7 +2,7 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =
+        =Reset(nalogZaPrenosReadyForNavCheckbox);
         If(!IsBlank(SelectedFile),
         IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
             Notify(
@@ -1534,12 +1534,30 @@
                 Height: =50
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
+                OnSelect: |
                     =Clear(colTransferLines);
                     Collect(colTransferLines, colOriginalTransferLines);
+                    Reset(nalogZaPrenosReadyForNavCheckbox);
                 Size: =15
                 Text: ="Reset"
                 ZIndex: =5
+
+            nalogZaPrenosReadyForNavCheckbox As Checkbox:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
 
     "'Upload xml file_2' As group":
         Height: =5
@@ -1775,7 +1793,9 @@
                 )
             });
             
-            If(!isCreated,UpdateXML.Run(transferJsonData, file_Name, "ReadyForProcessing"));
+            If(!isCreated,UpdateXML.Run(transferJsonData, SelectedFile, SelectedFolder, nalogZaPrenosReadyForNavCheckbox.Checked));
+            
+            Navigate(scrEntry,ScreenTransition.Fade);
         Size: =15
         Text: ="Save"
         Width: =225
