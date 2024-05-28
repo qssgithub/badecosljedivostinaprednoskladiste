@@ -15866,7 +15866,14 @@
         "PressedBorderColor",
         "HoverBorderColor",
         "FocusedBorderColor",
-        "OnSelect",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Select(Parent);\nSwitch(\n    Parent.Selected.FileType,\n    \"01\",\n    Navigate(scr_XMLTemeljniceInventure),\n    \"02\",\n    Navigate(scr_XMLNabavniNalog),\n    \"03\",\n    Navigate(scr_XMLNalogZaProdaju),\n    \"04\",\n    Navigate(scr_XMLNalogZaPrenos),\n    \"05\",\n    Navigate(scr_XMLPrimke),\n    \"06\",\n    Navigate(scr_XMLOtpremnice)\n);\nSet(SelectedFile, ThisItem.FileName);\nSet(SelectedFolder, ThisItem.FolderName);",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ZIndex",
         "BorderThickness",
         "FocusedBorderThickness",

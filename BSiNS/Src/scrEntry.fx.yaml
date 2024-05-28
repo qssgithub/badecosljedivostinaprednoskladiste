@@ -1303,7 +1303,7 @@
                                 "06",
                                 Navigate(scr_XMLOtpremnice)
                             );
-                            Set(SelectedFile, ThisItem.FileName);
+                            Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
                             Set(SelectedFolder, ThisItem.FolderName);
                         PaddingBottom: =12
                         PaddingLeft: =12
