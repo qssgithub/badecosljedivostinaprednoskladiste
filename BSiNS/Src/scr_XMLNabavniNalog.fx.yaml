@@ -1107,8 +1107,9 @@
                 )
             });
             
-            UpdateContext({NabavniNalogUpdateResponse : UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
+            UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
             
+            Navigate(scrEntry,ScreenTransition.Fade);
             
         Size: =15
         Text: ="Save"
