@@ -4054,6 +4054,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.scannedItem"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.scannedItem",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "scannedItem",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.746033371"
                 }
               ],
@@ -4097,36 +4127,6 @@
                 "member": "flowOutputs",
                 "module": "scrEntry",
                 "type": "scrEntry"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNabavniNalog.scannedItem"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNabavniNalog.scannedItem",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "scannedItem",
-                "module": "scr_XMLNabavniNalog",
-                "type": "scr_XMLNabavniNalog"
               }
             }
           ],
