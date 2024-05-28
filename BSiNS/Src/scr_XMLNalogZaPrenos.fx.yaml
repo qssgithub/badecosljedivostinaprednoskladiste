@@ -3,7 +3,6 @@
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
         =Reset(nalogZaPrenosReadyForNavCheckbox);
-        Set(sel, First(Filter(colTransferLines, ThisRecord.Line_No = "30000")));
         If(!IsBlank(SelectedFile),
         IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
             Notify(
@@ -166,7 +165,6 @@
                 "TransferLineGallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     BorderColor: =RGBA(89, 0, 0, 1)
                     BorderThickness: =0.5
-                    Default: =sel
                     DelayItemLoading: =true
                     Height: =375
                     Items: =colTransferLines
@@ -1218,15 +1216,6 @@
                     X: =13
                     Y: =122
                     ZIndex: =11
-
-                TextCanvas2 As Text:
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    Text: =sel.Line_No
-                    Width: =376
-                    X: =347
-                    Y: =119
-                    ZIndex: =24
 
                 Group22 As group:
                     Height: =5
