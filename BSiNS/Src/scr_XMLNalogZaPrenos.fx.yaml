@@ -2,7 +2,7 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
-        =
+        =Reset(nalogZaPrenosReadyForNavCheckbox);
         If(!IsBlank(SelectedFile),
         IfError(GetXML_Nalog_Za_Prenos.Run(SelectedFile,SelectedFolder),
             Notify(
@@ -1541,7 +1541,7 @@
                 Text: ="Reset"
                 ZIndex: =5
 
-            nalogZaPrenosReadyForNavCheckbox_1 As Checkbox:
+            nalogZaPrenosReadyForNavCheckbox As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
