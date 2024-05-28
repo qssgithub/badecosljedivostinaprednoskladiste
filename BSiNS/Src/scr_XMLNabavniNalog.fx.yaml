@@ -880,6 +880,37 @@
                 Y: =0
                 ZIndex: =6
 
+            "BarcodeReader1 As 'Barcode Reader'":
+                BarcodeType: ='BarcodeReader.BarcodeType'.Code128
+                BorderFillColor: =RGBA(47, 81, 151, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledContentColor: =RGBA(166, 166, 166, 1)
+                DisabledFillColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Edit
+                FillColor: =RGBA(204, 74, 57, 1)
+                FontSize: =15
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(88, 115, 171, 1)
+                HoverContentColor: =RGBA(255, 255, 255, 1)
+                HoverFillColor: =RGBA(47, 81, 151, 1)
+                LayoutMinHeight: =70
+                LayoutMinWidth: =280
+                OnCancel: =false
+                OnScan: |-
+                    =UpdateContext({
+                        scannedItem:First(BarcodeReader1.Barcodes).Value
+                    })
+                PressedBorderColor: =RGBA(56, 96, 178, 1)
+                PressedContentColor: =RGBA(56, 96, 178, 1)
+                PressedFillColor: =RGBA(255, 255, 255, 1)
+                ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
+                Text: ="Scan"
+                TextColor: =RGBA(255, 255, 255, 1)
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =7
+
     "'Upload xml file - modal (brisati poslije)' As group":
         Height: =5
         Width: =5
