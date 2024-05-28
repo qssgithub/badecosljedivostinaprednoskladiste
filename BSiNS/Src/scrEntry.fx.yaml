@@ -1349,6 +1349,17 @@
                     Y: =0
                     ZIndex: =4
 
+        TextCanvas5 As Text:
+            DisplayMode: =DisplayMode.Edit
+            Height: =32
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Text: =SelectedFile & "    " & SelectedFolder & "     " & Substitute(SelectedFile, ".xml", "")
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =4
+
     Button1 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
