@@ -1290,8 +1290,8 @@
                             =Select(Parent);
                             Set(typic, "02");
                             Switch(
-                                //Parent.Selected.FileType,
-                                typic,
+                                Parent.Selected.FileType,
+                                //typic,
                                 "01",
                                 Navigate(scr_XMLTemeljniceInventure),
                                 "02",
