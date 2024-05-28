@@ -1032,7 +1032,7 @@
         Height: =50
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: |
+        OnSelect: |+
             =UpdateContext({
                 purchaseJsonData:
                 JSON(
@@ -1107,7 +1107,9 @@
                 )
             });
             
-            UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked);
+            UpdateContext({NabavniNalogUpdateResponse : UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
+            
+            
         Size: =15
         Text: ="Save"
         Width: =225
