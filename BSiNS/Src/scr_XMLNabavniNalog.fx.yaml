@@ -1108,9 +1108,9 @@
                 )
             });
             
-            Set(responseMessage, UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked));
+            UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
             
-            //Navigate(scrEntry,ScreenTransition.Fade);
+            Navigate(scrEntry,ScreenTransition.Fade);
             
             Notify(responseMessage.response ,NotificationType.Success,2000);
             
