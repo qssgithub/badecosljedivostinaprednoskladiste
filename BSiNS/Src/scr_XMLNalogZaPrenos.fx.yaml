@@ -1541,6 +1541,23 @@
                 Text: ="Reset"
                 ZIndex: =5
 
+            nabavniNalogReadyForNavCheckbox_1 As Checkbox:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
+
     "'Upload xml file_2' As group":
         Height: =5
         Width: =5
