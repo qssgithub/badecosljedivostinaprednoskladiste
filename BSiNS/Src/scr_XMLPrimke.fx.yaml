@@ -480,7 +480,9 @@
                 )
             });
             
-            If(!isCreated,UpdateXML.Run(warehouseJsonData, file_Name, "ReadyForProcessing"));
+            If(!isCreated,UpdateXML.Run(warehouseJsonData, SelectedFile, SelectedFolder,primkeReadyForNavCheckbox.Checked));
+            
+            Navigate(scrEntry,ScreenTransition.Fade);
         Size: =15
         Text: ="Save"
         Width: =225
