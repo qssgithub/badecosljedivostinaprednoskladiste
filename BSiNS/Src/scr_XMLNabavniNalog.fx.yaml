@@ -3,6 +3,7 @@
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |-
         =Reset(nabavniNalogReadyForNavCheckbox);
+        ClearData(scannedItem);
         If(!IsBlank(SelectedFile),
         IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),
             Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
