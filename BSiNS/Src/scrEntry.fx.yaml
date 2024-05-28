@@ -1305,6 +1305,7 @@
                             );
                             Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
                             Set(SelectedFolder, ThisItem.FolderName);
+                            Set(typic, ThisItem.FileType);
                         PaddingBottom: =12
                         PaddingLeft: =12
                         PaddingRight: =12
@@ -1348,6 +1349,28 @@
                     X: =0
                     Y: =0
                     ZIndex: =4
+
+                TextCanvas6 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =5
+
+                TextCanvas7 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =typic
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =6
 
     Button1 As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
