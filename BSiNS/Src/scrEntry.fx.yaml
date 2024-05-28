@@ -8,9 +8,10 @@
             {
                 Files: ParseJSON(
                     GetAll.Run(
-                        warehouseCode,
+                        warehouseCode
+                        /*,
                         dd_Status.Selected.Text,
-                        dd_FileType.Selected.Text
+                        dd_FileType.Selected.Text*/
                     ).xmlfiles
                 )
             }
@@ -1163,9 +1164,9 @@
                                 {
                                     Files: ParseJSON(
                                         GetAll.Run(
-                                            warehouseCode,
+                                            warehouseCode/*,
                                             dd_Status.Selected.Text,
-                                            dd_FileType.Selected.Text
+                                            dd_FileType.Selected.Text*/
                                         ).xmlfiles
                                     )
                                 }

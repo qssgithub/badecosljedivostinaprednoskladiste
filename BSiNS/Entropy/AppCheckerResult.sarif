@@ -14,88 +14,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrEntry.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrEntry.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 139,
-                  "charOffset": 104,
-                  "snippet": {
-                    "text": "GetAll.Run(\n                warehouseCode,\n                dd_Status.Selected.Text,\n                dd_FileType.Selected.Text\n            )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scrEntry",
-                "type": "scrEntry"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "3",
-              "1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.OnSelect"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.OnSelect",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 139,
-                  "charOffset": 104,
-                  "snippet": {
-                    "text": "GetAll.Run(\n                warehouseCode,\n                dd_Status.Selected.Text,\n                dd_FileType.Selected.Text\n            )"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnSelect",
-                "module": "scrEntry",
-                "type": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "3",
-              "1"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.galleryTemplate5.OnSelect"
                 }
               ],
@@ -129,7 +47,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -169,7 +87,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -209,7 +127,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -249,7 +167,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -289,7 +207,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 1
+          "ruleIndex": 0
         },
         {
           "locations": [
@@ -330,7 +248,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -371,7 +289,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -412,7 +330,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -453,7 +371,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadArity",
-          "ruleIndex": 0
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -4241,20 +4159,6 @@
           "name": "PowerApps app checker",
           "rules": [
             {
-              "id": "app-ErrBadArity",
-              "messageStrings": {
-                "issue": {
-                  "text": "Invalid number of arguments: received {0}, expected {1}."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-ErrInvalidName",
               "messageStrings": {
                 "issue": {
@@ -4266,6 +4170,20 @@
                 "howToFix": [
                   "Remove or correct the reference to the name that isn't valid."
                 ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrBadArity",
+              "messageStrings": {
+                "issue": {
+                  "text": "Invalid number of arguments: received {0}, expected {1}."
+                }
+              },
+              "properties": {
+                "componentType": "app",
                 "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
