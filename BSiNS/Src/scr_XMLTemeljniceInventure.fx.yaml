@@ -2,7 +2,9 @@
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
     OnVisible: |
-        =If(!IsBlank(SelectedFile),
+        =Reset(temeljniceReadyForNavCheckbox);
+        If(!IsBlank(SelectedFile),
+        
         IfError(GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder)}));
         
         UpdateContext({journal_line: temeljniceResponse.item_journal_line});
@@ -204,9 +206,27 @@
                 OnSelect: |-
                     =Clear(colJournalLine);
                     Collect(colJournalLine, colOriginalJournalLine);
+                    Reset(temeljniceReadyForNavCheckbox);
                 Size: =15
                 Text: ="Reset"
                 ZIndex: =5
+
+            temeljniceReadyForNavCheckbox As Checkbox:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
 
     "'Upload xml file_1' As group":
         Height: =5
