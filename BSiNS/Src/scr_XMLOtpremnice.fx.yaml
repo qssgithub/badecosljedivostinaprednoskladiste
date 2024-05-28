@@ -495,7 +495,7 @@ scr_XMLOtpremnice As screen:
                             Y: =0
                             ZIndex: =2
 
-                    "glr_ResEntries As gallery.'BrowseLayout_Vertical_TwoTextVariant_ver5.0'":
+                    "glr_ResEntries As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Items: =glr_Lines.Selected.Res_Entry
@@ -858,39 +858,4 @@ scr_XMLOtpremnice As screen:
             X: =0
             Y: =0
             ZIndex: =3
-
-    Container10 As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Light
-        Height: =49
-        RadiusBottomLeft: =4
-        RadiusBottomRight: =4
-        RadiusTopLeft: =4
-        RadiusTopRight: =4
-        Width: =180
-        X: =1035
-        Y: =125
-        ZIndex: =2
-
-        "BarcodeReader2 As 'Barcode Reader'":
-            BorderFillColor: =RGBA(184, 0, 0, 1)
-            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-            DisabledContentColor: =RGBA(166, 166, 166, 1)
-            DisabledFillColor: =RGBA(244, 244, 244, 1)
-            DisplayMode: =DisplayMode.Edit
-            FillColor: =RGBA(184, 0, 0, 1)
-            FontSize: =14
-            Height: =Parent.Height
-            HoverBorderColor: =RGBA(132, 40, 38, 1)
-            HoverContentColor: =RGBA(255, 255, 255, 1)
-            HoverFillColor: =RGBA(132, 40, 38, 1)
-            OnCancel: =false
-            OnScan: =false
-            PressedBorderColor: =RGBA(132, 40, 38, 1)
-            PressedContentColor: =RGBA(132, 40, 38, 1)
-            PressedFillColor: =RGBA(255, 255, 255, 1)
-            TextColor: =RGBA(255, 255, 255, 1)
-            Width: =Parent.Width
-            X: =0
-            Y: =0
-            ZIndex: =1
 
