@@ -863,12 +863,19 @@
                 Text: ="Reset"
                 ZIndex: =5
 
-            nabavniNalogReadyForNavCheckbox As checkbox:
+            nabavniNalogReadyForNavCheckbox As Checkbox:
+                DisplayMode: =DisplayMode.Edit
+                FontSize: =14
                 FontWeight: =FontWeight.Bold
                 Height: =Parent.Height
+                Label: ="Ready for NAV"
                 LayoutMinHeight: =32
                 LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
                 Width: =160
+                X: =0
+                Y: =0
                 ZIndex: =6
 
     "'Upload xml file - modal (brisati poslije)' As group":
