@@ -3934,36 +3934,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.status"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.status",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "status",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.transfer_header"
                 }
               ],
@@ -4127,6 +4097,36 @@
                 "member": "flowOutputs",
                 "module": "scrEntry",
                 "type": "scrEntry"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.responseMessage"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.responseMessage",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "responseMessage",
+                "module": "scr_XMLNabavniNalog",
+                "type": "scr_XMLNabavniNalog"
               }
             }
           ],

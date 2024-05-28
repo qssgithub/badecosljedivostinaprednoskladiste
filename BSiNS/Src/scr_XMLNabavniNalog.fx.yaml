@@ -1108,15 +1108,11 @@
                 )
             });
             
-            UpdateContext({responseData: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
-            UpdateContext({parsedResponse : ParseJSON(responseData.response)});
-            
-            Set(status, parsedResponse.Status);
-            Set(message, parsedResponse.Message);
+            UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
             
             Navigate(scrEntry,ScreenTransition.Fade);
             
-            Notify(message,NotificationType.Success,2000);
+            //Notify(responseMessage,NotificationType.Success,2000);
             
         Size: =15
         Text: ="Save"
