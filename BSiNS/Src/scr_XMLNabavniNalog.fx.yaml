@@ -1110,6 +1110,8 @@
             
             UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
             
+            UpdateContext({parsedResponse : ParseJSON(responseMessage)});
+            
             Navigate(scrEntry,ScreenTransition.Fade);
             
             Notify(responseMessage.response ,NotificationType.Success,2000);
