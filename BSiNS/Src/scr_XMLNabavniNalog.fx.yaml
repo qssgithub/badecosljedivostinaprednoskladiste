@@ -125,7 +125,7 @@
                     BorderColor: =RGBA(89, 0, 0, 1)
                     BorderThickness: =0.5
                     Default: |
-                        =First(Filter(colPurchaseLines, ThisRecord.Line_No = Text(scannedItem)))
+                        =If(!IsBlank(scannedItem),First(Filter(colPurchaseLines, ThisRecord.Line_No = Text(scannedItem))), First(colPurchaseLines))
                     DelayItemLoading: =true
                     Height: =375
                     Items: =colPurchaseLines
