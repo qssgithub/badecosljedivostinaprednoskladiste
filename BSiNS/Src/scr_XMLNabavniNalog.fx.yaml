@@ -539,15 +539,6 @@
                     Y: =122
                     ZIndex: =11
 
-                TextCanvas1 As Text:
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    Text: =status
-                    Width: =96
-                    X: =60
-                    Y: =60
-                    ZIndex: =24
-
                 DocumentType_NN_Group As group:
                     Height: =5
                     Width: =5
@@ -1117,7 +1108,7 @@
                 )
             });
             
-            Set(response, UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked));
+            Set(responseData, UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked));
             
             Set(status, ParseJSON(response.response).Status);
             
