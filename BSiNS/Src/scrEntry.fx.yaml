@@ -1288,9 +1288,10 @@
                         Icon: =Icon.ChevronRight
                         OnSelect: |-
                             =Select(Parent);
-                            Parent.Selected.FileType = "02";
+                            Set(typic, "02");
                             Switch(
-                                Parent.Selected.FileType,
+                                //Parent.Selected.FileType,
+                                typic,
                                 "01",
                                 Navigate(scr_XMLTemeljniceInventure),
                                 "02",
@@ -1306,7 +1307,6 @@
                             );
                             Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
                             Set(SelectedFolder, ThisItem.FolderName);
-                            Set(typic, ThisItem.FileType);
                         PaddingBottom: =12
                         PaddingLeft: =12
                         PaddingRight: =12
