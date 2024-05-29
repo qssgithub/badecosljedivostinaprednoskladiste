@@ -179,6 +179,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
+                        Width: =If(App.ActiveScreen.Size = 1, Parent.Width, Parent.Width/2)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -238,7 +239,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =411
+                        Width: =If(App.ActiveScreen.Size = 1, Parent.Width, Parent.Width/2)
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
