@@ -181,7 +181,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
+                        Width: = Parent.Width
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -241,9 +241,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
-                        X: =If(App.Width > 600, Parent.Width / 2 + 5, 0)
-                        Y: =If(App.Width > 600, 0, 60)
+                        Width: = Parent.Width
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
@@ -413,7 +411,6 @@
                         PaddingRight: =5
                         PaddingTop: =5
                         Width: =32
-                        X: =If(App.Width > 600, Parent.Width - 42, Parent.Width - 42)
                         ZIndex: =5
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
