@@ -181,7 +181,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2 - 42, Parent.Width)
+                        Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -241,7 +241,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2 - 42, Parent.Width)
+                        Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
                         X: =If(App.Width > 600, Parent.Width / 2 + 5, 0)
                         Y: =If(App.Width > 600, 0, 60)
                         ZIndex: =2
