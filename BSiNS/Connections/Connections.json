@@ -105,7 +105,8 @@
       "cfee3a12-5e02-4d92-8d52-414857a67d51",
       "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637",
       "606b24e4-b1be-4add-b4c8-85480ae5d3c1",
-      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
+      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
+      "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
   },
@@ -263,8 +264,8 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "f0d5e08d-0d9a-4a24-98f8-8dc684089395": {
-          "value": "shared_filesystem_1"
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
         },
         "workflowDisplayName": {
           "value": "GetAll"
@@ -277,8 +278,8 @@
         }
       },
       "parameterHintsV2": {
-        "shared_filesystem_1": {
-          "value": "f0d5e08d-0d9a-4a24-98f8-8dc684089395"
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
         },
         "workflowDisplayName": {
           "value": "GetAll"
@@ -296,7 +297,7 @@
       "GetAll"
     ],
     "dependencies": {
-      "shared_filesystem_1": "f0d5e08d-0d9a-4a24-98f8-8dc684089395"
+      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
     },
     "dependents": [],
     "id": "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
@@ -436,21 +437,5 @@
     },
     "dependents": [],
     "id": "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
-  },
-  "f0d5e08d-0d9a-4a24-98f8-8dc684089395": {
-    "connectionRef": {
-      "displayName": "File System",
-      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1693/1.0.1693.3738/filesystem/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
-      "isOnPremiseConnection": true
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
-    ],
-    "id": "f0d5e08d-0d9a-4a24-98f8-8dc684089395"
   }
 }
