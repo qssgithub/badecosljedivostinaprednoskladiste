@@ -152,7 +152,7 @@
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =0
-                    Height: =(Min(120, If(App.Width > 600, 60, 130)))
+                    Height: =If(App.Width <= 370, 2 * 60 + 32 + 20, If(App.Width > 600, 60, 120))
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =15
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
