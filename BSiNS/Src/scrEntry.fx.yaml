@@ -152,7 +152,7 @@
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =0
-                    Height: =If(App.Width > 600, 60, 120)
+                    Height: =(Min(120, If(App.Width > 600, 60, 130)))
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =15
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -176,12 +176,12 @@
                         DropShadow: =DropShadow.Light
                         Height: =50
                         LayoutMinHeight: =50
-                        LayoutMinWidth: =100
+                        LayoutMinWidth: =250
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, ( Parent.Width / 2 ) - 21,  Parent.Width - 42)
+                        Width: =If(App.Width > 600, Parent.Width / 2 ,  Parent.Width - 42)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -241,7 +241,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
+                        Width: =If(App.Width > 600, Parent.Width / 2 ,  Parent.Width - 42)
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
