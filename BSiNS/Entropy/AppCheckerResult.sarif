@@ -181,36 +181,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scrEntry",
-                "type": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles.TabIndex"
                 }
               ],
@@ -235,6 +205,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scrEntry",
+                "type": "scrEntry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.con_FileType.icn_ReloadFiles"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
         },
         {
           "locations": [
