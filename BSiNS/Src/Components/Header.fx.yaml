@@ -1,0 +1,39 @@
+"Header As '04bc41f1995d478cbf5bb0d1916c4750'":
+
+    Header1_1 As Header:
+        BasePaletteColor: =RGBA(249, 83, 109, 1)
+        DisplayMode: =DisplayMode.Edit
+        FontColor: =
+        Height: =75
+        Logo: =FFLogo
+        OnSelectLogo: =Navigate(Parent.LogoRedirection, Transition)
+        Style: ='Header.Style'.Primary
+        Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
+        TitleFontSize: =14
+        UserEmail: =User().Email
+        UserImage: =User().Image
+        UserName: =User().FullName
+        Visible: =true
+        Width: =Parent.Width
+        X: =0
+        Y: =0
+        ZIndex: =4
+
+    hdr_Otpremnice_1 As Header:
+        BasePaletteColor: =RGBA(249, 83, 109, 1)
+        DisplayMode: =DisplayMode.Edit
+        FontColor: =
+        Height: =75
+        Logo: =FFLogo
+        LogoTooltip: =
+        OnSelectLogo: =Navigate(scrEntry)
+        Title: ="SKLADIŠNE OTPREMNICE"
+        UserEmail: =User().Email
+        UserImage: =User().Image
+        UserName: =User().FullName
+        Visible: =false
+        Width: =Parent.Width
+        X: =16
+        Y: =0
+        ZIndex: =5
+

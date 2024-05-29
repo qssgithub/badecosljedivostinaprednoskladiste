@@ -63,8 +63,8 @@
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =16
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
         LayoutMode: =LayoutMode.Auto
-        LayoutOverflowX: =LayoutOverflow.Scroll
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
         RadiusTopLeft: =4
@@ -72,41 +72,11 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        HeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
-            DropShadow: =DropShadow.Light
-            Fill: =RGBA(255, 255, 255, 1)
-            FillPortions: =0
-            Height: =75
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            RadiusBottomLeft: =8
-            RadiusBottomRight: =8
-            RadiusTopLeft: =8
-            RadiusTopRight: =8
-            ZIndex: =1
-
-            Header1 As Header:
-                AlignInContainer: =AlignInContainer.Start
-                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                DisplayMode: =DisplayMode.Edit
-                FillPortions: =1
-                FontColor: =
-                Height: =75
-                LayoutMinHeight: =75
-                LayoutMinWidth: =Parent.Width
-                Logo: =FFLogo
-                OnSelectLogo: =Navigate(scrEntry)
-                Style: ='Header.Style'.Primary
-                Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
-                TitleFontSize: =14
-                UserEmail: =User().Email
-                UserImage: =User().Image
-                UserName: =User().FullName
-                Width: =Parent.Width
-                X: =0
-                Y: =0
-                ZIndex: =1
+        "Header_2 As '04bc41f1995d478cbf5bb0d1916c4750'":
+            AlignInContainer: =AlignInContainer.Center
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            Width: =Parent.Width
 
         BottomContainer2 As groupContainer.horizontalAutoLayoutContainer:
             Fill: =RGBA(245, 245, 245, 1)
@@ -127,7 +97,6 @@
             ZIndex: =3
 
             vrtcon_GetAllFiles As groupContainer.verticalAutoLayoutContainer:
-                DropShadow: =DropShadow.Light
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
@@ -146,6 +115,127 @@
                 RadiusTopRight: =4
                 Width: =Parent.Width
                 ZIndex: =7
+
+                hrzcon_GetAllFiles_Labels As groupContainer.horizontalAutoLayoutContainer:
+                    FillPortions: =0
+                    Height: =30
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutGap: =15
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =60
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutWrap: =true
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Visible: =false
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    con_Status_label As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =Parent.Height
+                        LayoutMinHeight: =50
+                        LayoutMinWidth: =250
+                        Width: =Parent.Width
+                        ZIndex: =2
+
+                        statusLabel As Text:
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =Parent.Height
+                            Text: ="Status"
+                            Width: =96
+                            X: =4
+                            Y: =0
+                            ZIndex: =2
+
+                    con_FileType__label As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =Parent.Height
+                        LayoutMinHeight: =50
+                        LayoutMinWidth: =250
+                        Width: =Parent.Width
+                        ZIndex: =4
+
+                        type_label As Text:
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =Parent.Height
+                            Text: ="Tip dokumena"
+                            Width: =96
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
+                    icn_ReloadFiles_3 As icon.Reload:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =RGBA(0, 0, 0, 0)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(214, 221, 224, 1)
+                        FocusedBorderThickness: =0
+                        Height: =Parent.Height
+                        Icon: =Icon.Reload
+                        OnSelect: |
+                            =UpdateContext({IsLoadingGetAllFiles: true});
+                            UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
+                            //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
+                            //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
+                            UpdateContext(
+                                {
+                                    XMLFiles: Table(
+                                        ForAll(
+                                            Files As file,
+                                            {
+                                                FileName: Text(file.FileName),
+                                                FileType: Text(file.FileType),
+                                                FolderName: Text(file.FolderName)
+                                                //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                            //FolderName: "ReadyForProcessing"
+                                            }
+                                        )/*,
+                                        ForAll(
+                                            Files.InProgress As file,
+                                            {
+                                                FileName: Text(file.Name),
+                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                                FolderName: "InProgress"
+                                            }
+                                        )*/
+                                    )
+                                }
+                            );
+                            UpdateContext({filteredFiles: XMLFiles});
+                            If(
+                                Not(dd_Status.Selected.Id = "All"),
+                                UpdateContext(
+                                    {
+                                        filteredFiles: Filter(
+                                            filteredFiles,
+                                            dd_Status.Selected.Id = ThisRecord.FolderName
+                                        )
+                                    }
+                                )
+                            );
+                            If(
+                                Not(dd_FileType.Selected.Id = "0"),
+                                UpdateContext(
+                                    {
+                                        filteredFiles: Filter(
+                                            filteredFiles,
+                                            dd_FileType.Selected.Id = ThisRecord.FileType
+                                        )
+                                    }
+                                )
+                            );
+                            UpdateContext({IsLoadingGetAllFiles: false});
+                        PaddingBottom: =5
+                        PaddingLeft: =5
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        Width: =32
+                        X: =303
+                        ZIndex: =5
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =0
@@ -175,8 +265,8 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =Parent.Width - 47
-                        ZIndex: =1
+                        Width: =Parent.Width
+                        ZIndex: =2
 
                         dd_Status As Dropdown.pcfdataset:
                             AccessibleLabel: =""
@@ -242,7 +332,7 @@
                         Visible: =false
                         Width: =32
                         X: =303
-                        ZIndex: =2
+                        ZIndex: =3
 
                     con_FileType As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -255,7 +345,7 @@
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
                         Width: =Parent.Width
-                        ZIndex: =3
+                        ZIndex: =4
 
                         dd_FileType As Dropdown.pcfdataset:
                             DefaultSelectedItems: |-
@@ -357,7 +447,7 @@
                         Width: =96
                         X: =0
                         Y: =0
-                        ZIndex: =4
+                        ZIndex: =5
 
                     icn_ReloadFiles_1 As icon.Reload:
                         BorderColor: =RGBA(89, 0, 0, 1)
@@ -425,7 +515,7 @@
                         PaddingTop: =5
                         Width: =32
                         X: =303
-                        ZIndex: =5
+                        ZIndex: =6
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -548,85 +638,4 @@
                     X: =0
                     Y: =0
                     ZIndex: =4
-
-    Button2 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLTemeljniceInventure)
-        Size: =12
-        Text: ="TEMELJNICE INVENTURE"
-        X: =583
-        Y: =33
-        ZIndex: =4
-
-    Button2_1 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: |
-            =Navigate(scr_XMLNabavniNalog)
-        Size: =12
-        Text: ="NABAVNI NALOG"
-        X: =402
-        Y: =33
-        ZIndex: =16
-
-    Button2_2 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaPrenos)
-        Size: =12
-        Text: ="NALOG ZA PRENOS"
-        X: =608
-        Y: =33
-        ZIndex: =17
-
-    Button2_3 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaProdaju)
-        Size: =12
-        Text: ="NALOG ZA PRODAJU"
-        X: =608
-        Y: =33
-        ZIndex: =18
-
-    Button2_4 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLPrimke)
-        Size: =12
-        Text: ="PRIMKE"
-        X: =608
-        Y: =33
-        ZIndex: =19
 
