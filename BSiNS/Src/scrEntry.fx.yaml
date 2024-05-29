@@ -151,7 +151,6 @@
                 ZIndex: =7
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
                     Height: =If(App.Width > 600, 60, 120)
                     LayoutAlignItems: =LayoutAlignItems.Center
