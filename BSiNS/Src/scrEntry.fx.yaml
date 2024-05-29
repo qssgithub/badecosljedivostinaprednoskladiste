@@ -91,10 +91,6 @@
             PaddingLeft: =2
             PaddingRight: =2
             PaddingTop: =2
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
             ZIndex: =3
 
             vrtcon_GetAllFiles As groupContainer.verticalAutoLayoutContainer:
@@ -110,10 +106,6 @@
                 PaddingLeft: =10
                 PaddingRight: =10
                 PaddingTop: =10
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
                 Width: =Parent.Width
                 ZIndex: =7
 
@@ -127,10 +119,6 @@
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
                     Visible: =false
                     Width: =Parent.Width
                     ZIndex: =1
@@ -249,10 +237,6 @@
                     LayoutMode: =LayoutMode.Auto
                     LayoutWrap: =true
                     PaddingBottom: =10
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
                     Width: =Parent.Width
                     ZIndex: =2
 
@@ -273,12 +257,12 @@
                             AccessibleLabel: =""
                             BasePaletteColor: =
                             DefaultSelectedItems: |-
-                                =[{Id: "All", Text: "All"}]
+                                =[{Id: "All", Text: "Svi statusi"}]
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =18
                             Height: =Parent.Height
                             Items: |-
-                                =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
+                                =[{Id: "All", Text: "Svi statusi"}, {Id: "ReadyForProcessing", Text: "Spremni za procesiranje"}, {Id: "InProgress", Text: "U obradi"}]
                             OnChange: |-
                                 =If(
                                     Not(dd_FileType.Selected.Id = "0"),
@@ -353,7 +337,7 @@
                                 =[
                                     {
                                         Id: "0",
-                                        Text: "All"
+                                        Text: "Svi dokumenti"
                                     }
                                 ]
                             DisplayMode: =DisplayMode.Edit
@@ -363,7 +347,7 @@
                                 =[
                                     {
                                         Id: "0",
-                                        Text: "All"
+                                        Text: "Svi dokumenti"
                                     },
                                     {
                                         Id: "01",
