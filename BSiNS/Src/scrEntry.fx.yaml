@@ -151,8 +151,9 @@
                 ZIndex: =7
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     FillPortions: =0
-                    Height: =If(App.Width <= 370, 130, If(App.Width > 600, 60, 120))
+                    Height: =If(App.Width > 600, 60, 120)
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =15
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -181,7 +182,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: = Parent.Width
+                        Width: =Parent.Width
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -218,7 +219,7 @@
                                         }
                                     )
                                 );
-                            Width: =Parent.Width
+                            Width: =580
                             X: =0
                             Y: =0
                             ZIndex: =1
@@ -241,7 +242,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: = Parent.Width
+                        Width: =Parent.Width
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
@@ -318,7 +319,7 @@
                                         }
                                     )
                                 );
-                            Width: =Parent.Width
+                            Width: =580
                             X: =0
                             Y: =0
                             ZIndex: =1
@@ -330,6 +331,74 @@
                                 FieldVariantName: ="textualColumn"
                                 Order: =1
                                 ZIndex: =11
+
+                        icn_ReloadFiles As icon.Reload:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                            DisabledColor: =RGBA(214, 221, 224, 1)
+                            Height: =50
+                            Icon: =Icon.Reload
+                            OnSelect: |
+                                =UpdateContext({IsLoadingGetAllFiles: true});
+                                UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
+                                //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
+                                //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
+                                UpdateContext(
+                                    {
+                                        XMLFiles: Table(
+                                            ForAll(
+                                                Files As file,
+                                                {
+                                                    FileName: Text(file.FileName),
+                                                    FileType: Text(file.FileType),
+                                                    FolderName: Text(file.FolderName)
+                                                    //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                //FolderName: "ReadyForProcessing"
+                                                }
+                                            )/*,
+                                            ForAll(
+                                                Files.InProgress As file,
+                                                {
+                                                    FileName: Text(file.Name),
+                                                    FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                                    FolderName: "InProgress"
+                                                }
+                                            )*/
+                                        )
+                                    }
+                                );
+                                UpdateContext({filteredFiles: XMLFiles});
+                                If(
+                                    Not(dd_Status.Selected.Id = "All"),
+                                    UpdateContext(
+                                        {
+                                            filteredFiles: Filter(
+                                                filteredFiles,
+                                                dd_Status.Selected.Id = ThisRecord.FolderName
+                                            )
+                                        }
+                                    )
+                                );
+                                If(
+                                    Not(dd_FileType.Selected.Id = "0"),
+                                    UpdateContext(
+                                        {
+                                            filteredFiles: Filter(
+                                                filteredFiles,
+                                                dd_FileType.Selected.Id = ThisRecord.FileType
+                                            )
+                                        }
+                                    )
+                                );
+                                UpdateContext({IsLoadingGetAllFiles: false});
+                            PaddingBottom: =5
+                            PaddingLeft: =5
+                            PaddingRight: =5
+                            PaddingTop: =5
+                            Width: =32
+                            X: =598
+                            ZIndex: =2
 
                     ButtonCanvas1 As Button:
                         BasePaletteColor: =
@@ -345,73 +414,6 @@
                         X: =0
                         Y: =0
                         ZIndex: =4
-
-                    icn_ReloadFiles As icon.Reload:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(89, 0, 0, 1)
-                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-                        DisabledColor: =RGBA(214, 221, 224, 1)
-                        Height: =50
-                        Icon: =Icon.Reload
-                        OnSelect: |
-                            =UpdateContext({IsLoadingGetAllFiles: true});
-                            UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
-                            //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
-                            //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
-                            UpdateContext(
-                                {
-                                    XMLFiles: Table(
-                                        ForAll(
-                                            Files As file,
-                                            {
-                                                FileName: Text(file.FileName),
-                                                FileType: Text(file.FileType),
-                                                FolderName: Text(file.FolderName)
-                                                //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-                            //FolderName: "ReadyForProcessing"
-                                            }
-                                        )/*,
-                                        ForAll(
-                                            Files.InProgress As file,
-                                            {
-                                                FileName: Text(file.Name),
-                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-                                                FolderName: "InProgress"
-                                            }
-                                        )*/
-                                    )
-                                }
-                            );
-                            UpdateContext({filteredFiles: XMLFiles});
-                            If(
-                                Not(dd_Status.Selected.Id = "All"),
-                                UpdateContext(
-                                    {
-                                        filteredFiles: Filter(
-                                            filteredFiles,
-                                            dd_Status.Selected.Id = ThisRecord.FolderName
-                                        )
-                                    }
-                                )
-                            );
-                            If(
-                                Not(dd_FileType.Selected.Id = "0"),
-                                UpdateContext(
-                                    {
-                                        filteredFiles: Filter(
-                                            filteredFiles,
-                                            dd_FileType.Selected.Id = ThisRecord.FileType
-                                        )
-                                    }
-                                )
-                            );
-                            UpdateContext({IsLoadingGetAllFiles: false});
-                        PaddingBottom: =5
-                        PaddingLeft: =5
-                        PaddingRight: =5
-                        PaddingTop: =5
-                        Width: =32
-                        ZIndex: =5
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     AlignInContainer: =AlignInContainer.SetByContainer
