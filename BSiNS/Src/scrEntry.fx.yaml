@@ -153,10 +153,9 @@
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =15
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =100
+                    LayoutMinHeight: =60
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    LayoutOverflowY: =LayoutOverflow.Scroll
                     LayoutWrap: =true
                     PaddingBottom: =10
                     RadiusBottomLeft: =4
@@ -167,6 +166,7 @@
                     ZIndex: =2
 
                     con_Status As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.Light
                         Height: =50
                         LayoutMinHeight: =50
@@ -225,7 +225,27 @@
                                 Order: =1
                                 ZIndex: =13
 
+                    icn_ReloadFiles_2 As icon.Reload:
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        Color: =RGBA(0, 0, 0, 0)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(214, 221, 224, 1)
+                        DisplayMode: =DisplayMode.View
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        Icon: =Icon.VerticalLine
+                        OnSelect: =
+                        PaddingBottom: =5
+                        PaddingLeft: =5
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        Visible: =false
+                        Width: =32
+                        X: =303
+                        ZIndex: =2
+
                     con_FileType As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.Light
                         Height: =50
                         LayoutMinHeight: =50
@@ -235,7 +255,7 @@
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
                         Width: =Parent.Width
-                        ZIndex: =2
+                        ZIndex: =3
 
                         dd_FileType As Dropdown.pcfdataset:
                             DefaultSelectedItems: |-
@@ -339,7 +359,7 @@
                         Y: =0
                         ZIndex: =4
 
-                    icn_ReloadFiles As icon.Reload:
+                    icn_ReloadFiles_1 As icon.Reload:
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Color: =RGBA(89, 0, 0, 1)
                         DisabledBorderColor: =RGBA(0, 0, 0, 0)
@@ -528,17 +548,6 @@
                     X: =0
                     Y: =0
                     ZIndex: =4
-
-                TextCanvas2 As Text:
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Text: =con_Status.Width & "      " & con_FileType.Width
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =5
 
     Button2 As button:
         Color: =RGBA(184, 0, 0, 1)
