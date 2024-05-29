@@ -179,7 +179,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.ActiveScreen.Size = 1, Parent.Width, Parent.Width/2)
+                        Width: =If(App.Width > 600, Parent.Width / 3, Parent.Width)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -239,7 +239,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.ActiveScreen.Size = 1, Parent.Width, Parent.Width/2)
+                        Width: =If(App.Width > 600, Parent.Width / 3, Parent.Width)
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
@@ -394,7 +394,7 @@
                         PaddingLeft: =5
                         PaddingRight: =5
                         PaddingTop: =5
-                        Width: =32
+                        Width: =If(App.Width > 600, Parent.Width / 3, Parent.Width)
                         ZIndex: =3
 
                     ButtonCanvas1 As Button:
@@ -533,6 +533,17 @@
                     X: =0
                     Y: =0
                     ZIndex: =4
+
+        TextCanvas2 As Text:
+            DisplayMode: =DisplayMode.Edit
+            Height: =32
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Text: =
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =4
 
     Button2 As button:
         Color: =RGBA(184, 0, 0, 1)
