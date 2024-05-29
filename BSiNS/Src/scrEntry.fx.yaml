@@ -176,12 +176,12 @@
                         DropShadow: =DropShadow.Light
                         Height: =50
                         LayoutMinHeight: =50
-                        LayoutMinWidth: =250
+                        LayoutMinWidth: =100
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2,  Parent.Width - 42)
+                        Width: =If(App.Width > 600, ( Parent.Width / 2 ) - 21,  Parent.Width - 42)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -242,7 +242,6 @@
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
                         Width: =If(App.Width > 600, Parent.Width / 2, Parent.Width - 42)
-                        Y: =If(App.Width > 600, 0, Parent.Height / 2)
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
