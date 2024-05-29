@@ -59,7 +59,7 @@
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
-        Height: =1366
+        Height: =768
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =16
@@ -68,7 +68,7 @@
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
-        Width: =Parent.Width
+        Width: =1366
         ZIndex: =1
 
         HeaderContainer2 As groupContainer.horizontalAutoLayoutContainer:
@@ -155,6 +155,7 @@
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
                     LayoutWrap: =true
                     PaddingBottom: =10
                     RadiusBottomLeft: =4
@@ -245,7 +246,7 @@
                                 ]
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =18
-                            Height: =Parent.Height
+                            Height: =50
                             Items: |-
                                 =[
                                     {
@@ -309,7 +310,7 @@
                                         }
                                     )
                                 );
-                            Width: =303
+                            Width: =640
                             X: =0
                             Y: =0
                             ZIndex: =1
