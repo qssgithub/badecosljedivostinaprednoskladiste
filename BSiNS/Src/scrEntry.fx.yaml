@@ -181,7 +181,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2 ,  Parent.Width - 42)
+                        Width: =If(App.Width > 600, Parent.Width / 2 - 42, Parent.Width)
                         ZIndex: =1
 
                         dd_Status As Dropdown.pcfdataset:
@@ -241,7 +241,9 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =If(App.Width > 600, Parent.Width / 2 ,  Parent.Width - 42)
+                        Width: =If(App.Width > 600, Parent.Width / 2 - 42, Parent.Width)
+                        X: =If(App.Width > 600, Parent.Width / 2, 0)
+                        Y: =If(App.Width > 600, 0, 50 + 10)
                         ZIndex: =2
 
                         dd_FileType As Dropdown.pcfdataset:
@@ -397,6 +399,8 @@
                         PaddingRight: =5
                         PaddingTop: =5
                         Width: =32
+                        X: =If(App.Width > 600, Parent.Width - 32 - 5, Parent.Width - 32 - 5)
+                        Y: =If(App.Width > 600, (50 - 32) / 2, 2 * 50 + 20)
                         ZIndex: =3
 
                     ButtonCanvas1 As Button:
