@@ -529,6 +529,17 @@
                     Y: =0
                     ZIndex: =4
 
+                TextCanvas2 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =con_Status.Width & "      " & con_FileType.Width
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =5
+
     Button2 As button:
         Color: =RGBA(184, 0, 0, 1)
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
