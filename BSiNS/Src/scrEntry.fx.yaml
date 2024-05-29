@@ -59,7 +59,7 @@
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
-        Height: =Parent.Height
+        Height: =768
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =16
@@ -591,7 +591,7 @@
         OnSelect: =Navigate(scr_XMLNalogZaPrenos)
         Size: =12
         Text: ="NALOG ZA PRENOS"
-        X: =760
+        X: =608
         Y: =33
         ZIndex: =17
 
@@ -607,7 +607,7 @@
         OnSelect: =Navigate(scr_XMLNalogZaProdaju)
         Size: =12
         Text: ="NALOG ZA PRODAJU"
-        X: =942
+        X: =608
         Y: =33
         ZIndex: =18
 
@@ -623,7 +623,7 @@
         OnSelect: =Navigate(scr_XMLPrimke)
         Size: =12
         Text: ="PRIMKE"
-        X: =1118
+        X: =608
         Y: =33
         ZIndex: =19
 
