@@ -51,10 +51,6 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =16
         LayoutMode: =LayoutMode.Auto
-        PaddingBottom: =16
-        PaddingLeft: =16
-        PaddingRight: =16
-        PaddingTop: =16
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
         RadiusTopLeft: =4
@@ -91,6 +87,7 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
+            Visible: =!isLoading
             Width: =Parent.Width
             X: =6
             Y: =15
@@ -133,185 +130,6 @@
                     Width: =4
                     ZIndex: =4
 
-                Group12 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_6 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Line No."
-                        X: =42
-                        Y: =17
-                        ZIndex: =12
-
-                    "LineNo As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =40
-                        Value: =ThisItem.Line_No
-                        Width: =150
-                        X: =42
-                        Y: =40
-                        ZIndex: =36
-
-                Group16 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_8 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Type"
-                        Width: =208
-                        X: =218
-                        Y: =17
-                        ZIndex: =14
-
-                    "Type As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =40
-                        Value: =ThisItem.Type
-                        Width: =208
-                        X: =218
-                        Y: =40
-                        ZIndex: =37
-
-                Group11 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_10 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Item No."
-                        Width: =194
-                        X: =455
-                        Y: =17
-                        ZIndex: =16
-
-                    "ItemNo As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =36
-                        Value: =ThisItem.Item_No
-                        Width: =194
-                        X: =455
-                        Y: =42
-                        ZIndex: =38
-
-                Group13 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_12 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Location Code"
-                        Width: =208
-                        X: =676
-                        Y: =17
-                        ZIndex: =19
-
-                    "LocationCode As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =36
-                        Value: =ThisItem.Location_Code
-                        Width: =208
-                        X: =676
-                        Y: =40
-                        ZIndex: =39
-
-                Group14 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_14 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Posting Group"
-                        Width: =194
-                        X: =911
-                        Y: =17
-                        ZIndex: =22
-
-                    "PostingGroup As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =30
-                        Value: =ThisItem.Posting_Group
-                        Width: =194
-                        X: =911
-                        Y: =40
-                        ZIndex: =40
-
                 Group9 As group:
                     Height: =5
                     Width: =5
@@ -350,414 +168,135 @@
                         Y: =39
                         ZIndex: =41
 
-                Group15 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
+            Container6 As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                Height: =Parent.Height
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =25
 
-                    Label2_16 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
+                "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    BorderColor: =RGBA(89, 0, 0, 1)
+                    DelayItemLoading: =true
+                    Height: =Parent.Height
+                    Items: =colPurchaseLines
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =287
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    TemplatePadding: =0
+                    TemplateSize: =116
+                    Width: =Parent.Width
+                    ZIndex: =1
+
+                    Title5 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Text: =ThisItem.'Buy-from_Vendor_No.'
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 86
+                        X: =16
+                        Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle4.Size*1.8 + 2 + Body1.Size*1.8)) / 2
+                        ZIndex: =1
+
+                    Subtitle4 As label:
                         Color: =RGBA(0, 0, 0, 1)
                         DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
                         OnSelect: =Select(Parent)
-                        PaddingBottom: =10
+                        PaddingBottom: =0
                         PaddingLeft: =0
-                        Size: =13
-                        Text: ="Description"
-                        Width: =534
-                        X: =42
-                        Y: =104
-                        ZIndex: =25
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Description
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Title5.Width
+                        X: =Title5.X
+                        Y: =Title5.Y + Title5.Height
+                        ZIndex: =2
 
-                    "Description As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =40
-                        Value: =ThisItem.Description
-                        Width: =534
-                        X: =42
-                        Y: =127
-                        ZIndex: =42
-
-                Group10 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_18 As label:
-                        Align: =Align.Center
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
+                    Body1 As label:
                         Color: =RGBA(0, 0, 0, 1)
                         DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
                         OnSelect: =Select(Parent)
-                        PaddingBottom: =10
+                        PaddingBottom: =0
                         PaddingLeft: =0
-                        Size: =13
-                        Text: ="Unit Of Measure"
-                        Width: =194
-                        X: =600
-                        Y: =104
-                        ZIndex: =27
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Document_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Title5.Width
+                        X: =Title5.X
+                        Y: =Subtitle4.Y + Subtitle4.Height
+                        ZIndex: =3
 
-                    "UnitOfMeasure As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =40
-                        Value: =ThisItem.Unit_Of_Measure
-                        Width: =194
-                        X: =600
-                        Y: =127
-                        ZIndex: =43
-
-                Group8 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_22 As label:
-                        Align: =Align.Center
+                    NextArrow5 As icon.ChevronRight:
+                        AccessibleLabel: =Self.Tooltip
                         BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        Height: =50
+                        Icon: =Icon.ChevronRight
                         OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="LOT No."
-                        Width: =208
-                        X: =821
-                        Y: =104
-                        ZIndex: =33
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width - 12
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =4
 
-                    "LotNo As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =38
-                        Value: =ThisItem.LOT_No
-                        Width: =208
-                        X: =821
-                        Y: =127
-                        ZIndex: =44
-
-                Group7 As group:
-                    Height: =5
-                    Width: =5
-                    X: =60
-                    Y: =60
-                    ZIndex: =46
-
-                    Label2_24 As label:
-                        Align: =Align.Center
+                    Separator6 As rectangle:
                         BorderColor: =RGBA(89, 0, 0, 1)
-                        BorderThickness: =0.5
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =23
+                        Fill: =RGBA(255, 255, 255, 1)
+                        Height: =8
                         OnSelect: =Select(Parent)
-                        PaddingBottom: =10
-                        PaddingLeft: =0
-                        Size: =13
-                        Text: ="Exp Date"
-                        Width: =194
-                        X: =1060
-                        Y: =104
-                        ZIndex: =35
+                        Width: =Parent.TemplateWidth
+                        Y: =Parent.TemplateHeight - Self.Height
+                        ZIndex: =5
 
-                    "ExpDate As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.Center
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =38
-                        Value: =ThisItem.Exp_Date
-                        Width: =194
-                        X: =1060
-                        Y: =127
-                        ZIndex: =45
+                    Rectangle5 As rectangle:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Fill: =RGBA(89, 0, 0, 1)
+                        Height: =Parent.TemplateHeight - Separator6.Height
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                        ZIndex: =6
 
-            LinesTitle As Text:
-                DisplayMode: =DisplayMode.Edit
-                FontColor: =
-                Height: =32
-                Size: =20
-                Text: ="Purchase"
-                Visible: =false
-                Weight: ='TextCanvas.Weight'.Bold
-                Width: =96
-                X: =13
-                Y: =0
-                ZIndex: =2
-
-            HeaderTitle As Text:
-                DisplayMode: =DisplayMode.Edit
-                FontColor: =
-                Height: =29
-                Size: =20
-                Text: ="Purchase items"
-                Visible: =false
-                Weight: ='TextCanvas.Weight'.Bold
-                Width: =150
-                X: =13
-                Y: =122
-                ZIndex: =11
-
-            DocumentType_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_1 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="Document Type"
-                    Visible: =false
-                    X: =28
-                    Y: =40
-                    ZIndex: =4
-
-                "NN_DocumentType As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.Document_Type
-                    Visible: =false
-                    Width: =150
-                    X: =28
-                    Y: =63
-                    ZIndex: =18
-
-            BuyFromVendorNo_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_2 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="Buy from Vendor No."
-                    Visible: =false
-                    Width: =205
-                    X: =206
-                    Y: =40
-                    ZIndex: =7
-
-                "NN_BuyFromVendorNo As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.'Buy-from_Vendor_No.'
-                    Visible: =false
-                    Width: =205
-                    X: =206
-                    Y: =63
-                    ZIndex: =19
-
-            No_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_4 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="No."
-                    Visible: =false
-                    Width: =163
-                    X: =441
-                    Y: =40
-                    ZIndex: =10
-
-                "NN_No As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.'No.'
-                    Visible: =false
-                    Width: =163
-                    X: =441
-                    Y: =63
-                    ZIndex: =20
-
-            ShipToName_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_26 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="Ship to Name"
-                    Visible: =false
-                    Width: =246
-                    X: =635
-                    Y: =40
-                    ZIndex: =13
-
-                "NN_ShipToName As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.'Ship-to_Name'
-                    Visible: =false
-                    Width: =246
-                    X: =635
-                    Y: =63
-                    ZIndex: =21
-
-            ShipToName2_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_28 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="Ship to Name 2"
-                    Visible: =false
-                    Width: =194
-                    X: =909
-                    Y: =40
-                    ZIndex: =15
-
-                "NN_ShipToName2 As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.'Ship-to_Name_2'
-                    Visible: =false
-                    Width: =194
-                    X: =909
-                    Y: =63
-                    ZIndex: =22
-
-            OrderDate_NN_Group As group:
-                Height: =5
-                Width: =5
-                X: =60
-                Y: =60
-                ZIndex: =24
-
-                Label2_30 As label:
-                    Align: =Align.Center
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    BorderThickness: =0.5
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    DisplayMode: =
-                    Height: =23
-                    OnSelect: =
-                    PaddingBottom: =10
-                    PaddingLeft: =0
-                    Size: =13
-                    Text: ="Order Date"
-                    Visible: =false
-                    Width: =186
-                    X: =1127
-                    Y: =40
-                    ZIndex: =17
-
-                "NN_OrderDate As 'Text input'":
-                    Align: ='TextInputCanvas.Align'.Center
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =
-                    FontSize: =13
-                    Height: =40
-                    Value: =purchase_header.Order_Date
-                    Visible: =false
-                    Width: =186
-                    X: =1127
-                    Y: =63
-                    ZIndex: =23
+        Spinner2_1 As Spinner:
+            AlignInContainer: =AlignInContainer.Stretch
+            BasePaletteColor: =RGBA(249, 83, 109, 1)
+            DisplayMode: =DisplayMode.Edit
+            FillPortions: =1
+            FontColor: =
+            Height: =200
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =isLoading
+            Width: =200
+            X: =0
+            Y: =0
+            ZIndex: =3
 
         NabavniNalogFooterContainer As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -774,7 +313,7 @@
             RadiusTopRight: =8
             Visible: =false
             Width: =1335
-            ZIndex: =3
+            ZIndex: =4
 
             Button6_2 As button:
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -870,21 +409,6 @@
                 Y: =0
                 ZIndex: =7
 
-        Spinner2_1 As Spinner:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =4
-
     saveXml As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
@@ -974,11 +498,11 @@
             
             UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
             
-            UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
+            //UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
             
             Navigate(scrEntry,ScreenTransition.Fade);
             
-            Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+            //Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
             
         Size: =15
         Text: ="Save"
