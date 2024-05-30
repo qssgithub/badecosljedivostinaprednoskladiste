@@ -105,32 +105,78 @@
                     BorderThickness: =0
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =390
+                    Height: =155
                     Width: =Parent.Width
                     X: =0
                     Y: =0
                     ZIndex: =1
 
                     Container14 As groupContainer.manualLayoutContainer:
-                        DropShadow: =DropShadow.Light
-                        Height: =390
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderThickness: =1
+                        Height: =155
                         Width: =1366
                         ZIndex: =1
 
-                        TextCanvas4 As Text:
-                            Align: ='TextCanvas.Align'.Start
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =30
-                            Text: |-
-                                ="Broj naloga : " & purchase_header.'No.'
-                            Width: =282
-                            X: =20
-                            Y: =0
-                            ZIndex: =1
+                    Label1 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =10
+                        Text: |-
+                            ="Broj naloga :   " & purchase_header.'No.'
+                        Width: =827
+                        Y: =7
+                        ZIndex: =2
+
+                    Label1_1 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =10
+                        Text: |-
+                            ="Datum dokumenta :   " & purchase_header.Document_Date
+                        Width: =827
+                        Y: =31
+                        ZIndex: =3
+
+                    Label1_2 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =10
+                        Text: |-
+                            ="Datum narudžbe :   " & purchase_header.Order_Date
+                        Width: =827
+                        Y: =55
+                        ZIndex: =4
+
+                    Label1_3 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =10
+                        Text: |-
+                            ="Nabavka u :   " & purchase_header.Location_Code & "   " & purchase_header.'Ship-to_Name'
+                        Width: =827
+                        Y: =79
+                        ZIndex: =5
+
+                    Label1_4 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =10
+                        Text: |-
+                            ="Dobavljač :   " & purchase_header.'Buy-from_Vendor_No.' & "   " & purchase_header.'Buy-from_Vendor_Name'
+                        Width: =827
+                        Y: =103
+                        ZIndex: =6
 
                 DataCard7 As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
@@ -146,6 +192,7 @@
                     "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
+                        Fill: =RGBA(237, 237, 237, 1)
                         Height: =185
                         Items: =colPurchaseLines
                         Layout: =Layout.Vertical
@@ -153,6 +200,7 @@
                         TemplatePadding: =0
                         TemplateSize: =116
                         Width: =Parent.Width
+                        Y: =49
                         ZIndex: =1
 
                         Title5 As label:
@@ -165,7 +213,7 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Text: =ThisItem.'Buy-from_Vendor_No.'
+                            Text: ="Br. artikla   " & ThisItem.'Item_No'
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.TemplateWidth - 86
                             X: =16
@@ -245,6 +293,16 @@
                             Width: =4
                             ZIndex: =6
 
+                    TextCanvas1 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =34
+                        Text: ="Stavke nabavke"
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =639
+                        X: =12
+                        Y: =8
+                        ZIndex: =2
+
         Spinner2_1 As Spinner:
             AlignInContainer: =AlignInContainer.Stretch
             BasePaletteColor: =RGBA(249, 83, 109, 1)
@@ -252,6 +310,8 @@
             FillPortions: =1
             FontColor: =
             Height: =200
+            LayoutMinHeight: =200
+            LayoutMinWidth: =200
             SpinnerSize: ='Spinner.SpinnerSize'.Huge
             Visible: =isLoading
             Width: =200
@@ -272,7 +332,6 @@
             RadiusBottomRight: =8
             RadiusTopLeft: =8
             RadiusTopRight: =8
-            Visible: =false
             Width: =1335
             ZIndex: =4
 
