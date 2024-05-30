@@ -39,6 +39,7 @@
             );
         
             ClearCollect(colTempPurchaseLines, colPurchaseLines);
+            ClearCollect(colTempPurchaseLines1, colPurchaseLines);
         );
         
         Set(isLoading, false);
@@ -195,7 +196,7 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =708
-                        Items: =colTempPurchaseLines
+                        Items: =colPurchaseLines
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -354,6 +355,15 @@
                             X: =24
                             Y: =87
                             ZIndex: =10
+
+                        ButtonCanvas5 As Button:
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =29
+                            OnSelect: =Reset(NabavniNalogQty);
+                            Width: =32
+                            X: =1260
+                            Y: =117
+                            ZIndex: =12
 
                         Group1 As group:
                             Height: =5
