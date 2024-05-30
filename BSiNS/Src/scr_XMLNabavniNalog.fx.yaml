@@ -199,7 +199,7 @@
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
-                        TemplateSize: =201
+                        TemplateSize: =266
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -220,7 +220,7 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.TemplateWidth - 86
                             X: =24
-                            Y: =22
+                            Y: =18
                             ZIndex: =1
 
                         Subtitle4 As label:
@@ -241,25 +241,6 @@
                             X: =24
                             Y: =52
                             ZIndex: =2
-
-                        Body1 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =18
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Količina:    "
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =88
-                            X: =24
-                            Y: =109
-                            ZIndex: =3
 
                         NextArrow5 As icon.ChevronRight:
                             AccessibleLabel: =Self.Tooltip
@@ -314,7 +295,7 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =151
+                            Y: =187
                             ZIndex: =7
 
                         Body1_2 As label:
@@ -327,13 +308,13 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
+                            Size: =12
                             Text: |-
-                                ="Rok trajanje:    " & ThisItem.Exp_Date
+                                ="Rok trajanja:    " & ThisItem.Exp_Date
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =147
+                            Y: =154
                             ZIndex: =8
 
                         Body1_3 As label:
@@ -346,13 +327,13 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
+                            Size: =12
                             Text: |-
                                 ="LOT:    " & ThisItem.LOT_No
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =165
+                            Y: =223
                             ZIndex: =9
 
                         Body1_4 As label:
@@ -371,21 +352,47 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =82
+                            Y: =87
                             ZIndex: =10
 
-                        "TextInputCanvas1 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Start
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            FontSize: =12
-                            Height: =31
-                            Value: =ThisItem.Quantity
-                            Width: =113
-                            X: =112
-                            Y: =102
-                            ZIndex: =11
+                        Group1 As group:
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =12
+
+                            Body1 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =18
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Količina:    "
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =88
+                                X: =24
+                                Y: =121
+                                ZIndex: =3
+
+                            "TextInputCanvas1 As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Start
+                                BasePaletteColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                FontColor: =
+                                FontSize: =15
+                                Height: =31
+                                Value: =ThisItem.Quantity
+                                Width: =113
+                                X: =112
+                                Y: =115
+                                ZIndex: =11
 
                     TextCanvas1 As Text:
                         DisplayMode: =DisplayMode.Edit
