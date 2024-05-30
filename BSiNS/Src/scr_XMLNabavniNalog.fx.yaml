@@ -391,7 +391,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
+                                    =UpdateIf(colTempPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
