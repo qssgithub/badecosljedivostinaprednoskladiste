@@ -1,46 +1,43 @@
 "scr_XMLNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
-    OnVisible: |
-        =Set(isLoading, true);
-        Reset(nabavniNalogReadyForNavCheckbox);
+    OnVisible: |-
+        =Reset(nabavniNalogReadyForNavCheckbox);
         UpdateContext({scannedItem: Blank()});
         If(!IsBlank(SelectedFile),
-            IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),
-                Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
-                UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder)})
-            );
-        
-            UpdateContext({purchase_line: purchase.purchase_line});
-            UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
-        
-            Clear(colPurchaseLines);
-            ForAll(
-                ParseJSON(purchase_line),
-                Collect(
-                    colPurchaseLines,
-                    {
-                        Document_Type: Text(ThisRecord.Document_Type),
-                        'Buy-from_Vendor_No.': Text(ThisRecord.'Buy-from_Vendor_No.'),
-                        Document_No: Text(ThisRecord.Document_No),
-                        Line_No: Text(ThisRecord.Line_No),
-                        Type: Text(ThisRecord.Type),
-                        Item_No: Text(ThisRecord.Item_No),
-                        Location_Code: Text(ThisRecord.Location_Code),
-                        Posting_Group: Text(ThisRecord.Posting_Group),
-                        Description: Text(ThisRecord.Description),
-                        Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                        Quantity: Text(ThisRecord.Quantity),
-                        LOT_No: Text(ThisRecord.LOT_No),
-                        Exp_Date: Text(ThisRecord.Exp_Date)
-                    }
-                );
-            );
-        
-            ClearCollect(colOriginalPurchaseLines, colPurchaseLines);
+        IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),
+            Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
+            UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder)})
         );
         
-        Set(isLoading, false);
+        UpdateContext({purchase_line: purchase.purchase_line});
+        UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
+        
+        Clear(colPurchaseLines);
+        ForAll(
+            ParseJSON(purchase_line),
+            Collect(
+                colPurchaseLines,
+                {
+                     Document_Type: Text(ThisRecord.Document_Type),
+                      'Buy-from_Vendor_No.': Text(ThisRecord.'Buy-from_Vendor_No.'),
+                      Document_No: Text(ThisRecord.Document_No),
+                      Line_No: Text(ThisRecord.Line_No),
+                      Type: Text(ThisRecord.Type),
+                      Item_No: Text(ThisRecord.Item_No),
+                      Location_Code: Text(ThisRecord.Location_Code),
+                      Posting_Group: Text(ThisRecord.Posting_Group),
+                      Description: Text(ThisRecord.Description),
+                      Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
+                      Quantity: Text(ThisRecord.Quantity),
+                      LOT_No: Text(ThisRecord.LOT_No),
+                      Exp_Date: Text(ThisRecord.Exp_Date)
+                }
+            );
+        );
+        
+        ClearCollect(colOriginalPurchaseLines, colPurchaseLines);
+        )
 
     NabavniNalogScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -65,6 +62,152 @@
             LogoRedirection: =scrEntry
             Width: =Parent.Width
 
+        NabavniNalogFooterContainer As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(233, 79, 76, 1)
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(237, 237, 237, 1)
+            Height: =50
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Visible: =false
+            Width: =1335
+            ZIndex: =3
+
+            Button6_2 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: =Set(varShowGetFileModal,true);
+                Size: =15
+                Text: ="Get xml by name"
+                ZIndex: =1
+
+            Button6_3 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(purchase_header, Blank());
+                    Clear(colPurchaseLines);
+                    Set(isCreated, true);
+                Size: =15
+                Text: ="Create xml"
+                ZIndex: =2
+
+            Button6_1 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(varShowUploadXMLFileModal,true);
+                    Set(varXMLSaveButton, true);
+                Size: =15
+                Text: ="Upload xml"
+                ZIndex: =3
+
+            Button6 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =Set(purchase_header, Blank());
+                    Clear(colPurchaseLines);
+                Size: =15
+                Text: ="Clear view"
+                ZIndex: =4
+
+            Button6_24 As button:
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(164, 38, 44, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                OnSelect: |-
+                    =ClearCollect(colPurchaseLines, colOriginalPurchaseLines);
+                    Reset(nabavniNalogReadyForNavCheckbox);
+                Size: =15
+                Text: ="Reset"
+                ZIndex: =5
+
+            nabavniNalogReadyForNavCheckbox As Checkbox:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Ready for NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =0
+                Y: =0
+                ZIndex: =6
+
+            "BarcodeReader1 As 'Barcode Reader'":
+                BarcodeType: ='BarcodeReader.BarcodeType'.Code128
+                BorderFillColor: =RGBA(233, 79, 76, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledContentColor: =RGBA(166, 166, 166, 1)
+                DisabledFillColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Edit
+                FillColor: =RGBA(204, 74, 57, 1)
+                FontSize: =15
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(189, 49, 51, 1)
+                HoverContentColor: =RGBA(255, 255, 255, 1)
+                HoverFillColor: =RGBA(189, 49, 51, 1)
+                LayoutMinHeight: =70
+                LayoutMinWidth: =280
+                OnCancel: =false
+                OnScan: |-
+                    =UpdateContext({
+                        scannedItem:First(BarcodeReader1.Barcodes).Value
+                    })
+                PressedBorderColor: =RGBA(189, 49, 51, 1)
+                PressedContentColor: =RGBA(189, 49, 51, 1)
+                PressedFillColor: =RGBA(255, 255, 255, 1)
+                ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
+                Text: ="Scan"
+                TextColor: =RGBA(255, 255, 255, 1)
+                Width: =100
+                X: =0
+                Y: =0
+                ZIndex: =7
+
         NabavniNalogDataContainer As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
@@ -78,7 +221,7 @@
             Width: =Parent.Width
             X: =6
             Y: =15
-            ZIndex: =2
+            ZIndex: =4
 
             "PurchaseItemsGallery As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                 BorderColor: =RGBA(89, 0, 0, 1)
@@ -92,7 +235,6 @@
                 LoadingSpinner: =LoadingSpinner.Data
                 TemplatePadding: =0
                 TemplateSize: =194
-                Visible: =false
                 Width: =1284
                 X: =28
                 Y: =169
@@ -524,121 +666,6 @@
                 Y: =122
                 ZIndex: =11
 
-            vrt_NabavniNalozi As groupContainer.verticalAutoLayoutContainer:
-                DropShadow: =DropShadow.Light
-                Height: =677
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutMode: =LayoutMode.Auto
-                Width: =Parent.Width
-                ZIndex: =24
-
-                PageInfo_1 As PageInfo:
-                    LayoutMinHeight: =640
-                    LayoutMinWidth: =640
-                    Title: ="Stavke nabavnog naloga"
-
-                "Gallery2 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                    BorderColor: =RGBA(89, 0, 0, 1)
-                    DelayItemLoading: =true
-                    Height: =Parent.Height
-                    Items: =colPurchaseLines
-                    Layout: =Layout.Vertical
-                    LoadingSpinner: =LoadingSpinner.Data
-                    TemplatePadding: =0
-                    TemplateSize: =116
-                    Width: =Parent.Width
-                    ZIndex: =1
-
-                    Title5 As label:
-                        Color: =RGBA(50, 49, 48, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
-                        PaddingTop: =0
-                        Text: =ThisItem.'Buy-from_Vendor_No.'
-                        VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 86
-                        X: =16
-                        Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle4.Size*1.8 + 2 + Body1.Size*1.8)) / 2
-                        ZIndex: =1
-
-                    Subtitle4 As label:
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
-                        PaddingTop: =0
-                        Size: =12
-                        Text: =ThisItem.Description
-                        VerticalAlign: =VerticalAlign.Top
-                        Width: =Title5.Width
-                        X: =Title5.X
-                        Y: =Title5.Y + Title5.Height
-                        ZIndex: =2
-
-                    Body1 As label:
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
-                        PaddingTop: =0
-                        Size: =12
-                        Text: =ThisItem.Document_No
-                        VerticalAlign: =VerticalAlign.Top
-                        Width: =Title5.Width
-                        X: =Title5.X
-                        Y: =Subtitle4.Y + Subtitle4.Height
-                        ZIndex: =3
-
-                    NextArrow5 As icon.ChevronRight:
-                        AccessibleLabel: =Self.Tooltip
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(166, 166, 166, 1)
-                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                        DisabledColor: =RGBA(244, 244, 244, 1)
-                        Height: =50
-                        Icon: =Icon.ChevronRight
-                        OnSelect: =Select(Parent)
-                        PaddingBottom: =16
-                        PaddingLeft: =16
-                        PaddingRight: =16
-                        PaddingTop: =16
-                        Tooltip: ="View item details"
-                        Width: =50
-                        X: =Parent.TemplateWidth - Self.Width - 12
-                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                        ZIndex: =4
-
-                    Separator6 As rectangle:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Fill: =RGBA(255, 255, 255, 1)
-                        Height: =8
-                        OnSelect: =Select(Parent)
-                        Width: =Parent.TemplateWidth
-                        Y: =Parent.TemplateHeight - Self.Height
-                        ZIndex: =5
-
-                    Rectangle5 As rectangle:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Fill: =RGBA(89, 0, 0, 1)
-                        Height: =Parent.TemplateHeight - Separator6.Height
-                        OnSelect: =Select(Parent)
-                        Visible: =ThisItem.IsSelected
-                        Width: =4
-                        ZIndex: =6
-
             DocumentType_NN_Group As group:
                 Height: =5
                 Width: =5
@@ -878,152 +905,6 @@
                     Y: =63
                     ZIndex: =23
 
-        NabavniNalogFooterContainer As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
-            BorderColor: =RGBA(233, 79, 76, 1)
-            DropShadow: =DropShadow.Light
-            Fill: =RGBA(237, 237, 237, 1)
-            Height: =50
-            LayoutMinHeight: =50
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            RadiusBottomLeft: =8
-            RadiusBottomRight: =8
-            RadiusTopLeft: =8
-            RadiusTopRight: =8
-            Visible: =false
-            Width: =1335
-            ZIndex: =3
-
-            Button6_2 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: =Set(varShowGetFileModal,true);
-                Size: =15
-                Text: ="Get xml by name"
-                ZIndex: =1
-
-            Button6_3 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                DisplayMode: =DisplayMode.Disabled
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =Set(purchase_header, Blank());
-                    Clear(colPurchaseLines);
-                    Set(isCreated, true);
-                Size: =15
-                Text: ="Create xml"
-                ZIndex: =2
-
-            Button6_1 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                DisplayMode: =DisplayMode.Disabled
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =Set(varShowUploadXMLFileModal,true);
-                    Set(varXMLSaveButton, true);
-                Size: =15
-                Text: ="Upload xml"
-                ZIndex: =3
-
-            Button6 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =Set(purchase_header, Blank());
-                    Clear(colPurchaseLines);
-                Size: =15
-                Text: ="Clear view"
-                ZIndex: =4
-
-            Button6_24 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =ClearCollect(colPurchaseLines, colOriginalPurchaseLines);
-                    Reset(nabavniNalogReadyForNavCheckbox);
-                Size: =15
-                Text: ="Reset"
-                ZIndex: =5
-
-            nabavniNalogReadyForNavCheckbox As Checkbox:
-                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                DisplayMode: =DisplayMode.Edit
-                FontColor: =
-                FontSize: =14
-                FontWeight: =FontWeight.Bold
-                Height: =Parent.Height
-                Label: ="Ready for NAV"
-                LayoutMinHeight: =32
-                LayoutMinWidth: =160
-                OnCheck: =false
-                OnUncheck: =false
-                Width: =160
-                X: =0
-                Y: =0
-                ZIndex: =6
-
-            "BarcodeReader1 As 'Barcode Reader'":
-                BarcodeType: ='BarcodeReader.BarcodeType'.Code128
-                BorderFillColor: =RGBA(233, 79, 76, 1)
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledContentColor: =RGBA(166, 166, 166, 1)
-                DisabledFillColor: =RGBA(244, 244, 244, 1)
-                DisplayMode: =DisplayMode.Edit
-                FillColor: =RGBA(204, 74, 57, 1)
-                FontSize: =15
-                Height: =Parent.Height
-                HoverBorderColor: =RGBA(189, 49, 51, 1)
-                HoverContentColor: =RGBA(255, 255, 255, 1)
-                HoverFillColor: =RGBA(189, 49, 51, 1)
-                LayoutMinHeight: =70
-                LayoutMinWidth: =280
-                OnCancel: =false
-                OnScan: |-
-                    =UpdateContext({
-                        scannedItem:First(BarcodeReader1.Barcodes).Value
-                    })
-                PressedBorderColor: =RGBA(189, 49, 51, 1)
-                PressedContentColor: =RGBA(189, 49, 51, 1)
-                PressedFillColor: =RGBA(255, 255, 255, 1)
-                ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
-                Text: ="Scan"
-                TextColor: =RGBA(255, 255, 255, 1)
-                Width: =100
-                X: =0
-                Y: =0
-                ZIndex: =7
-
         Spinner2_1 As Spinner:
             BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
@@ -1033,11 +914,11 @@
             LayoutMinHeight: =200
             LayoutMinWidth: =200
             SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
+            Visible: =isLoadingGetOtpremnica
             Width: =200
             X: =0
             Y: =0
-            ZIndex: =4
+            ZIndex: =5
 
     saveXml As button:
         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -1136,7 +1017,6 @@
             
         Size: =15
         Text: ="Save"
-        Visible: =false
         Width: =225
         X: =1128
         Y: =708
