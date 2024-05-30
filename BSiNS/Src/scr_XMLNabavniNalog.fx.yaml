@@ -69,6 +69,7 @@
             OnSelectLogo: =Navigate(scrEntry)
             Style: ='Header.Style'.Primary
             Title: ="NABAVNI NALOG"
+            TitleFontSize: =14
             UserEmail: =User().Email
             UserImage: =User().Image
             UserName: =User().FullName
@@ -183,7 +184,7 @@
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =388
+                    Height: =757
                     Width: =1366
                     X: =0
                     Y: =1
@@ -193,12 +194,12 @@
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
-                        Height: =185
+                        Height: =708
                         Items: =colPurchaseLines
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
-                        TemplateSize: =116
+                        TemplateSize: =173
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -213,11 +214,12 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
+                            Size: =10
                             Text: ="Br. artikla   " & ThisItem.'Item_No'
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.TemplateWidth - 86
-                            X: =16
-                            Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle4.Size*1.8 + 2 + Body1.Size*1.8)) / 2
+                            X: =24
+                            Y: =22
                             ZIndex: =1
 
                         Subtitle4 As label:
@@ -230,12 +232,12 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =12
-                            Text: =ThisItem.Description
+                            Size: =10
+                            Text: ="Kategorija artikla   " & ThisItem.Posting_Group
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
-                            X: =Title5.X
-                            Y: =Title5.Y + Title5.Height
+                            X: =24
+                            Y: =40
                             ZIndex: =2
 
                         Body1 As label:
@@ -248,12 +250,12 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =12
-                            Text: =ThisItem.Document_No
+                            Size: =10
+                            Text: ="Količina    " & ThisItem.Document_No
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
-                            X: =Title5.X
-                            Y: =Subtitle4.Y + Subtitle4.Height
+                            X: =24
+                            Y: =79
                             ZIndex: =3
 
                         NextArrow5 As icon.ChevronRight:
@@ -292,6 +294,81 @@
                             Visible: =ThisItem.IsSelected
                             Width: =4
                             ZIndex: =6
+
+                        Body1_1 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =10
+                            Text: |-
+                                ="Jedinica mjere:    " & ThisItem.Document_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Title5.Width
+                            X: =24
+                            Y: =98
+                            ZIndex: =7
+
+                        Body1_2 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =10
+                            Text: |-
+                                ="Rok trajanje:    " & ThisItem.Exp_Date
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Title5.Width
+                            X: =24
+                            Y: =116
+                            ZIndex: =8
+
+                        Body1_3 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =10
+                            Text: |-
+                                ="LOT:    " & ThisItem.LOT_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Title5.Width
+                            X: =24
+                            Y: =134
+                            ZIndex: =9
+
+                        Body1_4 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =10
+                            Text: ="Naziv artikla   " & ThisItem.Description
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Title5.Width
+                            X: =24
+                            Y: =61
+                            ZIndex: =10
 
                     TextCanvas1 As Text:
                         DisplayMode: =DisplayMode.Edit
@@ -332,6 +409,7 @@
             RadiusBottomRight: =8
             RadiusTopLeft: =8
             RadiusTopRight: =8
+            Visible: =false
             Width: =1335
             ZIndex: =4
 
