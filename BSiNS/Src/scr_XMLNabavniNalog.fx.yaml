@@ -390,7 +390,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
+                                    =UpdateIf(colTempPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -452,8 +452,7 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                 OnSelect: |-
-                    =//ClearCollect(colPurchaseLines, colTempPurchaseLines);
-                    ClearCollect(colPurchaseLines, colPurchaseLines);
+                    =ClearCollect(colTempPurchaseLines, colPurchaseLines);
                     Reset(NabavniNalogLines);
                     Reset(nabavniNalogReadyForNavCheckbox);
                 Size: =15
