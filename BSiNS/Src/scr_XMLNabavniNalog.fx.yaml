@@ -39,6 +39,7 @@
             );
         
             ClearCollect(colTempPurchaseLines, colPurchaseLines);
+            ClearCollect(colTempPurchaseLines1, colPurchaseLines);
         );
         
         Set(isLoading, false);
@@ -390,7 +391,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
+                                    =UpdateIf(colPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
