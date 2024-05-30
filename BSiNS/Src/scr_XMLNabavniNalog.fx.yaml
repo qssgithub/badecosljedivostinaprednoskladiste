@@ -252,13 +252,13 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
+                            Size: =12
                             Text: |-
                                 ="Količina:    "
                             VerticalAlign: =VerticalAlign.Top
-                            Width: =62
-                            X: =510
-                            Y: =133
+                            Width: =88
+                            X: =24
+                            Y: =109
                             ZIndex: =3
 
                         NextArrow5 As icon.ChevronRight:
@@ -308,13 +308,13 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
+                            Size: =12
                             Text: |-
                                 ="Jedinica mjere:    " & ThisItem.Document_No
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =129
+                            Y: =151
                             ZIndex: =7
 
                         Body1_2 As label:
@@ -371,18 +371,20 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =91
+                            Y: =82
                             ZIndex: =10
 
                         "TextInputCanvas1 As 'Text input'":
                             Align: ='TextInputCanvas.Align'.Start
+                            BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =10
-                            Height: =37
+                            FontColor: =
+                            FontSize: =12
+                            Height: =31
                             Value: =ThisItem.Quantity
                             Width: =113
-                            X: =485
-                            Y: =82
+                            X: =112
+                            Y: =102
                             ZIndex: =11
 
                     TextCanvas1 As Text:
