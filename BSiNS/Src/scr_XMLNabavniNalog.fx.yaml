@@ -453,7 +453,7 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                 OnSelect: |-
-                    =ClearCollect(colTempPurchaseLines, colPurchaseLines);
+                    =ClearCollect(colPurchaseLines, colTempPurchaseLines1);
                     Reset(NabavniNalogLines);
                     Reset(nabavniNalogReadyForNavCheckbox);
                 Size: =15
