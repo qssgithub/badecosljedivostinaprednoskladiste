@@ -151,15 +151,15 @@
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =0
-                    Height: =If(App.Width > 600, 60, 120)
+                    Height: =If(hrzcon_GetAllFilesDDs.LayoutDirection = LayoutDirection.Horizontal, 80, 250)
                     LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutDirection: =If(App.Width > 600, LayoutDirection.Horizontal, LayoutDirection.Vertical)
                     LayoutGap: =15
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =60
+                    LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
-                    PaddingBottom: =10
+                    PaddingRight: =10
                     RadiusBottomLeft: =4
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
@@ -167,184 +167,95 @@
                     Width: =Parent.Width
                     ZIndex: =2
 
-                    con_Status As groupContainer.manualLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        DropShadow: =DropShadow.Light
-                        Height: =50
-                        LayoutMinHeight: =50
+                    vrt_Status As groupContainer.verticalAutoLayoutContainer:
+                        Height: =80
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =80
                         LayoutMinWidth: =250
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Width: =Parent.Width - 47
-                        ZIndex: =1
-
-                        dd_Status As Dropdown.pcfdataset:
-                            AccessibleLabel: =""
-                            BasePaletteColor: =
-                            DefaultSelectedItems: |-
-                                =[{Id: "All", Text: "All"}]
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =18
-                            Height: =Parent.Height
-                            Items: |-
-                                =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
-                            OnChange: |-
-                                =If(
-                                    Not(dd_FileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
-                                );
-                                If(
-                                    Not(dd_Status.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    )
-                                );
-                            Width: =Parent.Width
-                            X: =0
-                            Y: =0
-                            ZIndex: =1
-
-                            TextInput2 As pcfDataField.textualColumn:
-                                FieldDisplayName: ="Text"
-                                FieldName: ="Text"
-                                FieldType: ="s"
-                                FieldVariantName: ="textualColumn"
-                                Order: =1
-                                ZIndex: =13
-
-                    icn_ReloadFiles_2 As icon.Reload:
-                        BorderColor: =RGBA(0, 0, 0, 0)
-                        Color: =RGBA(0, 0, 0, 0)
-                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-                        DisabledColor: =RGBA(214, 221, 224, 1)
-                        DisplayMode: =DisplayMode.View
-                        FocusedBorderThickness: =0
-                        Height: =50
-                        Icon: =Icon.VerticalLine
-                        OnSelect: =
+                        LayoutMode: =LayoutMode.Auto
                         PaddingBottom: =5
                         PaddingLeft: =5
                         PaddingRight: =5
                         PaddingTop: =5
-                        Visible: =false
-                        Width: =32
-                        X: =303
-                        ZIndex: =2
-
-                    con_FileType As groupContainer.manualLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        DropShadow: =DropShadow.Light
-                        Height: =50
-                        LayoutMinHeight: =50
-                        LayoutMinWidth: =250
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =Parent.Width
-                        ZIndex: =3
+                        ZIndex: =1
 
-                        dd_FileType As Dropdown.pcfdataset:
-                            DefaultSelectedItems: |-
-                                =[
-                                    {
-                                        Id: "0",
-                                        Text: "All"
-                                    }
-                                ]
+                        txt_Status As Text:
+                            AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =18
+                            FontColor: =
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Status dokumenta"
+                            Width: =96
+                            X: =40
+                            Y: =18
+                            ZIndex: =1
+
+                        con_Status As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DropShadow: =DropShadow.Light
+                            FillPortions: =0
                             Height: =50
-                            Items: |-
-                                =[
-                                    {
-                                        Id: "0",
-                                        Text: "All"
-                                    },
-                                    {
-                                        Id: "01",
-                                        Text: "Temeljnice inventure"
-                                    },
-                                    {
-                                        Id: "02",
-                                        Text: "Nabavni nalozi"
-                                    },
-                                    {
-                                        Id: "03",
-                                        Text: "Prodajni nalozi"
-                                    },
-                                    {
-                                        Id: "04",
-                                        Text: "Nalozi za prenos"
-                                    },
-                                    {
-                                        Id: "05",
-                                        Text: "Skladišne primke"
-                                    },
-                                    {
-                                        Id: "06",
-                                        Text: "Skladišne otpremnice"
-                                    },
-                                    {
-                                        Id: "07",
-                                        Text: "Put-Away Request"
-                                    },
-                                    {
-                                        Id: "08",
-                                        Text: "Pick Request"
-                                    }
-                                ]
-                            OnChange: |
-                                =If(
-                                    Not(dd_FileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
-                                );
-                                If(
-                                    Not(dd_Status.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    )
-                                );
-                            Width: =Parent.Width
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            ZIndex: =3
+
+                    vrt_FileType As groupContainer.verticalAutoLayoutContainer:
+                        Height: =80
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: |
+                            =80
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =5
+                        PaddingLeft: =5
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =2
+
+                        txt_FileType As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Tip dokumenta"
+                            Width: =96
                             X: =0
                             Y: =0
                             ZIndex: =1
 
-                            TextInput1 As pcfDataField.textualColumn:
-                                FieldDisplayName: ="Text"
-                                FieldName: ="Text"
-                                FieldType: ="s"
-                                FieldVariantName: ="textualColumn"
-                                Order: =1
-                                ZIndex: =11
+                        con_FileType As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DropShadow: =DropShadow.Light
+                            FillPortions: =0
+                            Height: =50
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =Parent.Width
+                            ZIndex: =2
 
                     ButtonCanvas1 As Button:
                         BasePaletteColor: =
@@ -359,15 +270,17 @@
                         Width: =96
                         X: =0
                         Y: =0
-                        ZIndex: =4
+                        ZIndex: =3
 
                     icn_ReloadFiles_1 As icon.Reload:
+                        AlignInContainer: =If(App.Width > 600, AlignInContainer.Center, AlignInContainer.End)
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Color: =RGBA(89, 0, 0, 1)
                         DisabledBorderColor: =RGBA(0, 0, 0, 0)
                         DisabledColor: =RGBA(214, 221, 224, 1)
                         Height: =50
                         Icon: =Icon.Reload
+                        LayoutMinWidth: =32
                         OnSelect: |
                             =UpdateContext({IsLoadingGetAllFiles: true});
                             UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
@@ -421,18 +334,15 @@
                                 )
                             );
                             UpdateContext({IsLoadingGetAllFiles: false});
-                        PaddingBottom: =5
-                        PaddingLeft: =5
-                        PaddingRight: =5
-                        PaddingTop: =5
                         Width: =32
                         X: =303
-                        ZIndex: =5
+                        ZIndex: =4
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     AlignInContainer: =AlignInContainer.SetByContainer
                     BorderColor: =RGBA(89, 0, 0, 1)
                     DelayItemLoading: =true
+                    FillPortions: =10
                     Height: =321
                     Items: =filteredFiles
                     Layout: =Layout.Vertical
@@ -539,9 +449,8 @@
                     Appearance: ='Spinner.Appearance'.Primary
                     BasePaletteColor: =
                     DisplayMode: =DisplayMode.Edit
-                    FillPortions: =1
                     FontColor: =
-                    Height: =200
+                    Height: =Parent.Height
                     LayoutMinHeight: =200
                     LayoutMinWidth: =200
                     SpinnerSize: ='Spinner.SpinnerSize'.Huge
