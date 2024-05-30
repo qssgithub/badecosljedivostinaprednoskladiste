@@ -278,7 +278,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Line No."
-                        Visible: =false
                         X: =42
                         Y: =17
                         ZIndex: =12
@@ -290,7 +289,6 @@
                         FontColor: =
                         Height: =40
                         Value: =ThisItem.Line_No
-                        Visible: =false
                         Width: =150
                         X: =42
                         Y: =40
@@ -315,7 +313,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Type"
-                        Visible: =false
                         Width: =208
                         X: =218
                         Y: =17
@@ -328,7 +325,6 @@
                         FontColor: =
                         Height: =40
                         Value: =ThisItem.Type
-                        Visible: =false
                         Width: =208
                         X: =218
                         Y: =40
@@ -353,7 +349,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Item No."
-                        Visible: =false
                         Width: =194
                         X: =455
                         Y: =17
@@ -366,7 +361,6 @@
                         FontColor: =
                         Height: =36
                         Value: =ThisItem.Item_No
-                        Visible: =false
                         Width: =194
                         X: =455
                         Y: =42
@@ -391,7 +385,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Location Code"
-                        Visible: =false
                         Width: =208
                         X: =676
                         Y: =17
@@ -404,7 +397,6 @@
                         FontColor: =
                         Height: =36
                         Value: =ThisItem.Location_Code
-                        Visible: =false
                         Width: =208
                         X: =676
                         Y: =40
@@ -429,7 +421,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Posting Group"
-                        Visible: =false
                         Width: =194
                         X: =911
                         Y: =17
@@ -442,7 +433,6 @@
                         FontColor: =
                         Height: =30
                         Value: =ThisItem.Posting_Group
-                        Visible: =false
                         Width: =194
                         X: =911
                         Y: =40
@@ -467,7 +457,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Quantity"
-                        Visible: =false
                         Width: =124
                         X: =1130
                         Y: =17
@@ -482,7 +471,6 @@
                         OnChange: |-
                             =UpdateIf(colPurchaseLines, PurchaseItemsGallery.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(QuantityVal.Value)})
                         Value: =ThisItem.Quantity
-                        Visible: =false
                         Width: =124
                         X: =1130
                         Y: =39
@@ -507,7 +495,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Description"
-                        Visible: =false
                         Width: =534
                         X: =42
                         Y: =104
@@ -520,7 +507,6 @@
                         FontColor: =
                         Height: =40
                         Value: =ThisItem.Description
-                        Visible: =false
                         Width: =534
                         X: =42
                         Y: =127
@@ -545,7 +531,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Unit Of Measure"
-                        Visible: =false
                         Width: =194
                         X: =600
                         Y: =104
@@ -558,7 +543,6 @@
                         FontColor: =
                         Height: =40
                         Value: =ThisItem.Unit_Of_Measure
-                        Visible: =false
                         Width: =194
                         X: =600
                         Y: =127
@@ -583,7 +567,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="LOT No."
-                        Visible: =false
                         Width: =208
                         X: =821
                         Y: =104
@@ -596,7 +579,6 @@
                         FontColor: =
                         Height: =38
                         Value: =ThisItem.LOT_No
-                        Visible: =false
                         Width: =208
                         X: =821
                         Y: =127
@@ -621,7 +603,6 @@
                         PaddingLeft: =0
                         Size: =13
                         Text: ="Exp Date"
-                        Visible: =false
                         Width: =194
                         X: =1060
                         Y: =104
@@ -634,7 +615,6 @@
                         FontColor: =
                         Height: =38
                         Value: =ThisItem.Exp_Date
-                        Visible: =false
                         Width: =194
                         X: =1060
                         Y: =127
@@ -646,7 +626,6 @@
                 Height: =32
                 Size: =20
                 Text: ="Purchase"
-                Visible: =false
                 Weight: ='TextCanvas.Weight'.Bold
                 Width: =96
                 X: =13
@@ -659,7 +638,6 @@
                 Height: =29
                 Size: =20
                 Text: ="Purchase items"
-                Visible: =false
                 Weight: ='TextCanvas.Weight'.Bold
                 Width: =150
                 X: =13
@@ -686,7 +664,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="Document Type"
-                    Visible: =false
                     X: =28
                     Y: =40
                     ZIndex: =4
@@ -699,7 +676,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.Document_Type
-                    Visible: =false
                     Width: =150
                     X: =28
                     Y: =63
@@ -725,7 +701,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="Buy from Vendor No."
-                    Visible: =false
                     Width: =205
                     X: =206
                     Y: =40
@@ -739,7 +714,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.'Buy-from_Vendor_No.'
-                    Visible: =false
                     Width: =205
                     X: =206
                     Y: =63
@@ -765,7 +739,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="No."
-                    Visible: =false
                     Width: =163
                     X: =441
                     Y: =40
@@ -779,7 +752,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.'No.'
-                    Visible: =false
                     Width: =163
                     X: =441
                     Y: =63
@@ -805,7 +777,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="Ship to Name"
-                    Visible: =false
                     Width: =246
                     X: =635
                     Y: =40
@@ -819,7 +790,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.'Ship-to_Name'
-                    Visible: =false
                     Width: =246
                     X: =635
                     Y: =63
@@ -845,7 +815,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="Ship to Name 2"
-                    Visible: =false
                     Width: =194
                     X: =909
                     Y: =40
@@ -859,7 +828,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.'Ship-to_Name_2'
-                    Visible: =false
                     Width: =194
                     X: =909
                     Y: =63
@@ -885,7 +853,6 @@
                     PaddingLeft: =0
                     Size: =13
                     Text: ="Order Date"
-                    Visible: =false
                     Width: =186
                     X: =1127
                     Y: =40
@@ -899,7 +866,6 @@
                     FontSize: =13
                     Height: =40
                     Value: =purchase_header.Order_Date
-                    Visible: =false
                     Width: =186
                     X: =1127
                     Y: =63
