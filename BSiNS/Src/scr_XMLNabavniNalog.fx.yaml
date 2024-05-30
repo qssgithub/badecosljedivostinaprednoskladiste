@@ -120,65 +120,72 @@
                         Width: =1366
                         ZIndex: =1
 
-                    Label1 As label:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =24
-                        Size: =10
-                        Text: |-
-                            ="Broj naloga :   " & purchase_header.'No.'
-                        Width: =827
-                        Y: =7
-                        ZIndex: =2
+                    Group4 As group:
+                        Height: =5
+                        Width: =5
+                        X: =40
+                        Y: =40
+                        ZIndex: =7
 
-                    Label1_1 As label:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =24
-                        Size: =10
-                        Text: |-
-                            ="Datum dokumenta :   " & purchase_header.Document_Date
-                        Width: =827
-                        Y: =31
-                        ZIndex: =3
+                        Label1 As label:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            Size: =10
+                            Text: |-
+                                ="Broj naloga :   " & purchase_header.'No.'
+                            Width: =827
+                            Y: =17
+                            ZIndex: =2
 
-                    Label1_2 As label:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =24
-                        Size: =10
-                        Text: |-
-                            ="Datum narudžbe :   " & purchase_header.Order_Date
-                        Width: =827
-                        Y: =55
-                        ZIndex: =4
+                        Label1_1 As label:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            Size: =10
+                            Text: |-
+                                ="Datum dokumenta :   " & purchase_header.Document_Date
+                            Width: =827
+                            Y: =41
+                            ZIndex: =3
 
-                    Label1_3 As label:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =24
-                        Size: =10
-                        Text: |-
-                            ="Nabavka u :   " & purchase_header.Location_Code & "   " & purchase_header.'Ship-to_Name'
-                        Width: =827
-                        Y: =79
-                        ZIndex: =5
+                        Label1_2 As label:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            Size: =10
+                            Text: |-
+                                ="Datum narudžbe :   " & purchase_header.Order_Date
+                            Width: =827
+                            Y: =65
+                            ZIndex: =4
 
-                    Label1_4 As label:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(0, 0, 0, 1)
-                        DisabledColor: =RGBA(166, 166, 166, 1)
-                        Height: =24
-                        Size: =10
-                        Text: |-
-                            ="Dobavljač :   " & purchase_header.'Buy-from_Vendor_No.' & "   " & purchase_header.'Buy-from_Vendor_Name'
-                        Width: =827
-                        Y: =103
-                        ZIndex: =6
+                        Label1_3 As label:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            Size: =10
+                            Text: |-
+                                ="Nabavka u :   " & purchase_header.Location_Code & "   " & purchase_header.'Ship-to_Name'
+                            Width: =827
+                            Y: =89
+                            ZIndex: =5
+
+                        Label1_4 As label:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Height: =24
+                            Size: =10
+                            Text: |-
+                                ="Dobavljač :   " & purchase_header.'Buy-from_Vendor_No.' & "   " & purchase_header.'Buy-from_Vendor_Name'
+                            Width: =827
+                            Y: =113
+                            ZIndex: =6
 
                 DataCard7 As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
@@ -204,44 +211,6 @@
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
-
-                        Title5 As label:
-                            Color: =RGBA(50, 49, 48, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Br. artikla:   " & ThisItem.Item_No
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - 86
-                            X: =24
-                            Y: =18
-                            ZIndex: =1
-
-                        Subtitle4 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Kategorija artikla:   " & ThisItem.Posting_Group
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =52
-                            ZIndex: =2
 
                         NextArrow5 As icon.ChevronRight:
                             AccessibleLabel: =Self.Tooltip
@@ -280,97 +249,67 @@
                             Width: =4
                             ZIndex: =6
 
-                        Body1_1 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Jedinica mjere:    " & ThisItem.Document_No
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =187
-                            ZIndex: =7
+                        Icon1 As icon.Reset:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =50
+                            Icon: =Icon.Reset
+                            OnSelect: =Reset(NabavniNalogQty)
+                            PaddingBottom: =16
+                            PaddingLeft: =16
+                            PaddingRight: =16
+                            PaddingTop: =16
+                            Width: =50
+                            X: =Parent.TemplateWidth - Self.Width - 50
+                            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                            ZIndex: =13
 
-                        Body1_2 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Rok trajanja:    " & ThisItem.Exp_Date
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =154
-                            ZIndex: =8
-
-                        Body1_3 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="LOT:    " & ThisItem.LOT_No
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =223
-                            ZIndex: =9
-
-                        Body1_4 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Naziv artikla:   " & ThisItem.Description
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =87
-                            ZIndex: =10
-
-                        ButtonCanvas5 As Button:
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =29
-                            OnSelect: =Reset(NabavniNalogQty);
-                            Width: =32
-                            X: =1260
-                            Y: =117
-                            ZIndex: =12
-
-                        Group1 As group:
+                        Group2 As group:
                             Height: =5
                             Width: =5
                             X: =40
                             Y: =40
-                            ZIndex: =12
+                            ZIndex: =14
+
+                            Title5 As label:
+                                Color: =RGBA(50, 49, 48, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Br. artikla:   " & ThisItem.Item_No
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth - 86
+                                X: =24
+                                Y: =18
+                                ZIndex: =1
+
+                            Subtitle4 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Kategorija artikla:   " & ThisItem.Posting_Group
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Title5.Width
+                                X: =24
+                                Y: =52
+                                ZIndex: =2
 
                             Body1 As label:
                                 Color: =RGBA(0, 0, 0, 1)
@@ -390,6 +329,82 @@
                                 X: =24
                                 Y: =121
                                 ZIndex: =3
+
+                            Body1_1 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Jedinica mjere:    " & ThisItem.Document_No
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Title5.Width
+                                X: =24
+                                Y: =187
+                                ZIndex: =7
+
+                            Body1_2 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Rok trajanja:    " & ThisItem.Exp_Date
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Title5.Width
+                                X: =24
+                                Y: =154
+                                ZIndex: =8
+
+                            Body1_3 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="LOT:    " & ThisItem.LOT_No
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Title5.Width
+                                X: =24
+                                Y: =223
+                                ZIndex: =9
+
+                            Body1_4 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Naziv artikla:   " & ThisItem.Description
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Title5.Width
+                                X: =24
+                                Y: =87
+                                ZIndex: =10
 
                             "NabavniNalogQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
@@ -449,25 +464,8 @@
             RadiusBottomRight: =8
             RadiusTopLeft: =8
             RadiusTopRight: =8
-            Width: =1335
+            Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =4
-
-            Button6_24 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =ClearCollect(colTempPurchaseLines, colPurchaseLines);
-                    Reset(NabavniNalogLines);
-                    Reset(nabavniNalogReadyForNavCheckbox);
-                Size: =15
-                Text: ="Reset"
-                ZIndex: =5
 
             nabavniNalogReadyForNavCheckbox As Checkbox:
                 AlignInContainer: =AlignInContainer.End
