@@ -4,6 +4,7 @@
     OnHidden: =
     OnVisible: |
         =UpdateContext({IsLoadingGetAllFiles: true});
+        Set(isLoading, true);
         UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
         //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
         //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
@@ -55,6 +56,7 @@
             )
         );
         UpdateContext({IsLoadingGetAllFiles: false});
+        Set(isLoading, false);
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
