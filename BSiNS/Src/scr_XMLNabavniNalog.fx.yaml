@@ -199,7 +199,7 @@
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
-                        TemplateSize: =173
+                        TemplateSize: =201
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -214,8 +214,9 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
-                            Text: ="Br. artikla   " & ThisItem.'Item_No'
+                            Size: =12
+                            Text: |-
+                                ="Br. artikla:   " & ThisItem.Item_No
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Parent.TemplateWidth - 86
                             X: =24
@@ -232,30 +233,32 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
-                            Text: ="Kategorija artikla   " & ThisItem.Posting_Group
+                            Size: =12
+                            Text: |-
+                                ="Kategorija artikla:   " & ThisItem.Posting_Group
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =40
+                            Y: =52
                             ZIndex: =2
 
                         Body1 As label:
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
+                            Height: =18
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =10
-                            Text: ="Količina    " & ThisItem.Document_No
+                            Text: |-
+                                ="Količina:    "
                             VerticalAlign: =VerticalAlign.Top
-                            Width: =Title5.Width
-                            X: =24
-                            Y: =79
+                            Width: =62
+                            X: =510
+                            Y: =133
                             ZIndex: =3
 
                         NextArrow5 As icon.ChevronRight:
@@ -311,7 +314,7 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =98
+                            Y: =129
                             ZIndex: =7
 
                         Body1_2 As label:
@@ -330,7 +333,7 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =116
+                            Y: =147
                             ZIndex: =8
 
                         Body1_3 As label:
@@ -349,7 +352,7 @@
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =134
+                            Y: =165
                             ZIndex: =9
 
                         Body1_4 As label:
@@ -362,16 +365,29 @@
                             PaddingLeft: =0
                             PaddingRight: =0
                             PaddingTop: =0
-                            Size: =10
-                            Text: ="Naziv artikla   " & ThisItem.Description
+                            Size: =12
+                            Text: |-
+                                ="Naziv artikla:   " & ThisItem.Description
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title5.Width
                             X: =24
-                            Y: =61
+                            Y: =91
                             ZIndex: =10
+
+                        "TextInputCanvas1 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =10
+                            Height: =37
+                            Value: =ThisItem.Quantity
+                            Width: =113
+                            X: =485
+                            Y: =82
+                            ZIndex: =11
 
                     TextCanvas1 As Text:
                         DisplayMode: =DisplayMode.Edit
+                        FontColor: =
                         Height: =34
                         Text: ="Stavke nabavke"
                         Weight: ='TextCanvas.Weight'.Semibold
