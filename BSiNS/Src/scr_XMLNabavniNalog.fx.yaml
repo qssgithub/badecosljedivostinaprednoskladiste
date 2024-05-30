@@ -38,7 +38,7 @@
                 );
             );
         
-            ClearCollect(colOriginalPurchaseLines, colPurchaseLines);
+            ClearCollect(colTempPurchaseLines, colPurchaseLines);
         );
         
         Set(isLoading, false);
@@ -185,7 +185,7 @@
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =757
-                    Width: =1366
+                    Width: =Parent.Width
                     X: =0
                     Y: =1
                     ZIndex: =2
@@ -381,13 +381,16 @@
                                 Y: =121
                                 ZIndex: =3
 
-                            "TextInputCanvas1 As 'Text input'":
+                            "NabavniNalogQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 BasePaletteColor: =
+                                DelayOutput: =true
                                 DisplayMode: =DisplayMode.Edit
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
+                                OnChange: |-
+                                    =UpdateIf(colTempPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -426,7 +429,9 @@
             BorderColor: =RGBA(233, 79, 76, 1)
             DropShadow: =DropShadow.Light
             Fill: =RGBA(237, 237, 237, 1)
+            FillPortions: =0
             Height: =50
+            LayoutAlignItems: =LayoutAlignItems.End
             LayoutMinHeight: =50
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -434,39 +439,8 @@
             RadiusBottomRight: =8
             RadiusTopLeft: =8
             RadiusTopRight: =8
-            Visible: =false
             Width: =1335
             ZIndex: =4
-
-            Button6_2 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: =Set(varShowGetFileModal,true);
-                Size: =15
-                Text: ="Get xml by name"
-                ZIndex: =1
-
-            Button6 As button:
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                Fill: =RGBA(164, 38, 44, 1)
-                FontWeight: =FontWeight.Semibold
-                Height: =50
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |-
-                    =Set(purchase_header, Blank());
-                    Clear(colPurchaseLines);
-                Size: =15
-                Text: ="Clear view"
-                ZIndex: =4
 
             Button6_24 As button:
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -478,13 +452,15 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                 OnSelect: |-
-                    =ClearCollect(colPurchaseLines, colOriginalPurchaseLines);
+                    =Clear(colTempPurchaseLines);
+                    Collect(colTempPurchaseLines, colPurchaseLines);
                     Reset(nabavniNalogReadyForNavCheckbox);
                 Size: =15
                 Text: ="Reset"
                 ZIndex: =5
 
             nabavniNalogReadyForNavCheckbox As Checkbox:
+                AlignInContainer: =AlignInContainer.End
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
