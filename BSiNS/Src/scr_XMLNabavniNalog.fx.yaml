@@ -769,7 +769,7 @@
                 AlignInContainer: =AlignInContainer.End
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
-                DisplayMode: =DisplayMode.Edit
+                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
                 FontColor: =
                 FontSize: =14
                 FontWeight: =FontWeight.Bold
