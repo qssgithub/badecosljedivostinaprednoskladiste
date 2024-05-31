@@ -7,15 +7,18 @@
         Reset(nabavniNalogReadyForNavCheckbox);
         UpdateContext({scannedItem: Blank()});
         If(!IsBlank(SelectedFile),
-            IfError(GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder),
+            IfError(GetXML_Nabavni_Nalog_Novi.Run(SelectedFile, SelectedFolder),
                 Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
-                UpdateContext({purchase: GetXML_Nabavni_Nalog.Run(SelectedFile, SelectedFolder)})
+                UpdateContext({purchase: GetXML_Nabavni_Nalog_Novi.Run(SelectedFile, SelectedFolder)})
             );
         
             UpdateContext({purchase_line: purchase.purchase_line});
+            UpdateContext({purchase_res_entry: purchase.res_entry});
             UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
         
             Clear(colPurchaseLines);
+            Clear(colResEntries);
+            
             ForAll(
                 ParseJSON(purchase_line),
                 Collect(
@@ -38,8 +41,38 @@
                 );
             );
         
+            ForAll(
+                ParseJSON(purchase_res_entry),
+                Collect(
+                    colResEntries,
+                        {
+                            Entry_No: Text(ThisRecord.Entry_No),
+                            Item_No: Text(ThisRecord.Item_No),
+                            Positive: Text(ThisRecord.Positive),
+                            Quantity: Value(ThisRecord.Quantity),
+                            Quantity_Base: Value(ThisRecord.Quantity_Base),
+                            Location_Code: Text(ThisRecord.Location_Code),
+                            Res_Status: Text(ThisRecord.Res_Status),
+                            Source_Type: Text(ThisRecord.Source_Type),
+                            Source_SubType: Text(ThisRecord.Source_SubType),
+                            Source_ID: Text(ThisRecord.Source_ID),
+                            Source_Ref_No: Text(ThisRecord.Source_Ref_No),
+                            Item_Tracking: Text(ThisRecord.Item_Tracking),
+                            LOT_No: Text(ThisRecord.LOT_No),
+                            Exp_Date: Text(ThisRecord.Exp_Date),
+                            Creation_Date: Text(ThisRecord.Creation_Date),
+                            Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
+                            Shipment_Date: Text(ThisRecord.Shipment_Date),
+                            Created_By: Text(ThisRecord.Created_By),
+                            'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
+                        }
+                    )
+                );
+        
             ClearCollect(colTempPurchaseLines, colPurchaseLines);
-            ClearCollect(colTempPurchaseLines1, colPurchaseLines);
+            ClearCollect(colTempPurchaseResEntry, colResEntries);
+            //ClearCollect(colTempPurchaseLines1, colPurchaseLines);
         );
         
         Set(isLoading, false);
@@ -464,7 +497,7 @@
                     Y: =1
                     ZIndex: =2
 
-                    "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NabavniNalogResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
@@ -688,7 +721,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseLines, NabavniNalogLines_1.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty_1.Value)})
+                                    =UpdateIf(colTempPurchaseLines, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty_1.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -702,7 +735,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Height: =24
                         Size: =12
-                        Text: ="Stavke nabavke"
+                        Text: ="Rezervacijski unosi"
                         Width: =Parent.Width
                         Y: =10
                         ZIndex: =3
