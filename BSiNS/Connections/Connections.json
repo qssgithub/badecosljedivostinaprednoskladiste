@@ -104,10 +104,10 @@
       "cfee3a12-5e02-4d92-8d52-414857a67d51",
       "7ad2c3fa-fe8f-45b5-9725-fb1c6d0a5637",
       "606b24e4-b1be-4add-b4c8-85480ae5d3c1",
-      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
       "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1",
       "cc77c4fb-5da2-4007-8003-2a71ef9049e6",
-      "92362bd2-2469-48a0-8d12-2d646a9ca94f"
+      "92362bd2-2469-48a0-8d12-2d646a9ca94f",
+      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
   },
@@ -265,6 +265,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
+        },
         "workflowDisplayName": {
           "value": "GetXML_Nabavni_Nalog_Novi"
         },
@@ -276,6 +279,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+        },
         "workflowDisplayName": {
           "value": "GetXML_Nabavni_Nalog_Novi"
         },
@@ -435,9 +441,6 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-          "value": "shared_filesystem_1"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -449,12 +452,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
-        "shared_filesystem_1": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
