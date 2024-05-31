@@ -886,13 +886,11 @@
                         )
                     });
                     
-                    Set(xxxxxxxxx, purchaseJsonData);
-                    
                     UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
                     
                     UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
                     
-                    Navigate(scrEntry,ScreenTransition.Fade);
+                    Navigate(scr_XMLNabavniNalog,ScreenTransition.Fade);
                     
                     Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                     
