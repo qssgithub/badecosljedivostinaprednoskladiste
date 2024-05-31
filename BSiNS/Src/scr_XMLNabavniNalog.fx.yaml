@@ -34,9 +34,9 @@
                         Posting_Group: Text(ThisRecord.Posting_Group),
                         Description: Text(ThisRecord.Description),
                         Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                        Quantity: Text(ThisRecord.Quantity),
-                        LOT_No: Text(ThisRecord.LOT_No),
-                        Exp_Date: Text(ThisRecord.Exp_Date)
+                        Quantity: Text(ThisRecord.Quantity)
+                        //LOT_No: Text(ThisRecord.LOT_No),
+                        //Exp_Date: Text(ThisRecord.Exp_Date)
                     }
                 );
             );
@@ -72,7 +72,6 @@
         
             ClearCollect(colTempPurchaseLines, colPurchaseLines);
             ClearCollect(colTempPurchaseResEntry, colResEntries);
-            //ClearCollect(colTempPurchaseLines1, colPurchaseLines);
         );
         
         Set(isLoading, false);
@@ -704,7 +703,7 @@
                             Y: =1
                             ZIndex: =1
 
-                DataCard2 As dataCard.blankCard:
+                PurchaseResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -850,20 +849,43 @@
                                     'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
                                     Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
                                     Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                                    Purchase_Line: ForAll(colPurchaseLines,{
-                                        'Buy-from_Vendor_No.': Text('Buy-from_Vendor_No.'),
-                                        Description: Text(Description),
-                                        Document_No:Text(Document_No),
-                                        Document_Type:Text(Document_Type),
-                                        Exp_Date:Text(Exp_Date),
-                                        Item_No:Text(Item_No),
-                                        LOT_No:Text(LOT_No),
-                                        Line_No:Text(Line_No),
-                                        Location_Code:Text(Location_Code),
-                                        Posting_Group:Text(Posting_Group),
-                                        Quantity:Text(Quantity),
-                                        Type:Text(Type),
-                                        Unit_Of_Measure:Text(Unit_Of_Measure)
+                                    Purchase_Line: ForAll(colTempPurchaseLines As pl,{
+                                        'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
+                                        Description: Text(pl.Description),
+                                        Document_No:Text(pl.Document_No),
+                                        Document_Type:Text(pl.Document_Type),
+                                        //Exp_Date:Text(pl.Exp_Date),
+                                        Item_No:Text(pl.Item_No),
+                                        //LOT_No:Text(LOT_No),
+                                        Line_No:Text(pl.Line_No),
+                                        Location_Code:Text(pl.Location_Code),
+                                        Posting_Group:Text(pl.Posting_Group),
+                                        Quantity:Text(pl.Quantity),
+                                        Type:Text(pl.Type),
+                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
+                                        Res_Entry: ForAll(Filter(colTempPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
+                                            {
+                                                Created_By: Text(Created_By),
+                                                Creation_Date: Text(Creation_Date),
+                                                Entry_No: Text(Entry_No),
+                                                Exp_Date: Text(Exp_Date),
+                                                Exp_Receipt_Date: Text(Exp_Receipt_Date),
+                                                Item_No: Text(Item_No),
+                                                Item_Tracking: Text(Item_Tracking),
+                                                LOT_No: Text(LOT_No),
+                                                Location_Code: Text(Location_Code),
+                                                Positive: Text(Positive),
+                                                'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
+                                                'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
+                                                Quantity: Text(Quantity),
+                                                Quantity_Base: Text(Quantity_Base),
+                                                Res_Status: Text(Res_Status),
+                                                Shipment_Date: Text(Shipment_Date),
+                                                Source_ID: Text(Source_ID),
+                                                Source_Ref_No: Text(Source_Ref_No),
+                                                Source_SubType: Text(Source_SubType),
+                                                Source_Type: Text(Source_Type)
+                                            }) 
                                     })
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
