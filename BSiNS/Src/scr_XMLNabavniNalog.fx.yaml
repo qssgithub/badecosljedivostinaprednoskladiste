@@ -849,7 +849,7 @@
                                     'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
                                     Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
                                     Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                                    Purchase_Line: ForAll(colTempPurchaseLines As pl,{
+                                    Purchase_Line: ForAll(colPurchaseLines As pl,{
                                         'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
                                         Description: Text(pl.Description),
                                         Document_No:Text(pl.Document_No),
