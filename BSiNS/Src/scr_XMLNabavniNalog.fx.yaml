@@ -495,7 +495,10 @@
                             DisabledColor: =RGBA(244, 244, 244, 1)
                             Height: =50
                             Icon: =Icon.Undo
-                            OnSelect: =Select(Parent)
+                            OnSelect: |-
+                                =Reset(NabavniNalogResEntryQty);
+                                Reset(DatePickerExpDate);
+                                Reset(NabavniNalogLot);
                             PaddingBottom: =16
                             PaddingLeft: =16
                             PaddingRight: =16
