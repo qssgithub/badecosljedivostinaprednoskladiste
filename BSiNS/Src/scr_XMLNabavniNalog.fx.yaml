@@ -146,7 +146,7 @@
                     Height: =155
                     Width: =Parent.Width
                     X: =0
-                    Y: =0
+                    Y: =1
                     ZIndex: =1
 
                     Container14 As groupContainer.manualLayoutContainer:
@@ -228,10 +228,10 @@
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =757
+                    Height: =615
                     Width: =Parent.Width
                     X: =0
-                    Y: =1
+                    Y: =0
                     ZIndex: =2
 
                     "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
@@ -368,7 +368,7 @@
                                 Y: =121
                                 ZIndex: =3
 
-                            Body1_1 As label:
+                            Body1_2 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
@@ -384,46 +384,8 @@
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Title5.Width
                                 X: =24
-                                Y: =187
-                                ZIndex: =7
-
-                            Body1_2 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Rok trajanja:    " & ThisItem.Exp_Date
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Title5.Width
-                                X: =24
                                 Y: =154
                                 ZIndex: =8
-
-                            Body1_3 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="LOT:    " & ThisItem.LOT_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Title5.Width
-                                X: =24
-                                Y: =223
-                                ZIndex: =9
 
                             Body1_4 As label:
                                 Color: =RGBA(0, 0, 0, 1)
@@ -491,10 +453,10 @@
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =757
+                    Height: =871
                     Width: =Parent.Width
                     X: =0
-                    Y: =1
+                    Y: =0
                     ZIndex: =2
 
                     "NabavniNalogResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
@@ -502,7 +464,7 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =708
-                        Items: =colResEntries
+                        Items: =Filter(colResEntries, NabavniNalogLines.Selected.Item_No = Item_No)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -707,6 +669,7 @@
             FillPortions: =0
             Height: =50
             LayoutAlignItems: =LayoutAlignItems.End
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =50
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -726,7 +689,7 @@
                 FontSize: =14
                 FontWeight: =FontWeight.Bold
                 Height: =Parent.Height
-                Label: ="Ready for NAV"
+                Label: ="Spremno za NAV"
                 LayoutMinHeight: =32
                 LayoutMinWidth: =160
                 OnCheck: =false
@@ -738,12 +701,12 @@
 
             "BarcodeReader1 As 'Barcode Reader'":
                 BarcodeType: ='BarcodeReader.BarcodeType'.Code128
-                BorderFillColor: =RGBA(233, 79, 76, 1)
+                BorderFillColor: =RGBA(0, 0, 0, 1)
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledContentColor: =RGBA(166, 166, 166, 1)
                 DisabledFillColor: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.Edit
-                FillColor: =RGBA(204, 74, 57, 1)
+                FillColor: =RGBA(255, 255, 255, 1)
                 FontSize: =15
                 Height: =Parent.Height
                 HoverBorderColor: =RGBA(189, 49, 51, 1)
@@ -760,8 +723,8 @@
                 PressedContentColor: =RGBA(189, 49, 51, 1)
                 PressedFillColor: =RGBA(255, 255, 255, 1)
                 ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
-                Text: ="Scan"
-                TextColor: =RGBA(255, 255, 255, 1)
+                Text: ="Skener"
+                TextColor: =RGBA(0, 0, 0, 1)
                 Width: =100
                 X: =0
                 Y: =0
