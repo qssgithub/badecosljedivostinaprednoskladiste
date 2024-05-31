@@ -439,6 +439,7 @@
                             Text: ="Skener"
                             TextAlignment: =Align.Center
                             TextColor: =RGBA(0, 0, 0, 1)
+                            Visible: =If(App.Width > 500, false, true)
                             Width: =80
                             X: =164
                             Y: =9
