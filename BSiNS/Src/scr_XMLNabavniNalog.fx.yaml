@@ -640,11 +640,12 @@
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
+                                Format: ="dd.mm.yyyy"
                                 Height: =26
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Value(DatePickerExpDate.SelectedDate)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =Select(Parent)
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -668,7 +669,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Value(NabavniNalogLot.Value)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Text(NabavniNalogLot.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
