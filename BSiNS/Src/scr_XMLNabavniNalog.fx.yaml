@@ -491,11 +491,10 @@
                         NextArrow5_1 As icon.ChevronRight:
                             AccessibleLabel: =Self.Tooltip
                             BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(166, 166, 166, 1)
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             DisabledColor: =RGBA(244, 244, 244, 1)
                             Height: =50
-                            Icon: =Icon.ChevronRight
+                            Icon: =Icon.Undo
                             OnSelect: =Select(Parent)
                             PaddingBottom: =16
                             PaddingLeft: =16
@@ -504,7 +503,7 @@
                             Tooltip: ="View item details"
                             Width: =50
                             X: =Parent.TemplateWidth - Self.Width - 12
-                            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                            Y: =3
                             ZIndex: =4
 
                         Separator6_1 As rectangle:
@@ -525,33 +524,19 @@
                             Width: =4
                             ZIndex: =6
 
-                        Icon1_1 As icon.Reset:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(89, 0, 0, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(244, 244, 244, 1)
-                            Height: =50
-                            Icon: =Icon.Reset
-                            OnSelect: =Reset(NabavniNalogQty_1)
-                            PaddingBottom: =16
-                            PaddingLeft: =16
-                            PaddingRight: =16
-                            PaddingTop: =16
-                            Width: =50
-                            X: =Parent.TemplateWidth - Self.Width - 50
-                            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                            ZIndex: =13
-
-                        DatePicker1 As datepicker:
+                        DatePickerExpDate As datepicker:
                             BorderColor: =RGBA(89, 0, 0, 1)
                             CalendarHeaderFill: =RGBA(164, 38, 44, 1)
                             Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =ThisItem.Exp_Date
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             DisabledFill: =RGBA(244, 244, 244, 1)
                             Height: =26
                             HoverDateFill: =RGBA(222, 179, 184, 1)
                             IconBackground: =RGBA(164, 38, 44, 1)
+                            OnChange: |-
+                                =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Value(DatePickerExpDate.SelectedDate)})
                             OnSelect: =Select(Parent)
                             SelectedDateFill: =RGBA(164, 38, 44, 1)
                             Width: =158
@@ -637,12 +622,12 @@
                                 Text: |-
                                     ="LOT:    " & ThisItem.LOT_No
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =Title5_1.Width
-                                X: =24
-                                Y: =130
+                                Width: =60
+                                X: =28
+                                Y: =133
                                 ZIndex: =9
 
-                            "NabavniNalogQty_1 As 'Text input'":
+                            "NabavniNalogResEntryQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -658,13 +643,37 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseLines, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty_1.Value)})
+                                    =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
                                 Y: =49
                                 ZIndex: =11
+
+                        "NabavniNalogLot As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            Appearance: ="FilledDarker"
+                            BasePaletteColor: =
+                            BorderColor: =""
+                            BorderStyle: =""
+                            DelayOutput: =true
+                            DisabledBorderColor: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FocusedBorderColor: =""
+                            FontColor: =
+                            FontSize: =15
+                            Height: =31
+                            HoverBorderColor: =""
+                            OnChange: |-
+                                =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Value(NabavniNalogLot.Value)})
+                            PressedBorderColor: =""
+                            Value: =ThisItem.LOT_No
+                            Width: =113
+                            X: =80
+                            Y: =128
+                            ZIndex: =15
 
                     Label2_1 As label:
                         BorderColor: =RGBA(89, 0, 0, 1)
