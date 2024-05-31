@@ -44,7 +44,7 @@
             ForAll(
                 ParseJSON(purchase_res_entry),
                 Collect(
-                    colResEntries,
+                    colPurchaseResEntry,
                         {
                             Entry_No: Text(ThisRecord.Entry_No),
                             Item_No: Text(ThisRecord.Item_No),
@@ -70,8 +70,8 @@
                     )
                 );
         
-            ClearCollect(colTempPurchaseLines, colPurchaseLines);
-            ClearCollect(colTempPurchaseResEntry, colResEntries);
+            //Collect(colTempPurchaseLines, colPurchaseLines);
+            //Collect(colTempPurchaseResEntry, colResEntries);
         );
         
         Set(isLoading, false);
@@ -624,7 +624,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -644,7 +644,7 @@
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Value(DatePickerExpDate.SelectedDate)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Value(DatePickerExpDate.SelectedDate)})
                                 OnSelect: =Select(Parent)
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -668,7 +668,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTempPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Value(NabavniNalogLot.Value)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Value(NabavniNalogLot.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
@@ -722,7 +722,8 @@
                         Height: =25
                         Icon: =Icon.ArrowLeft
                         OnSelect: |-
-                            =UpdateContext({wizardStep:1});
+                            =
+                            UpdateContext({wizardStep:1});
                         Width: =25
                         X: =20
                         ZIndex: =1
