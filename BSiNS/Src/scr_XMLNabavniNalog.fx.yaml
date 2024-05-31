@@ -17,7 +17,7 @@
             UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
         
             Clear(colPurchaseLines);
-            Clear(colResEntries);
+            Clear(colPurchaseResEntry);
             
             ForAll(
                 ParseJSON(purchase_line),
@@ -477,7 +477,7 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(colResEntries, NabavniNalogLines.Selected.Item_No = Item_No)
+                        Items: =Filter(colPurchaseResEntry, NabavniNalogLines.Selected.Item_No = Item_No)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -703,6 +703,15 @@
                             Y: =1
                             ZIndex: =1
 
+                    TextCanvas1 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =455
+                        Text: =purchaseJsonData
+                        Width: =554
+                        X: =357
+                        Y: =114
+                        ZIndex: =5
+
                 PurchaseResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
@@ -849,7 +858,8 @@
                                     'Campaign_No.': Text(purchase_header.'Campaign_No.'),
                                     'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
                                     Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
-                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
+                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date)
+                                    /*,
                                     Purchase_Line: ForAll(colPurchaseLines As pl,{
                                         'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
                                         Description: Text(pl.Description),
@@ -887,7 +897,7 @@
                                                 Source_SubType: Text(Source_SubType),
                                                 Source_Type: Text(Source_Type)
                                             }) 
-                                    })
+                                    })*/
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
                         )
