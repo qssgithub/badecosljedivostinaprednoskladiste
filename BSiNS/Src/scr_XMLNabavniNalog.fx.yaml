@@ -132,7 +132,7 @@
 
             PurchaseLinesCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
-                Height: =677
+                Height: =611
                 Visible: =wizardStep = 1
                 Width: =Parent.Width
                 ZIndex: =28
@@ -146,7 +146,7 @@
                     Height: =155
                     Width: =Parent.Width
                     X: =0
-                    Y: =1
+                    Y: =0
                     ZIndex: =1
 
                     Container14 As groupContainer.manualLayoutContainer:
@@ -228,17 +228,17 @@
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
-                    Height: =615
+                    Height: =331
                     Width: =Parent.Width
                     X: =0
-                    Y: =0
+                    Y: =1
                     ZIndex: =2
 
                     "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
-                        Height: =708
+                        Height: =282
                         Items: =colPurchaseLines
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
