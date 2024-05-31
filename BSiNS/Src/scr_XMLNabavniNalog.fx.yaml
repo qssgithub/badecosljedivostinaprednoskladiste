@@ -95,13 +95,13 @@
             Y: =15
             ZIndex: =2
 
-            Canvas2_1 As fluidGrid.fluidGridWithBlankCard:
+            PurchaseCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =677
                 Width: =Parent.Width
                 ZIndex: =28
 
-                DataCard6_1 As dataCard:
+                PurchaseHeader As dataCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     BorderThickness: =0
@@ -187,7 +187,7 @@
                             Y: =113
                             ZIndex: =6
 
-                DataCard7 As dataCard.blankCard:
+                PurchaseLines As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
