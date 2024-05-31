@@ -486,27 +486,6 @@
                         Y: =49
                         ZIndex: =1
 
-                        NextArrow5_1 As icon.ChevronRight:
-                            AccessibleLabel: =Self.Tooltip
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(244, 244, 244, 1)
-                            Height: =50
-                            Icon: =Icon.Undo
-                            OnSelect: |-
-                                =Reset(NabavniNalogResEntryQty);
-                                Reset(DatePickerExpDate);
-                                Reset(NabavniNalogLot);
-                            PaddingBottom: =16
-                            PaddingLeft: =16
-                            PaddingRight: =16
-                            PaddingTop: =16
-                            Tooltip: ="View item details"
-                            Width: =50
-                            X: =Parent.TemplateWidth - Self.Width - 12
-                            Y: =3
-                            ZIndex: =4
-
                         Separator6_1 As rectangle:
                             BorderColor: =RGBA(89, 0, 0, 1)
                             Fill: =RGBA(255, 255, 255, 1)
