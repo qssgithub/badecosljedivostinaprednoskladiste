@@ -245,29 +245,10 @@
                         OnSelect: |-
                             =UpdateContext({wizardStep:2});
                         TemplatePadding: =0
-                        TemplateSize: =266
+                        TemplateSize: =198
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
-
-                        NextArrow5 As icon.ChevronRight:
-                            AccessibleLabel: =Self.Tooltip
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(166, 166, 166, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(244, 244, 244, 1)
-                            Height: =50
-                            Icon: =Icon.ChevronRight
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =16
-                            PaddingLeft: =16
-                            PaddingRight: =16
-                            PaddingTop: =16
-                            Tooltip: ="View item details"
-                            Width: =50
-                            X: =Parent.TemplateWidth - Self.Width - 12
-                            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                            ZIndex: =4
 
                         Separator6 As rectangle:
                             BorderColor: =RGBA(89, 0, 0, 1)
@@ -286,23 +267,6 @@
                             Visible: =ThisItem.IsSelected
                             Width: =4
                             ZIndex: =6
-
-                        Icon1 As icon.Reset:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(89, 0, 0, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(244, 244, 244, 1)
-                            Height: =50
-                            Icon: =Icon.Reset
-                            OnSelect: =Reset(NabavniNalogQty)
-                            PaddingBottom: =16
-                            PaddingLeft: =16
-                            PaddingRight: =16
-                            PaddingTop: =16
-                            Width: =50
-                            X: =Parent.TemplateWidth - Self.Width - 50
-                            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
-                            ZIndex: =13
 
                         Group2 As group:
                             Height: =5
@@ -700,6 +664,7 @@
                 ZIndex: =6
 
             "BarcodeReader1 As 'Barcode Reader'":
+                AlignInContainer: =AlignInContainer.End
                 BarcodeType: ='BarcodeReader.BarcodeType'.Code128
                 BorderFillColor: =RGBA(0, 0, 0, 1)
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -708,7 +673,7 @@
                 DisplayMode: =DisplayMode.Edit
                 FillColor: =RGBA(255, 255, 255, 1)
                 FontSize: =15
-                Height: =Parent.Height
+                Height: =40
                 HoverBorderColor: =RGBA(189, 49, 51, 1)
                 HoverContentColor: =RGBA(255, 255, 255, 1)
                 HoverFillColor: =RGBA(189, 49, 51, 1)
