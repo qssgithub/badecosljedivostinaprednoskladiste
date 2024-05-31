@@ -705,6 +705,8 @@
 
                     TextCanvas1 As Text:
                         DisplayMode: =DisplayMode.Edit
+                        Fill: =
+                        FontColor: =
                         Height: =455
                         Text: =purchaseJsonData
                         Width: =554
@@ -858,8 +860,7 @@
                                     'Campaign_No.': Text(purchase_header.'Campaign_No.'),
                                     'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
                                     Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
-                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date)
-                                    /*,
+                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
                                     Purchase_Line: ForAll(colPurchaseLines As pl,{
                                         'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
                                         Description: Text(pl.Description),
@@ -873,7 +874,8 @@
                                         Posting_Group:Text(pl.Posting_Group),
                                         Quantity:Text(pl.Quantity),
                                         Type:Text(pl.Type),
-                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
+                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure)
+                                        /*,
                                         Res_Entry: ForAll(Filter(colPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
                                             {
                                                 Created_By: Text(Created_By),
@@ -896,8 +898,8 @@
                                                 Source_Ref_No: Text(Source_Ref_No),
                                                 Source_SubType: Text(Source_SubType),
                                                 Source_Type: Text(Source_Type)
-                                            }) 
-                                    })*/
+                                            }) */
+                                    })
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
                         )
