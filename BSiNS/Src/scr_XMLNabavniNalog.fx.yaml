@@ -708,10 +708,10 @@
                         Fill: =
                         FontColor: =
                         Height: =455
-                        Text: =purchaseJsonData
+                        Text: =purchase_header.Shipment_Method_Code
                         Width: =554
-                        X: =357
-                        Y: =114
+                        X: =0
+                        Y: =141
                         ZIndex: =5
 
                 PurchaseResEntryNav As dataCard.blankCard:
@@ -812,7 +812,8 @@
                         JSON(
                             {
                                 Purchase_Header: {
-                                    Document_Type: Text(purchase_header.Document_Type),
+                                    Document_Type: Text(purchase_header.Document_Type)
+                                    ,
                                     'Buy-from_Vendor_No.': Text(purchase_header.'Buy-from_Vendor_No.'),
                                     'No.': Text(purchase_header.'No.'),
                                     'Ship-to_Code': Text(purchase_header.'Ship-to_Code'),
@@ -826,7 +827,7 @@
                                     Expected_Receipt_Date: Text(purchase_header.Expected_Receipt_Date),
                                     Due_Date: Text(purchase_header.Due_Date),
                                     Shipment_Method_Code: Text(purchase_header.Shipment_Method_Code),
-                                    Location_Code: Text(purchase_header.Location_Code),
+                                    Location_Code: Text(purchase_header.'Location_Code'),
                                     Vendor_Posting_Group: Text(purchase_header.Vendor_Posting_Group),
                                     Currency_Code: Text(purchase_header.Currency_Code),
                                     Language_Code: Text(purchase_header.Language_Code),
@@ -872,8 +873,7 @@
                                         Posting_Group:Text(pl.Posting_Group),
                                         Quantity:Text(pl.Quantity),
                                         Type:Text(pl.Type),
-                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure)
-                                        /*,
+                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
                                         Res_Entry: ForAll(Filter(colPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
                                             {
                                                 Created_By: Text(Created_By),
@@ -896,18 +896,20 @@
                                                 Source_Ref_No: Text(Source_Ref_No),
                                                 Source_SubType: Text(Source_SubType),
                                                 Source_Type: Text(Source_Type)
-                                            }) */
+                                            })
                                     })
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
                         )
                     });
                     
+                    Set(xxxxxxxxx, purchaseJsonData);
+                    
                     UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
                     
                     //UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
                     
-                    Navigate(scrEntry,ScreenTransition.Fade);
+                    //Navigate(scrEntry,ScreenTransition.Fade);
                     
                     //Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                     
