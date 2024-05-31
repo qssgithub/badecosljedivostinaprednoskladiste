@@ -338,7 +338,10 @@ scr_XMLOtpremnice As screen:
 
                         txt_Lines As Text:
                             AutoHeight: =true
+                            BorderColor: =""
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FillPortions: =1
                             FontColor: =
                             Height: =50
@@ -480,7 +483,10 @@ scr_XMLOtpremnice As screen:
 
                         txt_ResEntries As Text:
                             AutoHeight: =true
+                            BorderColor: =""
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FillPortions: =1
                             FontColor: =
                             Height: =50
@@ -623,7 +629,10 @@ scr_XMLOtpremnice As screen:
                             ZIndex: =1
 
                         txt_EditForm As Text:
+                            BorderColor: =""
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            Fill: =
                             FillPortions: =1
                             FontColor: =
                             Height: =32
@@ -683,7 +692,10 @@ scr_XMLOtpremnice As screen:
                                 ZIndex: =5
 
                                 txt_Quantity As Text:
+                                    BorderColor: =""
+                                    BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =
                                     Height: =32
                                     LayoutMinHeight: =32
@@ -697,11 +709,18 @@ scr_XMLOtpremnice As screen:
 
                                 "inp_Quantity As 'Text input'":
                                     Align: ='TextInputCanvas.Align'.End
+                                    Appearance: ="FilledDarker"
                                     BasePaletteColor: =
+                                    BorderColor: =""
+                                    BorderStyle: =""
+                                    DisabledBorderColor: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
+                                    FocusedBorderColor: =""
                                     FontColor: =
                                     FontSize: =18
                                     Height: =32
+                                    HoverBorderColor: =""
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =320
                                     OnChange: |-
@@ -710,6 +729,7 @@ scr_XMLOtpremnice As screen:
                                             glr_Lines.Selected.Line_No = ThisRecord.Line_No,
                                             {Quantity: inp_Quantity.Value}
                                         )
+                                    PressedBorderColor: =""
                                     Value: =glr_Lines.Selected.Quantity
                                     Width: =150
                                     X: =0
@@ -733,7 +753,10 @@ scr_XMLOtpremnice As screen:
                                 ZIndex: =6
 
                                 txt_LOTNo As Text:
+                                    BorderColor: =""
+                                    BorderStyle: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
                                     FontColor: =
                                     Height: =32
                                     LayoutMinHeight: =32
@@ -747,11 +770,18 @@ scr_XMLOtpremnice As screen:
 
                                 "inp_LOTNo As 'Text input'":
                                     Align: ='TextInputCanvas.Align'.End
+                                    Appearance: ="FilledDarker"
                                     BasePaletteColor: =
+                                    BorderColor: =""
+                                    BorderStyle: =""
+                                    DisabledBorderColor: =""
                                     DisplayMode: =DisplayMode.Edit
+                                    Fill: =
+                                    FocusedBorderColor: =""
                                     FontColor: =
                                     FontSize: =18
                                     Height: =32
+                                    HoverBorderColor: =""
                                     LayoutMinHeight: =32
                                     LayoutMinWidth: =320
                                     OnChange: |-
@@ -763,6 +793,7 @@ scr_XMLOtpremnice As screen:
                                             glr_ResEntries.Selected.Entry_No = ThisRecord.Entry_No,
                                             {LOT_No: inp_LOTNo.Value}
                                         )
+                                    PressedBorderColor: =""
                                     Value: =glr_ResEntries.Selected.LOT_No
                                     Width: =150
                                     X: =0
@@ -785,10 +816,20 @@ scr_XMLOtpremnice As screen:
                             ZIndex: =3
 
                             btn_Save As Button:
+                                Align: =""
                                 BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
+                                FocusedBorderColor: =""
                                 FontColor: =
                                 Height: =32
+                                HoverBorderColor: =""
+                                Icon: =""
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ="Icon before"
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
                                 OnSelect: |
@@ -801,7 +842,9 @@ scr_XMLOtpremnice As screen:
                                     );
                                     UpdateContext({isSaving: false});
                                     Navigate(scrEntry);
+                                PressedBorderColor: =""
                                 Text: ="Sačuvaj u toku"
+                                VerticalAlign: =""
                                 Visible: =!isSaving
                                 Width: =120
                                 X: =40
@@ -809,10 +852,20 @@ scr_XMLOtpremnice As screen:
                                 ZIndex: =1
 
                             ButtonCanvas2 As Button:
+                                Align: =""
                                 BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
+                                FocusedBorderColor: =""
                                 FontColor: =
                                 Height: =32
+                                HoverBorderColor: =""
+                                Icon: =""
+                                IconRotation: =0
+                                IconStyle: ="Outline"
+                                Layout: ="Icon before"
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
                                 OnSelect: |
@@ -825,7 +878,9 @@ scr_XMLOtpremnice As screen:
                                     );
                                     UpdateContext({isSaving: false});
                                     Navigate(scrEntry);
+                                PressedBorderColor: =""
                                 Text: ="Sačuvaj i procesiraj"
+                                VerticalAlign: =""
                                 Visible: =!isSaving
                                 Width: =150
                                 X: =0

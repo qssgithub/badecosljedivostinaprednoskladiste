@@ -117,7 +117,7 @@
                         BorderColor: =RGBA(214, 221, 224, 1)
                         BorderThickness: =1
                         Height: =155
-                        Width: =1366
+                        Width: =Parent.Width
                         ZIndex: =1
 
                     Group4 As group:
@@ -135,7 +135,7 @@
                             Size: =10
                             Text: |-
                                 ="Broj naloga :   " & purchase_header.'No.'
-                            Width: =827
+                            Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
 
@@ -147,7 +147,7 @@
                             Size: =10
                             Text: |-
                                 ="Datum dokumenta :   " & purchase_header.Document_Date
-                            Width: =827
+                            Width: =Parent.Width
                             Y: =41
                             ZIndex: =3
 
@@ -159,7 +159,7 @@
                             Size: =10
                             Text: |-
                                 ="Datum narudžbe :   " & purchase_header.Order_Date
-                            Width: =827
+                            Width: =Parent.Width
                             Y: =65
                             ZIndex: =4
 
@@ -171,7 +171,7 @@
                             Size: =10
                             Text: |-
                                 ="Nabavka u :   " & purchase_header.Location_Code & "   " & purchase_header.'Ship-to_Name'
-                            Width: =827
+                            Width: =Parent.Width
                             Y: =89
                             ZIndex: =5
 
@@ -183,7 +183,7 @@
                             Size: =10
                             Text: |-
                                 ="Dobavljač :   " & purchase_header.'Buy-from_Vendor_No.' & "   " & purchase_header.'Buy-from_Vendor_Name'
-                            Width: =827
+                            Width: =Parent.Width
                             Y: =113
                             ZIndex: =6
 
@@ -408,30 +408,38 @@
 
                             "NabavniNalogQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
+                                Appearance: ="FilledDarker"
                                 BasePaletteColor: =
+                                BorderColor: =""
+                                BorderStyle: =""
                                 DelayOutput: =true
+                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
+                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colTempPurchaseLines, NabavniNalogLines.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogQty.Value)})
+                                PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
                                 Y: =115
                                 ZIndex: =11
 
-                    TextCanvas1 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =
-                        Height: =34
+                    Label2 As label:
+                        BorderColor: =RGBA(89, 0, 0, 1)
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Height: =24
+                        Size: =12
                         Text: ="Stavke nabavke"
-                        Weight: ='TextCanvas.Weight'.Semibold
-                        Width: =639
-                        X: =12
-                        Y: =8
-                        ZIndex: =2
+                        Width: =Parent.Width
+                        Y: =10
+                        ZIndex: =3
 
         Spinner2_1 As Spinner:
             AlignInContainer: =AlignInContainer.Stretch
@@ -470,6 +478,7 @@
             nabavniNalogReadyForNavCheckbox As Checkbox:
                 AlignInContainer: =AlignInContainer.End
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
+                CheckboxSize: =16
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
                 FontSize: =14

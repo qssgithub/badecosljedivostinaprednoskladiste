@@ -270,6 +270,7 @@
 
             nalogZaProdajuReadyForNavCheckbox As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
+                CheckboxSize: =16
                 DisplayMode: =DisplayMode.Edit
                 FontColor: =
                 FontSize: =14
@@ -731,10 +732,18 @@
             ZIndex: =11
 
         "fileName_3 As 'Text input'":
+            Appearance: ="FilledDarker"
             BasePaletteColor: =
+            BorderColor: =""
+            BorderStyle: =""
+            DisabledBorderColor: =""
             DisplayMode: =DisplayMode.Edit
+            Fill: =
+            FocusedBorderColor: =""
             FontColor: =
             Height: =50
+            HoverBorderColor: =""
+            PressedBorderColor: =""
             Visible: =varShowGetFileModal
             Width: =476
             X: =292

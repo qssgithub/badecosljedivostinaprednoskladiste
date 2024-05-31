@@ -182,12 +182,18 @@
 
                         dd_Status As Dropdown.pcfdataset:
                             AccessibleLabel: =""
+                            Appearance: ="FilledDarker"
                             BasePaletteColor: =
+                            BorderColor: =""
+                            BorderStyle: =""
                             DefaultSelectedItems: |-
                                 =[{Id: "All", Text: "All"}]
+                            DisabledBorderColor: =""
                             DisplayMode: =DisplayMode.Edit
+                            FocusedBorderColor: =""
                             FontSize: =18
                             Height: =Parent.Height
+                            HoverBorderColor: =""
                             Items: |-
                                 =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
                             OnChange: |-
@@ -214,6 +220,7 @@
                                         }
                                     )
                                 );
+                            PressedBorderColor: =""
                             Width: =Parent.Width
                             X: =0
                             Y: =0
@@ -260,6 +267,9 @@
                         ZIndex: =3
 
                         dd_FileType As Dropdown.pcfdataset:
+                            Appearance: ="FilledDarker"
+                            BorderColor: =""
+                            BorderStyle: =""
                             DefaultSelectedItems: |-
                                 =[
                                     {
@@ -267,9 +277,12 @@
                                         Text: "All"
                                     }
                                 ]
+                            DisabledBorderColor: =""
                             DisplayMode: =DisplayMode.Edit
+                            FocusedBorderColor: =""
                             FontSize: =18
                             Height: =50
+                            HoverBorderColor: =""
                             Items: |-
                                 =[
                                     {
@@ -333,6 +346,7 @@
                                         }
                                     )
                                 );
+                            PressedBorderColor: =""
                             Width: =Parent.Width
                             X: =0
                             Y: =0
@@ -347,14 +361,26 @@
                                 ZIndex: =11
 
                     ButtonCanvas1 As Button:
+                        Align: =""
                         BasePaletteColor: =
+                        BorderColor: =""
+                        BorderStyle: =""
+                        DisabledBorderColor: =""
                         DisplayMode: =DisplayMode.Edit
+                        FocusedBorderColor: =""
                         FontColor: =
                         Height: =32
+                        HoverBorderColor: =""
+                        Icon: =""
+                        IconRotation: =0
+                        IconStyle: ="Outline"
+                        Layout: ="Icon before"
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
                             =UpdateContext({flowOutputs: GetAll.Run(warehouseCode)});
+                        PressedBorderColor: =""
+                        VerticalAlign: =""
                         Visible: =false
                         Width: =96
                         X: =0
