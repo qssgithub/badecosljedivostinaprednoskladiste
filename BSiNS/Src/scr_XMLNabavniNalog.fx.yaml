@@ -70,8 +70,20 @@
                     )
                 );
         
-            //Collect(colTempPurchaseLines, colPurchaseLines);
-            //Collect(colTempPurchaseResEntry, colResEntries);
+        
+                ForAll(
+                    colPurchaseLines As Line,
+                    Patch(
+                        colPurchaseLines,
+                        Line,
+                        {
+                            Quantity: Sum(
+                                Filter(colPurchaseResEntry, Item_No = Line.Item_No),
+                                Quantity
+                            )
+                        }
+                    )
+                );
         );
         
         Set(isLoading, false);
@@ -603,7 +615,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
