@@ -3532,19 +3532,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.ButtonCanvas5.AccessibleLabel"
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.ButtonCanvas5.AccessibleLabel",
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_XMLNabavniNalog",
-                "type": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.ButtonCanvas5"
+                "type": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1"
               }
             }
           ],
@@ -3556,6 +3556,36 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "scr_XMLNabavniNalog",
+                "type": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogDataContainer.Canvas2_1.DataCard7.NabavniNalogLines.Icon1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 1
         },
         {
           "locations": [
