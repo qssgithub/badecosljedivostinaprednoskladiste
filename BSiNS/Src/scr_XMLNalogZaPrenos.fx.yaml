@@ -490,6 +490,15 @@
                         X: =20
                         ZIndex: =1
 
+                    TextCanvas1 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Text: =response.folder
+                        Width: =96
+                        X: =40
+                        Y: =25
+                        ZIndex: =2
+
             TransferResEntryCanvas_1 As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
@@ -870,13 +879,14 @@
                         )
                     });
                     
-                    UpdateContext({responseMessage: UpdateXML.Run(transferJsonData, SelectedFile, SelectedFolder, nalogZaPrenosReadyForNavCheckbox.Checked)});
+                    UpdateContext({response: UpdateXML.Run(transferJsonData, SelectedFile, SelectedFolder, nalogZaPrenosReadyForNavCheckbox.Checked)});
                     
-                    UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
+                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
+                    Set(SelectedFolder, response.folder);
                     
                     Navigate(scr_XMLNalogZaPrenos,ScreenTransition.Fade);
                     
-                    Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 Size: =12
                 Text: ="Sačuvaj"
                 Width: =100
