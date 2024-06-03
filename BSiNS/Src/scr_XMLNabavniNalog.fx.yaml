@@ -618,7 +618,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -639,7 +639,7 @@
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -663,7 +663,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Text(NabavniNalogLot.Value)})
+                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113

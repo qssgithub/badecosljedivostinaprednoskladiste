@@ -209,20 +209,22 @@
                             RadiusTopRight: =4
                             ZIndex: =3
 
-                            dd_Status As Dropdown.pcfdataset:
-                                AccessibleLabel: =""
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                            dd_Status As dropdown.pcfdataset:
                                 BorderColor: =""
                                 BorderStyle: =""
-                                DefaultSelectedItems: |-
-                                    =[{Id: "All", Text: "All"}]
+                                ChevronBackground: =RGBA(164, 38, 44, 1)
+                                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                                ChevronHoverBackground: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                                ChevronHoverFill: =RGBA(255, 255, 255, 1)
                                 DisabledBorderColor: =""
-                                DisplayMode: =DisplayMode.Edit
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
                                 FocusedBorderColor: =""
-                                FontSize: =18
                                 Height: =Parent.Height
                                 HoverBorderColor: =""
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
                                 Items: |-
                                     =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
                                 OnChange: |-
@@ -250,9 +252,11 @@
                                         )
                                     );
                                 PressedBorderColor: =""
+                                PressedColor: =RGBA(255, 255, 255, 1)
+                                PressedFill: =RGBA(89, 0, 0, 1)
+                                SelectionFill: =RGBA(164, 38, 44, 1)
+                                Size: =13
                                 Width: =Parent.Width
-                                X: =0
-                                Y: =0
                                 ZIndex: =1
 
                                 TextInput2 As pcfDataField.textualColumn:
@@ -308,23 +312,22 @@
                             Width: =Parent.Width
                             ZIndex: =3
 
-                            dd_FileType As Dropdown.pcfdataset:
-                                Appearance: ="FilledDarker"
+                            dd_FileType As dropdown.pcfdataset:
                                 BorderColor: =""
                                 BorderStyle: =""
-                                DefaultSelectedItems: |-
-                                    =[
-                                        {
-                                            Id: "0",
-                                            Text: "All"
-                                        }
-                                    ]
+                                ChevronBackground: =RGBA(164, 38, 44, 1)
+                                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                                ChevronHoverBackground: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                                ChevronHoverFill: =RGBA(255, 255, 255, 1)
                                 DisabledBorderColor: =""
-                                DisplayMode: =DisplayMode.Edit
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
                                 FocusedBorderColor: =""
-                                FontSize: =18
                                 Height: =Parent.Height
                                 HoverBorderColor: =""
+                                HoverColor: =RGBA(0, 0, 0, 1)
+                                HoverFill: =RGBA(222, 179, 184, 1)
                                 Items: |-
                                     =[
                                         {
@@ -389,9 +392,11 @@
                                         )
                                     );
                                 PressedBorderColor: =""
+                                PressedColor: =RGBA(255, 255, 255, 1)
+                                PressedFill: =RGBA(89, 0, 0, 1)
+                                SelectionFill: =RGBA(164, 38, 44, 1)
+                                Size: =13
                                 Width: =Parent.Width
-                                X: =0
-                                Y: =0
                                 ZIndex: =1
 
                                 TextInput1 As pcfDataField.textualColumn:
@@ -401,7 +406,6 @@
                                     FieldVariantName: ="textualColumn"
                                     Order: =1
                                     ZIndex: =11
-
 
                     icn_ReloadFiles As icon.Reload:
                         AlignInContainer: =AlignInContainer.End
