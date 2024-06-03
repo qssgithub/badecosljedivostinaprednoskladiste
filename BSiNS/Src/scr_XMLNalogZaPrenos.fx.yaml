@@ -111,7 +111,7 @@
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
 
-    NalogZaPrenosScreenContainer_1 As groupContainer.verticalAutoLayoutContainer:
+    NalogZaPrenosScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -126,7 +126,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        NalogZaPrenosHeader_1 As Header:
+        NalogZaPrenosHeader As Header:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
             DisplayMode: =DisplayMode.Edit
             FontColor: =
@@ -146,7 +146,7 @@
             Y: =0
             ZIndex: =1
 
-        NalogZaPrenosBody_1 As groupContainer.manualLayoutContainer:
+        NalogZaPrenosBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Height: =565
@@ -162,14 +162,14 @@
             Y: =15
             ZIndex: =2
 
-            TransferLineCanvas_1 As fluidGrid.fluidGridWithBlankCard:
+            TransferLineCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
                 Visible: =wizardStep = 1
                 Width: =Parent.Width
                 ZIndex: =28
 
-                TransferHeader_1 As dataCard:
+                TransferHeader As dataCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     BorderThickness: =0
@@ -260,7 +260,7 @@
                             Y: =113
                             ZIndex: =6
 
-                TransferLines_1 As dataCard.blankCard:
+                TransferLines As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -272,7 +272,7 @@
                     Y: =2
                     ZIndex: =2
 
-                    "NalogZaPrenosLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NalogZaPrenosLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Default: |
                             =First(Filter(colTransferLines, Line_No = scannedItem))
@@ -466,7 +466,7 @@
                             Y: =9
                             ZIndex: =2
 
-                TransferNav_1 As dataCard.blankCard:
+                TransferNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -490,23 +490,14 @@
                         X: =20
                         ZIndex: =1
 
-                    TextCanvas1 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        Text: =response.folder
-                        Width: =96
-                        X: =40
-                        Y: =25
-                        ZIndex: =2
-
-            TransferResEntryCanvas_1 As fluidGrid.fluidGridWithBlankCard:
+            TransferResEntryCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
                 Visible: =wizardStep = 2
                 Width: =Parent.Width
                 ZIndex: =29
 
-                TransferResEntry_1 As dataCard.blankCard:
+                TransferResEntry As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -517,12 +508,12 @@
                     Y: =1
                     ZIndex: =2
 
-                    "NalogZaPrenosResEntry_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NalogZaPrenosResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(colTransferResEntries, NalogZaPrenosLines_1.Selected.Item_No = Item_No)
+                        Items: =Filter(colTransferResEntries, NalogZaPrenosLines.Selected.Item_No = Item_No)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -632,7 +623,7 @@
                                 Y: =133
                                 ZIndex: =9
 
-                            "NalogZaPrenosResEntryQty_1 As 'Text input'":
+                            "NalogZaPrenosResEntryQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -648,7 +639,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaPrenosResEntryQty_1.Value)});
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaPrenosResEntryQty.Value)});
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -656,7 +647,7 @@
                                 Y: =49
                                 ZIndex: =11
 
-                            DatePickerExpDateNalogZaPrenos_1 As datepicker:
+                            DatePickerExpDateNalogZaPrenos As datepicker:
                                 BorderColor: =RGBA(89, 0, 0, 1)
                                 CalendarHeaderFill: =RGBA(164, 38, 44, 1)
                                 Color: =RGBA(0, 0, 0, 1)
@@ -670,7 +661,7 @@
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos_1.SelectedDate, "yyyy-mm-dd")})
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -678,7 +669,7 @@
                                 Y: =92
                                 ZIndex: =14
 
-                            "NalogZaPrenosLot_1 As 'Text input'":
+                            "NalogZaPrenosLot As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -694,7 +685,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaPrenosLot_1.Value)})
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaPrenosLot.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
@@ -729,7 +720,7 @@
                             Y: =1
                             ZIndex: =1
 
-                TransferResEntryNav_1 As dataCard.blankCard:
+                TransferResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -754,7 +745,7 @@
                         X: =20
                         ZIndex: =1
 
-        NalogZaPrenosFooter_1 As groupContainer.horizontalAutoLayoutContainer:
+        NalogZaPrenosFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
             DropShadow: =DropShadow.Light
@@ -795,7 +786,6 @@
                 ZIndex: =2
 
             saveXml_5 As button:
-                AlignInContainer: =AlignInContainer.Center
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
