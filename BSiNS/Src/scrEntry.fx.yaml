@@ -4,31 +4,32 @@
     OnHidden: =
     OnVisible: |
         =UpdateContext({IsLoadingGetAllFiles: true});
-        Set(isLoading, true);
-        UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
-        //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
-        //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
+        UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).outputfiles)});
         UpdateContext(
             {
                 XMLFiles: Table(
-                    ForAll(
-                        Files As file,
-                        {
-                            FileName: Text(file.FileName),
-                            FileType: Text(file.FileType),
-                            FolderName: Text(file.FolderName)
-                            //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-        //FolderName: "ReadyForProcessing"
-                        }
-                    )/*,
-                    ForAll(
-                        Files.InProgress As file,
+                    Filter(ForAll(
+                        flowOutputs.ReadyForProcessing As file,
                         {
                             FileName: Text(file.Name),
-                            FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                            FileType: Text(Last(FirstN(Split(
+                                file.Name,
+                                "_"
+                            ), 1)).Value),
+                            FolderName: "ReadyForProcessing"
+                        }
+                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode),
+                    Filter(ForAll(
+                        flowOutputs.InProgress As file,
+                        {
+                            FileName: file.Name,
+                            FileType: Text(Last(FirstN(Split(
+                                file.Name,
+                                "_"
+                            ), 1)).Value),
                             FolderName: "InProgress"
                         }
-                    )*/
+                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode)
                 )
             }
         );
@@ -56,7 +57,6 @@
             )
         );
         UpdateContext({IsLoadingGetAllFiles: false});
-        Set(isLoading, false);
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -133,7 +133,7 @@
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
-                LayoutGap: =10
+                LayoutGap: =15
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
@@ -151,275 +151,146 @@
 
                 hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
                     FillPortions: =0
-                    Height: =If(App.Width > 600, 60, 120)
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutGap: =15
+                    Height: =If(isMobile, 240, 80)
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =If(isMobile, LayoutDirection.Vertical, LayoutDirection.Horizontal)
+                    LayoutGap: =10
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =60
+                    LayoutMinHeight: =80
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    LayoutWrap: =true
-                    PaddingBottom: =10
                     RadiusBottomLeft: =4
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
                     Width: =Parent.Width
-                    ZIndex: =2
+                    ZIndex: =1
 
-                    con_Status As groupContainer.manualLayoutContainer:
+                    vrtcon_Status As groupContainer.horizontalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        DropShadow: =DropShadow.Light
-                        Height: =50
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =5
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                         LayoutMinHeight: =50
                         LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =2
+                        PaddingLeft: =2
+                        PaddingRight: =2
+                        PaddingTop: =2
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =Parent.Width - 47
                         ZIndex: =1
 
-                        dd_Status As Dropdown.pcfdataset:
-                            AccessibleLabel: =""
-                            Appearance: ="FilledDarker"
-                            BasePaletteColor: =
-                            BorderColor: =""
-                            BorderStyle: =""
-                            DefaultSelectedItems: |-
-                                =[{Id: "All", Text: "All"}]
-                            DisabledBorderColor: =""
+                        txt_Status As Text:
+                            AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
-                            FocusedBorderColor: =""
-                            FontSize: =18
-                            Height: =Parent.Height
-                            HoverBorderColor: =""
-                            Items: |-
-                                =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
-                            OnChange: |-
-                                =If(
-                                    Not(dd_FileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
-                                );
-                                If(
-                                    Not(dd_Status.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    )
-                                );
-                            PressedBorderColor: =""
-                            Width: =Parent.Width
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Status dokumenta"
+                            Width: =14
                             X: =0
                             Y: =0
                             ZIndex: =1
 
-                            TextInput2 As pcfDataField.textualColumn:
-                                FieldDisplayName: ="Text"
-                                FieldName: ="Text"
-                                FieldType: ="s"
-                                FieldVariantName: ="textualColumn"
-                                Order: =1
-                                ZIndex: =13
+                        con_Status As groupContainer.manualLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            DropShadow: =DropShadow.Light
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            ZIndex: =3
 
-                    icn_ReloadFiles_2 As icon.Reload:
-                        BorderColor: =RGBA(0, 0, 0, 0)
-                        Color: =RGBA(0, 0, 0, 0)
-                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
-                        DisabledColor: =RGBA(214, 221, 224, 1)
-                        DisplayMode: =DisplayMode.View
-                        FocusedBorderThickness: =0
-                        Height: =50
-                        Icon: =Icon.VerticalLine
-                        OnSelect: =
-                        PaddingBottom: =5
-                        PaddingLeft: =5
-                        PaddingRight: =5
-                        PaddingTop: =5
-                        Visible: =false
-                        Width: =32
-                        X: =303
-                        ZIndex: =2
-
-                    con_FileType As groupContainer.manualLayoutContainer:
+                    vrtcon_FileType As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        DropShadow: =DropShadow.Light
-                        Height: =50
-                        LayoutMinHeight: =50
+                        Height: =Parent.Height
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =5
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: |
+                            =50
                         LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =2
+                        PaddingLeft: =2
+                        PaddingRight: =2
+                        PaddingTop: =2
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Width: =Parent.Width
-                        ZIndex: =3
+                        ZIndex: =2
 
-                        dd_FileType As Dropdown.pcfdataset:
-                            Appearance: ="FilledDarker"
-                            BorderColor: =""
-                            BorderStyle: =""
-                            DefaultSelectedItems: |-
-                                =[
-                                    {
-                                        Id: "0",
-                                        Text: "All"
-                                    }
-                                ]
-                            DisabledBorderColor: =""
+                        txt_FileType As Text:
+                            AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
-                            FocusedBorderColor: =""
-                            FontSize: =18
-                            Height: =50
-                            HoverBorderColor: =""
-                            Items: |-
-                                =[
-                                    {
-                                        Id: "0",
-                                        Text: "All"
-                                    },
-                                    {
-                                        Id: "01",
-                                        Text: "Temeljnice inventure"
-                                    },
-                                    {
-                                        Id: "02",
-                                        Text: "Nabavni nalozi"
-                                    },
-                                    {
-                                        Id: "03",
-                                        Text: "Prodajni nalozi"
-                                    },
-                                    {
-                                        Id: "04",
-                                        Text: "Nalozi za prenos"
-                                    },
-                                    {
-                                        Id: "05",
-                                        Text: "Skladišne primke"
-                                    },
-                                    {
-                                        Id: "06",
-                                        Text: "Skladišne otpremnice"
-                                    },
-                                    {
-                                        Id: "07",
-                                        Text: "Put-Away Request"
-                                    },
-                                    {
-                                        Id: "08",
-                                        Text: "Pick Request"
-                                    }
-                                ]
-                            OnChange: |
-                                =If(
-                                    Not(dd_FileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
-                                );
-                                If(
-                                    Not(dd_Status.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    )
-                                );
-                            PressedBorderColor: =""
-                            Width: =Parent.Width
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Tip dokumenta"
+                            Width: =96
                             X: =0
                             Y: =0
                             ZIndex: =1
 
-                            TextInput1 As pcfDataField.textualColumn:
-                                FieldDisplayName: ="Text"
-                                FieldName: ="Text"
-                                FieldType: ="s"
-                                FieldVariantName: ="textualColumn"
-                                Order: =1
-                                ZIndex: =11
+                        con_FileType As groupContainer.manualLayoutContainer:
+                            DropShadow: =DropShadow.Light
+                            Height: =Parent.Height
+                            LayoutMinHeight: =50
+                            LayoutMinWidth: =250
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =Parent.Width
+                            ZIndex: =3
 
-                    ButtonCanvas1 As Button:
-                        Align: =""
-                        BasePaletteColor: =
-                        BorderColor: =""
-                        BorderStyle: =""
-                        DisabledBorderColor: =""
-                        DisplayMode: =DisplayMode.Edit
-                        FocusedBorderColor: =""
-                        FontColor: =
-                        Height: =32
-                        HoverBorderColor: =""
-                        Icon: =""
-                        IconRotation: =0
-                        IconStyle: ="Outline"
-                        Layout: ="Icon before"
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        OnSelect: |
-                            =UpdateContext({flowOutputs: GetAll.Run(warehouseCode)});
-                        PressedBorderColor: =""
-                        VerticalAlign: =""
-                        Visible: =false
-                        Width: =96
-                        X: =0
-                        Y: =0
-                        ZIndex: =4
-
-                    icn_ReloadFiles_1 As icon.Reload:
+                    icn_ReloadFiles As icon.Reload:
+                        AlignInContainer: =AlignInContainer.End
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Color: =RGBA(89, 0, 0, 1)
                         DisabledBorderColor: =RGBA(0, 0, 0, 0)
                         DisabledColor: =RGBA(214, 221, 224, 1)
-                        Height: =50
+                        Height: =60
                         Icon: =Icon.Reload
+                        LayoutMinHeight: =32
                         OnSelect: |
                             =UpdateContext({IsLoadingGetAllFiles: true});
-                            UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).xmlfiles)});
-                            //UpdateContext({testiranjeFilter: Files.ReadyForProcessing});
-                            //UpdateContext({filtriranje: Filter(testiranjeFilter, Last(FirstN(Split(ThisRecord.Name, "_"), 0)).Value) = warehouseCode});
+                            UpdateContext({Files: ParseJSON(GetAll.Run(warehouseCode).outputfiles)});
                             UpdateContext(
                                 {
                                     XMLFiles: Table(
-                                        ForAll(
-                                            Files As file,
-                                            {
-                                                FileName: Text(file.FileName),
-                                                FileType: Text(file.FileType),
-                                                FolderName: Text(file.FolderName)
-                                                //FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
-                            //FolderName: "ReadyForProcessing"
-                                            }
-                                        )/*,
-                                        ForAll(
-                                            Files.InProgress As file,
+                                        Filter(ForAll(
+                                            flowOutputs.ReadyForProcessing As file,
                                             {
                                                 FileName: Text(file.Name),
-                                                FileType: Last(FirstN(Split(file.Name, "_"), 1)).Value,
+                                                FileType: Text(Last(FirstN(Split(
+                                                    file.Name,
+                                                    "_"
+                                                ), 1)).Value),
+                                                FolderName: "ReadyForProcessing"
+                                            }
+                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode),
+                                        Filter(ForAll(
+                                            flowOutputs.InProgress As file,
+                                            {
+                                                FileName: file.Name,
+                                                FileType: Text(Last(FirstN(Split(
+                                                    file.Name,
+                                                    "_"
+                                                ), 1)).Value),
                                                 FolderName: "InProgress"
                                             }
-                                        )*/
+                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode)
                                     )
                                 }
                             );
@@ -447,18 +318,74 @@
                                 )
                             );
                             UpdateContext({IsLoadingGetAllFiles: false});
-                        PaddingBottom: =5
-                        PaddingLeft: =5
-                        PaddingRight: =5
-                        PaddingTop: =5
-                        Width: =32
+                        PaddingBottom: =2
+                        PaddingLeft: =2
+                        PaddingRight: =2
+                        PaddingTop: =2
+                        Width: =40
                         X: =303
-                        ZIndex: =5
+                        ZIndex: =3
+
+                    ButtonCanvas1 As Button:
+                        Align: =""
+                        BasePaletteColor: =
+                        BorderColor: =""
+                        BorderStyle: =""
+                        DisabledBorderColor: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FocusedBorderColor: =""
+                        FontColor: =
+                        Height: =32
+                        HoverBorderColor: =""
+                        Icon: =""
+                        IconRotation: =0
+                        IconStyle: ="Outline"
+                        Layout: ="Icon before"
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =UpdateContext({flowOutputs: ParseJSON(GetAll.Run(warehouseCode).outputfiles)});
+                            UpdateContext(
+                                {
+                                    outputsTable: Table(
+                                        ForAll(
+                                            flowOutputs.ReadyForProcessing As file,
+                                            {
+                                                FileName: file.Name,
+                                                FileType: Last(FirstN(Split(
+                                                    file.Name,
+                                                    "_"
+                                                ), 1)),
+                                                FolderName: "ReadyForProcessing"
+                                            }
+                                        ),
+                                        ForAll(
+                                            flowOutputs.InProgress As file,
+                                            {
+                                                FileName: file.Name,
+                                                FileType: Last(FirstN(Split(
+                                                    file.Name,
+                                                    "_"
+                                                ), 1)),
+                                                FolderName: "InProgress"
+                                            }
+                                        )
+                                    )
+                                }
+                            );
+                        PressedBorderColor: =""
+                        VerticalAlign: =""
+                        Visible: =true
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
 
                 "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     AlignInContainer: =AlignInContainer.SetByContainer
                     BorderColor: =RGBA(89, 0, 0, 1)
                     DelayItemLoading: =true
+                    FillPortions: =7
                     Height: =321
                     Items: =filteredFiles
                     Layout: =Layout.Vertical
@@ -487,7 +414,7 @@
                     TemplateSize: =80
                     Visible: =!IsLoadingGetAllFiles
                     X: =40
-                    ZIndex: =3
+                    ZIndex: =2
 
                     Title4 As label:
                         Color: =RGBA(50, 49, 48, 1)
@@ -561,7 +488,7 @@
                         Width: =4
                         ZIndex: =4
 
-                Spinner1 As Spinner:
+                spn_EntryLoader As Spinner:
                     Appearance: ='Spinner.Appearance'.Primary
                     BasePaletteColor: =
                     DisplayMode: =DisplayMode.Edit
@@ -575,86 +502,5 @@
                     Width: =200
                     X: =0
                     Y: =0
-                    ZIndex: =4
-
-    Button2 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLTemeljniceInventure)
-        Size: =12
-        Text: ="TEMELJNICE INVENTURE"
-        X: =583
-        Y: =33
-        ZIndex: =4
-
-    Button2_1 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: |
-            =Navigate(scr_XMLNabavniNalog)
-        Size: =12
-        Text: ="NABAVNI NALOG"
-        X: =402
-        Y: =33
-        ZIndex: =16
-
-    Button2_2 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaPrenos11)
-        Size: =12
-        Text: ="NALOG ZA PRENOS"
-        X: =608
-        Y: =33
-        ZIndex: =17
-
-    Button2_3 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaProdaju)
-        Size: =12
-        Text: ="NALOG ZA PRODAJU"
-        X: =608
-        Y: =33
-        ZIndex: =18
-
-    Button2_4 As button:
-        Color: =RGBA(184, 0, 0, 1)
-        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-        DisabledColor: =RGBA(166, 166, 166, 1)
-        DisabledFill: =RGBA(244, 244, 244, 1)
-        Fill: =RGBA(255, 255, 255, 1)
-        FontWeight: =FontWeight.Semibold
-        HoverColor: =RGBA(255, 255, 255, 1)
-        HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLPrimke)
-        Size: =12
-        Text: ="PRIMKE"
-        X: =608
-        Y: =33
-        ZIndex: =19
+                    ZIndex: =3
 
