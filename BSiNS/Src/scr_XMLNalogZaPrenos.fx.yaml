@@ -884,7 +884,7 @@
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
                     
-                    If(SelectedFolder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLNalogZaPrenos,ScreenTransition.Fade));
+                    If(response.folder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLNalogZaPrenos,ScreenTransition.Fade));
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 Size: =12
