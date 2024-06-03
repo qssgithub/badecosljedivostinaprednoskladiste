@@ -774,7 +774,7 @@
                 Height: =30
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-                OnSelect: |+
+                OnSelect: |-
                     =UpdateContext({
                         purchaseJsonData:
                         JSON(
@@ -871,14 +871,14 @@
                         )
                     });
                     
-                    UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
+                    UpdateContext({response: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
                     
-                    UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
+                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
+                    Set(SelectedFolder, response.folder);
                     
-                    Navigate(scr_XMLNabavniNalog,ScreenTransition.Fade);
+                    If(response.folder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLNabavniNalog,ScreenTransition.Fade));
                     
-                    Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
-                    
+                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 Size: =12
                 Text: ="Sačuvaj"
                 Width: =100
