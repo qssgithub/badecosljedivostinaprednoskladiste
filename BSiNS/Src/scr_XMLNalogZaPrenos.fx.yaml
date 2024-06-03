@@ -32,7 +32,7 @@
             UpdateContext({transfer_lines: transfer.transfer_line});
             UpdateContext({transfer_res_entry: transfer.res_entry});
             Clear(colTransferLines);
-            Clear(colResEntries);
+            Clear(colTransferResEntries);
             
             ForAll(
                 ParseJSON(transfer_lines),
@@ -64,7 +64,7 @@
             ForAll(
                 ParseJSON(transfer_res_entry),
                 Collect(
-                    colResEntries,
+                    colTransferResEntries,
                     {
                         Entry_No: Text(ThisRecord.Entry_No),
                         Item_No: Text(ThisRecord.Item_No),
@@ -90,14 +90,14 @@
                 );
             );
             ForAll(
-                colPurchaseLines As Line,
+                colTransferLines As Line,
                 Patch(
-                    colPurchaseLines,
+                    colTransferLines,
                     Line,
                     {
                         Quantity: Sum(
                             Filter(
-                                colPurchaseResEntry,
+                                colTransferResEntries,
                                 Item_No = Line.Item_No
                             ),
                             Quantity
@@ -165,6 +165,7 @@
             TransferLineCanvas_1 As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
+                Visible: =wizardStep = 1
                 Width: =Parent.Width
                 ZIndex: =28
 
@@ -271,7 +272,7 @@
                     Y: =2
                     ZIndex: =2
 
-                    "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NalogZaPrenosLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         Default: |
                             =First(Filter(colTransferLines, Line_No = scannedItem))
@@ -507,12 +508,12 @@
                     Y: =1
                     ZIndex: =2
 
-                    "NabavniNalogResEntry_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NalogZaPrenosResEntry_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(colPurchaseResEntry, NabavniNalogLines_1.Selected.Item_No = Item_No)
+                        Items: =Filter(colTransferResEntries, NalogZaPrenosLines_1.Selected.Item_No = Item_No)
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -622,7 +623,7 @@
                                 Y: =133
                                 ZIndex: =9
 
-                            "NabavniNalogResEntryQty_1 As 'Text input'":
+                            "NalogZaPrenosResEntryQty_1 As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -638,7 +639,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NabavniNalogResEntryQty_1.Value)});
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{Quantity: Value(NalogZaPrenosResEntryQty_1.Value)});
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -646,20 +647,21 @@
                                 Y: =49
                                 ZIndex: =11
 
-                            DatePickerExpDate_1 As datepicker:
+                            DatePickerExpDateNalogZaPrenos_1 As datepicker:
                                 BorderColor: =RGBA(89, 0, 0, 1)
                                 CalendarHeaderFill: =RGBA(164, 38, 44, 1)
                                 Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =ThisItem.Exp_Date
+                                DefaultDate: =If(IsBlank(ThisItem.Exp_Date), Today(), ThisItem.Exp_Date)
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayMode: =If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
                                 Format: ="dd.mm.yyyy"
                                 Height: =26
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Text(DatePickerExpDate_1.SelectedDate, "yyyy-mm-dd")})
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos_1.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -667,7 +669,7 @@
                                 Y: =92
                                 ZIndex: =14
 
-                            "NabavniNalogLot_1 As 'Text input'":
+                            "NalogZaPrenosLot_1 As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -683,7 +685,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Text(NabavniNalogLot_1.Value)})
+                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry_1.Selected.Item_No = ThisRecord.Item_No ,{LOT_No: Text(NalogZaPrenosLot_1.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
@@ -761,6 +763,7 @@
             RadiusBottomRight: =8
             RadiusTopLeft: =8
             RadiusTopRight: =8
+            Visible: =!isLoading
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
@@ -794,74 +797,50 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                 OnSelect: |
-                    =/*UpdateContext({
-                        purchaseJsonData:
+                    =UpdateContext({
+                        transferJsonData:
                         JSON(
                             {
-                                Purchase_Header: {
-                                    Document_Type: Text(purchase_header.Document_Type)
-                                    ,
-                                    'Buy-from_Vendor_No.': Text(purchase_header.'Buy-from_Vendor_No.'),
-                                    'No.': Text(purchase_header.'No.'),
-                                    'Ship-to_Code': Text(purchase_header.'Ship-to_Code'),
-                                    'Ship-to_Name': Text(purchase_header.'Ship-to_Name'),
-                                    'Ship-to_Name_2': Text(purchase_header.'Ship-to_Name_2'),
-                                    'Ship-to_Address': Text(purchase_header.'Ship-to_Address'),
-                                    'Ship-to_Address_2': Text(purchase_header.'Ship-to_Address_2'),
-                                    'Ship-to_City': Text(purchase_header.'Ship-to_City'),
-                                    'Ship-to_Contact': Text(purchase_header.'Ship-to_Contact'),
-                                    Order_Date: Text(purchase_header.Order_Date),
-                                    Expected_Receipt_Date: Text(purchase_header.Expected_Receipt_Date),
-                                    Due_Date: Text(purchase_header.Due_Date),
-                                    Shipment_Method_Code: Text(purchase_header.Shipment_Method_Code),
-                                    Location_Code: Text(purchase_header.Location_Code),
-                                    Vendor_Posting_Group: Text(purchase_header.Vendor_Posting_Group),
-                                    Currency_Code: Text(purchase_header.Currency_Code),
-                                    Language_Code: Text(purchase_header.Language_Code),
-                                    Purchaser_Code: Text(purchase_header.Purchaser_Code),
-                                    Amount: Text(purchase_header.Amount),
-                                    Amount_Including_VAT: Text(purchase_header.Amount_Including_VAT),
-                                    'Vendor_Order_No.': Text(purchase_header.'Vendor_Order_No.'),
-                                    'Vendor_Shipment_No.': Text(purchase_header.'Vendor_Shipment_No.'),
-                                    'Vendor_Invoice_No.': Text(purchase_header.'Vendor_Invoice_No.'),
-                                    'VAT_Registration_No.': Text(purchase_header.VAT_Registration_No),
-                                    Gen_Bus_Posting_Group: Text(purchase_header.Gen_Bus_Posting_Group),
-                                    Transport_Method: Text(purchase_header.Transport_Method),
-                                    VAT_Country_Code: Text(purchase_header.VAT_Country_Code),
-                                    'Buy-from_Vendor_Name': Text(purchase_header.'Buy-from_Vendor_Name'),
-                                    'Buy-from_Vendor_Name_2': Text(purchase_header.'Buy-from_Vendor_Name_2'),
-                                    'Buy-from_Address': Text(purchase_header.'Buy-from_Address'),
-                                    'Buy-from_Address_2': Text(purchase_header.'Buy-from_Address_2'),
-                                    'Buy-from_City': Text(purchase_header.'Buy-from_City'),
-                                    'Buy-from_Contact': Text(purchase_header.'Buy-from_Contact'),
-                                    'Buy-from_Post_Code': Text(purchase_header.'Buy-from_Post_Code'),
-                                    'Buy-from_County': Text(purchase_header.'Buy-from_County'),
-                                    'Buy-from_Country_Code': Text(purchase_header.'Buy-from_Country_Code'),
-                                    'Ship-to_Post_Code': Text(purchase_header.'Ship-to_Post_Code'),
-                                    'Ship-to_County': Text(purchase_header.'Ship-to_County'),
-                                    'Ship-to_Country_Code': Text(purchase_header.'Ship-to_Country_Code'),
-                                    Document_Date: Text(purchase_header.Document_Date),
-                                    Area: Text(purchase_header.Area),
-                                    Tax_Area_Code: Text(purchase_header.Tax_Area_Code),
-                                    VAT_Bus_Posting_Group: Text(purchase_header.'VAT_Bus._Posting_Group'),
-                                    Status: Text(purchase_header.Status),
-                                    'Campaign_No.': Text(purchase_header.'Campaign_No.'),
-                                    'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
-                                    Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
-                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                                    Purchase_Line: ForAll(colPurchaseLines As pl,{
-                                        'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
-                                        Description: Text(pl.Description),
-                                        Document_No:Text(pl.Document_No),
-                                        Document_Type:Text(pl.Document_Type),
-                                        Item_No:Text(pl.Item_No),
-                                        Line_No:Text(pl.Line_No),
-                                        Location_Code:Text(pl.Location_Code),
-                                        Posting_Group:Text(pl.Posting_Group),
-                                        Quantity:Text(pl.Quantity),
-                                        Type:Text(pl.Type),
-                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
-                                        Res_Entry: ForAll(Filter(colPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
+                                Transfer_Header: {
+                                    'No.': Text(transfer_header.'No.'),
+                                    'Transfer-from_Code': Text(transfer_header.'Transfer-from_Code'),
+                                    'Transfer-from_Name': Text(transfer_header.'Transfer-from_Name'),
+                                    'Transfer-to_Code': Text(transfer_header.'Transfer-to_Code'),
+                                    'Transfer-to_Name': Text(transfer_header.'Transfer-to_Name'),
+                                    'In-Transit_Code': Text(transfer_header.'In-Transit_Code'),
+                                    Gen_Bus_Posting_Group: Text(transfer_header.Gen_Bus_Posting_Group),
+                                    Posting_Date: Text(transfer_header.Posting_Date),
+                                    Status: Text(transfer_header.Status),
+                                    Shipment_Date: Text(transfer_header.Shipment_Date),
+                                    Receipt_Date: Text(transfer_header.Receipt_Date),
+                                    Shipping_Advice: Text(transfer_header.Shipping_Advice),
+                                    'Transfer-from_Post_Code': Text(transfer_header.'Transfer-from_Post_Code'),
+                                    'Transfer-from_City': Text(transfer_header.'Transfer-from_City'),
+                                    'Transfer-to_Post_Code': Text(transfer_header.'Transfer-to_Post_Code'),
+                                    'Transfer-to_City': Text(transfer_header.'Transfer-to_City'),
+                                    Shortcut_Dimension_1_Code: Text(transfer_header.Shortcut_Dimension_1_Code),
+                                    Transfer_Line: ForAll(colTransferLines As tl, 
+                                        {
+                                            Document_No: Text(tl.Document_No),
+                                            Line_No: Text(tl.Line_No),
+                                            Item_No: Text(tl.Item_No),
+                                            'Transfer-from_Code': Text(tl.'Transfer-from_Code'),
+                                            'Transfer-to_Code': Text(tl.'Transfer-to_Code'),
+                                            'In-Transit_Code': Text(tl.'In-Transit_Code'),
+                                            GP_Posting_Group: Text(tl.GP_Posting_Group),
+                                            Inv_Posting_Group: Text(tl.Inv_Posting_Group),
+                                            Description: Text(tl.Description),
+                                            Unit_Of_Measure: Text(tl.Unit_Of_Measure),
+                                            Quantity: Text(tl.Quantity),
+                                            Quantity_Base: Text(tl.Quantity_Base),
+                                            'Qty-to_Ship': Text(tl.'Qty-to_Ship'),
+                                            'Qty-to_Receive': Text(tl.'Qty-to_Receive'),
+                                            Quantity_Shipped: Text(tl.Quantity_Shipped),
+                                            Quantity_Received: Text(tl.Quantity_Received),
+                                            Outstanding_Qty: Text(tl.Outstanding_Qty),
+                                            Shipment_Date: Text(tl.Shipment_Date),
+                                            Receipt_Date: Text(tl.Receipt_Date),
+                                            Res_Entry: ForAll(Filter(colResEntries, ThisRecord.Item_No = tl.Item_No),
                                             {
                                                 Created_By: Text(Created_By),
                                                 Creation_Date: Text(Creation_Date),
@@ -883,21 +862,21 @@
                                                 Source_Ref_No: Text(Source_Ref_No),
                                                 Source_SubType: Text(Source_SubType),
                                                 Source_Type: Text(Source_Type)
-                                            })
-                                    })
+                                            }) 
+                                        }
+                                    )
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
                         )
                     });
                     
-                    UpdateContext({responseMessage: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox_1.Checked)});
+                    UpdateContext({responseMessage: UpdateXML.Run(transferJsonData, SelectedFile, SelectedFolder, nalogZaPrenosReadyForNavCheckbox.Checked)});
                     
                     UpdateContext({parsedResponse : ParseJSON(responseMessage.response)});
                     
                     Navigate(scr_XMLNalogZaPrenos,ScreenTransition.Fade);
                     
                     Notify(parsedResponse.Message , If(parsedResponse.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
-                    */
                 Size: =12
                 Text: ="Sačuvaj"
                 Width: =100
