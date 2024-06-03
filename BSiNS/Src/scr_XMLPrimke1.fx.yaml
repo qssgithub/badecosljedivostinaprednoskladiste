@@ -82,7 +82,7 @@
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
 
-    NalogZaProdajuScreenContainer_1 As groupContainer.verticalAutoLayoutContainer:
+    PrimkeScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -97,7 +97,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        NalogZaProdajuHeader_1 As Header:
+        PrimkeHeader As Header:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
             DisplayMode: =DisplayMode.Edit
             FontColor: =
@@ -107,7 +107,7 @@
             Logo: =FFLogo
             OnSelectLogo: =Navigate(scrEntry)
             Style: ='Header.Style'.Primary
-            Title: ="NALOG ZA PRODAJU"
+            Title: ="PRIMKE"
             TitleFontSize: =14
             UserEmail: =User().Email
             UserImage: =User().Image
@@ -117,7 +117,7 @@
             Y: =0
             ZIndex: =1
 
-        NalogZaProdajuBody_1 As groupContainer.manualLayoutContainer:
+        PrimkeBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Height: =565
@@ -133,14 +133,14 @@
             Y: =15
             ZIndex: =2
 
-            SalesLineCanvas_1 As fluidGrid.fluidGridWithBlankCard:
+            Warehouse_Receipt_Line_Canvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
                 Visible: =wizardStep = 1
                 Width: =Parent.Width
                 ZIndex: =28
 
-                SalesHeader_1 As dataCard:
+                Warehouse_Receipt_Header As dataCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     BorderThickness: =0
@@ -174,7 +174,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj naloga :   " & sales_header.'No.'
+                                ="Broj naloga :   " & warehouseHeader.'No'
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -187,7 +187,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum dokumenta :   " & sales_header.Document_Date
+                                ="Status dokumenta :   " & warehouseHeader.Document_Status
                             Width: =Parent.Width
                             Y: =41
                             ZIndex: =3
@@ -200,7 +200,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Kupac :   " & sales_header.'Bill-to_Name'
+                                ="Datum knjiženja :   " & warehouseHeader.Posting_Date
                             Width: =Parent.Width
                             Y: =65
                             ZIndex: =4
@@ -231,7 +231,7 @@
                             Y: =113
                             ZIndex: =6
 
-                SalesLines_1 As dataCard.blankCard:
+                Warehouse_Receipt_Lines As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -419,7 +419,7 @@
                             Y: =9
                             ZIndex: =2
 
-                SalesNav_1 As dataCard.blankCard:
+                Warehouse_Receipt As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -698,7 +698,7 @@
                         X: =20
                         ZIndex: =1
 
-        NalogZaProdajuFooter_3 As groupContainer.horizontalAutoLayoutContainer:
+        PrimkeFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
             DropShadow: =DropShadow.Light
@@ -720,7 +720,7 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            nalogZaProdajuReadyForNavCheckbox_1 As Checkbox:
+            primkeReadyForNavCheckbox_1 As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -739,7 +739,6 @@
                 ZIndex: =2
 
             saveXml_7 As button:
-                AlignInContainer: =AlignInContainer.Center
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -856,7 +855,7 @@
                         )
                     });
                     
-                    UpdateContext({response: UpdateXML.Run(salesJsonData, SelectedFile, SelectedFolder, nalogZaProdajuReadyForNavCheckbox_1.Checked)});
+                    UpdateContext({response: UpdateXML.Run(salesJsonData, SelectedFile, SelectedFolder, primkeReadyForNavCheckbox_1.Checked)});
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
