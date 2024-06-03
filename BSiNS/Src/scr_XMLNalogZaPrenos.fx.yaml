@@ -406,6 +406,8 @@
                                 ZIndex: =10
 
                     Container2_2 As groupContainer.horizontalAutoLayoutContainer:
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderThickness: =0.5
                         DropShadow: =DropShadow.Light
                         Height: =49
                         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -467,8 +469,9 @@
                             ZIndex: =2
 
                 TransferNav As dataCard.blankCard:
-                    BorderColor: =RGBA(0, 0, 0, 1)
+                    BorderColor: =RGBA(214, 221, 224, 1)
                     BorderStyle: =BorderStyle.Solid
+                    BorderThickness: =0.5
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =14
