@@ -125,7 +125,7 @@
             Y: =0
             ZIndex: =1
 
-        NabavniNalogDataContainer As groupContainer.manualLayoutContainer:
+        NabavniNalogBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Height: =565
@@ -723,23 +723,7 @@
                         X: =20
                         ZIndex: =1
 
-        Spinner2_1 As Spinner:
-            AlignInContainer: =AlignInContainer.Stretch
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =3
-
-        NabavniNalogFooterContainer As groupContainer.horizontalAutoLayoutContainer:
+        NabavniNalogFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
             DropShadow: =DropShadow.Light
@@ -758,10 +742,9 @@
             RadiusTopLeft: =8
             RadiusTopRight: =8
             Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =4
+            ZIndex: =3
 
             nabavniNalogReadyForNavCheckbox As Checkbox:
-                AlignInContainer: =AlignInContainer.End
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -777,7 +760,7 @@
                 Width: =160
                 X: =0
                 Y: =0
-                ZIndex: =6
+                ZIndex: =2
 
             saveXml As button:
                 AlignInContainer: =AlignInContainer.Center
@@ -811,7 +794,7 @@
                                     Expected_Receipt_Date: Text(purchase_header.Expected_Receipt_Date),
                                     Due_Date: Text(purchase_header.Due_Date),
                                     Shipment_Method_Code: Text(purchase_header.Shipment_Method_Code),
-                                    Location_Code: Text(purchase_header.'Location_Code'),
+                                    Location_Code: Text(purchase_header.Location_Code),
                                     Vendor_Posting_Group: Text(purchase_header.Vendor_Posting_Group),
                                     Currency_Code: Text(purchase_header.Currency_Code),
                                     Language_Code: Text(purchase_header.Language_Code),
@@ -900,5 +883,21 @@
                 Width: =100
                 X: =570
                 Y: =718
-                ZIndex: =7
+                ZIndex: =3
+
+        Spinner2_1 As Spinner:
+            AlignInContainer: =AlignInContainer.Stretch
+            BasePaletteColor: =RGBA(249, 83, 109, 1)
+            DisplayMode: =DisplayMode.Edit
+            FillPortions: =1
+            FontColor: =
+            Height: =200
+            LayoutMinHeight: =200
+            LayoutMinWidth: =200
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =isLoading
+            Width: =200
+            X: =0
+            Y: =0
+            ZIndex: =4
 
