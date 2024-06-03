@@ -241,7 +241,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Prenos u :   " & transfer_header.'Transfer-to_Code' & "   " & transfer_header.'Transfer-to_Name'
+                                ="Prenos iz :   " & transfer_header.'Transfer-from_Code' & "   " & transfer_header.'Transfer-from_Name'
                             Width: =Parent.Width
                             Y: =89
                             ZIndex: =5
@@ -254,7 +254,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Prenos od :   " & transfer_header.'Transfer-from_Code' & "   " & transfer_header.'Transfer-from_Name'
+                                ="Prenos u :   " & transfer_header.'Transfer-to_Code' & "   " & transfer_header.'Transfer-to_Name'
                             Width: =Parent.Width
                             Y: =113
                             ZIndex: =6
@@ -764,7 +764,7 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            nabavniNalogReadyForNavCheckbox_1 As Checkbox:
+            nalogZaPrenosReadyForNavCheckbox As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -783,6 +783,7 @@
                 ZIndex: =2
 
             saveXml_5 As button:
+                AlignInContainer: =AlignInContainer.Center
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)

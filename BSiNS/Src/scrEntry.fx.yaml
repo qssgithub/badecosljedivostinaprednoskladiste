@@ -32,7 +32,7 @@
                     ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode)
                 )
             }
-        );
+        );/*
         UpdateContext({filteredFiles: XMLFiles});
         If(
             Not(dd_Status.Selected.Id = "All"),
@@ -55,7 +55,7 @@
                     )
                 }
             )
-        );
+        );*/
         UpdateContext({IsLoadingGetAllFiles: false});
 
     ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
@@ -270,30 +270,30 @@
                                 {
                                     XMLFiles: Table(
                                         Filter(ForAll(
-                                            flowOutputs.ReadyForProcessing As file,
+                                            Files.ReadyForProcessing As file,
                                             {
                                                 FileName: Text(file.Name),
                                                 FileType: Text(Last(FirstN(Split(
                                                     file.Name,
                                                     "_"
-                                                ), 1)).Value),
+                                                ), 2)).Value),
                                                 FolderName: "ReadyForProcessing"
                                             }
-                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode),
+                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode),
                                         Filter(ForAll(
-                                            flowOutputs.InProgress As file,
+                                            Files.InProgress As file,
                                             {
                                                 FileName: file.Name,
                                                 FileType: Text(Last(FirstN(Split(
                                                     file.Name,
                                                     "_"
-                                                ), 1)).Value),
+                                                ), 2)).Value),
                                                 FolderName: "InProgress"
                                             }
-                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 0)).Value = warehouseCode)
+                                        ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode)
                                     )
                                 }
-                            );
+                            );/*
                             UpdateContext({filteredFiles: XMLFiles});
                             If(
                                 Not(dd_Status.Selected.Id = "All"),
@@ -316,7 +316,7 @@
                                         )
                                     }
                                 )
-                            );
+                            );*/
                             UpdateContext({IsLoadingGetAllFiles: false});
                         PaddingBottom: =2
                         PaddingLeft: =2
@@ -387,7 +387,7 @@
                     DelayItemLoading: =true
                     FillPortions: =7
                     Height: =321
-                    Items: =filteredFiles
+                    Items: =XMLFiles
                     Layout: =Layout.Vertical
                     LayoutMinHeight: =287
                     LayoutMinWidth: =320
