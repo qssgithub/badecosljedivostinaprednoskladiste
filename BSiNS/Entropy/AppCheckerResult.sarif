@@ -2654,19 +2654,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaPrenosReadyForNavCheckbox_1.AccessibleLabel"
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaProdajuReadyForNavCheckbox_1.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaPrenosReadyForNavCheckbox_1.AccessibleLabel",
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaProdajuReadyForNavCheckbox_1.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaPrenosReadyForNavCheckbox_1"
+                "type": "scr_XMLNalogZaProdaju.NalogZaProdajuScreenContainer_2.NalogZaProdajuFooter_2.nalogZaProdajuReadyForNavCheckbox_1"
               }
             }
           ],
@@ -2678,36 +2678,6 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "App.transfer_header"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.transfer_header",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "transfer_header",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
         },
         {
           "locations": [
@@ -2888,6 +2858,36 @@
           },
           "ruleId": "app-UnusedMediaResources",
           "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.sales_header"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.sales_header",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "sales_header",
+                "module": "scr_XMLNalogZaProdaju",
+                "type": "scr_XMLNalogZaProdaju"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 4
         },
         {
           "locations": [
