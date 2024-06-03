@@ -75,7 +75,7 @@
             Logo: =FFLogo
             OnSelectLogo: =Navigate(scrEntry)
             Style: ='Header.Style'.Primary
-            Title: ="NABAVNI NALOG"
+            Title: ="TEMELJNICE INVENTURE"
             TitleFontSize: =14
             UserEmail: =User().Email
             UserImage: =User().Image
@@ -120,20 +120,18 @@
                     Y: =1
                     ZIndex: =2
 
-                    "Item_Journal_Lines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
-                        Default: |
-                            =First(Filter(colPurchaseLines, Line_No = scannedItem))
+                        Default: =First(Filter(colJournalLine, 'Line_No.' = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =colPurchaseLines
+                        Items: =colJournalLine
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: |-
-                            =UpdateContext({wizardStep:2});
+                        OnSelect: =
                         TemplatePadding: =0
-                        TemplateSize: =198
+                        TemplateSize: =218
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -156,12 +154,31 @@
                             Width: =4
                             ZIndex: =6
 
-                        Group2_3 As group:
+                        Body1_19 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =18
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Količina:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =88
+                            X: =22
+                            Y: =93
+                            ZIndex: =12
+
+                        Group3 As group:
                             Height: =5
                             Width: =5
                             X: =40
                             Y: =40
-                            ZIndex: =14
+                            ZIndex: =12
 
                             Title5_6 As label:
                                 Color: =RGBA(50, 49, 48, 1)
@@ -175,7 +192,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.Item_No
+                                    ="Br. artikla:   " & ThisItem.'Item_No.'
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
@@ -193,65 +210,119 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Kategorija artikla:   " & ThisItem.Posting_Group
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =52
-                                ZIndex: =2
-
-                            Body1_18 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    " & ThisItem.Quantity
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =121
-                                ZIndex: =3
-
-                            Body1_19 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Jedinica mjere:    " & ThisItem.Document_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =153
-                                ZIndex: =8
-
-                            Body1_14 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
                                     ="Naziv artikla:   " & ThisItem.Description
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
-                                Y: =87
-                                ZIndex: =10
+                                Y: =55
+                                ZIndex: =2
+
+                        Body1_21 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Rok trajanja:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =120
+                            X: =22
+                            Y: =133
+                            ZIndex: =13
+
+                        Body1_22 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="LOT:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =60
+                            X: =26
+                            Y: =171
+                            ZIndex: =14
+
+                        "Item_JournalQty As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            Appearance: ="FilledDarker"
+                            BasePaletteColor: =
+                            BorderColor: =""
+                            BorderStyle: =""
+                            DelayOutput: =true
+                            DisabledBorderColor: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FocusedBorderColor: =""
+                            FontColor: =
+                            FontSize: =15
+                            Height: =31
+                            HoverBorderColor: =""
+                            OnChange: |-
+                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Quantity: Value(Item_JournalQty.Value)});
+                            PressedBorderColor: =""
+                            Value: =ThisItem.Quantity
+                            Width: =113
+                            X: =110
+                            Y: =86
+                            ZIndex: =15
+
+                        DatePickerExpDate_Item_Journal As datepicker:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =If(IsBlank(ThisItem.Item_Expiration_Date), Today(), ThisItem.Item_Expiration_Date)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            DisplayMode: =If(IsBlank(ThisItem.Item_Expiration_Date), DisplayMode.Disabled, DisplayMode.Edit)
+                            Format: ="dd.mm.yyyy"
+                            Height: =26
+                            HoverDateFill: =RGBA(222, 179, 184, 1)
+                            IconBackground: =RGBA(164, 38, 44, 1)
+                            OnChange: |-
+                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
+                            OnSelect: =
+                            SelectedDateFill: =RGBA(164, 38, 44, 1)
+                            Width: =158
+                            X: =146
+                            Y: =130
+                            ZIndex: =16
+
+                        "Item_Journal_Lot As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            Appearance: ="FilledDarker"
+                            BasePaletteColor: =
+                            BorderColor: =""
+                            BorderStyle: =""
+                            DelayOutput: =true
+                            DisabledBorderColor: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FocusedBorderColor: =""
+                            FontColor: =
+                            FontSize: =15
+                            Height: =31
+                            HoverBorderColor: =""
+                            OnChange: |-
+                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
+                            PressedBorderColor: =""
+                            Value: =ThisItem.Lot_No
+                            Width: =113
+                            X: =86
+                            Y: =166
+                            ZIndex: =17
 
                     Container2_6 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
@@ -339,259 +410,6 @@
                         X: =20
                         ZIndex: =1
 
-            PurchaseResEntryCanvas_1 As fluidGrid.fluidGridWithBlankCard:
-                BorderThickness: =0
-                Height: =611
-                Visible: =wizardStep = 2
-                Width: =Parent.Width
-                ZIndex: =29
-
-                PurchaseResEntry_1 As dataCard.blankCard:
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    BorderStyle: =BorderStyle.Solid
-                    DisplayMode: =DisplayMode.Edit
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =612
-                    Width: =Parent.Width
-                    X: =0
-                    Y: =1
-                    ZIndex: =2
-
-                    "NabavniNalogResEntry_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        DelayItemLoading: =true
-                        Fill: =RGBA(237, 237, 237, 1)
-                        Height: =560
-                        Items: =Filter(colPurchaseResEntry, Item_Journal_Lines_1.Selected.Item_No = Item_No)
-                        Layout: =Layout.Vertical
-                        LoadingSpinner: =LoadingSpinner.Data
-                        TemplatePadding: =0
-                        TemplateSize: =176
-                        Width: =Parent.Width
-                        Y: =49
-                        ZIndex: =1
-
-                        Separator6_7 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =8
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =5
-
-                        Rectangle5_7 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
-                            Height: =Parent.TemplateHeight - Separator6_7.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =4
-                            ZIndex: =6
-
-                        Group1_3 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =16
-
-                            Title5_7 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Entry_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth - 86
-                                X: =24
-                                Y: =18
-                                ZIndex: =1
-
-                            Body1_20 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =88
-                                X: =24
-                                Y: =55
-                                ZIndex: =3
-
-                            Body1_21 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Rok trajanja:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =120
-                                X: =24
-                                Y: =97
-                                ZIndex: =8
-
-                            Body1_22 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="LOT:    " & ThisItem.LOT_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =60
-                                X: =28
-                                Y: =133
-                                ZIndex: =9
-
-                            "NabavniNalogResEntryQty_1 As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
-                                DelayOutput: =true
-                                DisabledBorderColor: =""
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FocusedBorderColor: =""
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                HoverBorderColor: =""
-                                OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty_1.Value)});
-                                PressedBorderColor: =""
-                                Value: =ThisItem.Quantity
-                                Width: =113
-                                X: =112
-                                Y: =49
-                                ZIndex: =11
-
-                            DatePickerExpDate_1 As datepicker:
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
-                                Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =ThisItem.Exp_Date
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                DisabledFill: =RGBA(244, 244, 244, 1)
-                                Format: ="dd.mm.yyyy"
-                                Height: =26
-                                HoverDateFill: =RGBA(222, 179, 184, 1)
-                                IconBackground: =RGBA(164, 38, 44, 1)
-                                OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate_1.SelectedDate, "yyyy-mm-dd")})
-                                OnSelect: =
-                                SelectedDateFill: =RGBA(164, 38, 44, 1)
-                                Width: =158
-                                X: =148
-                                Y: =92
-                                ZIndex: =14
-
-                            "NabavniNalogLot_1 As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
-                                DelayOutput: =true
-                                DisabledBorderColor: =""
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FocusedBorderColor: =""
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                HoverBorderColor: =""
-                                OnChange: |-
-                                    =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry_1.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot_1.Value)})
-                                PressedBorderColor: =""
-                                Value: =ThisItem.LOT_No
-                                Width: =113
-                                X: =80
-                                Y: =128
-                                ZIndex: =15
-
-                    Container2_7 As groupContainer.horizontalAutoLayoutContainer:
-                        DropShadow: =DropShadow.Light
-                        Height: =49
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingRight: =20
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Width: =Max(App.Width, App.MinScreenWidth)
-                        ZIndex: =4
-
-                        Label2_7 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Height: =24
-                            PaddingLeft: =20
-                            Size: =12
-                            Text: ="Rezervacijski unosi"
-                            Width: |
-                                =200
-                            Y: =1
-                            ZIndex: =1
-
-                PurchaseResEntryNav_1 As dataCard.blankCard:
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    BorderStyle: =BorderStyle.Solid
-                    DisplayMode: =DisplayMode.Edit
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =25
-                    Width: =Parent.Width
-                    X: =20
-                    Y: =0
-                    ZIndex: =3
-
-                    Icon1_7 As icon.BackArrow:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(89, 0, 0, 1)
-                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                        DisabledColor: =RGBA(244, 244, 244, 1)
-                        Height: =25
-                        Icon: =Icon.ArrowLeft
-                        OnSelect: |-
-                            =
-                            UpdateContext({wizardStep:1});
-                        Width: =25
-                        X: =20
-                        ZIndex: =1
-
         TemeljniceInventureFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -614,7 +432,7 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            temeljniceInventureReadyForNavCheckbox_1 As Checkbox:
+            temeljniceInventureReadyForNavCheckbox As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -633,6 +451,7 @@
                 ZIndex: =2
 
             saveXml_2 As button:
+                AlignInContainer: =AlignInContainer.Center
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
@@ -644,102 +463,41 @@
                 HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                 OnSelect: |-
                     =UpdateContext({
-                        purchaseJsonData:
+                        journalJsonData:
                         JSON(
                             {
-                                Purchase_Header: {
-                                    Document_Type: Text(purchase_header.Document_Type)
-                                    ,
-                                    'Buy-from_Vendor_No.': Text(purchase_header.'Buy-from_Vendor_No.'),
-                                    'No.': Text(purchase_header.'No.'),
-                                    'Ship-to_Code': Text(purchase_header.'Ship-to_Code'),
-                                    'Ship-to_Name': Text(purchase_header.'Ship-to_Name'),
-                                    'Ship-to_Name_2': Text(purchase_header.'Ship-to_Name_2'),
-                                    'Ship-to_Address': Text(purchase_header.'Ship-to_Address'),
-                                    'Ship-to_Address_2': Text(purchase_header.'Ship-to_Address_2'),
-                                    'Ship-to_City': Text(purchase_header.'Ship-to_City'),
-                                    'Ship-to_Contact': Text(purchase_header.'Ship-to_Contact'),
-                                    Order_Date: Text(purchase_header.Order_Date),
-                                    Expected_Receipt_Date: Text(purchase_header.Expected_Receipt_Date),
-                                    Due_Date: Text(purchase_header.Due_Date),
-                                    Shipment_Method_Code: Text(purchase_header.Shipment_Method_Code),
-                                    Location_Code: Text(purchase_header.Location_Code),
-                                    Vendor_Posting_Group: Text(purchase_header.Vendor_Posting_Group),
-                                    Currency_Code: Text(purchase_header.Currency_Code),
-                                    Language_Code: Text(purchase_header.Language_Code),
-                                    Purchaser_Code: Text(purchase_header.Purchaser_Code),
-                                    Amount: Text(purchase_header.Amount),
-                                    Amount_Including_VAT: Text(purchase_header.Amount_Including_VAT),
-                                    'Vendor_Order_No.': Text(purchase_header.'Vendor_Order_No.'),
-                                    'Vendor_Shipment_No.': Text(purchase_header.'Vendor_Shipment_No.'),
-                                    'Vendor_Invoice_No.': Text(purchase_header.'Vendor_Invoice_No.'),
-                                    'VAT_Registration_No.': Text(purchase_header.VAT_Registration_No),
-                                    Gen_Bus_Posting_Group: Text(purchase_header.Gen_Bus_Posting_Group),
-                                    Transport_Method: Text(purchase_header.Transport_Method),
-                                    VAT_Country_Code: Text(purchase_header.VAT_Country_Code),
-                                    'Buy-from_Vendor_Name': Text(purchase_header.'Buy-from_Vendor_Name'),
-                                    'Buy-from_Vendor_Name_2': Text(purchase_header.'Buy-from_Vendor_Name_2'),
-                                    'Buy-from_Address': Text(purchase_header.'Buy-from_Address'),
-                                    'Buy-from_Address_2': Text(purchase_header.'Buy-from_Address_2'),
-                                    'Buy-from_City': Text(purchase_header.'Buy-from_City'),
-                                    'Buy-from_Contact': Text(purchase_header.'Buy-from_Contact'),
-                                    'Buy-from_Post_Code': Text(purchase_header.'Buy-from_Post_Code'),
-                                    'Buy-from_County': Text(purchase_header.'Buy-from_County'),
-                                    'Buy-from_Country_Code': Text(purchase_header.'Buy-from_Country_Code'),
-                                    'Ship-to_Post_Code': Text(purchase_header.'Ship-to_Post_Code'),
-                                    'Ship-to_County': Text(purchase_header.'Ship-to_County'),
-                                    'Ship-to_Country_Code': Text(purchase_header.'Ship-to_Country_Code'),
-                                    Document_Date: Text(purchase_header.Document_Date),
-                                    Area: Text(purchase_header.Area),
-                                    Tax_Area_Code: Text(purchase_header.Tax_Area_Code),
-                                    VAT_Bus_Posting_Group: Text(purchase_header.'VAT_Bus._Posting_Group'),
-                                    Status: Text(purchase_header.Status),
-                                    'Campaign_No.': Text(purchase_header.'Campaign_No.'),
-                                    'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
-                                    Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
-                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                                    Purchase_Line: ForAll(colPurchaseLines As pl,{
-                                        'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
-                                        Description: Text(pl.Description),
-                                        Document_No:Text(pl.Document_No),
-                                        Document_Type:Text(pl.Document_Type),
-                                        Item_No:Text(pl.Item_No),
-                                        Line_No:Text(pl.Line_No),
-                                        Location_Code:Text(pl.Location_Code),
-                                        Posting_Group:Text(pl.Posting_Group),
-                                        Quantity:Text(pl.Quantity),
-                                        Type:Text(pl.Type),
-                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
-                                        Res_Entry: ForAll(Filter(colPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
-                                            {
-                                                Created_By: Text(Created_By),
-                                                Creation_Date: Text(Creation_Date),
-                                                Entry_No: Text(Entry_No),
-                                                Exp_Date: Text(Exp_Date),
-                                                Exp_Receipt_Date: Text(Exp_Receipt_Date),
-                                                Item_No: Text(Item_No),
-                                                Item_Tracking: Text(Item_Tracking),
-                                                LOT_No: Text(LOT_No),
-                                                Location_Code: Text(Location_Code),
-                                                Positive: Text(Positive),
-                                                'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
-                                                'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
-                                                Quantity: Text(Quantity),
-                                                Quantity_Base: Text(Quantity_Base),
-                                                Res_Status: Text(Res_Status),
-                                                Shipment_Date: Text(Shipment_Date),
-                                                Source_ID: Text(Source_ID),
-                                                Source_Ref_No: Text(Source_Ref_No),
-                                                Source_SubType: Text(Source_SubType),
-                                                Source_Type: Text(Source_Type)
-                                            })
+                                Lines: {
+                                    Item_Journal_Line: ForAll(colJournalLine,{
+                                        Description: Text(Description),
+                                        Document_Date: Text(Document_Date),
+                                        'Document_No.': Text('Document_No.'),
+                                        Entry_Type: Text(Entry_Type),
+                                        Gen_Bus_Posting_Group: Text(Gen_Bus_Posting_Group),
+                                        Item_Expiration_Date: Text(Item_Expiration_Date),
+                                        'Item_No.': Text('Item_No.'),
+                                        Journal_Batch_Name: Text(Journal_Batch_Name),
+                                        Journal_Template_Name: Text(Journal_Template_Name),
+                                        'Line_No.': Text('Line_No.'),
+                                        Location_Code: Text(Location_Code),
+                                        Lot_No: Text(Lot_No),
+                                        'Phys._Inventory': Text('Phys._Inventory'),
+                                        Posting_Date: Text(Posting_Date),
+                                        Qty_Calculated: Text(Qty_Calculated),
+                                        Qty_Calculated_Ext: Text(Qty_Calculated_Ext),
+                                        Qty_Phys_Inventory: Text(Qty_Phys_Inventory),
+                                        Qty_Phys_Inventory_Ext: Text(Qty_Phys_Inventory_Ext),
+                                        Quantity: Text(Quantity),
+                                        Sales_Price: Text(Sales_Price),
+                                        Source_Code: Text(Source_Code),
+                                        'Source_No.': Text('Source_No.'),
+                                        Source_Type: Text(Source_Type)
                                     })
                                 }
                             },JSONFormat.IgnoreUnsupportedTypes
                         )
                     });
                     
-                    UpdateContext({response: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, temeljniceInventureReadyForNavCheckbox_1.Checked)});
+                    UpdateContext({response: UpdateXML.Run(journalJsonData, SelectedFile, SelectedFolder, temeljniceInventureReadyForNavCheckbox.Checked)});
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
