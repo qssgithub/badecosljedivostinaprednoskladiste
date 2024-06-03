@@ -8,6 +8,7 @@ App As appinfo:
             Email = User().Email
         );
         warehouseCode = "AM-01";
+        isMobile = If(App.Width > 600, false, true);
     OnStart: =
     StartScreen: =
     Theme: =PowerAppsTheme
