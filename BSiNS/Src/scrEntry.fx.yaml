@@ -475,7 +475,7 @@
                             "03",
                             Navigate(scr_XMLNalogZaProdaju),
                             "04",
-                            Navigate(scr_XMLNalogZaPrenos),
+                            Navigate(sc),
                             "05",
                             Navigate(scr_XMLPrimke),
                             "06",
@@ -525,7 +525,7 @@
                                 "03",
                                 Navigate(scr_XMLNalogZaProdaju),
                                 "04",
-                                Navigate(scr_XMLNalogZaPrenos),
+                                Navigate(scr_XMLNalogZaPrenos11),
                                 "05",
                                 Navigate(scr_XMLPrimke),
                                 "06",
@@ -619,7 +619,7 @@
         FontWeight: =FontWeight.Semibold
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
-        OnSelect: =Navigate(scr_XMLNalogZaPrenos)
+        OnSelect: =Navigate(scr_XMLNalogZaPrenos11)
         Size: =12
         Text: ="NALOG ZA PRENOS"
         X: =608
