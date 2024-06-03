@@ -209,6 +209,60 @@
                             RadiusTopRight: =4
                             ZIndex: =3
 
+                            dd_Status As Dropdown.pcfdataset:
+                                AccessibleLabel: =""
+                                Appearance: ="FilledDarker"
+                                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DefaultSelectedItems: |-
+                                    =[{Id: "All", Text: "All"}]
+                                DisabledBorderColor: =""
+                                DisplayMode: =DisplayMode.Edit
+                                FocusedBorderColor: =""
+                                FontSize: =18
+                                Height: =Parent.Height
+                                HoverBorderColor: =""
+                                Items: |-
+                                    =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
+                                OnChange: |-
+                                    =If(
+                                        Not(dd_FileType.Selected.Id = "0"),
+                                        UpdateContext(
+                                            {
+                                                filteredFiles: Filter(
+                                                    XMLFiles,
+                                                    dd_FileType.Selected.Id = ThisRecord.FileType
+                                                )
+                                            }
+                                        ),
+                                        UpdateContext({filteredFiles: XMLFiles})
+                                    );
+                                    If(
+                                        Not(dd_Status.Selected.Id = "All"),
+                                        UpdateContext(
+                                            {
+                                                filteredFiles: Filter(
+                                                    filteredFiles,
+                                                    dd_Status.Selected.Id = ThisRecord.FolderName
+                                                )
+                                            }
+                                        )
+                                    );
+                                PressedBorderColor: =""
+                                Width: =Parent.Width
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                                TextInput2 As pcfDataField.textualColumn:
+                                    FieldDisplayName: ="Text"
+                                    FieldName: ="Text"
+                                    FieldType: ="s"
+                                    FieldVariantName: ="textualColumn"
+                                    Order: =1
+                                    ZIndex: =13
+
                     vrtcon_FileType As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =Parent.Height
@@ -253,6 +307,101 @@
                             RadiusTopRight: =4
                             Width: =Parent.Width
                             ZIndex: =3
+
+                            dd_FileType As Dropdown.pcfdataset:
+                                Appearance: ="FilledDarker"
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DefaultSelectedItems: |-
+                                    =[
+                                        {
+                                            Id: "0",
+                                            Text: "All"
+                                        }
+                                    ]
+                                DisabledBorderColor: =""
+                                DisplayMode: =DisplayMode.Edit
+                                FocusedBorderColor: =""
+                                FontSize: =18
+                                Height: =Parent.Height
+                                HoverBorderColor: =""
+                                Items: |-
+                                    =[
+                                        {
+                                            Id: "0",
+                                            Text: "All"
+                                        },
+                                        {
+                                            Id: "01",
+                                            Text: "Temeljnice inventure"
+                                        },
+                                        {
+                                            Id: "02",
+                                            Text: "Nabavni nalozi"
+                                        },
+                                        {
+                                            Id: "03",
+                                            Text: "Prodajni nalozi"
+                                        },
+                                        {
+                                            Id: "04",
+                                            Text: "Nalozi za prenos"
+                                        },
+                                        {
+                                            Id: "05",
+                                            Text: "Skladišne primke"
+                                        },
+                                        {
+                                            Id: "06",
+                                            Text: "Skladišne otpremnice"
+                                        },
+                                        {
+                                            Id: "07",
+                                            Text: "Put-Away Request"
+                                        },
+                                        {
+                                            Id: "08",
+                                            Text: "Pick Request"
+                                        }
+                                    ]
+                                OnChange: |
+                                    =If(
+                                        Not(dd_FileType.Selected.Id = "0"),
+                                        UpdateContext(
+                                            {
+                                                filteredFiles: Filter(
+                                                    XMLFiles,
+                                                    dd_FileType.Selected.Id = ThisRecord.FileType
+                                                )
+                                            }
+                                        ),
+                                        UpdateContext({filteredFiles: XMLFiles})
+                                    );
+                                    If(
+                                        Not(dd_Status.Selected.Id = "All"),
+                                        UpdateContext(
+                                            {
+                                                filteredFiles: Filter(
+                                                    filteredFiles,
+                                                    dd_Status.Selected.Id = ThisRecord.FolderName
+                                                )
+                                            }
+                                        )
+                                    );
+                                PressedBorderColor: =""
+                                Width: =Parent.Width
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                                TextInput1 As pcfDataField.textualColumn:
+                                    FieldDisplayName: ="Text"
+                                    FieldName: ="Text"
+                                    FieldType: ="s"
+                                    FieldVariantName: ="textualColumn"
+                                    Order: =1
+                                    ZIndex: =11
+
 
                     icn_ReloadFiles As icon.Reload:
                         AlignInContainer: =AlignInContainer.End
