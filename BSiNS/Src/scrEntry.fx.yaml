@@ -549,7 +549,7 @@
                         =Switch(
                             Parent.Selected.FileType,
                             "01",
-                            Navigate(scr_XMLTemeljniceInventure),
+                            Navigate(scr_XMLTemeljniceInventure_1),
                             "02",
                             Navigate(scr_XMLNabavniNalog),
                             "03",
@@ -599,7 +599,7 @@
                             Switch(
                                 Parent.Selected.FileType,
                                 "01",
-                                Navigate(scr_XMLTemeljniceInventure),
+                                Navigate(scr_XMLTemeljniceInventure_1),
                                 "02",
                                 Navigate(scr_XMLNabavniNalog),
                                 "03",

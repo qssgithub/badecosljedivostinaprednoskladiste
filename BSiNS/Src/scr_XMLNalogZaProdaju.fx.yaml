@@ -105,7 +105,7 @@
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
 
-    NalogZaProdajuScreenContainer_2 As groupContainer.verticalAutoLayoutContainer:
+    NalogZaProdajuScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -120,7 +120,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        NalogZaProdajuHeader_2 As Header:
+        NalogZaProdajuHeader As Header:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
             DisplayMode: =DisplayMode.Edit
             FontColor: =
@@ -140,7 +140,7 @@
             Y: =0
             ZIndex: =1
 
-        NalogZaProdajuBody_2 As groupContainer.manualLayoutContainer:
+        NalogZaProdajuBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Height: =565
@@ -473,7 +473,7 @@
                 Width: =Parent.Width
                 ZIndex: =29
 
-                TransferResEntry_2 As dataCard.blankCard:
+                SalesResEntry As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -484,7 +484,7 @@
                     Y: =1
                     ZIndex: =2
 
-                    "NalogZaPrenosResEntry_2 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                    "NalogZaProdajuResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =RGBA(89, 0, 0, 1)
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
@@ -599,7 +599,7 @@
                                 Y: =133
                                 ZIndex: =9
 
-                            "NalogZaPrenosResEntryQty_2 As 'Text input'":
+                            "NalogZaProdajuResEntryQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -615,7 +615,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colSalesResEntries, NalogZaPrenosResEntry_2.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaPrenosResEntryQty_2.Value)});
+                                    =UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaProdajuResEntryQty.Value)});
                                 PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
@@ -623,7 +623,7 @@
                                 Y: =49
                                 ZIndex: =11
 
-                            DatePickerExpDateNalogZaPrenos_2 As datepicker:
+                            DatePickerExpDateNalogZaProdaju As datepicker:
                                 BorderColor: =RGBA(89, 0, 0, 1)
                                 CalendarHeaderFill: =RGBA(164, 38, 44, 1)
                                 Color: =RGBA(0, 0, 0, 1)
@@ -637,7 +637,7 @@
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
                                 IconBackground: =RGBA(164, 38, 44, 1)
                                 OnChange: |-
-                                    =UpdateIf(colSalesResEntries, NalogZaPrenosResEntry_2.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos_2.SelectedDate, "yyyy-mm-dd")})
+                                    =UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaProdaju.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =RGBA(164, 38, 44, 1)
                                 Width: =158
@@ -645,7 +645,7 @@
                                 Y: =92
                                 ZIndex: =14
 
-                            "NalogZaPrenosLot_2 As 'Text input'":
+                            "NalogZaProdajuLot As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
@@ -661,7 +661,7 @@
                                 Height: =31
                                 HoverBorderColor: =""
                                 OnChange: |-
-                                    =UpdateIf(colSalesResEntries, NalogZaPrenosResEntry_2.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaPrenosLot_2.Value)})
+                                    =UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaProdajuLot.Value)})
                                 PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
@@ -696,7 +696,7 @@
                             Y: =1
                             ZIndex: =1
 
-                TransferResEntryNav_2 As dataCard.blankCard:
+                SalesResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
                     BorderStyle: =BorderStyle.Solid
                     DisplayMode: =DisplayMode.Edit
@@ -743,7 +743,7 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            nalogZaProdajuReadyForNavCheckbox_1 As Checkbox:
+            nalogZaProdajuReadyForNavCheckbox As Checkbox:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 CheckboxSize: =16
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -879,7 +879,7 @@
                         )
                     });
                     
-                    UpdateContext({response: UpdateXML.Run(salesJsonData, SelectedFile, SelectedFolder, nalogZaProdajuReadyForNavCheckbox_1.Checked)});
+                    UpdateContext({response: UpdateXML.Run(salesJsonData, SelectedFile, SelectedFolder, nalogZaProdajuReadyForNavCheckbox.Checked)});
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
