@@ -85,21 +85,6 @@
     "OverridableProperties": {},
     "Version": "2.2.0"
   },
-  "Button": {
-    "CustomGroupControlTemplateName": "",
-    "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_ButtonCanvas",
-    "IsComponentTemplate": false,
-    "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": true,
-    "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": false,
-    "LastModifiedTimestamp": "0",
-    "Name": "PowerApps_CoreControls_ButtonCanvas",
-    "OverridableProperties": {},
-    "TemplateDisplayName": "Button",
-    "Version": "0.0.36"
-  },
   "Checkbox": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
@@ -143,19 +128,20 @@
     "OverridableProperties": {},
     "Version": "2.6.0"
   },
-  "dropdown": {
+  "Dropdown": {
     "CustomGroupControlTemplateName": "",
     "FirstParty": true,
-    "Id": "http://microsoft.com/appmagic/dropdown",
+    "Id": "http://microsoft.com/appmagic/powercontrol/PowerApps_CoreControls_DropdownCanvas",
     "IsComponentTemplate": false,
     "IsCustomGroupControlTemplate": false,
-    "IsPcfControl": false,
+    "IsPcfControl": true,
     "IsPremiumPcfControl": false,
-    "IsWidgetTemplate": true,
+    "IsWidgetTemplate": false,
     "LastModifiedTimestamp": "0",
-    "Name": "dropdown",
+    "Name": "PowerApps_CoreControls_DropdownCanvas",
     "OverridableProperties": {},
-    "Version": "2.3.1"
+    "TemplateDisplayName": "Dropdown",
+    "Version": "0.0.32"
   },
   "fluidGrid": {
     "CustomGroupControlTemplateName": "",
