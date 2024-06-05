@@ -18,6 +18,7 @@
                 Collect(
                     colJournalLine,
                     {
+                        Barcode: Text(ThisRecord.Barcode),
                         Journal_Template_Name: Text(ThisRecord.Journal_Template_Name),
                         Journal_Batch_Name: Text(ThisRecord.Journal_Batch_Name),
                         'Line_No.': Text(ThisRecord.'Line_No.'),
@@ -132,7 +133,7 @@
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =
                         TemplatePadding: =0
-                        TemplateSize: =218
+                        TemplateSize: =261
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -155,31 +156,12 @@
                             Width: =4
                             ZIndex: =6
 
-                        Body1_19 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =18
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Količina:    "
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =88
-                            X: =22
-                            Y: =93
-                            ZIndex: =12
-
                         Group3 As group:
                             Height: =5
                             Width: =5
                             X: =40
                             Y: =40
-                            ZIndex: =12
+                            ZIndex: =19
 
                             Title5_6 As label:
                                 Color: =RGBA(50, 49, 48, 1)
@@ -217,113 +199,150 @@
                                 Y: =55
                                 ZIndex: =2
 
-                        Body1_21 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Rok trajanja:    "
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =120
-                            X: =22
-                            Y: =133
-                            ZIndex: =13
+                            Body1_19 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =18
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Količina:    "
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =88
+                                X: =22
+                                Y: =93
+                                ZIndex: =12
 
-                        Body1_22 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =0
-                            PaddingRight: =0
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="LOT:    "
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =60
-                            X: =26
-                            Y: =171
-                            ZIndex: =14
+                            Body1_21 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Rok trajanja:    "
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =120
+                                X: =22
+                                Y: =133
+                                ZIndex: =13
 
-                        "Item_JournalQty As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Start
-                            Appearance: ="FilledDarker"
-                            BasePaletteColor: =
-                            BorderColor: =""
-                            BorderStyle: =""
-                            DelayOutput: =true
-                            DisabledBorderColor: =""
-                            DisplayMode: =DisplayMode.Edit
-                            Fill: =
-                            FocusedBorderColor: =""
-                            FontColor: =
-                            FontSize: =15
-                            Height: =31
-                            HoverBorderColor: =""
-                            OnChange: |-
-                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Quantity: Value(Item_JournalQty.Value)});
-                            PressedBorderColor: =""
-                            Value: =ThisItem.Quantity
-                            Width: =113
-                            X: =110
-                            Y: =86
-                            ZIndex: =15
+                            Body1_22 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =Self.Size * 1.8
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =0
+                                PaddingRight: =0
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="LOT:    "
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =60
+                                X: =26
+                                Y: =171
+                                ZIndex: =14
 
-                        DatePickerExpDate_Item_Journal As datepicker:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            CalendarHeaderFill: =RGBA(164, 38, 44, 1)
-                            Color: =RGBA(0, 0, 0, 1)
-                            DefaultDate: =If(IsBlank(ThisItem.Item_Expiration_Date), Today(), ThisItem.Item_Expiration_Date)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            DisabledFill: =RGBA(244, 244, 244, 1)
-                            DisplayMode: =If(IsBlank(ThisItem.Item_Expiration_Date), DisplayMode.Disabled, DisplayMode.Edit)
-                            Format: ="dd.mm.yyyy"
-                            Height: =26
-                            HoverDateFill: =RGBA(222, 179, 184, 1)
-                            IconBackground: =RGBA(164, 38, 44, 1)
-                            OnChange: |-
-                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
-                            OnSelect: =
-                            SelectedDateFill: =RGBA(164, 38, 44, 1)
-                            Width: =158
-                            X: =146
-                            Y: =130
-                            ZIndex: =16
+                            "Item_JournalQty As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Start
+                                Appearance: ="FilledDarker"
+                                BasePaletteColor: =
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DelayOutput: =true
+                                DisabledBorderColor: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FocusedBorderColor: =""
+                                FontColor: =
+                                FontSize: =15
+                                Height: =31
+                                HoverBorderColor: =""
+                                OnChange: |-
+                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Quantity: Value(Item_JournalQty.Value)});
+                                PressedBorderColor: =""
+                                Value: =ThisItem.Quantity
+                                Width: =113
+                                X: =110
+                                Y: =86
+                                ZIndex: =15
 
-                        "Item_Journal_Lot As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Start
-                            Appearance: ="FilledDarker"
-                            BasePaletteColor: =
-                            BorderColor: =""
-                            BorderStyle: =""
-                            DelayOutput: =true
-                            DisabledBorderColor: =""
-                            DisplayMode: =DisplayMode.Edit
-                            Fill: =
-                            FocusedBorderColor: =""
-                            FontColor: =
-                            FontSize: =15
-                            Height: =31
-                            HoverBorderColor: =""
-                            OnChange: |-
-                                =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
-                            PressedBorderColor: =""
-                            Value: =ThisItem.Lot_No
-                            Width: =113
-                            X: =86
-                            Y: =166
-                            ZIndex: =17
+                            DatePickerExpDate_Item_Journal As datepicker:
+                                BorderColor: =RGBA(89, 0, 0, 1)
+                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                                Color: =RGBA(0, 0, 0, 1)
+                                DefaultDate: =If(IsBlank(ThisItem.Item_Expiration_Date), Today(), ThisItem.Item_Expiration_Date)
+                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                DisabledFill: =RGBA(244, 244, 244, 1)
+                                DisplayMode: =If(IsBlank(ThisItem.Item_Expiration_Date), DisplayMode.Disabled, DisplayMode.Edit)
+                                Format: ="dd.mm.yyyy"
+                                Height: =26
+                                HoverDateFill: =RGBA(222, 179, 184, 1)
+                                IconBackground: =RGBA(164, 38, 44, 1)
+                                OnChange: |-
+                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
+                                OnSelect: =
+                                SelectedDateFill: =RGBA(164, 38, 44, 1)
+                                Width: =158
+                                X: =146
+                                Y: =130
+                                ZIndex: =16
+
+                            "Item_Journal_Lot As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Start
+                                Appearance: ="FilledDarker"
+                                BasePaletteColor: =
+                                BorderColor: =""
+                                BorderStyle: =""
+                                DelayOutput: =true
+                                DisabledBorderColor: =""
+                                DisplayMode: =DisplayMode.Edit
+                                Fill: =
+                                FocusedBorderColor: =""
+                                FontColor: =
+                                FontSize: =15
+                                Height: =31
+                                HoverBorderColor: =""
+                                OnChange: |-
+                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
+                                PressedBorderColor: =""
+                                Value: =ThisItem.Lot_No
+                                Width: =113
+                                X: =86
+                                Y: =166
+                                ZIndex: =17
+
+                            Subtitle4_6 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =22
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Barcode:   " & ThisItem.Barcode
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.Width
+                                Y: =211
+                                ZIndex: =18
 
                     Container2_6 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
