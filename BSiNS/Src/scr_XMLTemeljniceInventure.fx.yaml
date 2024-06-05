@@ -489,6 +489,7 @@
                             {
                                 Lines: {
                                     Item_Journal_Line: ForAll(colJournalLine,{
+                                        Barcode : Text(Barcode),
                                         Description: Text(Description),
                                         Document_Date: Text(Document_Date),
                                         'Document_No.': Text('Document_No.'),
