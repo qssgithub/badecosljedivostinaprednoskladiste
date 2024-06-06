@@ -527,7 +527,8 @@
                                 Height: =25
                                 Icon: =Icon.ColorPicker
                                 OnSelect: |-
-                                    =Set(tempValue, ThisItem.Quantity);
+                                    =Set(tempValue, Text(ThisItem.Quantity));
+                                    Set(propertyToChange, "Quantity");
                                     Set(changeValueModal, true);
                                 Width: =25
                                 X: =239
