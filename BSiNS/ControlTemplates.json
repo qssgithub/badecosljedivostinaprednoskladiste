@@ -59,7 +59,7 @@
             }
           ]
         },
-        "Version": "1.341"
+        "Version": "1.342"
       }
     },
     "PCFDynamicSchemaForIRRetrieval": {
@@ -98,7 +98,7 @@
     "Name": "PowerApps_CoreControls_CheckboxCanvas",
     "OverridableProperties": {},
     "TemplateDisplayName": "Checkbox",
-    "Version": "0.0.23"
+    "Version": "0.0.24"
   },
   "dataCard": {
     "CustomGroupControlTemplateName": "",
@@ -141,7 +141,7 @@
     "Name": "PowerApps_CoreControls_DropdownCanvas",
     "OverridableProperties": {},
     "TemplateDisplayName": "Dropdown",
-    "Version": "0.0.32"
+    "Version": "0.0.40"
   },
   "fluidGrid": {
     "CustomGroupControlTemplateName": "",
@@ -272,18 +272,28 @@
     "Version": "2.5.1"
   },
   "pcfDataField": {
-    "CustomGroupControlTemplateName": "",
     "FirstParty": true,
     "Id": "http://microsoft.com/appmagic/pcfDataField",
+    "IsComponentTemplate": false,
+    "IsPcfControl": false,
+    "IsWidgetTemplate": false,
+    "LastModifiedTimestamp": "0",
+    "Name": "pcfDataField",
+    "Version": "1.5.0"
+  },
+  "PowerApps_CoreControls_DropdownCanvasTemplate_dataField": {
+    "CustomGroupControlTemplateName": "",
+    "FirstParty": true,
+    "Id": "http://microsoft.com/appmagic/PowerApps_CoreControls_DropdownCanvasTemplate_dataField",
     "IsComponentTemplate": false,
     "IsCustomGroupControlTemplate": false,
     "IsPcfControl": false,
     "IsPremiumPcfControl": false,
     "IsWidgetTemplate": true,
     "LastModifiedTimestamp": "0",
-    "Name": "pcfDataField",
+    "Name": "PowerApps_CoreControls_DropdownCanvasTemplate_dataField",
     "OverridableProperties": {},
-    "Version": "1.4.0"
+    "Version": "1.5.0"
   },
   "rectangle": {
     "CustomGroupControlTemplateName": "",
@@ -326,7 +336,7 @@
     "Name": "PowerApps_CoreControls_Spinner",
     "OverridableProperties": {},
     "TemplateDisplayName": "Spinner",
-    "Version": "1.0.34"
+    "Version": "1.4.1"
   },
   "TestCase": {
     "CustomGroupControlTemplateName": "",
@@ -369,7 +379,7 @@
     "Name": "PowerApps_CoreControls_TextCanvas",
     "OverridableProperties": {},
     "TemplateDisplayName": "Text",
-    "Version": "0.0.30"
+    "Version": "0.0.37"
   },
   "Text input": {
     "CustomGroupControlTemplateName": "",
@@ -384,6 +394,6 @@
     "Name": "PowerApps_CoreControls_TextInputCanvas",
     "OverridableProperties": {},
     "TemplateDisplayName": "Text input",
-    "Version": "0.0.29"
+    "Version": "0.0.37"
   }
 }

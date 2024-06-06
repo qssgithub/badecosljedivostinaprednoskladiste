@@ -260,20 +260,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Quantity: Value(Item_JournalQty.Value)});
-                                PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =110
@@ -306,20 +300,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
-                                PressedBorderColor: =""
                                 Value: =ThisItem.Lot_No
                                 Width: =113
                                 X: =86

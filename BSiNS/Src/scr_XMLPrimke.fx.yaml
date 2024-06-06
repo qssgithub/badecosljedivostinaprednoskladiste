@@ -568,20 +568,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colSalesResEntries, Warehouse_Receipt_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaProdajuResEntryQty_1.Value)});
-                                PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -614,20 +608,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colSalesResEntries, Warehouse_Receipt_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaProdajuLot_1.Value)})
-                                PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
                                 X: =80

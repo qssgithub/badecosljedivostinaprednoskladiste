@@ -601,20 +601,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
-                                PressedBorderColor: =""
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -646,20 +640,14 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
-                                BorderColor: =""
-                                BorderStyle: =""
                                 DelayOutput: =true
-                                DisabledBorderColor: =""
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
-                                FocusedBorderColor: =""
                                 FontColor: =
                                 FontSize: =15
                                 Height: =31
-                                HoverBorderColor: =""
                                 OnChange: |-
                                     =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot.Value)})
-                                PressedBorderColor: =""
                                 Value: =ThisItem.LOT_No
                                 Width: =113
                                 X: =80
