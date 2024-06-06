@@ -937,3 +937,15 @@
             Y: =0
             ZIndex: =4
 
+    Container1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(0, 0, 0, 50%)
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: |
+            =Parent.Width
+        ZIndex: =2
+
