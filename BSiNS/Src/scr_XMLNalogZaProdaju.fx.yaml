@@ -512,6 +512,22 @@
                             Width: =4
                             ZIndex: =6
 
+                        Icon2_1 As icon.AddDocument:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =25
+                            Icon: =Icon.ColorPicker
+                            OnSelect: |-
+                                =Set(tempValue, ThisItem.LOT_No);
+                                Set(propertyToChange, "LOT_No");
+                                Set(changeValueModal, true);
+                            Width: =25
+                            X: =200
+                            Y: =126
+                            ZIndex: =24
+
                         Group6 As group:
                             Height: =5
                             Width: =5
@@ -720,7 +736,13 @@
                             HoverColor: =RGBA(255, 255, 255, 1)
                             HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
                             OnSelect: |-
-                                =UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No, {Quantity: Value(TextInputCanvas1.Value)});
+                                =Switch(
+                                    propertyToChange,
+                                    "Quantity",
+                                    UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No, {Quantity: Value(TextInputCanvas1.Value)}),
+                                    "LOT_No",
+                                    UpdateIf(colSalesResEntries, NalogZaProdajuResEntry.Selected.Entry_No = ThisRecord.Entry_No, {LOT_No: Text(TextInputCanvas1.Value)})
+                                );
                                 Set(changeValueModal, false);
                             Size: =12
                             Text: ="Potvrdi"
