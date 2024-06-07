@@ -1086,7 +1086,7 @@
                             LayoutMinWidth: =320
                             Placeholder: ="Količina"
                             Value: =
-                            Width: =320
+                            Width: =150
                             X: =40
                             Y: =40
                             ZIndex: =2
@@ -1120,13 +1120,35 @@
 
                         "DatePickerCanvas2 As 'Date picker'":
                             DisplayMode: =DisplayMode.Edit
+                            Format: ='DatePickerCanvas.Format'.Short
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
+                            StartOfWeek: ="Monday"
+                            Visible: =false
                             Width: =320
                             X: =0
                             Y: =0
                             ZIndex: =2
+
+                        DatePicker1 As datepicker:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            CalendarHeaderFill: =App.Theme.Colors.Primary
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            EndYear: =Year(Today()) + 20
+                            Font: =App.Theme.Font
+                            Format: ="dd.mm.yyyy"
+                            HoverDateFill: =App.Theme.Colors.Lighter70
+                            IconBackground: =App.Theme.Colors.Primary
+                            LayoutMinWidth: =50
+                            SelectedDateFill: =App.Theme.Colors.Primary
+                            StartOfWeek: =StartOfWeek.Monday
+                            StartYear: =Year(Today())
+                            Width: =150
+                            ZIndex: =3
 
                     Container13_2 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -1163,7 +1185,7 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
-                            Width: =320
+                            Width: =150
                             X: =40
                             Y: =40
                             ZIndex: =2
