@@ -654,7 +654,10 @@
                             DisabledColor: =RGBA(244, 244, 244, 1)
                             Height: =25
                             Icon: =Icon.ColorPicker
-                            OnSelect: =Select(Parent)
+                            OnSelect: |-
+                                =Set(tempValue, Text(ThisItem.Quantity));
+                                Set(propertyToChange, "Quantity");
+                                Set(changeValueModal, true);
                             Width: =25
                             X: =245
                             Y: =52
@@ -667,7 +670,10 @@
                             DisabledColor: =RGBA(244, 244, 244, 1)
                             Height: =25
                             Icon: =Icon.ColorPicker
-                            OnSelect: =Select(Parent)
+                            OnSelect: |-
+                                =Set(tempValue, ThisItem.LOT_No);
+                                Set(propertyToChange, "LOT_No");
+                                Set(changeValueModal, true);
                             Width: =25
                             X: =213
                             Y: =131
