@@ -759,7 +759,7 @@
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
-                                DisplayMode: =If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
+                                DisplayMode: =//If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
                                 Format: ="dd.mm.yyyy"
                                 Height: =26
                                 HoverDateFill: =RGBA(222, 179, 184, 1)
@@ -817,6 +817,14 @@
                                 =200
                             Y: =1
                             ZIndex: =1
+
+                    "DatePickerCanvas1 As 'Date picker'":
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Width: =320
+                        X: =328
+                        Y: =136
+                        ZIndex: =5
 
                 Otpremnice_ResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
@@ -933,12 +941,12 @@
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
+        Visible: =false
         Width: |
             =Parent.Width
         ZIndex: =2
 
         Container3 As groupContainer.manualLayoutContainer:
-            DropShadow: =DropShadow.Light
             Fill: =RGBA(255, 255, 255, 1)
             Height: =Parent.Height * 50%
             RadiusBottomLeft: =4
@@ -951,7 +959,6 @@
             ZIndex: =1
 
             Container4 As groupContainer.verticalAutoLayoutContainer:
-                DropShadow: =DropShadow.Light
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
@@ -963,4 +970,46 @@
                 RadiusTopRight: =4
                 Width: =Parent.Width
                 ZIndex: =1
+
+                Container5 As groupContainer.manualLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    LayoutMinHeight: =50
+                    LayoutMinWidth: =250
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =1
+
+                    TextCanvas2 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Text: ="Unesite" & modalLabel
+                        Width: =Parent.Width
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                Container6 As groupContainer.manualLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =3
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    X: =40
+                    Y: =40
+                    ZIndex: =2
+
+                Container7 As groupContainer.manualLayoutContainer:
+                    LayoutMinHeight: =50
+                    LayoutMinWidth: =250
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =3
 
