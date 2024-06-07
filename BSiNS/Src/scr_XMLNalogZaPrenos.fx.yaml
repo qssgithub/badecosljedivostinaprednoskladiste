@@ -518,6 +518,44 @@
                         Y: =49
                         ZIndex: =1
 
+                        Title5_3 As label:
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Br. artikla:   " & ThisItem.Entry_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =Parent.TemplateWidth - 86
+                            X: =24
+                            Y: =18
+                            ZIndex: =1
+
+                        Body1_8 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =18
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Količina:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =88
+                            X: =24
+                            Y: =55
+                            ZIndex: =3
+
                         Separator6_3 As rectangle:
                             BorderColor: =RGBA(89, 0, 0, 1)
                             Fill: =RGBA(255, 255, 255, 1)
@@ -536,146 +574,133 @@
                             Width: =4
                             ZIndex: =6
 
-                        Group1_1 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
+                        Body1_10 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Rok trajanja:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =120
+                            X: =24
+                            Y: =97
+                            ZIndex: =8
+
+                        Body1_11 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="LOT:    " & ThisItem.LOT_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =60
+                            X: =28
+                            Y: =133
+                            ZIndex: =9
+
+                        "NalogZaPrenosResEntryQty As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            Appearance: ="FilledDarker"
+                            BasePaletteColor: =
+                            DelayOutput: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            FontSize: =15
+                            Height: =31
+                            OnChange: |-
+                                =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaPrenosResEntryQty.Value)});
+                            Value: =ThisItem.Quantity
+                            Width: =113
+                            X: =112
+                            Y: =49
+                            ZIndex: =11
+
+                        DatePickerExpDateNalogZaPrenos As datepicker:
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                            Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =If(IsBlank(ThisItem.Exp_Date), Today(), ThisItem.Exp_Date)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            DisplayMode: =If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
+                            Format: ="dd.mm.yyyy"
+                            Height: =26
+                            HoverDateFill: =RGBA(222, 179, 184, 1)
+                            IconBackground: =RGBA(164, 38, 44, 1)
+                            OnChange: |-
+                                =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos.SelectedDate, "yyyy-mm-dd")})
+                            OnSelect: =
+                            SelectedDateFill: =RGBA(164, 38, 44, 1)
+                            Width: =158
+                            X: =148
+                            Y: =92
+                            ZIndex: =14
+
+                        "NalogZaPrenosLot As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Start
+                            Appearance: ="FilledDarker"
+                            BasePaletteColor: =
+                            DelayOutput: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Fill: =
+                            FontColor: =
+                            FontSize: =15
+                            Height: =31
+                            OnChange: |-
+                                =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaPrenosLot.Value)})
+                            Value: =ThisItem.LOT_No
+                            Width: =113
+                            X: =80
+                            Y: =128
+                            ZIndex: =15
+
+                        "Icon5 As icon.'3DPrinting'":
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =25
+                            Icon: =Icon.ColorPicker
+                            OnSelect: |-
+                                =Set(tempValue, Text(ThisItem.Quantity));
+                                Set(propertyToChange, "Quantity");
+                                Set(changeValueModal, true);
+                            Width: =25
+                            X: =245
+                            Y: =52
                             ZIndex: =16
 
-                            Title5_3 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Entry_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth - 86
-                                X: =24
-                                Y: =18
-                                ZIndex: =1
-
-                            Body1_8 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =88
-                                X: =24
-                                Y: =55
-                                ZIndex: =3
-
-                            Body1_10 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Rok trajanja:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =120
-                                X: =24
-                                Y: =97
-                                ZIndex: =8
-
-                            Body1_11 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="LOT:    " & ThisItem.LOT_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =60
-                                X: =28
-                                Y: =133
-                                ZIndex: =9
-
-                            "NalogZaPrenosResEntryQty As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaPrenosResEntryQty.Value)});
-                                Value: =ThisItem.Quantity
-                                Width: =113
-                                X: =112
-                                Y: =49
-                                ZIndex: =11
-
-                            DatePickerExpDateNalogZaPrenos As datepicker:
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
-                                Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =If(IsBlank(ThisItem.Exp_Date), Today(), ThisItem.Exp_Date)
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                DisabledFill: =RGBA(244, 244, 244, 1)
-                                DisplayMode: =If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
-                                Format: ="dd.mm.yyyy"
-                                Height: =26
-                                HoverDateFill: =RGBA(222, 179, 184, 1)
-                                IconBackground: =RGBA(164, 38, 44, 1)
-                                OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaPrenos.SelectedDate, "yyyy-mm-dd")})
-                                OnSelect: =
-                                SelectedDateFill: =RGBA(164, 38, 44, 1)
-                                Width: =158
-                                X: =148
-                                Y: =92
-                                ZIndex: =14
-
-                            "NalogZaPrenosLot As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(colTransferResEntries, NalogZaPrenosResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaPrenosLot.Value)})
-                                Value: =ThisItem.LOT_No
-                                Width: =113
-                                X: =80
-                                Y: =128
-                                ZIndex: =15
+                        "Icon5_1 As icon.'3DPrinting'":
+                            BorderColor: =RGBA(89, 0, 0, 1)
+                            Color: =RGBA(89, 0, 0, 1)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =25
+                            Icon: =Icon.ColorPicker
+                            OnSelect: |-
+                                =Set(tempValue, ThisItem.LOT_No);
+                                Set(propertyToChange, "LOT_No");
+                                Set(changeValueModal, true);
+                            Width: =25
+                            X: =213
+                            Y: =130
+                            ZIndex: =17
 
                     Container2_3 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
