@@ -632,30 +632,12 @@
                         Y: =49
                         ZIndex: =1
 
-                        Separator6_10 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =8
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =5
-
-                        Rectangle5_14 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
-                            Height: =Parent.TemplateHeight - Separator6_10.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =4
-                            ZIndex: =6
-
-                        Group1_4 As group:
+                        Group8 As group:
                             Height: =5
                             Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =16
+                            X: =60
+                            Y: =60
+                            ZIndex: =17
 
                             Title5_10 As label:
                                 Color: =RGBA(50, 49, 48, 1)
@@ -694,6 +676,24 @@
                                 X: =24
                                 Y: =55
                                 ZIndex: =3
+
+                            Separator6_10 As rectangle:
+                                BorderColor: =RGBA(89, 0, 0, 1)
+                                Fill: =RGBA(255, 255, 255, 1)
+                                Height: =8
+                                OnSelect: =Select(Parent)
+                                Width: =Parent.TemplateWidth
+                                Y: =Parent.TemplateHeight - Self.Height
+                                ZIndex: =5
+
+                            Rectangle5_14 As rectangle:
+                                BorderColor: =RGBA(89, 0, 0, 1)
+                                Fill: =RGBA(89, 0, 0, 1)
+                                Height: =Parent.TemplateHeight - Separator6_10.Height
+                                OnSelect: =Select(Parent)
+                                Visible: =ThisItem.IsSelected
+                                Width: =4
+                                ZIndex: =6
 
                             Body1_30 As label:
                                 Color: =RGBA(0, 0, 0, 1)
@@ -791,6 +791,14 @@
                                 Y: =128
                                 ZIndex: =15
 
+                            "DatePickerCanvas1 As 'Date picker'":
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =32
+                                Width: =320
+                                X: =338
+                                Y: =91
+                                ZIndex: =16
+
                     Container2_10 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
                         Height: =49
@@ -817,14 +825,6 @@
                                 =200
                             Y: =1
                             ZIndex: =1
-
-                    "DatePickerCanvas1 As 'Date picker'":
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        Width: =320
-                        X: =328
-                        Y: =136
-                        ZIndex: =5
 
                 Otpremnice_ResEntryNav As dataCard.blankCard:
                     BorderColor: =RGBA(0, 0, 0, 1)
