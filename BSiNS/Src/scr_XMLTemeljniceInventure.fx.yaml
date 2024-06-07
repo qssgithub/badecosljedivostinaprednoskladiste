@@ -1,6 +1,6 @@
 "scr_XMLTemeljniceInventure As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
-    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnVisible: |+
         =Set(isLoading, true);
         
@@ -123,7 +123,7 @@
                     ZIndex: =2
 
                     "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
                         Default: =First(Filter(colJournalLine, Barcode = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
@@ -139,7 +139,7 @@
                         ZIndex: =1
 
                         Separator6_6 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =8
                             OnSelect: =Select(Parent)
@@ -148,8 +148,8 @@
                             ZIndex: =5
 
                         Rectangle5_6 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =App.Theme.Colors.Darker30
                             Height: =Parent.TemplateHeight - Separator6_6.Height
                             OnSelect: =Select(Parent)
                             Visible: =ThisItem.IsSelected
@@ -166,6 +166,7 @@
                             Title5_6 As label:
                                 Color: =RGBA(50, 49, 48, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -184,6 +185,7 @@
                             Subtitle4_3 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -202,6 +204,7 @@
                             Body1_19 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =18
                                 OnSelect: =Select(Parent)
@@ -221,6 +224,7 @@
                             Body1_21 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
@@ -240,6 +244,7 @@
                             Body1_22 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
@@ -275,22 +280,23 @@
                                 ZIndex: =15
 
                             DatePickerExpDate_Item_Journal As datepicker:
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                                BorderColor: =App.Theme.Colors.Darker40
+                                CalendarHeaderFill: =App.Theme.Colors.Primary
                                 Color: =RGBA(0, 0, 0, 1)
                                 DefaultDate: =If(IsBlank(ThisItem.Item_Expiration_Date), Today(), ThisItem.Item_Expiration_Date)
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
                                 DisplayMode: =If(IsBlank(ThisItem.Item_Expiration_Date), DisplayMode.Disabled, DisplayMode.Edit)
+                                Font: =App.Theme.Font
                                 Format: ="dd.mm.yyyy"
                                 Height: =26
-                                HoverDateFill: =RGBA(222, 179, 184, 1)
-                                IconBackground: =RGBA(164, 38, 44, 1)
+                                HoverDateFill: =App.Theme.Colors.Lighter70
+                                IconBackground: =App.Theme.Colors.Primary
                                 OnChange: |-
                                     =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
-                                SelectedDateFill: =RGBA(164, 38, 44, 1)
+                                SelectedDateFill: =App.Theme.Colors.Primary
                                 Width: =158
                                 X: =146
                                 Y: =130
@@ -317,6 +323,7 @@
                             Subtitle4_6 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -347,9 +354,10 @@
 
                         Label2_6 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =12
@@ -408,8 +416,8 @@
                     ZIndex: =3
 
                     Icon1_6 As icon.BackArrow:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Color: =App.Theme.Colors.Darker30
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(244, 244, 244, 1)
                         Height: =25
@@ -433,10 +441,10 @@
             LayoutMode: =LayoutMode.Auto
             PaddingLeft: =15
             PaddingRight: =20
-            RadiusBottomLeft: =8
-            RadiusBottomRight: =8
-            RadiusTopLeft: =8
-            RadiusTopRight: =8
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
             Visible: =!isLoading
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
@@ -461,15 +469,18 @@
 
             saveXml_2 As button:
                 AlignInContainer: =AlignInContainer.Center
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                BorderColor: =App.Theme.Colors.Primary
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                Fill: =RGBA(164, 38, 44, 1)
+                Fill: =App.Theme.Colors.Primary
+                Font: =App.Theme.Font
                 FontWeight: =FontWeight.Semibold
                 Height: =30
+                HoverBorderColor: =App.Theme.Colors.Darker10
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |-
                     =UpdateContext({
                         journalJsonData:
@@ -515,6 +526,9 @@
                     If(response.folder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLTemeljniceInventure,ScreenTransition.Fade));
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
                 Size: =12
                 Text: ="Sačuvaj"
                 Width: =100

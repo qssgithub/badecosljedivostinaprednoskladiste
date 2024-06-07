@@ -1,6 +1,6 @@
 "scr_XMLNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
-    LoadingSpinnerColor: =RGBA(164, 38, 44, 1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnVisible: |+
         =Set(isLoading, true);
         
@@ -168,9 +168,10 @@
                         ZIndex: =7
 
                         Label1 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =10
@@ -181,9 +182,10 @@
                             ZIndex: =2
 
                         Label1_1 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =10
@@ -194,9 +196,10 @@
                             ZIndex: =3
 
                         Label1_2 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =10
@@ -207,9 +210,10 @@
                             ZIndex: =4
 
                         Label1_3 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =10
@@ -220,9 +224,10 @@
                             ZIndex: =5
 
                         Label1_4 As label:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =10
@@ -245,7 +250,7 @@
                     ZIndex: =2
 
                     "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
                         Default: |
                             =First(Filter(colPurchaseLines, Line_No = scannedItem))
                         DelayItemLoading: =true
@@ -263,7 +268,7 @@
                         ZIndex: =1
 
                         Separator6 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =8
                             OnSelect: =Select(Parent)
@@ -272,8 +277,8 @@
                             ZIndex: =5
 
                         Rectangle5 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =App.Theme.Colors.Darker30
                             Height: =Parent.TemplateHeight - Separator6.Height
                             OnSelect: =Select(Parent)
                             Visible: =ThisItem.IsSelected
@@ -290,6 +295,7 @@
                             Title5 As label:
                                 Color: =RGBA(50, 49, 48, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -308,6 +314,7 @@
                             Subtitle4 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -326,6 +333,7 @@
                             Body1 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =18
                                 OnSelect: =Select(Parent)
@@ -344,6 +352,7 @@
                             Body1_2 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -362,6 +371,7 @@
                             Body1_4 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =22
                                 OnSelect: =Select(Parent)
@@ -394,9 +404,10 @@
 
                         Label2 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =12
@@ -453,8 +464,8 @@
                     ZIndex: =3
 
                     Icon1 As icon.BackArrow:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Color: =App.Theme.Colors.Darker30
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(244, 244, 244, 1)
                         Height: =25
@@ -483,7 +494,7 @@
                     ZIndex: =2
 
                     "NabavniNalogResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
@@ -497,7 +508,7 @@
                         ZIndex: =1
 
                         Separator6_1 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =8
                             OnSelect: =Select(Parent)
@@ -506,8 +517,8 @@
                             ZIndex: =5
 
                         Rectangle5_1 As rectangle:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Fill: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =App.Theme.Colors.Darker30
                             Height: =Parent.TemplateHeight - Separator6_1.Height
                             OnSelect: =Select(Parent)
                             Visible: =ThisItem.IsSelected
@@ -524,6 +535,7 @@
                             Title5_1 As label:
                                 Color: =RGBA(50, 49, 48, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
@@ -543,6 +555,7 @@
                             Body1_6 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =18
                                 OnSelect: =Select(Parent)
@@ -562,6 +575,7 @@
                             Body1_7 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
@@ -581,6 +595,7 @@
                             Body1_9 As label:
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
                                 FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
@@ -616,21 +631,22 @@
                                 ZIndex: =11
 
                             DatePickerExpDate As datepicker:
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                CalendarHeaderFill: =RGBA(164, 38, 44, 1)
+                                BorderColor: =App.Theme.Colors.Darker40
+                                CalendarHeaderFill: =App.Theme.Colors.Primary
                                 Color: =RGBA(0, 0, 0, 1)
                                 DefaultDate: =ThisItem.Exp_Date
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 DisabledFill: =RGBA(244, 244, 244, 1)
+                                Font: =App.Theme.Font
                                 Format: ="dd.mm.yyyy"
                                 Height: =26
-                                HoverDateFill: =RGBA(222, 179, 184, 1)
-                                IconBackground: =RGBA(164, 38, 44, 1)
+                                HoverDateFill: =App.Theme.Colors.Lighter70
+                                IconBackground: =App.Theme.Colors.Primary
                                 OnChange: |-
                                     =UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
-                                SelectedDateFill: =RGBA(164, 38, 44, 1)
+                                SelectedDateFill: =App.Theme.Colors.Primary
                                 Width: =158
                                 X: =148
                                 Y: =92
@@ -655,8 +671,8 @@
                                 ZIndex: =15
 
                             "Icon3 As icon.'3DPrinting'":
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                Color: =RGBA(89, 0, 0, 1)
+                                BorderColor: =App.Theme.Colors.Darker40
+                                Color: =App.Theme.Colors.Darker30
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(244, 244, 244, 1)
                                 Height: =25
@@ -671,8 +687,8 @@
                                 ZIndex: =16
 
                             "Icon3_1 As icon.'3DPrinting'":
-                                BorderColor: =RGBA(89, 0, 0, 1)
-                                Color: =RGBA(89, 0, 0, 1)
+                                BorderColor: =App.Theme.Colors.Darker40
+                                Color: =App.Theme.Colors.Darker30
                                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                                 DisabledColor: =RGBA(244, 244, 244, 1)
                                 Height: =25
@@ -701,9 +717,10 @@
 
                         Label2_2 As label:
                             AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
                             Height: =24
                             PaddingLeft: =20
                             Size: =12
@@ -728,14 +745,17 @@
                         ZIndex: =5
 
                         Button1_1 As button:
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            BorderColor: =App.Theme.Colors.Primary
+                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             DisabledFill: =RGBA(244, 244, 244, 1)
-                            Fill: =RGBA(164, 38, 44, 1)
+                            Fill: =App.Theme.Colors.Primary
+                            Font: =App.Theme.Font
                             FontWeight: =FontWeight.Semibold
                             Height: =30
+                            HoverBorderColor: =App.Theme.Colors.Darker10
                             HoverColor: =RGBA(255, 255, 255, 1)
-                            HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                            HoverFill: =App.Theme.Colors.Darker10
                             OnSelect: |-
                                 =Switch(
                                     propertyToChange,
@@ -745,6 +765,9 @@
                                     UpdateIf(colPurchaseResEntry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No, {LOT_No: Text(TextInputCanvas1_1.Value)})
                                 );
                                 Set(changeValueModal, false);
+                            PressedBorderColor: =App.Theme.Colors.Darker40
+                            PressedColor: =Self.Color
+                            PressedFill: =App.Theme.Colors.Darker40
                             Size: =12
                             Text: ="Potvrdi"
                             Width: =130
@@ -753,8 +776,8 @@
                             ZIndex: =1
 
                         Icon4_1 As icon.Cancel:
-                            BorderColor: =RGBA(89, 0, 0, 1)
-                            Color: =RGBA(89, 0, 0, 1)
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Color: =App.Theme.Colors.Darker30
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             DisabledColor: =RGBA(244, 244, 244, 1)
                             Height: =25
@@ -787,8 +810,8 @@
                     ZIndex: =3
 
                     Icon1_1 As icon.BackArrow:
-                        BorderColor: =RGBA(89, 0, 0, 1)
-                        Color: =RGBA(89, 0, 0, 1)
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Color: =App.Theme.Colors.Darker30
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
                         DisabledColor: =RGBA(244, 244, 244, 1)
                         Height: =25
@@ -814,10 +837,10 @@
             LayoutMode: =LayoutMode.Auto
             PaddingLeft: =15
             PaddingRight: =20
-            RadiusBottomLeft: =8
-            RadiusBottomRight: =8
-            RadiusTopLeft: =8
-            RadiusTopRight: =8
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
             Visible: =!isLoading
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
@@ -842,15 +865,18 @@
 
             saveXml As button:
                 AlignInContainer: =AlignInContainer.Center
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                BorderColor: =App.Theme.Colors.Primary
+                DisabledBorderColor: =RGBA(244, 244, 244, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
                 DisabledFill: =RGBA(244, 244, 244, 1)
                 DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                Fill: =RGBA(164, 38, 44, 1)
+                Fill: =App.Theme.Colors.Primary
+                Font: =App.Theme.Font
                 FontWeight: =FontWeight.Semibold
                 Height: =30
+                HoverBorderColor: =App.Theme.Colors.Darker10
                 HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =ColorFade(RGBA(164, 38, 44, 1), -20%)
+                HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |-
                     =UpdateContext({
                         purchaseJsonData:
@@ -956,6 +982,9 @@
                     If(response.folder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLNabavniNalog,ScreenTransition.Fade));
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                PressedBorderColor: =App.Theme.Colors.Darker40
+                PressedColor: =Self.Color
+                PressedFill: =App.Theme.Colors.Darker40
                 Size: =12
                 Text: ="Sačuvaj"
                 Width: =100

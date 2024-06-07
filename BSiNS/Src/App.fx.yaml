@@ -11,7 +11,7 @@ App As appinfo:
         isMobile = If(App.Width > 600, false, true);
     OnStart: =
     StartScreen: =
-    Theme: =PowerAppsTheme
+    Theme: =RedTheme
 
     Host As hostControl.DefaultHostControlVariant:
         OnCancel: =false
