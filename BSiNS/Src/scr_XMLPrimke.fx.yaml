@@ -93,7 +93,7 @@
         
         Set(isLoading, false);
         
-        If(SelectedFolder = "ReadyForProcessing", ChangeXmlStatus.Run(SelectedFile, SelectedFolder));
+        If(SelectedFolder = "ReadyForProcessing", ChangeXmlStatus.Run(SelectedFile, SelectedFolder, "InProgress"));
         
         UpdateContext({wizardStep:1});
 
