@@ -8,7 +8,19 @@
         );
         
         Reset(primkeReadyForNavCheckbox);
-        If(!IsBlank(SelectedFile),
+        
+        UpdateContext(
+            {
+                xmlData: (ParseJSON(
+                    GetXml.Run(
+                        SelectedFile,
+                        SelectedFolder
+                    ).response).Warehouse_Receipt_Header
+                )
+            }
+        );
+        
+        /*If(!IsBlank(SelectedFile),
             IfError(
                 GetXML_Primke.Run(
                     SelectedFile,
@@ -77,7 +89,7 @@
                     }
                 );
             );
-        );
+        );*/
         
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
