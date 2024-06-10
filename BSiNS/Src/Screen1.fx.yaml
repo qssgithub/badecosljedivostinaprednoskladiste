@@ -26,3 +26,33 @@ Screen1 As screen:
         Y: =(Parent.Height - Self.Height) / 2
         ZIndex: =2
 
+        TextCanvas1 As Text:
+            Align: ='TextCanvas.Align'.Center
+            AlignInContainer: =AlignInContainer.Stretch
+            AutoHeight: =true
+            DisplayMode: =DisplayMode.Edit
+            FontColor: =RGBA(0, 0, 0, 1)
+            Height: =32
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Size: =40
+            Text: ="Fine Food Napredno skladište"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        Container6 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            DropShadow: =DropShadow.Light
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =300
+            ZIndex: =2
+
