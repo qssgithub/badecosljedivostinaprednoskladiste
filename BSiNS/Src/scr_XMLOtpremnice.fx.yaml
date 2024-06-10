@@ -943,7 +943,7 @@
                 OnSelect: |
                     =UpdateContext({response: UpdateXML.Run("{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}", SelectedFile, SelectedFolder,false)});
                     
-                    If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder,"ReadyForNAVProcessing"));
+                    If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing));
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
