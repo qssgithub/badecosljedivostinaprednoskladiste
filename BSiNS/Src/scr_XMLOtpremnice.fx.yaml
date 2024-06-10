@@ -942,13 +942,24 @@
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |+
                     =IfError(
-                        UpdateXML.Run(JSON(Otpremnice), SelectedFile, SelectedFolder),
-                            Notify("Došlo je do greške!", NotificationType.Error, 2000),
+                        GetXml.Run(SelectedFile, ReadyForProcessing),
                     
-                            Notify("Uspješno ažuriranje!", NotificationType.Success, 2000);
-                            If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing); Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
-                        )
+                        IfError(
+                            UpdateXML.Run(JSON(Otpremnice), SelectedFile, SelectedFolder),
+                    
+                                Notify("Došlo je do greške!", NotificationType.Error, 2000),
+                    
+                                Notify("Uspješno ažuriranje!", NotificationType.Success, 2000);
+                                If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing); Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
+                            )
+                        ),
+                    
+                        Set(SelectedFolder, ReadyForProcessing);
+                        Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
+                    
                     );
+                    
+                    
                     
                     
                     
