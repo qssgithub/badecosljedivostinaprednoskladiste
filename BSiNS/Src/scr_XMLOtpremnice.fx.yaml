@@ -10,18 +10,18 @@
         Reset(otpremniceReadyForNavCheckbox);
         UpdateContext(
             {
-                xmlData: ParseJSON(
-                    GetSkladisnaOtpremnica.Run(
-                        SelectedFolder,
-                        SelectedFile
-                    ).xmlfile
+                xmlData: (ParseJSON(
+                    GetXml.Run(
+                        SelectedFile,
+                        SelectedFolder
+                    ).response).Warehouse_Shipment_Header
                 )
             }
         );
         UpdateContext(
             {
                 Otpremnice: {
-                    No: Text(xmlData.No),
+                    No: Text(xmlData.Warehouse_Shipment_Header.No),
                     Location_Code: Text(xmlData.Location_Code),
                     No_Series: Text(xmlData.No_Series),
                     Zone_Code: Text(xmlData.Zone_Code),
