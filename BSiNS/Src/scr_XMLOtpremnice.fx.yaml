@@ -1170,7 +1170,7 @@
                         GetXml.Run(SelectedFile, ReadyForProcessing),
                     
                         IfError(
-                            UpdateXML.Run(JSON(Otpremnice) , SelectedFile, SelectedFolder),
+                            UpdateXML.Run(JSON(Otpremnice) , SelectedFile, SelectedFolder), // zamijeniti s pravim jsonom
                     
                                 Notify("Došlo je do greške!", NotificationType.Error, 2000),
                     
