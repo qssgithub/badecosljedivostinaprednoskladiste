@@ -47,10 +47,10 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
-      "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
       "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1",
       "e8881786-c8c5-4028-a337-24a2d24fded3",
-      "67bba9e1-7f90-4731-9c75-063e8ec266fb"
+      "67bba9e1-7f90-4731-9c75-063e8ec266fb",
+      "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
   },
@@ -60,6 +60,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
+        },
         "workflowDisplayName": {
           "value": "ChangeXmlStatus"
         },
@@ -71,6 +74,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+        },
         "workflowDisplayName": {
           "value": "ChangeXmlStatus"
         },
@@ -91,6 +97,44 @@
     },
     "dependents": [],
     "id": "67bba9e1-7f90-4731-9c75-063e8ec266fb"
+  },
+  "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "UpdateXML"
+        },
+        "workflowEntityId": {
+          "value": "980e46fd-b00b-ef11-9f89-000d3a2dfc81"
+        },
+        "workflowName": {
+          "value": "4588e55a-df2d-845b-870b-e48ab2e3c32f"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "UpdateXML"
+        },
+        "workflowEntityId": {
+          "value": "980e46fd-b00b-ef11-9f89-000d3a2dfc81"
+        },
+        "workflowName": {
+          "value": "4588e55a-df2d-845b-870b-e48ab2e3c32f"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "UpdateXML"
+    ],
+    "dependencies": {
+      "shared_filesystem_1": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+    },
+    "dependents": [],
+    "id": "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
   },
   "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1": {
     "connectionRef": {
@@ -135,54 +179,6 @@
     },
     "dependents": [],
     "id": "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
-  },
-  "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-          "value": "shared_filesystem_1"
-        },
-        "workflowDisplayName": {
-          "value": "UpdateXML"
-        },
-        "workflowEntityId": {
-          "value": "980e46fd-b00b-ef11-9f89-000d3a2dfc81"
-        },
-        "workflowName": {
-          "value": "4588e55a-df2d-845b-870b-e48ab2e3c32f"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
-        "shared_filesystem_1": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
-        "workflowDisplayName": {
-          "value": "UpdateXML"
-        },
-        "workflowEntityId": {
-          "value": "980e46fd-b00b-ef11-9f89-000d3a2dfc81"
-        },
-        "workflowName": {
-          "value": "4588e55a-df2d-845b-870b-e48ab2e3c32f"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "UpdateXML"
-    ],
-    "dependencies": {
-      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f",
-      "shared_filesystem_1": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-    },
-    "dependents": [],
-    "id": "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c"
   },
   "e8881786-c8c5-4028-a337-24a2d24fded3": {
     "connectionRef": {

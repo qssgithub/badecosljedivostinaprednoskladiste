@@ -943,12 +943,13 @@
                 OnSelect: |
                     =UpdateContext({response: UpdateXML.Run("{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}", SelectedFile, SelectedFolder,false)});
                     
-                    If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing));
+                    If(otpremniceReadyForNavCheckbox.Checked, 
+                        ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing); Navigate(scr_Entry,ScreenTransition.Fade), 
+                        Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
+                    );
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
-                    
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLOtpremnice,ScreenTransition.Fade));
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 PressedBorderColor: =App.Theme.Colors.Darker40
