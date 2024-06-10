@@ -6,12 +6,26 @@
         
         Reset(nabavniNalogReadyForNavCheckbox);
         UpdateContext({scannedItem: Blank()});
-        If(!IsBlank(SelectedFile),
+        
+        UpdateContext(
+            {
+                xmlData: (ParseJSON(
+                    GetXml.Run(
+                        SelectedFile,
+                        SelectedFolder
+                    ).response).Purchase_Header
+                )
+            }
+        );
+        
+        
+        
+        /*If(!IsBlank(SelectedFile),
             IfError(GetXml.Run(SelectedFile, SelectedFolder),
                 Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),
                 UpdateContext({purchase: ParseJSON(GetXml.Run(SelectedFile, SelectedFolder).response)})
             );
-        /*
+        
             UpdateContext({purchase_line: purchase.purchase_line});
             UpdateContext({purchase_res_entry: purchase.res_entry});
             UpdateContext({purchase_header: ParseJSON(purchase.purchase_header)});
@@ -83,8 +97,8 @@
                             )
                         }
                     )
-                );*/
-        );
+                );
+        );*/
         
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
