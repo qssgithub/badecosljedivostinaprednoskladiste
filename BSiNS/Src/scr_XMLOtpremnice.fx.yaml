@@ -955,6 +955,7 @@
                         ),
                     
                         Set(SelectedFolder, ReadyForProcessing);
+                        Notify("Postoje izmjene u ovom fajlu.", NotificationType.Information, 2000);
                         Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
                     
                     );
