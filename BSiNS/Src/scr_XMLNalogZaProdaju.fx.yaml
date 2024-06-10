@@ -9,6 +9,18 @@
         
         Reset(nalogZaProdajuReadyForNavCheckbox);
         
+        UpdateContext(
+            {
+                xmlData: (ParseJSON(
+                    GetXml.Run(
+                        SelectedFile,
+                        SelectedFolder
+                    ).response).Sales_Header
+                )
+            }
+        );
+        
+        /*
         If(!IsBlank(SelectedFile),
             IfError(
                 GetXML_Nalog_Za_Prodaju.Run(
@@ -100,7 +112,7 @@
                         }            
                 )
             );
-        );
+        );*/
         
         Set(isLoading, false);
         UpdateContext({wizardStep:1});

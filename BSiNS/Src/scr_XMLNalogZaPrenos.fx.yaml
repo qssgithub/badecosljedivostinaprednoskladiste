@@ -7,7 +7,19 @@
             true
         );
         Reset(nalogZaPrenosReadyForNavCheckbox);
-        If(!IsBlank(SelectedFile),
+        
+        UpdateContext(
+            {
+                xmlData: (ParseJSON(
+                    GetXml.Run(
+                        SelectedFile,
+                        SelectedFolder
+                    ).response).Transfer_Header
+                )
+            }
+        );
+        
+        /*If(!IsBlank(SelectedFile),
             IfError(GetXml.Run(SelectedFile, SelectedFolder), Notify("Error occurred while Get request, check if file exists", NotificationType.Error, 5000),
                 UpdateContext(
                     {
@@ -19,7 +31,7 @@
                 )
             );
         
-            /*
+            
             UpdateContext({transfer_header: ParseJSON(transfer.transfer_header)});
             UpdateContext({transfer_lines: transfer.transfer_line});
             UpdateContext({transfer_res_entry: transfer.res_entry});
@@ -96,9 +108,9 @@
                         )
                     }
                 )
-            );*/
+            );
             
-        );
+        );*/
         
         Set(isLoading, false);
         UpdateContext({wizardStep:1});
