@@ -9,6 +9,10 @@ App As appinfo:
         );
         warehouseCode = "SGP-DZ";
         isMobile = If(App.Width > 600, false, true);
+        
+        ReadyForProcessing = "ReadyForProcessing";
+        InProgress = "InProgress";
+        ReadyForNAVProcessing = "ReadyForNAVProcessing";
     OnStart: =
     StartScreen: =
     Theme: =RedTheme

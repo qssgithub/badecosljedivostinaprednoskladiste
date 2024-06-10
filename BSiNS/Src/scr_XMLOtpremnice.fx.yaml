@@ -941,7 +941,9 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |
-                    =UpdateContext({response: UpdateXML.Run("{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}", SelectedFile, SelectedFolder,    otpremniceReadyForNavCheckbox.Checked)});
+                    =UpdateContext({response: UpdateXML.Run("{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}", SelectedFile, SelectedFolder,false)});
+                    
+                    If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder,"ReadyForNAVProcessing"));
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
