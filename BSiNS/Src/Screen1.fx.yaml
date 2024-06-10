@@ -9,11 +9,13 @@ Screen1 As screen:
         DisplayMode: =DisplayMode.View
         Height: =App.Height
         Image: =FFLogo
-        Transparency: =80%
+        Transparency: =90%
         Width: =App.Width
         ZIndex: =1
 
     Container5 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Regular
+        Fill: =RGBA(255, 255, 255, 1)
         Height: =Parent.Height / 2
         LayoutDirection: =LayoutDirection.Vertical
         LayoutMode: =LayoutMode.Auto
@@ -44,8 +46,9 @@ Screen1 As screen:
 
         Container6 As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.Center
-            DropShadow: =DropShadow.Light
+            LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.Center
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -55,4 +58,90 @@ Screen1 As screen:
             RadiusTopRight: =4
             Width: =300
             ZIndex: =2
+
+            Container7 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =60
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =1
+
+                TextCanvas2 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: ="Korisničko ime"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                "TextInputCanvas3 As 'Text input'":
+                    AlignInContainer: =AlignInContainer.Stretch
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =200
+                    Width: =320
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+            Container7_1 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =100
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =2
+
+                TextCanvas2_1 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: ="Šifra"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                "TextInputCanvas3_1 As 'Text input'":
+                    AlignInContainer: =AlignInContainer.Stretch
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =200
+                    Width: =320
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+            ButtonCanvas1 As Button:
+                DisplayMode: =DisplayMode.Edit
+                Height: =32
+                Layout: ='ButtonCanvas.Layout'.TextOnly
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                Text: ="Prijavi se"
+                Width: =120
+                X: =0
+                Y: =0
+                ZIndex: =3
 

@@ -970,7 +970,7 @@
             Y: =0
             ZIndex: =4
 
-    Container1 As groupContainer.manualLayoutContainer:
+    con_ModalFade As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(0, 0, 0, 50%)
         Height: =Parent.Height
@@ -983,7 +983,7 @@
             =Parent.Width
         ZIndex: =2
 
-        Container3 As groupContainer.manualLayoutContainer:
+        con_Modal As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
             Height: =Parent.Height * 50%
@@ -996,7 +996,7 @@
             Y: =(Parent.Height - Self.Height) / 2
             ZIndex: =1
 
-            Container4 As groupContainer.verticalAutoLayoutContainer:
+            vrt_Modal As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.ExtraBold
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -1031,6 +1031,7 @@
                     ZIndex: =1
 
                 Container11 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
                     FillPortions: =3
                     LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -1077,15 +1078,16 @@
                             Y: =40
                             ZIndex: =1
 
-                        "TextInputCanvas2 As 'Text input'":
+                        "inp_Quantity As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
+                            OnChange: =
                             Placeholder: ="Količina"
-                            Value: =
+                            Value: =OtpremniceLines.Selected.Quantity
                             Width: =150
                             X: =40
                             Y: =40
@@ -1131,10 +1133,11 @@
                             Y: =0
                             ZIndex: =2
 
-                        DatePicker1 As datepicker:
+                        dp_ExpDate As datepicker:
                             BorderColor: =App.Theme.Colors.Darker40
                             CalendarHeaderFill: =App.Theme.Colors.Primary
                             Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =If(IsBlank(Otpremnice_ResEntryGallery.Selected.Exp_Date), Today(), Otpremnice_ResEntryGallery.Selected.Exp_Date)
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -1177,7 +1180,7 @@
                             Y: =40
                             ZIndex: =1
 
-                        "TextInputCanvas2_1 As 'Text input'":
+                        "inp_LOTNo As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
@@ -1185,12 +1188,14 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
+                            Value: =Otpremnice_ResEntryGallery.Selected.LOT_No
                             Width: =150
                             X: =40
                             Y: =40
                             ZIndex: =2
 
                 Container10 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
                     LayoutAlignItems: =LayoutAlignItems.Stretch
                     LayoutGap: =10
@@ -1234,6 +1239,22 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
+                        OnSelect: |
+                            =UpdateIf(
+                                Otpremnice.Warehouse_Shipment_Line As line,
+                                line.Line_No = OtpremniceLines.Selected.Line_No,
+                                {Quantity: inp_Quantity.Value}
+                            );
+                            UpdateIf(
+                                First(
+                                    Filter(
+                                        Otpremnice.Warehouse_Shipment_Line As line,
+                                        line.Line_No = OtpremniceLines.Selected.Line_No
+                                    )
+                                ).Res_Entry As resEntry,
+                                resEntry.Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
+                                {Exp_Date: dp_ExpDate.SelectedDate}
+                            );
                         Text: ="Spasi"
                         Width: =96
                         X: =0
