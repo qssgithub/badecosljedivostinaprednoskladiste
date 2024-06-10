@@ -8,6 +8,7 @@
         );
         
         Reset(otpremniceReadyForNavCheckbox);
+        
         UpdateContext(
             {
                 xmlData: (ParseJSON(
@@ -20,9 +21,224 @@
         );
         
         UpdateContext(
+            {header:
+                {
+                    No: Text(xmlData.No),
+                    Location_Code: Text(xmlData.Location_Code),
+                    No_Series: Text(xmlData.No_Series),
+                    Zone_Code: Text(xmlData.Zone_Code),
+                    Bin_Code: Text(xmlData.Bin_Code),
+                    Document_Status: Text(xmlData.Document_Status),
+                    Posting_Date: Text(xmlData.Posting_Date),
+                    Shipping_Agent_Code: Text(xmlData.Shipping_Agent_Code),
+                    Shipping_Agent_Service_Code: Text(xmlData.Shipping_Agent_Service_Code),
+                    Shipment_Method_Code: Text(xmlData.Shipment_Method_Code),
+                    Shipment_Date: Text(xmlData.Shipment_Date),
+                    Completely_Picked: Text(xmlData.Completely_Picked),
+                    Status: Text(xmlData.Status),
+                    'External_Document_No.': Text(xmlData.'External_Document_No.'),
+                    Shipping_No: Text(xmlData.Shipping_No),
+                    Shipping_No_Series: Text(xmlData.Shipping_No_Series),
+                    Create_Posted_Header: Text(xmlData.Create_Posted_Header)
+                }
+            }
+        );
+        
+        ClearCollect(
+            otpremnicaCollection,
+                IfError(
+                        ForAll(
+                            xmlData.Warehouse_Shipment_Line As line,
+                            {
+                                No: Text(line.No),
+                                Line_No: Text(line.Line_No),
+                                Source_Type: Text(line.Source_Type),
+                                Source_SubType: Text(line.Source_SubType),
+                                Source_No: Text(line.Source_No),
+                                Source_Line_No: Text(line.Source_Line_No),
+                                Source_Document: Text(line.Source_Document),
+                                Location_Code: Text(line.Location_Code),
+                                Shelf_No: Text(line.Shelf_No),
+                                Bin_Code: Text(line.Bin_Code),
+                                Zone_Code: Text(line.Zone_Code),
+                                Item_No: Text(line.Item_No),
+                                Quantity: Text(line.Quantity),
+                                Qty_Base: Text(line.Qty_Base),
+                                Qty_Outstanding: Text(line.Qty_Outstanding),
+                                Qty_Outstanding_Base: Text(line.Qty_Outstanding_Base),
+                                Qty_to_Ship: Text(line.Qty_to_Ship),
+                                Qty_to_Ship_Base: Text(line.Qty_to_Ship_Base),
+                                Qty_Shipped: Text(line.Qty_Shipped),
+                                Qty_Shipped_Base: Text(line.Qty_Shipped_Base),
+                                Qty_Picked: Text(line.Qty_Picked),
+                                Qty_Picked_Base: Text(line.Qty_Picked_Base),
+                                Pick_Qty: Text(line.Pick_Qty),
+                                Pick_Qty_Base: Text(line.Pick_Qty_Base),
+                                UOM_Code: Text(line.UOM_Code),
+                                Qty_per_UOM: Text(line.Qty_per_UOM),
+                                Description: Text(line.Description),
+                                Status: Text(line.Status),
+                                Sorting_Sequence_No: Text(line.Sorting_Sequence_No),
+                                Due_Date: Text(line.Due_Date),
+                                Destination_Type: Text(line.Destination_Type),
+                                Destination_No: Text(line.Destination_No),
+                                Cubage: Text(line.Cubage),
+                                Weight: Text(line.Weight),
+                                Shipping_Advice: Text(line.Shipping_Advice),
+                                Shipment_Date: Text(line.Shipment_Date),
+                                Completely_Picked: Text(line.Completely_Picked),
+                                'Not_upd._by_SDPost': Text(line.'Not_upd._by_SDPost'),
+                                Posting_from_Whse_Ref: Text(line.Posting_from_Whse_Ref),
+                                Res_Entry: IfError(
+                                    ForAll(
+                                        line.Res_Entry As entry,
+                                        {
+                                            Entry_No: Text(entry.Res_Entry.Entry_No),
+                                            Item_No: Text(entry.Res_Entry.Item_No),
+                                            Positive: Text(entry.Res_Entry.Positive),
+                                            Quantity: Text(entry.Res_Entry.Quantity),
+                                            Quantity_Base: Text(entry.Res_Entry.Quantity_Base),
+                                            Location_Code: Text(entry.Res_Entry.Location_Code),
+                                            Res_Status: Text(entry.Res_Entry.Res_Status),
+                                            Source_Type: Text(entry.Res_Entry.Source_Type),
+                                            Source_SubType: Text(entry.Res_Entry.Source_SubType),
+                                            Source_ID: Text(entry.Res_Entry.Source_ID),
+                                            Source_Ref_No: Text(entry.Res_Entry.Source_Ref_No),
+                                            Item_Tracking: Text(entry.Res_Entry.Item_Tracking),
+                                            LOT_No: Text(entry.Res_Entry.LOT_No),
+                                            Exp_Date: Text(entry.Res_Entry.Exp_Date),
+                                            Creation_Date: Text(entry.Res_Entry.Creation_Date),
+                                            Exp_Receipt_Date: Text(entry.Res_Entry.Exp_Receipt_Date),
+                                            Shipment_Date: Text(entry.Res_Entry.Shipment_Date),
+                                            Created_By: Text(entry.Res_Entry.Created_By),
+                                            'Qty-to-Handle_Base': Text(entry.Res_Entry.'Qty-to-Handle_Base'),
+                                            'Qty-to-Invoice_Base': Text(entry.Res_Entry.'Qty-to-Invoice_Base')
+                                        }
+                                    ),
+                                    {
+                                        Entry_No: Text(line.Res_Entry.Entry_No),
+                                        Item_No: Text(line.Res_Entry.Item_No),
+                                        Positive: Text(line.Res_Entry.Positive),
+                                        Quantity: Text(line.Res_Entry.Quantity),
+                                        Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                                        Location_Code: Text(line.Res_Entry.Location_Code),
+                                        Res_Status: Text(line.Res_Entry.Res_Status),
+                                        Source_Type: Text(line.Res_Entry.Source_Type),
+                                        Source_SubType: Text(line.Res_Entry.Source_SubType),
+                                        Source_ID: Text(line.Res_Entry.Source_ID),
+                                        Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                                        Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                                        LOT_No: Text(line.Res_Entry.LOT_No),
+                                        Exp_Date: Text(line.Res_Entry.Exp_Date),
+                                        Creation_Date: Text(line.Res_Entry.Creation_Date),
+                                        Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                                        Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                                        Created_By: Text(line.Res_Entry.Created_By),
+                                        'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base')
+                                    }
+                                )
+                            }
+                        ),
+                        {
+                            No: Text(xmlData.Warehouse_Shipment_Line.No),
+                            Line_No: Text(xmlData.Warehouse_Shipment_Line.Line_No),
+                            Source_Type: Text(xmlData.Warehouse_Shipment_Line.Source_Type),
+                            Source_SubType: Text(xmlData.Warehouse_Shipment_Line.Source_SubType),
+                            Source_No: Text(xmlData.Warehouse_Shipment_Line.Source_No),
+                            Source_Line_No: Text(xmlData.Warehouse_Shipment_Line.Source_Line_No),
+                            Source_Document: Text(xmlData.Warehouse_Shipment_Line.Source_Document),
+                            Location_Code: Text(xmlData.Warehouse_Shipment_Line.Location_Code),
+                            Shelf_No: Text(xmlData.Warehouse_Shipment_Line.Shelf_No),
+                            Bin_Code: Text(xmlData.Warehouse_Shipment_Line.Bin_Code),
+                            Zone_Code: Text(xmlData.Warehouse_Shipment_Line.Zone_Code),
+                            Item_No: Text(xmlData.Warehouse_Shipment_Line.Item_No),
+                            Quantity: Text(xmlData.Warehouse_Shipment_Line.Quantity),
+                            Qty_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Base),
+                            Qty_Outstanding: Text(xmlData.Warehouse_Shipment_Line.Qty_Outstanding),
+                            Qty_Outstanding_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Outstanding_Base),
+                            Qty_to_Ship: Text(xmlData.Warehouse_Shipment_Line.Qty_to_Ship),
+                            Qty_to_Ship_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_to_Ship_Base),
+                            Qty_Shipped: Text(xmlData.Warehouse_Shipment_Line.Qty_Shipped),
+                            Qty_Shipped_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Shipped_Base),
+                            Qty_Picked: Text(xmlData.Warehouse_Shipment_Line.Qty_Picked),
+                            Qty_Picked_Base: Text(xmlData.Warehouse_Shipment_Line.Qty_Picked_Base),
+                            Pick_Qty: Text(xmlData.Warehouse_Shipment_Line.Pick_Qty),
+                            Pick_Qty_Base: Text(xmlData.Warehouse_Shipment_Line.Pick_Qty_Base),
+                            UOM_Code: Text(xmlData.Warehouse_Shipment_Line.UOM_Code),
+                            Qty_per_UOM: Text(xmlData.Warehouse_Shipment_Line.Qty_per_UOM),
+                            Description: Text(xmlData.Warehouse_Shipment_Line.Description),
+                            Status: Text(xmlData.Warehouse_Shipment_Line.Status),
+                            Sorting_Sequence_No: Text(xmlData.Warehouse_Shipment_Line.Sorting_Sequence_No),
+                            Due_Date: Text(xmlData.Warehouse_Shipment_Line.Due_Date),
+                            Destination_Type: Text(xmlData.Warehouse_Shipment_Line.Destination_Type),
+                            Destination_No: Text(xmlData.Warehouse_Shipment_Line.Destination_No),
+                            Cubage: Text(xmlData.Warehouse_Shipment_Line.Cubage),
+                            Weight: Text(xmlData.Warehouse_Shipment_Line.Weight),
+                            Shipping_Advice: Text(xmlData.Warehouse_Shipment_Line.Shipping_Advice),
+                            Shipment_Date: Text(xmlData.Warehouse_Shipment_Line.Shipment_Date),
+                            Completely_Picked: Text(xmlData.Warehouse_Shipment_Line.Completely_Picked),
+                            'Not_upd._by_SDPost': Text(xmlData.Warehouse_Shipment_Line.'Not_upd._by_SDPost'),
+                            Posting_from_Whse_Ref: Text(xmlData.Warehouse_Shipment_Line.Posting_from_Whse_Ref),
+                            Res_Entry: IfError(
+                                ForAll(
+                                    xmlData.Warehouse_Shipment_Line.Res_Entry As entry,
+                                    {
+                                        Entry_No: Text(entry.Res_Entry.Entry_No),
+                                        Item_No: Text(entry.Res_Entry.Item_No),
+                                        Positive: Text(entry.Res_Entry.Positive),
+                                        Quantity: Text(entry.Res_Entry.Quantity),
+                                        Quantity_Base: Text(entry.Res_Entry.Quantity_Base),
+                                        Location_Code: Text(entry.Res_Entry.Location_Code),
+                                        Res_Status: Text(entry.Res_Entry.Res_Status),
+                                        Source_Type: Text(entry.Res_Entry.Source_Type),
+                                        Source_SubType: Text(entry.Res_Entry.Source_SubType),
+                                        Source_ID: Text(entry.Res_Entry.Source_ID),
+                                        Source_Ref_No: Text(entry.Res_Entry.Source_Ref_No),
+                                        Item_Tracking: Text(entry.Res_Entry.Item_Tracking),
+                                        LOT_No: Text(entry.Res_Entry.LOT_No),
+                                        Exp_Date: Text(entry.Res_Entry.Exp_Date),
+                                        Creation_Date: Text(entry.Res_Entry.Creation_Date),
+                                        Exp_Receipt_Date: Text(entry.Res_Entry.Exp_Receipt_Date),
+                                        Shipment_Date: Text(entry.Res_Entry.Shipment_Date),
+                                        Created_By: Text(entry.Res_Entry.Created_By),
+                                        'Qty-to-Handle_Base': Text(entry.Res_Entry.'Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text(entry.Res_Entry.'Qty-to-Invoice_Base')
+                                    }
+                                ),
+                                {
+                                    Entry_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Entry_No),
+                                    Item_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Item_No),
+                                    Positive: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Positive),
+                                    Quantity: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Quantity),
+                                    Quantity_Base: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Quantity_Base),
+                                    Location_Code: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Location_Code),
+                                    Res_Status: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Res_Status),
+                                    Source_Type: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_Type),
+                                    Source_SubType: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_SubType),
+                                    Source_ID: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_ID),
+                                    Source_Ref_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Source_Ref_No),
+                                    Item_Tracking: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Item_Tracking),
+                                    LOT_No: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.LOT_No),
+                                    Exp_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Exp_Date),
+                                    Creation_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Creation_Date),
+                                    Exp_Receipt_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Exp_Receipt_Date),
+                                    Shipment_Date: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Shipment_Date),
+                                    Created_By: Text(xmlData.Warehouse_Shipment_Line.Res_Entry.Created_By),
+                                    'Qty-to-Handle_Base': Text(xmlData.Warehouse_Shipment_Line.Res_Entry.'Qty-to-Handle_Base'),
+                                    'Qty-to-Invoice_Base': Text(xmlData.Warehouse_Shipment_Line.Res_Entry.'Qty-to-Invoice_Base')
+                                }
+                            )
+                        }
+                    )
+        );
+        
+        
+        
+        UpdateContext(
             {
                 Otpremnice: {
-                    No: Text(xmlData.Warehouse_Shipment_Header.No),
+                    No: Text(xmlData.No),
                     Location_Code: Text(xmlData.Location_Code),
                     No_Series: Text(xmlData.No_Series),
                     Zone_Code: Text(xmlData.Zone_Code),
@@ -304,6 +520,15 @@
                     Y: =1
                     ZIndex: =1
 
+                    TextCanvas6 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =110
+                        Text: =TEST
+                        Width: =418
+                        X: =576
+                        Y: =25
+                        ZIndex: =7
+
                     Group5 As group:
                         Height: =5
                         Width: =5
@@ -320,7 +545,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj otpremnice :   " & Otpremnice.No
+                                ="Broj otpremnice :   " & header.No
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -334,7 +559,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Skladište :   " & Otpremnice.Location_Code
+                                ="Skladište :   " & header.Location_Code
                             Width: =Parent.Width
                             Y: =41
                             ZIndex: =3
@@ -348,7 +573,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum slanja :   " & Otpremnice.Shipment_Date
+                                ="Datum slanja :   " & header.Shipment_Date
                             Width: =Parent.Width
                             Y: =65
                             ZIndex: =4
@@ -362,7 +587,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Status :   " & Otpremnice.Status
+                                ="Status :   " & header.Status
                             Width: =Parent.Width
                             Y: =88
                             ZIndex: =5
@@ -376,7 +601,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum knjiženja :   " & Otpremnice.Posting_Date
+                                ="Datum knjiženja :   " & header.Posting_Date
                             Width: =Parent.Width
                             Y: =111
                             ZIndex: =6
@@ -400,7 +625,7 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =Otpremnice.Warehouse_Shipment_Line
+                        Items: =otpremnicaCollection
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
@@ -945,7 +1170,7 @@
                         GetXml.Run(SelectedFile, ReadyForProcessing),
                     
                         IfError(
-                            UpdateXML.Run(JSON(Otpremnice), SelectedFile, SelectedFolder),
+                            UpdateXML.Run(JSON(Otpremnice) , SelectedFile, SelectedFolder),
                     
                                 Notify("Došlo je do greške!", NotificationType.Error, 2000),
                     
