@@ -128,7 +128,7 @@
             LayoutMinHeight: =75
             LayoutMinWidth: =Parent.Width
             Logo: =FFLogo
-            OnSelectLogo: =Navigate(scrEntry)
+            OnSelectLogo: =Navigate(scr_Entry)
             Style: ='Header.Style'.Primary
             Title: ="NALOG ZA PRODAJU"
             TitleFontSize: =14
@@ -467,7 +467,7 @@
                         DisabledColor: =RGBA(244, 244, 244, 1)
                         Height: =25
                         Icon: =Icon.ArrowLeft
-                        OnSelect: =Navigate(scrEntry,ScreenTransition.Fade);
+                        OnSelect: =Navigate(scr_Entry,ScreenTransition.Fade);
                         Width: =25
                         X: =20
                         ZIndex: =1
@@ -986,7 +986,7 @@
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     Set(SelectedFolder, response.folder);
                     
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scrEntry,ScreenTransition.Fade), Navigate(scr_XMLNalogZaProdaju,ScreenTransition.Fade));
+                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLNalogZaProdaju,ScreenTransition.Fade));
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 PressedBorderColor: =App.Theme.Colors.Darker40

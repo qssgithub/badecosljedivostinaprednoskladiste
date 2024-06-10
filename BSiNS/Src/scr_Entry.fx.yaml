@@ -1,4 +1,4 @@
-"scrEntry As screen.'autoLayout_Sidebar_ver1.0'":
+"scr_Entry As screen.'autoLayout_Sidebar_ver1.0'":
     Fill: =RGBA(45, 128, 40, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnHidden: =
@@ -98,7 +98,7 @@
                 LayoutMinHeight: =75
                 LayoutMinWidth: =Parent.Width
                 Logo: =FFLogo
-                OnSelectLogo: =Navigate(scrEntry)
+                OnSelectLogo: =Navigate(scr_Entry)
                 Style: ='Header.Style'.Primary
                 Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
                 TitleFontSize: =14
