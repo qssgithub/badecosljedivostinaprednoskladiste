@@ -304,6 +304,16 @@
                     Y: =1
                     ZIndex: =1
 
+                    TextCanvas5 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =110
+                        Text: |-
+                            ="{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}"
+                        Width: =318
+                        X: =686
+                        Y: =17
+                        ZIndex: =7
+
                     Group5 As group:
                         Height: =5
                         Width: =5
@@ -941,16 +951,16 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |
-                    =UpdateContext({response: UpdateXML.Run("{Warehouse_Shipment_Header:" & JSON(Otpremnice) & "}", SelectedFile, SelectedFolder,false)});
+                    =UpdateContext({response: UpdateXML.Run(JSON(Otpremnice), SelectedFile, SelectedFolder,false)});
                     
                     If(otpremniceReadyForNavCheckbox.Checked, 
                         ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing); Navigate(scr_Entry,ScreenTransition.Fade), 
                         Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
                     );
-                    
+                    /*
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
                     
-                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);*/
                 PressedBorderColor: =App.Theme.Colors.Darker40
                 PressedColor: =Self.Color
                 PressedFill: =App.Theme.Colors.Darker40
