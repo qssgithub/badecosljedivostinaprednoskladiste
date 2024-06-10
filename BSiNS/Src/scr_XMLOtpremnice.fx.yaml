@@ -230,7 +230,7 @@
         
         Set(isLoading, false);
         
-        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress));
+        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress); Set(SelectedFolder, InProgress));
         
         UpdateContext({wizardStep:1});
 
@@ -949,7 +949,6 @@
                     );
                     
                     UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
-                    Set(SelectedFolder, response.folder);
                     
                     Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
                 PressedBorderColor: =App.Theme.Colors.Darker40
