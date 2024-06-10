@@ -13,9 +13,54 @@
     "dependents": [
       "d8fb4c6c-b7d8-42bd-b7e0-64c427427e9c",
       "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1",
+      "67bba9e1-7f90-4731-9c75-063e8ec266fb",
       "e8881786-c8c5-4028-a337-24a2d24fded3"
     ],
     "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+  },
+  "67bba9e1-7f90-4731-9c75-063e8ec266fb": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
+          "value": "shared_filesystem"
+        },
+        "workflowDisplayName": {
+          "value": "ChangeXmlStatus"
+        },
+        "workflowEntityId": {
+          "value": "69369d77-2027-ef11-840b-00224887e568"
+        },
+        "workflowName": {
+          "value": "ce6a3c18-5cac-254e-f8b8-7fdd9abd5e5f"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_filesystem": {
+          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+        },
+        "workflowDisplayName": {
+          "value": "ChangeXmlStatus"
+        },
+        "workflowEntityId": {
+          "value": "69369d77-2027-ef11-840b-00224887e568"
+        },
+        "workflowName": {
+          "value": "ce6a3c18-5cac-254e-f8b8-7fdd9abd5e5f"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "ChangeXmlStatus"
+    ],
+    "dependencies": {
+      "shared_filesystem": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
+    },
+    "dependents": [],
+    "id": "67bba9e1-7f90-4731-9c75-063e8ec266fb"
   },
   "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1": {
     "connectionRef": {
@@ -115,9 +160,6 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/u/patelronak/specialtrain-logicflows-2/1.0.1692.3734/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-          "value": "shared_filesystem"
-        },
         "workflowDisplayName": {
           "value": "GetXml"
         },
@@ -129,9 +171,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_filesystem": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
         "workflowDisplayName": {
           "value": "GetXml"
         },

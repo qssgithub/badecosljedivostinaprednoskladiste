@@ -101,6 +101,9 @@
         );*/
         
         Set(isLoading, false);
+        
+        If(SelectedFolder = "ReadyForProcessing", ChangeXmlStatus.Run(SelectedFile, SelectedFolder));
+        
         UpdateContext({wizardStep:1});
         
 
