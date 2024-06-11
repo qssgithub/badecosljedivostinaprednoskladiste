@@ -8,15 +8,20 @@
         );
         Reset(nalogZaPrenosReadyForNavCheckbox);
         
-        UpdateContext(
-            {
-                xmlData: (ParseJSON(
-                    GetXml.Run(
-                        SelectedFile,
-                        SelectedFolder
-                    ).response).Transfer_Header
-                )
-            }
+        If(!IsBlank(SelectedFile),
+            IfError(
+                UpdateContext(
+                    {
+                        xmlData: (ParseJSON(
+                            GetXml.Run(
+                                SelectedFile,
+                                SelectedFolder
+                            ).response).Purchase_Header
+                        )
+                    }
+                ), 
+                Notify("Greška u obradi.", NotificationType.Error, 2000)
+            )
         );
         
         /*If(!IsBlank(SelectedFile),
