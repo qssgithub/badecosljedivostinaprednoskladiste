@@ -9,16 +9,23 @@
         
         Reset(otpremniceReadyForNavCheckbox);
         
-        UpdateContext(
-            {
-                xmlData: (ParseJSON(
-                    GetXml.Run(
-                        SelectedFile,
-                        SelectedFolder
-                    ).response).Warehouse_Shipment_Header
-                )
-            }
+        If(!IsBlank(SelectedFile),
+            IfError(
+                UpdateContext(
+                    {
+                        xmlData: (ParseJSON(
+                            GetXml.Run(
+                                SelectedFile,
+                                SelectedFolder
+                            ).response).Warehouse_Shipment_Header
+                        )
+                    }
+                ), 
+                Notify("Greška u obradi.", NotificationType.Error, 2000)
+            )
         );
+        
+        
         
         UpdateContext({
             header:
