@@ -7,15 +7,20 @@
         Reset(nabavniNalogReadyForNavCheckbox);
         UpdateContext({scannedItem: Blank()});
         
-        UpdateContext(
-            {
-                xmlData: (ParseJSON(
-                    GetXml.Run(
-                        SelectedFile,
-                        SelectedFolder
-                    ).response).Purchase_Header
-                )
-            }
+        If(!IsBlank(SelectedFile),
+            IfError(
+                UpdateContext(
+                    {
+                        xmlData: (ParseJSON(
+                            GetXml.Run(
+                                SelectedFile,
+                                SelectedFolder
+                            ).response).Purchase_Header
+                        )
+                    }
+                ), 
+                Notify("Greška u obradi.", NotificationType.Error, 2000)
+            )
         );
         
         
