@@ -24,98 +24,210 @@
             )
         );
         
-        /*If(!IsBlank(SelectedFile),
-            IfError(GetXml.Run(SelectedFile, SelectedFolder), Notify("Error occurred while Get request, check if file exists", NotificationType.Error, 5000),
-                UpdateContext(
-                    {
-                        transfer: ParseJSON(GetXml.Run(
-                            SelectedFile,
-                            SelectedFolder
-                        ).response)
-                    }
-                )
-            );
+        UpdateContext({
+            header:
+                {
+                    Amount: Text(xmlData.Amount),
+                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
+                    Area: Text(xmlData.Area),
+                    'Buy-from_Address': Text(xmlData.'Buy-from_Address'),
+                    'Buy-from_Address_2': Text(xmlData.'Buy-from_Address_2'),
+                    'Buy-from_City': Text(xmlData.'Buy-from_City'),
+                    'Buy-from_Contact': Text(xmlData.'Buy-from_Contact'),
+                    'Buy-from_Contact_No.': Text(xmlData.'Buy-from_Contact_No.'),
+                    'Buy-from_Country_Code': Text(xmlData.'Buy-from_Country_Code'),
+                    'Buy-from_County': Text(xmlData.'Buy-from_County'),
+                    'Buy-from_Post_Code': Text(xmlData.'Buy-from_Post_Code'),
+                    'Buy-from_Vendor_Name': Text(xmlData.'Buy-from_Vendor_Name'),
+                    'Buy-from_Vendor_Name_2': Text(xmlData.'Buy-from_Vendor_Name_2'),
+                    'Buy-from_Vendor_No.': Text(xmlData.'Buy-from_Vendor_No.'),
+                    Campaign_No: Text(xmlData.Campaign_No),
+                    Currency_Code: Text(xmlData.Currency_Code),
+                    Document_Date: Text(xmlData.Document_Date),
+                    Document_Type: Text(xmlData.Document_Type),
+                    Due_Date: Text(xmlData.Due_Date),
+                    Expected_Receipt_Date: Text(xmlData.Expected_Receipt_Date),
+                    'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
+                    Language_Code: Text(xmlData.Language_Code),
+                    Location_Code: Text(xmlData.Location_Code),
+                    No: Text(xmlData.'No.'),
+                    Order_Date: Text(xmlData.Order_Date),
+                    Promised_Receipt_Date: Text(xmlData.Promised_Receipt_Date),
+                    Purchaser_Code: Text(xmlData.Purchaser_Code),
+                    Requested_Receipt_Date: Text(xmlData.Requested_Receipt_Date),
+                    Shipment_Method_Code: Text(xmlData.Shipment_Method_Code),
+                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
+                    'Ship-to_Address_2': Text(xmlData.'Ship-to_Address_2'),
+                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
+                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
+                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
+                    'Ship-to_Country_Code': Text(xmlData.'Ship-to_Country_Code'),
+                    'Ship-to_County': Text(xmlData.'Ship-to_County'),
+                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
+                    'Ship-to_Name_2': Text(xmlData.'Ship-to_Name_2'),
+                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                    Status: Text(xmlData.Status),
+                    Tax_Area_Code: Text(xmlData.Tax_Area_Code),
+                    Transport_Method: Text(xmlData.Transport_Method),
+                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
+                    'VAT_Country_Code': Text(xmlData.'VAT_Country_Code'),
+                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                    'Vendor_Invoice_No.': Text(xmlData.'Vendor_Invoice_No.'),
+                    'Vendor_Order_No.': Text(xmlData.'Vendor_Order_No.'),
+                    'Vendor_Posting_Group': Text(xmlData.'Vendor_Posting_Group'),
+                    'Vendor_Shipment_No.': Text(xmlData.'Vendor_Shipment_No.')
+                }
+        });
         
-            
-            UpdateContext({transfer_header: ParseJSON(transfer.transfer_header)});
-            UpdateContext({transfer_lines: transfer.transfer_line});
-            UpdateContext({transfer_res_entry: transfer.res_entry});
-            Clear(colTransferLines);
-            Clear(colTransferResEntries);
-            
-            ForAll(
-                ParseJSON(transfer_lines),
-                Collect(
-                    colTransferLines,
+        
+        ClearCollect(
+            transferCollection,
+            IfError(
+                ForAll(
+                    xmlData.Transfer_Line As line,
                     {
-                        Document_No: Text(ThisRecord.Document_No),
-                        Line_No: Text(ThisRecord.Line_No),
-                        Item_No: Text(ThisRecord.Item_No),
-                        'Transfer-from_Code': Text(ThisRecord.'Transfer-from_Code'),
-                        'Transfer-to_Code': Text(ThisRecord.'Transfer-to_Code'),
-                        'In-Transit_Code': Text(ThisRecord.'In-Transit_Code'),
-                        GP_Posting_Group: Text(ThisRecord.GP_Posting_Group),
-                        Inv_Posting_Group: Text(ThisRecord.Inv_Posting_Group),
-                        Description: Text(ThisRecord.Description),
-                        Unit_Of_Measure: Text(ThisRecord.Unit_Of_Measure),
-                        Quantity: Value(ThisRecord.Quantity),
-                        Quantity_Base: Value(ThisRecord.Quantity_Base),
-                        'Qty-to_Ship': Value(ThisRecord.'Qty-to_Ship'),
-                        'Qty-to_Receive': Value(ThisRecord.'Qty-to_Receive'),
-                        Quantity_Shipped: Value(ThisRecord.Quantity_Shipped),
-                        Quantity_Received: Value(ThisRecord.Quantity_Received),
-                        Outstanding_Qty: Value(ThisRecord.Outstanding_Qty),
-                        Shipment_Date: Text(ThisRecord.Shipment_Date),
-                        Receipt_Date: Text(ThisRecord.Receipt_Date)
-                    }
-                );
-            );
-            ForAll(
-                ParseJSON(transfer_res_entry),
-                Collect(
-                    colTransferResEntries,
-                    {
-                        Entry_No: Text(ThisRecord.Entry_No),
-                        Item_No: Text(ThisRecord.Item_No),
-                        Positive: Text(ThisRecord.Positive),
-                        Quantity: Value(ThisRecord.Quantity),
-                        Quantity_Base: Value(ThisRecord.Quantity_Base),
-                        Location_Code: Text(ThisRecord.Location_Code),
-                        Res_Status: Text(ThisRecord.Res_Status),
-                        Source_Type: Text(ThisRecord.Source_Type),
-                        Source_SubType: Text(ThisRecord.Source_SubType),
-                        Source_ID: Text(ThisRecord.Source_ID),
-                        Source_Ref_No: Text(ThisRecord.Source_Ref_No),
-                        Item_Tracking: Text(ThisRecord.Item_Tracking),
-                        LOT_No: Text(ThisRecord.LOT_No),
-                        Exp_Date: Text(ThisRecord.Exp_Date),
-                        Creation_Date: Text(ThisRecord.Creation_Date),
-                        Exp_Receipt_Date: Text(ThisRecord.Exp_Receipt_Date),
-                        Shipment_Date: Text(ThisRecord.Shipment_Date),
-                        Created_By: Text(ThisRecord.Created_By),
-                        'Qty-to-Handle_Base': Value(ThisRecord.'Qty-to-Handle_Base'),
-                        'Qty-to-Invoice_Base': Value(ThisRecord.'Qty-to-Invoice_Base')
-                    }
-                );
-            );
-            /*ForAll(
-                colTransferLines As Line,
-                Patch(
-                    colTransferLines,
-                    Line,
-                    {
-                        Quantity: Sum(
-                            Filter(
-                                colTransferResEntries,
-                                Item_No = Line.Item_No
+                        Document_No: Text(line.Document_No),
+                        Line_No: Text(line.Line_No),
+                        Item_No: Text(line.Item_No),
+                        'Transfer-from_Code': Text(line.'Transfer-from_Code'),
+                        'Transfer-to_Code': Text(line.'Transfer-to_Code'),
+                        'In-Transit_Code': Text(line.'In-Transit_Code'),
+                        GP_Posting_Group: Text(line.GP_Posting_Group),
+                        Inv_Posting_Group: Text(line.Inv_Posting_Group),
+                        Description: Text(line.Description),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Quantity: Text(line.Quantity),
+                        Quantity_Base: Text(line.Quantity_Base),
+                        'Qty-to_Ship': Text(line.'Qty-to_Ship'),
+                        'Qty-to_Receive': Text(line.'Qty-to_Receive'),
+                        Quantity_Shipped: Text(line.Quantity_Shipped),
+                        Quantity_Received: Text(line.Quantity_Received),
+                        Outstanding_Qty: Text(line.Outstanding_Qty),
+                        Shipment_Date: Text(line.Shipment_Date),
+                        Receipt_Date: Text(line.Receipt_Date),
+                        Res_Entry: IfError(
+                            ForAll(
+                                line.Res_Entry As entry,
+                                {
+                                    Created_By: Text(entry.Created_By),
+                                    Creation_Date: Text(entry.Creation_Date),
+                                    Entry_No: Text(entry.Entry_No),
+                                    Exp_Date: Text(entry.Exp_Date),
+                                    Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                    Item_No: Text(entry.Item_No),
+                                    Item_Tracking: Text(entry.Item_Tracking),
+                                    LOT_No: Text(entry.LOT_No),
+                                    Location_Code: Text(entry.Location_Code),
+                                    Positive: Text(entry.Positive),
+                                    'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                    'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                                    Quantity: Text(entry.Quantity),
+                                    Quantity_Base: Text(entry.Quantity_Base),
+                                    Res_Status: Text(entry.Res_Status),
+                                    Shipment_Date: Text(entry.Shipment_Date),
+                                    Source_ID: Text(entry.Source_ID),
+                                    Source_Ref_No: Text(entry.Source_Ref_No),
+                                    Source_SubType: Text(entry.Source_SubType),
+                                    Source_Type: Text(entry.Source_Type)
+                                }
                             ),
-                            Quantity
+                            {
+                                Created_By: Text(line.Res_Entry.Created_By),
+                                Creation_Date: Text(line.Res_Entry.Creation_Date),
+                                Entry_No: Text(line.Res_Entry.Entry_No),
+                                Exp_Date: Text(line.Res_Entry.Exp_Date),
+                                Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                                Item_No: Text(line.Res_Entry.Item_No),
+                                Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                                LOT_No: Text(line.Res_Entry.LOT_No),
+                                Location_Code: Text(line.Res_Entry.Location_Code),
+                                Positive: Text(line.Res_Entry.Positive),
+                                'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
+                                Quantity: Text(line.Res_Entry.Quantity),
+                                Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                                Res_Status: Text(line.Res_Entry.Res_Status),
+                                Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                                Source_ID: Text(line.Res_Entry.Source_ID),
+                                Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                                Source_SubType: Text(line.Res_Entry.Source_SubType),
+                                Source_Type: Text(line.Res_Entry.Source_Type)
+                            }
                         )
                     }
-                )
-            );
-            
-        );*/
+                ),
+                {
+                    Document_No: Text(xmlData.Transfer_Line.Document_No),
+                        Line_No: Text(xmlData.Transfer_Line.Line_No),
+                        Item_No: Text(xmlData.Transfer_Line.Item_No),
+                        'Transfer-from_Code': Text(xmlData.Transfer_Line.'Transfer-from_Code'),
+                        'Transfer-to_Code': Text(xmlData.Transfer_Line.'Transfer-to_Code'),
+                        'In-Transit_Code': Text(xmlData.Transfer_Line.'In-Transit_Code'),
+                        GP_Posting_Group: Text(xmlData.Transfer_Line.GP_Posting_Group),
+                        Inv_Posting_Group: Text(xmlData.Transfer_Line.Inv_Posting_Group),
+                        Description: Text(xmlData.Transfer_Line.Description),
+                        Unit_Of_Measure: Text(xmlData.Transfer_Line.Unit_Of_Measure),
+                        Quantity: Text(xmlData.Transfer_Line.Quantity),
+                        Quantity_Base: Text(xmlData.Transfer_Line.Quantity_Base),
+                        'Qty-to_Ship': Text(xmlData.Transfer_Line.'Qty-to_Ship'),
+                        'Qty-to_Receive': Text(xmlData.Transfer_Line.'Qty-to_Receive'),
+                        Quantity_Shipped: Text(xmlData.Transfer_Line.Quantity_Shipped),
+                        Quantity_Received: Text(xmlData.Transfer_Line.Quantity_Received),
+                        Outstanding_Qty: Text(xmlData.Transfer_Line.Outstanding_Qty),
+                        Shipment_Date: Text(xmlData.Transfer_Line.Shipment_Date),
+                        Receipt_Date: Text(xmlData.Transfer_Line.Receipt_Date),
+                    Res_Entry: IfError(
+                        ForAll(
+                            xmlData.Purchase_Line.Res_Entry As entry,
+                            {
+                                Created_By: Text(entry.Created_By),
+                                Creation_Date: Text(entry.Creation_Date),
+                                Entry_No: Text(entry.Entry_No),
+                                Exp_Date: Text(entry.Exp_Date),
+                                Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                Item_No: Text(entry.Item_No),
+                                Item_Tracking: Text(entry.Item_Tracking),
+                                LOT_No: Text(entry.LOT_No),
+                                Location_Code: Text(entry.Location_Code),
+                                Positive: Text(entry.Positive),
+                                'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                                Quantity: Text(entry.Quantity),
+                                Quantity_Base: Text(entry.Quantity_Base),
+                                Res_Status: Text(entry.Res_Status),
+                                Shipment_Date: Text(entry.Shipment_Date),
+                                Source_ID: Text(entry.Source_ID),
+                                Source_Ref_No: Text(entry.Source_Ref_No),
+                                Source_SubType: Text(entry.Source_SubType),
+                                Source_Type: Text(entry.Source_Type)
+                            }
+                        ),
+                        {
+                            Created_By: Text(xmlData.Purchase_Line.Res_Entry.Created_By),
+                            Creation_Date: Text(xmlData.Purchase_Line.Res_Entry.Creation_Date),
+                            Entry_No: Text(xmlData.Purchase_Line.Res_Entry.Entry_No),
+                            Exp_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Date),
+                            Exp_Receipt_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Receipt_Date),
+                            Item_No: Text(xmlData.Purchase_Line.Res_Entry.Item_No),
+                            Item_Tracking: Text(xmlData.Purchase_Line.Res_Entry.Item_Tracking),
+                            LOT_No: Text(xmlData.Purchase_Line.Res_Entry.LOT_No),
+                            Location_Code: Text(xmlData.Purchase_Line.Res_Entry.Location_Code),
+                            Positive: Text(xmlData.Purchase_Line.Res_Entry.Positive),
+                            'Qty-to-Handle_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
+                            Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
+                            Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
+                            Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
+                            Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
+                            Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
+                            Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
+                            Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
+                        }
+                    )
+                }
+            )
+        );
         
         Set(isLoading, false);
         
