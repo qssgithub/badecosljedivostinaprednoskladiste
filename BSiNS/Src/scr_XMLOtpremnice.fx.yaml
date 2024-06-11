@@ -20,8 +20,8 @@
             }
         );
         
-        UpdateContext(
-            {header:
+        UpdateContext({
+            header:
                 {
                     No: Text(xmlData.No),
                     Location_Code: Text(xmlData.Location_Code),
@@ -41,8 +41,7 @@
                     Shipping_No_Series: Text(xmlData.Shipping_No_Series),
                     Create_Posted_Header: Text(xmlData.Create_Posted_Header)
                 }
-            }
-        );
+        });
         
         ClearCollect(
             otpremnicaCollection,
@@ -233,7 +232,7 @@
                     )
         );
         
-        
+        /*
         
         UpdateContext(
             {
@@ -442,7 +441,7 @@
                     )
                 }
             }
-        );
+        );*/
         
         Set(isLoading, false);
         
