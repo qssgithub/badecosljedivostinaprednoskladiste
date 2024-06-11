@@ -6,58 +6,69 @@
         
         Reset(temeljniceInventureReadyForNavCheckbox);
         
-        UpdateContext(
-            {
-                xmlData: (ParseJSON(
-                    GetXml.Run(
-                        SelectedFile,
-                        SelectedFolder
-                    ).response).Lines
-                )
-            }
+        If(!IsBlank(SelectedFile),
+            IfError(
+                UpdateContext(
+                    {
+                        xmlData: (ParseJSON(
+                            GetXml.Run(
+                                SelectedFile,
+                                SelectedFolder
+                            ).response).Lines
+                        )
+                    }
+                ), 
+                Notify("Greška u obradi.", NotificationType.Error, 2000)
+            )
         );
         
-        /*
-        If(!IsBlank(SelectedFile),
-            IfError(GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder),Notify("Error occurred while Get request, check if file exists.",NotificationType.Error,5000),UpdateContext({temeljniceResponse: GetXML_Temeljnice_Inventure.Run(SelectedFile, SelectedFolder)}));
-        
-            UpdateContext({journal_line: temeljniceResponse.item_journal_line});
-        
-            Clear(colJournalLine);
-        
-            ForAll(
-                ParseJSON(journal_line),
-                Collect(
-                    colJournalLine,
+        ClearCollect(
+            salesCollection,
+            IfError(
+                ForAll(
+                    xmlData.Sales_Line As line,
                     {
-                        Barcode: Text(ThisRecord.Barcode),
-                        Journal_Template_Name: Text(ThisRecord.Journal_Template_Name),
-                        Journal_Batch_Name: Text(ThisRecord.Journal_Batch_Name),
-                        'Line_No.': Text(ThisRecord.'Line_No.'),
-                        'Document_No.': Text(ThisRecord.'Document_No.'),
-                        Description: Text(ThisRecord.Description),
-                        Source_Type: Text(ThisRecord.Source_Type),
-                        'Source_No.': Text(ThisRecord.'Source_No.'),
-                        Source_Code: Text(ThisRecord.Source_Code),
-                        'Item_No.': Text(ThisRecord.'Item_No.'),
-                        'Phys._Inventory': Text(ThisRecord.'Phys._Inventory'),
-                        Location_Code: Text(ThisRecord.Location_Code),
-                        Posting_Date: Text(ThisRecord.Posting_Date),
-                        Document_Date: Text(ThisRecord.Document_Date),
-                        Sales_Price: Text(ThisRecord.Sales_Price),
-                        Qty_Calculated: Text(ThisRecord.Qty_Calculated),
-                        Qty_Calculated_Ext: Text(ThisRecord.Qty_Calculated_Ext),
-                        Quantity: Value(ThisRecord.Quantity),
-                        Entry_Type: Text(ThisRecord.Entry_Type),
-                        Qty_Phys_Inventory: Text(ThisRecord.Qty_Phys_Inventory),
-                        Qty_Phys_Inventory_Ext: Text(ThisRecord.Qty_Phys_Inventory_Ext),
-                        Gen_Bus_Posting_Group: Text(ThisRecord.Gen_Bus_Posting_Group),
-                        Lot_No: Text(ThisRecord.Lot_No),
-                        Item_Expiration_Date: Text(ThisRecord.Item_Expiration_Date)
+                        Document_Type: Text(line.Document_Type),
+                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
+                        Document_No: Text(line.Document_No),
+                        Line_No: Text(line.Line_No),
+                        Type: Text(line.Type),
+                        Item_No: Text(line.Item_No),
+                        Location_Code: Text(line.Location_Code),
+                        Posting_Group: Text(line.Posting_Group),
+                        Description: Text(line.Description),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Quantity: Text(line.Quantity),
+                        Unit_Price: Text(line.Unit_Price),
+                        Line_Amount: Text(line.Line_Amount),
+                        Line_Discount_Amount: Text(line.Line_Discount_Amount),
+                        'Qty-to_Invoice': Text(line.'Qty-to_Invoice'),
+                        'Qty-to_Ship': Text(line.'Qty-to_Ship'),
+                        Outstand_Quantity: Text(line.Outstand_Quantity)
                     }
-                )
-            );
-        );*/
+                ),
+                {
+                    Document_Type: Text(xmlData.Transfer_Line.Document_Type),
+                    'Sell-to_Customer_No.': Text(xmlData.Transfer_Line.'Sell-to_Customer_No.'),
+                    Document_No: Text(xmlData.Transfer_Line.Document_No),
+                    Line_No: Text(xmlData.Transfer_Line.Line_No),
+                    Type: Text(xmlData.Transfer_Line.Type),
+                    Item_No: Text(xmlData.Transfer_Line.Item_No),
+                    Location_Code: Text(xmlData.Transfer_Line.Location_Code),
+                    Posting_Group: Text(xmlData.Transfer_Line.Posting_Group),
+                    Description: Text(xmlData.Transfer_Line.Description),
+                    Unit_Of_Measure: Text(xmlData.Transfer_Line.Unit_Of_Measure),
+                    Quantity: Text(xmlData.Transfer_Line.Quantity),
+                    Unit_Price: Text(xmlData.Transfer_Line.Unit_Price),
+                    Line_Amount: Text(xmlData.Transfer_Line.Line_Amount),
+                    Line_Discount_Amount: Text(xmlData.Transfer_Line.Line_Discount_Amount),
+                    'Qty-to_Invoice': Text(xmlData.Transfer_Line.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Text(xmlData.Transfer_Line.'Qty-to_Ship'),
+                    Outstand_Quantity: Text(xmlData.Transfer_Line.Outstand_Quantity)
+                }
+            )
+        );
+        
         
         Set(isLoading, false);
         

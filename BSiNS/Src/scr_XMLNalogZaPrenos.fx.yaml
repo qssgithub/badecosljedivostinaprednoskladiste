@@ -6,6 +6,7 @@
             isLoading,
             true
         );
+        
         Reset(nalogZaPrenosReadyForNavCheckbox);
         
         If(!IsBlank(SelectedFile),
@@ -16,7 +17,7 @@
                             GetXml.Run(
                                 SelectedFile,
                                 SelectedFolder
-                            ).response).Purchase_Header
+                            ).response).Transfer_Header
                         )
                     }
                 ), 
