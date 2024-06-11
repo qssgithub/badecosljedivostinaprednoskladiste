@@ -27,55 +27,23 @@
         UpdateContext({
             header:
                 {
-                    Amount: Text(xmlData.Amount),
-                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
-                    Area: Text(xmlData.Area),
-                    'Buy-from_Address': Text(xmlData.'Buy-from_Address'),
-                    'Buy-from_Address_2': Text(xmlData.'Buy-from_Address_2'),
-                    'Buy-from_City': Text(xmlData.'Buy-from_City'),
-                    'Buy-from_Contact': Text(xmlData.'Buy-from_Contact'),
-                    'Buy-from_Contact_No.': Text(xmlData.'Buy-from_Contact_No.'),
-                    'Buy-from_Country_Code': Text(xmlData.'Buy-from_Country_Code'),
-                    'Buy-from_County': Text(xmlData.'Buy-from_County'),
-                    'Buy-from_Post_Code': Text(xmlData.'Buy-from_Post_Code'),
-                    'Buy-from_Vendor_Name': Text(xmlData.'Buy-from_Vendor_Name'),
-                    'Buy-from_Vendor_Name_2': Text(xmlData.'Buy-from_Vendor_Name_2'),
-                    'Buy-from_Vendor_No.': Text(xmlData.'Buy-from_Vendor_No.'),
-                    Campaign_No: Text(xmlData.Campaign_No),
-                    Currency_Code: Text(xmlData.Currency_Code),
-                    Document_Date: Text(xmlData.Document_Date),
-                    Document_Type: Text(xmlData.Document_Type),
-                    Due_Date: Text(xmlData.Due_Date),
-                    Expected_Receipt_Date: Text(xmlData.Expected_Receipt_Date),
-                    'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
-                    Language_Code: Text(xmlData.Language_Code),
-                    Location_Code: Text(xmlData.Location_Code),
-                    No: Text(xmlData.'No.'),
-                    Order_Date: Text(xmlData.Order_Date),
-                    Promised_Receipt_Date: Text(xmlData.Promised_Receipt_Date),
-                    Purchaser_Code: Text(xmlData.Purchaser_Code),
-                    Requested_Receipt_Date: Text(xmlData.Requested_Receipt_Date),
-                    Shipment_Method_Code: Text(xmlData.Shipment_Method_Code),
-                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
-                    'Ship-to_Address_2': Text(xmlData.'Ship-to_Address_2'),
-                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
-                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
-                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
-                    'Ship-to_Country_Code': Text(xmlData.'Ship-to_Country_Code'),
-                    'Ship-to_County': Text(xmlData.'Ship-to_County'),
-                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
-                    'Ship-to_Name_2': Text(xmlData.'Ship-to_Name_2'),
-                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                    No: Text(xmlData.No),
+                    'Transfer-from_Code': Text(xmlData.'Transfer-from_Code'),
+                    'Transfer-from_Name': Text(xmlData.'Transfer-from_Name'),
+                    'Transfer-to_Code': Text(xmlData.'Transfer-to_Code'),
+                    'Transfer-to_Name': Text(xmlData.'Transfer-to_Name'),
+                    'In-Transit_Code': Text(xmlData.'In-Transit_Code'),
+                    Gen_Bus_Posting_Group: Text(xmlData.Gen_Bus_Posting_Group),
+                    Posting_Date: Text(xmlData.Posting_Date),
                     Status: Text(xmlData.Status),
-                    Tax_Area_Code: Text(xmlData.Tax_Area_Code),
-                    Transport_Method: Text(xmlData.Transport_Method),
-                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
-                    'VAT_Country_Code': Text(xmlData.'VAT_Country_Code'),
-                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
-                    'Vendor_Invoice_No.': Text(xmlData.'Vendor_Invoice_No.'),
-                    'Vendor_Order_No.': Text(xmlData.'Vendor_Order_No.'),
-                    'Vendor_Posting_Group': Text(xmlData.'Vendor_Posting_Group'),
-                    'Vendor_Shipment_No.': Text(xmlData.'Vendor_Shipment_No.')
+                    Shipment_Date: Text(xmlData.Shipment_Date),
+                    Receipt_Date: Text(xmlData.Receipt_Date),
+                    Shipping_Advice: Text(xmlData.Shipping_Advice),
+                    'Transfer-from_Post_Code': Text(xmlData.'Transfer-from_Post_Code'),
+                    'Transfer-from_City': Text(xmlData.'Transfer-from_City'),
+                    'Transfer-to_Post_Code': Text(xmlData.'Transfer-to_Post_Code'),
+                    'Transfer-to_City': Text(xmlData.'Transfer-to_City'),
+                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code)
                 }
         });
         
@@ -321,7 +289,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj naloga :   " & transfer_header.'No.'
+                                ="Broj naloga :   " & header.'No.'
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -335,7 +303,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum slanja :   " & transfer_header.Shipment_Date
+                                ="Datum slanja :   " & header.Shipment_Date
                             Width: =Parent.Width
                             Y: =41
                             ZIndex: =3
@@ -349,7 +317,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum primanja :   " & transfer_header.Receipt_Date
+                                ="Datum primanja :   " & header.Receipt_Date
                             Width: =Parent.Width
                             Y: =65
                             ZIndex: =4
@@ -363,7 +331,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Prenos iz :   " & transfer_header.'Transfer-from_Code' & "   " & transfer_header.'Transfer-from_Name'
+                                ="Prenos iz :   " & header.'Transfer-from_Code' & "   " & header.'Transfer-from_Name'
                             Width: =Parent.Width
                             Y: =89
                             ZIndex: =5
@@ -377,7 +345,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Prenos u :   " & transfer_header.'Transfer-to_Code' & "   " & transfer_header.'Transfer-to_Name'
+                                ="Prenos u :   " & header.'Transfer-to_Code' & "   " & h.'Transfer-to_Name'
                             Width: =Parent.Width
                             Y: =113
                             ZIndex: =6
