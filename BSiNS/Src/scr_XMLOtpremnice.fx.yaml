@@ -1525,20 +1525,14 @@
                         LayoutMinWidth: =96
                         OnSelect: |
                             =UpdateIf(
-                                First(
-                                    Filter(
-                                        otpremnicaCollection As line,
-                                        line.Line_No = OtpremniceLines.Selected.Line_No
-                                    )
-                                ).Res_Entry As resEntry,
-                                resEntry.Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
+                                OtpremniceLines.Selected.Res_Entry,
+                                Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
                                 {
                                     Exp_Date: dp_ExpDate.SelectedDate,
                                     LOT_No: inp_LOTNo.Value,
                                     Quantity: inp_Quantity.Value
                                 }
                             );
-                            UpdateContext({isModalOpen: false});
                         Text: ="Spasi"
                         Width: =96
                         X: =0
