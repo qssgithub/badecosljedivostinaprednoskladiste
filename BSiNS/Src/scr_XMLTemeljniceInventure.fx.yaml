@@ -23,48 +23,60 @@
         );
         
         ClearCollect(
-            salesCollection,
+            item_Journal_LineCollection,
             IfError(
                 ForAll(
-                    xmlData.Sales_Line As line,
+                    xmlData.Item_Journal_Line As line,
                     {
-                        Document_Type: Text(line.Document_Type),
-                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
-                        Document_No: Text(line.Document_No),
-                        Line_No: Text(line.Line_No),
-                        Type: Text(line.Type),
-                        Item_No: Text(line.Item_No),
-                        Location_Code: Text(line.Location_Code),
-                        Posting_Group: Text(line.Posting_Group),
+                        Journal_Template_Name: Text(line.Journal_Template_Name),
+                        Journal_Batch_Name: Text(line.Journal_Batch_Name),
+                        'Line_No.': Text(line.'Line_No.'),
+                        'Document_No.': Text(line.'Document_No.'),
                         Description: Text(line.Description),
-                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Source_Type: Text(line.Source_Type),
+                        'Source_No.': Text(line.'Source_No.'),
+                        Source_Code: Text(line.Source_Code),
+                        Item_No: Text(line.'Item_No.'),
+                        'Phys._Inventory': Text(line.'Phys._Inventory'),
+                        Location_Code: Text(line.Location_Code),
+                        Posting_Date: Text(line.Posting_Date),
+                        Document_Date: Text(line.Document_Date),
+                        Sales_Price: Text(line.Sales_Price),
+                        Qty_Calculated: Text(line.Qty_Calculated),
+                        'Qty_Calculated_Ext': Text(line.'Qty_Calculated_Ext'),
                         Quantity: Text(line.Quantity),
-                        Unit_Price: Text(line.Unit_Price),
-                        Line_Amount: Text(line.Line_Amount),
-                        Line_Discount_Amount: Text(line.Line_Discount_Amount),
-                        'Qty-to_Invoice': Text(line.'Qty-to_Invoice'),
-                        'Qty-to_Ship': Text(line.'Qty-to_Ship'),
-                        Outstand_Quantity: Text(line.Outstand_Quantity)
+                        Entry_Type: Text(line.Entry_Type),
+                        Qty_Phys_Inventory: Text(line.Qty_Phys_Inventory),
+                        'Qty_Phys_Inventory_Ext': Text(line.'Qty_Phys_Inventory_Ext'),
+                        Gen_Bus_Posting_Group: Text(line.Gen_Bus_Posting_Group),
+                        Lot_No: Text(line.Lot_No),
+                        Item_Expiration_Date: Text(line.Item_Expiration_Date)
                     }
                 ),
                 {
-                    Document_Type: Text(xmlData.Transfer_Line.Document_Type),
-                    'Sell-to_Customer_No.': Text(xmlData.Transfer_Line.'Sell-to_Customer_No.'),
-                    Document_No: Text(xmlData.Transfer_Line.Document_No),
-                    Line_No: Text(xmlData.Transfer_Line.Line_No),
-                    Type: Text(xmlData.Transfer_Line.Type),
-                    Item_No: Text(xmlData.Transfer_Line.Item_No),
-                    Location_Code: Text(xmlData.Transfer_Line.Location_Code),
-                    Posting_Group: Text(xmlData.Transfer_Line.Posting_Group),
+                    Journal_Template_Name: Text(xmlData.Transfer_Line.Journal_Template_Name),
+                    Journal_Batch_Name: Text(xmlData.Transfer_Line.Journal_Batch_Name),
+                    'Line_No.': Text(xmlData.Transfer_Line.'Line_No.'),
+                    'Document_No.': Text(xmlData.Transfer_Line.'Document_No.'),
                     Description: Text(xmlData.Transfer_Line.Description),
-                    Unit_Of_Measure: Text(xmlData.Transfer_Line.Unit_Of_Measure),
+                    Source_Type: Text(xmlData.Transfer_Line.Source_Type),
+                    'Source_No.': Text(xmlData.Transfer_Line.'Source_No.'),
+                    Source_Code: Text(xmlData.Transfer_Line.Source_Code),
+                    Item_No: Text(xmlData.'Transfer_Line.Item_No.'),
+                    'Phys._Inventory': Text(xmlData.Transfer_Line.'Phys._Inventory'),
+                    Location_Code: Text(xmlData.Transfer_Line.Location_Code),
+                    Posting_Date: Text(xmlData.Transfer_Line.Posting_Date),
+                    Document_Date: Text(xmlData.Transfer_Line.Document_Date),
+                    Sales_Price: Text(xmlData.Transfer_Line.Sales_Price),
+                    Qty_Calculated: Text(xmlData.Transfer_Line.Qty_Calculated),
+                    'Qty_Calculated_Ext': Text(xmlData.Transfer_Line.'Qty_Calculated_Ext'),
                     Quantity: Text(xmlData.Transfer_Line.Quantity),
-                    Unit_Price: Text(xmlData.Transfer_Line.Unit_Price),
-                    Line_Amount: Text(xmlData.Transfer_Line.Line_Amount),
-                    Line_Discount_Amount: Text(xmlData.Transfer_Line.Line_Discount_Amount),
-                    'Qty-to_Invoice': Text(xmlData.Transfer_Line.'Qty-to_Invoice'),
-                    'Qty-to_Ship': Text(xmlData.Transfer_Line.'Qty-to_Ship'),
-                    Outstand_Quantity: Text(xmlData.Transfer_Line.Outstand_Quantity)
+                    Entry_Type: Text(xmlData.Transfer_Line.Entry_Type),
+                    Qty_Phys_Inventory: Text(xmlData.Transfer_Line.Qty_Phys_Inventory),
+                    'Qty_Phys_Inventory_Ext': Text(xmlData.Transfer_Line.'Qty_Phys_Inventory_Ext'),
+                    Gen_Bus_Posting_Group: Text(xmlData.Transfer_Line.Gen_Bus_Posting_Group),
+                    Lot_No: Text(xmlData.Transfer_Line.Lot_No),
+                    Item_Expiration_Date: Text(xmlData.Transfer_Line.Item_Expiration_Date)
                 }
             )
         );
@@ -150,11 +162,11 @@
 
                     "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
-                        Default: =First(Filter(colJournalLine, Barcode = scannedItem))
+                        Default: =First(Filter(salesCollection, Text(Line_No) = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =colJournalLine
+                        Items: =salesCollection
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =
@@ -202,7 +214,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.'Item_No.'
+                                    ="Br. artikla:   " & ThisItem.Item_No
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
@@ -298,7 +310,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Quantity: Value(Item_JournalQty.Value)});
+                                    =UpdateIf(salesCollection, Item_Journal_Lines_Gallery.Selected.Line_No = ThisRecord.Line_No ,{Quantity: Value(Item_JournalQty.Value)});
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =110
@@ -320,7 +332,7 @@
                                 HoverDateFill: =App.Theme.Colors.Lighter70
                                 IconBackground: =App.Theme.Colors.Primary
                                 OnChange: |-
-                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
+                                    =UpdateIf(salesCollection, Item_Journal_Lines_Gallery.Selected.Line_No = ThisRecord.Line_No ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =App.Theme.Colors.Primary
                                 Width: =158
@@ -339,7 +351,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(colJournalLine, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
+                                    =UpdateIf(salesCollection, Item_Journal_Lines_Gallery.Selected.Line_No = ThisRecord.Line_No ,{Lot_No: Text(Item_Journal_Lot.Value)})
                                 Value: =ThisItem.Lot_No
                                 Width: =113
                                 X: =86
@@ -359,7 +371,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Barcode:   " & ThisItem.Barcode
+                                    ="Barcode:   " & ThisItem.Line_No
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =211
