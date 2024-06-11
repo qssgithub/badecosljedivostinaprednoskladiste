@@ -627,7 +627,7 @@
                     "OtpremniceLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
                         Default: |
-                            =First(Filter(Otpremnice.Warehouse_Shipment_Line, Text(Line_No) = scannedItem))
+                            =First(Filter(otpremnicaCollection, Text(Line_No) = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
@@ -959,7 +959,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Rok trajanja:    "
+                                    ="Rok trajanja:    " & ThisItem.Exp_Date
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =120
                                 X: =24
@@ -1171,30 +1171,59 @@
                 HoverBorderColor: =App.Theme.Colors.Darker10
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
-                OnSelect: |+
+                OnSelect: |
                     =IfError(
-                        GetXml.Run(SelectedFile, ReadyForProcessing),
-                    
+                        GetXml.Run(
+                            SelectedFile,
+                            ReadyForProcessing
+                        ),
                         IfError(
-                            UpdateXML.Run(JSON(Otpremnice) , SelectedFile, SelectedFolder), // zamijeniti s pravim jsonom
-                    
-                                Notify("Došlo je do greške!", NotificationType.Error, 2000),
-                    
-                                Notify("Uspješno ažuriranje!", NotificationType.Success, 2000);
-                                If(otpremniceReadyForNavCheckbox.Checked, ChangeXmlStatus.Run(SelectedFile,SelectedFolder, ReadyForNAVProcessing); Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
+                            UpdateXML.Run(
+                                "{ Warehouse_Shipment_Header: {" & JSON(header) & "Warehouse_Shipment_Line: " & JSON(otpremnicaCollection) & "}",
+                                SelectedFile,
+                                SelectedFolder
+                            ),
+                            Notify(
+                                "Došlo je do greške!",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            Notify(
+                                "Uspješno ažuriranje!",
+                                NotificationType.Success,
+                                2000
+                            );
+                            If(
+                                otpremniceReadyForNavCheckbox.Checked,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    ReadyForNAVProcessing
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                ),
+                                Navigate(
+                                    scr_XMLOtpremnice,
+                                    ScreenTransition.Fade
+                                )
                             )
                         ),
-                    
-                        Set(SelectedFolder, ReadyForProcessing);
-                        Notify("Postoje izmjene u ovom fajlu.", NotificationType.Information, 2000);
-                        Navigate(scr_XMLOtpremnice,ScreenTransition.Fade)
-                    
+                        Set(
+                            SelectedFolder,
+                            ReadyForProcessing
+                        );
+                        Notify(
+                            "Postoje izmjene u ovom fajlu.",
+                            NotificationType.Information,
+                            2000
+                        );
+                        Navigate(
+                            scr_XMLOtpremnice,
+                            ScreenTransition.Fade
+                        )
                     );
-                    
-                    
-                    
-                    
-                    
                 PressedBorderColor: =App.Theme.Colors.Darker40
                 PressedColor: =Self.Color
                 PressedFill: =App.Theme.Colors.Darker40
@@ -1491,20 +1520,20 @@
                         LayoutMinWidth: =96
                         OnSelect: |
                             =UpdateIf(
-                                Otpremnice.Warehouse_Shipment_Line As line,
-                                line.Line_No = OtpremniceLines.Selected.Line_No,
-                                {Quantity: inp_Quantity.Value}
-                            );
-                            UpdateIf(
                                 First(
                                     Filter(
-                                        Otpremnice.Warehouse_Shipment_Line As line,
+                                        otpremnicaCollection As line,
                                         line.Line_No = OtpremniceLines.Selected.Line_No
                                     )
                                 ).Res_Entry As resEntry,
                                 resEntry.Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
-                                {Exp_Date: dp_ExpDate.SelectedDate}
+                                {
+                                    Exp_Date: dp_ExpDate.SelectedDate,
+                                    LOT_No: inp_LOTNo.Value,
+                                    Quantity: inp_Quantity.Value
+                                }
                             );
+                            UpdateContext({isModalOpen: false});
                         Text: ="Spasi"
                         Width: =96
                         X: =0

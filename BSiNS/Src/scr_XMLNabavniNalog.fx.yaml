@@ -69,11 +69,11 @@
                     Tax_Area_Code: Text(xmlData.Tax_Area_Code),
                     Transport_Method: Text(xmlData.Transport_Method),
                     'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
-                    'VAT_Country_Code': Text(xmlData.'VAT_Country_Code'),
+                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
                     'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
                     'Vendor_Invoice_No.': Text(xmlData.'Vendor_Invoice_No.'),
                     'Vendor_Order_No.': Text(xmlData.'Vendor_Order_No.'),
-                    'Vendor_Posting_Group': Text(xmlData.'Vendor_Posting_Group'),
+                    Vendor_Posting_Group: Text(xmlData.Vendor_Posting_Group),
                     'Vendor_Shipment_No.': Text(xmlData.'Vendor_Shipment_No.')
                 }
         });
