@@ -1209,7 +1209,13 @@
                         IfError(
                             UpdateXML.Run(
                                 
-                                "{"& Char(34) & "Sales_Header" & Char(34) &": "& JSON(First(salesCollection)) &"}",
+                                "{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
+                                    AddColumns(
+                                        header,
+                                        'Sales_Header',
+                                        salesCollection
+                                    )
+                                ) & "}",
                                 SelectedFile,
                                 SelectedFolder
                             ),
