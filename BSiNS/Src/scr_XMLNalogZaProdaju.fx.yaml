@@ -184,7 +184,7 @@
                     
                     Res_Entry: IfError(
                         ForAll(
-                            xmlData.Purchase_Line.Res_Entry As entry,
+                            xmlData.Sales_Line.Res_Entry As entry,
                             {
                                 Created_By: Text(entry.Created_By),
                                 Creation_Date: Text(entry.Creation_Date),
