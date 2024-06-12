@@ -414,6 +414,15 @@
                     Y: =1
                     ZIndex: =1
 
+                    TextCanvas4 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =115
+                        Text: =xxxxxx
+                        Width: =225
+                        X: =495
+                        Y: =22
+                        ZIndex: =7
+
                     Group4_2 As group:
                         Height: =5
                         Width: =5
@@ -1212,7 +1221,7 @@
                                 "{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
                                     AddColumns(
                                         header,
-                                        'Sales_Header',
+                                        'Sales_Line',
                                         salesCollection
                                     )
                                 ) & "}",
