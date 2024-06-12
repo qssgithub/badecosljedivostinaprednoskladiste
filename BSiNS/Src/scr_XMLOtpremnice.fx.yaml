@@ -1523,7 +1523,7 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |
+                        OnSelect: |-
                             =UpdateIf(
                                 OtpremniceLines.Selected.Res_Entry,
                                 Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
@@ -1533,6 +1533,8 @@
                                     Quantity: inp_Quantity.Value
                                 }
                             );
+                            
+                            Set(isModalOpen, false);
                         Text: ="Spasi"
                         Width: =96
                         X: =0
