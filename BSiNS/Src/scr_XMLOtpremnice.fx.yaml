@@ -872,8 +872,8 @@
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
-                            =Select(Self);
-                            Set(isModalOpen, true)
+                            =Set(isModalOpen,true);
+                            Select(Self);
                         TemplatePadding: =0
                         TemplateSize: =176
                         Width: =Parent.Width
@@ -1507,8 +1507,7 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
-                            =UpdateContext({isModalOpen:false})
+                        OnSelect: =Set(isModalOpen,false);
                         Text: ="Zatvori"
                         Width: =96
                         X: =40
