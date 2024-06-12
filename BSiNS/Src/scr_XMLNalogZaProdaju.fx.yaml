@@ -739,7 +739,7 @@
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =Set(isModalOpen,true);
                         TemplatePadding: =0
-                        TemplateSize: =176
+                        TemplateSize: =244
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -795,7 +795,7 @@
                             PaddingTop: =0
                             Size: =12
                             Text: |-
-                                ="Rok trajanja:    "
+                                ="Rezervisana količina:    "
                             VerticalAlign: =VerticalAlign.Top
                             Width: =120
                             X: =18
@@ -807,7 +807,7 @@
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =Self.Size * 1.8
+                            Height: =19
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
@@ -815,11 +815,11 @@
                             PaddingTop: =0
                             Size: =12
                             Text: |-
-                                ="LOT:    " & ThisItem.LOT_No
+                                ="Potrebna količina:    "
                             VerticalAlign: =VerticalAlign.Top
-                            Width: =60
-                            X: =22
-                            Y: =128
+                            Width: =166
+                            X: =18
+                            Y: =123
                             ZIndex: =20
 
                         Body1_32 As label:
@@ -837,7 +837,7 @@
                             Text: =ThisItem.Quantity
                             VerticalAlign: =VerticalAlign.Top
                             Width: =158
-                            X: =142
+                            X: =184
                             Y: =49
                             ZIndex: =24
 
@@ -853,10 +853,10 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =12
-                            Text: =If(IsBlank(ThisItem.Exp_Date), "//",ThisItem.Exp_Date)
+                            Text: =ThisItem.Quantity_Completed
                             VerticalAlign: =VerticalAlign.Top
                             Width: =158
-                            X: =142
+                            X: =184
                             Y: =87
                             ZIndex: =25
 
@@ -872,11 +872,11 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =12
-                            Text: =ThisItem.LOT_No
+                            Text: =ThisItem.Quantity_NewLOT
                             VerticalAlign: =VerticalAlign.Top
                             Width: =158
-                            X: =142
-                            Y: =128
+                            X: =184
+                            Y: =123
                             ZIndex: =26
 
                         Body1_35 As label:
@@ -894,7 +894,7 @@
                             Text: =ThisItem.Entry_No
                             VerticalAlign: =VerticalAlign.Top
                             Width: =158
-                            X: =142
+                            X: =184
                             Y: =16
                             ZIndex: =27
 
@@ -917,6 +917,84 @@
                             X: =18
                             Y: =16
                             ZIndex: =28
+
+                        Body1_37 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Rok trajanja:    "
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =120
+                            X: =18
+                            Y: =158
+                            ZIndex: =29
+
+                        Body1_38 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="LOT:    " & ThisItem.LOT_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =60
+                            X: =18
+                            Y: =196
+                            ZIndex: =30
+
+                        Body1_39 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =19
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =If(IsBlank(ThisItem.Exp_Date), "//",ThisItem.Exp_Date)
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =158
+                            X: =184
+                            Y: =158
+                            ZIndex: =31
+
+                        Body1_40 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =19
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =ThisItem.LOT_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =158
+                            X: =184
+                            Y: =196
+                            ZIndex: =32
 
                     Container2_5 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
@@ -1098,12 +1176,12 @@
                     FontSize: =14
                     FontWeight: =FontWeight.Bold
                     Height: =Parent.Height
-                    Label: ="Spremno za NAV"
+                    Label: ="NAV"
                     LayoutMinHeight: =32
                     LayoutMinWidth: =160
                     OnCheck: =false
                     OnUncheck: =false
-                    Width: =160
+                    Width: =80
                     X: =40
                     Y: =0
                     ZIndex: =2
@@ -1299,6 +1377,7 @@
                         ZIndex: =1
 
                         TextCanvas3_3 As Text:
+                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
@@ -1312,8 +1391,9 @@
 
                         "inp_Quantity_1 As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
+                            DisplayMode: =DisplayMode.Disabled
                             FontSize: =12
                             Height: =32
                             LayoutMinHeight: =32
@@ -1342,6 +1422,7 @@
                         ZIndex: =2
 
                         TextCanvas3_7 As Text:
+                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
@@ -1353,14 +1434,17 @@
                             Y: =40
                             ZIndex: =1
 
-                        "inp_LOTNo_3 As 'Text input'":
+                        "inp_rezQty As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
+                            OnChange: |-
+                                =UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * (-1)) - inp_rezQty.Value});
                             Placeholder: ="Unesite LOT"
                             Value: =NalogZaProdajuResEntry.Selected.Quantity_Completed
                             Width: =150
@@ -1384,6 +1468,7 @@
                         ZIndex: =3
 
                         TextCanvas3_6 As Text:
+                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
@@ -1395,8 +1480,9 @@
                             Y: =40
                             ZIndex: =1
 
-                        "inp_LOTNo_2 As 'Text input'":
+                        "inp_potrebnoQty As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
@@ -1404,7 +1490,7 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
-                            Value: =NalogZaProdajuResEntry.Selected.Quantity - NalogZaProdajuResEntry.Selected.Quantity_Completed
+                            Value: =If(IsBlank(potrebnaKolicina),0,potrebnaKolicina)
                             Width: =150
                             X: =40
                             Y: =40
@@ -1426,6 +1512,7 @@
                         ZIndex: =4
 
                         TextCanvas3_4 As Text:
+                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
@@ -1451,7 +1538,9 @@
                             ZIndex: =2
 
                         dp_ExpDate_1 As datepicker:
-                            BorderColor: =App.Theme.Colors.Darker40
+                            AlignInContainer: =AlignInContainer.Center
+                            BorderColor: =App.Theme.Colors.Primary
+                            BorderThickness: =0.5
                             CalendarHeaderFill: =App.Theme.Colors.Primary
                             Color: =RGBA(0, 0, 0, 1)
                             DefaultDate: =If(IsBlank(NalogZaProdajuResEntry.Selected.Exp_Date), Today(), NalogZaProdajuResEntry.Selected.Exp_Date)
@@ -1488,6 +1577,7 @@
                         ZIndex: =5
 
                         TextCanvas3_5 As Text:
+                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
@@ -1501,6 +1591,7 @@
 
                         "inp_LOTNo_1 As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
@@ -1543,7 +1634,14 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: =Set(isModalOpen, false);
+                        OnSelect: |-
+                            =Reset(inp_Quantity_1);
+                            Reset(inp_rezQty);
+                            Reset(inp_potrebnoQty);
+                            Reset(dp_ExpDate_1);
+                            Reset(inp_LOTNo_1);
+                            UpdateContext({potrebnaKolicina: 0});
+                            Set(isModalOpen, false);
                         Text: ="Zatvori"
                         Width: =96
                         X: =40
@@ -1565,7 +1663,9 @@
                                 {
                                     Exp_Date: dp_ExpDate_1.SelectedDate,
                                     LOT_No: inp_LOTNo_1.Value,
-                                    Quantity: inp_Quantity_1.Value
+                                    Quantity: inp_Quantity_1.Value,
+                                    Quantity_Completed: inp_rezQty.Value,
+                                    Quantity_NewLOT:inp_potrebnoQty.Value
                                 }
                             );
                             ClearCollect(
@@ -1577,6 +1677,13 @@
                                 salesCollectionEdited
                             );
                             Clear(salesCollectionEdited);
+                            Reset(inp_Quantity_1);
+                            Reset(inp_rezQty);
+                            Reset(inp_potrebnoQty);
+                            Reset(dp_ExpDate_1);
+                            Reset(inp_LOTNo_1);
+                            UpdateContext({potrebnaKolicina: 0});
+                            
                             Set(isModalOpen, false);
                         Text: ="Spasi"
                         Width: =96
