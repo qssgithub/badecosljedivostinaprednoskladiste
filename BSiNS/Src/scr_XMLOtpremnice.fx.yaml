@@ -873,7 +873,7 @@
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
                             =Select(Self);
-                            UpdateContext({isModalOpen: true})
+                            Set(isModalOpen, true)
                         TemplatePadding: =0
                         TemplateSize: =176
                         Width: =Parent.Width
@@ -1508,7 +1508,7 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |-
-                            =UpdateContext({isModalOpen: false})
+                            =UpdateContext({isModalOpen:false})
                         Text: ="Zatvori"
                         Width: =96
                         X: =40
@@ -1542,7 +1542,7 @@
                                 otpremnicaCollectionEdited
                             );
                             Clear(otpremnicaCollectionEdited);
-                            UpdateContext({isModalOpen: false})
+                            Set(isModalOpen, false)
                         Text: ="Spasi"
                         Width: =96
                         X: =0

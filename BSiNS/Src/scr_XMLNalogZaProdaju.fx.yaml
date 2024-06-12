@@ -414,15 +414,6 @@
                     Y: =1
                     ZIndex: =1
 
-                    TextCanvas4 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =115
-                        Text: =First(salesCollection).Item_No
-                        Width: =264
-                        X: =534
-                        Y: =22
-                        ZIndex: =7
-
                     Group4_2 As group:
                         Height: =5
                         Width: =5
@@ -1261,4 +1252,304 @@
             X: =0
             Y: =0
             ZIndex: =4
+
+    con_ModalFade_1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(0, 0, 0, 50%)
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =isModalOpen
+        Width: |
+            =Parent.Width
+        ZIndex: =2
+
+        con_Modal_1 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.ExtraBold
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height * 50%
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width * 75%
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =1
+
+            vrt_Modal_1 As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.ExtraBold
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                Header2_1 As Header:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =55
+                    IsLogoVisible: =false
+                    IsProfilePictureVisible: =false
+                    LayoutMinHeight: =75
+                    LayoutMinWidth: =Parent.Width
+                    LogoTooltip: =
+                    OnSelectLogo: =false
+                    Style: ='Header.Style'.Primary
+                    Title: ="Unesite podatke"
+                    TitleFontSize: =15
+                    UserEmail: =User().Email
+                    UserImage: =User().Image
+                    UserName: =User().FullName
+                    Visible: =true
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                Container11_1 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =3
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingLeft: =15
+                    PaddingRight: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    Container13_3 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =70
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =1
+
+                        TextCanvas3_3 As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Količina"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_Quantity_1 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            OnChange: =
+                            Placeholder: ="Količina"
+                            Value: =Otpremnice_ResEntryGallery.Selected.Quantity
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                    Container13_4 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =2
+
+                        TextCanvas3_4 As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Rok trajanja"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "DatePickerCanvas2_1 As 'Date picker'":
+                            DisplayMode: =DisplayMode.Edit
+                            Format: ='DatePickerCanvas.Format'.Short
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            StartOfWeek: ="Monday"
+                            Visible: =false
+                            Width: =320
+                            X: =0
+                            Y: =0
+                            ZIndex: =2
+
+                        dp_ExpDate_1 As datepicker:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            CalendarHeaderFill: =App.Theme.Colors.Primary
+                            Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =If(IsBlank(Otpremnice_ResEntryGallery.Selected.Exp_Date), Today(), Otpremnice_ResEntryGallery.Selected.Exp_Date)
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            EndYear: =Year(Today()) + 20
+                            Font: =App.Theme.Font
+                            Format: ="dd.mm.yyyy"
+                            HoverDateFill: =App.Theme.Colors.Lighter70
+                            IconBackground: =App.Theme.Colors.Primary
+                            LayoutMinHeight: =20
+                            LayoutMinWidth: =50
+                            SelectedDateFill: =App.Theme.Colors.Primary
+                            Size: =12
+                            StartOfWeek: =StartOfWeek.Monday
+                            StartYear: =Year(Today())
+                            Width: =150
+                            ZIndex: =3
+
+                    Container13_5 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =3
+
+                        TextCanvas3_5 As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="LOT"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_LOTNo_1 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            Placeholder: ="Unesite LOT"
+                            Value: =Otpremnice_ResEntryGallery.Selected.LOT_No
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                Container10_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.End
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =20
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =20
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =3
+
+                    ButtonCanvas2_1 As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="DismissCircle"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |-
+                            =UpdateContext({isModalOpen: false})
+                        Text: ="Zatvori"
+                        Width: =96
+                        X: =40
+                        Y: =40
+                        ZIndex: =1
+
+                    ButtonCanvas3_1 As Button:
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="Save"
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |-
+                            =UpdateIf(
+                                First(Filter(otpremnicaCollection, ThisRecord.Line_No = OtpremniceLines.Selected.Line_No)).Res_Entry,
+                                Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
+                                {
+                                    Exp_Date: dp_ExpDate_1.SelectedDate,
+                                    LOT_No: inp_LOTNo_1.Value,
+                                    Quantity: inp_Quantity_1.Value
+                                }
+                            );
+                            ClearCollect(
+                                otpremnicaCollectionEdited,
+                                otpremnicaCollection
+                            );
+                            ClearCollect(
+                                otpremnicaCollection,
+                                otpremnicaCollectionEdited
+                            );
+                            Clear(otpremnicaCollectionEdited);
+                            UpdateContext({isModalOpen: false})
+                        Text: ="Spasi"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
 
