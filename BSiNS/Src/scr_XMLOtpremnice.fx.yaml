@@ -635,7 +635,8 @@
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
-                            =UpdateContext({wizardStep:2});
+                            =Select(Self);
+                            UpdateContext({wizardStep:2});
                         TemplatePadding: =0
                         TemplateSize: =199
                         Width: =Parent.Width
@@ -867,13 +868,12 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: |-
-                            =//Filter(colSalesResEntries, OtpremniceLines_1.Selected.Item_No = Item_No)
-                            OtpremniceLines.Selected.Res_Entry
+                        Items: =First(Filter(otpremnicaCollection, OtpremniceLines.Selected.Item_No = Item_No)).Res_Entry
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
-                            =UpdateContext({isModalOpen: true})
+                            =Select(Self);
+                            UpdateContext({isModalOpen: true})
                         TemplatePadding: =0
                         TemplateSize: =176
                         Width: =Parent.Width
@@ -1525,7 +1525,7 @@
                         LayoutMinWidth: =96
                         OnSelect: |-
                             =UpdateIf(
-                                OtpremniceLines.Selected.Res_Entry,
+                                First(Filter(otpremnicaCollection, ThisRecord.Line_No = OtpremniceLines.Selected.Line_No)).Res_Entry,
                                 Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
                                 {
                                     Exp_Date: dp_ExpDate.SelectedDate,
@@ -1533,8 +1533,16 @@
                                     Quantity: inp_Quantity.Value
                                 }
                             );
-                            
-                            UpdateContext({isModalOpen: true})
+                            ClearCollect(
+                                otpremnicaCollectionEdited,
+                                otpremnicaCollection
+                            );
+                            ClearCollect(
+                                otpremnicaCollection,
+                                otpremnicaCollectionEdited
+                            );
+                            Clear(otpremnicaCollectionEdited);
+                            UpdateContext({isModalOpen: false})
                         Text: ="Spasi"
                         Width: =96
                         X: =0
