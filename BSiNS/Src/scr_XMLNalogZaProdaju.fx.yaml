@@ -9,6 +9,11 @@
         
         Reset(nalogZaProdajuReadyForNavCheckbox);
         
+        UpdateContext({VAL:GetXml.Run(
+                                SelectedFile,
+                                SelectedFolder
+                            ).response});
+        
         If(!IsBlank(SelectedFile),
             IfError(
                 UpdateContext(
@@ -398,6 +403,15 @@
                     X: =0
                     Y: =1
                     ZIndex: =1
+
+                    TextCanvas4 As Text:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =115
+                        Text: =Text(xmlData.Sales_Header)
+                        Width: =264
+                        X: =534
+                        Y: =22
+                        ZIndex: =7
 
                     Group4_2 As group:
                         Height: =5
