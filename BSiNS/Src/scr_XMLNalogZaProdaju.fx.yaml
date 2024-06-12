@@ -6,9 +6,8 @@
             isLoading,
             true
         );
-        
-        Reset(nalogZaProdajuReadyForNavCheckbox);
-        Reset(doradaCheckbox);
+        nalogZaProdajuReadyForNavCheckbox = false;
+        doradaCheckbox = false;
         
         UpdateContext({VAL:GetXml.Run(
                                 SelectedFile,
@@ -34,58 +33,59 @@
         UpdateContext({
             header:
                 {
-                    Document_Type: Text(xmlData.Document_Type),
-                    No: Text(xmlData.'No.'),
-                    'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
-                    'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
-                    'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
-                    'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
-                    'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
-                    'Sell-to_City': Text(xmlData.'Sell-to_City'),
-                    'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
-                    Posting_Date: Text(xmlData.Posting_Date),
-                    Order_Date: Text(xmlData.Order_Date),
-                    Document_Date: Text(xmlData.Document_Date),
-                    VAT_Date: Text(xmlData.VAT_Date),
-                    Quote_No: Text(xmlData.Quote_No),
-                    Ext_Doc_No: Text(xmlData.Ext_Doc_No),
-                    Salesperson_Code: Text(xmlData.Salesperson_Code),
-                    Status: Text(xmlData.Status),
-                    'Bill-to_Cust_No.': Text(xmlData.'Bill-to_Cust_No.'),
-                    'Bill-To_Contact_No.': Text(xmlData.'Bill-To_Contact_No.'),
-                    Customer_Price_Group: Text(xmlData.Customer_Price_Group),
-                    'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
+                    Amount: Text(xmlData.Amount),
+                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
+                    Bank_Name: Text(xmlData.Bank_Name),
+                    Bank_No: Text(xmlData.Bank_No),
+                    'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
                     'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
-                    'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
                     'Bill-to_City': Text(xmlData.'Bill-to_City'),
                     'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
-                    Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
+                    'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
+                    'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
+                    'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
+                    Customer_Price_Group: Text(xmlData.Customer_Price_Group),
+                    Document_Date: Text(xmlData.Document_Date),
+                    Document_Type: Text(xmlData.Document_Type),
                     Due_Date: Text(xmlData.Due_Date),
-                    Bank_No: Text(xmlData.Bank_No),
-                    Bank_Name: Text(xmlData.Bank_Name),
-                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
-                    Payement_Disc: Text(xmlData.Payement_Disc),
-                    Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
-                    Payement_Method_Code: Text(xmlData.Payement_Method_Code),
-                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
-                    Amount: Text(xmlData.Amount),
-                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                    Ext_Doc_No: Text(xmlData.Ext_Doc_No),
                     'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
-                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
-                    Transport_Method: Text(xmlData.Transport_Method),
-                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
-                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
-                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
-                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
-                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
-                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
-                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
                     Location_Code: Text(xmlData.Location_Code),
-                    Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
+                    'No.': Text(xmlData.'No.'),
+                    Order_Date: Text(xmlData.Order_Date),
+                    Payement_Disc: Text(xmlData.Payement_Disc),
+                    Payement_Method_Code: Text(xmlData.Payement_Method_Code),
+                    Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
+                    Posting_Date: Text(xmlData.Posting_Date),
+                    Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
+                    Quote_No: Text(xmlData.Quote_No),
+                    Salesperson_Code: Text(xmlData.Salesperson_Code),
+                    'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
+                    'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
+                    'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
+                    'Sell-to_City': Text(xmlData.'Sell-to_City'),
+                    'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
+                    'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
+                    'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
                     Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
                     Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
+                    Shipp_Date: Text(xmlData.Shipp_Date),
+                    Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
+                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
+                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
+                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
+                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
+                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
+                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
+                    Status: Text(xmlData.Status),
                     Tax_Area_Code: Text(xmlData.Tax_Area_Code),
-                    Shipp_Date: Text(xmlData.Shipp_Date)
+                    Transport_Method: Text(xmlData.Transport_Method),
+                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
+                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
+                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                    VAT_Date: Text(xmlData.VAT_Date)
+        
                 }
         });
         
@@ -212,28 +212,28 @@
                             }
                         ),
                         {
-                            Created_By: Text(xmlData.Purchase_Line.Res_Entry.Created_By),
-                            Creation_Date: Text(xmlData.Purchase_Line.Res_Entry.Creation_Date),
-                            Entry_No: Text(xmlData.Purchase_Line.Res_Entry.Entry_No),
-                            Exp_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Date),
-                            Exp_Receipt_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Receipt_Date),
-                            Item_No: Text(xmlData.Purchase_Line.Res_Entry.Item_No),
-                            Item_Tracking: Text(xmlData.Purchase_Line.Res_Entry.Item_Tracking),
-                            LOT_No: Text(xmlData.Purchase_Line.Res_Entry.LOT_No),
-                            Location_Code: Text(xmlData.Purchase_Line.Res_Entry.Location_Code),
-                            Positive: Text(xmlData.Purchase_Line.Res_Entry.Positive),
-                            'Qty-to-Handle_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Handle_Base'),
-                            'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
-                            Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
-                            Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
-                            Quantity_Completed: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Completed),
-                            Quantity_NewLOT: Text(xmlData.Purchase_Line.Quantity_NewLOT),
-                            Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
-                            Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
-                            Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
-                            Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
-                            Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
-                            Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
+                            Created_By: Text(xmlData.Sales_Line.Res_Entry.Created_By),
+                            Creation_Date: Text(xmlData.Sales_Line.Res_Entry.Creation_Date),
+                            Entry_No: Text(xmlData.Sales_Line.Res_Entry.Entry_No),
+                            Exp_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Date),
+                            Exp_Receipt_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Receipt_Date),
+                            Item_No: Text(xmlData.Sales_Line.Res_Entry.Item_No),
+                            Item_Tracking: Text(xmlData.Sales_Line.Res_Entry.Item_Tracking),
+                            LOT_No: Text(xmlData.Sales_Line.Res_Entry.LOT_No),
+                            Location_Code: Text(xmlData.Sales_Line.Res_Entry.Location_Code),
+                            Positive: Text(xmlData.Sales_Line.Res_Entry.Positive),
+                            'Qty-to-Handle_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(xmlData.Sales_Line.Res_Entry.Quantity),
+                            Quantity_Base: Text(xmlData.Sales_Line.Res_Entry.Quantity_Base),
+                            Quantity_Completed: Text(xmlData.Sales_Line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Text(xmlData.Sales_Line.Quantity_NewLOT),
+                            Res_Status: Text(xmlData.Sales_Line.Res_Entry.Res_Status),
+                            Shipment_Date: Text(xmlData.Sales_Line.Res_Entry.Shipment_Date),
+                            Source_ID: Text(xmlData.Sales_Line.Res_Entry.Source_ID),
+                            Source_Ref_No: Text(xmlData.Sales_Line.Res_Entry.Source_Ref_No),
+                            Source_SubType: Text(xmlData.Sales_Line.Res_Entry.Source_SubType),
+                            Source_Type: Text(xmlData.Sales_Line.Res_Entry.Source_Type)
                         }
                     ),
                     'Sell-to_Customer_No.': Text(xmlData.Sales_Line.'Sell-to_Customer_No.'),
@@ -431,7 +431,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj naloga :   " & header.No
+                                ="Broj naloga :   " & header.'No.'
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -997,6 +997,25 @@
                             Y: =196
                             ZIndex: =32
 
+                        Body1_41 As label:
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =19
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =If(IsBlank(ThisItem.Quantity_NewLOT), 0, ThisItem.Quantity_NewLOT)
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =158
+                            X: =184
+                            Y: =123
+                            ZIndex: =33
+
                     Container2_5 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
                         Height: =49
@@ -1154,6 +1173,7 @@
                 doradaCheckbox As Checkbox:
                     BasePaletteColor: =RGBA(249, 83, 109, 1)
                     CheckboxSize: =16
+                    Checked: =doradaCheckbox
                     DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
                     FontColor: =
                     FontSize: =14
@@ -1162,8 +1182,10 @@
                     Label: ="Dorada"
                     LayoutMinHeight: =32
                     LayoutMinWidth: =160
-                    OnCheck: =false
-                    OnUncheck: =false
+                    OnCheck: |-
+                        =UpdateContext({doradaCheckbox: true, nalogZaProdajuReadyForNavCheckbox: false});
+                    OnUncheck: |-
+                        =UpdateContext({doradaCheckbox: false});
                     Width: =110
                     X: =40
                     Y: =0
@@ -1172,6 +1194,7 @@
                 nalogZaProdajuReadyForNavCheckbox As Checkbox:
                     BasePaletteColor: =RGBA(249, 83, 109, 1)
                     CheckboxSize: =16
+                    Checked: =nalogZaProdajuReadyForNavCheckbox
                     DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
                     FontColor: =
                     FontSize: =14
@@ -1180,8 +1203,10 @@
                     Label: ="NAV"
                     LayoutMinHeight: =32
                     LayoutMinWidth: =160
-                    OnCheck: =false
-                    OnUncheck: =false
+                    OnCheck: |-
+                        =UpdateContext({doradaCheckbox: false, nalogZaProdajuReadyForNavCheckbox: true});
+                    OnUncheck: |-
+                        =UpdateContext({nalogZaProdajuReadyForNavCheckbox: false});
                     Width: =80
                     X: =40
                     Y: =0
@@ -1231,7 +1256,7 @@
                                 2000
                             );
                             If(
-                                nalogZaProdajuReadyForNavCheckbox.Checked,
+                                nalogZaProdajuReadyForNavCheckbox,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
                                     SelectedFolder,
@@ -1247,7 +1272,7 @@
                                 )
                             );
                             If(
-                                doradaCheckbox.Checked,
+                                doradaCheckbox,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
                                     SelectedFolder,
@@ -1519,115 +1544,6 @@
                             Y: =40
                             ZIndex: =2
 
-                    Container13_4 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        ZIndex: =4
-
-                        TextCanvas3_4 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: ="Rok trajanja"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "DatePickerCanvas2_1 As 'Date picker'":
-                            DisplayMode: =DisplayMode.Edit
-                            Format: ='DatePickerCanvas.Format'.Short
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            StartOfWeek: ="Monday"
-                            Visible: =false
-                            Width: =320
-                            X: =0
-                            Y: =0
-                            ZIndex: =2
-
-                        dp_ExpDate_1 As datepicker:
-                            AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =App.Theme.Colors.Primary
-                            BorderThickness: =0.5
-                            CalendarHeaderFill: =App.Theme.Colors.Primary
-                            Color: =RGBA(0, 0, 0, 1)
-                            DefaultDate: =If(IsBlank(NalogZaProdajuResEntry.Selected.Exp_Date), Today(), NalogZaProdajuResEntry.Selected.Exp_Date)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            DisabledFill: =RGBA(244, 244, 244, 1)
-                            EndYear: =Year(Today()) + 20
-                            Font: =App.Theme.Font
-                            Format: ="dd.mm.yyyy"
-                            HoverDateFill: =App.Theme.Colors.Lighter70
-                            IconBackground: =App.Theme.Colors.Primary
-                            LayoutMinHeight: =20
-                            LayoutMinWidth: =50
-                            SelectedDateFill: =App.Theme.Colors.Primary
-                            Size: =12
-                            StartOfWeek: =StartOfWeek.Monday
-                            StartYear: =Year(Today())
-                            Width: =150
-                            ZIndex: =3
-
-                    Container13_5 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        ZIndex: =5
-
-                        TextCanvas3_5 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: ="LOT"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "inp_LOTNo_1 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =12
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            Placeholder: ="Unesite LOT"
-                            Value: =NalogZaProdajuResEntry.Selected.LOT_No
-                            Width: =150
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
                 Container10_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
@@ -1661,8 +1577,6 @@
                             =Reset(inp_Quantity_1);
                             Reset(inp_rezQty);
                             Reset(inp_potrebnoQty);
-                            Reset(dp_ExpDate_1);
-                            Reset(inp_LOTNo_1);
                             UpdateContext({potrebnaKolicina: 0});
                             Set(isModalOpen, false);
                         Text: ="Zatvori"
@@ -1684,11 +1598,9 @@
                                 First(Filter(salesCollection, ThisRecord.Line_No = NalogZaProdajuLines.Selected.Line_No)).Res_Entry,
                                 Entry_No = NalogZaProdajuResEntry.Selected.Entry_No,
                                 {
-                                    Exp_Date: dp_ExpDate_1.SelectedDate,
-                                    LOT_No: inp_LOTNo_1.Value,
                                     Quantity: inp_Quantity_1.Value,
-                                    Quantity_Completed: inp_rezQty.Value,
-                                    Quantity_NewLOT:inp_potrebnoQty.Value
+                                    Quantity_Completed: (inp_rezQty.Value * (-1) ),
+                                    Quantity_NewLOT: (inp_potrebnoQty.Value * (-1) )
                                 }
                             );
                             ClearCollect(
@@ -1703,8 +1615,6 @@
                             Reset(inp_Quantity_1);
                             Reset(inp_rezQty);
                             Reset(inp_potrebnoQty);
-                            Reset(dp_ExpDate_1);
-                            Reset(inp_LOTNo_1);
                             UpdateContext({potrebnaKolicina: 0});
                             
                             Set(isModalOpen, false);
