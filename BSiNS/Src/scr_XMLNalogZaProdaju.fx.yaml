@@ -853,7 +853,7 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =12
-                            Text: =ThisItem.Exp_Date
+                            Text: =If(IsBlank(ThisItem.Exp_Date), "//",ThisItem.Exp_Date)
                             VerticalAlign: =VerticalAlign.Top
                             Width: =158
                             X: =142
@@ -1060,23 +1060,53 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            nalogZaProdajuReadyForNavCheckbox As Checkbox:
-                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                CheckboxSize: =16
-                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                FontColor: =
-                FontSize: =14
-                FontWeight: =FontWeight.Bold
+            Container3 As groupContainer.horizontalAutoLayoutContainer:
                 Height: =Parent.Height
-                Label: ="Spremno za NAV"
-                LayoutMinHeight: =32
-                LayoutMinWidth: =160
-                OnCheck: =false
-                OnUncheck: =false
-                Width: =160
-                X: =0
-                Y: =0
-                ZIndex: =2
+                LayoutMinHeight: =50
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                doradaCheckbox As Checkbox:
+                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    CheckboxSize: =16
+                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                    FontColor: =
+                    FontSize: =14
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Label: ="Dorada"
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =160
+                    OnCheck: =false
+                    OnUncheck: =false
+                    Width: =110
+                    X: =40
+                    Y: =0
+                    ZIndex: =1
+
+                nalogZaProdajuReadyForNavCheckbox As Checkbox:
+                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    CheckboxSize: =16
+                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                    FontColor: =
+                    FontSize: =14
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Label: ="Spremno za NAV"
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =160
+                    OnCheck: =false
+                    OnUncheck: =false
+                    Width: =160
+                    X: =40
+                    Y: =0
+                    ZIndex: =2
 
             saveXml_6 As button:
                 AlignInContainer: =AlignInContainer.Center
@@ -1215,7 +1245,7 @@
                 Width: =100
                 X: =570
                 Y: =718
-                ZIndex: =3
+                ZIndex: =2
 
         Spinner2_3 As Spinner:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
@@ -1357,7 +1387,7 @@
                             Y: =40
                             ZIndex: =2
 
-                    Container13_4 As groupContainer.verticalAutoLayoutContainer:
+                    Container13_7 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -1371,6 +1401,90 @@
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
                         ZIndex: =2
+
+                        TextCanvas3_7 As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Rezervisano"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_LOTNo_3 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            Placeholder: ="Unesite LOT"
+                            Value: =NalogZaProdajuResEntry.Selected.Quantity_Completed
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                    Container13_6 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =3
+
+                        TextCanvas3_6 As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Potrebno"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_LOTNo_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            Placeholder: ="Unesite LOT"
+                            Value: =NalogZaProdajuResEntry.Selected.Quantity - NalogZaProdajuResEntry.Selected.Quantity_Completed
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                    Container13_4 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =4
 
                         TextCanvas3_4 As Text:
                             AutoHeight: =true
@@ -1432,7 +1546,7 @@
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        ZIndex: =3
+                        ZIndex: =5
 
                         TextCanvas3_5 As Text:
                             AutoHeight: =true
