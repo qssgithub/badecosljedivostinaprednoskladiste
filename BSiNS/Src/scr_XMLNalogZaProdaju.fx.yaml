@@ -734,9 +734,10 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(NalogZaProdajuLines.Selected.Res_Entry, NalogZaProdajuLines.Selected.Item_No = Item_No)
+                        Items: =First(Filter(salesCollection, NalogZaProdajuLines.Selected.Item_No = Item_No)).Res_Entry
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Set(isModalOpen,true);
                         TemplatePadding: =0
                         TemplateSize: =176
                         Width: =Parent.Width
@@ -1261,7 +1262,6 @@
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
-        Visible: =isModalOpen
         Width: |
             =Parent.Width
         ZIndex: =2
@@ -1372,7 +1372,7 @@
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
-                            Value: =Otpremnice_ResEntryGallery.Selected.Quantity
+                            Value: =NalogZaProdajuResEntry.Selected.Quantity
                             Width: =150
                             X: =40
                             Y: =40
@@ -1422,7 +1422,7 @@
                             BorderColor: =App.Theme.Colors.Darker40
                             CalendarHeaderFill: =App.Theme.Colors.Primary
                             Color: =RGBA(0, 0, 0, 1)
-                            DefaultDate: =If(IsBlank(Otpremnice_ResEntryGallery.Selected.Exp_Date), Today(), Otpremnice_ResEntryGallery.Selected.Exp_Date)
+                            DefaultDate: =If(IsBlank(NalogZaProdajuResEntry.Selected.Exp_Date), Today(), NalogZaProdajuResEntry.Selected.Exp_Date)
                             DisabledBorderColor: =RGBA(166, 166, 166, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             DisabledFill: =RGBA(244, 244, 244, 1)
@@ -1476,7 +1476,7 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
-                            Value: =Otpremnice_ResEntryGallery.Selected.LOT_No
+                            Value: =NalogZaProdajuResEntry.Selected.LOT_No
                             Width: =150
                             X: =40
                             Y: =40
@@ -1511,8 +1511,7 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
-                            =UpdateContext({isModalOpen: false})
+                        OnSelect: =Set(isModalOpen, false);
                         Text: ="Zatvori"
                         Width: =96
                         X: =40
@@ -1527,10 +1526,10 @@
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
+                        OnSelect: |
                             =UpdateIf(
-                                First(Filter(otpremnicaCollection, ThisRecord.Line_No = OtpremniceLines.Selected.Line_No)).Res_Entry,
-                                Entry_No = Otpremnice_ResEntryGallery.Selected.Entry_No,
+                                First(Filter(salesCollection, ThisRecord.Line_No = NalogZaProdajuLines.Selected.Line_No)).Res_Entry,
+                                Entry_No = NalogZaProdajuResEntry.Selected.Entry_No,
                                 {
                                     Exp_Date: dp_ExpDate_1.SelectedDate,
                                     LOT_No: inp_LOTNo_1.Value,
@@ -1538,15 +1537,15 @@
                                 }
                             );
                             ClearCollect(
-                                otpremnicaCollectionEdited,
-                                otpremnicaCollection
+                                salesCollectionEdited,
+                                salesCollection
                             );
                             ClearCollect(
-                                otpremnicaCollection,
-                                otpremnicaCollectionEdited
+                                salesCollection,
+                                salesCollectionEdited
                             );
-                            Clear(otpremnicaCollectionEdited);
-                            UpdateContext({isModalOpen: false})
+                            Clear(salesCollectionEdited);
+                            Set(isModalOpen, false);
                         Text: ="Spasi"
                         Width: =96
                         X: =0

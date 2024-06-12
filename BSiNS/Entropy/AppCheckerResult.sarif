@@ -38865,96 +38865,6 @@
           },
           "ruleId": "app-UnusedVariables",
           "ruleIndex": 10
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_3.inp_Quantity_1.Value"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_3.inp_Quantity_1.Value",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Value",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_3.inp_Quantity_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_4.dp_ExpDate_1.DefaultDate"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_4.dp_ExpDate_1.DefaultDate",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "DefaultDate",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_4.dp_ExpDate_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 11
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_5.inp_LOTNo_1.Value"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_5.inp_LOTNo_1.Value",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "Value",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju.con_ModalFade_1.con_Modal_1.vrt_Modal_1.Container11_1.Container13_5.inp_LOTNo_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-InefficientDelayLoading",
-          "ruleIndex": 11
         }
       ],
       "tool": {
@@ -39136,23 +39046,6 @@
                 "level": "Medium",
                 "primaryCategory": "performance",
                 "whyFix": "This variable is declared but is not referenced by any control, so it is not needed."
-              }
-            },
-            {
-              "id": "app-InefficientDelayLoading",
-              "messageStrings": {
-                "issue": {
-                  "text": "Inefficient delay loading"
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Use variables, collections, and navigation context to share state across screens instead."
-                ],
-                "level": "Medium",
-                "primaryCategory": "performance",
-                "whyFix": "Controls that reference controls on other screens can slow down app loading and navigation. Doing this may force the app to load the other screens immediately, rather than waiting until the user navigates to that screen."
               }
             }
           ],
