@@ -94,23 +94,19 @@
                 ForAll(
                     xmlData.Sales_Line As line,
                     {
-                        Document_Type: Text(line.Document_Type),
-                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
-                        Document_No: Text(line.Document_No),
-                        Line_No: Text(line.Line_No),
-                        Type: Text(line.Type),
-                        Item_No: Text(line.Item_No),
-                        Location_Code: Text(line.Location_Code),
-                        Posting_Group: Text(line.Posting_Group),
                         Description: Text(line.Description),
-                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
-                        Quantity: Text(line.Quantity),
-                        Unit_Price: Text(line.Unit_Price),
+                        Document_No: Text(line.Document_No),
+                        Document_Type: Text(line.Document_Type),
+                        Item_No: Text(line.Item_No),
                         Line_Amount: Text(line.Line_Amount),
                         Line_Discount_Amount: Text(line.Line_Discount_Amount),
+                        Line_No: Text(line.Line_No),
+                        Location_Code: Text(line.Location_Code),
+                        Outstand_Quantity: Text(line.Outstand_Quantity),
+                        Posting_Group: Text(line.Posting_Group),
                         'Qty-to_Invoice': Text(line.'Qty-to_Invoice'),
                         'Qty-to_Ship': Text(line.'Qty-to_Ship'),
-                        Outstand_Quantity: Text(line.Outstand_Quantity),
+                        Quantity: Text(line.Quantity),
                         Res_Entry: IfError(
                             ForAll(
                                 line.Res_Entry As entry,
@@ -129,6 +125,8 @@
                                     'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                                     Quantity: Text(entry.Quantity),
                                     Quantity_Base: Text(entry.Quantity_Base),
+                                    Quantity_Completed: Text(entry.Quantity_Completed),
+                                    Quantity_NewLOT: Text(entry.Quantity_NewLOT),
                                     Res_Status: Text(entry.Res_Status),
                                     Shipment_Date: Text(entry.Shipment_Date),
                                     Source_ID: Text(entry.Source_ID),
@@ -152,6 +150,8 @@
                                 'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
                                 Quantity: Text(line.Res_Entry.Quantity),
                                 Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                                Quantity_Completed: Text(line.Res_Entry.Quantity_Completed),
+                                Quantity_NewLOT: Text(line.Res_Entry.Quantity_NewLOT),
                                 Res_Status: Text(line.Res_Entry.Res_Status),
                                 Shipment_Date: Text(line.Res_Entry.Shipment_Date),
                                 Source_ID: Text(line.Res_Entry.Source_ID),
@@ -159,27 +159,29 @@
                                 Source_SubType: Text(line.Res_Entry.Source_SubType),
                                 Source_Type: Text(line.Res_Entry.Source_Type)
                             }
-                        )
+                        ),
+                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
+                        Type: Text(line.Type),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Unit_Price: Text(line.Unit_Price)
+                        
                     }
                 ),
                 {
-                    Document_Type: Text(xmlData.Transfer_Line.Document_Type),
-                    'Sell-to_Customer_No.': Text(xmlData.Transfer_Line.'Sell-to_Customer_No.'),
-                    Document_No: Text(xmlData.Transfer_Line.Document_No),
-                    Line_No: Text(xmlData.Transfer_Line.Line_No),
-                    Type: Text(xmlData.Transfer_Line.Type),
-                    Item_No: Text(xmlData.Transfer_Line.Item_No),
-                    Location_Code: Text(xmlData.Transfer_Line.Location_Code),
-                    Posting_Group: Text(xmlData.Transfer_Line.Posting_Group),
-                    Description: Text(xmlData.Transfer_Line.Description),
-                    Unit_Of_Measure: Text(xmlData.Transfer_Line.Unit_Of_Measure),
-                    Quantity: Text(xmlData.Transfer_Line.Quantity),
-                    Unit_Price: Text(xmlData.Transfer_Line.Unit_Price),
-                    Line_Amount: Text(xmlData.Transfer_Line.Line_Amount),
-                    Line_Discount_Amount: Text(xmlData.Transfer_Line.Line_Discount_Amount),
-                    'Qty-to_Invoice': Text(xmlData.Transfer_Line.'Qty-to_Invoice'),
-                    'Qty-to_Ship': Text(xmlData.Transfer_Line.'Qty-to_Ship'),
-                    Outstand_Quantity: Text(xmlData.Transfer_Line.Outstand_Quantity),
+                    Description: Text(xmlData.Sales_Line.Description),
+                    Document_No : Text(xmlData.Sales_Line.Document_No),
+                    Document_Type: Text(xmlData.Sales_Line.Document_Type),
+                    Item_No: Text(xmlData.Sales_Line.Item_No),
+                    Line_Amount: Text(xmlData.Sales_Line.Line_Amount),
+                    Line_Discount_Amount: Text(xmlData.Sales_Line.Line_Discount_Amount),
+                    Line_No: Text(xmlData.Sales_Line.Line_No),
+                    Location_Code: Text(xmlData.Sales_Line.Location_Code),
+                    Outstand_Quantity: Text(xmlData.Sales_Line.Outstand_Quantity),
+                    Posting_Group: Text(xmlData.Sales_Line.Posting_Group),
+                    'Qty-to_Invoice': Text(xmlData.Sales_Line.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Text(xmlData.Sales_Line.'Qty-to_Ship'),
+                    Quantity: Text(xmlData.Sales_Line.Quantity),
+                    
                     Res_Entry: IfError(
                         ForAll(
                             xmlData.Purchase_Line.Res_Entry As entry,
@@ -198,6 +200,8 @@
                                 'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                                 Quantity: Text(entry.Quantity),
                                 Quantity_Base: Text(entry.Quantity_Base),
+                                Quantity_Completed: Text(entry.Quantity_Completed),
+                                Quantity_NewLOT: Text(entry.Quantity_NewLOT),
                                 Res_Status: Text(entry.Res_Status),
                                 Shipment_Date: Text(entry.Shipment_Date),
                                 Source_ID: Text(entry.Source_ID),
@@ -221,6 +225,8 @@
                             'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
                             Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
                             Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
+                            Quantity_Completed: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Text(xmlData.Purchase_Line.Quantity_NewLOT),
                             Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
                             Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
                             Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
@@ -228,7 +234,11 @@
                             Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
                             Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
                         }
-                    )
+                    ),
+                    'Sell-to_Customer_No.': Text(xmlData.Sales_Line.'Sell-to_Customer_No.'),
+                    Type: Text(xmlData.Sales_Line.Type),
+                    Unit_Of_Measure: Text(xmlData.Sales_Line.Unit_Of_Measure),
+                    Unit_Price: Text(xmlData.Sales_Line.Unit_Price)
                 }
             )
         );
@@ -407,7 +417,7 @@
                     TextCanvas4 As Text:
                         DisplayMode: =DisplayMode.Edit
                         Height: =115
-                        Text: =Text(xmlData.Sales_Header)
+                        Text: =First(salesCollection).Item_No
                         Width: =264
                         X: =534
                         Y: =22
