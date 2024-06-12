@@ -8,6 +8,7 @@
         );
         
         Reset(nalogZaProdajuReadyForNavCheckbox);
+        Reset(doradaCheckbox);
         
         UpdateContext({VAL:GetXml.Run(
                                 SelectedFile,
@@ -413,15 +414,6 @@
                     X: =0
                     Y: =1
                     ZIndex: =1
-
-                    TextCanvas4 As Text:
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =115
-                        Text: =xxxxxx
-                        Width: =225
-                        X: =495
-                        Y: =22
-                        ZIndex: =7
 
                     Group4_2 As group:
                         Height: =5
@@ -1244,6 +1236,22 @@
                                     SelectedFile,
                                     SelectedFolder,
                                     ReadyForNAVProcessing
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                ),
+                                Navigate(
+                                    scr_XMLNalogZaProdaju,
+                                    ScreenTransition.Fade
+                                )
+                            );
+                            If(
+                                doradaCheckbox.Checked,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    NAVChanges
                                 );
                                 Navigate(
                                     scr_Entry,
