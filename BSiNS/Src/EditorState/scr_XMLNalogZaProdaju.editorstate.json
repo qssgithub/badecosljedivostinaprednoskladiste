@@ -9085,7 +9085,16 @@
           "InvariantPropertyName": "OnChange",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "Required",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Type"
       ],
       "DynamicProperties": [
         {
@@ -9169,6 +9178,16 @@
         {
           "Category": "Data",
           "PropertyName": "Value",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Required",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Type",
           "RuleProviderType": "User"
         },
         {
