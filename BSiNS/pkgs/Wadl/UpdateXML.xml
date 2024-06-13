@@ -10,8 +10,6 @@
         <property name="text_1" type="string" />
         <property name="text_2" type="string" />
       </object>
-      <object name="ResponseActionOutput" />
-      <object name="Run_responses_default_def" />
     </jsonTypes>
   </grammars>
   <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://europe-002.azure-apim.net/apim/logicflows">
@@ -35,9 +33,6 @@
             </param>
           </representation>
         </request>
-        <response>
-          <representation mediaType="application/json" element="service:ResponseActionOutput" />
-        </response>
       </method>
     </resource>
   </resources>
