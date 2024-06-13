@@ -1383,7 +1383,7 @@
                             LayoutMinWidth: =320
                             OnChange: |
                                 =If(
-                                    !IsNumeric(inp_rezQty_1.Value) || Value(inp_rezQty_1.Value) < 0,
+                                    (!IsNumeric(inp_rezQty_1.Value) && !IsBlank(inp_rezQty_1.Value) ) || Value(inp_rezQty_1.Value) < 0,
                                     Notify(
                                         "Unesite pozitivan broj.",
                                         NotificationType.Error,
