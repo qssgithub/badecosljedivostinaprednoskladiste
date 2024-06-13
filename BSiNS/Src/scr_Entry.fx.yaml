@@ -3,35 +3,58 @@
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnHidden: =
     OnVisible: |
-        =Set(isLoading, true);
-        Set(SelectedFile, Blank());
-        Set(SelectedFolder, Blank());
+        =Set(
+            isLoading,
+            true
+        );
+        Set(
+            SelectedFile,
+            Blank()
+        );
+        Set(
+            SelectedFolder,
+            Blank()
+        );
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {
                 XMLFiles: Table(
-                    Filter(ForAll(
+                    ForAll(
                         Files.ReadyForProcessing As file,
                         {
                             FileName: Text(file.Name),
-                            FileType: Text(Last(FirstN(Split(
-                                file.Name,
-                                "_"
-                            ), 2)).Value),
+                            FileType: Text(
+                                First(
+                                    LastN(
+                                        Split(
+                                            file.Name,
+                                            "_"
+                                        ),
+                                        2
+                                    )
+                                ).Value
+                            ),
                             FolderName: "ReadyForProcessing"
                         }
-                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode),
-                    Filter(ForAll(
+                    ),
+                    ForAll(
                         Files.InProgress As file,
                         {
                             FileName: file.Name,
-                            FileType: Text(Last(FirstN(Split(
-                                file.Name,
-                                "_"
-                            ), 2)).Value),
+                            FileType: Text(
+                                First(
+                                    LastN(
+                                        Split(
+                                            file.Name,
+                                            "_"
+                                        ),
+                                        2
+                                    )
+                                ).Value
+                            ),
                             FolderName: "InProgress"
                         }
-                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode)
+                    )
                 )
             }
         );
@@ -58,7 +81,10 @@
                 }
             )
         );
-        Set(isLoading, false);
+        Set(
+            isLoading,
+            false
+        );
 
     vrt_Entry As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -410,33 +436,50 @@
                     LayoutMinHeight: =32
                     LayoutMinWidth: =96
                     OnSelect: |
-                        =Set(isLoading, true);
+                        =Set(
+                            isLoading,
+                            true
+                        );
                         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
                         UpdateContext(
                             {
                                 XMLFiles: Table(
-                                    Filter(ForAll(
+                                    ForAll(
                                         Files.ReadyForProcessing As file,
                                         {
                                             FileName: Text(file.Name),
-                                            FileType: Text(Last(FirstN(Split(
-                                                file.Name,
-                                                "_"
-                                            ), 2)).Value),
+                                            FileType: Text(
+                                                First(
+                                                    LastN(
+                                                        Split(
+                                                            file.Name,
+                                                            "_"
+                                                        ),
+                                                        2
+                                                    )
+                                                ).Value
+                                            ),
                                             FolderName: "ReadyForProcessing"
                                         }
-                                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode),
-                                    Filter(ForAll(
+                                    ),
+                                    ForAll(
                                         Files.InProgress As file,
                                         {
                                             FileName: file.Name,
-                                            FileType: Text(Last(FirstN(Split(
-                                                file.Name,
-                                                "_"
-                                            ), 2)).Value),
+                                            FileType: Text(
+                                                First(
+                                                    LastN(
+                                                        Split(
+                                                            file.Name,
+                                                            "_"
+                                                        ),
+                                                        2
+                                                    )
+                                                ).Value
+                                            ),
                                             FolderName: "InProgress"
                                         }
-                                    ), Last(FirstN(Split(ThisRecord.FileName, "_"), 1)).Value = warehouseCode)
+                                    )
                                 )
                             }
                         );
@@ -463,7 +506,10 @@
                                 }
                             )
                         );
-                        Set(isLoading, false);
+                        Set(
+                            isLoading,
+                            false
+                        );
                     PaddingBottom: =0
                     PaddingLeft: =0
                     PaddingRight: =0
