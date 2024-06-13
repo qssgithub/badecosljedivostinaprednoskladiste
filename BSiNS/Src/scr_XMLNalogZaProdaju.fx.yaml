@@ -1273,27 +1273,24 @@
                                     scr_Entry,
                                     ScreenTransition.Fade
                                 ),
-                                Navigate(
-                                    scr_XMLNalogZaProdaju,
-                                    ScreenTransition.Fade
+                                If(
+                                    doradaCheckbox,
+                                    ChangeXmlStatus.Run(
+                                        SelectedFile,
+                                        SelectedFolder,
+                                        NAVChanges
+                                    );
+                                    Navigate(
+                                        scr_Entry,
+                                        ScreenTransition.Fade
+                                    ),
+                                    Navigate(
+                                        scr_XMLNalogZaProdaju,
+                                        ScreenTransition.Fade
+                                    )
                                 )
                             );
-                            If(
-                                doradaCheckbox,
-                                ChangeXmlStatus.Run(
-                                    SelectedFile,
-                                    SelectedFolder,
-                                    NAVChanges
-                                );
-                                Navigate(
-                                    scr_Entry,
-                                    ScreenTransition.Fade
-                                ),
-                                Navigate(
-                                    scr_XMLNalogZaProdaju,
-                                    ScreenTransition.Fade
-                                )
-                            )
+                            
                         ),
                         Set(
                             SelectedFolder,
