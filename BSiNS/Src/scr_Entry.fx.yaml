@@ -4,6 +4,8 @@
     OnHidden: =
     OnVisible: |
         =UpdateContext({IsLoadingGetAllFiles: true});
+        Set(SelectedFile, Blank());
+        Set(SelectedFolder, Blank());
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {
