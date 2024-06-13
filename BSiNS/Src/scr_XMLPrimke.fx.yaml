@@ -6,96 +6,238 @@
             isLoading,
             true
         );
-        
         Reset(primkeReadyForNavCheckbox);
-        
-        UpdateContext(
-            {
-                xmlData: (ParseJSON(
-                    GetXml.Run(
-                        SelectedFile,
-                        SelectedFolder
-                    ).response).Warehouse_Receipt_Header
-                )
-            }
-        );
-        
-        /*If(!IsBlank(SelectedFile),
-            IfError(
-                GetXML_Primke.Run(
-                    SelectedFile,
-                    SelectedFolder
-                ),
-                Notify(
-                    "Error occurred while Get request, check if file exists.",
-                    NotificationType.Error,
-                    5000
-                ),
-                UpdateContext({
-                    warehouse:
-                    GetXML_Primke.Run(
-                        SelectedFile,
-                        SelectedFolder
+        IfError(
+            UpdateContext(
+                {
+                    xmlFile: ParseJSON(
+                        GetXml.Run(
+                            SelectedFile,
+                            SelectedFolder
+                        ).response
                     )
-                })
+                }
             );
-        
-            UpdateContext({
-                warehouseHeader:
-                ParseJSON(warehouse.warehouse_receipt_header)
-            });
-        
-            Clear(colWarehouseLines);
-            ForAll(
-                ParseJSON(warehouse.warehouse_receipt_line),
-                Collect(
-                    colWarehouseLines,
-                    {
-                        No: Text(ThisRecord.No),
-                        Line_No: Text(ThisRecord.Line_No),
-                        Source_Type: Text(ThisRecord.Source_Type),
-                        Source_SubType: Text(ThisRecord.Source_SubType),
-                        Source_No: Text(ThisRecord.Source_No),
-                        Source_Line_No: Text(ThisRecord.Source_Line_No),
-                        Source_Document: Text(ThisRecord.Source_Document),
-                        Location_Code: Text(ThisRecord.Location_Code),
-                        Shelf_No: Text(ThisRecord.Shelf_No),
-                        Bin_Code: Text(ThisRecord.Bin_Code),
-                        Zone_Code: Text(ThisRecord.Zone_Code),
-                        Item_No: Text(ThisRecord.Item_No),
-                        Quantity: Text(ThisRecord.Quantity),
-                        Qty_Base: Text(ThisRecord.Qty_Base),
-                        Qty_Outstanding: Text(ThisRecord.Qty_Outstanding),
-                        Qty_Outstanding_Base: Text(ThisRecord.Qty_Outstanding_Base),
-                        Qty_to_Receive: Text(ThisRecord.Qty_to_Receive),
-                        Qty_to_Receive_Base: Text(ThisRecord.Qty_to_Receive_Base),
-                        Qty_Received: Text(ThisRecord.Qty_Received),
-                        Qty_Received_Base: Text(ThisRecord.Qty_Received_Base),
-                        UOM_Code: Text(ThisRecord.UOM_Code),
-                        Qty_per_UOM: Text(ThisRecord.Qty_per_UOM),
-                        Description: Text(ThisRecord.Description),
-                        Status: Text(ThisRecord.Status),
-                        Sorting_Sequence_No: Text(ThisRecord.Sorting_Sequence_No),
-                        Due_Date: Text(ThisRecord.Due_Date),
-                        Starting_Date: Text(ThisRecord.Starting_Date),
-                        Cubage: Text(ThisRecord.Cubage),
-                        Weight: Text(ThisRecord.Weight),
-                        Not_upd_by_SDP: Text(ThisRecord.Not_upd_by_SDP),
-                        Posting_From_Whs_Ref: Text(ThisRecord.Posting_From_Whs_Ref),
-                        Qty_to_Cross_Dock: Text(ThisRecord.Qty_to_Cross_Dock),
-                        Qty_to_Cross_Dock_Base: Text(ThisRecord.Qty_to_Cross_Dock_Base),
-                        Cross_Dock_Zone_Code: Text(ThisRecord.Cross_Dock_Zone_Code),
-                        Cross_Dock_Bin_Code: Text(ThisRecord.Cross_Dock_Bin_Code)
+            UpdateContext(
+                {
+                    header: {
+                        Bin_Code: Text(xmlFile.Warehouse_Receipt_Header.Bin_Code),
+                        Document_Status: Text(xmlFile.Warehouse_Receipt_Header.Document_Status),
+                        Last_Receiving_No: Text(xmlFile.Warehouse_Receipt_Header.Last_Receiving_No),
+                        Location_Code: Text(xmlFile.Warehouse_Receipt_Header.Location_Code),
+                        No: Text(xmlFile.Warehouse_Receipt_Header.No),
+                        No_Series: Text(xmlFile.Warehouse_Receipt_Header.No_Series),
+                        Posting_Date: Text(xmlFile.Warehouse_Receipt_Header.Posting_Date),
+                        Receiving_No: Text(xmlFile.Warehouse_Receipt_Header.Receiving_No),
+                        Receiving_No_Series: Text(xmlFile.Warehouse_Receipt_Header.Receiving_No_Series),
+                        Vendor_Shipment_No: Text(xmlFile.Warehouse_Receipt_Header.Vendor_Shipment_No),
+                        Zone_Code: Text(xmlFile.Warehouse_Receipt_Header.Zone_Code)
                     }
-                );
+                }
             );
-        );*/
-        
-        Set(isLoading, false);
-        
-        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress); Set(SelectedFolder, InProgress));
-        
-        UpdateContext({wizardStep:1});
+            ClearCollect(
+                colReceipt,
+                IfError(
+                    ForAll(
+                        xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line As line,
+                        {
+                            No: Text(line.No),
+                            Line_No: Text(line.Line_No),
+                            Source_Type: Text(line.Source_Type),
+                            Source_SubType: Text(line.Source_SubType),
+                            Source_No: Text(line.Source_No),
+                            Source_Line_No: Text(line.Source_Line_No),
+                            Source_Document: Text(line.Source_Document),
+                            Location_Code: Text(line.Location_Code),
+                            Shelf_No: Text(line.Shelf_No),
+                            Bin_Code: Text(line.Bin_Code),
+                            Zone_Code: Text(line.Zone_Code),
+                            Item_No: Text(line.Item_No),
+                            Quantity: Text(line.Quantity),
+                            Qty_Base: Text(line.Qty_Base),
+                            Qty_Outstanding: Text(line.Qty_Outstanding),
+                            Qty_Outstanding_Base: Text(line.Qty_Outstanding_Base),
+                            Qty_to_Receive: Text(line.Qty_to_Receive),
+                            Qty_to_Receive_Base: Text(line.Qty_to_Receive_Base),
+                            Qty_Received: Text(line.Qty_Received),
+                            Qty_Received_Base: Text(line.Qty_Received_Base),
+                            UOM_Code: Text(line.UOM_Code),
+                            Qty_per_UOM: Text(line.Qty_per_UOM),
+                            Description: Text(line.Description),
+                            Status: Text(line.Status),
+                            Sorting_Sequence_No: Text(line.Sorting_Sequence_No),
+                            Due_Date: Text(line.Due_Date),
+                            Starting_Date: Text(line.Starting_Date),
+                            Cubage: Text(line.Cubage),
+                            Weight: Text(line.Weight),
+                            Not_upd_by_SDP: Text(line.Not_upd_by_SDP),
+                            Posting_From_Whs_Ref: Text(line.Posting_From_Whs_Ref),
+                            Qty_to_Cross_Dock: Text(line.Qty_to_Cross_Dock),
+                            Qty_to_Cross_Dock_Base: Text(line.Qty_to_Cross_Dock_Base),
+                            Cross_Dock_Zone_Code: Text(line.Cross_Dock_Zone_Code),
+                            Cross_Dock_Bin_Code: Text(line.Cross_Dock_Bin_Code),
+                            Res_Entry: IfError(
+                                ForAll(
+                                    line.Res_Entry As entry,
+                                    {
+                                        Entry_No: Text(entry.Entry_No),
+                                        Item_No: Text(entry.Item_No),
+                                        Positive: Text(entry.Positive),
+                                        Quantity: Text(entry.Quantity),
+                                        Quantity_Base: Text(entry.Quantity_Base),
+                                        Location_Code: Text(entry.Location_Code),
+                                        Res_Status: Text(entry.Res_Status),
+                                        Source_Type: Text(entry.Source_Type),
+                                        Source_SubType: Text(entry.Source_SubType),
+                                        Source_ID: Text(entry.Source_ID),
+                                        Source_Ref_No: Text(entry.Source_Ref_No),
+                                        Item_Tracking: Text(entry.Item_Tracking),
+                                        LOT_No: Text(entry.LOT_No),
+                                        Exp_Date: Text(entry.Exp_Date),
+                                        Creation_Date: Text(entry.Creation_Date),
+                                        Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                        Shipment_Date: Text(entry.Shipment_Date),
+                                        Created_By: Text(entry.Created_By),
+                                        'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                        'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base')
+                                    }
+                                ),
+                                {
+                                    Entry_No: Text(line.Res_Entry.Entry_No),
+                                    Item_No: Text(line.Res_Entry.Item_No),
+                                    Positive: Text(line.Res_Entry.Positive),
+                                    Quantity: Text(line.Res_Entry.Quantity),
+                                    Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                                    Location_Code: Text(line.Res_Entry.Location_Code),
+                                    Res_Status: Text(line.Res_Entry.Res_Status),
+                                    Source_Type: Text(line.Res_Entry.Source_Type),
+                                    Source_SubType: Text(line.Res_Entry.Source_SubType),
+                                    Source_ID: Text(line.Res_Entry.Source_ID),
+                                    Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                                    Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                                    LOT_No: Text(line.Res_Entry.LOT_No),
+                                    Exp_Date: Text(line.Res_Entry.Exp_Date),
+                                    Creation_Date: Text(line.Res_Entry.Creation_Date),
+                                    Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                                    Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                                    Created_By: Text(line.Res_Entry.Created_By),
+                                    'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                                    'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base')
+                                }
+                            )
+                        }
+                    ),
+                    {
+                        No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.No),
+                        Line_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Line_No),
+                        Source_Type: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Type),
+                        Source_SubType: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_SubType),
+                        Source_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_No),
+                        Source_Line_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Line_No),
+                        Source_Document: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Source_Document),
+                        Location_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Location_Code),
+                        Shelf_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Shelf_No),
+                        Bin_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Bin_Code),
+                        Zone_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Zone_Code),
+                        Item_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Item_No),
+                        Quantity: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Quantity),
+                        Qty_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Base),
+                        Qty_Outstanding: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding),
+                        Qty_Outstanding_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Outstanding_Base),
+                        Qty_to_Receive: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive),
+                        Qty_to_Receive_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Receive_Base),
+                        Qty_Received: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received),
+                        Qty_Received_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_Received_Base),
+                        UOM_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.UOM_Code),
+                        Qty_per_UOM: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_per_UOM),
+                        Description: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Description),
+                        Status: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Status),
+                        Sorting_Sequence_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Sorting_Sequence_No),
+                        Due_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Due_Date),
+                        Starting_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Starting_Date),
+                        Cubage: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cubage),
+                        Weight: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Weight),
+                        Not_upd_by_SDP: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Not_upd_by_SDP),
+                        Posting_From_Whs_Ref: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Posting_From_Whs_Ref),
+                        Qty_to_Cross_Dock: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock),
+                        Qty_to_Cross_Dock_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Qty_to_Cross_Dock_Base),
+                        Cross_Dock_Zone_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Zone_Code),
+                        Cross_Dock_Bin_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Cross_Dock_Bin_Code),
+                        Res_Entry: IfError(
+                            ForAll(
+                                xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry As entry,
+                                {
+                                    Entry_No: Text(entry.Entry_No),
+                                    Item_No: Text(entry.Item_No),
+                                    Positive: Text(entry.Positive),
+                                    Quantity: Text(entry.Quantity),
+                                    Quantity_Base: Text(entry.Quantity_Base),
+                                    Location_Code: Text(entry.Location_Code),
+                                    Res_Status: Text(entry.Res_Status),
+                                    Source_Type: Text(entry.Source_Type),
+                                    Source_SubType: Text(entry.Source_SubType),
+                                    Source_ID: Text(entry.Source_ID),
+                                    Source_Ref_No: Text(entry.Source_Ref_No),
+                                    Item_Tracking: Text(entry.Item_Tracking),
+                                    LOT_No: Text(entry.LOT_No),
+                                    Exp_Date: Text(entry.Exp_Date),
+                                    Creation_Date: Text(entry.Creation_Date),
+                                    Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                    Shipment_Date: Text(entry.Shipment_Date),
+                                    Created_By: Text(entry.Created_By),
+                                    'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                    'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base')
+                                }
+                            ),
+                            {
+                                Entry_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Entry_No),
+                                Item_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Item_No),
+                                Positive: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Positive),
+                                Quantity: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Quantity),
+                                Quantity_Base: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Quantity_Base),
+                                Location_Code: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Location_Code),
+                                Res_Status: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Res_Status),
+                                Source_Type: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Source_Type),
+                                Source_SubType: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Source_SubType),
+                                Source_ID: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Source_ID),
+                                Source_Ref_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Source_Ref_No),
+                                Item_Tracking: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Item_Tracking),
+                                LOT_No: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.LOT_No),
+                                Exp_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Exp_Date),
+                                Creation_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Creation_Date),
+                                Exp_Receipt_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Exp_Receipt_Date),
+                                Shipment_Date: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Shipment_Date),
+                                Created_By: Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.Created_By),
+                                'Qty-to-Handle_Base': Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(xmlFile.Warehouse_Receipt_Header.Warehouse_Receipt_Line.Res_Entry.'Qty-to-Invoice_Base')
+                            }
+                        )
+                    }
+                )
+            ),
+            Notify(
+                "Error occurred while Get request, check if file exists.",
+                NotificationType.Error,
+                5000
+            )
+        );
+        Set(
+            isLoading,
+            false
+        );
+        If(
+            SelectedFolder = ReadyForProcessing,
+            ChangeXmlStatus.Run(
+                SelectedFile,
+                SelectedFolder,
+                InProgress
+            );
+            Set(
+                SelectedFolder,
+                InProgress
+            )
+        );
+        UpdateContext({wizardStep: 1});
 
     PrimkeScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -183,7 +325,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj naloga :   " & warehouseHeader.No
+                                ="Broj naloga :   " & First(colReceipt).No
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -197,7 +339,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Status dokumenta :   " & warehouseHeader.Document_Status
+                                ="Status dokumenta :   " & header.Document_Status
                             Width: =Parent.Width
                             Y: =41
                             ZIndex: =3
@@ -211,7 +353,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Datum knjiženja :   " & warehouseHeader.Posting_Date
+                                ="Datum knjiženja :   " & header.Posting_Date
                             Width: =Parent.Width
                             Y: =65
                             ZIndex: =4
@@ -231,15 +373,16 @@
                     "PrimkeLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
                         Default: |
-                            =First(Filter(colWarehouseLines, Text(Line_No) = scannedItem))
+                            =First(Filter(colReceipt, Text(Line_No) = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =colWarehouseLines
+                        Items: =colReceipt
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: |-
-                            =//UpdateContext({wizardStep:2});
+                        OnSelect: |
+                            =UpdateContext({wizardStep: 2});
+                            Select(Self);
                         TemplatePadding: =0
                         TemplateSize: =199
                         Width: =Parent.Width
@@ -303,7 +446,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.No
+                                    ="Br. artikla:   " & ThisItem.Item_No
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
@@ -478,16 +621,86 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(colSalesResEntries, PrimkeLines.Selected.Item_No = Item_No)
+                        Items: =First(Filter(colReceipt, PrimkeLines.Selected.Item_No = Item_No)).Res_Entry
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: |
+                            =UpdateContext({isModalOpen: true});
+                            Select(Self);
                         TemplatePadding: =0
-                        TemplateSize: =176
+                        TemplateSize: =150
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
 
-                        Separator6_8 As rectangle:
+                        lbl_ItemNo As label:
+                            AutoHeight: =true
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Br. unosa:"
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =100
+                            X: =24
+                            Y: |
+                                =18
+                            ZIndex: =1
+
+                        lbl_LOTNo As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="LOT:"
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNo.Width
+                            X: =lbl_ItemNo.X
+                            Y: =lbl_ItemNo.Y + lbl_ItemNo.Height
+                            ZIndex: =2
+
+                        lbl_ExpDate As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: |-
+                                ="Rok isteka:"
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNo.Width
+                            X: =lbl_ItemNo.X
+                            Y: =lbl_LOTNo.Y + lbl_LOTNo.Height
+                            ZIndex: =3
+
+                        Separator2 As rectangle:
                             BorderColor: =App.Theme.Colors.Darker40
                             Fill: =RGBA(255, 255, 255, 1)
                             Height: =8
@@ -496,160 +709,119 @@
                             Y: =Parent.TemplateHeight - Self.Height
                             ZIndex: =5
 
-                        Rectangle5_13 As rectangle:
+                        Rectangle2 As rectangle:
                             BorderColor: =App.Theme.Colors.Darker40
                             Fill: =App.Theme.Colors.Darker30
-                            Height: =Parent.TemplateHeight - Separator6_8.Height
+                            Height: =Parent.TemplateHeight - Separator2.Height
                             OnSelect: =Select(Parent)
                             Visible: =ThisItem.IsSelected
                             Width: =4
                             ZIndex: =6
 
-                        Group1_3 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =16
+                        lbl_ItemNoValue As label:
+                            AutoHeight: =true
+                            Color: =RGBA(50, 49, 48, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =ThisItem.Entry_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =120
+                            X: =lbl_ItemNo.X + lbl_ItemNo.Width
+                            Y: =18
+                            ZIndex: =7
 
-                            Title5_8 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Entry_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth - 86
-                                X: =24
-                                Y: =18
-                                ZIndex: =1
+                        lbl_LOTNoValue As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =ThisItem.LOT_No
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNoValue.Width
+                            X: =lbl_LOTNo.X + lbl_LOTNo.Width
+                            Y: =lbl_ItemNoValue.Y + lbl_ItemNoValue.Height
+                            ZIndex: =8
 
-                            Body1_20 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =88
-                                X: =24
-                                Y: =55
-                                ZIndex: =3
+                        lbl_ExpDateValue As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =ThisItem.Exp_Date
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNoValue.Width
+                            X: =lbl_ExpDate.X + lbl_ExpDate.Width
+                            Y: =lbl_LOTNoValue.Y + lbl_LOTNoValue.Height
+                            ZIndex: =9
 
-                            Body1_23 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Rok trajanja:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =120
-                                X: =24
-                                Y: =97
-                                ZIndex: =8
+                        lbl_Quantity As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: ="Količina"
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNo.Width
+                            X: =lbl_ItemNo.X
+                            Y: =lbl_ExpDate.Y + lbl_ExpDate.Height
+                            ZIndex: =10
 
-                            Body1_24 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="LOT:    " & ThisItem.LOT_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =60
-                                X: =28
-                                Y: =133
-                                ZIndex: =9
-
-                            "NalogZaProdajuResEntryQty_1 As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(colSalesResEntries, Warehouse_Receipt_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NalogZaProdajuResEntryQty_1.Value)});
-                                Value: =ThisItem.Quantity
-                                Width: =113
-                                X: =112
-                                Y: =49
-                                ZIndex: =11
-
-                            DatePickerExpDateNalogZaProdaju_1 As datepicker:
-                                BorderColor: =App.Theme.Colors.Darker40
-                                CalendarHeaderFill: =App.Theme.Colors.Primary
-                                Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =If(IsBlank(ThisItem.Exp_Date), Today(), ThisItem.Exp_Date)
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                DisabledFill: =RGBA(244, 244, 244, 1)
-                                DisplayMode: =If(IsBlank(ThisItem.Exp_Date), DisplayMode.Disabled, DisplayMode.Edit)
-                                Font: =App.Theme.Font
-                                Format: ="dd.mm.yyyy"
-                                Height: =26
-                                HoverDateFill: =App.Theme.Colors.Lighter70
-                                IconBackground: =App.Theme.Colors.Primary
-                                OnChange: |-
-                                    =UpdateIf(colSalesResEntries, Warehouse_Receipt_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDateNalogZaProdaju_1.SelectedDate, "yyyy-mm-dd")})
-                                OnSelect: =
-                                SelectedDateFill: =App.Theme.Colors.Primary
-                                Width: =158
-                                X: =148
-                                Y: =92
-                                ZIndex: =14
-
-                            "NalogZaProdajuLot_1 As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(colSalesResEntries, Warehouse_Receipt_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NalogZaProdajuLot_1.Value)})
-                                Value: =ThisItem.LOT_No
-                                Width: =113
-                                X: =80
-                                Y: =128
-                                ZIndex: =15
+                        lbl_QuantityValue As label:
+                            AutoHeight: =true
+                            Color: =RGBA(0, 0, 0, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            Font: =App.Theme.Font
+                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                            Height: =Self.Size * 1.8
+                            LineHeight: =1.6
+                            OnSelect: =Select(Parent)
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =12
+                            Text: =ThisItem.Quantity
+                            VerticalAlign: =VerticalAlign.Top
+                            Width: =lbl_ItemNoValue.Width
+                            X: =lbl_Quantity.X + lbl_Quantity.Width
+                            Y: =lbl_ExpDate.Y + lbl_ExpDate.Height
+                            ZIndex: =11
 
                     Container2_8 As groupContainer.horizontalAutoLayoutContainer:
                         DropShadow: =DropShadow.Light
@@ -711,7 +883,7 @@
             FillPortions: =0
             Height: =50
             LayoutAlignItems: =LayoutAlignItems.End
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutJustifyContent: =LayoutJustifyContent.End
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
@@ -758,74 +930,64 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |
-                    =UpdateContext({
-                        warehouseJsonData:
-                        JSON(
-                            {
-                                Warehouse_Receipt_Header: {
-                                    No: Text(warehouseHeader.No),
-                                    Location_Code: Text(warehouseHeader.Location_Code),
-                                    No_Series: Text(warehouseHeader.No_Series),
-                                    Zone_Code: Text(warehouseHeader.Zone_Code),
-                                    Bin_Code: Text(warehouseHeader.Bin_Code),
-                                    Document_Status: Text(warehouseHeader.Document_Status),
-                                    Posting_Date: Text(warehouseHeader.Posting_Date),
-                                    Vendor_Shipment_No: Text(warehouseHeader.Vendor_Shipment_No),
-                                    Receiving_No: Text(warehouseHeader.Receiving_No),
-                                    Last_Receiving_No: Text(warehouseHeader.Last_Receiving_No),
-                                    Receiving_No_Series: Text(warehouseHeader.Receiving_No_Series),                
-                                    Warehouse_Receipt_Line: ForAll(colWarehouseLines, 
-                                        {
-                                            No: Text(No),
-                                            Line_No: Text(Line_No),
-                                            Source_Type: Text(Source_Type),
-                                            Source_SubType: Text(Source_SubType),
-                                            Source_No: Text(Source_No),
-                                            Source_Line_No: Text(Source_Line_No),
-                                            Source_Document: Text(Source_Document),
-                                            Location_Code: Text(Location_Code),
-                                            Shelf_No: Text(Shelf_No),
-                                            Bin_Code: Text(Bin_Code),
-                                            Zone_Code: Text(Zone_Code),
-                                            Item_No: Text(Item_No),
-                                            Quantity: Text(Quantity),
-                                            Qty_Base: Text(Qty_Base),
-                                            Qty_Outstanding: Text(Qty_Outstanding),
-                                            Qty_Outstanding_Base: Text(Qty_Outstanding_Base),
-                                            Qty_to_Receive: Text(Qty_to_Receive),
-                                            Qty_to_Receive_Base: Text(Qty_to_Receive_Base),
-                                            Qty_Received: Text(Qty_Received),
-                                            Qty_Received_Base: Text(Qty_Received_Base),
-                                            UOM_Code: Text(UOM_Code),
-                                            Qty_per_UOM: Text(Qty_per_UOM),
-                                            Description: Text(Description),
-                                            Status: Text(Status),
-                                            Sorting_Sequence_No: Text(Sorting_Sequence_No),
-                                            Due_Date: Text(Due_Date),
-                                            Starting_Date: Text(Starting_Date),
-                                            Cubage: Text(Cubage),
-                                            Weight: Text(Weight),
-                                            Not_upd_by_SDP: Text(Not_upd_by_SDP),
-                                            Posting_From_Whs_Ref: Text(Posting_From_Whs_Ref),
-                                            Qty_to_Cross_Dock: Text(Qty_to_Cross_Dock),
-                                            Qty_to_Cross_Dock_Base: Text(Qty_to_Cross_Dock_Base),
-                                            Cross_Dock_Zone_Code: Text(Cross_Dock_Zone_Code),
-                                            Cross_Dock_Bin_Code: Text(Cross_Dock_Bin_Code)
-                                        }
+                    =IfError(
+                        GetXml.Run(
+                            SelectedFile,
+                            ReadyForProcessing
+                        ),
+                        IfError(
+                            UpdateXML.Run(
+                                "{" & Char(34) & "Warehouse_Receipt_Header" & Char(34) & ": " & JSON(
+                                    AddColumns(
+                                        header,
+                                        Warehouse_Receipt_Line,
+                                        colReceipt
                                     )
-                                }
-                            },JSONFormat.IgnoreUnsupportedTypes
+                                ) & "}",
+                                SelectedFile,
+                                SelectedFolder
+                            ),
+                            Notify(
+                                "Došlo je do greške!",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            Notify(
+                                "Uspješno ažuriranje!",
+                                NotificationType.Success,
+                                2000
+                            );
+                            If(
+                                primkeReadyForNavCheckbox.Checked,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    ReadyForNAVProcessing
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                ),
+                                Navigate(
+                                    scr_XMLPrimke,
+                                    ScreenTransition.Fade
+                                );
+                            )
+                        ),
+                        Set(
+                            SelectedFolder,
+                            ReadyForProcessing
+                        );
+                        Notify(
+                            "Postoje izmjene u ovom fajlu.",
+                            NotificationType.Information,
+                            2000
+                        );
+                        Navigate(
+                            scr_XMLPrimke,
+                            ScreenTransition.Fade
                         )
-                    });
-                    
-                    UpdateContext({response: UpdateXML.Run(warehouseJsonData, SelectedFile, SelectedFolder, primkeReadyForNavCheckbox.Checked)});
-                    
-                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
-                    Set(SelectedFolder, response.folder);
-                    
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLPrimke,ScreenTransition.Fade));
-                    
-                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                    );
                 PressedBorderColor: =App.Theme.Colors.Darker40
                 PressedColor: =Self.Color
                 PressedFill: =App.Theme.Colors.Darker40
@@ -851,4 +1013,318 @@
             X: =0
             Y: =0
             ZIndex: =4
+
+    con_PrimkeModalFade As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(0, 0, 0, 50%)
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =isModalOpen
+        Width: |
+            =Parent.Width
+        ZIndex: =2
+
+        con_PrimkeModal As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.ExtraBold
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height * 50%
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width * 80%
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =1
+
+            vrt_PrimkeModal As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.ExtraBold
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                hrz_PrimkeModalHeader As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    Fill: =RGBA(189, 31, 68, 1)
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =50
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =5
+                    PaddingRight: =5
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =1
+
+                    txt_PrimkeModalHeaderTitle As Text:
+                        Align: ='TextCanvas.Align'.Center
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        FontColor: =RGBA(255, 255, 255, 1)
+                        Height: =0
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =30
+                        Text: ="Unesite podatke"
+                        VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+                        Width: =96
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btn_PrimkeModalClose As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =RGBA(255, 255, 255, 1)
+                        FontWeight: =
+                        Height: =32
+                        Icon: ="DismissCircle"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =Reset(dp_PrimkeExpDate);
+                            Reset(inp_PrimkeLOTNo);
+                            Reset(inp_PrimkeQuantity);
+                            UpdateContext({isModalOpen: false});
+                        Text: ="Zatvori"
+                        Width: =32
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+                vrt_PrimkeModalBody As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =4
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingLeft: =15
+                    PaddingRight: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    hrz_PrimkeQuantity As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =70
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =1
+
+                        txt_PrimkeQuantity As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Količina"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_PrimkeQuantity As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            OnChange: =
+                            Placeholder: ="Količina"
+                            Value: =Warehouse_Receipt_ResEntryGallery.Selected.Quantity
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                    hrz_PrimkeExpDate As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =2
+
+                        txt_PrimkeExpDate As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Rok trajanja"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        dp_PrimkeExpDate As datepicker:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            CalendarHeaderFill: =App.Theme.Colors.Primary
+                            Color: =RGBA(0, 0, 0, 1)
+                            DefaultDate: =If(IsBlank(Warehouse_Receipt_ResEntryGallery.Selected.Exp_Date), Today(), DateValue(Warehouse_Receipt_ResEntryGallery.Selected.Exp_Date, "hr-HR"))
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(166, 166, 166, 1)
+                            DisabledFill: =RGBA(244, 244, 244, 1)
+                            EndYear: =Year(Today()) + 20
+                            Font: =App.Theme.Font
+                            Format: ="dd.mm.yyyy"
+                            HoverDateFill: =App.Theme.Colors.Lighter70
+                            IconBackground: =App.Theme.Colors.Primary
+                            LayoutMinHeight: =20
+                            LayoutMinWidth: =50
+                            SelectedDateFill: =App.Theme.Colors.Primary
+                            Size: =12
+                            StartOfWeek: =StartOfWeek.Monday
+                            StartYear: =Year(Today())
+                            Width: =150
+                            ZIndex: =3
+
+                    hrz_PrimkeLOTNo As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =3
+
+                        txt_PrimkeLOTNo As Text:
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="LOT"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_PrimkeLOTNo As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            Placeholder: ="Unesite LOT"
+                            Value: =Warehouse_Receipt_ResEntryGallery.Selected.LOT_No
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                hrz_PrimkeModalFooter As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.End
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =20
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =20
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =3
+
+                    btn_PrimkeModalSave As Button:
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="Save"
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =UpdateIf(
+                                First(
+                                    Filter(
+                                        colReceipt,
+                                        PrimkeLines.Selected.Line_No = ThisRecord.Line_No
+                                    )
+                                ).Res_Entry,
+                                Entry_No = Warehouse_Receipt_ResEntryGallery.Selected.Entry_No,
+                                {
+                                    Exp_Date: Text(dp_PrimkeExpDate.SelectedDate, "dd.mm.yy"),
+                                    LOT_No: inp_PrimkeLOTNo.Value,
+                                    Quantity: inp_PrimkeQuantity.Value
+                                }
+                            );
+                            Reset(dp_PrimkeExpDate);
+                            Reset(inp_PrimkeLOTNo);
+                            Reset(inp_PrimkeQuantity);
+                            UpdateContext({isModalOpen: false});
+                            ClearCollect(
+                                colReceiptEdited,
+                                colReceipt
+                            );
+                            ClearCollect(
+                                colReceipt,
+                                colReceiptEdited
+                            );
+                            Clear(colReceiptEdited);
+                        Text: ="Spasi"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
 
