@@ -7,7 +7,7 @@
             true
         );
         
-        Reset(nalogZaPrenosReadyForNavCheckbox);
+        UpdateContext({doradaCheckbox1: false, nalogZaPrenosReadyForNavCheckbox: false});
         
         If(!IsBlank(SelectedFile),
             IfError(
@@ -28,7 +28,7 @@
         UpdateContext({
             header:
                 {
-                    No: Text(xmlData.'No.'),
+                    'No.': Text(xmlData.'No.'),
                     'Transfer-from_Code': Text(xmlData.'Transfer-from_Code'),
                     'Transfer-from_Name': Text(xmlData.'Transfer-from_Name'),
                     'Transfer-to_Code': Text(xmlData.'Transfer-to_Code'),
@@ -298,7 +298,7 @@
                             PaddingLeft: =20
                             Size: =10
                             Text: |-
-                                ="Broj naloga :   " & header.No
+                                ="Broj naloga :   " & header.'No.'
                             Width: =Parent.Width
                             Y: =17
                             ZIndex: =2
@@ -621,9 +621,10 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =Filter(NalogZaPrenosLines.Selected.Res_Entry, NalogZaPrenosLines.Selected.Item_No = Item_No)
+                        Items: =First(Filter(transferCollection, NalogZaPrenosLines.Selected.Item_No = Item_No)).Res_Entry
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: =Set(isModalOpen,true);
                         TemplatePadding: =0
                         TemplateSize: =248
                         Width: =Parent.Width
@@ -1050,23 +1051,59 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =3
 
-            nalogZaPrenosReadyForNavCheckbox As Checkbox:
-                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                CheckboxSize: =16
-                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                FontColor: =
-                FontSize: =14
-                FontWeight: =FontWeight.Bold
+            Container3_1 As groupContainer.horizontalAutoLayoutContainer:
                 Height: =Parent.Height
-                Label: ="Spremno za NAV"
-                LayoutMinHeight: =32
-                LayoutMinWidth: =160
-                OnCheck: =false
-                OnUncheck: =false
-                Width: =160
-                X: =0
-                Y: =0
-                ZIndex: =2
+                LayoutMinHeight: =50
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                doradaCheckbox_1 As Checkbox:
+                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    CheckboxSize: =16
+                    Checked: =doradaCheckbox1
+                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                    FontColor: =
+                    FontSize: =14
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Label: ="Dorada"
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =160
+                    OnCheck: |-
+                        =UpdateContext({doradaCheckbox1: true, nalogZaPrenosReadyForNavCheckbox: false});
+                    OnUncheck: |-
+                        =UpdateContext({doradaCheckbox1: false});
+                    Width: =110
+                    X: =40
+                    Y: =0
+                    ZIndex: =1
+
+                nalogZaPrenosReadyForNavCheckbox As Checkbox:
+                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    CheckboxSize: =16
+                    Checked: =nalogZaPrenosReadyForNavCheckbox
+                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                    FontColor: =
+                    FontSize: =14
+                    FontWeight: =FontWeight.Bold
+                    Height: =Parent.Height
+                    Label: ="NAV"
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =160
+                    OnCheck: |-
+                        =UpdateContext({doradaCheckbox1: false, nalogZaPrenosReadyForNavCheckbox: true});
+                    OnUncheck: |-
+                        =UpdateContext({nalogZaPrenosReadyForNavCheckbox: false});
+                    Width: =80
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
 
             saveXml_5 As button:
                 AlignInContainer: =AlignInContainer.Center
@@ -1083,87 +1120,78 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |
-                    =UpdateContext({
-                        transferJsonData:
-                        JSON(
-                            {
-                                Transfer_Header: {
-                                    'No.': Text(transfer_header.'No.'),
-                                    'Transfer-from_Code': Text(transfer_header.'Transfer-from_Code'),
-                                    'Transfer-from_Name': Text(transfer_header.'Transfer-from_Name'),
-                                    'Transfer-to_Code': Text(transfer_header.'Transfer-to_Code'),
-                                    'Transfer-to_Name': Text(transfer_header.'Transfer-to_Name'),
-                                    'In-Transit_Code': Text(transfer_header.'In-Transit_Code'),
-                                    Gen_Bus_Posting_Group: Text(transfer_header.Gen_Bus_Posting_Group),
-                                    Posting_Date: Text(transfer_header.Posting_Date),
-                                    Status: Text(transfer_header.Status),
-                                    Shipment_Date: Text(transfer_header.Shipment_Date),
-                                    Receipt_Date: Text(transfer_header.Receipt_Date),
-                                    Shipping_Advice: Text(transfer_header.Shipping_Advice),
-                                    'Transfer-from_Post_Code': Text(transfer_header.'Transfer-from_Post_Code'),
-                                    'Transfer-from_City': Text(transfer_header.'Transfer-from_City'),
-                                    'Transfer-to_Post_Code': Text(transfer_header.'Transfer-to_Post_Code'),
-                                    'Transfer-to_City': Text(transfer_header.'Transfer-to_City'),
-                                    Shortcut_Dimension_1_Code: Text(transfer_header.Shortcut_Dimension_1_Code),
-                                    Transfer_Line: ForAll(colTransferLines As tl, 
-                                        {
-                                            Document_No: Text(tl.Document_No),
-                                            Line_No: Text(tl.Line_No),
-                                            Item_No: Text(tl.Item_No),
-                                            'Transfer-from_Code': Text(tl.'Transfer-from_Code'),
-                                            'Transfer-to_Code': Text(tl.'Transfer-to_Code'),
-                                            'In-Transit_Code': Text(tl.'In-Transit_Code'),
-                                            GP_Posting_Group: Text(tl.GP_Posting_Group),
-                                            Inv_Posting_Group: Text(tl.Inv_Posting_Group),
-                                            Description: Text(tl.Description),
-                                            Unit_Of_Measure: Text(tl.Unit_Of_Measure),
-                                            Quantity: Text(tl.Quantity),
-                                            Quantity_Base: Text(tl.Quantity_Base),
-                                            'Qty-to_Ship': Text(tl.'Qty-to_Ship'),
-                                            'Qty-to_Receive': Text(tl.'Qty-to_Receive'),
-                                            Quantity_Shipped: Text(tl.Quantity_Shipped),
-                                            Quantity_Received: Text(tl.Quantity_Received),
-                                            Outstanding_Qty: Text(tl.Outstanding_Qty),
-                                            Shipment_Date: Text(tl.Shipment_Date),
-                                            Receipt_Date: Text(tl.Receipt_Date),
-                                            Res_Entry: ForAll(Filter(colTransferResEntries, ThisRecord.Item_No = tl.Item_No),
-                                            {
-                                                Created_By: Text(Created_By),
-                                                Creation_Date: Text(Creation_Date),
-                                                Entry_No: Text(Entry_No),
-                                                Exp_Date: Text(Exp_Date),
-                                                Exp_Receipt_Date: Text(Exp_Receipt_Date),
-                                                Item_No: Text(Item_No),
-                                                Item_Tracking: Text(Item_Tracking),
-                                                LOT_No: Text(LOT_No),
-                                                Location_Code: Text(Location_Code),
-                                                Positive: Text(Positive),
-                                                'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
-                                                'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
-                                                Quantity: Text(Quantity),
-                                                Quantity_Base: Text(Quantity_Base),
-                                                Res_Status: Text(Res_Status),
-                                                Shipment_Date: Text(Shipment_Date),
-                                                Source_ID: Text(Source_ID),
-                                                Source_Ref_No: Text(Source_Ref_No),
-                                                Source_SubType: Text(Source_SubType),
-                                                Source_Type: Text(Source_Type)
-                                            }) 
-                                        }
+                    =IfError(
+                        GetXml.Run(
+                            SelectedFile,
+                            ReadyForProcessing
+                        ),
+                        IfError(
+                            UpdateXML.Run(
+                                
+                                "{" & Char(34) & "Transfer_Header" & Char(34) & ": " & JSON(
+                                    AddColumns(
+                                        header,
+                                        Transfer_Line,
+                                        transferCollection
                                     )
-                                }
-                            },JSONFormat.IgnoreUnsupportedTypes
+                                ) & "}",
+                                SelectedFile,
+                                SelectedFolder
+                            ),
+                            Notify(
+                                "Došlo je do greške!",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            Notify(
+                                "Uspješno ažuriranje!",
+                                NotificationType.Success,
+                                2000
+                            );
+                            If(
+                                nalogZaPrenosReadyForNavCheckbox,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    ReadyForNAVProcessing
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                ),
+                                If(
+                                    doradaCheckbox1,
+                                    ChangeXmlStatus.Run(
+                                        SelectedFile,
+                                        SelectedFolder,
+                                        NAVChanges
+                                    );
+                                    Navigate(
+                                        scr_Entry,
+                                        ScreenTransition.Fade
+                                    ),
+                                    Navigate(
+                                        scr_XMLNalogZaPrenos,
+                                        ScreenTransition.Fade
+                                    )
+                                )
+                            );
+                            
+                        ),
+                        Set(
+                            SelectedFolder,
+                            ReadyForProcessing
+                        );
+                        Notify(
+                            "Postoje izmjene u ovom fajlu.",
+                            NotificationType.Information,
+                            2000
+                        );
+                        Navigate(
+                            scr_XMLNalogZaPrenos,
+                            ScreenTransition.Fade
                         )
-                    });
-                    
-                    UpdateContext({response: UpdateXML.Run(transferJsonData, SelectedFile, SelectedFolder, nalogZaPrenosReadyForNavCheckbox.Checked)});
-                    
-                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
-                    Set(SelectedFolder, response.folder);
-                    
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLNalogZaPrenos,ScreenTransition.Fade));
-                    
-                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                    );
                 PressedBorderColor: =App.Theme.Colors.Darker40
                 PressedColor: =Self.Color
                 PressedFill: =App.Theme.Colors.Darker40
@@ -1172,7 +1200,7 @@
                 Width: =100
                 X: =570
                 Y: =718
-                ZIndex: =3
+                ZIndex: =2
 
         Spinner2_2 As Spinner:
             BasePaletteColor: =RGBA(249, 83, 109, 1)
@@ -1310,7 +1338,7 @@
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
-                            Value: =Abs(NalogZaProdajuResEntry.Selected.Quantity)
+                            Value: =Abs(NalogZaPrenosResEntry.Selected.Quantity)
                             Width: =150
                             X: =40
                             Y: =40
@@ -1364,19 +1392,19 @@
                                     Reset(inp_rezQty_1);
                                     UpdateContext({potrebnaKolicina: 0}),
                                     If(
-                                        Value(inp_rezQty_1.Value) > Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
+                                        Value(inp_rezQty_1.Value) > Abs(NalogZaPrenosResEntry.Selected.Quantity_Completed),
                                         Reset(inp_rezQty_1);
                                         UpdateContext({potrebnaKolicina: 0});
                                         Notify(
-                                            "Maksimalna količina za isporuku je " & Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
+                                            "Maksimalna količina za isporuku je " & Abs(NalogZaPrenosResEntry.Selected.Quantity_Completed),
                                             NotificationType.Information,
                                             2000
                                         ),
-                                        UpdateContext({potrebnaKolicina: Abs(NalogZaProdajuResEntry.Selected.Quantity) - inp_rezQty_1.Value})
+                                        UpdateContext({potrebnaKolicina: Abs(NalogZaPrenosResEntry.Selected.Quantity) - inp_rezQty_1.Value})
                                     )
                                 );
                             Placeholder: ="Unesite LOT"
-                            Value: =Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed)
+                            Value: =Abs(NalogZaPrenosResEntry.Selected.Quantity_Completed)
                             Width: =150
                             X: =40
                             Y: =40
@@ -1477,22 +1505,22 @@
                         LayoutMinWidth: =96
                         OnSelect: |
                             =UpdateIf(
-                                First(Filter(salesCollection, ThisRecord.Line_No = NalogZaProdajuLines.Selected.Line_No)).Res_Entry,
-                                Entry_No = NalogZaProdajuResEntry.Selected.Entry_No,
+                                First(Filter(transferCollection, ThisRecord.Line_No = NalogZaPrenosLines.Selected.Line_No)).Res_Entry,
+                                Entry_No = NalogZaPrenosResEntry.Selected.Entry_No,
                                 {
                                     Quantity_Completed: -Value(inp_rezQty_1.Value),
                                     Quantity_NewLOT: -Value(inp_potrebnoQty_1.Value)
                                 }
                             );
                             ClearCollect(
-                                salesCollectionEdited,
-                                salesCollection
+                                transferCollectionEdited,
+                                transferCollection
                             );
                             ClearCollect(
-                                salesCollection,
-                                salesCollectionEdited
+                                transferCollection,
+                                transferCollectionEdited
                             );
-                            Clear(salesCollectionEdited);
+                            Clear(transferCollectionEdited);
                             Reset(inp_Quantity_2);
                             Reset(inp_rezQty_1);
                             Reset(inp_potrebnoQty_1);
