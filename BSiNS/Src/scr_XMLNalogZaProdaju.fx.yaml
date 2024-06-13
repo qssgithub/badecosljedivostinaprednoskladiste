@@ -1497,7 +1497,7 @@
                             LayoutMinWidth: =320
                             OnChange: |
                                 =If(
-                                    !IsNumeric(inp_rezQty.Value) || Value(inp_rezQty.Value) < 0,
+                                    (!IsNumeric(inp_rezQty.Value) && !IsBlank(inp_rezQty.Value)) || Value(inp_rezQty.Value) < 0,
                                     Notify(
                                         "Unesite pozitivan broj.",
                                         NotificationType.Error,
@@ -1518,6 +1518,8 @@
                                     )
                                 );
                             Placeholder: ="Unesite LOT"
+                            Required: =true
+                            Type: ="Text"
                             Value: =Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed)
                             Width: =150
                             X: =40
