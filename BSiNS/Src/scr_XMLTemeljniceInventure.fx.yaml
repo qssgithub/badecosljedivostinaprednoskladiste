@@ -27,7 +27,7 @@
             )
         );
         ClearCollect(
-            item_Journal_LineCollection,
+            inventureCollection,
             IfError(
                 ForAll(
                     xmlData.Item_Journal_Line As line,
@@ -54,33 +54,35 @@
                         Qty_Phys_Inventory_Ext: Text(line.Qty_Phys_Inventory_Ext),
                         Gen_Bus_Posting_Group: Text(line.Gen_Bus_Posting_Group),
                         Lot_No: Text(line.Lot_No),
-                        Item_Expiration_Date: Text(line.Item_Expiration_Date)
+                        Item_Expiration_Date: Text(line.Item_Expiration_Date),
+                        Barcode: Text(line.Barcode)
                     }
                 ),
                 {
-                    Journal_Template_Name: Text(xmlData.Transfer_Line.Journal_Template_Name),
-                    Journal_Batch_Name: Text(xmlData.Transfer_Line.Journal_Batch_Name),
-                    'Line_No.': Text(xmlData.Transfer_Line.'Line_No.'),
-                    'Document_No.': Text(xmlData.Transfer_Line.'Document_No.'),
-                    Description: Text(xmlData.Transfer_Line.Description),
-                    Source_Type: Text(xmlData.Transfer_Line.Source_Type),
-                    'Source_No.': Text(xmlData.Transfer_Line.'Source_No.'),
-                    Source_Code: Text(xmlData.Transfer_Line.Source_Code),
-                    Item_No: Text(xmlData.'Transfer_Line.Item_No.'),
-                    'Phys._Inventory': Text(xmlData.Transfer_Line.'Phys._Inventory'),
-                    Location_Code: Text(xmlData.Transfer_Line.Location_Code),
-                    Posting_Date: Text(xmlData.Transfer_Line.Posting_Date),
-                    Document_Date: Text(xmlData.Transfer_Line.Document_Date),
-                    Sales_Price: Text(xmlData.Transfer_Line.Sales_Price),
-                    Qty_Calculated: Text(xmlData.Transfer_Line.Qty_Calculated),
-                    Qty_Calculated_Ext: Text(xmlData.Transfer_Line.Qty_Calculated_Ext),
-                    Quantity: Text(xmlData.Transfer_Line.Quantity),
-                    Entry_Type: Text(xmlData.Transfer_Line.Entry_Type),
-                    Qty_Phys_Inventory: Text(xmlData.Transfer_Line.Qty_Phys_Inventory),
-                    Qty_Phys_Inventory_Ext: Text(xmlData.Transfer_Line.Qty_Phys_Inventory_Ext),
-                    Gen_Bus_Posting_Group: Text(xmlData.Transfer_Line.Gen_Bus_Posting_Group),
-                    Lot_No: Text(xmlData.Transfer_Line.Lot_No),
-                    Item_Expiration_Date: Text(xmlData.Transfer_Line.Item_Expiration_Date)
+                    Journal_Template_Name: Text(xmlData.Item_Journal_Line.Journal_Template_Name),
+                    Journal_Batch_Name: Text(xmlData.Item_Journal_Line.Journal_Batch_Name),
+                    'Line_No.': Text(xmlData.Item_Journal_Line.'Line_No.'),
+                    'Document_No.': Text(xmlData.Item_Journal_Line.'Document_No.'),
+                    Description: Text(xmlData.Item_Journal_Line.Description),
+                    Source_Type: Text(xmlData.Item_Journal_Line.Source_Type),
+                    'Source_No.': Text(xmlData.Item_Journal_Line.'Source_No.'),
+                    Source_Code: Text(xmlData.Item_Journal_Line.Source_Code),
+                    Item_No: Text(xmlData.'Item_Journal_Line.Item_No.'),
+                    'Phys._Inventory': Text(xmlData.Item_Journal_Line.'Phys._Inventory'),
+                    Location_Code: Text(xmlData.Item_Journal_Line.Location_Code),
+                    Posting_Date: Text(xmlData.Item_Journal_Line.Posting_Date),
+                    Document_Date: Text(xmlData.Item_Journal_Line.Document_Date),
+                    Sales_Price: Text(xmlData.Item_Journal_Line.Sales_Price),
+                    Qty_Calculated: Text(xmlData.Item_Journal_Line.Qty_Calculated),
+                    Qty_Calculated_Ext: Text(xmlData.Item_Journal_Line.Qty_Calculated_Ext),
+                    Quantity: Text(xmlData.Item_Journal_Line.Quantity),
+                    Entry_Type: Text(xmlData.Item_Journal_Line.Entry_Type),
+                    Qty_Phys_Inventory: Text(xmlData.Item_Journal_Line.Qty_Phys_Inventory),
+                    Qty_Phys_Inventory_Ext: Text(xmlData.Item_Journal_Line.Qty_Phys_Inventory_Ext),
+                    Gen_Bus_Posting_Group: Text(xmlData.Item_Journal_Line.Gen_Bus_Posting_Group),
+                    Lot_No: Text(xmlData.Item_Journal_Line.Lot_No),
+                    Item_Expiration_Date: Text(xmlData.Item_Journal_Line.Item_Expiration_Date),
+                    Barcode: Text(xmlData.Item_Journal_Line.Barcode)
                 }
             )
         );
@@ -173,11 +175,11 @@
 
                     "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
-                        Default: =First(Filter(item_Journal_LineCollection, ThisRecord.'Line_No.' = scannedItem))
+                        Default: =First(Filter(inventureCollection, ThisRecord.'Line_No.' = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =item_Journal_LineCollection
+                        Items: =inventureCollection
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =Set(isModalOpen, true)
@@ -301,7 +303,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Količina:    " & ThisItem.Quantity
+                                    ="Količina:    " & ThisItem.Qty_Phys_Inventory
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Title5_6.Width
                                 Y: =171
@@ -320,7 +322,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Barcode:   " & ThisItem.'Line_No.' //promijeniti na barcode kada se property ubaci u xml
+                                    ="Barcode:   " & ThisItem.Barcode
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =211
@@ -476,7 +478,7 @@
                         ),
                         IfError(
                             UpdateXML.Run(
-                                "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(item_Journal_LineCollection) & "}" & "}",
+                                "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(inventureCollection) & "}" & "}",
                                 SelectedFile,
                                 SelectedFolder
                             ),
@@ -641,10 +643,11 @@
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: ="Količina"
+                            Text: ="Popisana količina"
                             Width: =96
                             X: =40
                             Y: =40
@@ -655,7 +658,7 @@
                             AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =12
+                            FontSize: =14
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
@@ -663,8 +666,8 @@
                             Placeholder: ="Unesite količinu..."
                             Required: =true
                             Type: ="Text"
-                            Value: =Item_Journal_Lines_Gallery.Selected.Quantity
-                            Width: =150
+                            Value: =Item_Journal_Lines_Gallery.Selected.Qty_Phys_Inventory
+                            Width: =100
                             X: =40
                             Y: =40
                             ZIndex: =2
@@ -717,19 +720,19 @@
                         LayoutMinWidth: =96
                         OnSelect: |
                             =UpdateIf(
-                                item_Journal_LineCollection,
+                                inventureCollection,
                                 ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
-                                {Quantity: Value(inp_rezQty_2.Value)}
+                                {Qty_Phys_Inventory: Value(inp_rezQty_2.Value)}
                             );
                             ClearCollect(
-                                item_Journal_LineCollectionEdited,
-                                item_Journal_LineCollection
+                                inventureCollectionEdited,
+                                inventureCollection
                             );
                             ClearCollect(
-                                item_Journal_LineCollection,
-                                item_Journal_LineCollectionEdited
+                                inventureCollection,
+                                inventureCollectionEdited
                             );
-                            Clear(item_Journal_LineCollectionEdited);
+                            Clear(inventureCollectionEdited);
                             Reset(inp_rezQty_2);
                             Set(
                                 isModalOpen,

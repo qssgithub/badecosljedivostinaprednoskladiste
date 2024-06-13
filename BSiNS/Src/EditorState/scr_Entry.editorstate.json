@@ -2579,7 +2579,14 @@
       "ControlPropertyState": [
         "Live",
         "Overflow",
-        "Text",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ThisItem.FileName",
+          "InvariantPropertyName": "Text",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "Role",
         "Color",
         "DisabledColor",
@@ -2598,11 +2605,25 @@
         "Font",
         "FontWeight",
         "Align",
-        "VerticalAlign",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "VerticalAlign",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "X",
         "Y",
         "Width",
-        "Height",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Self.Size * 1.8",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisplayMode",
         "OnSelect",
         "ZIndex",
@@ -2640,7 +2661,7 @@
         {
           "Category": "Data",
           "PropertyName": "Text",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -2780,7 +2801,7 @@
         {
           "Category": "Design",
           "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
