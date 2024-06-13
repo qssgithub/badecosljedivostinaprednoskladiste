@@ -1238,7 +1238,7 @@
                                 "{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
                                     AddColumns(
                                         header,
-                                        'Sales_Line',
+                                        Sales_Line,
                                         salesCollection
                                     )
                                 ) & "}",
@@ -1491,8 +1491,15 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: |-
-                                =UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * (-1)) - inp_rezQty.Value});
+                            OnChange: |+
+                                =If(IsMatch(Text(inp_rezQty.Value), "^-?\d+(\.\d+)?$") Or Text(inp_rezQty.Value) = "-",
+                                        If(Text(inp_rezQty.Value) <> "-",
+                                                UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))})
+                                            ),    
+                                    Notify("Please enter a valid number.", NotificationType.Error);
+                                    Reset(inp_rezQty);
+                                )
+                                
                             Placeholder: ="Unesite LOT"
                             Value: =NalogZaProdajuResEntry.Selected.Quantity_Completed
                             Width: =150
