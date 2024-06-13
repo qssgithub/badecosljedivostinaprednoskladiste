@@ -1492,10 +1492,16 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             OnChange: |-
-                                =If(Value(inp_rezQty.Value) > Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
-                                    Reset(inp_rezQty);
-                                    UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))}),
-                                    UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))})
+                                =If(IsNumeric(inp_rezQty.Value),
+                                    If(Value(Text(inp_rezQty.Value)) >= 0,
+                                        If(Value(inp_rezQty.Value) > Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
+                                            Reset(inp_rezQty);
+                                            UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))}),
+                                            UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))})
+                                        ),
+                                        Notify("Neispravan unos!", NotificationType.Error, 2000),
+                                        //dodati logiku za vracanje inp_rezQty.Value u pozitivann
+                                    )
                                 )
                             Placeholder: ="Unesite LOT"
                             Value: =Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed)
