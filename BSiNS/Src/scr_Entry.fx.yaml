@@ -37,30 +37,30 @@
         );
         UpdateContext({filteredFiles: XMLFiles});
         If(
-            Not(dd_Status.Selected.Id = "All"),
+            Not(dd_EntryStatus.Selected.Id = "All"),
             UpdateContext(
                 {
                     filteredFiles: Filter(
                         filteredFiles,
-                        dd_Status.Selected.Id = ThisRecord.FolderName
+                        dd_EntryStatus.Selected.Id = ThisRecord.FolderName
                     )
                 }
             )
         );
         If(
-            Not(dd_FileType.Selected.Id = "0"),
+            Not(dd_EntryFileType.Selected.Id = "0"),
             UpdateContext(
                 {
                     filteredFiles: Filter(
                         filteredFiles,
-                        dd_FileType.Selected.Id = ThisRecord.FileType
+                        dd_EntryFileType.Selected.Id = ThisRecord.FileType
                     )
                 }
             )
         );
         Set(isLoading, false);
 
-    ScreenContainer2 As groupContainer.verticalAutoLayoutContainer:
+    vrt_Entry As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -75,7 +75,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        Header1 As Header:
+        hdr_EntryHeader As Header:
             BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
             FontColor: =
@@ -95,7 +95,7 @@
             Y: =0
             ZIndex: =1
 
-        vrtcon_GetAllFiles As groupContainer.verticalAutoLayoutContainer:
+        vrt_EntryBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
             Height: =Parent.Height
@@ -117,7 +117,8 @@
             Width: =Parent.Width
             ZIndex: =4
 
-            hrzcon_GetAllFilesDDs As groupContainer.horizontalAutoLayoutContainer:
+            hrz_EntryDropdown As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
                 Height: =If(isMobile, 240, 80)
                 LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -134,7 +135,7 @@
                 Width: =Parent.Width
                 ZIndex: =1
 
-                vrtcon_Status As groupContainer.horizontalAutoLayoutContainer:
+                vrt_EntryStatus As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     Height: =Parent.Height
                     LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -154,7 +155,7 @@
                     RadiusTopRight: =4
                     ZIndex: =1
 
-                    txt_Status As Text:
+                    txt_EntryStatus As Text:
                         AutoHeight: =true
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
@@ -166,7 +167,7 @@
                         Y: =0
                         ZIndex: =1
 
-                    con_Status As groupContainer.manualLayoutContainer:
+                    con_EntryStatus As groupContainer.manualLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.Light
                         LayoutMinHeight: =50
@@ -177,7 +178,7 @@
                         RadiusTopRight: =4
                         ZIndex: =3
 
-                        dd_Status As Dropdown.pcfdataset:
+                        dd_EntryStatus As Dropdown.pcfdataset:
                             DefaultSelectedItems: |-
                                 ={Id: "All", Text: "Svi statusi"}
                             DisplayMode: =DisplayMode.Edit
@@ -199,24 +200,24 @@
                                 ]
                             OnChange: |-
                                 =If(
-                                    Not(dd_Status.Selected.Id = "All"),
+                                    Not(dd_EntryStatus.Selected.Id = "All"),
                                     UpdateContext(
                                         {
                                             filteredFiles: Filter(
                                                 XMLFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
+                                                dd_EntryStatus.Selected.Id = ThisRecord.FolderName
                                             )
                                         }
                                     ),
                                     UpdateContext({filteredFiles: XMLFiles})
                                 );
                                 If(
-                                    Not(dd_FileType.Selected.Id = "0"),
+                                    Not(dd_EntryFileType.Selected.Id = "0"),
                                     UpdateContext(
                                         {
                                             filteredFiles: Filter(
                                                 filteredFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
+                                                dd_EntryFileType.Selected.Id = ThisRecord.FileType
                                             )
                                         }
                                     )
@@ -226,7 +227,7 @@
                             Y: =0
                             ZIndex: =2
 
-                            TextInput3 As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
+                            inp_EntryStatus As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
                                 FieldDisplayName: ="Text"
                                 FieldName: ="Text"
                                 FieldType: ="s"
@@ -238,7 +239,7 @@
                                 Y: =0
                                 ZIndex: =14
 
-                            Id1 As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
+                            id_EntryStatus As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
                                 FieldDisplayName: ="Id"
                                 FieldName: ="Id"
                                 FieldType: ="s"
@@ -250,7 +251,7 @@
                                 Y: =0
                                 ZIndex: =16
 
-                vrtcon_FileType As groupContainer.verticalAutoLayoutContainer:
+                vrt_EntryFileType As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     Height: =Parent.Height
                     LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -271,7 +272,7 @@
                     RadiusTopRight: =4
                     ZIndex: =2
 
-                    txt_FileType As Text:
+                    txt_EntryFileType As Text:
                         AutoHeight: =true
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
@@ -283,7 +284,8 @@
                         Y: =0
                         ZIndex: =1
 
-                    con_FileType As groupContainer.manualLayoutContainer:
+                    con_EntryFileType As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         DropShadow: =DropShadow.Light
                         Height: =Parent.Height
                         LayoutMinHeight: =50
@@ -295,7 +297,7 @@
                         Width: =Parent.Width
                         ZIndex: =3
 
-                        dd_FileType As Dropdown.pcfdataset:
+                        dd_EntryFileType As Dropdown.pcfdataset:
                             DefaultSelectedItems: |-
                                 ={
                                     Id: "0",
@@ -344,24 +346,24 @@
                                 ]
                             OnChange: |
                                 =If(
-                                    Not(dd_FileType.Selected.Id = "0"),
+                                    Not(dd_EntryFileType.Selected.Id = "0"),
                                     UpdateContext(
                                         {
                                             filteredFiles: Filter(
                                                 XMLFiles,
-                                                dd_FileType.Selected.Id = ThisRecord.FileType
+                                                dd_EntryFileType.Selected.Id = ThisRecord.FileType
                                             )
                                         }
                                     ),
                                     UpdateContext({filteredFiles: XMLFiles})
                                 );
                                 If(
-                                    Not(dd_Status.Selected.Id = "All"),
+                                    Not(dd_EntryStatus.Selected.Id = "All"),
                                     UpdateContext(
                                         {
                                             filteredFiles: Filter(
                                                 filteredFiles,
-                                                dd_Status.Selected.Id = ThisRecord.FolderName
+                                                dd_EntryStatus.Selected.Id = ThisRecord.FolderName
                                             )
                                         }
                                     )
@@ -371,7 +373,7 @@
                             Y: =0
                             ZIndex: =2
 
-                            TextInput4 As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
+                            inp_EntryFileType As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
                                 FieldDisplayName: ="Text"
                                 FieldName: ="Text"
                                 FieldType: ="s"
@@ -383,7 +385,7 @@
                                 Y: =0
                                 ZIndex: =15
 
-                            Id2 As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
+                            id_EntryFileType As PowerApps_CoreControls_DropdownCanvasTemplate_dataField.textualColumn:
                                 FieldDisplayName: ="Id"
                                 FieldName: ="Id"
                                 FieldType: ="s"
@@ -395,13 +397,12 @@
                                 Y: =0
                                 ZIndex: =17
 
-                ButtonCanvas4 As Button:
+                btn_EntryReload As Button:
                     Align: =Align.Center
-                    AlignInContainer: =AlignInContainer.End
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
                     DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                     FontSize: =40
-                    Height: =dd_FileType.Height
+                    Height: =dd_EntryFileType.Height
                     Icon: ="ArrowClockwise"
                     IconStyle: ='ButtonCanvas.IconStyle'.Filled
                     Layout: ='ButtonCanvas.Layout'.IconOnly
@@ -440,23 +441,23 @@
                         );
                         UpdateContext({filteredFiles: XMLFiles});
                         If(
-                            Not(dd_Status.Selected.Id = "All"),
+                            Not(dd_EntryStatus.Selected.Id = "All"),
                             UpdateContext(
                                 {
                                     filteredFiles: Filter(
                                         filteredFiles,
-                                        dd_Status.Selected.Id = ThisRecord.FolderName
+                                        dd_EntryStatus.Selected.Id = ThisRecord.FolderName
                                     )
                                 }
                             )
                         );
                         If(
-                            Not(dd_FileType.Selected.Id = "0"),
+                            Not(dd_EntryFileType.Selected.Id = "0"),
                             UpdateContext(
                                 {
                                     filteredFiles: Filter(
                                         filteredFiles,
-                                        dd_FileType.Selected.Id = ThisRecord.FileType
+                                        dd_EntryFileType.Selected.Id = ThisRecord.FileType
                                     )
                                 }
                             )
@@ -472,7 +473,7 @@
                     Y: =0
                     ZIndex: =4
 
-            Container1 As groupContainer.manualLayoutContainer:
+            con_EntryData As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 DropShadow: =DropShadow.Light
                 LayoutMinHeight: =100
@@ -483,7 +484,7 @@
                 RadiusTopRight: =4
                 ZIndex: =4
 
-                "gl_XMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
+                "glr_EntryXMLFiles As gallery.'BrowseLayout_Vertical_OneTextVariant_ver5.0'":
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
                     Height: =Parent.Height
@@ -514,7 +515,7 @@
                     Width: =Parent.Width
                     ZIndex: =1
 
-                    Title4 As label:
+                    lbl_EntryFileName As label:
                         Color: =RGBA(50, 49, 48, 1)
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
@@ -532,7 +533,7 @@
                         Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                         ZIndex: =1
 
-                    NextArrow4 As icon.ChevronRight:
+                    icn_EntryNext As icon.ChevronRight:
                         AccessibleLabel: =Self.Tooltip
                         BorderColor: =App.Theme.Colors.Darker40
                         Color: =RGBA(166, 166, 166, 1)
@@ -540,25 +541,53 @@
                         DisabledColor: =RGBA(244, 244, 244, 1)
                         Height: =50
                         Icon: =Icon.ChevronRight
-                        OnSelect: |-
+                        OnSelect: |
                             =Select(Parent);
                             Switch(
                                 Parent.Selected.FileType,
                                 "01",
-                                Navigate(scr_XMLTemeljniceInventure),
+                                Navigate(
+                                    scr_XMLTemeljniceInventure,
+                                    ScreenTransition.Fade
+                                ),
                                 "02",
-                                Navigate(scr_XMLNabavniNalog),
+                                Navigate(
+                                    scr_XMLNabavniNalog,
+                                    ScreenTransition.Fade
+                                ),
                                 "03",
-                                Navigate(scr_XMLNalogZaProdaju),
+                                Navigate(
+                                    scr_XMLNalogZaProdaju,
+                                    ScreenTransition.Fade
+                                ),
                                 "04",
-                                Navigate(scr_XMLNalogZaPrenos),
+                                Navigate(
+                                    scr_XMLNalogZaPrenos,
+                                    ScreenTransition.Fade
+                                ),
                                 "05",
-                                Navigate(scr_XMLPrimke),
+                                Navigate(
+                                    scr_XMLPrimke,
+                                    ScreenTransition.Fade
+                                ),
                                 "06",
-                                Navigate(scr_XMLOtpremnice)
+                                Navigate(
+                                    scr_XMLOtpremnice,
+                                    ScreenTransition.Fade
+                                )
                             );
-                            Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
-                            Set(SelectedFolder, ThisItem.FolderName);
+                            Set(
+                                SelectedFile,
+                                Substitute(
+                                    ThisItem.FileName,
+                                    ".xml",
+                                    ""
+                                )
+                            );
+                            Set(
+                                SelectedFolder,
+                                ThisItem.FolderName
+                            );
                         PaddingBottom: =12
                         PaddingLeft: =12
                         PaddingRight: =12
@@ -569,7 +598,7 @@
                         Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                         ZIndex: =2
 
-                    Separator5 As rectangle:
+                    rct_EntrySeparator As rectangle:
                         BorderColor: =App.Theme.Colors.Darker40
                         Fill: =RGBA(255, 255, 255, 1)
                         Height: =8
@@ -578,10 +607,10 @@
                         Y: =Parent.TemplateHeight - Self.Height
                         ZIndex: =3
 
-                    Rectangle9 As rectangle:
+                    rct_Entry As rectangle:
                         BorderColor: =App.Theme.Colors.Darker40
                         Fill: =App.Theme.Colors.Darker30
-                        Height: =Parent.TemplateHeight - Separator5.Height
+                        Height: =Parent.TemplateHeight - rct_EntrySeparator.Height
                         OnSelect: =Select(Parent)
                         Visible: =ThisItem.IsSelected
                         Width: =4
@@ -602,11 +631,12 @@
                     Y: =0
                     ZIndex: =2
 
-                TextCanvas1 As Text:
+                txt_EntryNoData As Text:
                     Align: ='TextCanvas.Align'.Center
+                    AutoHeight: =false
                     DisplayMode: =DisplayMode.Edit
                     Height: =Parent.Height
-                    Size: =40
+                    Size: =20
                     Text: ="Nema dokumenata..."
                     VerticalAlign: ='TextCanvas.VerticalAlign'.Top
                     Visible: =!isLoading && IsEmpty(filteredFiles)
