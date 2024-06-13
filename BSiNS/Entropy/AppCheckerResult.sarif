@@ -11736,19 +11736,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status.AccessibleLabel"
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.spn_EntryLoader.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status.AccessibleLabel",
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.spn_EntryLoader.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status"
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.spn_EntryLoader"
               }
             }
           ],
@@ -11766,19 +11766,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType.AccessibleLabel"
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType.AccessibleLabel",
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType"
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles"
               }
             }
           ],
@@ -11796,49 +11796,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.AccessibleLabel"
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 6
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles.TabIndex",
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.TabIndex",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "TabIndex",
                 "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.icn_ReloadFiles"
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles"
               }
             }
           ],
@@ -11856,19 +11826,49 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.AccessibleLabel"
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.NextArrow4.TabIndex"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.AccessibleLabel",
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.NextArrow4.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "scr_Entry",
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.Container1.gl_XMLFiles.NextArrow4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles"
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_FileType.con_FileType.dd_FileType"
               }
             }
           ],
@@ -11886,79 +11886,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.TabIndex"
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.NextArrow4.TabIndex"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.NextArrow4.TabIndex",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TabIndex",
-                "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.gl_XMLFiles.NextArrow4"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 7
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.spn_EntryLoader.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.spn_EntryLoader.AccessibleLabel",
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "scr_Entry",
-                "type": "scr_Entry.ScreenContainer2.BottomContainer2.vrtcon_GetAllFiles.spn_EntryLoader"
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.vrtcon_Status.con_Status.dd_Status"
               }
             }
           ],
@@ -15019,6 +14959,36 @@
                 "member": "AccessibleLabel",
                 "module": "scr_XMLTemeljniceInventure",
                 "type": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.Spinner2_4"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.ButtonCanvas4.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.ButtonCanvas4.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_Entry",
+                "type": "scr_Entry.ScreenContainer2.vrtcon_GetAllFiles.hrzcon_GetAllFilesDDs.ButtonCanvas4"
               }
             }
           ],
