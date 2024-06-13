@@ -399,6 +399,7 @@
 
                 btn_EntryReload As Button:
                     Align: =Align.Center
+                    AlignInContainer: =AlignInContainer.End
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
                     DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                     FontSize: =40
@@ -491,24 +492,53 @@
                     Items: =filteredFiles
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
-                    OnSelect: |-
-                        =Switch(
+                    OnSelect: |
+                        =Select(Self);
+                        Switch(
                             Parent.Selected.FileType,
                             "01",
-                            Navigate(scr_XMLTemeljniceInventure),
+                            Navigate(
+                                scr_XMLTemeljniceInventure,
+                                ScreenTransition.Fade
+                            ),
                             "02",
-                            Navigate(scr_XMLNabavniNalog),
+                            Navigate(
+                                scr_XMLNabavniNalog,
+                                ScreenTransition.Fade
+                            ),
                             "03",
-                            Navigate(scr_XMLNalogZaProdaju),
+                            Navigate(
+                                scr_XMLNalogZaProdaju,
+                                ScreenTransition.Fade
+                            ),
                             "04",
-                            Navigate(scr_XMLNalogZaPrenos),
+                            Navigate(
+                                scr_XMLNalogZaPrenos,
+                                ScreenTransition.Fade
+                            ),
                             "05",
-                            Navigate(scr_XMLPrimke),
+                            Navigate(
+                                scr_XMLPrimke,
+                                ScreenTransition.Fade
+                            ),
                             "06",
-                            Navigate(scr_XMLOtpremnice)
+                            Navigate(
+                                scr_XMLOtpremnice,
+                                ScreenTransition.Fade
+                            )
                         );
-                        Set(SelectedFile, Substitute(ThisItem.FileName, ".xml", ""));
-                        Set(SelectedFolder, ThisItem.FolderName);
+                        Set(
+                            SelectedFile,
+                            Substitute(
+                                ThisItem.FileName,
+                                ".xml",
+                                ""
+                            )
+                        );
+                        Set(
+                            SelectedFolder,
+                            ThisItem.FolderName
+                        );
                     TemplatePadding: =0
                     TemplateSize: =80
                     Visible: =!isLoading && !IsEmpty(filteredFiles)

@@ -6,15 +6,22 @@
             isLoading,
             true
         );
-        
-        UpdateContext({doradaCheckbox: false, nalogZaProdajuReadyForNavCheckbox: false});
-        
-        UpdateContext({VAL:GetXml.Run(
-                                SelectedFile,
-                                SelectedFolder
-                            ).response});
-        
-        If(!IsBlank(SelectedFile),
+        UpdateContext(
+            {
+                doradaCheckbox: false,
+                nalogZaProdajuReadyForNavCheckbox: false
+            }
+        );
+        UpdateContext(
+            {
+                VAL: GetXml.Run(
+                    SelectedFile,
+                    SelectedFolder
+                ).response
+            }
+        );
+        If(
+            !IsBlank(SelectedFile),
             IfError(
                 UpdateContext(
                     {
@@ -22,17 +29,20 @@
                             GetXml.Run(
                                 SelectedFile,
                                 SelectedFolder
-                            ).response).Sales_Header
-                        )
+                            ).response
+                        ).Sales_Header )
                     }
-                ), 
-                Notify("Greška u obradi.", NotificationType.Error, 2000)
+                ),
+                Notify(
+                    "Greška u obradi.",
+                    NotificationType.Error,
+                    2000
+                )
             )
         );
-        
-        UpdateContext({
-            header:
-                {
+        UpdateContext(
+            {
+                header: {
                     Amount: Text(xmlData.Amount),
                     Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
                     Bank_Name: Text(xmlData.Bank_Name),
@@ -85,10 +95,9 @@
                     VAT_Country_Code: Text(xmlData.VAT_Country_Code),
                     'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
                     VAT_Date: Text(xmlData.VAT_Date)
-        
                 }
-        });
-        
+            }
+        );
         ClearCollect(
             salesCollection,
             IfError(
@@ -165,12 +174,11 @@
                         Type: Text(line.Type),
                         Unit_Of_Measure: Text(line.Unit_Of_Measure),
                         Unit_Price: Text(line.Unit_Price)
-                        
                     }
                 ),
                 {
                     Description: Text(xmlData.Sales_Line.Description),
-                    Document_No : Text(xmlData.Sales_Line.Document_No),
+                    Document_No: Text(xmlData.Sales_Line.Document_No),
                     Document_Type: Text(xmlData.Sales_Line.Document_Type),
                     Item_No: Text(xmlData.Sales_Line.Item_No),
                     Line_Amount: Text(xmlData.Sales_Line.Line_Amount),
@@ -182,7 +190,6 @@
                     'Qty-to_Invoice': Text(xmlData.Sales_Line.'Qty-to_Invoice'),
                     'Qty-to_Ship': Text(xmlData.Sales_Line.'Qty-to_Ship'),
                     Quantity: Text(xmlData.Sales_Line.Quantity),
-                    
                     Res_Entry: IfError(
                         ForAll(
                             xmlData.Sales_Line.Res_Entry As entry,
@@ -243,8 +250,6 @@
                 }
             )
         );
-        
-        
         /*
         If(!IsBlank(SelectedFile),
             IfError(
@@ -265,7 +270,6 @@
                     )
                 })
             );
-        
             UpdateContext({
                 sales_header:
                 ParseJSON(sales.sales_header)
@@ -278,10 +282,8 @@
                 salesResEntry:
                 sales.res_entry
             });
-        
             Clear(colSalesLines);
             Clear(colSalesResEntries);
-        
             ForAll(
                 ParseJSON(sales_lines),
                 Collect(
@@ -306,9 +308,7 @@
                         Outstand_Quantity: Value(ThisRecord.Outstand_Quantity)
                     }
                 );
-                
             );
-        
             ForAll(
                 ParseJSON(salesResEntry),
                 Collect(
@@ -338,12 +338,23 @@
                 )
             );
         );*/
-        
-        Set(isLoading, false);
-        
-        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress); Set(SelectedFolder, InProgress));
-        
-        UpdateContext({wizardStep:1});
+        Set(
+            isLoading,
+            false
+        );
+        If(
+            SelectedFolder = ReadyForProcessing,
+            ChangeXmlStatus.Run(
+                SelectedFile,
+                SelectedFolder,
+                InProgress
+            );
+            Set(
+                SelectedFolder,
+                InProgress
+            )
+        );
+        UpdateContext({wizardStep: 1});
 
     NalogZaProdajuScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light

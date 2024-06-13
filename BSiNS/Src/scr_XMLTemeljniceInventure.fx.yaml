@@ -1,12 +1,13 @@
 "scr_XMLTemeljniceInventure As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: |+
-        =Set(isLoading, true);
-        
-        Reset(temeljniceInventureReadyForNavCheckbox);
-        
-        If(!IsBlank(SelectedFile),
+    OnVisible: |
+        =Set(
+            isLoading,
+            true
+        );
+        If(
+            !IsBlank(SelectedFile),
             IfError(
                 UpdateContext(
                     {
@@ -14,14 +15,17 @@
                             GetXml.Run(
                                 SelectedFile,
                                 SelectedFolder
-                            ).response).Lines
-                        )
+                            ).response
+                        ).Lines )
                     }
-                ), 
-                Notify("Greška u obradi.", NotificationType.Error, 2000)
+                ),
+                Notify(
+                    "Greška u obradi.",
+                    NotificationType.Error,
+                    2000
+                )
             )
         );
-        
         ClearCollect(
             item_Journal_LineCollection,
             IfError(
@@ -36,7 +40,7 @@
                         Source_Type: Text(line.Source_Type),
                         'Source_No.': Text(line.'Source_No.'),
                         Source_Code: Text(line.Source_Code),
-                        Item_No: Text(line.'Item_No.'),
+                        Item_No: Text(line.Item_No),
                         'Phys._Inventory': Text(line.'Phys._Inventory'),
                         Location_Code: Text(line.Location_Code),
                         Posting_Date: Text(line.Posting_Date),
@@ -80,14 +84,22 @@
                 }
             )
         );
-        
-        
-        Set(isLoading, false);
-        
-        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress); Set(SelectedFolder, InProgress));
-        
-        UpdateContext({wizardStep:1});
-        
+        Set(
+            isLoading,
+            false
+        );
+        If(
+            SelectedFolder = ReadyForProcessing,
+            ChangeXmlStatus.Run(
+                SelectedFile,
+                SelectedFolder,
+                InProgress
+            );
+            Set(
+                SelectedFolder,
+                InProgress
+            )
+        );
 
     TemeljniceInventureScreenContainer As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -143,7 +155,6 @@
             Item_Journal_LinesCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
                 Height: =611
-                Visible: =wizardStep = 1
                 Width: =Parent.Width
                 ZIndex: =28
 
@@ -154,7 +165,7 @@
                     DisplayMode: =DisplayMode.Edit
                     Fill: =RGBA(0, 0, 0, 0)
                     Height: =729
-                    Visible: =wizardStep = 1
+                    Visible: =true
                     Width: =Parent.Width
                     X: =0
                     Y: =1
@@ -169,7 +180,7 @@
                         Items: =item_Journal_LineCollection
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: =
+                        OnSelect: =Set(isModalOpen, true)
                         TemplatePadding: =0
                         TemplateSize: =261
                         Width: =Parent.Width
@@ -228,14 +239,14 @@
                                 Height: =22
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
+                                PaddingLeft: =Title5_6.PaddingLeft
+                                PaddingRight: =Title5_6.PaddingRight
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
                                     ="Naziv artikla:   " & ThisItem.Description
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
+                                Width: =Title5_6.Width
                                 Y: =55
                                 ZIndex: =2
 
@@ -247,15 +258,14 @@
                                 Height: =18
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
+                                PaddingLeft: =Title5_6.PaddingLeft
+                                PaddingRight: =Title5_6.PaddingRight
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Količina:    "
+                                    ="LOT:    " & ThisItem.Lot_No
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =88
-                                X: =22
+                                Width: =Title5_6.Width
                                 Y: =93
                                 ZIndex: =12
 
@@ -267,15 +277,14 @@
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
+                                PaddingLeft: =Title5_6.PaddingLeft
+                                PaddingRight: =Title5_6.PaddingRight
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Rok trajanja:    "
+                                    ="Rok trajanja:    " & ThisItem.Item_Expiration_Date
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =120
-                                X: =22
+                                Width: =Title5_6.Width
                                 Y: =133
                                 ZIndex: =13
 
@@ -287,76 +296,16 @@
                                 Height: =Self.Size * 1.8
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
+                                PaddingLeft: =Title5_6.PaddingLeft
+                                PaddingRight: =Title5_6.PaddingRight
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="LOT:    "
+                                    ="Količina:    " & ThisItem.Quantity
                                 VerticalAlign: =VerticalAlign.Top
-                                Width: =60
-                                X: =26
+                                Width: =Title5_6.Width
                                 Y: =171
                                 ZIndex: =14
-
-                            "Item_JournalQty As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(salesCollection, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.Line_No ,{Quantity: Value(Item_JournalQty.Value)});
-                                Value: =ThisItem.Quantity
-                                Width: =113
-                                X: =110
-                                Y: =86
-                                ZIndex: =15
-
-                            DatePickerExpDate_Item_Journal As datepicker:
-                                BorderColor: =App.Theme.Colors.Darker40
-                                CalendarHeaderFill: =App.Theme.Colors.Primary
-                                Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =If(IsBlank(ThisItem.Item_Expiration_Date), Today(), ThisItem.Item_Expiration_Date)
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                DisabledFill: =RGBA(244, 244, 244, 1)
-                                DisplayMode: =If(IsBlank(ThisItem.Item_Expiration_Date), DisplayMode.Disabled, DisplayMode.Edit)
-                                Font: =App.Theme.Font
-                                Format: ="dd.mm.yyyy"
-                                Height: =26
-                                HoverDateFill: =App.Theme.Colors.Lighter70
-                                IconBackground: =App.Theme.Colors.Primary
-                                OnChange: |-
-                                    =UpdateIf(item_Journal_LineCollection, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Item_Expiration_Date: Text(DatePickerExpDate_Item_Journal.SelectedDate, "yyyy-mm-dd")})
-                                OnSelect: =
-                                SelectedDateFill: =App.Theme.Colors.Primary
-                                Width: =158
-                                X: =146
-                                Y: =130
-                                ZIndex: =16
-
-                            "Item_Journal_Lot As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =UpdateIf(item_Journal_LineCollection, Item_Journal_Lines_Gallery.Selected.'Line_No.' = ThisRecord.'Line_No.' ,{Lot_No: Text(Item_Journal_Lot.Value)})
-                                Value: =ThisItem.Lot_No
-                                Width: =113
-                                X: =86
-                                Y: =166
-                                ZIndex: =17
 
                             Subtitle4_6 As label:
                                 Color: =RGBA(0, 0, 0, 1)
@@ -366,8 +315,8 @@
                                 Height: =22
                                 OnSelect: =Select(Parent)
                                 PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
+                                PaddingLeft: =Title5_6.PaddingLeft
+                                PaddingRight: =Title5_6.PaddingRight
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
@@ -495,7 +444,7 @@
                 FontSize: =14
                 FontWeight: =FontWeight.Bold
                 Height: =Parent.Height
-                Label: ="Spremno za NAV"
+                Label: ="NAV"
                 LayoutMinHeight: =32
                 LayoutMinWidth: =160
                 OnCheck: =false
@@ -520,50 +469,53 @@
                 HoverColor: =RGBA(255, 255, 255, 1)
                 HoverFill: =App.Theme.Colors.Darker10
                 OnSelect: |-
-                    =UpdateContext({
-                        journalJsonData:
-                        JSON(
-                            {
-                                Lines: {
-                                    Item_Journal_Line: ForAll(colJournalLine,{
-                                        Barcode : Text(Barcode),
-                                        Description: Text(Description),
-                                        Document_Date: Text(Document_Date),
-                                        'Document_No.': Text('Document_No.'),
-                                        Entry_Type: Text(Entry_Type),
-                                        Gen_Bus_Posting_Group: Text(Gen_Bus_Posting_Group),
-                                        Item_Expiration_Date: Text(Item_Expiration_Date),
-                                        'Item_No.': Text('Item_No.'),
-                                        Journal_Batch_Name: Text(Journal_Batch_Name),
-                                        Journal_Template_Name: Text(Journal_Template_Name),
-                                        'Line_No.': Text('Line_No.'),
-                                        Location_Code: Text(Location_Code),
-                                        Lot_No: Text(Lot_No),
-                                        'Phys._Inventory': Text('Phys._Inventory'),
-                                        Posting_Date: Text(Posting_Date),
-                                        Qty_Calculated: Text(Qty_Calculated),
-                                        Qty_Calculated_Ext: Text(Qty_Calculated_Ext),
-                                        Qty_Phys_Inventory: Text(Qty_Phys_Inventory),
-                                        Qty_Phys_Inventory_Ext: Text(Qty_Phys_Inventory_Ext),
-                                        Quantity: Text(Quantity),
-                                        Sales_Price: Text(Sales_Price),
-                                        Source_Code: Text(Source_Code),
-                                        'Source_No.': Text('Source_No.'),
-                                        Source_Type: Text(Source_Type)
-                                    })
-                                }
-                            },JSONFormat.IgnoreUnsupportedTypes
+                    =IfError(
+                        GetXml.Run(
+                            SelectedFile,
+                            ReadyForProcessing
+                        ),
+                        IfError(
+                            UpdateXML.Run(
+                                "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(item_Journal_LineCollection) & "}" & "}",
+                                SelectedFile,
+                                SelectedFolder
+                            ),
+                            Notify(
+                                "Došlo je do greške!",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            Notify(
+                                "Uspješno ažuriranje!",
+                                NotificationType.Success
+                            );
+                            If(
+                                temeljniceInventureReadyForNavCheckbox.Checked,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    ReadyForNAVProcessing
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                )
+                            )
+                        ),
+                        Set(
+                            SelectedFolder,
+                            ReadyForProcessing
+                        );
+                        Notify(
+                            "Postoje izmjene u ovom fajlu.",
+                            NotificationType.Information,
+                            2000
+                        );
+                        Navigate(
+                            scr_XMLTemeljniceInventure,
+                            ScreenTransition.Fade
                         )
-                    });
-                    
-                    UpdateContext({response: UpdateXML.Run(journalJsonData, SelectedFile, SelectedFolder, temeljniceInventureReadyForNavCheckbox.Checked)});
-                    
-                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
-                    Set(SelectedFolder, response.folder);
-                    
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLTemeljniceInventure,ScreenTransition.Fade));
-                    
-                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
+                    )
                 PressedBorderColor: =App.Theme.Colors.Darker40
                 PressedColor: =Self.Color
                 PressedFill: =App.Theme.Colors.Darker40
@@ -588,4 +540,204 @@
             X: =0
             Y: =0
             ZIndex: =4
+
+    con_ModalFade_3 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(0, 0, 0, 50%)
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =isModalOpen
+        Width: |
+            =Parent.Width
+        ZIndex: =2
+
+        con_Modal_3 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.ExtraBold
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height * 50%
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width * 75%
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =1
+
+            vrt_Modal_3 As groupContainer.verticalAutoLayoutContainer:
+                DropShadow: =DropShadow.ExtraBold
+                Height: =Parent.Height
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                Header2_3 As Header:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =55
+                    IsLogoVisible: =false
+                    IsProfilePictureVisible: =false
+                    LayoutMinHeight: =75
+                    LayoutMinWidth: =Parent.Width
+                    LogoTooltip: =
+                    OnSelectLogo: =false
+                    Style: ='Header.Style'.Primary
+                    Title: ="Unesite podatke"
+                    TitleFontSize: =15
+                    UserEmail: =User().Email
+                    UserImage: =User().Image
+                    UserName: =User().FullName
+                    Visible: =true
+                    Width: =Parent.Width
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                Container11_3 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =3
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingLeft: =15
+                    PaddingRight: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    Container13_11 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        ZIndex: =2
+
+                        TextCanvas3_11 As Text:
+                            AlignInContainer: =AlignInContainer.Center
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="Količina"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_rezQty_2 As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =12
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            OnChange: =
+                            Placeholder: ="Unesite količinu..."
+                            Required: =true
+                            Type: ="Text"
+                            Value: =Item_Journal_Lines_Gallery.Selected.Quantity
+                            Width: =150
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
+
+                Container10_3 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.End
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =20
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =20
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =3
+
+                    ButtonCanvas2_3 As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Secondary
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="DismissCircle"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |-
+                            =Reset(inp_rezQty_2);
+                            Set(isModalOpen, false);
+                        Text: ="Zatvori"
+                        Width: =96
+                        X: =40
+                        Y: =40
+                        ZIndex: =1
+
+                    ButtonCanvas3_3 As Button:
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="Save"
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =UpdateIf(
+                                item_Journal_LineCollection,
+                                ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
+                                {Quantity: Value(inp_rezQty_2.Value)}
+                            );
+                            ClearCollect(
+                                item_Journal_LineCollectionEdited,
+                                item_Journal_LineCollection
+                            );
+                            ClearCollect(
+                                item_Journal_LineCollection,
+                                item_Journal_LineCollectionEdited
+                            );
+                            Clear(item_Journal_LineCollectionEdited);
+                            Reset(inp_rezQty_2);
+                            Set(
+                                isModalOpen,
+                                false
+                            );
+                        Text: ="Spasi"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
 
