@@ -6,8 +6,8 @@
             isLoading,
             true
         );
-        nalogZaProdajuReadyForNavCheckbox = false;
-        doradaCheckbox = false;
+        
+        UpdateContext({doradaCheckbox: false, nalogZaProdajuReadyForNavCheckbox: false});
         
         UpdateContext({VAL:GetXml.Run(
                                 SelectedFile,
@@ -1491,20 +1491,30 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: |-
-                                =If(IsNumeric(inp_rezQty.Value),
-                                    If(Value(Text(inp_rezQty.Value)) >= 0,
-                                        If(Value(inp_rezQty.Value) > Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
-                                            Reset(inp_rezQty);
-                                            UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))}),
-                                            UpdateContext({potrebnaKolicina: (NalogZaProdajuResEntry.Selected.Quantity * -1) - Value(Text(inp_rezQty.Value))})
+                            OnChange: |
+                                =If(
+                                    !IsNumeric(inp_rezQty.Value) || Value(inp_rezQty.Value) < 0,
+                                    Notify(
+                                        "Unesite pozitivan broj.",
+                                        NotificationType.Error,
+                                        2000
+                                    );
+                                    Reset(inp_rezQty);
+                                    UpdateContext({potrebnaKolicina: 0}),
+                                    If(
+                                        Value(inp_rezQty.Value) > Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
+                                        Reset(inp_rezQty);
+                                        UpdateContext({potrebnaKolicina: 0});
+                                        Notify(
+                                            "Maksimalna količina za isporuku je " & Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed),
+                                            NotificationType.Information,
+                                            2000
                                         ),
-                                        Notify("Neispravan unos!", NotificationType.Error, 2000),
-                                        //dodati logiku za vracanje inp_rezQty.Value u pozitivann
+                                        UpdateContext({potrebnaKolicina: Abs(NalogZaProdajuResEntry.Selected.Quantity) - inp_rezQty.Value})
                                     )
-                                )
+                                );
                             Placeholder: ="Unesite LOT"
-                            Value: =NalogZaProdajuResEntry.Selected.Quantity_Completed
+                            Value: =Abs(NalogZaProdajuResEntry.Selected.Quantity_Completed)
                             Width: =150
                             X: =40
                             Y: =40
@@ -1608,9 +1618,8 @@
                                 First(Filter(salesCollection, ThisRecord.Line_No = NalogZaProdajuLines.Selected.Line_No)).Res_Entry,
                                 Entry_No = NalogZaProdajuResEntry.Selected.Entry_No,
                                 {
-                                    Quantity: inp_Quantity_1.Value,
-                                    Quantity_Completed: (inp_rezQty.Value * (-1) ),
-                                    Quantity_NewLOT: (inp_potrebnoQty.Value * (-1) )
+                                    Quantity_Completed: -Value(inp_rezQty.Value),
+                                    Quantity_NewLOT: -Value(inp_potrebnoQty.Value)
                                 }
                             );
                             ClearCollect(

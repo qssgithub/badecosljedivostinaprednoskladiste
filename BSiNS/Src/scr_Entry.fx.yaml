@@ -212,11 +212,24 @@
 
                             dd_Status As Dropdown.pcfdataset:
                                 DefaultSelectedItems: |-
-                                    ={Id: "All", Text: "All"}
+                                    ={Id: "All", Text: "Svi statusi"}
                                 DisplayMode: =DisplayMode.Edit
                                 Height: =Parent.Height
                                 Items: |-
-                                    =[{Id: "All", Text: "All"}, {Id: "ReadyForProcessing", Text: "Ready for processing"}, {Id: "InProgress", Text: "In progress"}]
+                                    =[
+                                        {
+                                            Id: "All",
+                                            Text: "Svi statusi"
+                                        },
+                                        {
+                                            Id: "ReadyForProcessing",
+                                            Text: "Za obradu"
+                                        },
+                                        {
+                                            Id: "InProgress",
+                                            Text: "U obradi"
+                                        }
+                                    ]
                                 OnChange: |-
                                     =If(
                                         Not(dd_Status.Selected.Id = "All"),
@@ -319,7 +332,7 @@
                                 DefaultSelectedItems: |-
                                     ={
                                         Id: "0",
-                                        Text: "All"
+                                        Text: "Svi dokumenti"
                                     }
                                 DisplayMode: =DisplayMode.Edit
                                 Height: =Parent.Height
@@ -327,7 +340,7 @@
                                     =[
                                         {
                                             Id: "0",
-                                            Text: "All"
+                                            Text: "Svi dokumenti"
                                         },
                                         {
                                             Id: "01",
