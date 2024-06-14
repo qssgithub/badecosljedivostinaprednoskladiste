@@ -41,7 +41,7 @@
                         Source_Type: Text(line.Source_Type),
                         'Source_No.': Text(line.'Source_No.'),
                         Source_Code: Text(line.Source_Code),
-                        'Item_No.': Text(line.'Item_No.'),
+                        'Item_No': Text(line.'Item_No'),
                         'Phys._Inventory': Text(line.'Phys._Inventory'),
                         Location_Code: Text(line.Location_Code),
                         Posting_Date: Text(line.Posting_Date),
@@ -68,7 +68,7 @@
                     Source_Type: Text(xmlData.Item_Journal_Line.Source_Type),
                     'Source_No.': Text(xmlData.Item_Journal_Line.'Source_No.'),
                     Source_Code: Text(xmlData.Item_Journal_Line.Source_Code),
-                    'Item_No.': Text(xmlData.Item_Journal_Line.'Item_No.'),
+                    'Item_No': Text(xmlData.Item_Journal_Line.'Item_No'),
                     'Phys._Inventory': Text(xmlData.Item_Journal_Line.'Phys._Inventory'),
                     Location_Code: Text(xmlData.Item_Journal_Line.Location_Code),
                     Posting_Date: Text(xmlData.Item_Journal_Line.Posting_Date),
@@ -185,7 +185,7 @@
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: =Set(isModalOpen, true)
                         TemplatePadding: =0
-                        TemplateSize: =261
+                        TemplateSize: =291
                         Width: =Parent.Width
                         Y: =49
                         ZIndex: =1
@@ -208,6 +208,55 @@
                             Width: =4
                             ZIndex: =6
 
+                        Icon2 As icon.AddDocument:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Color: =App.Theme.Colors.Darker30
+                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                            DisabledColor: =RGBA(244, 244, 244, 1)
+                            Height: =30
+                            Icon: =Icon.AddDocument
+                            OnSelect: |-
+                                =Collect(inventureCollection, {
+                                    Journal_Template_Name: ThisItem.Journal_Template_Name,
+                                    Journal_Batch_Name: ThisItem.Journal_Batch_Name,
+                                    'Line_No.': ThisItem.'Line_No.',
+                                    'Document_No.': ThisItem.'Document_No.',
+                                    Description: ThisItem.Description,
+                                    Source_Type: ThisItem.Source_Type,
+                                    'Source_No.': ThisItem.'Source_No.',
+                                    Source_Code: ThisItem.Source_Code,
+                                    'Item_No': ThisItem.'Item_No',
+                                    'Phys._Inventory': ThisItem.'Phys._Inventory',
+                                    Location_Code: ThisItem.Location_Code,
+                                    Posting_Date: ThisItem.Posting_Date,
+                                    Document_Date: ThisItem.Document_Date,
+                                    Sales_Price: ThisItem.Sales_Price,
+                                    Qty_Calculated: ThisItem.Qty_Calculated,
+                                    Qty_Calculated_Ext: ThisItem.Qty_Calculated_Ext,
+                                    Quantity: ThisItem.Quantity,
+                                    Entry_Type: ThisItem.Entry_Type,
+                                    Qty_Phys_Inventory: Blank(),
+                                    Qty_Phys_Inventory_Ext: ThisItem.Qty_Phys_Inventory_Ext,
+                                    Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,
+                                    Lot_No: Blank(),
+                                    Item_Expiration_Date: ThisItem.Item_Expiration_Date,
+                                    Barcode: ThisItem.Barcode
+                                });
+                                
+                                ClearCollect(
+                                    inventureCollectionEdited,
+                                    inventureCollection
+                                );
+                                ClearCollect(
+                                    inventureCollection,
+                                    inventureCollectionEdited
+                                );
+                                Clear(inventureCollectionEdited);
+                            Width: =25
+                            X: =21
+                            Y: =243
+                            ZIndex: =19
+
                         Group3 As group:
                             Height: =5
                             Width: =5
@@ -228,7 +277,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.Item_No
+                                    ="Br. artikla:   " & ThisItem.'Item_No'
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
@@ -623,7 +672,56 @@
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
-                    ZIndex: =2
+                    ZIndex: =3
+
+                    Container13_12 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        PaddingBottom: =15
+                        PaddingTop: =15
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Visible: =IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No)
+                        ZIndex: =1
+
+                        TextCanvas3_12 As Text:
+                            AlignInContainer: =AlignInContainer.Center
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Text: ="LOT"
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_lotbr As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.End
+                            AlignInContainer: =AlignInContainer.Center
+                            BasePaletteColor: =
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =14
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            OnChange: =
+                            Placeholder: ="Unesite broj LOT-a"
+                            Required: =true
+                            Type: ="Text"
+                            Value: =Item_Journal_Lines_Gallery.Selected.Lot_No
+                            Width: =100
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
 
                     Container13_11 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
@@ -690,7 +788,7 @@
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
-                    ZIndex: =3
+                    ZIndex: =4
 
                     ButtonCanvas2_3 As Button:
                         Appearance: ='ButtonCanvas.Appearance'.Secondary
@@ -720,11 +818,31 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =UpdateIf(
+                            =If(IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No),
+                                UpdateIf(
+                                    inventureCollection,
+                                    ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
+                                    {
+                                        Lot_No: Text(inp_lotbr.Value),
+                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                                    }
+                                )
+                                ,
+                                UpdateIf(
+                                    inventureCollection,
+                                    ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
+                                    {
+                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                                    }
+                                )
+                            );
+                            /*UpdateIf(
                                 inventureCollection,
                                 ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
-                                {Qty_Phys_Inventory: Value(inp_rezQty_2.Value)}
-                            );
+                                {
+                                    Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                                }
+                            );*/
                             ClearCollect(
                                 inventureCollectionEdited,
                                 inventureCollection

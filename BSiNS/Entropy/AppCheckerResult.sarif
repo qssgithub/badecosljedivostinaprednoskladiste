@@ -14,46 +14,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Title5_6.Text"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Title5_6.Text",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 8,
-                  "charOffset": 28,
-                  "snippet": {
-                    "text": ".Item_No"
-                  }
-                }
-              },
-              "properties": {
-                "member": "Text",
-                "module": "scr_XMLTemeljniceInventure",
-                "type": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Title5_6"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Item_No"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 0
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scr_XMLOtpremnice.OtpremniceScreenContainer.OtpremniceBody.Otpremnice_Line_Canvas.Otpremnice_Header.TextCanvas6.Text"
                 }
               ],
@@ -12787,6 +12747,96 @@
                 "member": "AccessibleLabel",
                 "module": "scr_XMLPrimke",
                 "type": "scr_XMLPrimke.con_PrimkeModalFade.con_PrimkeModal.vrt_PrimkeModal.hrz_PrimkeModalFooter.btn_PrimkeModalSave"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 6
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2.TabIndex"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2.TabIndex",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TabIndex",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.TemeljniceInventureScreenContainer.TemeljniceInventureBody.Item_Journal_LinesCanvas.Item_Journal_Lines.Item_Journal_Lines_Gallery.Icon2"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
+          "ruleIndex": 7
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.con_ModalFade_3.con_Modal_3.vrt_Modal_3.Container11_3.Container13_12.inp_lotbr.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.con_ModalFade_3.con_Modal_3.vrt_Modal_3.Container11_3.Container13_12.inp_lotbr.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.con_ModalFade_3.con_Modal_3.vrt_Modal_3.Container11_3.Container13_12.inp_lotbr"
               }
             }
           ],
