@@ -430,10 +430,13 @@
                             LayoutMinHeight: =70
                             LayoutMinWidth: =280
                             OnCancel: =false
-                            OnScan: |-
-                                =UpdateContext({
-                                    scannedItem:First(BarcodeReader1_3.Barcodes).Value
-                                })
+                            OnScan: |
+                                =UpdateContext(
+                                    {
+                                        scannedItem: First(BarcodeReader1_3.Barcodes).Value,
+                                        isModalOpen: true
+                                    }
+                                );
                             PressedBorderColor: =RGBA(189, 49, 51, 1)
                             PressedContentColor: =RGBA(189, 49, 51, 1)
                             PressedFillColor: =RGBA(255, 255, 255, 1)
