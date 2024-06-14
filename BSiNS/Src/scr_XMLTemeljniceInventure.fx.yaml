@@ -1,11 +1,23 @@
 "scr_XMLTemeljniceInventure As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnHidden: =ClearCollect(inventureCollection, Blank());
+    OnHidden: |
+        =ClearCollect(
+            inventureCollection,
+            Blank()
+        );
+        ClearCollect(
+            lockedLines,
+            Blank()
+        );
     OnVisible: |
         =Set(
             isLoading,
             true
+        );
+        Set(
+            isModalOpen,
+            false
         );
         If(
             !IsBlank(SelectedFile),
@@ -87,10 +99,6 @@
                 }
             )
         );
-        Set(
-            isLoading,
-            false
-        );
         If(
             SelectedFolder = ReadyForProcessing,
             ChangeXmlStatus.Run(
@@ -102,6 +110,20 @@
                 SelectedFolder,
                 InProgress
             )
+        );
+        ClearCollect(
+            lockedLines,
+            ForAll(
+                inventureCollection As line,
+                {
+                    lineId: line.'Line_No.',
+                    isLocked: false
+                }
+            )
+        );
+        Set(
+            isLoading,
+            false
         );
 
     TemeljniceInventureScreenContainer As groupContainer.verticalAutoLayoutContainer:
@@ -183,7 +205,7 @@
                         Items: =inventureCollection
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: =Set(isModalOpen, true)
+                        OnSelect: =If(!First(Search(lockedLines, Item_Journal_Lines_Gallery.Selected.'Line_No.', lineId)).isLocked, Set(isModalOpen, true))
                         TemplatePadding: =0
                         TemplateSize: =291
                         Width: =Parent.Width
@@ -431,11 +453,10 @@
                             LayoutMinWidth: =280
                             OnCancel: =false
                             OnScan: |
-                                =UpdateContext(
-                                    {
-                                        scannedItem: First(BarcodeReader1_3.Barcodes).Value,
-                                        isModalOpen: true
-                                    }
+                                =UpdateContext({scannedItem: First(BarcodeReader1_3.Barcodes).Value});
+                                Set(
+                                    isModalOpen,
+                                    true
                                 );
                             PressedBorderColor: =RGBA(189, 49, 51, 1)
                             PressedContentColor: =RGBA(189, 49, 51, 1)
@@ -615,260 +636,269 @@
             =Parent.Width
         ZIndex: =2
 
-        con_Modal_3 As groupContainer.manualLayoutContainer:
+        vrt_Modal_3 As groupContainer.verticalAutoLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.Height * 50%
+            Height: =300
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Width: =Parent.Width * 75%
+            Width: =300
             X: =(Parent.Width - Self.Width) / 2
             Y: =(Parent.Height - Self.Height) / 2
-            ZIndex: =1
+            ZIndex: =2
 
-            vrt_Modal_3 As groupContainer.verticalAutoLayoutContainer:
-                DropShadow: =DropShadow.ExtraBold
-                Height: =Parent.Height
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            Container1 As groupContainer.horizontalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                Fill: =RGBA(189, 49, 51, 1)
+                LayoutMinHeight: =40
+                LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =5
+                PaddingRight: =5
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
-                Width: =Parent.Width
                 ZIndex: =1
 
-                Header2_3 As Header:
+                TextCanvas1 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    AlignInContainer: =AlignInContainer.Stretch
                     DisplayMode: =DisplayMode.Edit
-                    Height: =55
-                    IsLogoVisible: =false
-                    IsProfilePictureVisible: =false
-                    LayoutMinHeight: =75
-                    LayoutMinWidth: =Parent.Width
-                    LogoTooltip: =
-                    OnSelectLogo: =false
-                    Style: ='Header.Style'.Primary
-                    Title: ="Unesite podatke"
-                    TitleFontSize: =15
-                    UserEmail: =User().Email
-                    UserImage: =User().Image
-                    UserName: =User().FullName
-                    Visible: =true
-                    Width: =Parent.Width
+                    FillPortions: =1
+                    FontColor: =RGBA(255, 255, 255, 1)
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =32
+                    Text: ="Unesite podatke"
+                    Width: =96
                     X: =0
                     Y: =0
                     ZIndex: =1
 
-                Container11_3 As groupContainer.verticalAutoLayoutContainer:
+                ButtonCanvas2_3 As Button:
+                    Align: =Align.Justify
+                    AlignInContainer: =AlignInContainer.Center
+                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =RGBA(255, 255, 255, 1)
+                    FontSize: =32
+                    Height: |
+                        =32
+                    Icon: ="DismissCircle"
+                    IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |-
+                        =Reset(inp_rezQty_2);
+                        Set(isModalOpen, false);
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: ="Zatvori"
+                    Width: =32
+                    X: =40
+                    Y: =40
+                    ZIndex: =2
+
+            Container11_3 As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                FillPortions: =3
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =15
+                PaddingLeft: =15
+                PaddingRight: =15
+                PaddingTop: =15
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =3
+
+                Container13_12 As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
-                    DropShadow: =DropShadow.Light
-                    FillPortions: =3
                     LayoutAlignItems: =LayoutAlignItems.Stretch
-                    LayoutDirection: =LayoutDirection.Vertical
                     LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =100
+                    LayoutMinHeight: =30
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
                     PaddingBottom: =15
-                    PaddingLeft: =15
-                    PaddingRight: =15
                     PaddingTop: =15
                     RadiusBottomLeft: =4
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
-                    ZIndex: =3
+                    Visible: =IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No)
+                    ZIndex: =1
 
-                    Container13_12 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Visible: =IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No)
-                        ZIndex: =1
-
-                        TextCanvas3_12 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: ="LOT"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "inp_lotbr As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =14
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            OnChange: =
-                            Placeholder: ="Unesite broj LOT-a"
-                            Required: =true
-                            Type: ="Text"
-                            Value: =Item_Journal_Lines_Gallery.Selected.Lot_No
-                            Width: =100
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
-                    Container13_11 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        ZIndex: =2
-
-                        TextCanvas3_11 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: ="Popisana količina"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "inp_rezQty_2 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =14
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            OnChange: =
-                            Placeholder: ="Unesite količinu..."
-                            Required: =true
-                            Type: ="Text"
-                            Value: =Item_Journal_Lines_Gallery.Selected.Qty_Phys_Inventory
-                            Width: =100
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
-                Container10_3 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    DropShadow: =DropShadow.Light
-                    LayoutAlignItems: =LayoutAlignItems.Stretch
-                    LayoutGap: =10
-                    LayoutJustifyContent: =LayoutJustifyContent.End
-                    LayoutMinHeight: =40
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =20
-                    PaddingLeft: =10
-                    PaddingRight: =10
-                    PaddingTop: =20
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    ZIndex: =4
-
-                    ButtonCanvas2_3 As Button:
-                        Appearance: ='ButtonCanvas.Appearance'.Secondary
-                        BasePaletteColor: =
+                    TextCanvas3_12 As Text:
+                        AlignInContainer: =AlignInContainer.Center
+                        AutoHeight: =true
                         DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
                         Height: =32
-                        Icon: ="DismissCircle"
-                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
-                        Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
-                            =Reset(inp_rezQty_2);
-                            Set(isModalOpen, false);
-                        Text: ="Zatvori"
+                        Text: ="LOT"
                         Width: =96
                         X: =40
                         Y: =40
                         ZIndex: =1
 
-                    ButtonCanvas3_3 As Button:
+                    "inp_lotbr As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.End
+                        AlignInContainer: =AlignInContainer.Center
                         BasePaletteColor: =
                         DisplayMode: =DisplayMode.Edit
+                        FontSize: =14
                         Height: =32
-                        Icon: ="Save"
-                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: =
+                        Placeholder: ="Unesite broj LOT-a"
+                        Required: =true
+                        Type: ="Text"
+                        Value: =Item_Journal_Lines_Gallery.Selected.Lot_No
+                        Width: =100
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+                Container13_11 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =30
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    TextCanvas3_11 As Text:
+                        AlignInContainer: =AlignInContainer.Center
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        Height: =32
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |
-                            =If(IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No),
-                                UpdateIf(
-                                    inventureCollection,
-                                    ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
-                                    {
-                                        Lot_No: Text(inp_lotbr.Value),
-                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
-                                    }
-                                )
-                                ,
-                                UpdateIf(
-                                    inventureCollection,
-                                    ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
-                                    {
-                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
-                                    }
-                                )
-                            );
-                            /*UpdateIf(
+                        Text: ="Popisana količina"
+                        Width: =96
+                        X: =40
+                        Y: =40
+                        ZIndex: =1
+
+                    "inp_rezQty_2 As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.End
+                        AlignInContainer: =AlignInContainer.Center
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontSize: =14
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: =
+                        Placeholder: ="Unesite količinu..."
+                        Required: =true
+                        Type: ="Text"
+                        Value: =Item_Journal_Lines_Gallery.Selected.Qty_Phys_Inventory
+                        Width: =100
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+            Container10_3 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.End
+                LayoutMinHeight: =40
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =20
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =20
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =4
+
+                ButtonCanvas3_3 As Button:
+                    BasePaletteColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    Icon: ="Save"
+                    Layout: ='ButtonCanvas.Layout'.IconAfter
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |
+                        =If(IsBlank(Item_Journal_Lines_Gallery.Selected.Lot_No),
+                            UpdateIf(
+                                inventureCollection,
+                                ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
+                                {
+                                    Lot_No: Text(inp_lotbr.Value),
+                                    Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                                }
+                            )
+                            ,
+                            UpdateIf(
                                 inventureCollection,
                                 ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
                                 {
                                     Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
                                 }
-                            );*/
-                            ClearCollect(
-                                inventureCollectionEdited,
-                                inventureCollection
-                            );
-                            ClearCollect(
-                                inventureCollection,
-                                inventureCollectionEdited
-                            );
-                            Clear(inventureCollectionEdited);
-                            Reset(inp_rezQty_2);
-                            Set(
-                                isModalOpen,
-                                false
-                            );
-                        Text: ="Spasi"
-                        Width: =96
-                        X: =0
-                        Y: =0
-                        ZIndex: =2
+                            )
+                        );
+                        /*UpdateIf(
+                            inventureCollection,
+                            ThisRecord.'Line_No.' = Item_Journal_Lines_Gallery.Selected.'Line_No.',
+                            {
+                                Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                            }
+                        );*/
+                        ClearCollect(
+                            inventureCollectionEdited,
+                            inventureCollection
+                        );
+                        ClearCollect(
+                            inventureCollection,
+                            inventureCollectionEdited
+                        );
+                        Clear(inventureCollectionEdited);
+                        Reset(inp_rezQty_2);
+                        UpdateIf(lockedLines, ThisRecord.lineId = Item_Journal_Lines_Gallery.Selected.'Line_No.', { isLocked: true });
+                        Set(
+                            isModalOpen,
+                            false
+                        );
+                    Text: ="Spasi"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
 
