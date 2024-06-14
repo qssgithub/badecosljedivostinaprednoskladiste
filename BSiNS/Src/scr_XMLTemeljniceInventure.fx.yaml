@@ -41,7 +41,7 @@
                         Source_Type: Text(line.Source_Type),
                         'Source_No.': Text(line.'Source_No.'),
                         Source_Code: Text(line.Source_Code),
-                        'Item_No': Text(line.'Item_No'),
+                        'Item_No.': Text(line.'Item_No.'),
                         'Phys._Inventory': Text(line.'Phys._Inventory'),
                         Location_Code: Text(line.Location_Code),
                         Posting_Date: Text(line.Posting_Date),
@@ -68,7 +68,7 @@
                     Source_Type: Text(xmlData.Item_Journal_Line.Source_Type),
                     'Source_No.': Text(xmlData.Item_Journal_Line.'Source_No.'),
                     Source_Code: Text(xmlData.Item_Journal_Line.Source_Code),
-                    'Item_No': Text(xmlData.Item_Journal_Line.'Item_No'),
+                    'Item_No.': Text(xmlData.Item_Journal_Line.'Item_No.'),
                     'Phys._Inventory': Text(xmlData.Item_Journal_Line.'Phys._Inventory'),
                     Location_Code: Text(xmlData.Item_Journal_Line.Location_Code),
                     Posting_Date: Text(xmlData.Item_Journal_Line.Posting_Date),
@@ -277,7 +277,7 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.'Item_No'
+                                    ="Br. artikla:   " & ThisItem.'Item_No.'
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
