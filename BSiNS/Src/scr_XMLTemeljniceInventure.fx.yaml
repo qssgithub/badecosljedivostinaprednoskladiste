@@ -41,7 +41,7 @@
                         Source_Type: Text(line.Source_Type),
                         'Source_No.': Text(line.'Source_No.'),
                         Source_Code: Text(line.Source_Code),
-                        'Item_No': Text(line.'Item_No'),
+                        Item_No: Text(line.Item_No),
                         'Phys._Inventory': Text(line.'Phys._Inventory'),
                         Location_Code: Text(line.Location_Code),
                         Posting_Date: Text(line.Posting_Date),
@@ -68,7 +68,7 @@
                     Source_Type: Text(xmlData.Item_Journal_Line.Source_Type),
                     'Source_No.': Text(xmlData.Item_Journal_Line.'Source_No.'),
                     Source_Code: Text(xmlData.Item_Journal_Line.Source_Code),
-                    'Item_No': Text(xmlData.Item_Journal_Line.'Item_No'),
+                    Item_No: Text(xmlData.Item_Journal_Line.Item_No),
                     'Phys._Inventory': Text(xmlData.Item_Journal_Line.'Phys._Inventory'),
                     Location_Code: Text(xmlData.Item_Journal_Line.Location_Code),
                     Posting_Date: Text(xmlData.Item_Journal_Line.Posting_Date),
@@ -176,7 +176,7 @@
 
                     "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
-                        Default: =First(Filter(inventureCollection, ThisRecord.'Barcode' = scannedItem))
+                        Default: =First(Filter(inventureCollection, ThisRecord.Barcode = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
@@ -225,7 +225,7 @@
                                     Source_Type: ThisItem.Source_Type,
                                     'Source_No.': ThisItem.'Source_No.',
                                     Source_Code: ThisItem.Source_Code,
-                                    'Item_No': ThisItem.'Item_No',
+                                    Item_No: ThisItem.Item_No,
                                     'Phys._Inventory': ThisItem.'Phys._Inventory',
                                     Location_Code: ThisItem.Location_Code,
                                     Posting_Date: ThisItem.Posting_Date,
@@ -265,6 +265,7 @@
                             ZIndex: =19
 
                             Title5_6 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(50, 49, 48, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
@@ -277,13 +278,14 @@
                                 PaddingTop: =0
                                 Size: =12
                                 Text: |-
-                                    ="Br. artikla:   " & ThisItem.'Item_No'
+                                    ="Br. artikla:   " & ThisItem.Item_No
                                 VerticalAlign: =VerticalAlign.Top
                                 Width: =Parent.Width
                                 Y: =18
                                 ZIndex: =1
 
                             Subtitle4_3 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
@@ -303,6 +305,7 @@
                                 ZIndex: =2
 
                             Body1_19 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
@@ -322,6 +325,7 @@
                                 ZIndex: =12
 
                             Body1_21 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
@@ -341,6 +345,7 @@
                                 ZIndex: =13
 
                             Body1_22 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
@@ -360,6 +365,7 @@
                                 ZIndex: =14
 
                             Subtitle4_6 As label:
+                                AutoHeight: =true
                                 Color: =RGBA(0, 0, 0, 1)
                                 DisabledColor: =RGBA(166, 166, 166, 1)
                                 Font: =App.Theme.Font
