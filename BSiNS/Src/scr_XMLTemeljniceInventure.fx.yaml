@@ -176,7 +176,7 @@
 
                     "Item_Journal_Lines_Gallery As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
-                        Default: =First(Filter(inventureCollection, ThisRecord.'Line_No.' = scannedItem))
+                        Default: =First(Filter(inventureCollection, ThisRecord.'Barcode' = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
