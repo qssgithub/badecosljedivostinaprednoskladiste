@@ -584,6 +584,20 @@
                             SelectedFolder,
                             ThisItem.FolderName
                         );
+                        Set(
+                            SelectedDocumentName,
+                            First(
+                                Split(
+                                    Last(
+                                        Split(
+                                            ThisItem.FileName,
+                                            "_"
+                                        )
+                                    ).Value,
+                                    "."
+                                )
+                            ).Value
+                        );
                     TemplatePadding: =0
                     TemplateSize: =80
                     Visible: =!isLoading && !IsEmpty(filteredFiles)
