@@ -389,7 +389,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -668,7 +668,14 @@
         "Y",
         "Width",
         "Height",
-        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "DisplayMode.Edit",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ZIndex",
         {
           "AFDDataSourceName": "",
@@ -767,7 +774,7 @@
       "MetaDataIDKey": "",
       "Name": "btn_InvSave",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -798,7 +805,7 @@
         {
           "Category": "Design",
           "PropertyName": "DisplayMode",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -1294,7 +1301,14 @@
       "ControlPropertyState": [
         "X",
         "Y",
-        "Width",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -1405,7 +1419,7 @@
       "MetaDataIDKey": "",
       "Name": "chb_InvReadyForNav",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1572,7 +1586,7 @@
       "MetaDataIDKey": "",
       "Name": "con_InvBody",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3784,7 +3798,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -3820,7 +3834,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvBarcode",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 16,
+      "ParentIndex": 21,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3872,7 +3886,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvDescription",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 19,
+      "ParentIndex": 17,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3924,7 +3938,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvExpDate",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 21,
+      "ParentIndex": 19,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3976,7 +3990,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvItemNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 18,
+      "ParentIndex": 16,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4028,7 +4042,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvLOTNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 20,
+      "ParentIndex": 18,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4080,7 +4094,7 @@
       "MetaDataIDKey": "",
       "Name": "grp_InvQuantity",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 17,
+      "ParentIndex": 20,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4129,7 +4143,14 @@
         "X",
         "Y",
         "Width",
-        "Height",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "DisplayMode",
         {
           "AFDDataSourceName": "",
@@ -4223,7 +4244,7 @@
       "MetaDataIDKey": "",
       "Name": "hdr_InvHeader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4473,7 +4494,7 @@
       "MetaDataIDKey": "%FooterContainer.ID%",
       "Name": "hrz_InvFooter",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4594,7 +4615,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -4698,6 +4719,22 @@
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "",
           "InvariantPropertyName": "PaddingRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "PaddingTop",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "PaddingBottom",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -4884,6 +4921,16 @@
         {
           "Category": "Design",
           "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingTop",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingBottom",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -5427,7 +5474,7 @@
       "MetaDataIDKey": "",
       "Name": "inp_rezQty_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9516,7 +9563,7 @@
       "MetaDataIDKey": "",
       "Name": "spn_InvLoader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9824,7 +9871,7 @@
       "MetaDataIDKey": "",
       "Name": "TextCanvas3_11",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

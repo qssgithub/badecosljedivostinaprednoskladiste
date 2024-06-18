@@ -141,17 +141,17 @@
         ZIndex: =1
 
         hdr_InvHeader As Header:
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
+            BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
             FontColor: =
-            Height: =75
+            Height: =60
             LayoutMinHeight: =75
             LayoutMinWidth: =Parent.Width
             Logo: =FFLogo
             OnSelectLogo: =Navigate(scr_Entry)
             Style: ='Header.Style'.Primary
             Title: ="TEMELJNICE INVENTURE"
-            TitleFontSize: =14
+            TitleFontSize: =20
             UserEmail: =User().Email
             UserImage: =User().Image
             UserName: =User().FullName
@@ -185,8 +185,10 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
                 PaddingLeft: =5
                 PaddingRight: =5
+                PaddingTop: =5
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
@@ -277,7 +279,7 @@
                     PaddingRight: =8
                     PaddingTop: =0
                     Size: =20
-                    Text: ="Stavke " & SelectedDocumentName
+                    Text: ="Stavke dokumenta " & SelectedDocumentName
                     Width: =Parent.Width
                     X: =0   
                     Y: =0
@@ -298,6 +300,7 @@
                 OnSelect: =If(!First(Search(lockedItems, glr_Inv.Selected.'Line_No.', lineId)).isLocked, Set(isModalOpen, true))
                 TemplatePadding: =0
                 TemplateSize: =291
+                Visible: =!isLoading
                 Width: =Parent.Width
                 ZIndex: =5
 
@@ -655,6 +658,21 @@
                         Y: =lbl_InvExpDate.Y
                         ZIndex: =22
 
+            spn_InvLoader As Spinner:
+                BasePaletteColor: =
+                DisplayMode: =DisplayMode.Edit
+                FillPortions: =1
+                FontColor: =
+                Height: =200
+                LayoutMinHeight: =200
+                LayoutMinWidth: =200
+                SpinnerSize: ='Spinner.SpinnerSize'.Huge
+                Visible: =isLoading
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =6
+
         hrz_InvFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(233, 79, 76, 1)
@@ -673,7 +691,6 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =!isLoading
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =4
 
@@ -690,7 +707,7 @@
                 LayoutMinWidth: =160
                 OnCheck: =false
                 OnUncheck: =false
-                Width: =160
+                Width: =75
                 X: =0
                 Y: =0
                 ZIndex: =2
@@ -698,7 +715,7 @@
             btn_InvSave As Button:
                 Align: =Align.Justify
                 BasePaletteColor: =
-                DisplayMode: =DisplayMode.Edit
+                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
                 Layout: ='ButtonCanvas.Layout'.TextOnly
                 LayoutMinHeight: =32
@@ -756,21 +773,6 @@
                 X: =0
                 Y: =0
                 ZIndex: =4
-
-        spn_InvLoader As Spinner:
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =5
 
     con_ModalFade_3 As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Light
