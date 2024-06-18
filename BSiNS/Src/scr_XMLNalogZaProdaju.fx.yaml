@@ -410,17 +410,16 @@
         vrt_ProHeader As groupContainer.verticalAutoLayoutContainer:
             DropShadow: =DropShadow.Light
             FillPortions: =0
-            Height: =140
+            Height: =100
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
             LayoutGap: =5
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            PaddingBottom: =10
+            LayoutOverflowY: =LayoutOverflow.Scroll
             PaddingLeft: =15
             PaddingRight: =15
-            PaddingTop: =10
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
@@ -1230,7 +1229,7 @@
         con_ProModal As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.Height * 50%
+            Height: =Parent.Height * 80%
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
@@ -1456,6 +1455,8 @@
                 Container10_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
+                    FillPortions: =0
+                    Height: =70
                     LayoutAlignItems: =LayoutAlignItems.Stretch
                     LayoutGap: =10
                     LayoutJustifyContent: =LayoutJustifyContent.End
