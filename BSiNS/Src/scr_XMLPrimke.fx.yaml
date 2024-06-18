@@ -382,7 +382,6 @@
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |
                             =UpdateContext({wizardStep: 2});
-                            Select(Self);
                         TemplatePadding: =0
                         TemplateSize: =199
                         Width: =Parent.Width
@@ -625,8 +624,10 @@
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |
-                            =UpdateContext({isModalOpen: true});
-                            Select(Self);
+                            =Set(
+                                isModalOpen,
+                                true
+                            );
                         TemplatePadding: =0
                         TemplateSize: =150
                         Width: =Parent.Width
@@ -1105,7 +1106,10 @@
                             =Reset(dp_PrimkeExpDate);
                             Reset(inp_PrimkeLOTNo);
                             Reset(inp_PrimkeQuantity);
-                            UpdateContext({isModalOpen: false});
+                            Set(
+                                isModalOpen,
+                                false
+                            );
                         Text: ="Zatvori"
                         Width: =32
                         X: =40
@@ -1304,7 +1308,10 @@
                                 ).Res_Entry,
                                 Entry_No = Warehouse_Receipt_ResEntryGallery.Selected.Entry_No,
                                 {
-                                    Exp_Date: Text(dp_PrimkeExpDate.SelectedDate, "dd.mm.yy"),
+                                    Exp_Date: Text(
+                                        dp_PrimkeExpDate.SelectedDate,
+                                        "dd.mm.yy"
+                                    ),
                                     LOT_No: inp_PrimkeLOTNo.Value,
                                     Quantity: inp_PrimkeQuantity.Value
                                 }
@@ -1312,7 +1319,10 @@
                             Reset(dp_PrimkeExpDate);
                             Reset(inp_PrimkeLOTNo);
                             Reset(inp_PrimkeQuantity);
-                            UpdateContext({isModalOpen: false});
+                            Set(
+                                isModalOpen,
+                                false
+                            );
                             ClearCollect(
                                 colReceiptEdited,
                                 colReceipt
