@@ -3,11 +3,11 @@
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnHidden: |
         =ClearCollect(
-            inventureCollection,
+            colLines,
             Blank()
         );
         ClearCollect(
-            lockedItems,
+            colLocked,
             Blank()
         );
     OnVisible: |

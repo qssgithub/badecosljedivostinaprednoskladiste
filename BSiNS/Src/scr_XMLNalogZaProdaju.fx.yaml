@@ -1,16 +1,19 @@
 "scr_XMLNalogZaProdaju As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnHidden: |
+        =ClearCollect(
+            colLines,
+            Blank()
+        );
+        ClearCollect(
+            colLocked,
+            Blank()
+        );
     OnVisible: |
         =Set(
             isLoading,
             true
-        );
-        UpdateContext(
-            {
-                doradaCheckbox: false,
-                nalogZaProdajuReadyForNavCheckbox: false
-            }
         );
         UpdateContext(
             {
@@ -99,7 +102,7 @@
             }
         );
         ClearCollect(
-            salesCollection,
+            colLines,
             IfError(
                 ForAll(
                     xmlData.Sales_Line As line,
@@ -1348,6 +1351,7 @@
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
                         PaddingBottom: =15
+                        PaddingRight: =15
                         PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
@@ -1359,14 +1363,42 @@
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
                             Height: =32
                             LayoutMinHeight: =32
-                            LayoutMinWidth: =96
+                            LayoutMinWidth: =80
+                            Size: =20
                             Text: ="Rezervisano"
                             Width: =96
                             X: =40
                             Y: =40
                             ZIndex: =1
+
+                        TextCanvas3_10 As Text:
+                            AlignInContainer: =AlignInContainer.Center
+                            AutoHeight: =true
+                            DisplayMode: =DisplayMode.Edit
+                            FillPortions: =1
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =80
+                            Size: =20
+                            Text: |-
+                                =First(
+                                    Filter(
+                                        First(
+                                            Filter(
+                                                salesCollection,
+                                                ThisRecord.Line_No = glr_ProLines.Selected.Line_No
+                                            )
+                                        ).Res_Entry,
+                                        ThisRecord.Entry_No = glr_ProResEntries.Selected.Entry_No
+                                    )
+                                ).Quantity_Completed
+                            Width: =96
+                            X: =40
+                            Y: =40
+                            ZIndex: =2
 
                         "inp_rezQty As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
@@ -1403,10 +1435,58 @@
                             Required: =true
                             Type: ="Text"
                             Value: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
+                            Visible: =false
                             Width: =150
                             X: =40
                             Y: =40
-                            ZIndex: =2
+                            ZIndex: =3
+
+                        Container8 As groupContainer.verticalAutoLayoutContainer:
+                            FillPortions: =0
+                            LayoutAlignItems: =LayoutAlignItems.Center
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutGap: =5
+                            LayoutJustifyContent: =LayoutJustifyContent.Center
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =100
+                            ZIndex: =4
+
+                            ButtonCanvas9 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronUp"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: |-
+                                    =//Patch(LookUp(salesCollection, Line_No = glr_ProLines.Selected.Line_No).Res_Entry, {Quantity_Completed: glr_ProResEntries.Selected.Quantity_Completed + 1})
+                                    //Patch(First(Filter(salesCollection,ThisRecord.Line_No=glr_ProLines.Selected.Line_No)).Res_Entry,glr_ProResEntries.Selected,{Quantity_Completed:glr_ProResEntries.Selected.Quantity_Completed+1})
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            ButtonCanvas9_1 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronDown"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
 
                     Container13_6 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
