@@ -1,6 +1,7 @@
 com_ScreenHeader As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =75
+    OnLogoClickScreen: =App.ActiveScreen
     Title: ="Text"
     Width: =App.Width
     X: =0
@@ -11,7 +12,7 @@ com_ScreenHeader As CanvasComponent:
         DisplayMode: =DisplayMode.Edit
         Height: =75
         Logo: =FFLogo
-        OnSelectLogo: =false
+        OnSelectLogo: =If(!IsBlank(com_ScreenHeader.OnLogoClickScreen), Navigate(com_ScreenHeader.OnLogoClickScreen))
         Title: =Parent.Title
         UserEmail: =User().Email
         UserImage: =User().Image

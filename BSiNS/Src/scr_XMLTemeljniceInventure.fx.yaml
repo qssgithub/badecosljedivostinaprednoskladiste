@@ -6,18 +6,10 @@
             colLines,
             Blank()
         );
-        ClearCollect(
-            colLocked,
-            Blank()
-        );
     OnVisible: |
         =Set(
             isLoading,
             true
-        );
-        Set(
-            isModalOpen,
-            false
         );
         If(
             !IsBlank(SelectedFile),
@@ -40,7 +32,7 @@
             )
         );
         ClearCollect(
-            inventureCollection,
+            colLines,
             IfError(
                 ForAll(
                     xmlData.Item_Journal_Line As line,
@@ -111,14 +103,23 @@
                 InProgress
             )
         );
-        ClearCollect(
-            lockedItems,
-            ForAll(
-                inventureCollection As line,
-                {
-                    lineId: line.'Line_No.',
-                    isLocked: false
-                }
+        If(
+            IsEmpty(
+                Filter(
+                    lockedItems,
+                    ThisRecord.documentId = SelectedDocumentName
+                )
+            ),
+            Collect(
+                lockedItems,
+                ForAll(
+                    colLines As line,
+                    {
+                        documentId: SelectedDocumentName,
+                        lineId: line.'Line_No.',
+                        isLocked: false
+                    }
+                )
             )
         );
         Set(
@@ -141,25 +142,11 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        hdr_InvHeader As Header:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FontColor: =
-            Height: =75
-            LayoutMinHeight: =75
-            LayoutMinWidth: =Parent.Width
-            Logo: =FFLogo
-            OnSelectLogo: =Navigate(scr_Entry)
-            Style: ='Header.Style'.Primary
+        com_InvHeader As com_ScreenHeader:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            OnLogoClickScreen: =scr_Entry
             Title: ="TEMELJNICE INVENTURE"
-            TitleFontSize: =20
-            UserEmail: =User().Email
-            UserImage: =User().Image
-            UserName: =User().FullName
-            Width: =Parent.Width
-            X: =0
-            Y: =0
-            ZIndex: =1
 
         con_InvBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -175,7 +162,7 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            ZIndex: =2
+            ZIndex: =3
 
             hrz_InvTitle As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -299,7 +286,7 @@
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: =If(!First(Search(lockedItems, glr_Inv.Selected.'Line_No.', lineId)).isLocked, Set(isModalOpen, true))
+                OnSelect: =If(!First(Filter(lockedItems, documentId = SelectedDocumentName, lineId = glr_Inv.Selected.'Line_No.')).isLocked, com_InvModal.IsModalOpen = true)
                 TemplatePadding: =0
                 TemplateSize: =291
                 Visible: =!isLoading
@@ -1050,6 +1037,6 @@
 
     com_InvModal As com_Modal:
         QuantityCompleted: =glr_Inv.Selected.Quantity
-        Visible: =isModalOpen
+        Visible: =true
         ZIndex: =3
 

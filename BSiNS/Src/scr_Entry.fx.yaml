@@ -109,28 +109,8 @@
             ChildTabPriority: =App.Width
             LayoutMinHeight: =640
             LayoutMinWidth: =200
+            OnLogoClickScreen: =
             Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
-
-        hdr_EntryHeader As Header:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FontColor: =
-            Height: =75
-            LayoutMinHeight: =75
-            LayoutMinWidth: =Parent.Width
-            Logo: =FFLogo
-            OnSelectLogo: =Navigate(scr_Entry)
-            Style: ='Header.Style'.Primary
-            Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
-            TitleFontSize: =20
-            UserEmail: =User().Email
-            UserImage: =User().Image
-            UserName: =User().FullName
-            Visible: =false
-            Width: =Parent.Width
-            X: =0
-            Y: =0
-            ZIndex: =2
 
         vrt_EntryBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer

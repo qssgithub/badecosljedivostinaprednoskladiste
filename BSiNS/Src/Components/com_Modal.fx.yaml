@@ -1,7 +1,8 @@
 com_Modal As CanvasComponent:
-    ChildTabPriority: =IsModalOpen
+    ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
+    IsModalOpen: =true
     QuantityCompleted: =0
     QuantityNewLOT: =0
     Width: =App.Width
@@ -12,10 +13,6 @@ com_Modal As CanvasComponent:
     con_ModalFade As groupContainer.manualLayoutContainer:
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =Parent.Height
-        RadiusBottomLeft: =4
-        RadiusBottomRight: =4
-        RadiusTopLeft: =4
-        RadiusTopRight: =4
         Visible: =IsModalOpen
         Width: =Parent.Width
         ZIndex: =1
@@ -34,7 +31,6 @@ com_Modal As CanvasComponent:
             ZIndex: =1
 
             vrt_Modal As groupContainer.verticalAutoLayoutContainer:
-                DropShadow: =DropShadow.ExtraBold
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
@@ -51,7 +47,7 @@ com_Modal As CanvasComponent:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
                     Fill: |
-                        =RGBA(189, 31, 68, 1)
+                        =RGBA(189, 49, 51, 1)
                     FillPortions: =0
                     Height: =50
                     LayoutAlignItems: =LayoutAlignItems.Center
@@ -61,10 +57,6 @@ com_Modal As CanvasComponent:
                     LayoutMode: =LayoutMode.Auto
                     PaddingLeft: =5
                     PaddingRight: =5
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
                     ZIndex: =1
 
                     txt_ModalHeader As Text:
@@ -122,10 +114,6 @@ com_Modal As CanvasComponent:
                     PaddingLeft: =15
                     PaddingRight: =15
                     PaddingTop: =15
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
                     ZIndex: =2
 
                     Container13_10 As groupContainer.verticalAutoLayoutContainer:
@@ -134,9 +122,6 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingRight: =15
-                        PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
@@ -157,7 +142,7 @@ com_Modal As CanvasComponent:
                             ZIndex: =1
 
                         "inp_rezQty_2 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Justify
+                            Align: ='TextInputCanvas.Align'.Center
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
@@ -191,7 +176,7 @@ com_Modal As CanvasComponent:
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
-                            Value: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
+                            Value: =Abs(com_Modal.QuantityCompleted)
                             Visible: =true
                             Width: =200
                             X: =40
@@ -224,7 +209,7 @@ com_Modal As CanvasComponent:
                                 Layout: ='ButtonCanvas.Layout'.IconOnly
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
-                                OnSelect: =
+                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityCompleted + 1);
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -239,6 +224,7 @@ com_Modal As CanvasComponent:
                                 Layout: ='ButtonCanvas.Layout'.IconOnly
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
+                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityCompleted - 1);
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -251,8 +237,6 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
@@ -273,7 +257,7 @@ com_Modal As CanvasComponent:
                             ZIndex: =1
 
                         "inp_potrebnoQty_2 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Justify
+                            Align: ='TextInputCanvas.Align'.Center
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
@@ -347,10 +331,6 @@ com_Modal As CanvasComponent:
                     LayoutMode: =LayoutMode.Auto
                     PaddingLeft: =10
                     PaddingRight: =10
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
                     ZIndex: =3
 
                     btn_ModalSave As Button:
