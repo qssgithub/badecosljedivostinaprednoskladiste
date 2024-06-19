@@ -557,7 +557,7 @@
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: =If(!First(Filter(lockedItems, documentId = SelectedDocumentName, lineId = glr_Inv.Selected.'Line_No.')).isLocked, Set(isModalOpen, true))
+                OnSelect: =If(!First(Filter(lockedItems, documentId = SelectedDocumentName, lineId = glr_Inv.Selected.'Line_No.')).isLocked, )
                 TemplatePadding: =0
                 TemplateSize: =291
                 Visible: =!isLoading
