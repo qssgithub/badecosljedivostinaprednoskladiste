@@ -123,6 +123,278 @@
             false
         );
 
+    con_InvModalFade As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(0, 0, 0, 50%)
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Visible: =false
+        Width: |
+            =Parent.Width
+        ZIndex: =1
+
+        vrt_InvModal As groupContainer.verticalAutoLayoutContainer:
+            DropShadow: =DropShadow.ExtraBold
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =300
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =300
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =2
+
+            con_InvModalHeader As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                Fill: =RGBA(189, 49, 51, 1)
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =40
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =5
+                PaddingRight: =5
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =1
+
+                txt_InvModalHeader As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    FontColor: =RGBA(255, 255, 255, 1)
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =32
+                    Text: ="Unesite podatke"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                btn_IvnModalClose As Button:
+                    Align: =Align.Justify
+                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BasePaletteColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    FontColor: =RGBA(255, 255, 255, 1)
+                    FontSize: =32
+                    Height: |
+                        =32
+                    Icon: ="DismissCircle"
+                    IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |-
+                        =Reset(inp_InvQuantity);
+                        Set(isModalOpen, false);
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: ="Zatvori"
+                    Width: =32
+                    X: =40
+                    Y: =40
+                    ZIndex: =2
+
+            vrt_InvModalBody As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                FillPortions: =3
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =15
+                PaddingLeft: =15
+                PaddingRight: =15
+                PaddingTop: =15
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =3
+
+                hrz_InvLOTNo As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =30
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Visible: =IsBlank(glr_Inv.Selected.Lot_No)
+                    ZIndex: =1
+
+                    txt_InvLOTNo As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="LOT"
+                        Width: =96
+                        X: =40
+                        Y: =40
+                        ZIndex: =1
+
+                    "inp_InvLOTNo As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.End
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontSize: =14
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: =
+                        Placeholder: ="Unesite broj LOT-a"
+                        Required: =true
+                        Type: ="Text"
+                        Value: =glr_Inv.Selected.Lot_No
+                        Width: =100
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+                hrz_InvQuantity As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =30
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =15
+                    PaddingTop: =15
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =2
+
+                    txt_InvQuantity As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: ="Popisana količina"
+                        Width: =96
+                        X: =40
+                        Y: =40
+                        ZIndex: =1
+
+                    "inp_InvQuantity As 'Text input'":
+                        Align: ='TextInputCanvas.Align'.End
+                        BasePaletteColor: =
+                        DisplayMode: =DisplayMode.Edit
+                        FontSize: =14
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =320
+                        OnChange: =
+                        Placeholder: ="Unesite količinu..."
+                        Required: =true
+                        Type: ="Text"
+                        Value: =glr_Inv.Selected.Qty_Phys_Inventory
+                        Width: =100
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+            hrz_InvModalFooter As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.End
+                LayoutMinHeight: =40
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =20
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =20
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =4
+
+                btn_InvModalSave As Button:
+                    BasePaletteColor: =
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    Icon: ="Save"
+                    Layout: ='ButtonCanvas.Layout'.IconAfter
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |
+                        =/*If(
+                            IsBlank(glr_Inv.Selected.Lot_No),
+                            UpdateIf(
+                                inventureCollection,
+                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
+                                {
+                                    Lot_No: Text(inp_InvLOTNo.Value),
+                                    Qty_Phys_Inventory: Value(inp_InvQuantity.Value)
+                                }
+                            ),
+                            UpdateIf(
+                                inventureCollection,
+                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
+                                {Qty_Phys_Inventory: Value(inp_InvQuantity.Value)}
+                            )
+                        );
+                        ClearCollect(
+                            inventureCollectionEdited,
+                            inventureCollection
+                        );
+                        ClearCollect(
+                            inventureCollection,
+                            inventureCollectionEdited
+                        );
+                        Clear(inventureCollectionEdited);*/
+                        Reset(inp_InvQuantity);
+                        UpdateIf(
+                            lockedItems,
+                            ThisRecord.lineId = glr_Inv.Selected.'Line_No.',
+                            {isLocked: true}
+                        );
+                        Set(
+                            isModalOpen,
+                            false
+                        );
+                    Text: ="Spasi"
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
     vrt_Inv As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
@@ -136,7 +408,7 @@
         RadiusTopLeft: =4
         RadiusTopRight: =4
         Width: =Parent.Width
-        ZIndex: =1
+        ZIndex: =2
 
         com_InvHeader As com_Header:
             LayoutMinHeight: =640
@@ -749,278 +1021,6 @@
                 X: =0
                 Y: =0
                 ZIndex: =4
-
-    con_InvModalFade As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Light
-        Fill: =RGBA(0, 0, 0, 50%)
-        Height: =Parent.Height
-        RadiusBottomLeft: =4
-        RadiusBottomRight: =4
-        RadiusTopLeft: =4
-        RadiusTopRight: =4
-        Visible: =false
-        Width: |
-            =Parent.Width
-        ZIndex: =2
-
-        vrt_InvModal As groupContainer.verticalAutoLayoutContainer:
-            DropShadow: =DropShadow.ExtraBold
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =300
-            LayoutAlignItems: =LayoutAlignItems.Stretch
-            LayoutDirection: =LayoutDirection.Vertical
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMode: =LayoutMode.Auto
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Width: =300
-            X: =(Parent.Width - Self.Width) / 2
-            Y: =(Parent.Height - Self.Height) / 2
-            ZIndex: =2
-
-            con_InvModalHeader As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                Fill: =RGBA(189, 49, 51, 1)
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =40
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =5
-                PaddingRight: =5
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =1
-
-                txt_InvModalHeader As Text:
-                    Align: ='TextCanvas.Align'.Center
-                    AutoHeight: =true
-                    DisplayMode: =DisplayMode.Edit
-                    FillPortions: =1
-                    FontColor: =RGBA(255, 255, 255, 1)
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Size: =32
-                    Text: ="Unesite podatke"
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =1
-
-                btn_IvnModalClose As Button:
-                    Align: =Align.Justify
-                    Appearance: ='ButtonCanvas.Appearance'.Transparent
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =RGBA(255, 255, 255, 1)
-                    FontSize: =32
-                    Height: |
-                        =32
-                    Icon: ="DismissCircle"
-                    IconStyle: ='ButtonCanvas.IconStyle'.Outline
-                    Layout: ='ButtonCanvas.Layout'.IconOnly
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    OnSelect: |-
-                        =Reset(inp_InvQuantity);
-                        Set(isModalOpen, false);
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: ="Zatvori"
-                    Width: =32
-                    X: =40
-                    Y: =40
-                    ZIndex: =2
-
-            vrt_InvModalBody As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                FillPortions: =3
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingBottom: =15
-                PaddingLeft: =15
-                PaddingRight: =15
-                PaddingTop: =15
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =3
-
-                hrz_InvLOTNo As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =30
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =15
-                    PaddingTop: =15
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    Visible: =IsBlank(glr_Inv.Selected.Lot_No)
-                    ZIndex: =1
-
-                    txt_InvLOTNo As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        FillPortions: =1
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: ="LOT"
-                        Width: =96
-                        X: =40
-                        Y: =40
-                        ZIndex: =1
-
-                    "inp_InvLOTNo As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.End
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontSize: =14
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =320
-                        OnChange: =
-                        Placeholder: ="Unesite broj LOT-a"
-                        Required: =true
-                        Type: ="Text"
-                        Value: =glr_Inv.Selected.Lot_No
-                        Width: =100
-                        X: =40
-                        Y: =40
-                        ZIndex: =2
-
-                hrz_InvQuantity As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =30
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =15
-                    PaddingTop: =15
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    ZIndex: =2
-
-                    txt_InvQuantity As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        FillPortions: =1
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: ="Popisana količina"
-                        Width: =96
-                        X: =40
-                        Y: =40
-                        ZIndex: =1
-
-                    "inp_InvQuantity As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.End
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontSize: =14
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =320
-                        OnChange: =
-                        Placeholder: ="Unesite količinu..."
-                        Required: =true
-                        Type: ="Text"
-                        Value: =glr_Inv.Selected.Qty_Phys_Inventory
-                        Width: =100
-                        X: =40
-                        Y: =40
-                        ZIndex: =2
-
-            hrz_InvModalFooter As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutGap: =10
-                LayoutJustifyContent: =LayoutJustifyContent.End
-                LayoutMinHeight: =40
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingBottom: =20
-                PaddingLeft: =10
-                PaddingRight: =10
-                PaddingTop: =20
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =4
-
-                btn_InvModalSave As Button:
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    Icon: ="Save"
-                    Layout: ='ButtonCanvas.Layout'.IconAfter
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    OnSelect: |
-                        =/*If(
-                            IsBlank(glr_Inv.Selected.Lot_No),
-                            UpdateIf(
-                                inventureCollection,
-                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
-                                {
-                                    Lot_No: Text(inp_InvLOTNo.Value),
-                                    Qty_Phys_Inventory: Value(inp_InvQuantity.Value)
-                                }
-                            ),
-                            UpdateIf(
-                                inventureCollection,
-                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
-                                {Qty_Phys_Inventory: Value(inp_InvQuantity.Value)}
-                            )
-                        );
-                        ClearCollect(
-                            inventureCollectionEdited,
-                            inventureCollection
-                        );
-                        ClearCollect(
-                            inventureCollection,
-                            inventureCollectionEdited
-                        );
-                        Clear(inventureCollectionEdited);*/
-                        Reset(inp_InvQuantity);
-                        UpdateIf(
-                            lockedItems,
-                            ThisRecord.lineId = glr_Inv.Selected.'Line_No.',
-                            {isLocked: true}
-                        );
-                        Set(
-                            isModalOpen,
-                            false
-                        );
-                    Text: ="Spasi"
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =2
 
     com_InvModal As com_Modal:
         QuantityCompleted: =glr_Inv.Selected.Quantity

@@ -771,6 +771,87 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 12,
+                  "charOffset": 126,
+                  "snippet": {
+                    "text": ".IsModalOpen"
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "IsModalOpen"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6.OnSelect"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6.OnSelect",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 1,
+                  "charOffset": 139,
+                  "snippet": {
+                    "text": "="
+                  }
+                }
+              },
+              "properties": {
+                "member": "OnSelect",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.glr_Inv.galleryTemplate2_6"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Error",
+              "Boolean"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scr_XMLNabavniNalog.NabavniNalogScreenContainer.NabavniNalogFooter.saveXml.OnSelect"
                 }
               ],
@@ -6721,7 +6802,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrBadType",
-          "ruleIndex": 5
+          "ruleIndex": 6
         },
         {
           "locations": [
@@ -8362,7 +8443,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -10204,7 +10285,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrIncompatibleTypesForEquality-Left-Right",
-          "ruleIndex": 6
+          "ruleIndex": 5
         },
         {
           "locations": [
@@ -14129,20 +14210,6 @@
               }
             },
             {
-              "id": "app-ErrBadType",
-              "messageStrings": {
-                "issue": {
-                  "text": "Invalid argument type."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
               "id": "app-ErrIncompatibleTypesForEquality-Left-Right",
               "messageStrings": {
                 "issue": {
@@ -14155,6 +14222,20 @@
                   "You might need to convert the value to be the same type, such as converting a date string (e.g., \"12/31/2018\") to a date value.",
                   "If you’re comparing records or tables, the field or column types must match exactly."
                 ],
+                "level": "High",
+                "primaryCategory": "formula",
+                "whyFix": ""
+              }
+            },
+            {
+              "id": "app-ErrBadType",
+              "messageStrings": {
+                "issue": {
+                  "text": "Invalid argument type."
+                }
+              },
+              "properties": {
+                "componentType": "app",
                 "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
