@@ -2,7 +2,7 @@
   "ComponentAllowCustomization": true,
   "ComponentChangedSinceFileImport": true,
   "ComponentDefinitionInfo": {
-    "AllowAccessToGlobals": false,
+    "AllowAccessToGlobals": true,
     "Children": [
       {
         "AllowAccessToGlobals": true,
@@ -451,7 +451,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Reset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(\n    IsModalOpen,\n    false\n);\n",
+                            "InvariantScript": "Reset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -3429,6 +3429,14 @@
                             "InvariantPropertyName": "PaddingTop",
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
+                          },
+                          {
+                            "AFDDataSourceName": "",
+                            "AutoRuleBindingEnabled": false,
+                            "AutoRuleBindingString": "true",
+                            "InvariantPropertyName": "Visible",
+                            "IsLockable": false,
+                            "NameMapSourceSchema": "?"
                           }
                         ],
                         "ControlUniqueId": "20",
@@ -3652,6 +3660,12 @@
                             "InvariantScript": "0",
                             "Property": "PaddingTop",
                             "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Design",
+                            "InvariantScript": "!com_Modal.IsInventura",
+                            "Property": "Visible",
+                            "RuleProviderType": "User"
                           }
                         ],
                         "StyleName": "defaultGroupContainerStyle",
@@ -4216,7 +4230,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Reset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(IsModalOpen, false);",
+                            "InvariantScript": "Reset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(isModalOpen, false);",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -5232,14 +5246,7 @@
             "IsLockable": false,
             "NameMapSourceSchema": "?"
           },
-          {
-            "AFDDataSourceName": "",
-            "AutoRuleBindingEnabled": false,
-            "AutoRuleBindingString": "true",
-            "InvariantPropertyName": "Visible",
-            "IsLockable": false,
-            "NameMapSourceSchema": "?"
-          }
+          "Visible"
         ],
         "ControlUniqueId": "7",
         "HasDynamicProperties": false,
@@ -5391,7 +5398,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "IsModalOpen",
+            "InvariantScript": "true",
             "Property": "Visible",
             "RuleProviderType": "User"
           }
@@ -5457,9 +5464,10 @@
         "InvariantPropertyName": "QuantityNewLOT",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
-      }
+      },
+      "IsInventura"
     ],
-    "LastModifiedTimestamp": "638544018739725532",
+    "LastModifiedTimestamp": "638544019750918527",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -5472,6 +5480,12 @@
         "Category": "Data",
         "InvariantScript": "0",
         "Property": "QuantityNewLOT",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "true",
+        "Property": "IsInventura",
         "RuleProviderType": "System"
       },
       {
@@ -5519,7 +5533,7 @@
     ]
   },
   "ComponentManifest": {
-    "AllowAccessToGlobals": false,
+    "AllowAccessToGlobals": true,
     "AllowCustomization": true,
     "Description": "",
     "Name": "com_Modal",
@@ -5545,6 +5559,15 @@
       "PropertyDataTypeKey": "Number",
       "Tooltip": "Quantity New LOT",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "IsInventura",
+      "Hidden": false,
+      "Name": "IsInventura",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "Is Inventura screen",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -5555,7 +5578,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544018739725532",
+  "LastModifiedTimestamp": "638544019750918527",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

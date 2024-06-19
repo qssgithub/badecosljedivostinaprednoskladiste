@@ -2,6 +2,7 @@ com_Modal As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
+    IsInventura: =true
     QuantityCompleted: =0
     QuantityNewLOT: =0
     Width: =App.Width
@@ -12,7 +13,6 @@ com_Modal As CanvasComponent:
     con_ModalFade As groupContainer.manualLayoutContainer:
         Fill: =RGBA(0, 0, 0, 0.5)
         Height: =Parent.Height
-        Visible: =IsModalOpen
         Width: =Parent.Width
         ZIndex: =1
 
@@ -90,7 +90,7 @@ com_Modal As CanvasComponent:
                             =Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
                             Set(
-                                IsModalOpen,
+                                isModalOpen,
                                 false
                             );
                         Text: ="Zatvori"
@@ -240,6 +240,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
+                        Visible: =!com_Modal.IsInventura
                         ZIndex: =3
 
                         TextCanvas3_13 As Text:
@@ -344,7 +345,7 @@ com_Modal As CanvasComponent:
                         OnSelect: |-
                             =Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
-                            Set(IsModalOpen, false);
+                            Set(isModalOpen, false);
                         Text: ="Spasi"
                         Width: =96
                         X: =0
