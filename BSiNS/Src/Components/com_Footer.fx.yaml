@@ -1,0 +1,121 @@
+com_Footer As CanvasComponent:
+    Fill: =RGBA(255, 255, 255, 1)
+    Height: =50
+    IsInventura: =true
+    Width: =App.Width
+    X: =0
+    XMLHeaderName: ="Text"
+    XMLLineName: ="Text"
+    Y: =0
+    ZIndex: =1
+
+    hrz_Footer As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =RGBA(233, 79, 76, 1)
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        PaddingLeft: =15
+        PaddingRight: =20
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        chb_ReadyForNav As Checkbox:
+            BasePaletteColor: =RGBA(249, 83, 109, 1)
+            CheckboxSize: =16
+            DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+            FontColor: =
+            FontSize: =14
+            FontWeight: =FontWeight.Bold
+            Height: =Parent.Height
+            Label: ="NAV"
+            LayoutMinHeight: =32
+            LayoutMinWidth: =160
+            OnCheck: =false
+            OnUncheck: =false
+            Width: =75
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+        btn_Save As Button:
+            Align: =Align.Justify
+            BasePaletteColor: =
+            DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+            Height: =32
+            Layout: ='ButtonCanvas.Layout'.TextOnly
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            OnSelect: |-
+                =IfError(
+                    GetXml.Run(
+                        SelectedFile,
+                        ReadyForProcessing
+                    ),
+                    IfError(
+                        UpdateXML.Run(
+                            /*"{"
+                            & Char(34)
+                            & com_Footer.XMLHeaderName
+                            & Char(34)
+                            & ": "
+                            & "{"
+                            & Char(34)
+                            & com_Footer.XMLLineName
+                            & Char(34)
+                            & ":"
+                            & JSON(If(com_Footer.IsInventura, colLines, ))
+                            & "}"
+                            & "}",*/
+                            JSON(AddColumns()),
+                            SelectedFile,
+                            SelectedFolder
+                        ),
+                        Notify(
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Uspješno ažuriranje!",
+                            NotificationType.Success
+                        );
+                        If(
+                            chb_ReadyForNav.Checked,
+                            ChangeXmlStatus.Run(
+                                SelectedFile,
+                                SelectedFolder,
+                                ReadyForNAVProcessing
+                            );
+                            Navigate(
+                                scr_Entry,
+                                ScreenTransition.Fade
+                            )
+                        )
+                    ),
+                    Set(
+                        SelectedFolder,
+                        ReadyForProcessing
+                    );
+                    Notify(
+                        "Postoje izmjene u ovom fajlu.",
+                        NotificationType.Information,
+                        2000
+                    );
+                    Navigate(
+                        scr_XMLTemeljniceInventure,
+                        ScreenTransition.Fade
+                    )
+                )
+            Text: ="Sačuvaj"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =4
+

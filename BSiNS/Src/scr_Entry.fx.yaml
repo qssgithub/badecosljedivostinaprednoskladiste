@@ -15,10 +15,6 @@
             SelectedFolder,
             Blank()
         );
-        Set(
-            isModalOpen,
-            false
-        );
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {
