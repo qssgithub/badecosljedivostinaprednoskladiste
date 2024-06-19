@@ -411,9 +411,9 @@
         ZIndex: =2
 
         com_InvHeader As com_Header:
+            BackToScreen: =scr_Entry
             LayoutMinHeight: =640
             LayoutMinWidth: =640
-            OnLogoClickScreen: =scr_Entry
             Title: ="TEMELJNICE INVENTURE"
 
         con_InvBody As groupContainer.verticalAutoLayoutContainer:

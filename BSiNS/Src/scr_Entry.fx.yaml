@@ -106,10 +106,10 @@
         ZIndex: =1
 
         com_EntryHeader As com_Header:
+            BackToScreen: =
             ChildTabPriority: =App.Width
             LayoutMinHeight: =640
             LayoutMinWidth: =200
-            OnLogoClickScreen: =
             Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
 
         vrt_EntryBody As groupContainer.verticalAutoLayoutContainer:
