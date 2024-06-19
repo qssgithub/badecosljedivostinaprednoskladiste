@@ -105,6 +105,12 @@
         Width: =Parent.Width
         ZIndex: =1
 
+        com_EntryHeader As com_ScreenHeader:
+            ChildTabPriority: =App.Width
+            LayoutMinHeight: =640
+            LayoutMinWidth: =200
+            Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
+
         hdr_EntryHeader As Header:
             BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
@@ -120,10 +126,11 @@
             UserEmail: =User().Email
             UserImage: =User().Image
             UserName: =User().FullName
+            Visible: =false
             Width: =Parent.Width
             X: =0
             Y: =0
-            ZIndex: =1
+            ZIndex: =2
 
         vrt_EntryBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -145,7 +152,7 @@
             RadiusTopLeft: =4
             RadiusTopRight: =4
             Width: =Parent.Width
-            ZIndex: =4
+            ZIndex: =3
 
             hrz_EntryDropdown As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer

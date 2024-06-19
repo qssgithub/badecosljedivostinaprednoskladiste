@@ -15,14 +15,6 @@
             isLoading,
             true
         );
-        UpdateContext(
-            {
-                VAL: GetXml.Run(
-                    SelectedFile,
-                    SelectedFolder
-                ).response
-            }
-        );
         If(
             !IsBlank(SelectedFile),
             IfError(
@@ -101,7 +93,7 @@
                 }
             }
         );
-        ClearCollect(
+        /*ClearCollect(
             colLines,
             IfError(
                 ForAll(
@@ -251,6 +243,173 @@
                     Unit_Of_Measure: Text(xmlData.Sales_Line.Unit_Of_Measure),
                     Unit_Price: Text(xmlData.Sales_Line.Unit_Price)
                 }
+            )
+        );*/
+        IfError(
+            ForAll(
+                xmlData.Sales_Line As line,
+                Collect(
+                    colLines,
+                    {
+                        Description: Text(line.Description),
+                        Document_No: Text(line.Document_No),
+                        Document_Type: Text(line.Document_Type),
+                        Item_No: Text(line.Item_No),
+                        Line_Amount: Text(line.Line_Amount),
+                        Line_Discount_Amount: Text(line.Line_Discount_Amount),
+                        Line_No: Text(line.Line_No),
+                        Location_Code: Text(line.Location_Code),
+                        Outstand_Quantity: Text(line.Outstand_Quantity),
+                        Posting_Group: Text(line.Posting_Group),
+                        'Qty-to_Invoice': Text(line.'Qty-to_Invoice'),
+                        'Qty-to_Ship': Text(line.'Qty-to_Ship'),
+                        Quantity: Text(line.Quantity),
+                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
+                        Type: Text(line.Type),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Unit_Price: Text(line.Unit_Price)
+                    }
+                );
+                IfError(
+                    ForAll(
+                        line.Res_Entry As entry,
+                        Collect(
+                            colEntries,
+                            {
+                                Created_By: Text(entry.Created_By),
+                                Creation_Date: Text(entry.Creation_Date),
+                                Entry_No: Text(entry.Entry_No),
+                                Exp_Date: Text(entry.Exp_Date),
+                                Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                Item_No: Text(entry.Item_No),
+                                Item_Tracking: Text(entry.Item_Tracking),
+                                LOT_No: Text(entry.LOT_No),
+                                Location_Code: Text(entry.Location_Code),
+                                Positive: Text(entry.Positive),
+                                'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                                Quantity: Text(entry.Quantity),
+                                Quantity_Base: Text(entry.Quantity_Base),
+                                Quantity_Completed: Text(entry.Quantity_Completed),
+                                Quantity_NewLOT: Text(entry.Quantity_NewLOT),
+                                Res_Status: Text(entry.Res_Status),
+                                Shipment_Date: Text(entry.Shipment_Date),
+                                Source_ID: Text(entry.Source_ID),
+                                Source_Ref_No: Text(entry.Source_Ref_No),
+                                Source_SubType: Text(entry.Source_SubType),
+                                Source_Type: Text(entry.Source_Type)
+                            }
+                        )
+                    ),
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(line.Res_Entry.Created_By),
+                            Creation_Date: Text(line.Res_Entry.Creation_Date),
+                            Entry_No: Text(line.Res_Entry.Entry_No),
+                            Exp_Date: Text(line.Res_Entry.Exp_Date),
+                            Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                            Item_No: Text(line.Res_Entry.Item_No),
+                            Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                            LOT_No: Text(line.Res_Entry.LOT_No),
+                            Location_Code: Text(line.Res_Entry.Location_Code),
+                            Positive: Text(line.Res_Entry.Positive),
+                            'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(line.Res_Entry.Quantity),
+                            Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                            Quantity_Completed: Text(line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Text(line.Res_Entry.Quantity_NewLOT),
+                            Res_Status: Text(line.Res_Entry.Res_Status),
+                            Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                            Source_ID: Text(line.Res_Entry.Source_ID),
+                            Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                            Source_SubType: Text(line.Res_Entry.Source_SubType),
+                            Source_Type: Text(line.Res_Entry.Source_Type)
+                        }
+                    )
+                )
+            ),
+            Collect(
+                colLines,
+                {
+                    Description: Text(xmlData.Sales_Line.Description),
+                    Document_No: Text(xmlData.Sales_Line.Document_No),
+                    Document_Type: Text(xmlData.Sales_Line.Document_Type),
+                    Item_No: Text(xmlData.Sales_Line.Item_No),
+                    Line_Amount: Text(xmlData.Sales_Line.Line_Amount),
+                    Line_Discount_Amount: Text(xmlData.Sales_Line.Line_Discount_Amount),
+                    Line_No: Text(xmlData.Sales_Line.Line_No),
+                    Location_Code: Text(xmlData.Sales_Line.Location_Code),
+                    Outstand_Quantity: Text(xmlData.Sales_Line.Outstand_Quantity),
+                    Posting_Group: Text(xmlData.Sales_Line.Posting_Group),
+                    'Qty-to_Invoice': Text(xmlData.Sales_Line.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Text(xmlData.Sales_Line.'Qty-to_Ship'),
+                    Quantity: Text(xmlData.Sales_Line.Quantity),
+                    'Sell-to_Customer_No.': Text(xmlData.Sales_Line.'Sell-to_Customer_No.'),
+                    Type: Text(xmlData.Sales_Line.Type),
+                    Unit_Of_Measure: Text(xmlData.Sales_Line.Unit_Of_Measure),
+                    Unit_Price: Text(xmlData.Sales_Line.Unit_Price)
+                }
+            );
+            IfError(
+                ForAll(
+                    xmlData.Sales_Line.Res_Entry As entry,
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(entry.Created_By),
+                            Creation_Date: Text(entry.Creation_Date),
+                            Entry_No: Text(entry.Entry_No),
+                            Exp_Date: Text(entry.Exp_Date),
+                            Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                            Item_No: Text(entry.Item_No),
+                            Item_Tracking: Text(entry.Item_Tracking),
+                            LOT_No: Text(entry.LOT_No),
+                            Location_Code: Text(entry.Location_Code),
+                            Positive: Text(entry.Positive),
+                            'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(entry.Quantity),
+                            Quantity_Base: Text(entry.Quantity_Base),
+                            Quantity_Completed: Text(entry.Quantity_Completed),
+                            Quantity_NewLOT: Text(entry.Quantity_NewLOT),
+                            Res_Status: Text(entry.Res_Status),
+                            Shipment_Date: Text(entry.Shipment_Date),
+                            Source_ID: Text(entry.Source_ID),
+                            Source_Ref_No: Text(entry.Source_Ref_No),
+                            Source_SubType: Text(entry.Source_SubType),
+                            Source_Type: Text(entry.Source_Type)
+                        }
+                    )
+                ),
+                Collect(
+                    colEntries,
+                    {
+                        Created_By: Text(xmlData.Sales_Line.Res_Entry.Created_By),
+                        Creation_Date: Text(xmlData.Sales_Line.Res_Entry.Creation_Date),
+                        Entry_No: Text(xmlData.Sales_Line.Res_Entry.Entry_No),
+                        Exp_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Date),
+                        Exp_Receipt_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Receipt_Date),
+                        Item_No: Text(xmlData.Sales_Line.Res_Entry.Item_No),
+                        Item_Tracking: Text(xmlData.Sales_Line.Res_Entry.Item_Tracking),
+                        LOT_No: Text(xmlData.Sales_Line.Res_Entry.LOT_No),
+                        Location_Code: Text(xmlData.Sales_Line.Res_Entry.Location_Code),
+                        Positive: Text(xmlData.Sales_Line.Res_Entry.Positive),
+                        'Qty-to-Handle_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Invoice_Base'),
+                        Quantity: Text(xmlData.Sales_Line.Res_Entry.Quantity),
+                        Quantity_Base: Text(xmlData.Sales_Line.Res_Entry.Quantity_Base),
+                        Quantity_Completed: Text(xmlData.Sales_Line.Res_Entry.Quantity_Completed),
+                        Quantity_NewLOT: Text(xmlData.Sales_Line.Quantity_NewLOT),
+                        Res_Status: Text(xmlData.Sales_Line.Res_Entry.Res_Status),
+                        Shipment_Date: Text(xmlData.Sales_Line.Res_Entry.Shipment_Date),
+                        Source_ID: Text(xmlData.Sales_Line.Res_Entry.Source_ID),
+                        Source_Ref_No: Text(xmlData.Sales_Line.Res_Entry.Source_Ref_No),
+                        Source_SubType: Text(xmlData.Sales_Line.Res_Entry.Source_SubType),
+                        Source_Type: Text(xmlData.Sales_Line.Res_Entry.Source_Type)
+                    }
+                )
             )
         );
         /*
@@ -585,12 +744,11 @@
 
         "glr_ProLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
             BorderColor: =App.Theme.Colors.Darker40
-            Default: |
-                =First(Filter(salesCollection, Text(Line_No) = scannedItem))
+            Default: =First(Filter(colLines, Line_No = scannedItem))
             DelayItemLoading: =true
             Fill: =RGBA(237, 237, 237, 1)
             Height: =562
-            Items: =salesCollection
+            Items: =colLines
             Layout: =Layout.Vertical
             LayoutMinHeight: =287
             LayoutMinWidth: =320
@@ -763,12 +921,17 @@
             DelayItemLoading: =true
             Fill: =RGBA(237, 237, 237, 1)
             Height: =560
-            Items: =First(Filter(salesCollection, glr_ProLines.Selected.Item_No = Item_No)).Res_Entry
+            Items: =Filter(colEntries, Source_Ref_No = glr_ProLines.Selected.Line_No)
             Layout: =Layout.Vertical
             LayoutMinHeight: =287
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: =Set(isModalOpen,true);
+            OnSelect: |
+                =Set(
+                    isModalOpen,
+                    true
+                );
+                UpdateContext({quantityCompleted: Abs(Value(glr_ProResEntries.Selected.Quantity_Completed))});
             TemplatePadding: =0
             TemplateSize: =244
             Visible: =If(!isLoading, wizardStep = 2)
@@ -1092,7 +1255,7 @@
                 chb_ProDorada As Checkbox:
                     BasePaletteColor: =RGBA(249, 83, 109, 1)
                     CheckboxSize: =16
-                    Checked: =doradaCheckbox
+                    Checked: =
                     DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
                     FontColor: =
                     FontSize: =14
@@ -1101,10 +1264,8 @@
                     Label: ="Dorada"
                     LayoutMinHeight: =32
                     LayoutMinWidth: =160
-                    OnCheck: |-
-                        =UpdateContext({doradaCheckbox: true, nalogZaProdajuReadyForNavCheckbox: false});
-                    OnUncheck: |-
-                        =UpdateContext({doradaCheckbox: false});
+                    OnCheck: =
+                    OnUncheck: =
                     Width: =110
                     X: =40
                     Y: =0
@@ -1113,7 +1274,7 @@
                 chb_ProReadyForNav As Checkbox:
                     BasePaletteColor: =RGBA(249, 83, 109, 1)
                     CheckboxSize: =16
-                    Checked: =nalogZaProdajuReadyForNavCheckbox
+                    Checked: =
                     DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
                     FontColor: =
                     FontSize: =14
@@ -1122,23 +1283,25 @@
                     Label: ="NAV"
                     LayoutMinHeight: =32
                     LayoutMinWidth: =160
-                    OnCheck: |-
-                        =UpdateContext({doradaCheckbox: false, nalogZaProdajuReadyForNavCheckbox: true});
-                    OnUncheck: |-
-                        =UpdateContext({nalogZaProdajuReadyForNavCheckbox: false});
+                    OnCheck: =
+                    OnUncheck: =
                     Width: =80
                     X: =40
                     Y: =0
                     ZIndex: =2
 
             btn_ProSave As Button:
+                BasePaletteColor: =
                 DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
                 Layout: ='ButtonCanvas.Layout'.TextOnly
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
                 OnSelect: |
-                    =Set(isLoading, true);
+                    =Set(
+                        isLoading,
+                        true
+                    );
                     IfError(
                         GetXml.Run(
                             SelectedFile,
@@ -1150,7 +1313,17 @@
                                     AddColumns(
                                         header,
                                         Sales_Line,
-                                        salesCollection
+                                        ForAll(
+                                            colLines As line,
+                                            AddColumns(
+                                                line,
+                                                Res_Entry,
+                                                Filter(
+                                                    colEntries,
+                                                    ThisRecord.Source_Ref_No = line.Line_No
+                                                )
+                                            )
+                                        )
                                     )
                                 ) & "}",
                                 SelectedFile,
@@ -1167,7 +1340,7 @@
                                 2000
                             );
                             If(
-                                nalogZaProdajuReadyForNavCheckbox,
+                                chb_ProReadyForNav.Checked,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
                                     SelectedFolder,
@@ -1178,7 +1351,7 @@
                                     ScreenTransition.Fade
                                 ),
                                 If(
-                                    doradaCheckbox,
+                                    chb_ProDorada.Checked,
                                     ChangeXmlStatus.Run(
                                         SelectedFile,
                                         SelectedFolder,
@@ -1209,7 +1382,10 @@
                             ScreenTransition.Fade
                         )
                     );
-                    Set(isLoading, false);
+                    Set(
+                        isLoading,
+                        false
+                    );
                 Text: ="Sačuvaj"
                 Width: =96
                 X: =0
@@ -1344,7 +1520,6 @@
                             ZIndex: =2
 
                     Container13_7 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Stretch
                         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                         LayoutMinHeight: =30
@@ -1363,49 +1538,23 @@
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =80
                             Size: =20
                             Text: ="Rezervisano"
-                            Width: =96
+                            Width: =120
                             X: =40
                             Y: =40
                             ZIndex: =1
 
-                        TextCanvas3_10 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =80
-                            Size: =20
-                            Text: |-
-                                =First(
-                                    Filter(
-                                        First(
-                                            Filter(
-                                                salesCollection,
-                                                ThisRecord.Line_No = glr_ProLines.Selected.Line_No
-                                            )
-                                        ).Res_Entry,
-                                        ThisRecord.Entry_No = glr_ProResEntries.Selected.Entry_No
-                                    )
-                                ).Quantity_Completed
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
                         "inp_rezQty As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
+                            Align: ='TextInputCanvas.Align'.Center
                             AlignInContainer: =AlignInContainer.Center
+                            Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =12
+                            FontSize: =0
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
@@ -1434,8 +1583,8 @@
                             Placeholder: ="Unesite LOT"
                             Required: =true
                             Type: ="Text"
-                            Value: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
-                            Visible: =false
+                            Value: =quantityCompleted
+                            Visible: =true
                             Width: =150
                             X: =40
                             Y: =40
@@ -1467,8 +1616,7 @@
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
                                 OnSelect: |-
-                                    =//Patch(LookUp(salesCollection, Line_No = glr_ProLines.Selected.Line_No).Res_Entry, {Quantity_Completed: glr_ProResEntries.Selected.Quantity_Completed + 1})
-                                    //Patch(First(Filter(salesCollection,ThisRecord.Line_No=glr_ProLines.Selected.Line_No)).Res_Entry,glr_ProResEntries.Selected,{Quantity_Completed:glr_ProResEntries.Selected.Quantity_Completed+1})
+                                    =UpdateContext({quantityCompleted: quantityCompleted + 1})
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -1483,6 +1631,8 @@
                                 Layout: ='ButtonCanvas.Layout'.IconOnly
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
+                                OnSelect: |-
+                                    =UpdateContext({quantityCompleted: quantityCompleted - 1})
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -1584,29 +1734,15 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =UpdateIf(
-                                First(Filter(salesCollection, ThisRecord.Line_No = glr_ProLines.Selected.Line_No)).Res_Entry,
-                                Entry_No = glr_ProResEntries.Selected.Entry_No,
-                                {
-                                    Quantity_Completed: -Value(inp_rezQty.Value),
-                                    Quantity_NewLOT: -Value(inp_potrebnoQty.Value)
-                                }
-                            );
-                            ClearCollect(
-                                salesCollectionEdited,
-                                salesCollection
-                            );
-                            ClearCollect(
-                                salesCollection,
-                                salesCollectionEdited
-                            );
-                            Clear(salesCollectionEdited);
+                            =Patch(colEntries, LookUp(colEntries, glr_ProResEntries.Selected.Entry_No = Entry_No), {Quantity_Completed: quantityCompleted});
                             Reset(inp_Quantity_1);
                             Reset(inp_rezQty);
                             Reset(inp_potrebnoQty);
                             UpdateContext({potrebnaKolicina: 0});
-                            
-                            Set(isModalOpen, false);
+                            Set(
+                                isModalOpen,
+                                false
+                            );
                         Text: ="Spasi"
                         Width: =96
                         X: =0

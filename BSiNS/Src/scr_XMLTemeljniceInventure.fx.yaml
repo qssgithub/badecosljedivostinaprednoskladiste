@@ -784,7 +784,7 @@
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
-        Visible: =isModalOpen
+        Visible: =false
         Width: |
             =Parent.Width
         ZIndex: =2
@@ -1047,4 +1047,8 @@
                     X: =0
                     Y: =0
                     ZIndex: =2
+
+    com_InvModal As com_Modal:
+        Visible: =isModalOpen
+        ZIndex: =3
 

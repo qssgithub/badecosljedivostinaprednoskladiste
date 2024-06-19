@@ -1249,7 +1249,7 @@
             Y: =0
             ZIndex: =4
 
-    con_ModalFade As groupContainer.manualLayoutContainer:
+    con_OtpModalFade As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(0, 0, 0, 50%)
         Height: =Parent.Height
@@ -1262,7 +1262,7 @@
             =Parent.Width
         ZIndex: =2
 
-        con_Modal As groupContainer.manualLayoutContainer:
+        con_OtpModal As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
             Height: =Parent.Height * 50%
@@ -1275,7 +1275,7 @@
             Y: =(Parent.Height - Self.Height) / 2
             ZIndex: =1
 
-            vrt_Modal As groupContainer.verticalAutoLayoutContainer:
+            vrt_OtpModal As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.ExtraBold
                 Height: =Parent.Height
                 LayoutAlignItems: =LayoutAlignItems.Stretch
