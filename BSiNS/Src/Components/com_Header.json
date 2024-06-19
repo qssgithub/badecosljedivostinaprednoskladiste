@@ -68,7 +68,7 @@
         "MetaDataIDKey": "",
         "Name": "hdr_ScreenHeader",
         "OptimizeForDevices": "Off",
-        "Parent": "com_ScreenHeader",
+        "Parent": "com_Header",
         "PersistMetaDataIDKey": false,
         "PublishOrderIndex": 0,
         "Rules": [
@@ -100,7 +100,7 @@
             "Category": "Data",
             "InvariantScript": "Parent.Title",
             "Property": "Title",
-            "RuleProviderType": "User"
+            "RuleProviderType": "Unknown"
           },
           {
             "Category": "Design",
@@ -140,9 +140,9 @@
           },
           {
             "Category": "Behavior",
-            "InvariantScript": "If(!IsBlank(com_ScreenHeader.OnLogoClickScreen), Navigate(com_ScreenHeader.OnLogoClickScreen))",
+            "InvariantScript": "If(!IsBlank(com_Header.OnLogoClickScreen), Navigate(com_Header.OnLogoClickScreen))",
             "Property": "OnSelectLogo",
-            "RuleProviderType": "User"
+            "RuleProviderType": "Unknown"
           }
         ],
         "StyleName": "",
@@ -188,15 +188,9 @@
       "Title",
       "OnLogoClickScreen"
     ],
-    "LastModifiedTimestamp": "638543883261689146",
-    "Name": "com_ScreenHeader",
+    "LastModifiedTimestamp": "638544015227156655",
+    "Name": "com_Header",
     "Rules": [
-      {
-        "Category": "Data",
-        "InvariantScript": "\"Text\"",
-        "Property": "Title",
-        "RuleProviderType": "System"
-      },
       {
         "Category": "Data",
         "InvariantScript": "App.ActiveScreen",
@@ -204,22 +198,22 @@
         "RuleProviderType": "System"
       },
       {
-        "Category": "Design",
-        "InvariantScript": "1",
-        "Property": "ZIndex",
-        "RuleProviderType": "Unknown"
+        "Category": "Data",
+        "InvariantScript": "\"Text\"",
+        "Property": "Title",
+        "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "0",
-        "Property": "Y",
-        "RuleProviderType": "Unknown"
+        "InvariantScript": "RGBA(0, 0, 0, 0)",
+        "Property": "Fill",
+        "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "0",
-        "Property": "X",
-        "RuleProviderType": "Unknown"
+        "InvariantScript": "75",
+        "Property": "Height",
+        "RuleProviderType": "System"
       },
       {
         "Category": "Design",
@@ -229,14 +223,20 @@
       },
       {
         "Category": "Design",
-        "InvariantScript": "75",
-        "Property": "Height",
-        "RuleProviderType": "Unknown"
+        "InvariantScript": "0",
+        "Property": "X",
+        "RuleProviderType": "System"
       },
       {
         "Category": "Design",
-        "InvariantScript": "RGBA(0, 0, 0, 0)",
-        "Property": "Fill",
+        "InvariantScript": "0",
+        "Property": "Y",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Design",
+        "InvariantScript": "1",
+        "Property": "ZIndex",
         "RuleProviderType": "System"
       }
     ]
@@ -245,7 +245,7 @@
     "AllowAccessToGlobals": true,
     "AllowCustomization": true,
     "Description": "",
-    "Name": "com_ScreenHeader",
+    "Name": "com_Header",
     "TemplateGuid": "e7070bbb755e4438b9bc8a6da223f326"
   },
   "ComponentType": "CanvasComponent",
@@ -278,7 +278,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638543883261689146",
+  "LastModifiedTimestamp": "638544015227156655",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

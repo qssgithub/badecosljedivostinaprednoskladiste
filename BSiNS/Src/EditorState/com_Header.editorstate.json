@@ -1,6 +1,6 @@
 {
   "ControlStates": {
-    "com_ScreenHeader": {
+    "com_Header": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -34,35 +34,30 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "com_ScreenHeader",
+      "Name": "com_Header",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Title",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "OnLogoClickScreen",
           "RuleProviderType": "System"
         },
         {
-          "Category": "Design",
-          "PropertyName": "ZIndex",
-          "RuleProviderType": "Unknown"
+          "Category": "Data",
+          "PropertyName": "Title",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Fill",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "X",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "Height",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -71,12 +66,17 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "X",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
+          "PropertyName": "Y",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
           "RuleProviderType": "System"
         }
       ],
@@ -171,7 +171,7 @@
         {
           "Category": "Data",
           "PropertyName": "Title",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -206,12 +206,12 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelectLogo",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "com_ScreenHeader"
+  "TopParentName": "com_Header"
 }
