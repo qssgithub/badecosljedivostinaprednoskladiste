@@ -557,7 +557,24 @@
                 LayoutMinHeight: =287
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: =If(!First(Filter(lockedItems, documentId = SelectedDocumentName, lineId = glr_Inv.Selected.'Line_No.')).isLocked, )
+                OnSelect: |-
+                    =If(
+                        !First(
+                            Filter(
+                                lockedItems,
+                                documentId = SelectedDocumentName,
+                                lineId = glr_Inv.Selected.'Line_No.'
+                            )
+                        ).isLocked,
+                        Set(
+                            isModalOpen,
+                            true
+                        );
+                        Set(
+                            QuantityCompleted,
+                            Value(glr_Inv.Selected.Qty_Phys_Inventory)
+                        )
+                    )
                 TemplatePadding: =0
                 TemplateSize: =291
                 Visible: =!isLoading
@@ -1026,7 +1043,8 @@
                 ZIndex: =4
 
     com_InvModal As com_Modal:
-        QuantityCompleted: =glr_Inv.Selected.Qty_Phys_Inventory
+        LineId: =glr_Inv.Selected.'Line_No.'
+        ResEntryId: =
         Visible: =isModalOpen
         ZIndex: =3
 

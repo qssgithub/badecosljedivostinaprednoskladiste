@@ -4,8 +4,6 @@ com_Modal As CanvasComponent:
     Height: =App.Height
     IsInventura: =true
     LineId: ="Text"
-    QuantityCompleted: =0
-    QuantityNewLOT: =0
     ResEntryId: ="Text"
     Width: =App.Width
     X: =0
@@ -210,7 +208,7 @@ com_Modal As CanvasComponent:
                                 Layout: ='ButtonCanvas.Layout'.IconOnly
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityCompleted + 1);
+                                OnSelect: =Set(QuantityCompleted, QuantityCompleted + 1);
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -225,7 +223,7 @@ com_Modal As CanvasComponent:
                                 Layout: ='ButtonCanvas.Layout'.IconOnly
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityCompleted - 1);
+                                OnSelect: =Set(QuantityCompleted, QuantityCompleted - 1);
                                 Width: =96
                                 X: =0
                                 Y: =0
