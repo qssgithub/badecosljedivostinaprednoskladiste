@@ -1,13 +1,17 @@
 "scr_XMLNalogZaProdaju As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnHidden: |
+    OnHidden: |-
         =ClearCollect(
             colLines,
             Blank()
         );
         ClearCollect(
             colLocked,
+            Blank()
+        );
+        ClearCollect(
+            colEntries,
             Blank()
         );
     OnVisible: |
@@ -753,8 +757,8 @@
             LayoutMinHeight: =287
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: |-
-                =UpdateContext({wizardStep:2});
+            OnSelect: |
+                =UpdateContext({wizardStep: 2});
             TemplatePadding: =0
             TemplateSize: =164
             Visible: =If(!isLoading, wizardStep = 1)
@@ -1734,7 +1738,7 @@
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =Patch(colEntries, LookUp(colEntries, glr_ProResEntries.Selected.Entry_No = Entry_No), {Quantity_Completed: quantityCompleted});
+                            =Patch(colEntries, LookUp(colEntries, glr_ProResEntries.Selected.Entry_No = Entry_No), {Quantity_Completed: -quantityCompleted});
                             Reset(inp_Quantity_1);
                             Reset(inp_rezQty);
                             Reset(inp_potrebnoQty);

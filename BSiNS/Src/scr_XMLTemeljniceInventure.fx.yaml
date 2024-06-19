@@ -1049,6 +1049,7 @@
                     ZIndex: =2
 
     com_InvModal As com_Modal:
+        QuantityCompleted: =glr_Inv.Selected.Quantity
         Visible: =isModalOpen
         ZIndex: =3
 

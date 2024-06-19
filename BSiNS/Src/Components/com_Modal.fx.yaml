@@ -1,7 +1,9 @@
 com_Modal As CanvasComponent:
+    ChildTabPriority: =IsModalOpen
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    Quantity: =0
+    QuantityCompleted: =0
+    QuantityNewLOT: =0
     Width: =App.Width
     X: =0
     Y: =0
@@ -14,6 +16,7 @@ com_Modal As CanvasComponent:
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
+        Visible: =IsModalOpen
         Width: =Parent.Width
         ZIndex: =1
 
@@ -92,11 +95,13 @@ com_Modal As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.IconOnly
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
-                            =Reset(inp_Quantity_3);
-                            Reset(inp_rezQty_2);
+                        OnSelect: |
+                            =Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
-                            Set(isModalOpen, false);
+                            Set(
+                                IsModalOpen,
+                                false
+                            );
                         Text: ="Zatvori"
                         Width: =32
                         X: =40
@@ -123,55 +128,8 @@ com_Modal As CanvasComponent:
                     RadiusTopRight: =4
                     ZIndex: =2
 
-                    Container13_5 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        Height: =70
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        ZIndex: =1
-
-                        TextCanvas3_5 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: ="Količina"
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "inp_Quantity_3 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Disabled
-                            FontSize: =12
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            OnChange: =
-                            Placeholder: ="Količina"
-                            Value: =Abs(glr_ProResEntries.Selected.Quantity)
-                            Width: =150
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
                     Container13_10 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
@@ -186,41 +144,24 @@ com_Modal As CanvasComponent:
                         ZIndex: =2
 
                         TextCanvas3_11 As Text:
-                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =80
                             Size: =20
                             Text: ="Rezervisano"
-                            Width: =96
+                            Width: =110
                             X: =40
                             Y: =40
                             ZIndex: =1
 
-                        TextCanvas3_12 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            FillPortions: =1
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =80
-                            Size: =20
-                            Text: =com_Modal.Quantity
-                            Width: =96
-                            X: =40
-                            Y: =40
-                            ZIndex: =2
-
                         "inp_rezQty_2 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
+                            Align: ='TextInputCanvas.Align'.Justify
+                            Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =12
+                            FontSize: =0
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
@@ -234,6 +175,7 @@ com_Modal As CanvasComponent:
                                     );
                                     Reset(inp_rezQty_2);
                                     UpdateContext({potrebnaKolicina: 0}),
+                                    
                                     If(
                                         Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
                                         Reset(inp_rezQty_2);
@@ -246,17 +188,18 @@ com_Modal As CanvasComponent:
                                         UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
                                     )
                                 );
-                            Placeholder: ="Unesite LOT"
+                            Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
                             Value: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
-                            Visible: =false
-                            Width: =150
+                            Visible: =true
+                            Width: =200
                             X: =40
                             Y: =40
                             ZIndex: =3
 
                         Container8_1 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
                             FillPortions: =0
                             LayoutAlignItems: =LayoutAlignItems.Center
                             LayoutDirection: =LayoutDirection.Vertical
@@ -303,7 +246,7 @@ com_Modal As CanvasComponent:
 
                     Container13_11 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
@@ -317,12 +260,12 @@ com_Modal As CanvasComponent:
                         ZIndex: =3
 
                         TextCanvas3_13 As Text:
-                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
+                            Size: =20
                             Text: ="Potrebno"
                             Width: =96
                             X: =40
@@ -330,20 +273,66 @@ com_Modal As CanvasComponent:
                             ZIndex: =1
 
                         "inp_potrebnoQty_2 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
+                            Align: ='TextInputCanvas.Align'.Justify
+                            Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
-                            FontSize: =12
+                            FontSize: =0
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            Placeholder: ="Unesite LOT"
-                            Value: =If(IsBlank(potrebnaKolicina),0,potrebnaKolicina)
-                            Width: =150
+                            Placeholder: ="Unesite potrebnu količinu"
+                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
+                            Width: =200
                             X: =40
                             Y: =40
                             ZIndex: =2
+
+                        Container8_2 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            LayoutAlignItems: =LayoutAlignItems.Center
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutGap: =5
+                            LayoutJustifyContent: =LayoutJustifyContent.Center
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =100
+                            ZIndex: =3
+
+                            ButtonCanvas9_4 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronUp"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: =
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            ButtonCanvas9_5 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronDown"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
 
                 hrz_ModalFooter As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -373,11 +362,10 @@ com_Modal As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |
-                            =Reset(inp_Quantity_3);
-                            Reset(inp_rezQty_2);
+                        OnSelect: |-
+                            =Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
-                            Set(isModalOpen, false);
+                            Set(IsModalOpen, false);
                         Text: ="Spasi"
                         Width: =96
                         X: =0
