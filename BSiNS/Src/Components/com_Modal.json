@@ -1891,7 +1891,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "Abs(com_Modal.QuantityCompleted)",
+                                "InvariantScript": "Abs(QuantityCompleted)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -4230,7 +4230,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Reset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(isModalOpen, false);",
+                            "InvariantScript": "Patch(colLines, LookUp(colLines, 'Line_No.' = com_Modal.LineId), {Qty_Phys_Inventory: QuantityCompleted});\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -5465,9 +5465,11 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      "IsInventura"
+      "IsInventura",
+      "LineId",
+      "ResEntryId"
     ],
-    "LastModifiedTimestamp": "638544019750918527",
+    "LastModifiedTimestamp": "638544026172208694",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -5486,6 +5488,18 @@
         "Category": "Data",
         "InvariantScript": "true",
         "Property": "IsInventura",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "\"Text\"",
+        "Property": "LineId",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "\"Text\"",
+        "Property": "ResEntryId",
         "RuleProviderType": "System"
       },
       {
@@ -5568,6 +5582,24 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "Is Inventura screen",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "LineId",
+      "Hidden": false,
+      "Name": "LineId",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "Line Id",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "ResEntryId",
+      "Hidden": false,
+      "Name": "ResEntryId",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "Res Entry Id",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -5578,7 +5610,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544019750918527",
+  "LastModifiedTimestamp": "638544026172208694",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
