@@ -3,7 +3,6 @@ com_Modal As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
     IsInventura: =true
-    IsModalOpen: =true
     QuantityCompleted: =0
     QuantityNewLOT: =0
     Width: =App.Width
@@ -154,6 +153,47 @@ com_Modal As CanvasComponent:
                                 Y: =40
                                 ZIndex: =1
 
+                            "inp_rezQty_2 As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Center
+                                Appearance: ='TextInputCanvas.Appearance'.Outline
+                                BasePaletteColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                FontSize: =26
+                                Height: =40
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =320
+                                OnChange: |
+                                    =If(
+                                        (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,
+                                        Notify(
+                                            "Unesite pozitivan broj.",
+                                            NotificationType.Error,
+                                            2000
+                                        );
+                                        Reset(inp_rezQty_2);
+                                        UpdateContext({potrebnaKolicina: 0}),
+                                        If(
+                                            Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                            Reset(inp_rezQty_2);
+                                            UpdateContext({potrebnaKolicina: 0});
+                                            Notify(
+                                                "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                                NotificationType.Information,
+                                                2000
+                                            ),
+                                            UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
+                                        )
+                                    );
+                                Placeholder: =
+                                Required: =true
+                                Type: ="Text"
+                                Value: =Abs(QuantityCompleted)
+                                Visible: =true
+                                Width: =110
+                                X: =40
+                                Y: =40
+                                ZIndex: =2
+
                         vrt_ModalQuantityChevrons As groupContainer.verticalAutoLayoutContainer:
                             AlignInContainer: =AlignInContainer.SetByContainer
                             FillPortions: =0
@@ -227,6 +267,82 @@ com_Modal As CanvasComponent:
                             RadiusTopLeft: =4
                             RadiusTopRight: =4
                             ZIndex: =1
+
+                            TextCanvas3_13 As Text:
+                                AutoHeight: =true
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =32
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                Size: =20
+                                Text: ="Potrebno"
+                                Width: =96
+                                X: =40
+                                Y: =40
+                                ZIndex: =1
+
+                            "inp_potrebnoQty_2 As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Center
+                                Appearance: ='TextInputCanvas.Appearance'.Outline
+                                BasePaletteColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                FontSize: =26
+                                Height: =40
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =320
+                                Placeholder: ="Unesite potrebnu količinu"
+                                Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
+                                Width: =110
+                                X: =40
+                                Y: =40
+                                ZIndex: =2
+
+                        Container8_2 As groupContainer.verticalAutoLayoutContainer:
+                            AlignInContainer: =AlignInContainer.SetByContainer
+                            FillPortions: =0
+                            LayoutAlignItems: =LayoutAlignItems.Center
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutGap: =5
+                            LayoutJustifyContent: =LayoutJustifyContent.Center
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =250
+                            LayoutMode: =LayoutMode.Auto
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            Width: =100
+                            ZIndex: =2
+
+                            ButtonCanvas9_4 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronUp"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityNewLOT + 1);
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =1
+
+                            ButtonCanvas9_5 As Button:
+                                DisplayMode: =DisplayMode.Edit
+                                FillPortions: =1
+                                FontSize: =60
+                                Height: =32
+                                Icon: ="ChevronDown"
+                                Layout: ='ButtonCanvas.Layout'.IconOnly
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =96
+                                OnSelect: =Set(QuantityCompleted, com_Modal.QuantityNewLOT - 1);
+                                Width: =96
+                                X: =0
+                                Y: =0
+                                ZIndex: =2
 
                 hrz_ModalFooter As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
