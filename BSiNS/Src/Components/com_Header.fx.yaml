@@ -1,25 +1,129 @@
 com_Header As CanvasComponent:
     BackToScreen: =App.ActiveScreen
     Fill: =RGBA(0, 0, 0, 0)
-    Height: =75
+    Height: =125
     IsInventura: =true
+    IsMobile: =true
+    ScannedItem: =
     Title: ="Text"
     Width: =App.Width
     X: =0
     Y: =0
     ZIndex: =1
 
-    hdr_ScreenHeader As Header:
-        DisplayMode: =DisplayMode.Edit
-        Height: =75
-        Logo: =FFLogo
-        OnSelectLogo: =If(!IsBlank(com_Header.BackToScreen), Navigate(com_Header.BackToScreen))
-        Title: =Parent.Title
-        UserEmail: =User().Email
-        UserImage: =User().Image
-        UserName: =User().FullName
+    Container1 As groupContainer.verticalAutoLayoutContainer:
+        Height: =125
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
         Width: =Parent.Width
-        X: =0
-        Y: =0
-        ZIndex: =1
+        Y: =40
+        ZIndex: =2
+
+        hdr_ScreenHeader As Header:
+            DisplayMode: =DisplayMode.Edit
+            Height: =75
+            LayoutMinHeight: =75
+            LayoutMinWidth: =250
+            Logo: =FFLogo
+            OnSelectLogo: =If(!IsBlank(com_Header.BackToScreen), Navigate(com_Header.BackToScreen))
+            Title: =com_Header.Title
+            UserEmail: =User().Email
+            UserImage: =User().Image
+            UserName: =User().FullName
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        hrz_InvTitle_1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            DropShadow: =DropShadow.Light
+            FillPortions: =0
+            Height: =50
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =!com_Header.IsInventura
+            Width: =Parent.Width
+            ZIndex: =2
+
+            btn_InvBack_1 As Button:
+                Align: =Align.Justify
+                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                DisplayMode: =DisplayMode.Edit
+                Height: =32
+                Icon: ="ArrowLeft"
+                IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                Layout: ='ButtonCanvas.Layout'.IconBefore
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Navigate(com_Header.BackToScreen, ScreenTransition.Fade);
+                Text: ="Nazad na početnu"
+                VerticalAlign: =""
+                Width: =170
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            "bcr_Inv_1 As 'Barcode Reader'":
+                BarcodeType: ='BarcodeReader.BarcodeType'.Code128
+                BorderFillColor: =RGBA(0, 0, 0, 1)
+                BorderRadius: =10
+                BorderThickness: =1
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledContentColor: =RGBA(166, 166, 166, 1)
+                DisabledFillColor: =RGBA(244, 244, 244, 1)
+                DisplayMode: =DisplayMode.Edit
+                FillColor: =RGBA(255, 255, 255, 1)
+                FontSize: =12
+                Height: =35
+                HoverBorderColor: =RGBA(189, 49, 51, 1)
+                HoverContentColor: =RGBA(255, 255, 255, 1)
+                HoverFillColor: =RGBA(189, 49, 51, 1)
+                LayoutMinHeight: =30
+                LayoutMinWidth: =280
+                OnCancel: =false
+                OnScan: |-
+                    =//UpdateContext({scannedItem: First(bcr_Inv_1.Barcodes).Value});
+                    Set(
+                        isModalOpen,
+                        true
+                    );
+                    Set(
+                        ScannedItem,
+                        First(bcr_Inv_1.Barcodes).Value
+                    )
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =RGBA(189, 49, 51, 1)
+                PressedContentColor: =RGBA(189, 49, 51, 1)
+                PressedFillColor: =RGBA(255, 255, 255, 1)
+                ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
+                Text: ="Skener"
+                TextAlignment: =Align.Center
+                TextColor: =RGBA(0, 0, 0, 1)
+                VerticalAlign: =VerticalAlign.Middle
+                Visible: =com_Header.IsMobile
+                Width: =80
+                X: =164
+                Y: =9
+                ZIndex: =2
 
