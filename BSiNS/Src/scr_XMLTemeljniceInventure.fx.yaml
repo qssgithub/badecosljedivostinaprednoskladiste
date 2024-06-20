@@ -435,8 +435,6 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
-            PaddingLeft: =5
-            PaddingRight: =5
             ZIndex: =3
 
             con_InvDocumentName As groupContainer.manualLayoutContainer:
@@ -493,6 +491,7 @@
                             Value(glr_Inv.Selected.Qty_Phys_Inventory)
                         )
                     )
+                TemplateFill: =If(Self.IsSelected, RGBA(250, 250, 250, 1), RGBA(245, 245, 245, 1))
                 TemplatePadding: =0
                 TemplateSize: =291
                 Visible: =!isLoading
@@ -873,10 +872,6 @@
             LayoutMode: =LayoutMode.Auto
             PaddingLeft: =15
             PaddingRight: =20
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =4
 
