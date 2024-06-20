@@ -1,7 +1,16 @@
 "scr_XMLTemeljniceInventure As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnHidden: =
+    OnHidden: |
+        =Clear(colLines);
+        Set(
+            SelectedFile,
+            Blank()
+        );
+        Set(
+            SelectedFolder,
+            Blank()
+        );
     OnVisible: |
         =Set(
             isLoading,
@@ -897,8 +906,12 @@
                 Layout: ='ButtonCanvas.Layout'.TextOnly
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
-                OnSelect: |-
-                    =IfError(
+                OnSelect: |
+                    =Set(
+                        isLoading,
+                        true
+                    );
+                    IfError(
                         GetXml.Run(
                             SelectedFile,
                             ReadyForProcessing
@@ -944,7 +957,11 @@
                             scr_XMLTemeljniceInventure,
                             ScreenTransition.Fade
                         )
-                    )
+                    );
+                    Set(
+                        isLoading,
+                        false
+                    );
                 Text: ="Sačuvaj"
                 Width: =96
                 X: =0

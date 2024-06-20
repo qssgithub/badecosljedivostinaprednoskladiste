@@ -147,7 +147,7 @@ com_Modal As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             OnChange: |
-                                =If(
+                                =/*If(
                                     (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,
                                     Notify(
                                         "Unesite pozitivan broj.",
@@ -156,7 +156,6 @@ com_Modal As CanvasComponent:
                                     );
                                     Reset(inp_rezQty_2);
                                     UpdateContext({potrebnaKolicina: 0}),
-                                    
                                     If(
                                         Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
                                         Reset(inp_rezQty_2);
@@ -168,7 +167,7 @@ com_Modal As CanvasComponent:
                                         ),
                                         UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
                                     )
-                                );
+                                );*/
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
@@ -349,7 +348,7 @@ com_Modal As CanvasComponent:
                                     colLines,
                                     'Line_No.' = com_Modal.LineId
                                 ),
-                                {Qty_Phys_Inventory: QuantityCompleted}
+                                {Qty_Phys_Inventory: inp_rezQty_2.Value}
                             );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);

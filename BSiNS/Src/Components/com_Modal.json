@@ -3158,7 +3158,7 @@
                               },
                               {
                                 "Category": "Behavior",
-                                "InvariantScript": "If(\n    (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,\n    Notify(\n        \"Unesite pozitivan broj.\",\n        NotificationType.Error,\n        2000\n    );\n    Reset(inp_rezQty_2);\n    UpdateContext({potrebnaKolicina: 0}),\n    \n    If(\n        Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),\n        Reset(inp_rezQty_2);\n        UpdateContext({potrebnaKolicina: 0});\n        Notify(\n            \"Maksimalna količina za isporuku je \" & Abs(glr_ProResEntries.Selected.Quantity_Completed),\n            NotificationType.Information,\n            2000\n        ),\n        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})\n    )\n);\n",
+                                "InvariantScript": "/*If(\n    (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,\n    Notify(\n        \"Unesite pozitivan broj.\",\n        NotificationType.Error,\n        2000\n    );\n    Reset(inp_rezQty_2);\n    UpdateContext({potrebnaKolicina: 0}),\n    If(\n        Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),\n        Reset(inp_rezQty_2);\n        UpdateContext({potrebnaKolicina: 0});\n        Notify(\n            \"Maksimalna količina za isporuku je \" & Abs(glr_ProResEntries.Selected.Quantity_Completed),\n            NotificationType.Information,\n            2000\n        ),\n        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})\n    )\n);*/\n",
                                 "Property": "OnChange",
                                 "RuleProviderType": "User"
                               }
@@ -4265,7 +4265,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Patch(\n    colLines,\n    LookUp(\n        colLines,\n        'Line_No.' = com_Modal.LineId\n    ),\n    {Qty_Phys_Inventory: QuantityCompleted}\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "Patch(\n    colLines,\n    LookUp(\n        colLines,\n        'Line_No.' = com_Modal.LineId\n    ),\n    {Qty_Phys_Inventory: inp_rezQty_2.Value}\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -5495,7 +5495,7 @@
       "LineId",
       "ResEntryId"
     ],
-    "LastModifiedTimestamp": "638544693903319599",
+    "LastModifiedTimestamp": "638544698133172204",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -5606,7 +5606,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544693903319599",
+  "LastModifiedTimestamp": "638544698133172204",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
