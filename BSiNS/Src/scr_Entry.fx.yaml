@@ -19,6 +19,7 @@
             isModalOpen,
             false
         );
+        LoadData(lockedItems, "lockedItems", true);
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {

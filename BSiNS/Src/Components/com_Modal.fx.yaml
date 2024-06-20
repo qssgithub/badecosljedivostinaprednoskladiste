@@ -352,6 +352,18 @@ com_Modal As CanvasComponent:
                             );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
+                            Patch(
+                                lockedItems,
+                                LookUp(
+                                    Filter(
+                                        lockedItems,
+                                        ThisRecord.documentId = SelectedDocumentName
+                                    ),
+                                    lineId = com_Modal.LineId
+                                ),
+                                {isLocked: true}
+                            );
+                            SaveData(lockedItems, "lockedItems");
                             Set(
                                 isModalOpen,
                                 false

@@ -439,9 +439,8 @@
 
             con_InvDocumentName As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
-                FillPortions: =0
                 Height: =60
-                LayoutMinHeight: =100
+                LayoutMinHeight: =50
                 LayoutMinWidth: =250
                 ZIndex: =3
 
@@ -454,9 +453,10 @@
                     PaddingLeft: =8
                     PaddingRight: =8
                     PaddingTop: =0
-                    Size: =20
+                    Size: =14
                     Text: ="Stavke dokumenta " & SelectedDocumentName
                     Width: =Parent.Width
+                    Wrap: =true
                     X: =0   
                     Y: =0
                     ZIndex: =1
@@ -464,7 +464,9 @@
             "glr_Inv As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: =First(Filter(colLines, ThisRecord.Barcode = com_InvHeader.ScannedItem))
+                Default: |-
+                    =//First(Filter(colLines, ThisRecord.Barcode = com_InvHeader.ScannedItem))
+                    //LookUp(colLines, Barcode = com_InvHeader.ScannedItem, ThisRecord);
                 DelayItemLoading: =true
                 Fill: =RGBA(237, 237, 237, 1)
                 Height: =562
@@ -473,7 +475,7 @@
                 LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: |-
+                OnSelect: |
                     =If(
                         !First(
                             Filter(
@@ -490,7 +492,7 @@
                             QuantityCompleted,
                             Value(glr_Inv.Selected.Qty_Phys_Inventory)
                         )
-                    )
+                    );
                 TemplateFill: =If(Self.IsSelected, RGBA(250, 250, 250, 1), RGBA(245, 245, 245, 1))
                 TemplatePadding: =0
                 TemplateSize: =291
