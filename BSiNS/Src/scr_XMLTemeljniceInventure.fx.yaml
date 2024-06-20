@@ -412,7 +412,6 @@
 
         com_InvHeader As com_Header:
             BackToScreen: =scr_Entry
-            IsInventura: =false
             IsMobile: =isMobile
             LayoutMinHeight: =640
             LayoutMinWidth: =250
@@ -428,10 +427,6 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowX: =LayoutOverflow.Scroll
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
             ZIndex: =3
 
             hrz_InvTitle As groupContainer.horizontalAutoLayoutContainer:
@@ -523,10 +518,6 @@
                 Height: =60
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
                 ZIndex: =3
 
                 txt_InvDocumentName As Text:

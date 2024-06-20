@@ -1,10 +1,10 @@
 com_Header As CanvasComponent:
     BackToScreen: =App.ActiveScreen
     Fill: =RGBA(0, 0, 0, 0)
-    Height: =125
-    IsInventura: =true
+    Height: =110
+    IsInventura: =false
     IsMobile: =true
-    ScannedItem: =
+    ScannedItem: =ScannedItem
     Title: ="Text"
     Width: =App.Width
     X: =0
@@ -12,7 +12,7 @@ com_Header As CanvasComponent:
     ZIndex: =1
 
     Container1 As groupContainer.verticalAutoLayoutContainer:
-        Height: =125
+        Height: =110
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -42,18 +42,17 @@ com_Header As CanvasComponent:
 
         hrz_InvTitle_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
-            DropShadow: =DropShadow.Light
             FillPortions: =0
-            Height: =50
+            Height: =35
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            PaddingBottom: =5
+            PaddingBottom: =2
             PaddingLeft: =5
             PaddingRight: =5
-            PaddingTop: =5
+            PaddingTop: =2
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
@@ -99,12 +98,7 @@ com_Header As CanvasComponent:
                 LayoutMinWidth: =280
                 OnCancel: =false
                 OnScan: |-
-                    =//UpdateContext({scannedItem: First(bcr_Inv_1.Barcodes).Value});
-                    Set(
-                        isModalOpen,
-                        true
-                    );
-                    Set(
+                    =Set(
                         ScannedItem,
                         First(bcr_Inv_1.Barcodes).Value
                     )
