@@ -320,7 +320,14 @@
           "NameMapSourceSchema": "?"
         },
         "BackToScreen",
-        "IsInventura",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "IsEntryScreen",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -428,8 +435,8 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
+          "PropertyName": "IsEntryScreen",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",

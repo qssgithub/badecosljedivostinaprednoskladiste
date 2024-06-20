@@ -1343,7 +1343,7 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "!com_Header.IsInventura",
+                "InvariantScript": "!com_Header.IsEntryScreen",
                 "Property": "Visible",
                 "RuleProviderType": "User"
               }
@@ -1634,14 +1634,7 @@
       "ZIndex",
       "Title",
       "BackToScreen",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsInventura",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
+      "IsEntryScreen",
       "IsMobile",
       {
         "AFDDataSourceName": "",
@@ -1652,7 +1645,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638544655286392883",
+    "LastModifiedTimestamp": "638544684336629781",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1670,7 +1663,7 @@
       {
         "Category": "Data",
         "InvariantScript": "false",
-        "Property": "IsInventura",
+        "Property": "IsEntryScreen",
         "RuleProviderType": "System"
       },
       {
@@ -1753,11 +1746,11 @@
     },
     {
       "Category": 0,
-      "DisplayName": "IsInventura",
+      "DisplayName": "IsEntryScreen",
       "Hidden": false,
-      "Name": "IsInventura",
+      "Name": "IsEntryScreen",
       "PropertyDataTypeKey": "Boolean",
-      "Tooltip": "Is Inventura screen",
+      "Tooltip": "Is Entry screen",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     },
     {
@@ -1787,7 +1780,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544655286392883",
+  "LastModifiedTimestamp": "638544684336629781",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

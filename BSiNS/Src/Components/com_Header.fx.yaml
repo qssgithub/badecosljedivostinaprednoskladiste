@@ -2,7 +2,7 @@ com_Header As CanvasComponent:
     BackToScreen: =App.ActiveScreen
     Fill: =RGBA(0, 0, 0, 0)
     Height: =125
-    IsInventura: =false
+    IsEntryScreen: =false
     IsMobile: =true
     ScannedItem: =ScannedItem
     Title: ="Text"
@@ -57,7 +57,7 @@ com_Header As CanvasComponent:
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =!com_Header.IsInventura
+            Visible: =!com_Header.IsEntryScreen
             Width: =Parent.Width
             ZIndex: =2
 
