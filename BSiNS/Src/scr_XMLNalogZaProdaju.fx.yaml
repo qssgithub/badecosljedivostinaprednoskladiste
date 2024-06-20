@@ -526,7 +526,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =5
         LayoutMode: =LayoutMode.Auto
-        LayoutOverflowX: =LayoutOverflow.Scroll
+        LayoutOverflowY: =LayoutOverflow.Scroll
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
         RadiusTopLeft: =4
@@ -750,7 +750,7 @@
             Height: =562
             Items: =colLines
             Layout: =Layout.Vertical
-            LayoutMinHeight: =287
+            LayoutMinHeight: =Parent.Height * 0.6
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |
@@ -923,7 +923,7 @@
             Height: =560
             Items: =Filter(colEntries, Source_Ref_No = glr_ProLines.Selected.Line_No)
             Layout: =Layout.Vertical
-            LayoutMinHeight: =287
+            LayoutMinHeight: =Parent.Height * 0.6
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |
