@@ -461,6 +461,41 @@
                     Y: =0
                     ZIndex: =1
 
+                "bcr_Inv_1 As 'Barcode Reader'":
+                    BarcodeType: ='BarcodeReader.BarcodeType'.Code128
+                    BorderFillColor: =RGBA(0, 0, 0, 1)
+                    BorderRadius: =10
+                    BorderThickness: =1
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledContentColor: =RGBA(166, 166, 166, 1)
+                    DisabledFillColor: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =DisplayMode.Edit
+                    FillColor: =RGBA(255, 255, 255, 1)
+                    FontSize: =12
+                    Height: =35
+                    HoverBorderColor: =RGBA(189, 49, 51, 1)
+                    HoverContentColor: =RGBA(255, 255, 255, 1)
+                    HoverFillColor: =RGBA(189, 49, 51, 1)
+                    OnCancel: =false
+                    OnScan: =
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =RGBA(189, 49, 51, 1)
+                    PressedContentColor: =RGBA(189, 49, 51, 1)
+                    PressedFillColor: =RGBA(255, 255, 255, 1)
+                    ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
+                    Text: ="Skener"
+                    TextAlignment: =Align.Center
+                    TextColor: =RGBA(0, 0, 0, 1)
+                    VerticalAlign: =VerticalAlign.Middle
+                    Visible: =com_Header.IsMobile
+                    Width: =80
+                    X: =40
+                    Y: =15
+                    ZIndex: =2
+
             "glr_Inv As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
