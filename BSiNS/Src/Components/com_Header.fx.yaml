@@ -1,7 +1,7 @@
 com_Header As CanvasComponent:
     BackToScreen: =App.ActiveScreen
     Fill: =RGBA(0, 0, 0, 0)
-    Height: =110
+    Height: =125
     IsInventura: =false
     IsMobile: =true
     ScannedItem: =ScannedItem
@@ -12,7 +12,7 @@ com_Header As CanvasComponent:
     ZIndex: =1
 
     Container1 As groupContainer.verticalAutoLayoutContainer:
-        Height: =110
+        Height: =125
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
         LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -43,16 +43,16 @@ com_Header As CanvasComponent:
         hrz_InvTitle_1 As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
-            Height: =35
+            Height: =50
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            PaddingBottom: =2
+            PaddingBottom: =5
             PaddingLeft: =5
             PaddingRight: =5
-            PaddingTop: =2
+            PaddingTop: =5
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4

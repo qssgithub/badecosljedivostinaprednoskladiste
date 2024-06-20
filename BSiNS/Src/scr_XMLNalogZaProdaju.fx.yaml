@@ -7,10 +7,6 @@
             Blank()
         );
         ClearCollect(
-            colLocked,
-            Blank()
-        );
-        ClearCollect(
             colEntries,
             Blank()
         );
@@ -530,6 +526,7 @@
         LayoutDirection: =LayoutDirection.Vertical
         LayoutGap: =5
         LayoutMode: =LayoutMode.Auto
+        LayoutOverflowX: =LayoutOverflow.Scroll
         RadiusBottomLeft: =4
         RadiusBottomRight: =4
         RadiusTopLeft: =4
@@ -583,7 +580,6 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            LayoutOverflowY: =LayoutOverflow.Scroll
             PaddingLeft: =15
             PaddingRight: =15
             RadiusBottomLeft: =4
@@ -1417,7 +1413,7 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Width: =Parent.Width * 75%
+            Width: =Parent.Width * 80%
             X: =(Parent.Width - Self.Width) / 2
             Y: =(Parent.Height - Self.Height) / 2
             ZIndex: =1
@@ -1538,61 +1534,70 @@
                         RadiusTopRight: =4
                         ZIndex: =2
 
-                        TextCanvas3_7 As Text:
-                            AlignInContainer: =AlignInContainer.Center
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =80
-                            Size: =20
-                            Text: ="Rezervisano"
-                            Width: =120
-                            X: =40
-                            Y: =40
+                        Container3 As groupContainer.verticalAutoLayoutContainer:
+                            LayoutDirection: =LayoutDirection.Vertical
+                            LayoutMinHeight: =100
+                            LayoutMinWidth: =110
+                            LayoutMode: =LayoutMode.Auto
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
                             ZIndex: =1
 
-                        "inp_rezQty As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            AlignInContainer: =AlignInContainer.Center
-                            Appearance: ='TextInputCanvas.Appearance'.Outline
-                            BasePaletteColor: =
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =0
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            OnChange: |
-                                =If(
-                                    (!IsNumeric(inp_rezQty.Value) && !IsBlank(inp_rezQty.Value)) || Value(inp_rezQty.Value) < 0,
-                                    Notify(
-                                        "Unesite pozitivan broj.",
-                                        NotificationType.Error,
-                                        2000
-                                    );
-                                    Reset(inp_rezQty);
-                                    UpdateContext({potrebnaKolicina: 0}),
-                                    If(
-                                        Value(inp_rezQty.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
-                                        Reset(inp_rezQty);
-                                        UpdateContext({potrebnaKolicina: 0});
+                            TextCanvas3_7 As Text:
+                                AutoHeight: =true
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =32
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =80
+                                Size: =20
+                                Text: ="Rezervisano"
+                                Width: =120
+                                X: =40
+                                Y: =40
+                                ZIndex: =1
+
+                            "inp_rezQty As 'Text input'":
+                                Align: ='TextInputCanvas.Align'.Center
+                                Appearance: ='TextInputCanvas.Appearance'.Outline
+                                BasePaletteColor: =
+                                DisplayMode: =DisplayMode.Edit
+                                FontSize: =0
+                                Height: =32
+                                LayoutMinHeight: =32
+                                LayoutMinWidth: =320
+                                OnChange: |
+                                    =If(
+                                        (!IsNumeric(inp_rezQty.Value) && !IsBlank(inp_rezQty.Value)) || Value(inp_rezQty.Value) < 0,
                                         Notify(
-                                            "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
-                                            NotificationType.Information,
+                                            "Unesite pozitivan broj.",
+                                            NotificationType.Error,
                                             2000
-                                        ),
-                                        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty.Value})
-                                    )
-                                );
-                            Placeholder: ="Unesite LOT"
-                            Required: =true
-                            Type: ="Text"
-                            Value: =quantityCompleted
-                            Visible: =true
-                            Width: =150
-                            X: =40
-                            Y: =40
-                            ZIndex: =3
+                                        );
+                                        Reset(inp_rezQty);
+                                        UpdateContext({potrebnaKolicina: 0}),
+                                        If(
+                                            Value(inp_rezQty.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                            Reset(inp_rezQty);
+                                            UpdateContext({potrebnaKolicina: 0});
+                                            Notify(
+                                                "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                                NotificationType.Information,
+                                                2000
+                                            ),
+                                            UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty.Value})
+                                        )
+                                    );
+                                Placeholder: ="Unesite LOT"
+                                Required: =true
+                                Type: ="Text"
+                                Value: =quantityCompleted
+                                Visible: =true
+                                Width: =110
+                                X: =40
+                                Y: =40
+                                ZIndex: =2
 
                         Container8 As groupContainer.verticalAutoLayoutContainer:
                             FillPortions: =0

@@ -343,7 +343,14 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =Patch(colLines, LookUp(colLines, 'Line_No.' = com_Modal.LineId), {Qty_Phys_Inventory: QuantityCompleted});
+                            =Patch(
+                                colLines,
+                                LookUp(
+                                    colLines,
+                                    'Line_No.' = com_Modal.LineId
+                                ),
+                                {Qty_Phys_Inventory: QuantityCompleted}
+                            );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
                             Set(
