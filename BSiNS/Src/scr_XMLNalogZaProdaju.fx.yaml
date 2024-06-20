@@ -1408,12 +1408,12 @@
         con_ProModal As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.Height * 80%
+            Height: =If(isMobile, Parent.Height * 80%, Parent.Height * 60%)
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Width: =Parent.Width * 80%
+            Width: =If(isMobile, Parent.Width * 80%, Parent.Width * 25%)
             X: =(Parent.Width - Self.Width) / 2
             Y: =(Parent.Height - Self.Height) / 2
             ZIndex: =1
@@ -1476,13 +1476,12 @@
                     Container13_3 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         Height: =70
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
@@ -1490,31 +1489,30 @@
                         ZIndex: =1
 
                         TextCanvas3_3 As Text:
-                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
+                            Size: =20
                             Text: ="Količina"
-                            Width: =96
+                            Width: =110
                             X: =40
                             Y: =40
                             ZIndex: =1
 
                         "inp_Quantity_1 As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
+                            Align: ='TextInputCanvas.Align'.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Disabled
-                            FontSize: =12
+                            FontSize: =0
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
                             Value: =Abs(glr_ProResEntries.Selected.Quantity)
-                            Width: =150
+                            Width: =110
                             X: =40
                             Y: =40
                             ZIndex: =2
@@ -1525,9 +1523,6 @@
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingRight: =15
-                        PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
@@ -1535,7 +1530,9 @@
                         ZIndex: =2
 
                         Container3 As groupContainer.verticalAutoLayoutContainer:
+                            LayoutAlignItems: =LayoutAlignItems.Center
                             LayoutDirection: =LayoutDirection.Vertical
+                            LayoutJustifyContent: =LayoutJustifyContent.Center
                             LayoutMinHeight: =100
                             LayoutMinWidth: =110
                             LayoutMode: =LayoutMode.Auto
@@ -1553,14 +1550,14 @@
                                 LayoutMinWidth: =80
                                 Size: =20
                                 Text: ="Rezervisano"
-                                Width: =120
+                                Width: =110
                                 X: =40
                                 Y: =40
                                 ZIndex: =1
 
                             "inp_rezQty As 'Text input'":
                                 Align: ='TextInputCanvas.Align'.Center
-                                Appearance: ='TextInputCanvas.Appearance'.Outline
+                                Appearance: ='TextInputCanvas.Appearance'.FilledDarker
                                 BasePaletteColor: =
                                 DisplayMode: =DisplayMode.Edit
                                 FontSize: =0
@@ -1612,6 +1609,7 @@
                             RadiusBottomRight: =4
                             RadiusTopLeft: =4
                             RadiusTopRight: =4
+                            Visible: =false
                             Width: =100
                             ZIndex: =4
 
@@ -1649,13 +1647,12 @@
 
                     Container13_6 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =15
-                        PaddingTop: =15
                         RadiusBottomLeft: =4
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
@@ -1663,21 +1660,20 @@
                         ZIndex: =3
 
                         TextCanvas3_6 As Text:
-                            AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
+                            Size: =20
                             Text: ="Potrebno"
-                            Width: =96
+                            Width: =110
                             X: =40
                             Y: =40
                             ZIndex: =1
 
                         "inp_potrebnoQty As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.End
-                            AlignInContainer: =AlignInContainer.Center
+                            Align: ='TextInputCanvas.Align'.Center
                             BasePaletteColor: =
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
@@ -1686,7 +1682,7 @@
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
                             Value: =If(IsBlank(potrebnaKolicina),0,potrebnaKolicina)
-                            Width: =150
+                            Width: =110
                             X: =40
                             Y: =40
                             ZIndex: =2
