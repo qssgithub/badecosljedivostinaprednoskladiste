@@ -519,7 +519,10 @@
             "glr_Inv As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: =LookUp(colLines, Barcode = ScannedItem, ThisRecord)
+                Default: |-
+                    =LookUp(colLines,  Barcode = ScannedItem, ThisRecord)
+                    //LookUp(colLines, If(IsBlank(ScannedItem), Line_No = newResEntryLineNo,  Barcode = ScannedItem), ThisRecord)
+                    //If(IsBlank(ScannedItem), Last(colLines), First(Filter(colLines,  Barcode = ScannedItem)))
                 DelayItemLoading: =true
                 Fill: =RGBA(237, 237, 237, 1)
                 Height: =562
@@ -544,7 +547,11 @@
                         Set(
                             QuantityCompleted,
                             Value(glr_Inv.Selected.Qty_Phys_Inventory)
-                        )
+                        );
+                        Set(
+                            LotNo,
+                            glr_Inv.Selected.Lot_No
+                        );
                     );
                     Set(
                         ScannedItem,
@@ -597,12 +604,13 @@
                     Height: =32
                     Icon: =Icon.AddDocument
                     OnSelect: |
-                        =Collect(
+                        =UpdateContext({newResEntryLineNo: Text((CountRows(colLines) + 1) * 10000)});
+                        Collect(
                             colLines,
                             {
                                 Journal_Template_Name: ThisItem.Journal_Template_Name,
                                 Journal_Batch_Name: ThisItem.Journal_Batch_Name,
-                                'Line_No.': Text((CountRows(colLines) + 1) * 10000),
+                                'Line_No.': newResEntryLineNo,
                                 'Document_No.': ThisItem.'Document_No.',
                                 Description: ThisItem.Description,
                                 Source_Type: ThisItem.Source_Type,

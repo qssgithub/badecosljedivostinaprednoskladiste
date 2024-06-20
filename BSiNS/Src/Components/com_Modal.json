@@ -4265,7 +4265,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Patch(\n    colLines,\n    LookUp(\n        colLines,\n        'Line_No.' = com_Modal.LineId\n    ),\n    {Qty_Phys_Inventory: inp_rezQty_2.Value}\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nPatch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        lineId = com_Modal.LineId\n    ),\n    {isLocked: true}\n);\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "Patch(\n    colLines,\n    LookUp(\n        colLines,\n        'Line_No.' = com_Modal.LineId\n    ),\n    {Qty_Phys_Inventory: inp_rezQty_2.Value}\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nPatch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        lineId = com_Modal.LineId\n    ),\n    {isLocked: true}\n);\nSaveData(lockedItems, \"lockedItems\");\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -5495,7 +5495,7 @@
       "LineId",
       "ResEntryId"
     ],
-    "LastModifiedTimestamp": "638544902931279714",
+    "LastModifiedTimestamp": "638544819934395884",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -5606,7 +5606,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544902931279714",
+  "LastModifiedTimestamp": "638544819934395884",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
