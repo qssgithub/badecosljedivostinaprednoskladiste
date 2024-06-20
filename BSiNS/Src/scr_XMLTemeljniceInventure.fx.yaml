@@ -437,18 +437,23 @@
             LayoutOverflowY: =LayoutOverflow.Scroll
             ZIndex: =3
 
-            con_InvDocumentName As groupContainer.manualLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                Height: =60
+            Container4 As groupContainer.horizontalAutoLayoutContainer:
                 LayoutMinHeight: =50
                 LayoutMinWidth: =250
-                ZIndex: =3
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =1
 
                 txt_InvDocumentName As Text:
                     Align: ='TextCanvas.Align'.Start
                     AutoHeight: =false
                     DisplayMode: =DisplayMode.Edit
                     Height: =Parent.Height
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
                     PaddingBottom: =0
                     PaddingLeft: =8
                     PaddingRight: =8
@@ -476,8 +481,14 @@
                     HoverBorderColor: =RGBA(189, 49, 51, 1)
                     HoverContentColor: =RGBA(255, 255, 255, 1)
                     HoverFillColor: =RGBA(189, 49, 51, 1)
+                    LayoutMinHeight: =70
+                    LayoutMinWidth: =280
                     OnCancel: =false
-                    OnScan: =
+                    OnScan: |-
+                        =Set(
+                            ScannedItem,
+                            First(Self.Barcodes).Value
+                        )
                     PaddingBottom: =0
                     PaddingLeft: =0
                     PaddingRight: =0
@@ -490,7 +501,7 @@
                     TextAlignment: =Align.Center
                     TextColor: =RGBA(0, 0, 0, 1)
                     VerticalAlign: =VerticalAlign.Middle
-                    Visible: =com_Header.IsMobile
+                    Visible: =isMobile
                     Width: =80
                     X: =40
                     Y: =15
@@ -499,9 +510,7 @@
             "glr_Inv As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: |-
-                    =//First(Filter(colLines, ThisRecord.Barcode = com_InvHeader.ScannedItem))
-                    //LookUp(colLines, Barcode = com_InvHeader.ScannedItem, ThisRecord);
+                Default: =LookUp(colLines, Barcode = ScannedItem, ThisRecord)
                 DelayItemLoading: =true
                 Fill: =RGBA(237, 237, 237, 1)
                 Height: =562
@@ -528,12 +537,16 @@
                             Value(glr_Inv.Selected.Qty_Phys_Inventory)
                         )
                     );
+                    Set(
+                        ScannedItem,
+                        Blank()
+                    );
                 TemplateFill: =If(Self.IsSelected, RGBA(250, 250, 250, 1), RGBA(245, 245, 245, 1))
                 TemplatePadding: =0
                 TemplateSize: =291
                 Visible: =!isLoading
                 Width: =Parent.Width
-                ZIndex: =5
+                ZIndex: =3
 
                 rct_InvSeparator As rectangle:
                     BorderColor: =App.Theme.Colors.Darker40
@@ -893,7 +906,7 @@
                 Width: =200
                 X: =0
                 Y: =0
-                ZIndex: =6
+                ZIndex: =4
 
         hrz_InvFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer

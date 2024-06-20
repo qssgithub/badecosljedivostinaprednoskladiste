@@ -1111,17 +1111,9 @@
       "Title",
       "BackToScreen",
       "IsEntryScreen",
-      "IsMobile",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "\"Text\"",
-        "InvariantPropertyName": "ScannedItem",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "IsMobile"
     ],
-    "LastModifiedTimestamp": "638544765142575605",
+    "LastModifiedTimestamp": "638544766633214378",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1146,12 +1138,6 @@
         "Category": "Data",
         "InvariantScript": "true",
         "Property": "IsMobile",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "First(bcr_Inv_1.Barcodes).Value",
-        "Property": "ScannedItem",
         "RuleProviderType": "System"
       },
       {
@@ -1237,15 +1223,6 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "Is Mobile view",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "ScannedItem",
-      "Hidden": true,
-      "Name": "ScannedItem",
-      "PropertyDataTypeKey": "String",
-      "Tooltip": "Scanned item data",
-      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -1256,7 +1233,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544765142575605",
+  "LastModifiedTimestamp": "638544766633214378",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"
