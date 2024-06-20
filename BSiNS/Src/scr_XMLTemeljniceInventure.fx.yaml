@@ -438,6 +438,8 @@
             ZIndex: =3
 
             Container4 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =50
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =50
@@ -459,8 +461,8 @@
                     DisplayMode: =DisplayMode.Edit
                     FillPortions: =1
                     Height: =Parent.Height
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =50
                     PaddingBottom: =0
                     PaddingLeft: =8
                     PaddingRight: =8
@@ -508,7 +510,7 @@
                     TextAlignment: =Align.Center
                     TextColor: =RGBA(0, 0, 0, 1)
                     VerticalAlign: =VerticalAlign.Middle
-                    Visible: =!isMobile
+                    Visible: =isMobile
                     Width: =80
                     X: =40
                     Y: =15
