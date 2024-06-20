@@ -363,7 +363,6 @@ com_Modal As CanvasComponent:
                                 ),
                                 {isLocked: true}
                             );
-                            SaveData(lockedItems, "lockedItems");
                             Set(
                                 isModalOpen,
                                 false
