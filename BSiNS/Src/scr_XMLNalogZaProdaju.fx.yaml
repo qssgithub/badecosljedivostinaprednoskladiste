@@ -750,7 +750,7 @@
             Height: =562
             Items: =colLines
             Layout: =Layout.Vertical
-            LayoutMinHeight: =Parent.Height * 0.6
+            LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |
@@ -923,7 +923,7 @@
             Height: =560
             Items: =Filter(colEntries, Source_Ref_No = glr_ProLines.Selected.Line_No)
             Layout: =Layout.Vertical
-            LayoutMinHeight: =Parent.Height * 0.6
+            LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
             LayoutMinWidth: =320
             LoadingSpinner: =LoadingSpinner.Data
             OnSelect: |

@@ -2,7 +2,7 @@ com_Modal As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    IsInventura: =true
+    IsInventura: =false
     LineId: ="Text"
     ResEntryId: ="Text"
     Width: =App.Width
@@ -19,12 +19,12 @@ com_Modal As CanvasComponent:
         con_Modal As groupContainer.manualLayoutContainer:
             DropShadow: =DropShadow.ExtraBold
             Fill: =RGBA(255, 255, 255, 1)
-            Height: =Parent.Height * 80%
+            Height: =If(isMobile, Parent.Height * 80%, Parent.Height * 40%)
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Width: =Parent.Width * 75%
+            Width: =If(isMobile, Parent.Width * 80%, Parent.Width * 25%)
             X: =(Parent.Width - Self.Width) / 2
             Y: =(Parent.Height - Self.Height) / 2
             ZIndex: =1
@@ -109,15 +109,12 @@ com_Modal As CanvasComponent:
                     LayoutMinHeight: =100
                     LayoutMinWidth: =250
                     LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =15
-                    PaddingLeft: =15
-                    PaddingRight: =15
-                    PaddingTop: =15
                     ZIndex: =2
 
                     Container13_10 As groupContainer.verticalAutoLayoutContainer:
                         LayoutAlignItems: =LayoutAlignItems.Center
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -135,7 +132,7 @@ com_Modal As CanvasComponent:
                             LayoutMinWidth: =80
                             Size: =20
                             Text: ="Rezervisano"
-                            Width: =110
+                            Width: =200
                             X: =40
                             Y: =40
                             ZIndex: =1
@@ -196,6 +193,7 @@ com_Modal As CanvasComponent:
                             RadiusBottomRight: =4
                             RadiusTopLeft: =4
                             RadiusTopRight: =4
+                            Visible: =false
                             Width: =100
                             ZIndex: =4
 
@@ -232,7 +230,8 @@ com_Modal As CanvasComponent:
                     Container13_11 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -251,7 +250,7 @@ com_Modal As CanvasComponent:
                             LayoutMinWidth: =96
                             Size: =20
                             Text: ="Potrebno"
-                            Width: =96
+                            Width: =200
                             X: =40
                             Y: =40
                             ZIndex: =1
@@ -286,6 +285,7 @@ com_Modal As CanvasComponent:
                             RadiusBottomRight: =4
                             RadiusTopLeft: =4
                             RadiusTopRight: =4
+                            Visible: =false
                             Width: =100
                             ZIndex: =3
 

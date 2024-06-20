@@ -425,12 +425,13 @@
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            LayoutOverflowX: =LayoutOverflow.Scroll
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingLeft: =5
+            PaddingRight: =5
             ZIndex: =3
 
             con_InvDocumentName As groupContainer.manualLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
                 FillPortions: =0
                 Height: =60
                 LayoutMinHeight: =100
@@ -462,7 +463,7 @@
                 Height: =562
                 Items: =colLines
                 Layout: =Layout.Vertical
-                LayoutMinHeight: =287
+                LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
                 OnSelect: |-
@@ -951,6 +952,7 @@
                 ZIndex: =4
 
     com_InvModal As com_Modal:
+        IsInventura: =true
         LineId: =glr_Inv.Selected.'Line_No.'
         ResEntryId: =
         Visible: =isModalOpen
