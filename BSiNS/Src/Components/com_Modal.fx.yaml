@@ -122,7 +122,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(LotNo), true, false)
+                        Visible: =If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -464,7 +464,14 @@ com_Modal As CanvasComponent:
                                     colLines,
                                     'Line_No.' = com_Modal.LineId
                                 ),
-                                {Qty_Phys_Inventory: inp_rezQty_2.Value}
+                                If(
+                                    com_Modal.IsInventura,
+                                    {Qty_Phys_Inventory: inp_rezQty_2.Value},
+                                    {
+                                        QuantityCompleted: inp_rezQty_2.Value,
+                                        QuantityNew: inp_potrebnoQty_2.Value
+                                    }
+                                )
                             );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
