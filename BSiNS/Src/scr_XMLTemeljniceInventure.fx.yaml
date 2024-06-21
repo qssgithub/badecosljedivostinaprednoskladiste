@@ -520,9 +520,11 @@
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
                 Default: |-
-                    =LookUp(colLines,  Barcode = ScannedItem, ThisRecord)
-                    //LookUp(colLines, If(IsBlank(ScannedItem), Line_No = newResEntryLineNo,  Barcode = ScannedItem), ThisRecord)
-                    //If(IsBlank(ScannedItem), Last(colLines), First(Filter(colLines,  Barcode = ScannedItem)))
+                    =LookUp(
+                        colLines,
+                        Barcode = ScannedItem,
+                        ThisRecord
+                    )
                 DelayItemLoading: =true
                 Fill: =RGBA(237, 237, 237, 1)
                 Height: =562
@@ -552,6 +554,7 @@
                             LotNo,
                             glr_Inv.Selected.Lot_No
                         );
+                        
                     );
                     Set(
                         ScannedItem,

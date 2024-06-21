@@ -57,6 +57,14 @@
                 "InvariantPropertyName": "Logo",
                 "IsLockable": false,
                 "NameMapSourceSchema": "?"
+              },
+              {
+                "AFDDataSourceName": "",
+                "AutoRuleBindingEnabled": false,
+                "AutoRuleBindingString": "",
+                "InvariantPropertyName": "BasePaletteColor",
+                "IsLockable": false,
+                "NameMapSourceSchema": "?"
               }
             ],
             "ControlUniqueId": "6",
@@ -122,7 +130,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "Container1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 3,
+            "PublishOrderIndex": 411,
             "Rules": [
               {
                 "Category": "Data",
@@ -153,6 +161,12 @@
                 "InvariantScript": "com_Header.Title",
                 "Property": "Title",
                 "RuleProviderType": "User"
+              },
+              {
+                "Category": "Data",
+                "InvariantScript": "",
+                "Property": "BasePaletteColor",
+                "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
@@ -370,7 +384,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "hrz_InvTitle_1",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 5,
+                "PublishOrderIndex": 413,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -653,7 +667,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "Container1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 4,
+            "PublishOrderIndex": 412,
             "Rules": [
               {
                 "Category": "Design",
@@ -929,7 +943,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "com_Header",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 2,
+        "PublishOrderIndex": 410,
         "Rules": [
           {
             "Category": "Design",
@@ -1113,7 +1127,7 @@
       "IsEntryScreen",
       "IsMobile"
     ],
-    "LastModifiedTimestamp": "638544908776140704",
+    "LastModifiedTimestamp": "638545575476674586",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1233,7 +1247,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638544908776140704",
+  "LastModifiedTimestamp": "638545575476674586",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

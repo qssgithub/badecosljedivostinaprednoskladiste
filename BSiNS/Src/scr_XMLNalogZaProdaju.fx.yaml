@@ -524,7 +524,6 @@
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
         LayoutDirection: =LayoutDirection.Vertical
-        LayoutGap: =5
         LayoutMode: =LayoutMode.Auto
         LayoutOverflowY: =LayoutOverflow.Scroll
         RadiusBottomLeft: =4
@@ -534,688 +533,769 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        hdr_ProHeader As Header:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FontColor: =
-            Height: =75
-            LayoutMinHeight: =75
-            LayoutMinWidth: =Parent.Width
-            Logo: =FFLogo
-            OnSelectLogo: =Navigate(scr_Entry)
-            Style: ='Header.Style'.Primary
+        com_Header_1 As com_Header:
+            BackToScreen: =scr_Entry
+            IsMobile: =isMobile
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
             Title: ="NALOG ZA PRODAJU"
-            TitleFontSize: =20
-            UserEmail: =User().Email
-            UserImage: =User().Image
-            UserName: =User().FullName
-            Width: =Parent.Width
-            X: =0
-            Y: =0
-            ZIndex: =1
 
-        btn_ProBack As Button:
-            AlignInContainer: =AlignInContainer.Start
-            Appearance: ='ButtonCanvas.Appearance'.Transparent
-            DisplayMode: =DisplayMode.Edit
-            Height: =32
-            Icon: ="ArrowLeft"
-            IconStyle: ='ButtonCanvas.IconStyle'.Filled
-            LayoutMinHeight: =32
-            LayoutMinWidth: =96
-            OnSelect: =Navigate(scr_Entry,ScreenTransition.Fade);
-            Text: ="Nazad na početnu"
-            Width: =170
-            X: =0
-            Y: =0
-            ZIndex: =2
-
-        vrt_ProHeader As groupContainer.verticalAutoLayoutContainer:
+        Container9 As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
             DropShadow: =DropShadow.Light
-            FillPortions: =0
-            Height: =100
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
-            LayoutGap: =5
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
-            PaddingLeft: =15
-            PaddingRight: =15
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Visible: =!isLoading
-            ZIndex: =3
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            ZIndex: =2
 
-            txt_ProNo As Text:
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Text: |-
-                    ="Broj naloga :   " & header.'No.'
-                Width: =96
-                X: =0
-                Y: =0
+            Container12 As groupContainer.horizontalAutoLayoutContainer:
+                DropShadow: =DropShadow.Light
+                FillPortions: =0
+                Height: =150
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
                 ZIndex: =1
 
-            txt_ProDocumentDate As Text:
-                AutoHeight: =true
+                vrt_ProHeader As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =100
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =10
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =5
+                    PaddingLeft: =20
+                    PaddingRight: =20
+                    PaddingTop: =5
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Visible: =!isLoading
+                    Width: =150
+                    ZIndex: =1
+
+                    txt_ProNo As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =120
+                        Text: |-
+                            ="Broj naloga:" 
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txt_ProDocumentDate As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =txt_ProNo.Width
+                        Text: |-
+                            ="Datum dokumenta:"
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                    txt_ProBillToName As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =txt_ProNo.Width
+                        Text: |-
+                            ="Kupac:"
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+                    txt_ProOrderDate As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =txt_ProNo.Width
+                        Text: |-
+                            ="Datum narudžbe:"
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
+
+                    txt_ProPostingDate As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =txt_ProNo.Width
+                        Text: |-
+                            ="Datum knjiženja:"
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =5
+
+                vrt_ProHeader_1 As groupContainer.verticalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    Height: =100
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =10
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =5
+                    PaddingTop: =5
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    Visible: =!isLoading
+                    ZIndex: =2
+
+                    txt_ProNo_1 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =header.'No.'
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    txt_ProDocumentDate_1 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =header.Document_Date
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
+                    txt_ProBillToName_1 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =header.'Bill-to_Name'
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =3
+
+                    txt_ProOrderDate_1 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =header.Order_Date
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =4
+
+                    txt_ProPostingDate_1 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Text: =header.Posting_Date
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =5
+
+            spn_ProLoader As Spinner:
+                BasePaletteColor: =
                 DisplayMode: =DisplayMode.Edit
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Text: |-
-                    ="Datum dokumenta :   " & header.Document_Date
-                Width: =96
+                FillPortions: =1
+                FontColor: =
+                Height: =200
+                LayoutMinHeight: =200
+                LayoutMinWidth: =200
+                SpinnerSize: ='Spinner.SpinnerSize'.Huge
+                Visible: =isLoading
+                Width: =200
                 X: =0
                 Y: =0
                 ZIndex: =2
 
-            txt_ProBillToName As Text:
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Text: |-
-                    ="Kupac :   " & header.'Bill-to_Name'
-                Width: =96
-                X: =0
-                Y: =0
+            Container2_4 As groupContainer.horizontalAutoLayoutContainer:
+                BorderColor: =RGBA(214, 221, 224, 1)
+                FillPortions: =0
+                Height: =49
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =20
+                PaddingRight: =20
+                Visible: =If(!isLoading, wizardStep = 1)
+                Width: =Max(App.Width, App.MinScreenWidth)
                 ZIndex: =3
 
-            txt_ProOrderDate As Text:
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Text: |-
-                    ="Datum narudžbe :   " & header.Order_Date
-                Width: =96
-                X: =0
-                Y: =0
-                ZIndex: =4
-
-            txt_ProPostingDate As Text:
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Text: |-
-                    ="Datum knjiženja :   " & header.Posting_Date
-                Width: =96
-                X: =0
-                Y: =0
-                ZIndex: =5
-
-        spn_ProLoader As Spinner:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =5
-
-        Container2_4 As groupContainer.horizontalAutoLayoutContainer:
-            BorderColor: =RGBA(214, 221, 224, 1)
-            FillPortions: =0
-            Height: =49
-            LayoutAlignItems: =LayoutAlignItems.Center
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            PaddingLeft: =10
-            PaddingRight: =10
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Visible: =If(!isLoading, wizardStep = 1)
-            Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =6
-
-            TextCanvas5 As Text:
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                FillPortions: =1
-                Height: =32
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Size: =16
-                Text: ="Stavke prodaje"
-                VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
-                Width: =96
-                X: =0
-                Y: =0
-                ZIndex: =1
-
-            "BarcodeReader1_2 As 'Barcode Reader'":
-                BarcodeType: ='BarcodeReader.BarcodeType'.Code128
-                BorderFillColor: =RGBA(0, 0, 0, 1)
-                BorderRadius: =10
-                BorderThickness: =1
-                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                DisabledContentColor: =RGBA(166, 166, 166, 1)
-                DisabledFillColor: =RGBA(244, 244, 244, 1)
-                DisplayMode: =DisplayMode.Edit
-                FillColor: =RGBA(255, 255, 255, 1)
-                FontSize: =12
-                Height: =25
-                HoverBorderColor: =RGBA(189, 49, 51, 1)
-                HoverContentColor: =RGBA(255, 255, 255, 1)
-                HoverFillColor: =RGBA(189, 49, 51, 1)
-                LayoutMinHeight: =70
-                LayoutMinWidth: =280
-                OnCancel: =false
-                OnScan: |-
-                    =UpdateContext({
-                        scannedItem:First(BarcodeReader1_2.Barcodes).Value
-                    })
-                PaddingBottom: =0
-                PaddingLeft: =0
-                PaddingRight: =0
-                PaddingTop: =0
-                PressedBorderColor: =RGBA(189, 49, 51, 1)
-                PressedContentColor: =RGBA(189, 49, 51, 1)
-                PressedFillColor: =RGBA(255, 255, 255, 1)
-                ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
-                Text: ="Skener"
-                TextAlignment: =Align.Justify
-                TextColor: =RGBA(0, 0, 0, 1)
-                Visible: =isMobile
-                Width: =80
-                X: =164
-                Y: =9
-                ZIndex: =3
-
-        "glr_ProLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-            BorderColor: =App.Theme.Colors.Darker40
-            Default: =First(Filter(colLines, Line_No = scannedItem))
-            DelayItemLoading: =true
-            Fill: =RGBA(237, 237, 237, 1)
-            Height: =562
-            Items: =colLines
-            Layout: =Layout.Vertical
-            LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
-            LayoutMinWidth: =320
-            LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: |
-                =UpdateContext({wizardStep: 2});
-            TemplatePadding: =0
-            TemplateSize: =164
-            Visible: =If(!isLoading, wizardStep = 1)
-            Width: =Parent.Width
-            Y: =49
-            ZIndex: =7
-
-            Separator6_4 As rectangle:
-                BorderColor: =App.Theme.Colors.Darker40
-                Fill: =RGBA(255, 255, 255, 1)
-                Height: =8
-                OnSelect: =Select(Parent)
-                Width: =Parent.TemplateWidth
-                Y: =Parent.TemplateHeight - Self.Height
-                ZIndex: =5
-
-            Rectangle5_5 As rectangle:
-                BorderColor: =App.Theme.Colors.Darker40
-                Fill: =App.Theme.Colors.Darker30
-                Height: =Parent.TemplateHeight - Separator6_4.Height
-                OnSelect: =Select(Parent)
-                Visible: =ThisItem.IsSelected
-                Width: =1
-                ZIndex: =6
-
-            Group2_2 As group:
-                Height: =5
-                Width: =5
-                X: =40
-                Y: =40
-                ZIndex: =14
-
-                Title5_4 As label:
-                    Color: =RGBA(50, 49, 48, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =22
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =20
-                    PaddingRight: =20
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Br. artikla:   " & ThisItem.Item_No
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =Parent.Width
-                    Y: =18
+                TextCanvas5 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =16
+                    Text: ="Stavke prodaje"
+                    VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+                    Width: =96
+                    X: =0
+                    Y: =0
                     ZIndex: =1
 
-                Subtitle4_2 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =22
-                    OnSelect: =Select(Parent)
+                "BarcodeReader1_2 As 'Barcode Reader'":
+                    BarcodeType: ='BarcodeReader.BarcodeType'.Code128
+                    BorderFillColor: =RGBA(0, 0, 0, 1)
+                    BorderRadius: =10
+                    BorderThickness: =1
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledContentColor: =RGBA(166, 166, 166, 1)
+                    DisabledFillColor: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =DisplayMode.Edit
+                    FillColor: =RGBA(255, 255, 255, 1)
+                    FontSize: =12
+                    Height: =25
+                    HoverBorderColor: =RGBA(189, 49, 51, 1)
+                    HoverContentColor: =RGBA(255, 255, 255, 1)
+                    HoverFillColor: =RGBA(189, 49, 51, 1)
+                    LayoutMinHeight: =70
+                    LayoutMinWidth: =280
+                    OnCancel: =false
+                    OnScan: |-
+                        =UpdateContext({
+                            scannedItem:First(BarcodeReader1_2.Barcodes).Value
+                        })
                     PaddingBottom: =0
-                    PaddingLeft: =20
-                    PaddingRight: =20
+                    PaddingLeft: =0
+                    PaddingRight: =0
                     PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Naziv artikla:   " & ThisItem.Description
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =Parent.Width
-                    Y: =52
-                    ZIndex: =2
-
-                Body1_13 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =18
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =20
-                    PaddingRight: =20
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Količina za slanje:    " & ThisItem.'Qty-to_Ship'
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =Parent.Width
-                    Y: =121
+                    PressedBorderColor: =RGBA(189, 49, 51, 1)
+                    PressedContentColor: =RGBA(189, 49, 51, 1)
+                    PressedFillColor: =RGBA(255, 255, 255, 1)
+                    ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
+                    Text: ="Skener"
+                    TextAlignment: =Align.Justify
+                    TextColor: =RGBA(0, 0, 0, 1)
+                    Visible: =isMobile
+                    Width: =80
+                    X: =164
+                    Y: =9
                     ZIndex: =3
 
-                Body1_12 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =22
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =20
-                    PaddingRight: =20
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Količina:    " & ThisItem.Quantity
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =Parent.Width
-                    Y: =87
-                    ZIndex: =10
-
-        Container2_5 As groupContainer.horizontalAutoLayoutContainer:
-            FillPortions: =0
-            Height: =49
-            LayoutAlignItems: =LayoutAlignItems.Center
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            PaddingLeft: =5
-            PaddingRight: =5
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Visible: =If(!isLoading, wizardStep = 2)
-            Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =8
-
-            ButtonCanvas8 As Button:
-                Appearance: ='ButtonCanvas.Appearance'.Transparent
-                DisplayMode: =DisplayMode.Edit
-                FontSize: =20
-                Height: =32
-                Icon: ="ArrowLeft"
-                IconStyle: ='ButtonCanvas.IconStyle'.Filled
-                Layout: ='ButtonCanvas.Layout'.IconOnly
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                OnSelect: |-
-                    =UpdateContext({wizardStep: 1})
-                Text: ="Rezervacijski unosi"
-                Width: =30
-                X: =0
-                Y: =0
-                ZIndex: =3
-
-            TextCanvas8 As Text:
-                Align: ='TextCanvas.Align'.Start
-                AutoHeight: =true
-                DisplayMode: =DisplayMode.Edit
-                FillPortions: =1
-                Height: =20
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                Size: =16
-                Text: ="Rezervacijski unosi"
-                VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
-                Width: =96
-                Wrap: =true
-                X: =0
-                Y: =0
+            "glr_ProLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =App.Theme.Colors.Darker40
+                Default: =First(Filter(colLines, Line_No = scannedItem))
+                DelayItemLoading: =true
+                Fill: =RGBA(237, 237, 237, 1)
+                Height: =562
+                Items: =colLines
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                OnSelect: |
+                    =UpdateContext({wizardStep: 2});
+                TemplatePadding: =0
+                TemplateSize: =164
+                Visible: =If(!isLoading, wizardStep = 1)
+                Width: =Parent.Width
+                Y: =49
                 ZIndex: =4
 
-        "glr_ProResEntries As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-            BorderColor: =App.Theme.Colors.Darker40
-            DelayItemLoading: =true
-            Fill: =RGBA(237, 237, 237, 1)
-            Height: =560
-            Items: =Filter(colEntries, Source_Ref_No = glr_ProLines.Selected.Line_No)
-            Layout: =Layout.Vertical
-            LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
-            LayoutMinWidth: =320
-            LoadingSpinner: =LoadingSpinner.Data
-            OnSelect: |
-                =Set(
-                    isModalOpen,
-                    true
-                );
-                UpdateContext({quantityCompleted: Abs(Value(glr_ProResEntries.Selected.Quantity_Completed))});
-            TemplatePadding: =0
-            TemplateSize: =244
-            Visible: =If(!isLoading, wizardStep = 2)
-            Width: =Parent.Width
-            Y: =49
-            ZIndex: =9
+                Separator6_4 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =5
 
-            Separator6_5 As rectangle:
-                BorderColor: =App.Theme.Colors.Darker40
-                Fill: =RGBA(255, 255, 255, 1)
-                Height: =8
-                OnSelect: =Select(Parent)
-                Width: =Parent.TemplateWidth
-                Y: =Parent.TemplateHeight - Self.Height
+                Rectangle5_5 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =App.Theme.Colors.Darker30
+                    Height: =Parent.TemplateHeight - Separator6_4.Height
+                    OnSelect: =Select(Parent)
+                    Visible: =ThisItem.IsSelected
+                    Width: =1
+                    ZIndex: =6
+
+                Group2_2 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =14
+
+                    Title5_4 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =22
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Br. artikla:   " & ThisItem.Item_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width
+                        Y: =18
+                        ZIndex: =1
+
+                    Subtitle4_2 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =22
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Naziv artikla:   " & ThisItem.Description
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width
+                        Y: =52
+                        ZIndex: =2
+
+                    Body1_13 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =18
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Količina za slanje:    " & ThisItem.'Qty-to_Ship'
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width
+                        Y: =121
+                        ZIndex: =3
+
+                    Body1_12 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =22
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =20
+                        PaddingRight: =20
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Količina:    " & ThisItem.Quantity
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width
+                        Y: =87
+                        ZIndex: =10
+
+            Container2_5 As groupContainer.horizontalAutoLayoutContainer:
+                FillPortions: =0
+                Height: =49
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingLeft: =20
+                PaddingRight: =20
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Visible: =If(!isLoading, wizardStep = 2)
+                Width: =Max(App.Width, App.MinScreenWidth)
                 ZIndex: =5
 
-            Rectangle5_12 As rectangle:
+                ButtonCanvas8 As Button:
+                    Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    DisplayMode: =DisplayMode.Edit
+                    FontSize: =20
+                    Height: =20
+                    Icon: ="ArrowLeft"
+                    IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                    Layout: ='ButtonCanvas.Layout'.IconOnly
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    OnSelect: |-
+                        =UpdateContext({wizardStep: 1})
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: ="Rezervacijski unosi"
+                    Width: =20
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                TextCanvas8 As Text:
+                    Align: ='TextCanvas.Align'.Start
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    FillPortions: =1
+                    Height: =20
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Size: =16
+                    Text: ="Rezervacijski unosi"
+                    VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
+                    Width: =96
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+            "glr_ProResEntries As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 BorderColor: =App.Theme.Colors.Darker40
-                Fill: =App.Theme.Colors.Darker30
-                Height: =Parent.TemplateHeight - Separator6_5.Height
-                OnSelect: =Select(Parent)
-                Visible: =ThisItem.IsSelected
-                Width: =4
+                DelayItemLoading: =true
+                Fill: =RGBA(237, 237, 237, 1)
+                Height: =560
+                Items: =Filter(colEntries, Source_Ref_No = glr_ProLines.Selected.Line_No)
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                OnSelect: |
+                    =Set(
+                        isModalOpen,
+                        true
+                    );
+                    UpdateContext({quantityCompleted: Abs(Value(glr_ProResEntries.Selected.Quantity_Completed))});
+                TemplatePadding: =0
+                TemplateSize: =244
+                Visible: =If(!isLoading, wizardStep = 2)
+                Width: =Parent.Width
+                Y: =49
                 ZIndex: =6
 
-            Group6 As group:
-                Height: =5
-                Width: =5
-                X: =40
-                Y: =40
-                ZIndex: =34
-
-                Body1_15 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =18
+                Separator6_5 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
                     OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Količina:    "
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =88
-                    X: =18
-                    Y: =50
-                    ZIndex: =18
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =5
 
-                Body1_16 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =Self.Size * 1.8
+                Rectangle5_12 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =App.Theme.Colors.Darker30
+                    Height: =Parent.TemplateHeight - Separator6_5.Height
                     OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Rezervisana količina:    "
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =120
-                    X: =18
-                    Y: =87
-                    ZIndex: =19
+                    Visible: =ThisItem.IsSelected
+                    Width: =4
+                    ZIndex: =6
 
-                Body1_17 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Potrebna količina:    "
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =166
-                    X: =18
-                    Y: =123
-                    ZIndex: =20
+                Group6 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =34
 
-                Body1_32 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =ThisItem.Quantity
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =49
-                    ZIndex: =24
+                    Body1_15 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =18
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Količina:    "
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =88
+                        X: =18
+                        Y: =50
+                        ZIndex: =18
 
-                Body1_33 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =ThisItem.Quantity_Completed
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =87
-                    ZIndex: =25
+                    Body1_16 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Rezervisana količina:    "
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =120
+                        X: =18
+                        Y: =87
+                        ZIndex: =19
 
-                Body1_34 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =ThisItem.Quantity_NewLOT
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =123
-                    ZIndex: =26
+                    Body1_17 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Potrebna količina:    "
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =166
+                        X: =18
+                        Y: =123
+                        ZIndex: =20
 
-                Body1_35 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =ThisItem.Entry_No
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =16
-                    ZIndex: =27
+                    Body1_32 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Quantity
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =49
+                        ZIndex: =24
 
-                Body1_36 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =18
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Br. artikla:    "
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =88
-                    X: =18
-                    Y: =16
-                    ZIndex: =28
+                    Body1_33 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Quantity_Completed
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =87
+                        ZIndex: =25
 
-                Body1_37 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =Self.Size * 1.8
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="Rok trajanja:    "
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =120
-                    X: =18
-                    Y: =158
-                    ZIndex: =29
+                    Body1_34 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Quantity_NewLOT
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =123
+                        ZIndex: =26
 
-                Body1_38 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =Self.Size * 1.8
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: |-
-                        ="LOT:    " & ThisItem.LOT_No
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =60
-                    X: =18
-                    Y: =196
-                    ZIndex: =30
+                    Body1_35 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Entry_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =16
+                        ZIndex: =27
 
-                Body1_39 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =If(IsBlank(ThisItem.Exp_Date), "//",ThisItem.Exp_Date)
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =158
-                    ZIndex: =31
+                    Body1_36 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =18
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Br. artikla:    "
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =88
+                        X: =18
+                        Y: =16
+                        ZIndex: =28
 
-                Body1_40 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =ThisItem.LOT_No
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =196
-                    ZIndex: =32
+                    Body1_37 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="Rok trajanja:    "
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =120
+                        X: =18
+                        Y: =158
+                        ZIndex: =29
 
-                Body1_41 As label:
-                    Color: =RGBA(0, 0, 0, 1)
-                    DisabledColor: =RGBA(166, 166, 166, 1)
-                    Font: =App.Theme.Font
-                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                    Height: =19
-                    OnSelect: =Select(Parent)
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Size: =12
-                    Text: =If(IsBlank(ThisItem.Quantity_NewLOT), 0, ThisItem.Quantity_NewLOT)
-                    VerticalAlign: =VerticalAlign.Top
-                    Width: =158
-                    X: =184
-                    Y: =123
-                    ZIndex: =33
+                    Body1_38 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: |-
+                            ="LOT:    " & ThisItem.LOT_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =60
+                        X: =18
+                        Y: =196
+                        ZIndex: =30
+
+                    Body1_39 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =If(IsBlank(ThisItem.Exp_Date), "//",ThisItem.Exp_Date)
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =158
+                        ZIndex: =31
+
+                    Body1_40 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.LOT_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =196
+                        ZIndex: =32
+
+                    Body1_41 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =19
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =If(IsBlank(ThisItem.Quantity_NewLOT), 0, ThisItem.Quantity_NewLOT)
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =158
+                        X: =184
+                        Y: =123
+                        ZIndex: =33
 
         hrz_ProFooter As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -1231,12 +1311,8 @@
             LayoutMode: =LayoutMode.Auto
             PaddingLeft: =15
             PaddingRight: =20
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
             Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =10
+            ZIndex: =3
 
             hrz_ProCheckboxes As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
