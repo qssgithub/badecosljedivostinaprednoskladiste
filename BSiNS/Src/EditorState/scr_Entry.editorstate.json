@@ -335,7 +335,8 @@
           "InvariantPropertyName": "IsMobile",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "ScannedItem"
       ],
       "DynamicProperties": [
         {
@@ -441,6 +442,11 @@
           "Category": "Data",
           "PropertyName": "IsMobile",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ScannedItem",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
