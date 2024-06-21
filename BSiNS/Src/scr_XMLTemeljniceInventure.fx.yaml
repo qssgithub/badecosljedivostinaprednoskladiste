@@ -522,7 +522,11 @@
                 Default: |-
                     =LookUp(
                         colLines,
-                        Barcode = ScannedItem,
+                        If(
+                            IsBlank(ScannedItem),
+                            newResEntryLineNo = 'Line_No.',
+                            Barcode = ScannedItem
+                        ),
                         ThisRecord
                     )
                 DelayItemLoading: =true
@@ -636,6 +640,10 @@
                                 Item_Expiration_Date: ThisItem.Item_Expiration_Date,
                                 Barcode: ThisItem.Barcode
                             }
+                        );
+                        Set(
+                            ScannedItem,
+                            Blank()
                         );
                     Width: =32
                     X: =Parent.TemplateWidth - 50
