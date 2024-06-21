@@ -610,7 +610,7 @@
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     Height: =32
                     Icon: =Icon.AddDocument
-                    OnSelect: |
+                    OnSelect: |-
                         =UpdateContext({newResEntryLineNo: Text((CountRows(colLines) + 1) * 10000)});
                         Collect(
                             colLines,
@@ -645,6 +645,7 @@
                             ScannedItem,
                             Blank()
                         );
+                        Reset(glr_Inv);
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =lbl_InvBarcode.Y
