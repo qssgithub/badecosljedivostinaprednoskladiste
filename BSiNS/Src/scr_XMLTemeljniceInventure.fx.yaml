@@ -438,6 +438,7 @@
             ZIndex: =3
 
             Container4 As groupContainer.horizontalAutoLayoutContainer:
+                BorderThickness: =0.5
                 FillPortions: =0
                 Height: =50
                 LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -449,10 +450,6 @@
                 PaddingLeft: =5
                 PaddingRight: =5
                 PaddingTop: =5
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
                 ZIndex: =1
 
                 txt_InvDocumentName As Text:
@@ -534,7 +531,9 @@
                 Height: =562
                 Items: =colLines
                 Layout: =Layout.Vertical
-                LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
+                LayoutMinHeight: |-
+                    =//Self.TemplateHeight * Self.AllItemsCount
+                    200
                 LayoutMinWidth: =320
                 LoadingSpinner: =LoadingSpinner.Data
                 OnSelect: |
