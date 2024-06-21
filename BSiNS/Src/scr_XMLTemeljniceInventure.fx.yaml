@@ -520,9 +520,9 @@
                     =LookUp(
                         colLines,
                         If(
-                            IsBlank(ScannedItem),
+                            IsBlank(com_InvHeader.ScannedItem),
                             newResEntryLineNo = 'Line_No.',
-                            Barcode = ScannedItem
+                            Barcode = com_InvHeader.ScannedItem
                         ),
                         ThisRecord
                     )

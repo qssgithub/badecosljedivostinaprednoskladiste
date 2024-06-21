@@ -565,7 +565,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(ScannedItem, Barcode)",
+                    "InvariantScript": "Set(ScannedItem, First(BarcodeReader2.Barcodes).Value)",
                     "Property": "OnScan",
                     "RuleProviderType": "User"
                   },
@@ -1526,7 +1526,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638545716016555471",
+    "LastModifiedTimestamp": "638545718851175588",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1555,7 +1555,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "ScannedItem",
+        "InvariantScript": "First(BarcodeReader2.Barcodes).Value",
         "Property": "ScannedItem",
         "RuleProviderType": "System"
       },
@@ -1661,7 +1661,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638545716016555471",
+  "LastModifiedTimestamp": "638545718851175588",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

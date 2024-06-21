@@ -4,7 +4,7 @@ com_Header As CanvasComponent:
     Height: =125
     IsEntryScreen: =false
     IsMobile: =true
-    ScannedItem: =ScannedItem
+    ScannedItem: =First(BarcodeReader2.Barcodes).Value
     Title: ="Text"
     Width: =App.Width
     X: =0
@@ -95,7 +95,7 @@ com_Header As CanvasComponent:
                 LayoutMinHeight: =20
                 LayoutMinWidth: =280
                 OnCancel: =false
-                OnScan: =Set(ScannedItem, Barcode)
+                OnScan: =Set(ScannedItem, First(BarcodeReader2.Barcodes).Value)
                 PaddingBottom: =0
                 PaddingLeft: =0
                 PaddingRight: =0
