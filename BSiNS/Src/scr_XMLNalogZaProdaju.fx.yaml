@@ -138,8 +138,8 @@
                                 'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                                 Quantity: Text(entry.Quantity),
                                 Quantity_Base: Text(entry.Quantity_Base),
-                                Quantity_Completed: Text(entry.Quantity_Completed),
-                                Quantity_NewLOT: Text(entry.Quantity_NewLOT),
+                                Quantity_Completed: Value(entry.Quantity_Completed),
+                                Quantity_NewLOT: Value(entry.Quantity_NewLOT),
                                 Res_Status: Text(entry.Res_Status),
                                 Shipment_Date: Text(entry.Shipment_Date),
                                 Source_ID: Text(entry.Source_ID),
@@ -166,8 +166,8 @@
                             'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
                             Quantity: Text(line.Res_Entry.Quantity),
                             Quantity_Base: Text(line.Res_Entry.Quantity_Base),
-                            Quantity_Completed: Text(line.Res_Entry.Quantity_Completed),
-                            Quantity_NewLOT: Text(line.Res_Entry.Quantity_NewLOT),
+                            Quantity_Completed: Value(line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(line.Res_Entry.Quantity_NewLOT),
                             Res_Status: Text(line.Res_Entry.Res_Status),
                             Shipment_Date: Text(line.Res_Entry.Shipment_Date),
                             Source_ID: Text(line.Res_Entry.Source_ID),
@@ -220,8 +220,8 @@
                             'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                             Quantity: Text(entry.Quantity),
                             Quantity_Base: Text(entry.Quantity_Base),
-                            Quantity_Completed: Text(entry.Quantity_Completed),
-                            Quantity_NewLOT: Text(entry.Quantity_NewLOT),
+                            Quantity_Completed: Value(entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(entry.Quantity_NewLOT),
                             Res_Status: Text(entry.Res_Status),
                             Shipment_Date: Text(entry.Shipment_Date),
                             Source_ID: Text(entry.Source_ID),
@@ -248,8 +248,8 @@
                         'Qty-to-Invoice_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Invoice_Base'),
                         Quantity: Text(xmlData.Sales_Line.Res_Entry.Quantity),
                         Quantity_Base: Text(xmlData.Sales_Line.Res_Entry.Quantity_Base),
-                        Quantity_Completed: Text(xmlData.Sales_Line.Res_Entry.Quantity_Completed),
-                        Quantity_NewLOT: Text(xmlData.Sales_Line.Quantity_NewLOT),
+                        Quantity_Completed: Value(xmlData.Sales_Line.Res_Entry.Quantity_Completed),
+                        Quantity_NewLOT: Value(xmlData.Sales_Line.Quantity_NewLOT),
                         Res_Status: Text(xmlData.Sales_Line.Res_Entry.Res_Status),
                         Shipment_Date: Text(xmlData.Sales_Line.Res_Entry.Shipment_Date),
                         Source_ID: Text(xmlData.Sales_Line.Res_Entry.Source_ID),
@@ -675,7 +675,7 @@
         Width: =Parent.Width
         ZIndex: =2
 
-        com_Header_1 As com_Header:
+        com_ProHeader As com_Header:
             LayoutMinHeight: =640
             LayoutMinWidth: =640
             Title: ="NALOG ZA PRODAJU"
@@ -1444,7 +1444,7 @@
                 ZIndex: =1
 
                 chb_ProDorada As Checkbox:
-                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    BasePaletteColor: =
                     CheckboxSize: =16
                     Checked: =
                     DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
@@ -1463,10 +1463,10 @@
                     ZIndex: =1
 
                 chb_ProReadyForNav As Checkbox:
-                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                    BasePaletteColor: =
                     CheckboxSize: =16
                     Checked: =
-                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                    DisplayMode: =If(!isLoading || IsEmpty(Filter(colEntries, ThisRecord.Quantity_NewLOT > 0)), DisplayMode.Edit, DisplayMode.Disabled)
                     FontColor: =
                     FontSize: =14
                     FontWeight: =FontWeight.Bold
@@ -1583,10 +1583,11 @@
                 Y: =0
                 ZIndex: =3
 
-    com_Modal_1 As com_Modal:
+    com_ProModal As com_Modal:
         LineId: =glr_ProLines.Selected.Line_No
-        QuantityCompleted: =glr_ProResEntries.Selected.Quantity_Completed
-        QuantityNewLOT: =glr_ProResEntries.Selected.Quantity_NewLOT
+        Quantity: =Abs(glr_ProResEntries.Selected.Quantity)
+        QuantityCompleted: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
+        QuantityNewLOT: =Abs(glr_ProResEntries.Selected.Quantity_NewLOT)
         ResEntryId: =glr_ProResEntries.Selected.Entry_No
         Visible: =isModalOpen
         ZIndex: =3

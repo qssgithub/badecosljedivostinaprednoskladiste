@@ -5327,7 +5327,7 @@
         {
           "Category": "Design",
           "PropertyName": "DisplayMode",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -5363,7 +5363,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Header_1": {
+    "com_ProHeader": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5449,39 +5449,24 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Header_1",
+      "Name": "com_ProHeader",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Title",
+          "PropertyName": "IsEntryScreen",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "IsEntryScreen",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Title",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5491,19 +5476,34 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Behavior",
           "PropertyName": "OnReset",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Modal_1": {
+    "com_ProModal": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5581,6 +5581,14 @@
           "InvariantPropertyName": "QuantityCompleted",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "100",
+          "InvariantPropertyName": "Quantity",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -5597,44 +5605,64 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Modal_1",
+      "Name": "com_ProModal",
       "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "IsInventura",
+          "PropertyName": "Quantity",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityCompleted",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityNewLOT",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ResEntryId",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "LineId",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "ResEntryId",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "QuantityNewLOT",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "IsInventura",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ChildTabPriority",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5644,28 +5672,13 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "ChildTabPriority",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
@@ -5946,7 +5959,7 @@
       "MetaDataIDKey": "",
       "Name": "con_ProModalFade",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7873,7 +7886,7 @@
       "MetaDataIDKey": "",
       "Name": "Container14",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -8228,7 +8241,7 @@
       "MetaDataIDKey": "",
       "Name": "Container2_4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12022,7 +12035,7 @@
       "MetaDataIDKey": "",
       "Name": "spn_ProLoader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -14738,7 +14751,7 @@
       "MetaDataIDKey": "%ScreenContainer.ID%",
       "Name": "vrt_Pro",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
