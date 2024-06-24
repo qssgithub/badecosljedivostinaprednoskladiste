@@ -5762,7 +5762,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "2",
+                            "InvariantScript": "1",
                             "Property": "ZIndex",
                             "RuleProviderType": "Unknown"
                           },
@@ -5798,7 +5798,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "Patch(\n    colLines,\n    LookUp(\n        colLines,\n        'Line_No.' = com_Modal.LineId\n    ),\n    If(\n        com_Modal.IsInventura,\n        {Qty_Phys_Inventory: inp_rezQty_2.Value},\n        {\n            Quantity_Completed: inp_rezQty_2.Value,\n            Quantity_NewLOT: inp_potrebnoQty_2.Value\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nPatch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        lineId = com_Modal.LineId\n    ),\n    {isLocked: true}\n);\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Qty_Phys_Inventory: inp_rezQty_2.Value}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: inp_rezQty_2.Value,\n            Quantity_NewLOT: inp_potrebnoQty_2.Value\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nPatch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -7030,7 +7030,7 @@
       "QuantityNewLOT",
       "QuantityCompleted"
     ],
-    "LastModifiedTimestamp": "638548175171628030",
+    "LastModifiedTimestamp": "638548189519146998",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -7171,7 +7171,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638548175171628030",
+  "LastModifiedTimestamp": "638548189519146998",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

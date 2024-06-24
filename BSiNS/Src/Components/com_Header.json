@@ -246,7 +246,14 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "Height",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "Height",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
                   "DisplayMode",
                   "ZIndex",
                   {
@@ -312,6 +319,38 @@
                     "InvariantPropertyName": "Layout",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "PaddingLeft",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "PaddingRight",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "PaddingTop",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "PaddingBottom",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
                 "ControlUniqueId": "9",
@@ -345,7 +384,7 @@
                     "PropertyName": "AlignInContainer",
                     "Rule": {
                       "Category": "Design",
-                      "InvariantScript": "AlignInContainer.SetByContainer",
+                      "InvariantScript": "AlignInContainer.Center",
                       "Property": "AlignInContainer",
                       "RuleProviderType": "Unknown"
                     }
@@ -361,11 +400,18 @@
                     }
                   },
                   {
-                    "ControlPropertyState": "LayoutMinHeight",
+                    "ControlPropertyState": {
+                      "AFDDataSourceName": "",
+                      "AutoRuleBindingEnabled": false,
+                      "AutoRuleBindingString": "",
+                      "InvariantPropertyName": "LayoutMinHeight",
+                      "IsLockable": false,
+                      "NameMapSourceSchema": "?"
+                    },
                     "PropertyName": "LayoutMinHeight",
                     "Rule": {
                       "Category": "Design",
-                      "InvariantScript": "32",
+                      "InvariantScript": "20",
                       "Property": "LayoutMinHeight",
                       "RuleProviderType": "Unknown"
                     }
@@ -412,13 +458,13 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "\"\"",
+                    "InvariantScript": "\"middle\"",
                     "Property": "VerticalAlign",
                     "RuleProviderType": "Unknown"
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "Align.Justify",
+                    "InvariantScript": "Align.Left",
                     "Property": "Align",
                     "RuleProviderType": "Unknown"
                   },
@@ -426,6 +472,30 @@
                     "Category": "Data",
                     "InvariantScript": "\"ArrowLeft\"",
                     "Property": "Icon",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "0",
+                    "Property": "PaddingLeft",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "0",
+                    "Property": "PaddingRight",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "0",
+                    "Property": "PaddingTop",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "0",
+                    "Property": "PaddingBottom",
                     "RuleProviderType": "Unknown"
                   },
                   {
@@ -442,13 +512,13 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "32",
+                    "InvariantScript": "20",
                     "Property": "Height",
                     "RuleProviderType": "Unknown"
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "170",
+                    "InvariantScript": "145",
                     "Property": "Width",
                     "RuleProviderType": "Unknown"
                   },
@@ -1249,13 +1319,13 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "5",
+                "InvariantScript": "10",
                 "Property": "PaddingLeft",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "5",
+                "InvariantScript": "10",
                 "Property": "PaddingRight",
                 "RuleProviderType": "Unknown"
               },
@@ -1566,7 +1636,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638548174373249316",
+    "LastModifiedTimestamp": "638548199256659735",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1662,7 +1732,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638548174373249316",
+  "LastModifiedTimestamp": "638548199256659735",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

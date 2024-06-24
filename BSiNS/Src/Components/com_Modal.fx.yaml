@@ -461,15 +461,22 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =Patch(
-                                colLines,
-                                LookUp(
+                            =If(
+                                com_Modal.IsInventura,
+                                Patch(
                                     colLines,
-                                    'Line_No.' = com_Modal.LineId
+                                    LookUp(
+                                        colLines,
+                                        'Line_No.' = com_Modal.LineId
+                                    ),
+                                    {Qty_Phys_Inventory: inp_rezQty_2.Value}
                                 ),
-                                If(
-                                    com_Modal.IsInventura,
-                                    {Qty_Phys_Inventory: inp_rezQty_2.Value},
+                                Patch(
+                                    colEntries,
+                                    LookUp(
+                                        colEntries,
+                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                    ),
                                     {
                                         Quantity_Completed: inp_rezQty_2.Value,
                                         Quantity_NewLOT: inp_potrebnoQty_2.Value
@@ -485,7 +492,11 @@ com_Modal As CanvasComponent:
                                         lockedItems,
                                         ThisRecord.documentId = SelectedDocumentName
                                     ),
-                                    lineId = com_Modal.LineId
+                                    If(
+                                        com_Modal.IsInventura,
+                                        lineId = com_Modal.LineId,
+                                        lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId
+                                    )
                                 ),
                                 {isLocked: true}
                             );
@@ -497,5 +508,5 @@ com_Modal As CanvasComponent:
                         Width: =96
                         X: =0
                         Y: =0
-                        ZIndex: =2
+                        ZIndex: =1
 
