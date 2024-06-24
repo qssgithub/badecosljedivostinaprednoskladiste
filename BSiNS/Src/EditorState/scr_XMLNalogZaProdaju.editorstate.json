@@ -246,7 +246,7 @@
       "MetaDataIDKey": "",
       "Name": "BarcodeReader1_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4921,7 +4921,7 @@
       "MetaDataIDKey": "",
       "Name": "ButtonCanvas8",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5794,24 +5794,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "App.ActiveScreen",
-          "InvariantPropertyName": "BackToScreen",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
         "IsEntryScreen",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
-          "InvariantPropertyName": "IsMobile",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "ScannedItem"
+        "OnReset"
       ],
       "DynamicProperties": [
         {
@@ -5860,7 +5844,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "Metadata": {
-        "AllowAccessToGlobals": false,
+        "AllowAccessToGlobals": true,
         "AllowCustomization": true,
         "Description": ""
       },
@@ -5872,27 +5856,12 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "BackToScreen",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "Title",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "IsEntryScreen",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "IsMobile",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "ScannedItem",
           "RuleProviderType": "System"
         },
         {
@@ -5924,6 +5893,11 @@
           "Category": "Design",
           "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnReset",
+          "RuleProviderType": "System"
         }
       ],
       "StyleName": "",
@@ -8578,7 +8552,7 @@
       "MetaDataIDKey": "",
       "Name": "Container2_5",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -9682,7 +9656,7 @@
       "MetaDataIDKey": "",
       "Name": "glr_ProLines",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13181,7 +13155,7 @@
       "MetaDataIDKey": "",
       "Name": "TextCanvas5",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -13366,7 +13340,7 @@
       "MetaDataIDKey": "",
       "Name": "TextCanvas8",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

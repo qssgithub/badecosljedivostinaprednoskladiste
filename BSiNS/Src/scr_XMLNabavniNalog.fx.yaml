@@ -234,8 +234,6 @@
         ZIndex: =1
 
         com_NabHeader As com_Header:
-            BackToScreen: =scr_Entry
-            IsMobile: =isMobile
             LayoutMinHeight: =640
             LayoutMinWidth: =640
             Title: ="NABAVNI NALOG"
@@ -247,6 +245,8 @@
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
             ZIndex: =2

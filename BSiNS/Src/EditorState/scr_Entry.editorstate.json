@@ -319,7 +319,6 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "BackToScreen",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -328,15 +327,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
-          "InvariantPropertyName": "IsMobile",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "ScannedItem"
+        "OnReset"
       ],
       "DynamicProperties": [
         {
@@ -413,7 +404,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "Metadata": {
-        "AllowAccessToGlobals": false,
+        "AllowAccessToGlobals": true,
         "AllowCustomization": true,
         "Description": ""
       },
@@ -430,23 +421,8 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "BackToScreen",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "IsEntryScreen",
           "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "IsMobile",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "ScannedItem",
-          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -482,6 +458,11 @@
           "Category": "Design",
           "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnReset",
+          "RuleProviderType": "System"
         }
       ],
       "StyleName": "",

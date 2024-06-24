@@ -1,10 +1,8 @@
 com_Header As CanvasComponent:
-    BackToScreen: =App.ActiveScreen
     Fill: =RGBA(0, 0, 0, 0)
     Height: =125
     IsEntryScreen: =false
-    IsMobile: =true
-    ScannedItem: =First(BarcodeReader2.Barcodes).Value
+    OnReset: =
     Title: ="Text"
     Width: =App.Width
     X: =0
@@ -31,7 +29,7 @@ com_Header As CanvasComponent:
             LayoutMinHeight: =75
             LayoutMinWidth: =250
             Logo: =FFLogo
-            OnSelectLogo: =If(!IsBlank(com_Header.BackToScreen), Navigate(com_Header.BackToScreen))
+            OnSelectLogo: =If(!IsBlank(scr_Entry), Navigate(scr_Entry))
             Title: =com_Header.Title
             UserEmail: =User().Email
             UserImage: =User().Image
@@ -72,7 +70,7 @@ com_Header As CanvasComponent:
                 Layout: ='ButtonCanvas.Layout'.IconBefore
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
-                OnSelect: =Navigate(com_Header.BackToScreen, ScreenTransition.Fade);
+                OnSelect: =Navigate(scr_Entry, ScreenTransition.Fade);
                 Text: ="Nazad na početnu"
                 VerticalAlign: =""
                 Width: =170
@@ -89,9 +87,9 @@ com_Header As CanvasComponent:
                 FillColor: =RGBA(189, 49, 51, 1)
                 FontSize: =16
                 Height: =70
-                HoverBorderColor: =RGBA(88, 115, 171, 1)
-                HoverContentColor: =RGBA(255, 255, 255, 1)
-                HoverFillColor: =RGBA(47, 81, 151, 1)
+                HoverBorderColor: =RGBA(189, 49, 51, 1)
+                HoverContentColor: =RGBA(189, 49, 51, 1)
+                HoverFillColor: =RGBA(255, 255, 255, 1)
                 LayoutMinHeight: =20
                 LayoutMinWidth: =280
                 OnCancel: =false
@@ -100,8 +98,8 @@ com_Header As CanvasComponent:
                 PaddingLeft: =0
                 PaddingRight: =0
                 PaddingTop: =0
-                PressedBorderColor: =RGBA(56, 96, 178, 1)
-                PressedContentColor: =RGBA(56, 96, 178, 1)
+                PressedBorderColor: =RGBA(189, 49, 51, 1)
+                PressedContentColor: =RGBA(189, 49, 51, 1)
                 PressedFillColor: =RGBA(255, 255, 255, 1)
                 ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
                 Text: ="Skener"
