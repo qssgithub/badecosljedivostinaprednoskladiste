@@ -536,7 +536,11 @@
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |
-                        =Switch(
+                        =Set(
+                            isLoading,
+                            true
+                        );
+                        Switch(
                             Parent.Selected.FileType,
                             "01",
                             Navigate(
@@ -594,6 +598,10 @@
                                     "."
                                 )
                             ).Value
+                        );
+                        Set(
+                            isLoading,
+                            false
                         );
                     TemplatePadding: =0
                     TemplateSize: =80

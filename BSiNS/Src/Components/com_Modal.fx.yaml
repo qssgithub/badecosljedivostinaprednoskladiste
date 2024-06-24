@@ -4,6 +4,8 @@ com_Modal As CanvasComponent:
     Height: =App.Height
     IsInventura: =false
     LineId: ="Text"
+    QuantityCompleted: =100
+    QuantityNewLOT: =100
     ResEntryId: ="Text"
     Width: =App.Width
     X: =0
@@ -112,6 +114,7 @@ com_Modal As CanvasComponent:
                     ZIndex: =2
 
                     Container13_12 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutJustifyContent: =LayoutJustifyContent.Center
@@ -228,9 +231,10 @@ com_Modal As CanvasComponent:
                                 ZIndex: =2
 
                     Container13_10 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutJustifyContent: =If(com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -263,7 +267,7 @@ com_Modal As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             OnChange: |
-                                =/*If(
+                                =If(
                                     (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,
                                     Notify(
                                         "Unesite pozitivan broj.",
@@ -271,23 +275,23 @@ com_Modal As CanvasComponent:
                                         2000
                                     );
                                     Reset(inp_rezQty_2);
-                                    UpdateContext({potrebnaKolicina: 0}),
+                                    Set(potrebnaKolicina, 0),
                                     If(
                                         Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
                                         Reset(inp_rezQty_2);
-                                        UpdateContext({potrebnaKolicina: 0});
+                                        Set(potrebnaKolicina, 0);
                                         Notify(
                                             "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
                                             NotificationType.Information,
                                             2000
                                         ),
-                                        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
+                                        Set(potrebnaKolicina, Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value)
                                     )
-                                );*/
+                                );
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
-                            Value: =Abs(QuantityCompleted)
+                            Value: =Abs(com_Modal.QuantityCompleted)
                             Visible: =true
                             Width: =200
                             X: =40
@@ -346,7 +350,6 @@ com_Modal As CanvasComponent:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -380,7 +383,7 @@ com_Modal As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite potrebnu količinu"
-                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
+                            Value: =If(IsBlank(QuantityNewLot),0,QuantityNewLot)
                             Width: =200
                             X: =40
                             Y: =40
@@ -437,7 +440,7 @@ com_Modal As CanvasComponent:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
                     FillPortions: =0
-                    Height: =70
+                    Height: =50
                     LayoutAlignItems: =LayoutAlignItems.Center
                     LayoutGap: =10
                     LayoutJustifyContent: =LayoutJustifyContent.End
