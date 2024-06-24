@@ -2,7 +2,7 @@ com_Modal As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    IsInventura: =true
+    IsInventura: =false
     LineId: ="Text"
     Quantity: =100
     QuantityCompleted: =100
@@ -386,7 +386,7 @@ com_Modal As CanvasComponent:
                             OnChange: =false
                             Placeholder: ="Unesite potrebnu količinu"
                             ValidationState: =If(!IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0, "Error", "None")
-                            Value: =If(IsBlank(QuantityNewLot),0,QuantityNewLot)
+                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
                             Width: =200
                             X: =40
                             Y: =40

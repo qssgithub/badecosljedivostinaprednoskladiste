@@ -5714,7 +5714,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(IsBlank(QuantityNewLot),0,QuantityNewLot)",
+                                "InvariantScript": "If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -7893,19 +7893,26 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      "IsInventura",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsInventura",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
       "LineId",
       "ResEntryId",
       "QuantityNewLOT",
       "QuantityCompleted",
       "Quantity"
     ],
-    "LastModifiedTimestamp": "638548334735454675",
+    "LastModifiedTimestamp": "638548349478792941",
     "Name": "com_Modal",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "true",
+        "InvariantScript": "false",
         "Property": "IsInventura",
         "RuleProviderType": "System"
       },
@@ -8056,7 +8063,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638548334735454675",
+  "LastModifiedTimestamp": "638548349478792941",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

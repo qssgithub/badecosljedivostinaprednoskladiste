@@ -235,7 +235,7 @@
 
         com_NabHeader As com_Header:
             LayoutMinHeight: =640
-            LayoutMinWidth: =640
+            LayoutMinWidth: =250
             Title: ="NABAVNI NALOG"
 
         Container5 As groupContainer.verticalAutoLayoutContainer:
@@ -244,12 +244,36 @@
             Height: =150
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
             ZIndex: =2
+
+            com_NabHeaderData As com_HeaderData:
+                AlignInContainer: =AlignInContainer.Center
+                LayoutMinHeight: =640
+                LayoutMinWidth: =250
+                Line1Label: |-
+                    ="Broj naloga:"
+                Line1Value: =header.No
+                Line2Label: |-
+                    ="Datum dokumenta:"
+                Line2Value: =header.Document_Date
+                Line3Label: |-
+                    ="Datum narudžbe:"
+                Line3Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                Line4Label: |-
+                    ="Nabavka u:"
+                Line4Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                Line5Label: |-
+                    ="Dobavljač:"
+                Width: =App.Width - 20
 
             Container7 As groupContainer.horizontalAutoLayoutContainer:
                 DropShadow: =DropShadow.Light
@@ -260,7 +284,8 @@
                 LayoutMinHeight: =150
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                ZIndex: =1
+                Visible: =false
+                ZIndex: =2
 
                 Container6 As groupContainer.verticalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -439,7 +464,7 @@
                 PaddingLeft: =20
                 PaddingRight: =20
                 Width: =Max(App.Width, App.MinScreenWidth)
-                ZIndex: =2
+                ZIndex: =3
 
                 TextCanvas2 As Text:
                     AutoHeight: =true
@@ -455,44 +480,6 @@
                     X: =0
                     Y: =0
                     ZIndex: =1
-
-                "BarcodeReader1_3 As 'Barcode Reader'":
-                    BarcodeType: ='BarcodeReader.BarcodeType'.Code128
-                    BorderFillColor: =RGBA(0, 0, 0, 1)
-                    BorderThickness: =1
-                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                    DisabledContentColor: =RGBA(166, 166, 166, 1)
-                    DisabledFillColor: =RGBA(244, 244, 244, 1)
-                    DisplayMode: =DisplayMode.Edit
-                    FillColor: =RGBA(255, 255, 255, 1)
-                    FontSize: =12
-                    Height: =28
-                    HoverBorderColor: =RGBA(189, 49, 51, 1)
-                    HoverContentColor: =RGBA(255, 255, 255, 1)
-                    HoverFillColor: =RGBA(189, 49, 51, 1)
-                    LayoutMinHeight: =70
-                    LayoutMinWidth: =280
-                    OnCancel: =false
-                    OnScan: |-
-                        =UpdateContext({
-                            scannedItem:First(BarcodeReader1_3.Barcodes).Value
-                        })
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    PressedBorderColor: =RGBA(189, 49, 51, 1)
-                    PressedContentColor: =RGBA(189, 49, 51, 1)
-                    PressedFillColor: =RGBA(255, 255, 255, 1)
-                    ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
-                    Text: ="Skener"
-                    TextAlignment: =Align.Center
-                    TextColor: =RGBA(0, 0, 0, 1)
-                    Visible: =!isMobile
-                    Width: =80
-                    X: =164
-                    Y: =9
-                    ZIndex: =3
 
             "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
@@ -514,7 +501,7 @@
                 Visible: =wizardStep = 1
                 Width: =Parent.Width
                 Y: =49
-                ZIndex: =3
+                ZIndex: =4
 
                 Separator6_6 As rectangle:
                     BorderColor: =App.Theme.Colors.Darker40
@@ -611,7 +598,7 @@
                         PaddingTop: =0
                         Size: =12
                         Text: |-
-                            ="Jedinica mjere:    " & ThisItem.Document_No
+                            ="Jedinica mjere:    " & ThisItem.Unit_Of_Measure
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.Width
                         Y: =153
@@ -635,6 +622,22 @@
                         Width: =Parent.Width
                         Y: =87
                         ZIndex: =10
+
+            Spinner2_1 As Spinner:
+                AlignInContainer: =AlignInContainer.Stretch
+                BasePaletteColor: =
+                DisplayMode: =DisplayMode.Edit
+                FillPortions: =1
+                FontColor: =
+                Height: =200
+                LayoutMinHeight: =200
+                LayoutMinWidth: =200
+                SpinnerSize: ='Spinner.SpinnerSize'.Huge
+                Visible: =isLoading
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =5
 
         NabavniNalogBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -1239,7 +1242,7 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =!isLoading
+            Visible: =false
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =4
 
@@ -1390,21 +1393,11 @@
                 Y: =718
                 ZIndex: =3
 
-        Spinner2_1 As Spinner:
-            AlignInContainer: =AlignInContainer.Stretch
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =5
+        com_Footer_2 As com_Footer:
+            IsInventura: =false
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ZIndex: =6
 
     com_NabModal As com_Modal:
         Visible: =isModalOpen

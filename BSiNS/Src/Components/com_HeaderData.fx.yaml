@@ -1,0 +1,210 @@
+com_HeaderData As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =160
+    Line1Label: ="Text"
+    Line1Value: ="Text"
+    Line2Label: ="Text"
+    Line2Value: ="Text"
+    Line3Label: ="Text"
+    Line3Value: ="Text"
+    Line4Label: ="Text"
+    Line4Value: ="Text"
+    Line5Label: ="Text"
+    Line5Value: ="Text"
+    Width: =App.Width - 10
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Container12 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Height: =150
+        PaddingBottom: =5
+        PaddingLeft: =5
+        PaddingRight: =5
+        PaddingTop: =5
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width - 10
+        X: =5
+        Y: =5
+        ZIndex: =2
+
+        hrz_HeaderData As groupContainer.horizontalAutoLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Height: =150
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
+            PaddingLeft: =10
+            PaddingRight: =10
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width
+            ZIndex: =1
+
+            vrt_HeaderData As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =100
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =10
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
+                PaddingTop: =5
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =125
+                ZIndex: =1
+
+                txt_HeaderDataLine1 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =125
+                    Text: =com_HeaderData.Line1Label
+                    Width: =96
+                    Wrap: =true
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txt_HeaderDataLine2 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =txt_HeaderDataLine1.Width
+                    Text: =com_HeaderData.Line2Label
+                    Width: =96
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                txt_HeaderDataLine3 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =20
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =txt_HeaderDataLine1.Width
+                    Text: =com_HeaderData.Line3Label
+                    Width: =96
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                txt_HeaderDataLine4 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =20
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =txt_HeaderDataLine1.Width
+                    Text: =com_HeaderData.Line4Label
+                    Width: =96
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                txt_HeaderDataLine5 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =20
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =txt_HeaderDataLine1.Width
+                    Text: =com_HeaderData.Line5Label
+                    Width: =96
+                    Wrap: =false
+                    X: =0
+                    Y: =0
+                    ZIndex: =5
+
+            vrt_HeaderDataValues As groupContainer.verticalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Height: =100
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutGap: =10
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                PaddingBottom: =5
+                PaddingTop: =5
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =2
+
+                txt_HeaderDataLineValue1 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =com_HeaderData.Line1Value
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =1
+
+                txt_HeaderDataLineValue2 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =com_HeaderData.Line2Value
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =2
+
+                txt_HeaderDataLineValue3 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =com_HeaderData.Line3Value
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =3
+
+                txt_HeaderDataLineValue4 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =com_HeaderData.Line4Value
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =4
+
+                txt_HeaderDataLineValue5 As Text:
+                    AutoHeight: =true
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =32
+                    LayoutMinHeight: =32
+                    LayoutMinWidth: =96
+                    Text: =com_HeaderData.Line5Value
+                    Width: =96
+                    X: =0
+                    Y: =0
+                    ZIndex: =5
+

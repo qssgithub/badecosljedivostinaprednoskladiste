@@ -27,61 +27,62 @@
                 )
             )
         );
-        Collect(
-            header,
+        UpdateContext(
             {
-                Amount: Text(xmlData.Amount),
-                Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
-                Bank_Name: Text(xmlData.Bank_Name),
-                Bank_No: Text(xmlData.Bank_No),
-                'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
-                'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
-                'Bill-to_City': Text(xmlData.'Bill-to_City'),
-                'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
-                'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
-                'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
-                'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
-                Customer_Price_Group: Text(xmlData.Customer_Price_Group),
-                Document_Date: Text(xmlData.Document_Date),
-                Document_Type: Text(xmlData.Document_Type),
-                Due_Date: Text(xmlData.Due_Date),
-                Ext_Doc_No: Text(xmlData.Ext_Doc_No),
-                'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
-                Location_Code: Text(xmlData.Location_Code),
-                'No.': Text(xmlData.'No.'),
-                Order_Date: Text(xmlData.Order_Date),
-                Payement_Disc: Text(xmlData.Payement_Disc),
-                Payement_Method_Code: Text(xmlData.Payement_Method_Code),
-                Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
-                Posting_Date: Text(xmlData.Posting_Date),
-                Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
-                Quote_No: Text(xmlData.Quote_No),
-                Salesperson_Code: Text(xmlData.Salesperson_Code),
-                'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
-                'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
-                'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
-                'Sell-to_City': Text(xmlData.'Sell-to_City'),
-                'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
-                'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
-                'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
-                Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
-                Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
-                Shipp_Date: Text(xmlData.Shipp_Date),
-                Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
-                'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
-                'Ship-to_City': Text(xmlData.'Ship-to_City'),
-                'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
-                'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
-                'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
-                'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
-                Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
-                Status: Text(xmlData.Status),
-                Tax_Area_Code: Text(xmlData.Tax_Area_Code),
-                Transport_Method: Text(xmlData.Transport_Method),
-                'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
-                VAT_Country_Code: Text(xmlData.VAT_Country_Code),
-                'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
-                VAT_Date: Text(xmlData.VAT_Date)
+                header: {
+                    Amount: Text(xmlData.Amount),
+                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
+                    Bank_Name: Text(xmlData.Bank_Name),
+                    Bank_No: Text(xmlData.Bank_No),
+                    'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
+                    'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
+                    'Bill-to_City': Text(xmlData.'Bill-to_City'),
+                    'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
+                    'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
+                    'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
+                    'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
+                    Customer_Price_Group: Text(xmlData.Customer_Price_Group),
+                    Document_Date: Text(xmlData.Document_Date),
+                    Document_Type: Text(xmlData.Document_Type),
+                    Due_Date: Text(xmlData.Due_Date),
+                    Ext_Doc_No: Text(xmlData.Ext_Doc_No),
+                    'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
+                    Location_Code: Text(xmlData.Location_Code),
+                    'No.': Text(xmlData.'No.'),
+                    Order_Date: Text(xmlData.Order_Date),
+                    Payement_Disc: Text(xmlData.Payement_Disc),
+                    Payement_Method_Code: Text(xmlData.Payement_Method_Code),
+                    Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
+                    Posting_Date: Text(xmlData.Posting_Date),
+                    Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
+                    Quote_No: Text(xmlData.Quote_No),
+                    Salesperson_Code: Text(xmlData.Salesperson_Code),
+                    'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
+                    'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
+                    'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
+                    'Sell-to_City': Text(xmlData.'Sell-to_City'),
+                    'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
+                    'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
+                    'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
+                    Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
+                    Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
+                    Shipp_Date: Text(xmlData.Shipp_Date),
+                    Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
+                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
+                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
+                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
+                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
+                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
+                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
+                    Status: Text(xmlData.Status),
+                    Tax_Area_Code: Text(xmlData.Tax_Area_Code),
+                    Transport_Method: Text(xmlData.Transport_Method),
+                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
+                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
+                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                    VAT_Date: Text(xmlData.VAT_Date)
+                }
             }
         );
         IfError(
@@ -169,7 +170,7 @@
                     )
                 )
             ),
-            Collect(
+            ClearCollect(
                 colLines,
                 {
                     Description: Text(xmlData.Sales_Line.Description),
@@ -222,7 +223,7 @@
                         }
                     )
                 ),
-                Collect(
+                ClearCollect(
                     colEntries,
                     {
                         Created_By: Text(xmlData.Sales_Line.Res_Entry.Created_By),
@@ -681,10 +682,6 @@
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
-            PaddingBottom: =10
-            PaddingLeft: =10
-            PaddingRight: =10
-            PaddingTop: =10
             ZIndex: =2
 
             Container2_4 As groupContainer.horizontalAutoLayoutContainer:
@@ -701,7 +698,6 @@
                 PaddingBottom: =10
                 PaddingLeft: =10
                 PaddingRight: =10
-                PaddingTop: =10
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
@@ -710,192 +706,26 @@
                 Width: =Max(App.Width, App.MinScreenWidth)
                 ZIndex: =1
 
-                Container12 As groupContainer.horizontalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    DropShadow: =DropShadow.Light
-                    FillPortions: =0
-                    Height: =150
-                    LayoutAlignItems: =LayoutAlignItems.Stretch
-                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =100
+                com_ProHeaderData As com_HeaderData:
+                    AlignInContainer: =AlignInContainer.Center
+                    LayoutMinHeight: =640
                     LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingLeft: =5
-                    PaddingRight: =5
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
+                    Line1Label: |-
+                        ="Broj naloga:"
+                    Line1Value: =header.'No.'
+                    Line2Label: |-
+                        ="Datum dokumenta:"
+                    Line2Value: =header.Document_Date
+                    Line3Label: |-
+                        ="Kupac:"
+                    Line3Value: =header.'Bill-to_Name'
+                    Line4Label: |-
+                        ="Datum narudžbe:"
+                    Line4Value: =header.Order_Date
+                    Line5Label: |-
+                        ="Datum knjiženja:"
+                    Line5Value: =header.Posting_Date
                     Visible: =If(!isLoading, wizardStep = 1)
-                    ZIndex: =1
-
-                    vrt_ProHeader As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        FillPortions: =0
-                        Height: =100
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutDirection: =LayoutDirection.Vertical
-                        LayoutGap: =10
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =5
-                        PaddingTop: =5
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Visible: =!isLoading
-                        Width: =125
-                        ZIndex: =1
-
-                        txt_ProNo As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =125
-                            Text: |-
-                                ="Broj naloga:" 
-                            Width: =96
-                            Wrap: =true
-                            X: =0
-                            Y: =0
-                            ZIndex: =1
-
-                        txt_ProDocumentDate As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =txt_ProNo.Width
-                            Text: |-
-                                ="Datum dokumenta:"
-                            Width: =96
-                            Wrap: =false
-                            X: =0
-                            Y: =0
-                            ZIndex: =2
-
-                        txt_ProBillToName As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =20
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =txt_ProNo.Width
-                            Text: |-
-                                ="Kupac:"
-                            Width: =96
-                            Wrap: =false
-                            X: =0
-                            Y: =0
-                            ZIndex: =3
-
-                        txt_ProOrderDate As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =20
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =txt_ProNo.Width
-                            Text: |-
-                                ="Datum narudžbe:"
-                            Width: =96
-                            Wrap: =false
-                            X: =0
-                            Y: =0
-                            ZIndex: =4
-
-                        txt_ProPostingDate As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =20
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =txt_ProNo.Width
-                            Text: |-
-                                ="Datum knjiženja:"
-                            Width: =96
-                            Wrap: =false
-                            X: =0
-                            Y: =0
-                            ZIndex: =5
-
-                    vrt_ProHeader_1 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        Height: =100
-                        LayoutAlignItems: =LayoutAlignItems.Stretch
-                        LayoutDirection: =LayoutDirection.Vertical
-                        LayoutGap: =10
-                        LayoutMinHeight: =100
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingBottom: =5
-                        PaddingTop: =5
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Visible: =!isLoading
-                        ZIndex: =2
-
-                        txt_ProNo_1 As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: =First(header).'No.'
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =1
-
-                        txt_ProDocumentDate_1 As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: =First(header).Document_Date
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =2
-
-                        txt_ProBillToName_1 As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: =First(header).'Bill-to_Name'
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =3
-
-                        txt_ProOrderDate_1 As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: =First(header).Order_Date
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =4
-
-                        txt_ProPostingDate_1 As Text:
-                            AutoHeight: =true
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =96
-                            Text: =First(header).Posting_Date
-                            Width: =96
-                            X: =0
-                            Y: =0
-                            ZIndex: =5
 
                 Container15 As groupContainer.verticalAutoLayoutContainer:
                     DropShadow: =DropShadow.Light
@@ -909,7 +739,7 @@
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
-                    ZIndex: =4
+                    ZIndex: =3
 
                     TextCanvas5 As Text:
                         AutoHeight: =false
@@ -920,7 +750,7 @@
                         PaddingBottom: =0
                         PaddingLeft: =5
                         PaddingRight: =5
-                        PaddingTop: =5
+                        PaddingTop: =0
                         Size: =16
                         Text: ="Stavke prodaje"
                         VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
@@ -1120,14 +950,7 @@
                                 isModalOpen,
                                 true
                             );
-                            Set(
-                                QuantityCompleted,
-                                Abs(Value(glr_ProResEntries.Selected.Quantity_Completed))
-                            );
-                            Set(
-                                QuantityNewLot,
-                                Abs(Value(glr_ProResEntries.Selected.Quantity_NewLOT))
-                            )
+                            
                         );
                     TemplatePadding: =0
                     TemplateSize: =244
@@ -1453,7 +1276,6 @@
             ZIndex: =4
 
     com_ProModal As com_Modal:
-        IsInventura: =false
         LineId: =glr_ProLines.Selected.Line_No
         Quantity: =Abs(glr_ProResEntries.Selected.Quantity)
         QuantityCompleted: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
