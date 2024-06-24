@@ -1,0 +1,162 @@
+com_Footer As CanvasComponent:
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =50
+    IsInventura: =true
+    JSONData: ="Text"
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    hrz_Footer As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =RGBA(233, 79, 76, 1)
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(237, 237, 237, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        PaddingLeft: =15
+        PaddingRight: =20
+        Width: =Max(App.Width, App.MinScreenWidth)
+        ZIndex: =1
+
+        hrz_Checkboxes As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width
+            ZIndex: =1
+
+            chb_Dorada As Checkbox:
+                BasePaletteColor: =
+                CheckboxSize: =16
+                Checked: =
+                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="Dorada"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =
+                OnUncheck: =
+                Visible: =!com_Footer.IsInventura
+                Width: =110
+                X: =40
+                Y: =0
+                ZIndex: =1
+
+            chb_ReadyForNav As Checkbox:
+                BasePaletteColor: =
+                CheckboxSize: =16
+                Checked: =
+                DisplayMode: =If(!isLoading && IsEmpty(Filter(colEntries, ThisRecord.Quantity_NewLOT > 0)), DisplayMode.Edit, DisplayMode.Disabled)
+                FontColor: =
+                FontSize: =14
+                FontWeight: =FontWeight.Bold
+                Height: =Parent.Height
+                Label: ="NAV"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =160
+                OnCheck: =
+                OnUncheck: =
+                Width: =80
+                X: =40
+                Y: =0
+                ZIndex: =2
+
+        btn_Save As Button:
+            BasePaletteColor: =
+            DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+            Height: =32
+            Layout: ='ButtonCanvas.Layout'.TextOnly
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            OnSelect: |
+                =Set(
+                    isLoading,
+                    true
+                );
+                IfError(
+                    GetXml.Run(
+                        SelectedFile,
+                        ReadyForProcessing
+                    ),
+                    IfError(
+                        UpdateXML.Run(
+                            com_Footer.JSONData,
+                            SelectedFile,
+                            SelectedFolder
+                        ),
+                        Notify(
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Uspješno ažuriranje!",
+                            NotificationType.Success,
+                            2000
+                        );
+                        If(
+                            chb_ReadyForNav.Checked,
+                            ChangeXmlStatus.Run(
+                                SelectedFile,
+                                SelectedFolder,
+                                ReadyForNAVProcessing
+                            );
+                            Navigate(
+                                scr_Entry,
+                                ScreenTransition.Fade
+                            ),
+                            If(
+                                chb_Dorada.Checked,
+                                ChangeXmlStatus.Run(
+                                    SelectedFile,
+                                    SelectedFolder,
+                                    NAVChanges
+                                );
+                                Navigate(
+                                    scr_Entry,
+                                    ScreenTransition.Fade
+                                ),
+                                Navigate(
+                                    App.ActiveScreen,
+                                    ScreenTransition.Fade
+                                )
+                            )
+                        );
+                    ),
+                    Set(
+                        SelectedFolder,
+                        ReadyForProcessing
+                    );
+                    Notify(
+                        "Postoje izmjene u ovom fajlu.",
+                        NotificationType.Information,
+                        2000
+                    );
+                    Navigate(
+                        App.ActiveScreen,
+                        ScreenTransition.Fade
+                    )
+                );
+                Set(
+                    isLoading,
+                    false
+                );
+            Text: ="Sačuvaj"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =3
+

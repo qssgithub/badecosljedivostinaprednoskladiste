@@ -1384,14 +1384,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
-          "InvariantPropertyName": "IsInventura",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "IsInventura",
         "LineId",
         "ResEntryId",
         "QuantityNewLOT",
@@ -4779,14 +4772,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
-          "InvariantPropertyName": "OnChange",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "OnChange",
         "Required",
         "Type",
         {
@@ -5502,6 +5488,14 @@
           "InvariantPropertyName": "Text",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "true",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "DynamicProperties": [
@@ -5632,6 +5626,11 @@
           "Category": "Design",
           "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "",

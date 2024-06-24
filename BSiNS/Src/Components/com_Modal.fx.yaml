@@ -2,7 +2,7 @@ com_Modal As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    IsInventura: =false
+    IsInventura: =true
     LineId: ="Text"
     Quantity: =100
     QuantityCompleted: =100
@@ -236,7 +236,7 @@ com_Modal As CanvasComponent:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =If(com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)
+                        LayoutJustifyContent: =If(IsBlank(LotNo) && com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -268,7 +268,7 @@ com_Modal As CanvasComponent:
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: =
+                            OnChange: =false
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
@@ -479,6 +479,7 @@ com_Modal As CanvasComponent:
                                 "Rezervisano i potrebno su veči od količine (" & com_Modal.Quantity & ")!",
                                 ""
                             )
+                        Visible: =!com_Modal.IsInventura
                         Width: =200
                         X: =0
                         Y: =0
@@ -504,7 +505,7 @@ com_Modal As CanvasComponent:
                         BasePaletteColor: =
                         DisplayMode: |-
                             =If(
-                                inp_rezQty_2.ValidationState = "Error" || inp_potrebnoQty_2.ValidationState = "Error" || (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
+                                inp_rezQty_2.ValidationState = "Error" || inp_potrebnoQty_2.ValidationState = "Error" || ((inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity && !com_Modal.IsInventura),
                                 DisplayMode.Disabled,
                                 DisplayMode.Edit
                             )
@@ -538,7 +539,7 @@ com_Modal As CanvasComponent:
                             );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
-                            Patch(
+                            /*Patch(
                                 lockedItems,
                                 LookUp(
                                     Filter(
@@ -552,7 +553,7 @@ com_Modal As CanvasComponent:
                                     )
                                 ),
                                 {isLocked: true}
-                            );
+                            );*/
                             Set(
                                 isModalOpen,
                                 false

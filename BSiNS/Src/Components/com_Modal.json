@@ -894,6 +894,14 @@
                             "InvariantPropertyName": "Text",
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
+                          },
+                          {
+                            "AFDDataSourceName": "",
+                            "AutoRuleBindingEnabled": false,
+                            "AutoRuleBindingString": "true",
+                            "InvariantPropertyName": "Visible",
+                            "IsLockable": false,
+                            "NameMapSourceSchema": "?"
                           }
                         ],
                         "ControlUniqueId": "559",
@@ -1044,6 +1052,12 @@
                             "InvariantScript": "4",
                             "Property": "ZIndex",
                             "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Design",
+                            "InvariantScript": "!com_Modal.IsInventura",
+                            "Property": "Visible",
+                            "RuleProviderType": "User"
                           }
                         ],
                         "StyleName": "",
@@ -3864,14 +3878,7 @@
                                 "IsLockable": false,
                                 "NameMapSourceSchema": "?"
                               },
-                              {
-                                "AFDDataSourceName": "",
-                                "AutoRuleBindingEnabled": false,
-                                "AutoRuleBindingString": "false",
-                                "InvariantPropertyName": "OnChange",
-                                "IsLockable": false,
-                                "NameMapSourceSchema": "?"
-                              },
+                              "OnChange",
                               "Required",
                               "Type",
                               {
@@ -4062,7 +4069,7 @@
                               },
                               {
                                 "Category": "Behavior",
-                                "InvariantScript": "",
+                                "InvariantScript": "false",
                                 "Property": "OnChange",
                                 "RuleProviderType": "User"
                               }
@@ -4324,7 +4331,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)",
+                            "InvariantScript": "If(IsBlank(LotNo) && com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)",
                             "Property": "LayoutJustifyContent",
                             "RuleProviderType": "User"
                           },
@@ -6637,7 +6644,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Error\" || inp_potrebnoQty_2.ValidationState = \"Error\" || (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n    DisplayMode.Disabled,\n    DisplayMode.Edit\n)",
+                            "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Error\" || inp_potrebnoQty_2.ValidationState = \"Error\" || ((inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity && !com_Modal.IsInventura),\n    DisplayMode.Disabled,\n    DisplayMode.Edit\n)",
                             "Property": "DisplayMode",
                             "RuleProviderType": "User"
                           },
@@ -6667,7 +6674,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Qty_Phys_Inventory: inp_rezQty_2.Value}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(-inp_rezQty_2.Value),\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nPatch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Qty_Phys_Inventory: inp_rezQty_2.Value}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(-inp_rezQty_2.Value),\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\n/*Patch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);*/\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -7886,26 +7893,19 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsInventura",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
+      "IsInventura",
       "LineId",
       "ResEntryId",
       "QuantityNewLOT",
       "QuantityCompleted",
       "Quantity"
     ],
-    "LastModifiedTimestamp": "638548293687510165",
+    "LastModifiedTimestamp": "638548334735454675",
     "Name": "com_Modal",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "false",
+        "InvariantScript": "true",
         "Property": "IsInventura",
         "RuleProviderType": "System"
       },
@@ -8056,7 +8056,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638548293687510165",
+  "LastModifiedTimestamp": "638548334735454675",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

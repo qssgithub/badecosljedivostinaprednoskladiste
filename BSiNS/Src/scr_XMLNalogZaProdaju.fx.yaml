@@ -1,16 +1,8 @@
 "scr_XMLNalogZaProdaju As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnHidden: |-
-        =ClearCollect(
-            colLines,
-            Blank()
-        );
-        ClearCollect(
-            colEntries,
-            Blank()
-        );
-    OnVisible: |-
+    OnHidden: =
+    OnVisible: |
         =Set(
             isLoading,
             true
@@ -35,62 +27,61 @@
                 )
             )
         );
-        UpdateContext(
+        Collect(
+            header,
             {
-                header: {
-                    Amount: Text(xmlData.Amount),
-                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
-                    Bank_Name: Text(xmlData.Bank_Name),
-                    Bank_No: Text(xmlData.Bank_No),
-                    'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
-                    'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
-                    'Bill-to_City': Text(xmlData.'Bill-to_City'),
-                    'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
-                    'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
-                    'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
-                    'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
-                    Customer_Price_Group: Text(xmlData.Customer_Price_Group),
-                    Document_Date: Text(xmlData.Document_Date),
-                    Document_Type: Text(xmlData.Document_Type),
-                    Due_Date: Text(xmlData.Due_Date),
-                    Ext_Doc_No: Text(xmlData.Ext_Doc_No),
-                    'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
-                    Location_Code: Text(xmlData.Location_Code),
-                    'No.': Text(xmlData.'No.'),
-                    Order_Date: Text(xmlData.Order_Date),
-                    Payement_Disc: Text(xmlData.Payement_Disc),
-                    Payement_Method_Code: Text(xmlData.Payement_Method_Code),
-                    Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
-                    Posting_Date: Text(xmlData.Posting_Date),
-                    Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
-                    Quote_No: Text(xmlData.Quote_No),
-                    Salesperson_Code: Text(xmlData.Salesperson_Code),
-                    'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
-                    'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
-                    'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
-                    'Sell-to_City': Text(xmlData.'Sell-to_City'),
-                    'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
-                    'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
-                    'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
-                    Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
-                    Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
-                    Shipp_Date: Text(xmlData.Shipp_Date),
-                    Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
-                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
-                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
-                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
-                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
-                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
-                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
-                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
-                    Status: Text(xmlData.Status),
-                    Tax_Area_Code: Text(xmlData.Tax_Area_Code),
-                    Transport_Method: Text(xmlData.Transport_Method),
-                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
-                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
-                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
-                    VAT_Date: Text(xmlData.VAT_Date)
-                }
+                Amount: Text(xmlData.Amount),
+                Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
+                Bank_Name: Text(xmlData.Bank_Name),
+                Bank_No: Text(xmlData.Bank_No),
+                'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
+                'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
+                'Bill-to_City': Text(xmlData.'Bill-to_City'),
+                'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
+                'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
+                'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
+                'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
+                Customer_Price_Group: Text(xmlData.Customer_Price_Group),
+                Document_Date: Text(xmlData.Document_Date),
+                Document_Type: Text(xmlData.Document_Type),
+                Due_Date: Text(xmlData.Due_Date),
+                Ext_Doc_No: Text(xmlData.Ext_Doc_No),
+                'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
+                Location_Code: Text(xmlData.Location_Code),
+                'No.': Text(xmlData.'No.'),
+                Order_Date: Text(xmlData.Order_Date),
+                Payement_Disc: Text(xmlData.Payement_Disc),
+                Payement_Method_Code: Text(xmlData.Payement_Method_Code),
+                Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
+                Posting_Date: Text(xmlData.Posting_Date),
+                Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
+                Quote_No: Text(xmlData.Quote_No),
+                Salesperson_Code: Text(xmlData.Salesperson_Code),
+                'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
+                'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
+                'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
+                'Sell-to_City': Text(xmlData.'Sell-to_City'),
+                'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
+                'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
+                'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
+                Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
+                Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
+                Shipp_Date: Text(xmlData.Shipp_Date),
+                Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
+                'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
+                'Ship-to_City': Text(xmlData.'Ship-to_City'),
+                'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
+                'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
+                'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
+                'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
+                Status: Text(xmlData.Status),
+                Tax_Area_Code: Text(xmlData.Tax_Area_Code),
+                Transport_Method: Text(xmlData.Transport_Method),
+                'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
+                VAT_Country_Code: Text(xmlData.VAT_Country_Code),
+                'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                VAT_Date: Text(xmlData.VAT_Date)
             }
         );
         IfError(
@@ -852,7 +843,7 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: =header.'No.'
+                            Text: =First(header).'No.'
                             Width: =96
                             X: =0
                             Y: =0
@@ -864,7 +855,7 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: =header.Document_Date
+                            Text: =First(header).Document_Date
                             Width: =96
                             X: =0
                             Y: =0
@@ -876,7 +867,7 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: =header.'Bill-to_Name'
+                            Text: =First(header).'Bill-to_Name'
                             Width: =96
                             X: =0
                             Y: =0
@@ -888,7 +879,7 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: =header.Order_Date
+                            Text: =First(header).Order_Date
                             Width: =96
                             X: =0
                             Y: =0
@@ -900,7 +891,7 @@
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =96
-                            Text: =header.Posting_Date
+                            Text: =First(header).Posting_Date
                             Width: =96
                             X: =0
                             Y: =0
@@ -1437,178 +1428,32 @@
                 Y: =0
                 ZIndex: =3
 
-        hrz_ProFooter As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
-            BorderColor: =RGBA(233, 79, 76, 1)
-            DropShadow: =DropShadow.Light
-            Fill: =RGBA(237, 237, 237, 1)
-            FillPortions: =0
-            Height: =50
-            LayoutAlignItems: =LayoutAlignItems.Center
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMinHeight: =50
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            PaddingLeft: =15
-            PaddingRight: =20
-            Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =3
-
-            hrz_ProCheckboxes As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                Height: =Parent.Height
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutMinHeight: =50
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                Width: =Parent.Width
-                ZIndex: =1
-
-                chb_ProDorada As Checkbox:
-                    BasePaletteColor: =
-                    CheckboxSize: =16
-                    Checked: =
-                    DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                    FontColor: =
-                    FontSize: =14
-                    FontWeight: =FontWeight.Bold
-                    Height: =Parent.Height
-                    Label: ="Dorada"
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =160
-                    OnCheck: =
-                    OnUncheck: =
-                    Width: =110
-                    X: =40
-                    Y: =0
-                    ZIndex: =1
-
-                chb_ProReadyForNav As Checkbox:
-                    BasePaletteColor: =
-                    CheckboxSize: =16
-                    Checked: =
-                    DisplayMode: =If(!isLoading || IsEmpty(Filter(colEntries, ThisRecord.Quantity_NewLOT > 0)), DisplayMode.Edit, DisplayMode.Disabled)
-                    FontColor: =
-                    FontSize: =14
-                    FontWeight: =FontWeight.Bold
-                    Height: =Parent.Height
-                    Label: ="NAV"
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =160
-                    OnCheck: =
-                    OnUncheck: =
-                    Width: =80
-                    X: =40
-                    Y: =0
-                    ZIndex: =2
-
-            btn_ProSave As Button:
-                BasePaletteColor: =
-                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
-                Height: =32
-                Layout: ='ButtonCanvas.Layout'.TextOnly
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                OnSelect: |
-                    =Set(
-                        isLoading,
-                        true
-                    );
-                    IfError(
-                        GetXml.Run(
-                            SelectedFile,
-                            ReadyForProcessing
-                        ),
-                        IfError(
-                            UpdateXML.Run(
-                                "{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
-                                    AddColumns(
-                                        header,
-                                        Sales_Line,
-                                        ForAll(
-                                            colLines As line,
-                                            AddColumns(
-                                                line,
-                                                Res_Entry,
-                                                Filter(
-                                                    colEntries,
-                                                    ThisRecord.Source_Ref_No = line.Line_No
-                                                )
-                                            )
-                                        )
-                                    )
-                                ) & "}",
-                                SelectedFile,
-                                SelectedFolder
-                            ),
-                            Notify(
-                                "Došlo je do greške!",
-                                NotificationType.Error,
-                                2000
-                            ),
-                            Notify(
-                                "Uspješno ažuriranje!",
-                                NotificationType.Success,
-                                2000
-                            );
-                            If(
-                                chb_ProReadyForNav.Checked,
-                                ChangeXmlStatus.Run(
-                                    SelectedFile,
-                                    SelectedFolder,
-                                    ReadyForNAVProcessing
-                                );
-                                Navigate(
-                                    scr_Entry,
-                                    ScreenTransition.Fade
-                                ),
-                                If(
-                                    chb_ProDorada.Checked,
-                                    ChangeXmlStatus.Run(
-                                        SelectedFile,
-                                        SelectedFolder,
-                                        NAVChanges
-                                    );
-                                    Navigate(
-                                        scr_Entry,
-                                        ScreenTransition.Fade
-                                    ),
-                                    Navigate(
-                                        scr_XMLNalogZaProdaju,
-                                        ScreenTransition.Fade
-                                    )
+        com_Footer_1 As com_Footer:
+            IsInventura: =false
+            JSONData: |-
+                ="{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
+                    AddColumns(
+                        header,
+                        Sales_Line,
+                        ForAll(
+                            colLines As line,
+                            AddColumns(
+                                line,
+                                Res_Entry,
+                                Filter(
+                                    colEntries,
+                                    ThisRecord.Source_Ref_No = line.Line_No
                                 )
-                            );
-                        ),
-                        Set(
-                            SelectedFolder,
-                            ReadyForProcessing
-                        );
-                        Notify(
-                            "Postoje izmjene u ovom fajlu.",
-                            NotificationType.Information,
-                            2000
-                        );
-                        Navigate(
-                            scr_XMLNalogZaProdaju,
-                            ScreenTransition.Fade
+                            )
                         )
-                    );
-                    Set(
-                        isLoading,
-                        false
-                    );
-                Text: ="Sačuvaj"
-                Width: =96
-                X: =0
-                Y: =0
-                ZIndex: =3
+                    )
+                ) & "}"
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ZIndex: =4
 
     com_ProModal As com_Modal:
+        IsInventura: =false
         LineId: =glr_ProLines.Selected.Line_No
         Quantity: =Abs(glr_ProResEntries.Selected.Quantity)
         QuantityCompleted: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
