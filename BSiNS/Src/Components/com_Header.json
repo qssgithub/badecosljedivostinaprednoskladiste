@@ -638,6 +638,14 @@
                     "InvariantPropertyName": "PaddingRight",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
                 "ControlUniqueId": "8",
@@ -854,6 +862,12 @@
                     "InvariantScript": "0",
                     "Property": "PaddingRight",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "isMobile",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Behavior",
@@ -1552,7 +1566,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638548130878955708",
+    "LastModifiedTimestamp": "638548174373249316",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1648,7 +1662,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638548130878955708",
+  "LastModifiedTimestamp": "638548174373249316",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

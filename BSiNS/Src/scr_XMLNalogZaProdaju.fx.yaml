@@ -1793,6 +1793,8 @@
 
     com_Modal_1 As com_Modal:
         LineId: =glr_ProLines.Selected.Line_No
+        QuantityCompleted: =glr_ProResEntries.Selected.Quantity_Completed
+        QuantityNewLOT: =glr_ProResEntries.Selected.Quantity_NewLOT
         ResEntryId: =glr_ProResEntries.Selected.Entry_No
         Visible: =isModalOpen
         ZIndex: =3

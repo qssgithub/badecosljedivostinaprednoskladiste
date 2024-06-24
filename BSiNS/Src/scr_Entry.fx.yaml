@@ -19,6 +19,8 @@
             isModalOpen,
             false
         );
+        Clear(colLines);
+        Clear(colEntries);
         LoadData(
             lockedItems,
             "lockedItems",

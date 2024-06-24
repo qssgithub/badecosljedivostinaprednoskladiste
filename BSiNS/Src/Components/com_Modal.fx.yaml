@@ -471,8 +471,8 @@ com_Modal As CanvasComponent:
                                     com_Modal.IsInventura,
                                     {Qty_Phys_Inventory: inp_rezQty_2.Value},
                                     {
-                                        QuantityCompleted: inp_rezQty_2.Value,
-                                        QuantityNew: inp_potrebnoQty_2.Value
+                                        Quantity_Completed: inp_rezQty_2.Value,
+                                        Quantity_NewLOT: inp_potrebnoQty_2.Value
                                     }
                                 )
                             );
