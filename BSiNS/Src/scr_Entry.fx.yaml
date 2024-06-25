@@ -23,6 +23,10 @@
             isModalOpen,
             false
         );
+        Set(
+            wizardStep,
+            1
+        );
         Clear(colLines);
         Clear(colEntries);
         Clear(lockedItems);

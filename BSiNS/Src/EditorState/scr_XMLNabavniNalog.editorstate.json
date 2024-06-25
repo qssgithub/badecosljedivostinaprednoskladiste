@@ -3161,25 +3161,11 @@
         "X",
         "Y",
         "ZIndex",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "\"Text\"",
-          "InvariantPropertyName": "ButtonText",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "ShowIcon",
+        "EntryLabels",
+        "LineValueVisibility",
         "Lines",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line5: \"Line5\"}",
-          "InvariantPropertyName": "ItemLabels",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "Selected",
+        "LineLabels",
+        "SelectedLine",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -3188,9 +3174,10 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "WizardStep",
+        "SelectedEntry",
         "OnReset",
-        "Entries"
+        "Entries",
+        "NumberOfLinesToDisplay"
       ],
       "DynamicProperties": [
         {
@@ -3260,7 +3247,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "Metadata": {
-        "AllowAccessToGlobals": false,
+        "AllowAccessToGlobals": true,
         "AllowCustomization": true,
         "Description": ""
       },
@@ -3272,12 +3259,12 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "ButtonText",
+          "PropertyName": "EntryLabels",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
-          "PropertyName": "ShowIcon",
+          "PropertyName": "LineValueVisibility",
           "RuleProviderType": "System"
         },
         {
@@ -3287,22 +3274,27 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "ItemLabels",
+          "PropertyName": "LineLabels",
           "RuleProviderType": "User"
         },
         {
           "Category": "Data",
-          "PropertyName": "Selected",
-          "RuleProviderType": "Unknown"
+          "PropertyName": "SelectedLine",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Data",
-          "PropertyName": "WizardStep",
+          "PropertyName": "SelectedEntry",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
           "PropertyName": "Entries",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "NumberOfLinesToDisplay",
           "RuleProviderType": "System"
         },
         {
@@ -3328,7 +3320,7 @@
         {
           "Category": "Design",
           "PropertyName": "Height",
-          "RuleProviderType": "User"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",

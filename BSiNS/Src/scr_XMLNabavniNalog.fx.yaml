@@ -629,13 +629,12 @@
                                 Y: =87
                                 ZIndex: =10
 
-            com_Gallery_1 As com_Gallery:
+            com_Gallery_1 As com_Galleries:
                 FillPortions: =1
-                Height: =
-                ItemLabels: |-
-                    ={Line1: "Broj artikla", Line2: "Količina", Line3: "Rok trajanja", Line4: "LOT"}
                 LayoutMinHeight: =250
                 LayoutMinWidth: =250
+                LineLabels: |-
+                    ={Line1: "Broj artikla", Line2: "Količina", Line3: "Rok trajanja", Line4: "LOT"}
                 Visible: =wizardStep = 2 && !isLoading
                 ZIndex: =2
 

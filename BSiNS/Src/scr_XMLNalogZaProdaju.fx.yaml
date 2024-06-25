@@ -332,7 +332,6 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                LayoutOverflowY: =LayoutOverflow.Scroll
                 PaddingBottom: =10
                 PaddingLeft: =10
                 PaddingRight: =10
@@ -377,6 +376,7 @@
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
+                    Visible: =false
                     ZIndex: =3
 
                     TextCanvas5 As Text:
@@ -527,6 +527,14 @@
                                 Width: =Parent.TemplateWidth
                                 Y: =87
                                 ZIndex: =10
+
+                com_Galleries_1 As com_Galleries:
+                    FillPortions: =1
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =250
+                    LineLabels: |-
+                        ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina", Line4: "Količina za slanje:", Line5: "Line5"}
+                    ZIndex: =4
 
             Container14 As groupContainer.verticalAutoLayoutContainer:
                 DropShadow: =DropShadow.Light
