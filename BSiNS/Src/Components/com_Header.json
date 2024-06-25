@@ -130,7 +130,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "Container1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 385,
+            "PublishOrderIndex": 390,
             "Rules": [
               {
                 "Category": "Data",
@@ -454,7 +454,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "hrz_InvTitle_1",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 387,
+                "PublishOrderIndex": 392,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -614,7 +614,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\nSet(\n    wizardStep,\n    2\n);\n",
+                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\nSet(\n    wizardStep,\n    2\n);",
                     "Property": "OnScan",
                     "RuleProviderType": "User"
                   },
@@ -870,7 +870,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "hrz_InvTitle_1",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 388,
+                "PublishOrderIndex": 393,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -1177,7 +1177,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "Container1",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 386,
+            "PublishOrderIndex": 391,
             "Rules": [
               {
                 "Category": "Design",
@@ -1453,7 +1453,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "com_Header",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 384,
+        "PublishOrderIndex": 389,
         "Rules": [
           {
             "Category": "Design",
@@ -1636,7 +1636,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638549250369203383",
+    "LastModifiedTimestamp": "638549256134699471",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1732,7 +1732,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638549250369203383",
+  "LastModifiedTimestamp": "638549256134699471",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"
