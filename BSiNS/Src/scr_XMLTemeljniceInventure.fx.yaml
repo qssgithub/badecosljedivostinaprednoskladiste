@@ -416,7 +416,6 @@
 
         con_InvBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
-            DropShadow: =DropShadow.Light
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
@@ -427,25 +426,6 @@
             PaddingLeft: =10
             PaddingRight: =10
             ZIndex: =3
-
-            txt_InvDocumentName As Text:
-                Align: ='TextCanvas.Align'.Start
-                AutoHeight: =false
-                DisplayMode: =DisplayMode.Edit
-                Height: =40
-                LayoutMinHeight: =40
-                LayoutMinWidth: =50
-                PaddingBottom: =0
-                PaddingLeft: =5
-                PaddingRight: =5
-                PaddingTop: =0
-                Size: =14
-                Text: ="Stavke dokumenta " & SelectedDocumentName
-                Width: =Parent.Width
-                Wrap: =true
-                X: =0   
-                Y: =0
-                ZIndex: =1
 
             Container4 As groupContainer.manualLayoutContainer:
                 DropShadow: =DropShadow.Light
@@ -471,7 +451,7 @@
                         )
                     DelayItemLoading: =true
                     Fill: =RGBA(237, 237, 237, 1)
-                    Height: =Parent.Height
+                    Height: =Parent.Height - txt_InvDocumentName.Height
                     Items: =colLines
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
@@ -503,6 +483,7 @@
                     TemplateSize: =291
                     Visible: =!isLoading
                     Width: =Parent.Width
+                    Y: =txt_InvDocumentName.Height
                     ZIndex: =1
 
                     Icon2 As icon.Check:
@@ -881,6 +862,23 @@
                     X: =0
                     Y: =0
                     ZIndex: =2
+
+                txt_InvDocumentName As Text:
+                    Align: ='TextCanvas.Align'.Start
+                    AutoHeight: =false
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =40
+                    PaddingBottom: =0
+                    PaddingLeft: =5
+                    PaddingRight: =5
+                    PaddingTop: =0
+                    Size: =14
+                    Text: ="Stavke dokumenta " & SelectedDocumentName
+                    Width: =Parent.Width
+                    Wrap: =true
+                    X: =0   
+                    Y: =0
+                    ZIndex: =3
 
         com_InvFooter As com_Footer:
             JSONData: |-

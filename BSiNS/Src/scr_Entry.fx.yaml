@@ -26,9 +26,12 @@
         Clear(colLines);
         Clear(colEntries);
         Clear(lockedItems);
-        LoadData(
-            lockedItems,
-            "lockedItems",
+        IfError(
+            LoadData(
+                lockedItems,
+                "lockedItems",
+                true
+            ),
             true
         );
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});

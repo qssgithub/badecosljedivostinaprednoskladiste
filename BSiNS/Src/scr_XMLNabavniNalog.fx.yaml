@@ -1,13 +1,14 @@
 "scr_XMLNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: |+
-        =Set(isLoading, true);
-        
-        Reset(nabavniNalogReadyForNavCheckbox);
+    OnVisible: |
+        =Set(
+            isLoading,
+            true
+        );
         UpdateContext({scannedItem: Blank()});
-        
-        If(!IsBlank(SelectedFile),
+        If(
+            !IsBlank(SelectedFile),
             IfError(
                 UpdateContext(
                     {
@@ -15,17 +16,20 @@
                             GetXml.Run(
                                 SelectedFile,
                                 SelectedFolder
-                            ).response).Purchase_Header
-                        )
+                            ).response
+                        ).Purchase_Header )
                     }
-                ), 
-                Notify("Greška u obradi.", NotificationType.Error, 2000)
+                ),
+                Notify(
+                    "Greška u obradi.",
+                    NotificationType.Error,
+                    2000
+                )
             )
         );
-        
-        UpdateContext({
-            header:
-                {
+        UpdateContext(
+            {
+                header: {
                     Amount: Text(xmlData.Amount),
                     Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
                     Area: Text(xmlData.Area),
@@ -76,10 +80,9 @@
                     Vendor_Posting_Group: Text(xmlData.Vendor_Posting_Group),
                     'Vendor_Shipment_No.': Text(xmlData.'Vendor_Shipment_No.')
                 }
-        });
-        
-        
-        ClearCollect(
+            }
+        );
+        /*ClearCollect(
             purchaseCollection,
             IfError(
                 ForAll(
@@ -210,14 +213,171 @@
                     Unit_Of_Measure: Text(xmlData.Purchase_Line.Unit_Of_Measure)
                 }
             )
+        );*/
+        IfError(
+            ForAll(
+                xmlData.Purchase_Line As line,
+                Collect(
+                    colLines,
+                    {
+                        'Buy-from_Vendor_No.': Text(line.'Buy-from_Vendor_No.'),
+                        Description: Text(line.Description),
+                        Document_No: Text(line.Document_No),
+                        Document_Type: Text(line.Document_Type),
+                        Item_No: Text(line.Item_No),
+                        Line_No: Text(line.Line_No),
+                        Location_Code: Text(line.Location_Code),
+                        Posting_Group: Text(line.Posting_Group),
+                        Quantity: Text(line.Quantity),
+                        Type: Text(line.Type),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure)
+                    }
+                );
+                IfError(
+                    ForAll(
+                        line.Res_Entry As entry,
+                        Collect(
+                            colEntries,
+                            {
+                                Created_By: Text(entry.Created_By),
+                                Creation_Date: Text(entry.Creation_Date),
+                                Entry_No: Text(entry.Entry_No),
+                                Exp_Date: Text(entry.Exp_Date),
+                                Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                Item_No: Text(entry.Item_No),
+                                Item_Tracking: Text(entry.Item_Tracking),
+                                LOT_No: Text(entry.LOT_No),
+                                Location_Code: Text(entry.Location_Code),
+                                Positive: Text(entry.Positive),
+                                'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                                Quantity: Text(entry.Quantity),
+                                Quantity_Base: Text(entry.Quantity_Base),
+                                Res_Status: Text(entry.Res_Status),
+                                Shipment_Date: Text(entry.Shipment_Date),
+                                Source_ID: Text(entry.Source_ID),
+                                Source_Ref_No: Text(entry.Source_Ref_No),
+                                Source_SubType: Text(entry.Source_SubType),
+                                Source_Type: Text(entry.Source_Type)
+                            }
+                        )
+                    ),
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(line.Res_Entry.Created_By),
+                            Creation_Date: Text(line.Res_Entry.Creation_Date),
+                            Entry_No: Text(line.Res_Entry.Entry_No),
+                            Exp_Date: Text(line.Res_Entry.Exp_Date),
+                            Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                            Item_No: Text(line.Res_Entry.Item_No),
+                            Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                            LOT_No: Text(line.Res_Entry.LOT_No),
+                            Location_Code: Text(line.Res_Entry.Location_Code),
+                            Positive: Text(line.Res_Entry.Positive),
+                            'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(line.Res_Entry.Quantity),
+                            Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                            Res_Status: Text(line.Res_Entry.Res_Status),
+                            Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                            Source_ID: Text(line.Res_Entry.Source_ID),
+                            Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                            Source_SubType: Text(line.Res_Entry.Source_SubType),
+                            Source_Type: Text(line.Res_Entry.Source_Type)
+                        }
+                    )
+                )
+            ),
+            Collect(
+                colLines,
+                {
+                    'Buy-from_Vendor_No.': Text(xmlData.Purchase_Line.'Buy-from_Vendor_No.'),
+                    Description: Text(xmlData.Purchase_Line.Description),
+                    Document_No: Text(xmlData.Purchase_Line.Document_No),
+                    Document_Type: Text(xmlData.Purchase_Line.Document_Type),
+                    Item_No: Text(xmlData.Purchase_Line.Item_No),
+                    Line_No: Text(xmlData.Purchase_Line.Line_No),
+                    Location_Code: Text(xmlData.Purchase_Line.Location_Code),
+                    Posting_Group: Text(xmlData.Purchase_Line.Posting_Group),
+                    Quantity: Text(xmlData.Purchase_Line.Quantity),
+                    Type: Text(xmlData.Purchase_Line.Type),
+                    Unit_Of_Measure: Text(xmlData.Purchase_Line.Unit_Of_Measure)
+                }
+            );
+            IfError(
+                ForAll(
+                    xmlData.Purchase_Line.Res_Entry As entry,
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(entry.Created_By),
+                            Creation_Date: Text(entry.Creation_Date),
+                            Entry_No: Text(entry.Entry_No),
+                            Exp_Date: Text(entry.Exp_Date),
+                            Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                            Item_No: Text(entry.Item_No),
+                            Item_Tracking: Text(entry.Item_Tracking),
+                            LOT_No: Text(entry.LOT_No),
+                            Location_Code: Text(entry.Location_Code),
+                            Positive: Text(entry.Positive),
+                            'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(entry.Quantity),
+                            Quantity_Base: Text(entry.Quantity_Base),
+                            Res_Status: Text(entry.Res_Status),
+                            Shipment_Date: Text(entry.Shipment_Date),
+                            Source_ID: Text(entry.Source_ID),
+                            Source_Ref_No: Text(entry.Source_Ref_No),
+                            Source_SubType: Text(entry.Source_SubType),
+                            Source_Type: Text(entry.Source_Type)
+                        }
+                    )
+                ),
+                Collect(
+                    colEntries,
+                    {
+                        Created_By: Text(xmlData.Purchase_Line.Res_Entry.Created_By),
+                        Creation_Date: Text(xmlData.Purchase_Line.Res_Entry.Creation_Date),
+                        Entry_No: Text(xmlData.Purchase_Line.Res_Entry.Entry_No),
+                        Exp_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Date),
+                        Exp_Receipt_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Receipt_Date),
+                        Item_No: Text(xmlData.Purchase_Line.Res_Entry.Item_No),
+                        Item_Tracking: Text(xmlData.Purchase_Line.Res_Entry.Item_Tracking),
+                        LOT_No: Text(xmlData.Purchase_Line.Res_Entry.LOT_No),
+                        Location_Code: Text(xmlData.Purchase_Line.Res_Entry.Location_Code),
+                        Positive: Text(xmlData.Purchase_Line.Res_Entry.Positive),
+                        'Qty-to-Handle_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
+                        Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
+                        Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
+                        Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
+                        Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
+                        Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
+                        Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
+                        Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
+                        Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
+                    }
+                )
+            )
         );
-        
-        Set(isLoading, false);
-        
-        If(SelectedFolder = ReadyForProcessing, ChangeXmlStatus.Run(SelectedFile, SelectedFolder, InProgress); Set(SelectedFolder, InProgress));
-        
-        UpdateContext({wizardStep:1});
-        
+        Set(
+            isLoading,
+            false
+        );
+        If(
+            SelectedFolder = ReadyForProcessing,
+            ChangeXmlStatus.Run(
+                SelectedFile,
+                SelectedFolder,
+                InProgress
+            );
+            Set(
+                SelectedFolder,
+                InProgress
+            )
+        );
+        UpdateContext({wizardStep: 1});
 
     NabavniNalogScreenContainer As groupContainer.verticalAutoLayoutContainer:
         Fill: =RGBA(245, 245, 245, 1)
@@ -244,217 +404,17 @@
             Height: =150
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
-            LayoutGap: =10
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
-            PaddingBottom: =10
-            PaddingLeft: =10
-            PaddingRight: =10
             ZIndex: =2
-
-            com_NabHeaderData As com_HeaderData:
-                AlignInContainer: =AlignInContainer.Center
-                LayoutMinHeight: =640
-                LayoutMinWidth: =250
-                Line1Label: |-
-                    ="Broj naloga:"
-                Line1Value: =header.No
-                Line2Label: |-
-                    ="Datum dokumenta:"
-                Line2Value: =header.Document_Date
-                Line3Label: |-
-                    ="Datum narudžbe:"
-                Line3Value: =header.Location_Code & " " & header.'Ship-to_Name'
-                Line4Label: |-
-                    ="Nabavka u:"
-                Line4Value: =header.Location_Code & " " & header.'Ship-to_Name'
-                Line5Label: |-
-                    ="Dobavljač:"
-                Width: =App.Width - 20
-
-            Container7 As groupContainer.horizontalAutoLayoutContainer:
-                DropShadow: =DropShadow.Light
-                FillPortions: =0
-                Height: =150
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =150
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                Visible: =false
-                ZIndex: =2
-
-                Container6 As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    FillPortions: =0
-                    Height: =150
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutGap: =10
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =5
-                    PaddingLeft: =20
-                    PaddingRight: =20
-                    PaddingTop: =5
-                    Width: =150
-                    ZIndex: =1
-
-                    txt_NabHeaderNo As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: |-
-                            ="Broj naloga:"
-                        Width: =125
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =1
-
-                    TextCanvas1_1 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: |-
-                            ="Datum dokumenta:"
-                        Width: =txt_NabHeaderNo.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =2
-
-                    TextCanvas1_2 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: |-
-                            ="Datum narudžbe:"
-                        Width: =txt_NabHeaderNo.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =3
-
-                    TextCanvas1_3 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: |-
-                            ="Nabavka u:"
-                        Width: =txt_NabHeaderNo.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =4
-
-                    TextCanvas1_4 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: |-
-                            ="Dobavljač:"
-                        Width: =txt_NabHeaderNo.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =5
-
-                Container6_1 As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    Height: =150
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutGap: =10
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =5
-                    PaddingTop: =5
-                    ZIndex: =2
-
-                    txt_NabHeaderNoValue As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: =header.No
-                        Width: =Parent.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =1
-
-                    TextCanvas1_8 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: =header.Document_Date
-                        Width: =txt_NabHeaderNoValue.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =2
-
-                    TextCanvas1_7 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: =header.Order_Date
-                        Width: =txt_NabHeaderNoValue.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =3
-
-                    TextCanvas1_6 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: =header.Location_Code & " " & header.'Ship-to_Name'
-                        Width: =txt_NabHeaderNoValue.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =4
-
-                    TextCanvas1_5 As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: =header.'Buy-from_Vendor_No.' & " " & header.'Buy-from_Vendor_Name'
-                        Width: =txt_NabHeaderNoValue.Width
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =5
 
             Container2_6 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =RGBA(214, 221, 224, 1)
                 BorderThickness: =0.5
-                DropShadow: =DropShadow.Light
                 Height: =40
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
@@ -463,165 +423,221 @@
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
+                LayoutOverflowY: =LayoutOverflow.Scroll
+                PaddingBottom: =10
                 PaddingLeft: =10
                 PaddingRight: =10
+                PaddingTop: =5
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Visible: =!isLoading && wizardStep = 1
                 Width: =Max(App.Width, App.MinScreenWidth)
-                ZIndex: =3
+                ZIndex: =1
 
-                TextCanvas2 As Text:
-                    AutoHeight: =true
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Size: =18
-                    Text: ="Stavke nabavke"
-                    Width: =96
-                    Wrap: =false
-                    X: =0
-                    Y: =0
-                    ZIndex: =1
+                com_NabHeaderData As com_HeaderData:
+                    AlignInContainer: =AlignInContainer.Center
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =250
+                    Line1Label: |-
+                        ="Broj naloga:"
+                    Line1Value: =header.No
+                    Line2Label: |-
+                        ="Datum dokumenta:"
+                    Line2Value: =header.Document_Date
+                    Line3Label: |-
+                        ="Datum narudžbe:"
+                    Line3Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                    Line4Label: |-
+                        ="Nabavka u:"
+                    Line4Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                    Line5Label: |-
+                        ="Dobavljač:"
+                    Line5Value: =header.'Buy-from_Vendor_No.' & " " & header.'Buy-from_Vendor_Name'
+                    Visible: =!isLoading
 
-                "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    BorderColor: =App.Theme.Colors.Darker40
-                    Default: =First(Filter(Self.AllItems, Line_No = scannedItem))
-                    DelayItemLoading: =true
-                    Fill: =RGBA(237, 237, 237, 1)
-                    Height: =562
-                    Items: =colLines
-                    Layout: =Layout.Vertical
-                    LayoutMinHeight: =Self.TemplateHeight * Self.AllItemsCount
-                    LayoutMinWidth: =320
-                    LoadingSpinner: =LoadingSpinner.Data
-                    OnSelect: |-
-                        =UpdateContext({wizardStep:2});
-                    TemplatePadding: =0
-                    TemplateSize: =198
-                    Visible: =wizardStep = 1
-                    Width: =Parent.Width
-                    Y: =49
-                    ZIndex: =2
+                Container3 As groupContainer.verticalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =5
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =5
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =5
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =4
 
-                    Separator6_6 As rectangle:
+                    TextCanvas2 As Text:
+                        AutoHeight: =true
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =18
+                        Text: ="Stavke nabavke"
+                        Width: =96
+                        Wrap: =false
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                        AlignInContainer: =AlignInContainer.SetByContainer
                         BorderColor: =App.Theme.Colors.Darker40
-                        Fill: =RGBA(255, 255, 255, 1)
-                        Height: =8
-                        OnSelect: =Select(Parent)
-                        Width: =Parent.TemplateWidth
-                        Y: =Parent.TemplateHeight - Self.Height
-                        ZIndex: =5
+                        Default: =First(Filter(Self.AllItems, Line_No = scannedItem))
+                        DelayItemLoading: =true
+                        Fill: =RGBA(237, 237, 237, 1)
+                        Height: =562
+                        Items: =colLines
+                        Layout: =Layout.Vertical
+                        LayoutMinHeight: =200
+                        LayoutMinWidth: =320
+                        LoadingSpinner: =LoadingSpinner.Data
+                        OnSelect: |-
+                            =UpdateContext({wizardStep:2});
+                        TemplatePadding: =0
+                        TemplateSize: =198
+                        Width: =Parent.Width
+                        Y: =49
+                        ZIndex: =2
 
-                    Rectangle5_3 As rectangle:
-                        BorderColor: =App.Theme.Colors.Darker40
-                        Fill: =App.Theme.Colors.Darker30
-                        Height: =Parent.TemplateHeight - Separator6_6.Height
-                        OnSelect: =Select(Parent)
-                        Visible: =ThisItem.IsSelected
-                        Width: =1
-                        ZIndex: =6
-
-                    Group2_4 As group:
-                        Height: =5
-                        Width: =5
-                        X: =40
-                        Y: =40
-                        ZIndex: =14
-
-                        Title5_3 As label:
-                            Color: =RGBA(50, 49, 48, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                        Separator6_6 As rectangle:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =RGBA(255, 255, 255, 1)
+                            Height: =8
                             OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =20
-                            PaddingRight: =20
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Br. artikla:   " & ThisItem.Item_No
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =1
-                            Y: =18
-                            ZIndex: =1
+                            Width: =Parent.TemplateWidth
+                            Y: =Parent.TemplateHeight - Self.Height
+                            ZIndex: =5
 
-                        Subtitle4_3 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                        Rectangle5_3 As rectangle:
+                            BorderColor: =App.Theme.Colors.Darker40
+                            Fill: =App.Theme.Colors.Darker30
+                            Height: =Parent.TemplateHeight - Separator6_6.Height
                             OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =20
-                            PaddingRight: =20
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Kategorija artikla:   " & ThisItem.Posting_Group
-                            VerticalAlign: =VerticalAlign.Top
+                            Visible: =ThisItem.IsSelected
                             Width: =1
-                            Y: =52
-                            ZIndex: =2
+                            ZIndex: =6
 
-                        Body1_10 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =18
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =20
-                            PaddingRight: =20
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Količina:    " & ThisItem.Quantity
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =1
-                            Y: =121
-                            ZIndex: =3
+                        Group2_4 As group:
+                            Height: =5
+                            Width: =5
+                            X: =40
+                            Y: =40
+                            ZIndex: =14
 
-                        Body1_11 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =20
-                            PaddingRight: =20
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Jedinica mjere:    " & ThisItem.Unit_Of_Measure
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =1
-                            Y: =153
-                            ZIndex: =8
+                            Title5_3 As label:
+                                Color: =RGBA(50, 49, 48, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =22
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Br. artikla:   " & ThisItem.Item_No
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth
+                                Y: =18
+                                ZIndex: =1
 
-                        Body1_8 As label:
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
-                            OnSelect: =Select(Parent)
-                            PaddingBottom: =0
-                            PaddingLeft: =20
-                            PaddingRight: =20
-                            PaddingTop: =0
-                            Size: =12
-                            Text: |-
-                                ="Naziv artikla:   " & ThisItem.Description
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =1
-                            Y: =87
-                            ZIndex: =10
+                            Subtitle4_3 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =22
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Kategorija artikla:   " & ThisItem.Posting_Group
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth
+                                Y: =52
+                                ZIndex: =2
+
+                            Body1_10 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =18
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Količina:    " & ThisItem.Quantity
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth
+                                Y: =121
+                                ZIndex: =3
+
+                            Body1_11 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =22
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Jedinica mjere:    " & ThisItem.Unit_Of_Measure
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth
+                                Y: =153
+                                ZIndex: =8
+
+                            Body1_8 As label:
+                                Color: =RGBA(0, 0, 0, 1)
+                                DisabledColor: =RGBA(166, 166, 166, 1)
+                                Font: =App.Theme.Font
+                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                Height: =22
+                                OnSelect: =Select(Parent)
+                                PaddingBottom: =0
+                                PaddingLeft: =20
+                                PaddingRight: =20
+                                PaddingTop: =0
+                                Size: =12
+                                Text: |-
+                                    ="Naziv artikla:   " & ThisItem.Description
+                                VerticalAlign: =VerticalAlign.Top
+                                Width: =Parent.TemplateWidth
+                                Y: =87
+                                ZIndex: =10
+
+            com_Gallery_1 As com_Gallery:
+                FillPortions: =1
+                Height: =
+                ItemLabels: |-
+                    ={Line1: "Broj artikla", Line2: "Količina", Line3: "Rok trajanja", Line4: "LOT"}
+                LayoutMinHeight: =250
+                LayoutMinWidth: =250
+                Visible: =wizardStep = 2 && !isLoading
+                ZIndex: =2
 
             Spinner2_1 As Spinner:
                 AlignInContainer: =AlignInContainer.Stretch
@@ -637,7 +653,7 @@
                 Width: =200
                 X: =0
                 Y: =0
-                ZIndex: =5
+                ZIndex: =3
 
         NabavniNalogBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -677,11 +693,11 @@
                     "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                         BorderColor: =App.Theme.Colors.Darker40
                         Default: |
-                            =First(Filter(purchaseCollection, Line_No = scannedItem))
+                            =First(Filter(colLines, Line_No = scannedItem))
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =562
-                        Items: =purchaseCollection
+                        Items: =colLines
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         OnSelect: |-
@@ -899,7 +915,7 @@
                         DelayItemLoading: =true
                         Fill: =RGBA(237, 237, 237, 1)
                         Height: =560
-                        Items: =NabavniNalogLines.Selected.Res_Entry
+                        Items: =colEntries
                         Layout: =Layout.Vertical
                         LoadingSpinner: =LoadingSpinner.Data
                         TemplatePadding: =0
@@ -1024,7 +1040,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
+                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -1045,7 +1061,7 @@
                                 HoverDateFill: =App.Theme.Colors.Lighter70
                                 IconBackground: =App.Theme.Colors.Primary
                                 OnChange: |-
-                                    =UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
+                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
                                 OnSelect: =
                                 SelectedDateFill: =App.Theme.Colors.Primary
                                 Width: =158
@@ -1064,7 +1080,7 @@
                                 FontSize: =15
                                 Height: =31
                                 OnChange: |-
-                                    =UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot.Value)})
+                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot.Value)})
                                 Value: =ThisItem.LOT_No
                                 Width: =113
                                 X: =80
@@ -1224,177 +1240,26 @@
                         X: =20
                         ZIndex: =1
 
-        NabavniNalogFooter As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
-            BorderColor: =RGBA(233, 79, 76, 1)
-            DropShadow: =DropShadow.Light
-            Fill: =RGBA(237, 237, 237, 1)
-            FillPortions: =0
-            Height: =50
-            LayoutAlignItems: =LayoutAlignItems.End
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMinHeight: =50
-            LayoutMinWidth: =250
-            LayoutMode: =LayoutMode.Auto
-            PaddingLeft: =15
-            PaddingRight: =20
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Visible: =false
-            Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =4
-
-            nabavniNalogReadyForNavCheckbox As Checkbox:
-                BasePaletteColor: =RGBA(249, 83, 109, 1)
-                CheckboxSize: =16
-                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                FontColor: =
-                FontSize: =14
-                FontWeight: =FontWeight.Bold
-                Height: =Parent.Height
-                Label: ="Spremno za NAV"
-                LayoutMinHeight: =32
-                LayoutMinWidth: =160
-                OnCheck: =false
-                OnUncheck: =false
-                Width: =160
-                X: =0
-                Y: =0
-                ZIndex: =2
-
-            saveXml As button:
-                AlignInContainer: =AlignInContainer.Center
-                BorderColor: =App.Theme.Colors.Primary
-                DisabledBorderColor: =RGBA(244, 244, 244, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                DisabledFill: =RGBA(244, 244, 244, 1)
-                DisplayMode: =If(!isLoading, DisplayMode.Edit, DisplayMode.Disabled)
-                Fill: =App.Theme.Colors.Primary
-                Font: =App.Theme.Font
-                FontWeight: =FontWeight.Semibold
-                Height: =30
-                HoverBorderColor: =App.Theme.Colors.Darker10
-                HoverColor: =RGBA(255, 255, 255, 1)
-                HoverFill: =App.Theme.Colors.Darker10
-                OnSelect: |-
-                    =UpdateContext({
-                        purchaseJsonData:
-                        JSON(
-                            {
-                                Purchase_Header: {
-                                    Document_Type: Text(purchase_header.Document_Type)
-                                    ,
-                                    'Buy-from_Vendor_No.': Text(purchase_header.'Buy-from_Vendor_No.'),
-                                    'No.': Text(purchase_header.'No.'),
-                                    'Ship-to_Code': Text(purchase_header.'Ship-to_Code'),
-                                    'Ship-to_Name': Text(purchase_header.'Ship-to_Name'),
-                                    'Ship-to_Name_2': Text(purchase_header.'Ship-to_Name_2'),
-                                    'Ship-to_Address': Text(purchase_header.'Ship-to_Address'),
-                                    'Ship-to_Address_2': Text(purchase_header.'Ship-to_Address_2'),
-                                    'Ship-to_City': Text(purchase_header.'Ship-to_City'),
-                                    'Ship-to_Contact': Text(purchase_header.'Ship-to_Contact'),
-                                    Order_Date: Text(purchase_header.Order_Date),
-                                    Expected_Receipt_Date: Text(purchase_header.Expected_Receipt_Date),
-                                    Due_Date: Text(purchase_header.Due_Date),
-                                    Shipment_Method_Code: Text(purchase_header.Shipment_Method_Code),
-                                    Location_Code: Text(purchase_header.Location_Code),
-                                    Vendor_Posting_Group: Text(purchase_header.Vendor_Posting_Group),
-                                    Currency_Code: Text(purchase_header.Currency_Code),
-                                    Language_Code: Text(purchase_header.Language_Code),
-                                    Purchaser_Code: Text(purchase_header.Purchaser_Code),
-                                    Amount: Text(purchase_header.Amount),
-                                    Amount_Including_VAT: Text(purchase_header.Amount_Including_VAT),
-                                    'Vendor_Order_No.': Text(purchase_header.'Vendor_Order_No.'),
-                                    'Vendor_Shipment_No.': Text(purchase_header.'Vendor_Shipment_No.'),
-                                    'Vendor_Invoice_No.': Text(purchase_header.'Vendor_Invoice_No.'),
-                                    'VAT_Registration_No.': Text(purchase_header.VAT_Registration_No),
-                                    Gen_Bus_Posting_Group: Text(purchase_header.Gen_Bus_Posting_Group),
-                                    Transport_Method: Text(purchase_header.Transport_Method),
-                                    VAT_Country_Code: Text(purchase_header.VAT_Country_Code),
-                                    'Buy-from_Vendor_Name': Text(purchase_header.'Buy-from_Vendor_Name'),
-                                    'Buy-from_Vendor_Name_2': Text(purchase_header.'Buy-from_Vendor_Name_2'),
-                                    'Buy-from_Address': Text(purchase_header.'Buy-from_Address'),
-                                    'Buy-from_Address_2': Text(purchase_header.'Buy-from_Address_2'),
-                                    'Buy-from_City': Text(purchase_header.'Buy-from_City'),
-                                    'Buy-from_Contact': Text(purchase_header.'Buy-from_Contact'),
-                                    'Buy-from_Post_Code': Text(purchase_header.'Buy-from_Post_Code'),
-                                    'Buy-from_County': Text(purchase_header.'Buy-from_County'),
-                                    'Buy-from_Country_Code': Text(purchase_header.'Buy-from_Country_Code'),
-                                    'Ship-to_Post_Code': Text(purchase_header.'Ship-to_Post_Code'),
-                                    'Ship-to_County': Text(purchase_header.'Ship-to_County'),
-                                    'Ship-to_Country_Code': Text(purchase_header.'Ship-to_Country_Code'),
-                                    Document_Date: Text(purchase_header.Document_Date),
-                                    Area: Text(purchase_header.Area),
-                                    Tax_Area_Code: Text(purchase_header.Tax_Area_Code),
-                                    VAT_Bus_Posting_Group: Text(purchase_header.'VAT_Bus._Posting_Group'),
-                                    Status: Text(purchase_header.Status),
-                                    'Campaign_No.': Text(purchase_header.'Campaign_No.'),
-                                    'Buy-from_Contact_No.': Text(purchase_header.'Buy-from_Contact_No.'),
-                                    Requested_Receipt_Date: Text(purchase_header.Requested_Receipt_Date),
-                                    Promised_Receipt_Date: Text(purchase_header.Promised_Receipt_Date),
-                                    Purchase_Line: ForAll(colPurchaseLines As pl,{
-                                        'Buy-from_Vendor_No.': Text(pl.'Buy-from_Vendor_No.'),
-                                        Description: Text(pl.Description),
-                                        Document_No:Text(pl.Document_No),
-                                        Document_Type:Text(pl.Document_Type),
-                                        Item_No:Text(pl.Item_No),
-                                        Line_No:Text(pl.Line_No),
-                                        Location_Code:Text(pl.Location_Code),
-                                        Posting_Group:Text(pl.Posting_Group),
-                                        Quantity:Text(pl.Quantity),
-                                        Type:Text(pl.Type),
-                                        Unit_Of_Measure:Text(pl.Unit_Of_Measure),
-                                        Res_Entry: ForAll(Filter(colPurchaseResEntry, ThisRecord.Item_No = pl.Item_No),
-                                            {
-                                                Created_By: Text(Created_By),
-                                                Creation_Date: Text(Creation_Date),
-                                                Entry_No: Text(Entry_No),
-                                                Exp_Date: Text(Exp_Date),
-                                                Exp_Receipt_Date: Text(Exp_Receipt_Date),
-                                                Item_No: Text(Item_No),
-                                                Item_Tracking: Text(Item_Tracking),
-                                                LOT_No: Text(LOT_No),
-                                                Location_Code: Text(Location_Code),
-                                                Positive: Text(Positive),
-                                                'Qty-to-Handle_Base': Text('Qty-to-Handle_Base'),
-                                                'Qty-to-Invoice_Base': Text('Qty-to-Invoice_Base'),
-                                                Quantity: Text(Quantity),
-                                                Quantity_Base: Text(Quantity_Base),
-                                                Res_Status: Text(Res_Status),
-                                                Shipment_Date: Text(Shipment_Date),
-                                                Source_ID: Text(Source_ID),
-                                                Source_Ref_No: Text(Source_Ref_No),
-                                                Source_SubType: Text(Source_SubType),
-                                                Source_Type: Text(Source_Type)
-                                            })
-                                    })
-                                }
-                            },JSONFormat.IgnoreUnsupportedTypes
-                        )
-                    });
-                    
-                    UpdateContext({response: UpdateXML.Run(purchaseJsonData, SelectedFile, SelectedFolder, nabavniNalogReadyForNavCheckbox.Checked)});
-                    
-                    UpdateContext({parsedResponseMessage : ParseJSON(response.responsemessage)});
-                    Set(SelectedFolder, response.folder);
-                    
-                    If(response.folder = "ReadyForNAVProcessing", Navigate(scr_Entry,ScreenTransition.Fade), Navigate(scr_XMLNabavniNalog,ScreenTransition.Fade));
-                    
-                    Notify(parsedResponseMessage.Message , If(parsedResponseMessage.Status = "200", NotificationType.Success, NotificationType.Error), 2000);
-                PressedBorderColor: =App.Theme.Colors.Darker40
-                PressedColor: =Self.Color
-                PressedFill: =App.Theme.Colors.Darker40
-                Size: =12
-                Text: ="Sačuvaj"
-                Width: =100
-                X: =570
-                Y: =718
-                ZIndex: =3
-
         com_Footer_2 As com_Footer:
             IsInventura: =false
+            JSONData: |-
+                ="{" & Char(34) & "Purchase_Header" & Char(34) & ": " & JSON(
+                    AddColumns(
+                        header,
+                        Purchase_Line,
+                        ForAll(
+                            colLines As line,
+                            AddColumns(
+                                line,
+                                Res_Entry,
+                                Filter(
+                                    colEntries,
+                                    ThisRecord.Source_Ref_No = line.Line_No
+                                )
+                            )
+                        )
+                    )
+                ) & "}"
             LayoutMinHeight: =640
             LayoutMinWidth: =640
             ZIndex: =6
