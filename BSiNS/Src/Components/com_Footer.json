@@ -497,9 +497,9 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "If(!isLoading && IsEmpty(Filter(colEntries, ThisRecord.Quantity_NewLOT > 0)), DisplayMode.Edit, DisplayMode.Disabled)",
+                    "InvariantScript": "If(!isLoading && (com_Footer.IsInventura || IsEmpty(Filter(colEntries, Abs(ThisRecord.Quantity_NewLOT) > 0))), DisplayMode.Edit, DisplayMode.Disabled)",
                     "Property": "DisplayMode",
-                    "RuleProviderType": "Unknown"
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Design",
@@ -1361,7 +1361,7 @@
       },
       "JSONData"
     ],
-    "LastModifiedTimestamp": "638549188769681524",
+    "LastModifiedTimestamp": "638549247863163811",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -1451,7 +1451,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638549188769681524",
+  "LastModifiedTimestamp": "638549247863163811",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"

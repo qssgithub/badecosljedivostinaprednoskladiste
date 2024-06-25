@@ -98,11 +98,15 @@ com_Header As CanvasComponent:
                 LayoutMinHeight: =20
                 LayoutMinWidth: =280
                 OnCancel: =false
-                OnScan: |-
+                OnScan: |
                     =Set(
                         ScannedItem,
                         First(BarcodeReader2.Barcodes).Value
-                    )
+                    );
+                    Set(
+                        wizardStep,
+                        2
+                    );
                 PaddingBottom: =0
                 PaddingLeft: =0
                 PaddingRight: =0

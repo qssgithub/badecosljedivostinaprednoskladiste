@@ -59,7 +59,7 @@ com_Footer As CanvasComponent:
                 BasePaletteColor: =
                 CheckboxSize: =16
                 Checked: =
-                DisplayMode: =If(!isLoading && IsEmpty(Filter(colEntries, ThisRecord.Quantity_NewLOT > 0)), DisplayMode.Edit, DisplayMode.Disabled)
+                DisplayMode: =If(!isLoading && (com_Footer.IsInventura || IsEmpty(Filter(colEntries, Abs(ThisRecord.Quantity_NewLOT) > 0))), DisplayMode.Edit, DisplayMode.Disabled)
                 FontColor: =
                 FontSize: =14
                 FontWeight: =FontWeight.Bold

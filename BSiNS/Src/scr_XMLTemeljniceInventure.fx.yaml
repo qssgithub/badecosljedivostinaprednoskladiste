@@ -881,6 +881,7 @@
                     ZIndex: =3
 
         com_InvFooter As com_Footer:
+            IsInventura: =true
             JSONData: |-
                 ="{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}"
             LayoutMinHeight: =640
