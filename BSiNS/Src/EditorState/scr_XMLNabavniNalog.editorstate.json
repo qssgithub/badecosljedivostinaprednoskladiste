@@ -3091,7 +3091,7 @@
       "MetaDataIDKey": "",
       "Name": "com_Footer_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3161,19 +3161,33 @@
         "X",
         "Y",
         "ZIndex",
-        "EntryLabels",
-        "LineValueVisibility",
-        "EntriesToDisplay",
-        "LineLabels",
-        "SelectedLine",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
-          "InvariantPropertyName": "Visible",
+          "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line5: \"Line5\"}",
+          "InvariantPropertyName": "EntryLabels",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
+          "InvariantPropertyName": "LineValueVisibility",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "EntriesToDisplay",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line1: \"Broj artikla\", Line2: \"Količina\", Line3: \"Rok trajanja\", Line4: \"LOT\"}",
+          "InvariantPropertyName": "LineLabels",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "SelectedLine",
+        "Visible",
         "SelectedEntry",
         "OnReset",
         "NumberOfLinesToDisplay"
@@ -3253,18 +3267,18 @@
       "MetaDataIDKey": "",
       "Name": "com_Gallery_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
           "PropertyName": "EntryLabels",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -3430,7 +3444,7 @@
       "MetaDataIDKey": "",
       "Name": "com_NabHeader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3461,7 +3475,7 @@
         {
           "Category": "Design",
           "PropertyName": "Width",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -3793,8 +3807,22 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "LineId",
-        "ResEntryId",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"Text\"",
+          "InvariantPropertyName": "LineId",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"Text\"",
+          "InvariantPropertyName": "ResEntryId",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -3829,12 +3857,12 @@
         {
           "Category": "Data",
           "PropertyName": "ResEntryId",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "LineId",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -4549,7 +4577,7 @@
       "MetaDataIDKey": "",
       "Name": "Container2_6",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4779,6 +4807,14 @@
           "InvariantPropertyName": "PaddingRight",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "DynamicProperties": [
@@ -4973,6 +5009,11 @@
         {
           "Category": "Design",
           "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         }
       ],
@@ -5172,7 +5213,7 @@
       "MetaDataIDKey": "",
       "Name": "Container5",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7692,7 +7733,7 @@
       "MetaDataIDKey": "",
       "Name": "NabavniNalogBody",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -10581,7 +10622,7 @@
       "MetaDataIDKey": "",
       "Name": "Spinner2_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

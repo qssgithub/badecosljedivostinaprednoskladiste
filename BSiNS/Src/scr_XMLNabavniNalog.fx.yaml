@@ -432,7 +432,7 @@
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
-                Visible: =!isLoading && wizardStep = 1
+                Visible: =!isLoading
                 Width: =Max(App.Width, App.MinScreenWidth)
                 ZIndex: =1
 
@@ -455,7 +455,7 @@
                     Line5Label: |-
                         ="Dobavljač:"
                     Line5Value: =header.'Buy-from_Vendor_No.' & " " & header.'Buy-from_Vendor_Name'
-                    Visible: =!isLoading
+                    Visible: =wizardStep = 1
 
                 Container3 As groupContainer.verticalAutoLayoutContainer:
                     DropShadow: =DropShadow.Light
@@ -473,6 +473,7 @@
                     RadiusBottomRight: =4
                     RadiusTopLeft: =4
                     RadiusTopRight: =4
+                    Visible: =false
                     ZIndex: =4
 
                     TextCanvas2 As Text:
@@ -629,14 +630,18 @@
                                 Y: =87
                                 ZIndex: =10
 
-            com_Gallery_1 As com_Galleries:
-                FillPortions: =1
-                LayoutMinHeight: =250
-                LayoutMinWidth: =250
-                LineLabels: |-
-                    ={Line1: "Broj artikla", Line2: "Količina", Line3: "Rok trajanja", Line4: "LOT"}
-                Visible: =wizardStep = 2 && !isLoading
-                ZIndex: =2
+                com_Gallery_1 As com_Galleries:
+                    EntryLabels: |-
+                        ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina"}
+                    FillPortions: =1
+                    LayoutMinHeight: =250
+                    LayoutMinWidth: =250
+                    LineLabels: |-
+                        ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
+                    LineValueVisibility: |-
+                        ={Line_No: false, Item_No: true, Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: true, 'Qty-to_Ship': false}
+                    Visible: =true
+                    ZIndex: =5
 
             Spinner2_1 As Spinner:
                 AlignInContainer: =AlignInContainer.Stretch
@@ -1240,7 +1245,6 @@
                         ZIndex: =1
 
         com_Footer_2 As com_Footer:
-            IsInventura: =false
             JSONData: |-
                 ="{" & Char(34) & "Purchase_Header" & Char(34) & ": " & JSON(
                     AddColumns(
@@ -1264,6 +1268,8 @@
             ZIndex: =6
 
     com_NabModal As com_Modal:
+        LineId: =com_Gallery_1.SelectedLine.Line_No
+        ResEntryId: =com_Gallery_1.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =2
 

@@ -307,7 +307,6 @@
 
         com_ProHeader As com_Header:
             LayoutMinHeight: =640
-            LayoutMinWidth: =640
             Title: ="NALOG ZA PRODAJU"
 
         Container9 As groupContainer.verticalAutoLayoutContainer:
@@ -905,7 +904,6 @@
                 ZIndex: =3
 
         com_Footer_1 As com_Footer:
-            IsInventura: =false
             JSONData: |-
                 ="{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
                     AddColumns(

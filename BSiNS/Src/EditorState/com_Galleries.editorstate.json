@@ -71,7 +71,7 @@
       "MetaDataIDKey": "%TemplateBrowseGalleryBody.ID%",
       "Name": "Body2_6",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -324,7 +324,7 @@
       "MetaDataIDKey": "",
       "Name": "Body2_7",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 7,
+      "ParentIndex": 8,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -577,7 +577,7 @@
       "MetaDataIDKey": "",
       "Name": "Body2_8",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 12,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -959,7 +959,7 @@
       "MetaDataIDKey": "",
       "Name": "btn_BackToLines",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1677,7 +1677,7 @@
       "MetaDataIDKey": "",
       "Name": "glr_Entries",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1951,7 +1951,7 @@
       "MetaDataIDKey": "",
       "Name": "glr_Lines",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2113,7 +2113,7 @@
       "MetaDataIDKey": "",
       "Name": "Group4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 14,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2165,7 +2165,7 @@
       "MetaDataIDKey": "",
       "Name": "Group8",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 13,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2386,7 +2386,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_EntryExpDate",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2667,7 +2667,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_EntryItemNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 11,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -2934,7 +2934,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_EntryLOTNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 8,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3201,7 +3201,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_EntryQuantityCompleted",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 10,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3468,7 +3468,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_EntryQuantityNewLOT",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -3743,7 +3743,7 @@
       "MetaDataIDKey": "%TemplateBrowseGalleryTitle.ID%",
       "Name": "lbl_Line1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4275,7 +4275,7 @@
       "MetaDataIDKey": "%TemplateBrowseGalleryBody.ID%",
       "Name": "lbl_Line3",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 10,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4541,7 +4541,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_Line4",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 11,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4807,7 +4807,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_Line5",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 7,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5023,14 +5023,7 @@
         "PressedFill",
         "HoverFill",
         "Font",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)",
-          "InvariantPropertyName": "FontWeight",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "FontWeight",
         "Align",
         "VerticalAlign",
         {
@@ -5094,7 +5087,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_LineDescription",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 10,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5260,7 +5253,7 @@
         {
           "Category": "Design",
           "PropertyName": "FontWeight",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -5381,7 +5374,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_LineItemNo",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 12,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5547,7 +5540,7 @@
         {
           "Category": "Design",
           "PropertyName": "FontWeight",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -5597,14 +5590,7 @@
         "PressedFill",
         "HoverFill",
         "Font",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)",
-          "InvariantPropertyName": "FontWeight",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "FontWeight",
         "Align",
         "VerticalAlign",
         {
@@ -5668,7 +5654,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_LinePostingGroup",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 11,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -5962,7 +5948,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_LineQtyToShip",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 13,
+      "ParentIndex": 9,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6128,7 +6114,7 @@
         {
           "Category": "Design",
           "PropertyName": "FontWeight",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -6178,14 +6164,7 @@
         "PressedFill",
         "HoverFill",
         "Font",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)",
-          "InvariantPropertyName": "FontWeight",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "FontWeight",
         "Align",
         "VerticalAlign",
         {
@@ -6249,7 +6228,7 @@
       "MetaDataIDKey": "",
       "Name": "lbl_LineQuantity",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 9,
+      "ParentIndex": 7,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6295,7 +6274,7 @@
         {
           "Category": "Design",
           "PropertyName": "FontWeight",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -6465,14 +6444,7 @@
         "PressedFill",
         "HoverFill",
         "Font",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)",
-          "InvariantPropertyName": "FontWeight",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "FontWeight",
         "Align",
         "VerticalAlign",
         {
@@ -6702,7 +6674,7 @@
         {
           "Category": "Design",
           "PropertyName": "FontWeight",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -6878,7 +6850,7 @@
       "MetaDataIDKey": "%TemplateBrowseGallerySeparator1.ID%",
       "Name": "rct_EntrySeparator_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 12,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7120,7 +7092,7 @@
       "MetaDataIDKey": "%TemplateBrowseGallerySeparator1.ID%",
       "Name": "rct_LineSeparator",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 13,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7278,7 +7250,7 @@
       "MetaDataIDKey": "%TemplateBrowseGallerySubtitle.ID%",
       "Name": "Subtitle2_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7545,7 +7517,7 @@
       "MetaDataIDKey": "%TemplateBrowseGalleryTitle.ID%",
       "Name": "Title3_2",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7865,7 +7837,7 @@
       "MetaDataIDKey": "",
       "Name": "txt_Lines",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 3,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

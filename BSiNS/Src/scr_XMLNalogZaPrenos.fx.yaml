@@ -227,25 +227,10 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        NalogZaPrenosHeader As Header:
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
-            DisplayMode: =DisplayMode.Edit
-            FontColor: =
-            Height: =75
-            LayoutMinHeight: =75
-            LayoutMinWidth: =Parent.Width
-            Logo: =FFLogo
-            OnSelectLogo: =Navigate(scr_Entry)
-            Style: ='Header.Style'.Primary
+        com_Header_1 As com_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
             Title: ="NALOG ZA PRENOS"
-            TitleFontSize: =14
-            UserEmail: =User().Email
-            UserImage: =User().Image
-            UserName: =User().FullName
-            Width: =Parent.Width
-            X: =0
-            Y: =0
-            ZIndex: =1
 
         NalogZaPrenosBody As groupContainer.manualLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
@@ -257,11 +242,11 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =!isLoading
+            Visible: =false
             Width: =Parent.Width
             X: =6
             Y: =15
-            ZIndex: =2
+            ZIndex: =3
 
             TransferLineCanvas As fluidGrid.fluidGridWithBlankCard:
                 BorderThickness: =0
@@ -1047,9 +1032,9 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =!isLoading
+            Visible: =false
             Width: =Max(App.Width, App.MinScreenWidth)
-            ZIndex: =3
+            ZIndex: =4
 
             Container3_1 As groupContainer.horizontalAutoLayoutContainer:
                 Height: =Parent.Height
@@ -1202,20 +1187,49 @@
                 Y: =718
                 ZIndex: =2
 
-        Spinner2_2 As Spinner:
-            BasePaletteColor: =RGBA(249, 83, 109, 1)
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
-            ZIndex: =4
+        Container6 As groupContainer.verticalAutoLayoutContainer:
+            DropShadow: =DropShadow.Light
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =6
+
+            com_HeaderData_1 As com_HeaderData:
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+
+            Spinner2_2 As Spinner:
+                BasePaletteColor: =RGBA(249, 83, 109, 1)
+                DisplayMode: =DisplayMode.Edit
+                FillPortions: =1
+                FontColor: =
+                Height: =200
+                LayoutMinHeight: =200
+                LayoutMinWidth: =200
+                SpinnerSize: ='Spinner.SpinnerSize'.Huge
+                Visible: =isLoading
+                Width: =200
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+        com_Footer_3 As com_Footer:
+            JSONData: |-
+                ="{" & Char(34) & "Transfer_Header" & Char(34) & ": " & JSON(
+                    AddColumns(
+                        header,
+                        Transfer_Line,
+                        colLines
+                    )
+                ) & "}"
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ZIndex: =7
 
     con_PreModalFade As groupContainer.manualLayoutContainer:
         DropShadow: =DropShadow.Light
@@ -1225,7 +1239,7 @@
         RadiusBottomRight: =4
         RadiusTopLeft: =4
         RadiusTopRight: =4
-        Visible: =isModalOpen
+        Visible: =false
         Width: |
             =Parent.Width
         ZIndex: =2
@@ -1532,4 +1546,8 @@
                         X: =0
                         Y: =0
                         ZIndex: =2
+
+    com_Modal_1 As com_Modal:
+        Visible: =isModalOpen
+        ZIndex: =3
 
