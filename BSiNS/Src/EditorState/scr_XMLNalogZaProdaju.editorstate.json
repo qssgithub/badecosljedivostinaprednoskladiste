@@ -4282,8 +4282,15 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "LineValueVisibility",
-        "Lines",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
+          "InvariantPropertyName": "LineValueVisibility",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "EntriesToDisplay",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -4305,12 +4312,12 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "Table({Item_No: \"Item_No\", Quantity: \"Quantity\", Exp_Date: \"Exp_Date\", LOT_No: \"LOT_N})",
-          "InvariantPropertyName": "Entries",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "NumberOfLinesToDisplay",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "NumberOfLinesToDisplay"
+        "Visible"
       ],
       "DynamicProperties": [
         {
@@ -4355,7 +4362,14 @@
           "PropertyName": "LayoutMinWidth"
         },
         {
-          "ControlPropertyState": "LayoutMinHeight",
+          "ControlPropertyState": {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "LayoutMinHeight",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Property": {
             "Category": "Design",
             "PropertyName": "LayoutMinHeight",
@@ -4385,13 +4399,8 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Entries",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "SelectedLine",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
@@ -4400,28 +4409,28 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "Lines",
+          "PropertyName": "EntriesToDisplay",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
           "PropertyName": "EntryLabels",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "SelectedEntry",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "NumberOfLinesToDisplay",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -4441,17 +4450,22 @@
         {
           "Category": "Design",
           "PropertyName": "X",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
           "PropertyName": "Y",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
           "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "User"
         },
         {
           "Category": "Behavior",

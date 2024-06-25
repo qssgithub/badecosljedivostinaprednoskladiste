@@ -327,14 +327,15 @@
                 Height: =49
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =LayoutDirection.Vertical
-                LayoutGap: =10
+                LayoutGap: =5
                 LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LayoutMode: =LayoutMode.Auto
-                PaddingBottom: =10
-                PaddingLeft: =10
-                PaddingRight: =10
+                PaddingBottom: =5
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =5
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
@@ -344,9 +345,8 @@
                 ZIndex: =1
 
                 com_ProHeaderData As com_HeaderData:
-                    AlignInContainer: =AlignInContainer.Center
                     LayoutMinHeight: =640
-                    LayoutMinWidth: =250
+                    LayoutMinWidth: =200
                     Line1Label: |-
                         ="Broj naloga:"
                     Line1Value: =header.'No.'
@@ -363,6 +363,7 @@
                         ="Datum knjiženja:"
                     Line5Value: =header.Posting_Date
                     Visible: =If(!isLoading, wizardStep = 1)
+                    Width: =
 
                 Container15 As groupContainer.verticalAutoLayoutContainer:
                     DropShadow: =DropShadow.Light
@@ -529,11 +530,17 @@
                                 ZIndex: =10
 
                 com_Galleries_1 As com_Galleries:
+                    EntryLabels: |-
+                        ={Line1: "Broj artikla", Line2: "Rok trajanja", Line3: "LOT", Line4: "Rezervisana količina:", Line5: "Potrebna količina:"}
                     FillPortions: =1
-                    LayoutMinHeight: =640
+                    LayoutMinHeight: =200
                     LayoutMinWidth: =250
                     LineLabels: |-
-                        ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina", Line4: "Količina za slanje:", Line5: "Line5"}
+                        ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina", Line4: "Količina za slanje:"}
+                    LineValueVisibility: |-
+                        ={Line_No: false, Item_No: true, Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
+                    NumberOfLinesToDisplay: =4
+                    Visible: =true
                     ZIndex: =4
 
             Container14 As groupContainer.verticalAutoLayoutContainer:
@@ -922,11 +929,11 @@
             ZIndex: =4
 
     com_ProModal As com_Modal:
-        LineId: =glr_ProLines.Selected.Line_No
-        Quantity: =Abs(glr_ProResEntries.Selected.Quantity)
-        QuantityCompleted: =Abs(glr_ProResEntries.Selected.Quantity_Completed)
-        QuantityNewLOT: =Abs(glr_ProResEntries.Selected.Quantity_NewLOT)
-        ResEntryId: =glr_ProResEntries.Selected.Entry_No
+        LineId: =com_Galleries_1.SelectedLine.Line_No
+        Quantity: =Abs(com_Galleries_1.SelectedEntry.Quantity)
+        QuantityCompleted: =Abs(com_Galleries_1.SelectedEntry.Quantity_Completed)
+        QuantityNewLOT: =Abs(com_Galleries_1.SelectedEntry.Quantity_NewLOT)
+        ResEntryId: =com_Galleries_1.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =3
 

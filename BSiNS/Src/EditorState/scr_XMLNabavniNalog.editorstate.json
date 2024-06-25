@@ -3163,7 +3163,7 @@
         "ZIndex",
         "EntryLabels",
         "LineValueVisibility",
-        "Lines",
+        "EntriesToDisplay",
         "LineLabels",
         "SelectedLine",
         {
@@ -3176,7 +3176,6 @@
         },
         "SelectedEntry",
         "OnReset",
-        "Entries",
         "NumberOfLinesToDisplay"
       ],
       "DynamicProperties": [
@@ -3269,7 +3268,7 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "Lines",
+          "PropertyName": "EntriesToDisplay",
           "RuleProviderType": "System"
         },
         {
@@ -3280,17 +3279,12 @@
         {
           "Category": "Data",
           "PropertyName": "SelectedLine",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "SelectedEntry",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "Entries",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
@@ -3305,12 +3299,12 @@
         {
           "Category": "Design",
           "PropertyName": "Y",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
           "PropertyName": "X",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -3320,7 +3314,7 @@
         {
           "Category": "Design",
           "PropertyName": "Height",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -8195,7 +8189,7 @@
           "Property": {
             "Category": "Design",
             "PropertyName": "LayoutMinHeight",
-            "RuleProviderType": "User"
+            "RuleProviderType": "Unknown"
           },
           "PropertyName": "LayoutMinHeight"
         }
