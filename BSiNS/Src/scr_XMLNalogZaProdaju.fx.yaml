@@ -306,6 +306,7 @@
 
         com_ProHeader As com_Header:
             LayoutMinHeight: =640
+            LayoutMinWidth: =App.Width
             Title: ="NALOG ZA PRODAJU"
 
         vrt_ProBody As groupContainer.horizontalAutoLayoutContainer:
@@ -317,7 +318,7 @@
             LayoutGap: =5
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
-            LayoutMinWidth: =250
+            LayoutMinWidth: =App.Width
             LayoutMode: =LayoutMode.Auto
             PaddingBottom: =5
             PaddingLeft: =5
@@ -327,13 +328,13 @@
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =If(!isLoading, wizardStep = 1)
+            Visible: =!isLoading
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =2
 
             com_ProHeaderData As com_HeaderData:
                 LayoutMinHeight: =640
-                LayoutMinWidth: =200
+                LayoutMinWidth: =350
                 Line1Label: |-
                     ="Broj naloga:"
                 Line1Value: =header.'No.'
@@ -349,7 +350,7 @@
                 Line5Label: |-
                     ="Datum knjiženja:"
                 Line5Value: =header.Posting_Date
-                Visible: =If(!isLoading, wizardStep = 1)
+                Visible: =wizardStep = 1
                 Width: =
 
             com_ProGalleries As com_Galleries:
@@ -357,12 +358,33 @@
                     ={Line1: "Broj artikla", Line2: "Rok trajanja", Line3: "LOT", Line4: "Rezervisana količina:", Line5: "Potrebna količina:"}
                 FillPortions: =1
                 LayoutMinHeight: =200
-                LayoutMinWidth: =250
+                LayoutMinWidth: =350
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina", Line4: "Količina za slanje:"}
+                LineValuePosition: |-
+                    ={Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 3}
+                LineValueVisibility: |-
+                    ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
                 NumberOfLinesToDisplay: =4
                 Visible: =true
                 ZIndex: =4
+
+        spn_ProLoader As Spinner:
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FillPortions: =1
+            FontColor: =
+            Height: =200
+            Label: ="Učitavam dokument..."
+            LabelPosition: ='Spinner.LabelPosition'.Below
+            LayoutMinHeight: =200
+            LayoutMinWidth: =350
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =isLoading
+            Width: =200
+            X: =0
+            Y: =0
+            ZIndex: =3
 
         com_ProFooter As com_Footer:
             JSONData: |-
@@ -385,23 +407,6 @@
                 ) & "}"
             LayoutMinHeight: =640
             LayoutMinWidth: =640
-            ZIndex: =3
-
-        spn_ProLoader As Spinner:
-            BasePaletteColor: =
-            DisplayMode: =DisplayMode.Edit
-            FillPortions: =1
-            FontColor: =
-            Height: =200
-            Label: ="Učitavam dokument..."
-            LabelPosition: ='Spinner.LabelPosition'.Below
-            LayoutMinHeight: =200
-            LayoutMinWidth: =200
-            SpinnerSize: ='Spinner.SpinnerSize'.Huge
-            Visible: =isLoading
-            Width: =200
-            X: =0
-            Y: =0
             ZIndex: =4
 
     com_ProModal As com_Modal:

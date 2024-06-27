@@ -260,7 +260,7 @@
         ZIndex: =1
 
         com_NabHeader As com_Header:
-            LayoutMinWidth: =200
+            LayoutMinWidth: =App.Width
             Title: ="NABAVNI NALOG"
 
         vrt_NabBody As groupContainer.horizontalAutoLayoutContainer:
@@ -273,7 +273,7 @@
             LayoutGap: =5
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
-            LayoutMinWidth: =250
+            LayoutMinWidth: =App.Width
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
             PaddingBottom: =10
@@ -290,7 +290,7 @@
 
             com_NabHeaderData As com_HeaderData:
                 LayoutMinHeight: =640
-                LayoutMinWidth: =250
+                LayoutMinWidth: =350
                 Line1Label: |-
                     ="Broj naloga:"
                 Line1Value: =header.No
@@ -313,7 +313,7 @@
                     ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina"}
                 FillPortions: =1
                 LayoutMinHeight: =250
-                LayoutMinWidth: =250
+                LayoutMinWidth: =350
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
                 LineValuePosition: |-
@@ -333,7 +333,7 @@
             Label: ="Učitavam dokument..."
             LabelPosition: ='Spinner.LabelPosition'.Below
             LayoutMinHeight: =200
-            LayoutMinWidth: =200
+            LayoutMinWidth: =300
             SpinnerSize: ='Spinner.SpinnerSize'.Huge
             Visible: =isLoading
             Width: =200
@@ -361,7 +361,6 @@
                     )
                 ) & "}"
             LayoutMinHeight: =640
-            LayoutMinWidth: =640
             ZIndex: =4
 
     com_NabModal As com_Modal:

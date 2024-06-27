@@ -139,7 +139,7 @@
 
         com_InvHeader As com_Header:
             LayoutMinHeight: =640
-            LayoutMinWidth: =250
+            LayoutMinWidth: =App.Width
             Title: ="TEMELJNICE INVENTURE"
 
         con_InvBody As groupContainer.verticalAutoLayoutContainer:
@@ -148,7 +148,7 @@
             LayoutDirection: =LayoutDirection.Vertical
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
-            LayoutMinWidth: =250
+            LayoutMinWidth: =App.Width
             LayoutMode: =LayoutMode.Auto
             PaddingBottom: =10
             PaddingLeft: =10
@@ -158,7 +158,7 @@
             Container4 As groupContainer.manualLayoutContainer:
                 DropShadow: =DropShadow.Light
                 LayoutMinHeight: =250
-                LayoutMinWidth: =250
+                LayoutMinWidth: =350
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4

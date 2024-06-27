@@ -253,7 +253,7 @@
 
         com_PreHeader As com_Header:
             LayoutMinHeight: =640
-            LayoutMinWidth: =640
+            LayoutMinWidth: =App.Width
             Title: ="NALOG ZA PRENOS"
 
         vrt_PreBody As groupContainer.verticalAutoLayoutContainer:
@@ -262,7 +262,7 @@
             LayoutDirection: =LayoutDirection.Vertical
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
-            LayoutMinWidth: =250
+            LayoutMinWidth: =App.Width
             LayoutMode: =LayoutMode.Auto
             PaddingBottom: =10
             PaddingLeft: =10
@@ -302,7 +302,7 @@
                 FillPortions: =1
                 LayoutMinWidth: =375
                 LineLabels: |-
-                    ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina", Line5: "Količina za slanje"}
+                    ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Količina za slanje:"}
                 Visible: =true
                 ZIndex: =2
 
@@ -315,7 +315,7 @@
             Label: ="Učitavam dokument..."
             LabelPosition: ='Spinner.LabelPosition'.Below
             LayoutMinHeight: =200
-            LayoutMinWidth: =200
+            LayoutMinWidth: =350
             SpinnerSize: ='Spinner.SpinnerSize'.Huge
             Visible: =isLoading
             Width: =200
@@ -343,7 +343,6 @@
                     )
                 ) & "}"
             LayoutMinHeight: =640
-            LayoutMinWidth: =640
             ZIndex: =4
 
     com_PreModal As com_Modal:

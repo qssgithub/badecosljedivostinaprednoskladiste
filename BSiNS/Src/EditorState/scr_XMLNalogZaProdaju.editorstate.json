@@ -172,7 +172,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "LineValueVisibility",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}",
+          "InvariantPropertyName": "LineValueVisibility",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "EntriesToDisplay",
         {
           "AFDDataSourceName": "",
@@ -201,7 +208,14 @@
           "NameMapSourceSchema": "?"
         },
         "Visible",
-        "LineValuePosition"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4}",
+          "InvariantPropertyName": "LineValuePosition",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
@@ -284,7 +298,7 @@
         {
           "Category": "Data",
           "PropertyName": "LineValuePosition",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -299,7 +313,7 @@
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -430,7 +444,7 @@
           "Property": {
             "Category": "Design",
             "PropertyName": "LayoutMinWidth",
-            "RuleProviderType": "Unknown"
+            "RuleProviderType": "User"
           },
           "PropertyName": "LayoutMinWidth"
         },
@@ -748,7 +762,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -1145,7 +1159,14 @@
           "PropertyName": "AlignInContainer"
         },
         {
-          "ControlPropertyState": "LayoutMinWidth",
+          "ControlPropertyState": {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "LayoutMinWidth",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Property": {
             "Category": "Design",
             "PropertyName": "LayoutMinWidth",
@@ -1174,7 +1195,7 @@
       "MetaDataIDKey": "",
       "Name": "spn_ProLoader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1660,11 +1681,18 @@
           "PropertyName": "AlignInContainer"
         },
         {
-          "ControlPropertyState": "LayoutMinWidth",
+          "ControlPropertyState": {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "LayoutMinWidth",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "Property": {
             "Category": "Design",
             "PropertyName": "LayoutMinWidth",
-            "RuleProviderType": "Unknown"
+            "RuleProviderType": "User"
           },
           "PropertyName": "LayoutMinWidth"
         },
@@ -1689,7 +1717,7 @@
       "MetaDataIDKey": "",
       "Name": "vrt_ProBody",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1705,7 +1733,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
