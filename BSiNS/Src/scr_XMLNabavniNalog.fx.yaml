@@ -6,7 +6,6 @@
             isLoading,
             true
         );
-        UpdateContext({scannedItem: Blank()});
         If(
             !IsBlank(SelectedFile),
             IfError(
@@ -82,138 +81,6 @@
                 }
             }
         );
-        /*ClearCollect(
-            purchaseCollection,
-            IfError(
-                ForAll(
-                    xmlData.Purchase_Line As line,
-                    {
-                        'Buy-from_Vendor_No.': Text(line.'Buy-from_Vendor_No.'),
-                        Description: Text(line.Description),
-                        Document_No: Text(line.Document_No),
-                        Document_Type: Text(line.Document_Type),
-                        Item_No: Text(line.Item_No),
-                        Line_No: Text(line.Line_No),
-                        Location_Code: Text(line.Location_Code),
-                        Posting_Group: Text(line.Posting_Group),
-                        Quantity: Text(line.Quantity),
-                        Res_Entry: IfError(
-                            ForAll(
-                                line.Res_Entry As entry,
-                                {
-                                    Created_By: Text(entry.Created_By),
-                                    Creation_Date: Text(entry.Creation_Date),
-                                    Entry_No: Text(entry.Entry_No),
-                                    Exp_Date: Text(entry.Exp_Date),
-                                    Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
-                                    Item_No: Text(entry.Item_No),
-                                    Item_Tracking: Text(entry.Item_Tracking),
-                                    LOT_No: Text(entry.LOT_No),
-                                    Location_Code: Text(entry.Location_Code),
-                                    Positive: Text(entry.Positive),
-                                    'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
-                                    'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
-                                    Quantity: Text(entry.Quantity),
-                                    Quantity_Base: Text(entry.Quantity_Base),
-                                    Res_Status: Text(entry.Res_Status),
-                                    Shipment_Date: Text(entry.Shipment_Date),
-                                    Source_ID: Text(entry.Source_ID),
-                                    Source_Ref_No: Text(entry.Source_Ref_No),
-                                    Source_SubType: Text(entry.Source_SubType),
-                                    Source_Type: Text(entry.Source_Type)
-                                }
-                            ),
-                            {
-                                Created_By: Text(line.Res_Entry.Created_By),
-                                Creation_Date: Text(line.Res_Entry.Creation_Date),
-                                Entry_No: Text(line.Res_Entry.Entry_No),
-                                Exp_Date: Text(line.Res_Entry.Exp_Date),
-                                Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
-                                Item_No: Text(line.Res_Entry.Item_No),
-                                Item_Tracking: Text(line.Res_Entry.Item_Tracking),
-                                LOT_No: Text(line.Res_Entry.LOT_No),
-                                Location_Code: Text(line.Res_Entry.Location_Code),
-                                Positive: Text(line.Res_Entry.Positive),
-                                'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
-                                'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
-                                Quantity: Text(line.Res_Entry.Quantity),
-                                Quantity_Base: Text(line.Res_Entry.Quantity_Base),
-                                Res_Status: Text(line.Res_Entry.Res_Status),
-                                Shipment_Date: Text(line.Res_Entry.Shipment_Date),
-                                Source_ID: Text(line.Res_Entry.Source_ID),
-                                Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
-                                Source_SubType: Text(line.Res_Entry.Source_SubType),
-                                Source_Type: Text(line.Res_Entry.Source_Type)
-                            }
-                        ),
-                        Type: Text(line.Type),
-                        Unit_Of_Measure: Text(line.Unit_Of_Measure)
-                    }
-                ),
-                {
-                    'Buy-from_Vendor_No.': Text(xmlData.Purchase_Line.'Buy-from_Vendor_No.'),
-                    Description: Text(xmlData.Purchase_Line.Description),
-                    Document_No: Text(xmlData.Purchase_Line.Document_No),
-                    Document_Type: Text(xmlData.Purchase_Line.Document_Type),
-                    Item_No: Text(xmlData.Purchase_Line.Item_No),
-                    Line_No: Text(xmlData.Purchase_Line.Line_No),
-                    Location_Code: Text(xmlData.Purchase_Line.Location_Code),
-                    Posting_Group: Text(xmlData.Purchase_Line.Posting_Group),
-                    Quantity: Text(xmlData.Purchase_Line.Quantity),
-                    Res_Entry: IfError(
-                        ForAll(
-                            xmlData.Purchase_Line.Res_Entry As entry,
-                            {
-                                Created_By: Text(entry.Created_By),
-                                Creation_Date: Text(entry.Creation_Date),
-                                Entry_No: Text(entry.Entry_No),
-                                Exp_Date: Text(entry.Exp_Date),
-                                Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
-                                Item_No: Text(entry.Item_No),
-                                Item_Tracking: Text(entry.Item_Tracking),
-                                LOT_No: Text(entry.LOT_No),
-                                Location_Code: Text(entry.Location_Code),
-                                Positive: Text(entry.Positive),
-                                'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
-                                'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
-                                Quantity: Text(entry.Quantity),
-                                Quantity_Base: Text(entry.Quantity_Base),
-                                Res_Status: Text(entry.Res_Status),
-                                Shipment_Date: Text(entry.Shipment_Date),
-                                Source_ID: Text(entry.Source_ID),
-                                Source_Ref_No: Text(entry.Source_Ref_No),
-                                Source_SubType: Text(entry.Source_SubType),
-                                Source_Type: Text(entry.Source_Type)
-                            }
-                        ),
-                        {
-                            Created_By: Text(xmlData.Purchase_Line.Res_Entry.Created_By),
-                            Creation_Date: Text(xmlData.Purchase_Line.Res_Entry.Creation_Date),
-                            Entry_No: Text(xmlData.Purchase_Line.Res_Entry.Entry_No),
-                            Exp_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Date),
-                            Exp_Receipt_Date: Text(xmlData.Purchase_Line.Res_Entry.Exp_Receipt_Date),
-                            Item_No: Text(xmlData.Purchase_Line.Res_Entry.Item_No),
-                            Item_Tracking: Text(xmlData.Purchase_Line.Res_Entry.Item_Tracking),
-                            LOT_No: Text(xmlData.Purchase_Line.Res_Entry.LOT_No),
-                            Location_Code: Text(xmlData.Purchase_Line.Res_Entry.Location_Code),
-                            Positive: Text(xmlData.Purchase_Line.Res_Entry.Positive),
-                            'Qty-to-Handle_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Handle_Base'),
-                            'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
-                            Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
-                            Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
-                            Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
-                            Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
-                            Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
-                            Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
-                            Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
-                            Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
-                        }
-                    ),
-                    Type: Text(xmlData.Purchase_Line.Type),
-                    Unit_Of_Measure: Text(xmlData.Purchase_Line.Unit_Of_Measure)
-                }
-            )
-        );*/
         IfError(
             ForAll(
                 xmlData.Purchase_Line As line,
@@ -377,7 +244,6 @@
                 InProgress
             )
         );
-        UpdateContext({wizardStep: 1});
 
     vrt_Nab As groupContainer.verticalAutoLayoutContainer:
         Fill: =RGBA(245, 245, 245, 1)
@@ -394,8 +260,7 @@
         ZIndex: =1
 
         com_NabHeader As com_Header:
-            LayoutMinHeight: =640
-            LayoutMinWidth: =250
+            LayoutMinWidth: =200
             Title: ="NABAVNI NALOG"
 
         vrt_NabBody As groupContainer.horizontalAutoLayoutContainer:
@@ -451,6 +316,10 @@
                 LayoutMinWidth: =250
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
+                LineValuePosition: |-
+                    ={Item_No: 0, Posting_Group: 1, Inv_Posting_Group: Blank(), Description: 2, Quantity: 3, Unit_Of_Measure: 4, 'Qty-to_Ship': Blank()}
+                LineValueVisibility: |-
+                    ={Line_No: false, Item_No: true, Posting_Group: true, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: true, 'Qty-to_Ship': false}
                 Visible: =true
                 ZIndex: =5
 
@@ -497,6 +366,9 @@
 
     com_NabModal As com_Modal:
         LineId: =com_NabGalleries.SelectedLine.Line_No
+        Quantity: =com_NabGalleries.SelectedEntry.Quantity
+        QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
+        QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
         ResEntryId: =com_NabGalleries.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =2

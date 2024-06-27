@@ -1384,7 +1384,7 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Unit_Of_Measure)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Unit_Of_Measure) + (com_Galleries.LineValuePosition.Unit_Of_Measure * 5)",
                         "Property": "Y",
                         "RuleProviderType": "User"
                       },
@@ -1758,7 +1758,7 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * 5)",
                         "Property": "Y",
                         "RuleProviderType": "User"
                       },
@@ -10009,7 +10009,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638550737402564243",
+    "LastModifiedTimestamp": "638550780365808087",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10198,7 +10198,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638550737402564243",
+  "LastModifiedTimestamp": "638550780365808087",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

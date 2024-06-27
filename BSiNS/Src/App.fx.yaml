@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =true
-    Formulas: |-
+    Formulas: |
         =conPrimary = ColorValue("#0AA9FF");
         conAccent = ColorValue("#676767");
         conUser = LookUp(
@@ -8,8 +8,11 @@ App As appinfo:
             Email = User().Email
         );
         warehouseCode = "SGP-DZ";
-        isMobile = If(App.Width > 600, false, true);
-        
+        isMobile = If(
+            App.Width > 600,
+            false,
+            true
+        );
         ReadyForProcessing = "ReadyForProcessing";
         InProgress = "InProgress";
         ReadyForNAVProcessing = "ReadyForNAVProcessing";

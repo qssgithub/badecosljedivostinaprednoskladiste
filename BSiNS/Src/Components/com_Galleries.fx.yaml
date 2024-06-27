@@ -257,7 +257,7 @@ com_Galleries As CanvasComponent:
                         Visible: =com_Galleries.LineValueVisibility.Unit_Of_Measure
                         Width: =Parent.TemplateWidth - 250
                         X: =lbl_Line1.Width + lbl_Line1.X
-                        Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Unit_Of_Measure)
+                        Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Unit_Of_Measure) + (com_Galleries.LineValuePosition.Unit_Of_Measure * 5)
                         ZIndex: =2
 
                     lbl_LineQuantity As label:
@@ -337,7 +337,7 @@ com_Galleries As CanvasComponent:
                         Visible: =com_Galleries.LineValueVisibility.Posting_Group
                         Width: =Parent.TemplateWidth - 250
                         X: =lbl_Line1.Width + lbl_Line1.X
-                        Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group)
+                        Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * 5)
                         ZIndex: =13
 
                     lbl_LineItemNo As label:
