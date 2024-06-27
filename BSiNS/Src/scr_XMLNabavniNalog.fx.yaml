@@ -379,7 +379,7 @@
         );
         UpdateContext({wizardStep: 1});
 
-    NabavniNalogScreenContainer As groupContainer.verticalAutoLayoutContainer:
+    vrt_Nab As groupContainer.verticalAutoLayoutContainer:
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
         LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -398,854 +398,81 @@
             LayoutMinWidth: =250
             Title: ="NABAVNI NALOG"
 
-        Container5 As groupContainer.verticalAutoLayoutContainer:
+        vrt_NabBody As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
-            DropShadow: =DropShadow.Light
-            Height: =150
+            BorderColor: =RGBA(214, 221, 224, 1)
+            BorderThickness: =0.5
+            Height: =40
             LayoutAlignItems: =LayoutAlignItems.Stretch
             LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =5
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMinHeight: =100
             LayoutMinWidth: =250
             LayoutMode: =LayoutMode.Auto
             LayoutOverflowY: =LayoutOverflow.Scroll
-            ZIndex: =2
-
-            Container2_6 As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                BorderColor: =RGBA(214, 221, 224, 1)
-                BorderThickness: =0.5
-                Height: =40
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutGap: =5
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                LayoutOverflowY: =LayoutOverflow.Scroll
-                PaddingBottom: =10
-                PaddingLeft: =10
-                PaddingRight: =10
-                PaddingTop: =10
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                Visible: =!isLoading
-                Width: =Max(App.Width, App.MinScreenWidth)
-                ZIndex: =1
-
-                com_NabHeaderData As com_HeaderData:
-                    LayoutMinHeight: =640
-                    LayoutMinWidth: =250
-                    Line1Label: |-
-                        ="Broj naloga:"
-                    Line1Value: =header.No
-                    Line2Label: |-
-                        ="Datum dokumenta:"
-                    Line2Value: =header.Document_Date
-                    Line3Label: |-
-                        ="Datum narudžbe:"
-                    Line3Value: =header.Location_Code & " " & header.'Ship-to_Name'
-                    Line4Label: |-
-                        ="Nabavka u:"
-                    Line4Value: =header.Location_Code & " " & header.'Ship-to_Name'
-                    Line5Label: |-
-                        ="Dobavljač:"
-                    Line5Value: =header.'Buy-from_Vendor_No.' & " " & header.'Buy-from_Vendor_Name'
-                    Visible: =wizardStep = 1
-
-                Container3 As groupContainer.verticalAutoLayoutContainer:
-                    DropShadow: =DropShadow.Light
-                    LayoutAlignItems: =LayoutAlignItems.Stretch
-                    LayoutDirection: =LayoutDirection.Vertical
-                    LayoutGap: =5
-                    LayoutMinHeight: =100
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =5
-                    PaddingLeft: =10
-                    PaddingRight: =10
-                    PaddingTop: =5
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    Visible: =false
-                    ZIndex: =4
-
-                    TextCanvas2 As Text:
-                        AutoHeight: =true
-                        BorderStyle: =""
-                        DisplayMode: =DisplayMode.Edit
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Size: =18
-                        Text: ="Stavke nabavke"
-                        Width: =96
-                        Wrap: =false
-                        X: =0
-                        Y: =0
-                        ZIndex: =1
-
-                    "NabavniNalogLines_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        BorderColor: =App.Theme.Colors.Darker40
-                        Default: =First(Filter(Self.AllItems, Line_No = scannedItem))
-                        DelayItemLoading: =true
-                        Fill: =RGBA(237, 237, 237, 1)
-                        Height: =562
-                        Items: =colLines
-                        Layout: =Layout.Vertical
-                        LayoutMinHeight: =200
-                        LayoutMinWidth: =320
-                        LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: |-
-                            =UpdateContext({wizardStep:2});
-                        TemplatePadding: =0
-                        TemplateSize: =198
-                        Width: =Parent.Width
-                        Y: =49
-                        ZIndex: =2
-
-                        Separator6_6 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =8
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =5
-
-                        Rectangle5_3 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =App.Theme.Colors.Darker30
-                            Height: =Parent.TemplateHeight - Separator6_6.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =1
-                            ZIndex: =6
-
-                        Group2_4 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =14
-
-                            Title5_3 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Item_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth
-                                Y: =18
-                                ZIndex: =1
-
-                            Subtitle4_3 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Kategorija artikla:   " & ThisItem.Posting_Group
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth
-                                Y: =52
-                                ZIndex: =2
-
-                            Body1_10 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    " & ThisItem.Quantity
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth
-                                Y: =121
-                                ZIndex: =3
-
-                            Body1_11 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Jedinica mjere:    " & ThisItem.Unit_Of_Measure
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth
-                                Y: =153
-                                ZIndex: =8
-
-                            Body1_8 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Naziv artikla:   " & ThisItem.Description
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth
-                                Y: =87
-                                ZIndex: =10
-
-                com_Gallery_1 As com_Galleries:
-                    EntryLabels: |-
-                        ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina"}
-                    FillPortions: =1
-                    LayoutMinHeight: =250
-                    LayoutMinWidth: =250
-                    LineLabels: |-
-                        ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
-                    Visible: =true
-                    ZIndex: =5
-
-            Spinner2_1 As Spinner:
-                AlignInContainer: =AlignInContainer.Stretch
-                BasePaletteColor: =
-                DisplayMode: =DisplayMode.Edit
-                FillPortions: =1
-                FontColor: =
-                Height: =200
-                LayoutMinHeight: =200
-                LayoutMinWidth: =200
-                SpinnerSize: ='Spinner.SpinnerSize'.Huge
-                Visible: =isLoading
-                Width: =200
-                X: =0
-                Y: =0
-                ZIndex: =3
-
-        NabavniNalogBody As groupContainer.manualLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
-            DropShadow: =DropShadow.Light
-            Height: =565
-            LayoutMinHeight: =100
-            LayoutMinWidth: =250
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            Visible: =false
-            Width: =Parent.Width
-            X: =6
-            Y: =15
+            Visible: =!isLoading
+            Width: =Max(App.Width, App.MinScreenWidth)
+            ZIndex: =2
+
+            com_NabHeaderData As com_HeaderData:
+                LayoutMinHeight: =640
+                LayoutMinWidth: =250
+                Line1Label: |-
+                    ="Broj naloga:"
+                Line1Value: =header.No
+                Line2Label: |-
+                    ="Datum dokumenta:"
+                Line2Value: =header.Document_Date
+                Line3Label: |-
+                    ="Datum narudžbe:"
+                Line3Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                Line4Label: |-
+                    ="Nabavka u:"
+                Line4Value: =header.Location_Code & " " & header.'Ship-to_Name'
+                Line5Label: |-
+                    ="Dobavljač:"
+                Line5Value: =header.'Buy-from_Vendor_No.' & " " & header.'Buy-from_Vendor_Name'
+                Visible: =wizardStep = 1
+
+            com_NabGalleries As com_Galleries:
+                EntryLabels: |-
+                    ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina"}
+                FillPortions: =1
+                LayoutMinHeight: =250
+                LayoutMinWidth: =250
+                LineLabels: |-
+                    ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
+                Visible: =true
+                ZIndex: =5
+
+        spn_NabLoader As Spinner:
+            Appearance: ='Spinner.Appearance'.Primary
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FillPortions: =1
+            FontColor: =
+            Height: =200
+            Label: ="Učitavam dokument..."
+            LabelPosition: ='Spinner.LabelPosition'.Below
+            LayoutMinHeight: =200
+            LayoutMinWidth: =200
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =isLoading
+            Width: =200
+            X: =0
+            Y: =0
             ZIndex: =3
 
-            PurchaseLinesCanvas As fluidGrid.fluidGridWithBlankCard:
-                BorderThickness: =0
-                Height: =611
-                Visible: =false
-                Width: =Parent.Width
-                ZIndex: =28
-
-                PurchaseLines As dataCard.blankCard:
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    BorderStyle: =BorderStyle.Solid
-                    DisplayMode: =DisplayMode.Edit
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =Parent.Height
-                    Visible: =wizardStep = 1
-                    Width: =Parent.Width
-                    X: =0
-                    Y: =2
-                    ZIndex: =2
-
-                    "NabavniNalogLines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =App.Theme.Colors.Darker40
-                        Default: |
-                            =First(Filter(colLines, Line_No = scannedItem))
-                        DelayItemLoading: =true
-                        Fill: =RGBA(237, 237, 237, 1)
-                        Height: =562
-                        Items: =colLines
-                        Layout: =Layout.Vertical
-                        LoadingSpinner: =LoadingSpinner.Data
-                        OnSelect: |-
-                            =UpdateContext({wizardStep:2});
-                        TemplatePadding: =0
-                        TemplateSize: =198
-                        Width: =Parent.Width
-                        Y: =49
-                        ZIndex: =1
-
-                        Separator6 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =8
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =5
-
-                        Rectangle5 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =App.Theme.Colors.Darker30
-                            Height: =Parent.TemplateHeight - Separator6.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =4
-                            ZIndex: =6
-
-                        Group2 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =14
-
-                            Title5 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Item_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =18
-                                ZIndex: =1
-
-                            Subtitle4 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Kategorija artikla:   " & ThisItem.Posting_Group
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =52
-                                ZIndex: =2
-
-                            Body1 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    " & ThisItem.Quantity
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =121
-                                ZIndex: =3
-
-                            Body1_2 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Jedinica mjere:    " & ThisItem.Document_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =153
-                                ZIndex: =8
-
-                            Body1_4 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =22
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =20
-                                PaddingRight: =20
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Naziv artikla:   " & ThisItem.Description
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.Width
-                                Y: =87
-                                ZIndex: =10
-
-                    Container2 As groupContainer.horizontalAutoLayoutContainer:
-                        BorderColor: =RGBA(214, 221, 224, 1)
-                        BorderThickness: =0.5
-                        DropShadow: =DropShadow.Light
-                        Height: =49
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingRight: =20
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Width: =Max(App.Width, App.MinScreenWidth)
-                        ZIndex: =5
-
-                        Label2 As label:
-                            AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            Height: =24
-                            PaddingLeft: =20
-                            Size: =12
-                            Text: ="Stavke nabavke"
-                            Width: |
-                                =200
-                            Y: =1
-                            ZIndex: =1
-
-                        "BarcodeReader1 As 'Barcode Reader'":
-                            AlignInContainer: =AlignInContainer.Center
-                            BarcodeType: ='BarcodeReader.BarcodeType'.Code128
-                            BorderFillColor: =RGBA(0, 0, 0, 1)
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledContentColor: =RGBA(166, 166, 166, 1)
-                            DisabledFillColor: =RGBA(244, 244, 244, 1)
-                            DisplayMode: =DisplayMode.Edit
-                            FillColor: =RGBA(255, 255, 255, 1)
-                            FontSize: =12
-                            Height: =28
-                            HoverBorderColor: =RGBA(189, 49, 51, 1)
-                            HoverContentColor: =RGBA(255, 255, 255, 1)
-                            HoverFillColor: =RGBA(189, 49, 51, 1)
-                            LayoutMinHeight: =70
-                            LayoutMinWidth: =280
-                            OnCancel: =false
-                            OnScan: |-
-                                =UpdateContext({
-                                    scannedItem:First(BarcodeReader1.Barcodes).Value
-                                })
-                            PressedBorderColor: =RGBA(189, 49, 51, 1)
-                            PressedContentColor: =RGBA(189, 49, 51, 1)
-                            PressedFillColor: =RGBA(255, 255, 255, 1)
-                            ScanningMode: ='BarcodeReader.ScanningMode'.SelectToScan
-                            Text: ="Skener"
-                            TextAlignment: =Align.Center
-                            TextColor: =RGBA(0, 0, 0, 1)
-                            Visible: =If(App.Width > 500, false, true)
-                            Width: =80
-                            X: =164
-                            Y: =9
-                            ZIndex: =2
-
-            PurchaseResEntryCanvas As fluidGrid.fluidGridWithBlankCard:
-                BorderThickness: =0
-                Height: =611
-                Visible: =wizardStep = 2
-                Width: =Parent.Width
-                ZIndex: =29
-
-                PurchaseResEntry As dataCard.blankCard:
-                    BorderColor: =RGBA(0, 0, 0, 1)
-                    BorderStyle: =BorderStyle.Solid
-                    DisplayMode: =DisplayMode.Edit
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =612
-                    Width: =Parent.Width
-                    X: =0
-                    Y: =1
-                    ZIndex: =2
-
-                    "NabavniNalogResEntry As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
-                        BorderColor: =App.Theme.Colors.Darker40
-                        DelayItemLoading: =true
-                        Fill: =RGBA(237, 237, 237, 1)
-                        Height: =560
-                        Items: =colEntries
-                        Layout: =Layout.Vertical
-                        LoadingSpinner: =LoadingSpinner.Data
-                        TemplatePadding: =0
-                        TemplateSize: =176
-                        Width: =Parent.Width
-                        Y: =49
-                        ZIndex: =1
-
-                        Separator6_1 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =RGBA(255, 255, 255, 1)
-                            Height: =8
-                            OnSelect: =Select(Parent)
-                            Width: =Parent.TemplateWidth
-                            Y: =Parent.TemplateHeight - Self.Height
-                            ZIndex: =5
-
-                        Rectangle5_1 As rectangle:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Fill: =App.Theme.Colors.Darker30
-                            Height: =Parent.TemplateHeight - Separator6_1.Height
-                            OnSelect: =Select(Parent)
-                            Visible: =ThisItem.IsSelected
-                            Width: =4
-                            ZIndex: =6
-
-                        Group7 As group:
-                            Height: =5
-                            Width: =5
-                            X: =40
-                            Y: =40
-                            ZIndex: =18
-
-                            Title5_1 As label:
-                                Color: =RGBA(50, 49, 48, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Br. artikla:   " & ThisItem.Entry_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =Parent.TemplateWidth - 86
-                                X: =24
-                                Y: =18
-                                ZIndex: =1
-
-                            Body1_6 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =18
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Količina:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =88
-                                X: =24
-                                Y: =55
-                                ZIndex: =3
-
-                            Body1_7 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="Rok trajanja:    "
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =120
-                                X: =24
-                                Y: =97
-                                ZIndex: =8
-
-                            Body1_9 As label:
-                                Color: =RGBA(0, 0, 0, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                Font: =App.Theme.Font
-                                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                                Height: =Self.Size * 1.8
-                                OnSelect: =Select(Parent)
-                                PaddingBottom: =0
-                                PaddingLeft: =0
-                                PaddingRight: =0
-                                PaddingTop: =0
-                                Size: =12
-                                Text: |-
-                                    ="LOT:    " & ThisItem.LOT_No
-                                VerticalAlign: =VerticalAlign.Top
-                                Width: =60
-                                X: =28
-                                Y: =133
-                                ZIndex: =9
-
-                            "NabavniNalogResEntryQty As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                BorderStyle: =""
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(NabavniNalogResEntryQty.Value)});
-                                Value: =ThisItem.Quantity
-                                Width: =113
-                                X: =112
-                                Y: =49
-                                ZIndex: =11
-
-                            DatePickerExpDate As datepicker:
-                                BorderColor: =App.Theme.Colors.Darker40
-                                CalendarHeaderFill: =App.Theme.Colors.Primary
-                                Color: =RGBA(0, 0, 0, 1)
-                                DefaultDate: =ThisItem.Exp_Date
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(166, 166, 166, 1)
-                                DisabledFill: =RGBA(244, 244, 244, 1)
-                                Font: =App.Theme.Font
-                                Format: ="dd.mm.yyyy"
-                                Height: =26
-                                HoverDateFill: =App.Theme.Colors.Lighter70
-                                IconBackground: =App.Theme.Colors.Primary
-                                OnChange: |-
-                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{Exp_Date: Text(DatePickerExpDate.SelectedDate, "yyyy-mm-dd")})
-                                OnSelect: =
-                                SelectedDateFill: =App.Theme.Colors.Primary
-                                Width: =158
-                                X: =148
-                                Y: =92
-                                ZIndex: =14
-
-                            "NabavniNalogLot As 'Text input'":
-                                Align: ='TextInputCanvas.Align'.Start
-                                Appearance: ="FilledDarker"
-                                BasePaletteColor: =
-                                BorderStyle: =""
-                                DelayOutput: =true
-                                DisplayMode: =DisplayMode.Edit
-                                Fill: =
-                                FontColor: =
-                                FontSize: =15
-                                Height: =31
-                                OnChange: |-
-                                    =//UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(NabavniNalogLot.Value)})
-                                Value: =ThisItem.LOT_No
-                                Width: =113
-                                X: =80
-                                Y: =128
-                                ZIndex: =15
-
-                            "Icon3 As icon.'3DPrinting'":
-                                BorderColor: =App.Theme.Colors.Darker40
-                                Color: =App.Theme.Colors.Darker30
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(244, 244, 244, 1)
-                                Height: =25
-                                Icon: =Icon.ColorPicker
-                                OnSelect: |-
-                                    =Set(tempValue, Text(ThisItem.Quantity));
-                                    Set(propertyToChange, "Quantity");
-                                    Set(changeValueModal, true);
-                                Width: =25
-                                X: =245
-                                Y: =52
-                                ZIndex: =16
-
-                            "Icon3_1 As icon.'3DPrinting'":
-                                BorderColor: =App.Theme.Colors.Darker40
-                                Color: =App.Theme.Colors.Darker30
-                                DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                                DisabledColor: =RGBA(244, 244, 244, 1)
-                                Height: =25
-                                Icon: =Icon.ColorPicker
-                                OnSelect: |-
-                                    =Set(tempValue, ThisItem.LOT_No);
-                                    Set(propertyToChange, "LOT_No");
-                                    Set(changeValueModal, true);
-                                Width: =25
-                                X: =213
-                                Y: =131
-                                ZIndex: =17
-
-                    Container2_1 As groupContainer.horizontalAutoLayoutContainer:
-                        DropShadow: =DropShadow.Light
-                        Height: =49
-                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                        LayoutMode: =LayoutMode.Auto
-                        PaddingRight: =20
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Width: =Max(App.Width, App.MinScreenWidth)
-                        ZIndex: =4
-
-                        Label2_2 As label:
-                            AlignInContainer: =AlignInContainer.Center
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Color: =RGBA(0, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            Height: =24
-                            PaddingLeft: =20
-                            Size: =12
-                            Text: ="Rezervacijski unosi"
-                            Width: |
-                                =200
-                            Y: =1
-                            ZIndex: =1
-
-                    EditModal_1 As groupContainer.manualLayoutContainer:
-                        DropShadow: =DropShadow.Light
-                        Fill: =RGBA(255, 255, 255, 1)
-                        Height: =Parent.Height * 0.5
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Visible: =changeValueModal
-                        Width: =Parent.Width * 0.8
-                        X: =(Parent.Width - Self.Width) / 2
-                        Y: =(Parent.Height - Self.Height) / 3
-                        ZIndex: =5
-
-                        Button1_1 As button:
-                            BorderColor: =App.Theme.Colors.Primary
-                            DisabledBorderColor: =RGBA(244, 244, 244, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            DisabledFill: =RGBA(244, 244, 244, 1)
-                            Fill: =App.Theme.Colors.Primary
-                            Font: =App.Theme.Font
-                            FontWeight: =FontWeight.Semibold
-                            Height: =30
-                            HoverBorderColor: =App.Theme.Colors.Darker10
-                            HoverColor: =RGBA(255, 255, 255, 1)
-                            HoverFill: =App.Theme.Colors.Darker10
-                            OnSelect: |-
-                                =Switch(
-                                    propertyToChange,
-                                    "Quantity",
-                                    UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No, {Quantity: Value(TextInputCanvas1_1.Value)}),
-                                    "LOT_No",
-                                    UpdateIf(NabavniNalogLines.Selected.Res_Entry, NabavniNalogResEntry.Selected.Entry_No = ThisRecord.Entry_No, {LOT_No: Text(TextInputCanvas1_1.Value)})
-                                );
-                                Set(changeValueModal, false);
-                            PressedBorderColor: =App.Theme.Colors.Darker40
-                            PressedColor: =Self.Color
-                            PressedFill: =App.Theme.Colors.Darker40
-                            Size: =12
-                            Text: ="Potvrdi"
-                            Width: =130
-                            X: =(Parent.Width - Self.Width) /2
-                            Y: =(Parent.Height - Self.Height) / 1.1
-                            ZIndex: =1
-
-                        Icon4_1 As icon.Cancel:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Color: =App.Theme.Colors.Darker30
-                            DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                            DisabledColor: =RGBA(244, 244, 244, 1)
-                            Height: =25
-                            Icon: =Icon.Cancel
-                            OnSelect: =Set(changeValueModal, false);
-                            Width: =25
-                            X: =(Parent.Width - Self.Width) / 1.1
-                            Y: =(Parent.Height - Self.Height) / 10
-                            ZIndex: =2
-
-                        "TextInputCanvas1_1 As 'Text input'":
-                            BorderStyle: =""
-                            DisplayMode: =DisplayMode.Edit
-                            Height: =32
-                            Value: =tempValue
-                            Width: =Parent.Width * 0.6
-                            X: =(Parent.Width - Self.Width) /2
-                            Y: =(Parent.Height - Self.Height) / 2
-                            ZIndex: =3
-
-                PurchaseResEntryNav As dataCard.blankCard:
-                    BorderColor: =RGBA(214, 221, 224, 1)
-                    BorderStyle: =BorderStyle.Solid
-                    BorderThickness: =0.5
-                    DisplayMode: =DisplayMode.Edit
-                    Fill: =RGBA(0, 0, 0, 0)
-                    Height: =25
-                    Width: =Parent.Width
-                    X: =20
-                    Y: =0
-                    ZIndex: =3
-
-                    Icon1_1 As icon.BackArrow:
-                        BorderColor: =App.Theme.Colors.Darker40
-                        Color: =App.Theme.Colors.Darker30
-                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
-                        DisabledColor: =RGBA(244, 244, 244, 1)
-                        Height: =25
-                        Icon: =Icon.ArrowLeft
-                        OnSelect: |-
-                            =
-                            UpdateContext({wizardStep:1});
-                        Width: =25
-                        X: =20
-                        ZIndex: =1
-
-        com_Footer_2 As com_Footer:
+        com_NabFooter As com_Footer:
             JSONData: |-
                 ="{" & Char(34) & "Purchase_Header" & Char(34) & ": " & JSON(
                     AddColumns(
@@ -1266,11 +493,11 @@
                 ) & "}"
             LayoutMinHeight: =640
             LayoutMinWidth: =640
-            ZIndex: =6
+            ZIndex: =4
 
     com_NabModal As com_Modal:
-        LineId: =com_Gallery_1.SelectedLine.Line_No
-        ResEntryId: =com_Gallery_1.SelectedEntry.Entry_No
+        LineId: =com_NabGalleries.SelectedLine.Line_No
+        ResEntryId: =com_NabGalleries.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =2
 
