@@ -69,9 +69,8 @@ com_Galleries As CanvasComponent:
                 BorderColor: =App.Theme.Colors.Darker40
                 Default: |-
                     =LookUp(
-                        Self.AllItems,
-                        Item_No = ScannedItem,
-                        ThisRecord
+                        colLines,
+                        Item_No = ScannedItem
                     )
                 DelayItemLoading: =true
                 Items: =colLines

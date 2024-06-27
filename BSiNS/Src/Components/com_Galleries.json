@@ -5172,6 +5172,14 @@
                     "InvariantPropertyName": "Default",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "ShowNavigation",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
                 "ControlUniqueId": "67",
@@ -5274,7 +5282,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "LookUp(\n    Self.AllItems,\n    Item_No = ScannedItem,\n    ThisRecord\n)",
+                    "InvariantScript": "LookUp(\n    colLines,\n    Item_No = ScannedItem\n)",
                     "Property": "Default",
                     "RuleProviderType": "Unknown"
                   },
@@ -5421,6 +5429,12 @@
                     "InvariantScript": "wizardStep = 1",
                     "Property": "Visible",
                     "RuleProviderType": "User"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "false",
+                    "Property": "ShowNavigation",
+                    "RuleProviderType": "Unknown"
                   }
                 ],
                 "StyleName": "defaultGalleryStyle",
@@ -10009,7 +10023,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638550807968684066",
+    "LastModifiedTimestamp": "638550856240175091",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10198,7 +10212,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638550807968684066",
+  "LastModifiedTimestamp": "638550856240175091",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

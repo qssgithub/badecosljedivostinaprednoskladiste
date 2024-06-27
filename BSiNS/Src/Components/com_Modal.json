@@ -1185,7 +1185,7 @@
                                 "Category": "Data",
                                 "InvariantScript": "LotNo",
                                 "Property": "Value",
-                                "RuleProviderType": "User"
+                                "RuleProviderType": "Unknown"
                               },
                               {
                                 "Category": "Data",
@@ -2363,7 +2363,7 @@
                             "Category": "Design",
                             "InvariantScript": "If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)",
                             "Property": "Visible",
-                            "RuleProviderType": "User"
+                            "RuleProviderType": "Unknown"
                           }
                         ],
                         "StyleName": "defaultGroupContainerStyle",
@@ -4139,7 +4139,7 @@
                             "Category": "Design",
                             "InvariantScript": "If(IsBlank(LotNo) && com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)",
                             "Property": "LayoutJustifyContent",
-                            "RuleProviderType": "User"
+                            "RuleProviderType": "Unknown"
                           },
                           {
                             "Category": "Design",
@@ -8033,7 +8033,7 @@
       "QuantityCompleted",
       "Quantity"
     ],
-    "LastModifiedTimestamp": "638550718487022889",
+    "LastModifiedTimestamp": "638550811421420288",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -8050,8 +8050,8 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "100",
-        "Property": "Quantity",
+        "InvariantScript": "\"Text\"",
+        "Property": "LineId",
         "RuleProviderType": "System"
       },
       {
@@ -8068,8 +8068,8 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "\"Text\"",
-        "Property": "LineId",
+        "InvariantScript": "100",
+        "Property": "Quantity",
         "RuleProviderType": "System"
       },
       {
@@ -8189,7 +8189,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638550718487022889",
+  "LastModifiedTimestamp": "638550811421420288",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

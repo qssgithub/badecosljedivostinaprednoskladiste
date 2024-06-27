@@ -214,7 +214,7 @@
                     Y: =txt_InvDocumentName.Height
                     ZIndex: =1
 
-                    Icon2 As icon.Check:
+                    icn_InvChecked As icon.Check:
                         BorderColor: =App.Theme.Colors.Darker40
                         Color: =App.Theme.Colors.Darker30
                         DisabledBorderColor: =RGBA(166, 166, 166, 1)
@@ -225,7 +225,7 @@
                         Visible: =LookUp(Filter(lockedItems, ThisRecord.documentId = SelectedDocumentName), lineId = ThisItem.'Line_No.', isLocked)
                         Width: =32
                         X: =Parent.TemplateWidth - 90
-                        Y: =lbl_InvBarcode.Y
+                        Y: =lbl_InvBarcode.Y - 10
                         ZIndex: =3
 
                     rct_InvSeparator As rectangle:

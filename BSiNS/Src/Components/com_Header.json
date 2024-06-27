@@ -614,7 +614,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\n/*\nIf(\n    App.ActiveScreen = scr_Entry,\n    Set(\n        isModalOpen,\n        true\n    ),\n    Set(\n        wizardStep,\n        2\n    )\n);\n*/",
+                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\nIf(\n    App.ActiveScreen = scr_Entry,\n    Set(\n        isModalOpen,\n        true\n    ),\n    Set(\n        wizardStep,\n        2\n    )\n);\n",
                     "Property": "OnScan",
                     "RuleProviderType": "User"
                   },
@@ -1643,7 +1643,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638550786619985564",
+    "LastModifiedTimestamp": "638550856992827755",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1739,7 +1739,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638550786619985564",
+  "LastModifiedTimestamp": "638550856992827755",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"
