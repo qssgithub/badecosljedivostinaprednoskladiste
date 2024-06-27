@@ -87,7 +87,8 @@
           "InvariantPropertyName": "FontColor",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -179,6 +180,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -283,7 +289,8 @@
           "InvariantPropertyName": "Align",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -367,6 +374,11 @@
         {
           "Category": "Data",
           "PropertyName": "BasePaletteColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -455,7 +467,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -536,6 +549,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -624,7 +642,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -708,6 +727,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
@@ -786,7 +810,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -863,6 +888,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
@@ -933,7 +963,8 @@
           "InvariantPropertyName": "FontSize",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -1010,6 +1041,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
@@ -1083,7 +1119,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -1157,6 +1194,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1238,7 +1280,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -1312,6 +1355,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1418,12 +1466,7 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "LineId",
+          "PropertyName": "QuantityNewLOT",
           "RuleProviderType": "System"
         },
         {
@@ -1433,12 +1476,17 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "QuantityNewLOT",
+          "PropertyName": "QuantityCompleted",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
           "PropertyName": "ResEntryId",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LineId",
           "RuleProviderType": "System"
         },
         {
@@ -4371,7 +4419,8 @@
           "InvariantPropertyName": "Appearance",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -4470,6 +4519,11 @@
         {
           "Category": "Data",
           "PropertyName": "Required",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4588,7 +4642,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "OnChange"
+        "OnChange",
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -4683,6 +4738,11 @@
           "Category": "Data",
           "PropertyName": "ValidationState",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -4805,7 +4865,8 @@
           "InvariantPropertyName": "ValidationState",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -4910,6 +4971,11 @@
           "Category": "Data",
           "PropertyName": "ValidationState",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -5042,7 +5108,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "Visible"
+        "Visible",
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5142,6 +5209,11 @@
           "Category": "Data",
           "PropertyName": "Text",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -5269,7 +5341,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "Visible"
+        "Visible",
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5369,6 +5442,11 @@
           "Category": "Data",
           "PropertyName": "Text",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -5503,7 +5581,8 @@
           "InvariantPropertyName": "Visible",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5605,6 +5684,11 @@
           "RuleProviderType": "User"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -5682,7 +5766,8 @@
           "InvariantPropertyName": "Size",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5773,6 +5858,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -5845,7 +5935,8 @@
           "InvariantPropertyName": "Size",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5936,6 +6027,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -6008,7 +6104,8 @@
           "InvariantPropertyName": "Size",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -6082,6 +6179,11 @@
         {
           "Category": "Data",
           "PropertyName": "Size",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -6166,7 +6268,8 @@
           "InvariantPropertyName": "FontColor",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -6250,6 +6353,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {

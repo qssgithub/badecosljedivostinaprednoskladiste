@@ -251,7 +251,7 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        com_Header_1 As com_Header:
+        com_PreHeader As com_Header:
             LayoutMinHeight: =640
             LayoutMinWidth: =640
             Title: ="NALOG ZA PRENOS"
@@ -1005,6 +1005,7 @@
                             ZIndex: =2
 
                         "TextInputCanvas1_2 As 'Text input'":
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             Value: =tempValue
@@ -1227,7 +1228,7 @@
             RadiusTopRight: =4
             ZIndex: =6
 
-            com_HeaderData_1 As com_HeaderData:
+            com_PreHeaderData As com_HeaderData:
                 LayoutMinHeight: =640
                 LayoutMinWidth: =375
                 Line1Label: |-
@@ -1249,19 +1250,17 @@
                 Width: |
                     =App.Width
 
-            com_Galleries_2 As com_Galleries:
+            com_PreGalleries As com_Galleries:
                 EntryLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina:"}
                 FillPortions: =1
                 LayoutMinWidth: =375
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina", Line5: "Količina za slanje"}
-                LineValueVisibility: |-
-                    ={Line_No: false, Item_No: true, Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
                 Visible: =!isLoading
                 ZIndex: =2
 
-            Spinner2_2 As Spinner:
+            spn_PreLoading As Spinner:
                 BasePaletteColor: =RGBA(249, 83, 109, 1)
                 DisplayMode: =DisplayMode.Edit
                 FillPortions: =1
@@ -1276,7 +1275,7 @@
                 Y: =0
                 ZIndex: =3
 
-        com_Footer_3 As com_Footer:
+        com_PreFooter As com_Footer:
             JSONData: |-
                 ="{" & Char(34) & "Transfer_Header" & Char(34) & ": " & JSON(
                     AddColumns(
@@ -1399,6 +1398,7 @@
                         TextCanvas3_4 As Text:
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1413,6 +1413,7 @@
                             Align: ='TextInputCanvas.Align'.End
                             AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Disabled
                             FontSize: =12
                             Height: =32
@@ -1444,6 +1445,7 @@
                         TextCanvas3_9 As Text:
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1458,6 +1460,7 @@
                             Align: ='TextInputCanvas.Align'.End
                             AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1510,6 +1513,7 @@
                         TextCanvas3_8 As Text:
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1524,6 +1528,7 @@
                             Align: ='TextInputCanvas.Align'.End
                             AlignInContainer: =AlignInContainer.Center
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1558,6 +1563,7 @@
                     ButtonCanvas2_2 As Button:
                         Appearance: ='ButtonCanvas.Appearance'.Secondary
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         Icon: ="DismissCircle"
@@ -1579,6 +1585,7 @@
 
                     ButtonCanvas3_2 As Button:
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         Icon: ="Save"
@@ -1615,12 +1622,12 @@
                         Y: =0
                         ZIndex: =2
 
-    com_Modal_1 As com_Modal:
-        LineId: =com_Galleries_2.SelectedLine.Line_No
-        Quantity: =Abs(com_Galleries_2.SelectedEntry.Quantity)
-        QuantityCompleted: =Abs(com_Galleries_2.SelectedEntry.Quantity_Completed)
-        QuantityNewLOT: =Abs(com_Galleries_2.SelectedEntry.Quantity_NewLOT)
-        ResEntryId: =com_Galleries_2.SelectedEntry.Entry_No
+    com_PreModal As com_Modal:
+        LineId: =com_PreGalleries.SelectedLine.Line_No
+        Quantity: =Abs(com_PreGalleries.SelectedEntry.Quantity)
+        QuantityCompleted: =Abs(com_PreGalleries.SelectedEntry.Quantity_Completed)
+        QuantityNewLOT: =Abs(com_PreGalleries.SelectedEntry.Quantity_NewLOT)
+        ResEntryId: =com_PreGalleries.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =3
 

@@ -123,278 +123,6 @@
             false
         );
 
-    con_InvModalFade As groupContainer.manualLayoutContainer:
-        DropShadow: =DropShadow.Light
-        Fill: =RGBA(0, 0, 0, 50%)
-        Height: =Parent.Height
-        RadiusBottomLeft: =4
-        RadiusBottomRight: =4
-        RadiusTopLeft: =4
-        RadiusTopRight: =4
-        Visible: =false
-        Width: |
-            =Parent.Width
-        ZIndex: =1
-
-        vrt_InvModal As groupContainer.verticalAutoLayoutContainer:
-            DropShadow: =DropShadow.ExtraBold
-            Fill: =RGBA(255, 255, 255, 1)
-            Height: =300
-            LayoutAlignItems: =LayoutAlignItems.Stretch
-            LayoutDirection: =LayoutDirection.Vertical
-            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-            LayoutMode: =LayoutMode.Auto
-            RadiusBottomLeft: =4
-            RadiusBottomRight: =4
-            RadiusTopLeft: =4
-            RadiusTopRight: =4
-            Width: =300
-            X: =(Parent.Width - Self.Width) / 2
-            Y: =(Parent.Height - Self.Height) / 2
-            ZIndex: =2
-
-            con_InvModalHeader As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                Fill: =RGBA(189, 49, 51, 1)
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =40
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingLeft: =5
-                PaddingRight: =5
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =1
-
-                txt_InvModalHeader As Text:
-                    Align: ='TextCanvas.Align'.Center
-                    AutoHeight: =true
-                    DisplayMode: =DisplayMode.Edit
-                    FillPortions: =1
-                    FontColor: =RGBA(255, 255, 255, 1)
-                    Height: =32
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    Size: =32
-                    Text: ="Unesite podatke"
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =1
-
-                btn_IvnModalClose As Button:
-                    Align: =Align.Justify
-                    Appearance: ='ButtonCanvas.Appearance'.Transparent
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    FontColor: =RGBA(255, 255, 255, 1)
-                    FontSize: =32
-                    Height: |
-                        =32
-                    Icon: ="DismissCircle"
-                    IconStyle: ='ButtonCanvas.IconStyle'.Outline
-                    Layout: ='ButtonCanvas.Layout'.IconOnly
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    OnSelect: |-
-                        =Reset(inp_InvQuantity);
-                        Set(isModalOpen, false);
-                    PaddingBottom: =0
-                    PaddingLeft: =0
-                    PaddingRight: =0
-                    PaddingTop: =0
-                    Text: ="Zatvori"
-                    Width: =32
-                    X: =40
-                    Y: =40
-                    ZIndex: =2
-
-            vrt_InvModalBody As groupContainer.verticalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                FillPortions: =3
-                LayoutAlignItems: =LayoutAlignItems.Stretch
-                LayoutDirection: =LayoutDirection.Vertical
-                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                LayoutMinHeight: =100
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingBottom: =15
-                PaddingLeft: =15
-                PaddingRight: =15
-                PaddingTop: =15
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =3
-
-                hrz_InvLOTNo As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =30
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =15
-                    PaddingTop: =15
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    Visible: =IsBlank(glr_Inv.Selected.Lot_No)
-                    ZIndex: =1
-
-                    txt_InvLOTNo As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        FillPortions: =1
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: ="LOT"
-                        Width: =96
-                        X: =40
-                        Y: =40
-                        ZIndex: =1
-
-                    "inp_InvLOTNo As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.End
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontSize: =14
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =320
-                        OnChange: =
-                        Placeholder: ="Unesite broj LOT-a"
-                        Required: =true
-                        Type: ="Text"
-                        Value: =glr_Inv.Selected.Lot_No
-                        Width: =100
-                        X: =40
-                        Y: =40
-                        ZIndex: =2
-
-                hrz_InvQuantity As groupContainer.verticalAutoLayoutContainer:
-                    AlignInContainer: =AlignInContainer.SetByContainer
-                    LayoutAlignItems: =LayoutAlignItems.Center
-                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
-                    LayoutMinHeight: =30
-                    LayoutMinWidth: =250
-                    LayoutMode: =LayoutMode.Auto
-                    PaddingBottom: =15
-                    PaddingTop: =15
-                    RadiusBottomLeft: =4
-                    RadiusBottomRight: =4
-                    RadiusTopLeft: =4
-                    RadiusTopRight: =4
-                    ZIndex: =2
-
-                    txt_InvQuantity As Text:
-                        AutoHeight: =true
-                        DisplayMode: =DisplayMode.Edit
-                        FillPortions: =1
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        Text: ="Popisana količina"
-                        Width: =96
-                        X: =40
-                        Y: =40
-                        ZIndex: =1
-
-                    "inp_InvQuantity As 'Text input'":
-                        Align: ='TextInputCanvas.Align'.End
-                        BasePaletteColor: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontSize: =14
-                        Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =320
-                        OnChange: =
-                        Placeholder: ="Unesite količinu..."
-                        Required: =true
-                        Type: ="Text"
-                        Value: =glr_Inv.Selected.Qty_Phys_Inventory
-                        Width: =100
-                        X: =40
-                        Y: =40
-                        ZIndex: =2
-
-            hrz_InvModalFooter As groupContainer.horizontalAutoLayoutContainer:
-                AlignInContainer: =AlignInContainer.SetByContainer
-                DropShadow: =DropShadow.Light
-                LayoutAlignItems: =LayoutAlignItems.Center
-                LayoutGap: =10
-                LayoutJustifyContent: =LayoutJustifyContent.End
-                LayoutMinHeight: =40
-                LayoutMinWidth: =250
-                LayoutMode: =LayoutMode.Auto
-                PaddingBottom: =20
-                PaddingLeft: =10
-                PaddingRight: =10
-                PaddingTop: =20
-                RadiusBottomLeft: =4
-                RadiusBottomRight: =4
-                RadiusTopLeft: =4
-                RadiusTopRight: =4
-                ZIndex: =4
-
-                btn_InvModalSave As Button:
-                    BasePaletteColor: =
-                    DisplayMode: =DisplayMode.Edit
-                    Height: =32
-                    Icon: ="Save"
-                    Layout: ='ButtonCanvas.Layout'.IconAfter
-                    LayoutMinHeight: =32
-                    LayoutMinWidth: =96
-                    OnSelect: |
-                        =/*If(
-                            IsBlank(glr_Inv.Selected.Lot_No),
-                            UpdateIf(
-                                inventureCollection,
-                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
-                                {
-                                    Lot_No: Text(inp_InvLOTNo.Value),
-                                    Qty_Phys_Inventory: Value(inp_InvQuantity.Value)
-                                }
-                            ),
-                            UpdateIf(
-                                inventureCollection,
-                                ThisRecord.'Line_No.' = glr_Inv.Selected.'Line_No.',
-                                {Qty_Phys_Inventory: Value(inp_InvQuantity.Value)}
-                            )
-                        );
-                        ClearCollect(
-                            inventureCollectionEdited,
-                            inventureCollection
-                        );
-                        ClearCollect(
-                            inventureCollection,
-                            inventureCollectionEdited
-                        );
-                        Clear(inventureCollectionEdited);*/
-                        Reset(inp_InvQuantity);
-                        UpdateIf(
-                            lockedItems,
-                            ThisRecord.lineId = glr_Inv.Selected.'Line_No.',
-                            {isLocked: true}
-                        );
-                        Set(
-                            isModalOpen,
-                            false
-                        );
-                    Text: ="Spasi"
-                    Width: =96
-                    X: =0
-                    Y: =0
-                    ZIndex: =2
-
     vrt_Inv As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
@@ -480,7 +208,7 @@
                         );
                     TemplateFill: =If(Self.IsSelected, RGBA(250, 250, 250, 1), RGBA(245, 245, 245, 1))
                     TemplatePadding: =0
-                    TemplateSize: =291
+                    TemplateSize: =150
                     Visible: =!isLoading
                     Width: =Parent.Width
                     Y: =txt_InvDocumentName.Height
@@ -563,7 +291,7 @@
                             Reset(glr_Inv);
                         Width: =32
                         X: =Parent.TemplateWidth - 50
-                        Y: =lbl_InvBarcode.Y
+                        Y: =lbl_InvBarcode.Y - 10
                         ZIndex: =10
 
                     grp_InvBarcode As group:
@@ -574,12 +302,11 @@
                         ZIndex: =21
 
                         lbl_InvBarcode As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =lbl_InvItemNo.PaddingLeft
@@ -588,19 +315,18 @@
                             Size: =12
                             Text: |-
                                 ="Barcode:"
-                            VerticalAlign: =VerticalAlign.Top
                             Width: =lbl_InvItemNo.Width
+                            Wrap: =false
                             X: =lbl_InvItemNo.X
-                            Y: =lbl_InvQuantity.Height + lbl_InvQuantity.Y + 25
+                            Y: =lbl_InvQuantity.Height + lbl_InvQuantity.Y
                             ZIndex: =9
 
                         lbl_InvBarcodeValue As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
@@ -608,8 +334,8 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.Barcode
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 125
+                            Wrap: =false
                             X: =lbl_InvBarcode.Width
                             Y: =lbl_InvBarcode.Y
                             ZIndex: =11
@@ -622,7 +348,6 @@
                         ZIndex: =22
 
                         lbl_InvQuantity As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
@@ -630,20 +355,19 @@
                             Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
-                            PaddingLeft: =lbl_InvItemNo.PaddingRight
+                            PaddingLeft: =lbl_InvItemNo.PaddingLeft
                             PaddingRight: =lbl_InvItemNo.PaddingRight
                             PaddingTop: =0
                             Size: =12
                             Text: |-
                                 ="Količina:"
-                            VerticalAlign: =VerticalAlign.Top
                             Width: =lbl_InvItemNo.Width
+                            Wrap: =false
                             X: =lbl_InvItemNo.X
-                            Y: =lbl_InvExpDate.Height + lbl_InvExpDate.Y + 25
+                            Y: =lbl_InvExpDate.Height + lbl_InvExpDate.Y
                             ZIndex: =8
 
                         lbl_InvQuantityValue As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
@@ -656,8 +380,8 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.Qty_Phys_Inventory
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 125
+                            Wrap: =false
                             X: =lbl_InvQuantity.Width
                             Y: =lbl_InvQuantity.Y
                             ZIndex: =12
@@ -670,32 +394,30 @@
                         ZIndex: =26
 
                         lbl_InvItemNo As label:
-                            AutoHeight: =true
                             Color: =RGBA(50, 49, 48, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =20
-                            PaddingRight: =20
+                            PaddingRight: =0
                             PaddingTop: =0
                             Size: =12
                             Text: |-
                                 ="Broj artikla:"
-                            VerticalAlign: =VerticalAlign.Top
-                            Y: =18
+                            Width: =120
+                            Wrap: =false
+                            Y: =10
                             ZIndex: =1
 
                         lbl_InvItemNoValue As label:
-                            Align: =Align.Justify
-                            AutoHeight: =true
                             Color: =RGBA(50, 49, 48, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
@@ -703,10 +425,10 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.'Item_No.'
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 150
+                            Wrap: =false
                             X: =lbl_InvItemNo.Width
-                            Y: =lbl_InvItemNo.Y
+                            Y: =10
                             ZIndex: =16
 
                     grp_InvDescription As group:
@@ -717,12 +439,11 @@
                         ZIndex: =26
 
                         lbl_InvDescription As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =lbl_InvItemNo.PaddingLeft
@@ -731,19 +452,17 @@
                             Size: =12
                             Text: |-
                                 ="Naziv artikla:"
-                            VerticalAlign: =VerticalAlign.Top
                             Width: =lbl_InvItemNo.Width
                             X: =lbl_InvItemNo.X
-                            Y: =lbl_InvItemNo.Height + lbl_InvItemNo.Y + 25
+                            Y: =lbl_InvItemNo.Y + lbl_InvItemNo.Height
                             ZIndex: =2
 
                         lbl_InvDescriptionValue As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =22
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
@@ -751,8 +470,8 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.Description
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 125
+                            Wrap: =false
                             X: =lbl_InvDescription.Width
                             Y: =lbl_InvDescription.Y
                             ZIndex: =15
@@ -765,12 +484,11 @@
                         ZIndex: =26
 
                         lbl_InvLOTNo As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =18
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =lbl_InvItemNo.PaddingLeft
@@ -779,18 +497,18 @@
                             Size: =12
                             Text: |-
                                 ="LOT:"
-                            VerticalAlign: =VerticalAlign.Top
                             Width: =lbl_InvItemNo.Width
-                            Y: =lbl_InvDescription.Height + lbl_InvDescription.Y + 25
+                            Wrap: =false
+                            X: =lbl_InvItemNo.X
+                            Y: =lbl_InvDescription.Y + lbl_InvDescription.Height
                             ZIndex: =6
 
                         lbl_InvLOTNoValue As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
                             FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                            Height: =18
+                            Height: =Self.Size * 1.8
                             OnSelect: =Select(Parent)
                             PaddingBottom: =0
                             PaddingLeft: =0
@@ -798,8 +516,8 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.Lot_No
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 125
+                            Wrap: =false
                             X: =lbl_InvLOTNo.Width
                             Y: =lbl_InvLOTNo.Y
                             ZIndex: =14
@@ -812,7 +530,6 @@
                         ZIndex: =26
 
                         lbl_InvExpDate As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
@@ -826,13 +543,12 @@
                             Size: =12
                             Text: |-
                                 ="Rok trajanja:"
-                            VerticalAlign: =VerticalAlign.Top
                             Width: =lbl_InvItemNo.Width
-                            Y: =lbl_InvLOTNo.Height + lbl_InvLOTNo.Y + 25
+                            Wrap: =false
+                            Y: =lbl_InvLOTNo.Height + lbl_InvLOTNo.Y
                             ZIndex: =7
 
                         lbl_InvExpDateValue As label:
-                            AutoHeight: =true
                             Color: =RGBA(0, 0, 0, 1)
                             DisabledColor: =RGBA(166, 166, 166, 1)
                             Font: =App.Theme.Font
@@ -845,8 +561,8 @@
                             PaddingTop: =0
                             Size: =12
                             Text: =ThisItem.Item_Expiration_Date
-                            VerticalAlign: =VerticalAlign.Top
-                            Width: =Parent.TemplateWidth - lbl_ItemNo.Width * 2
+                            Width: =Parent.TemplateWidth - 125
+                            Wrap: =false
                             X: =lbl_InvExpDate.Width
                             Y: =lbl_InvExpDate.Y
                             ZIndex: =13
@@ -866,6 +582,7 @@
                 txt_InvDocumentName As Text:
                     Align: ='TextCanvas.Align'.Start
                     AutoHeight: =false
+                    BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
                     Height: =40
                     PaddingBottom: =0
@@ -889,10 +606,10 @@
             ZIndex: =5
 
     com_InvModal As com_Modal:
+        IsInventura: =true
         LineId: =glr_Inv.Selected.'Line_No.'
         Quantity: =glr_Inv.Selected.Qty_Phys_Inventory
-        QuantityCompleted: |
-            =glr_Inv.Selected.Qty_Phys_Inventory
+        QuantityCompleted: =glr_Inv.Selected.Qty_Phys_Inventory
         QuantityNewLOT: =0
         ResEntryId: =
         Visible: =isModalOpen

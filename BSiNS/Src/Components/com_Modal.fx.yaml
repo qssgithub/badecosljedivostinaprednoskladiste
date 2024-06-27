@@ -64,6 +64,7 @@ com_Modal As CanvasComponent:
                     txt_ModalHeader As Text:
                         Align: ='TextCanvas.Align'.Center
                         AutoHeight: =true
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FillPortions: =1
                         FontColor: =RGBA(255, 255, 255, 1)
@@ -80,6 +81,7 @@ com_Modal As CanvasComponent:
                     btn_ModalClose As Button:
                         Appearance: ='ButtonCanvas.Appearance'.Transparent
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FontColor: =RGBA(255, 255, 255, 1)
                         FontSize: =32
@@ -132,6 +134,7 @@ com_Modal As CanvasComponent:
 
                         TextCanvas3_12 As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -147,6 +150,7 @@ com_Modal As CanvasComponent:
                             Align: ='TextInputCanvas.Align'.Center
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -203,6 +207,7 @@ com_Modal As CanvasComponent:
                             ZIndex: =4
 
                             ButtonCanvas9_6 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -218,6 +223,7 @@ com_Modal As CanvasComponent:
                                 ZIndex: =1
 
                             ButtonCanvas9_7 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -248,6 +254,7 @@ com_Modal As CanvasComponent:
 
                         TextCanvas3_11 As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -263,6 +270,7 @@ com_Modal As CanvasComponent:
                             Align: ='TextInputCanvas.Align'.Center
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -283,6 +291,7 @@ com_Modal As CanvasComponent:
                         TextCanvas1 As Text:
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =false
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontColor: =RGBA(215, 58, 60, 1)
                             Height: =20
@@ -320,6 +329,7 @@ com_Modal As CanvasComponent:
                             ZIndex: =4
 
                             ButtonCanvas9_2 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -334,6 +344,7 @@ com_Modal As CanvasComponent:
                                 ZIndex: =1
 
                             ButtonCanvas9_3 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -363,6 +374,7 @@ com_Modal As CanvasComponent:
 
                         TextCanvas3_13 As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -378,6 +390,7 @@ com_Modal As CanvasComponent:
                             Align: ='TextInputCanvas.Align'.Center
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -395,6 +408,7 @@ com_Modal As CanvasComponent:
                         TextCanvas1_10 As Text:
                             AlignInContainer: =AlignInContainer.Center
                             AutoHeight: =false
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontColor: =RGBA(215, 58, 60, 1)
                             Height: =20
@@ -432,6 +446,7 @@ com_Modal As CanvasComponent:
                             ZIndex: =5
 
                             ButtonCanvas9_4 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -447,6 +462,7 @@ com_Modal As CanvasComponent:
                                 ZIndex: =1
 
                             ButtonCanvas9_5 As Button:
+                                BorderStyle: =""
                                 DisplayMode: =DisplayMode.Edit
                                 FillPortions: =1
                                 FontSize: =60
@@ -463,6 +479,7 @@ com_Modal As CanvasComponent:
                     TextCanvas1_9 As Text:
                         AlignInContainer: =AlignInContainer.Center
                         AutoHeight: =false
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FontColor: =RGBA(215, 58, 60, 1)
                         Height: =35
@@ -503,6 +520,7 @@ com_Modal As CanvasComponent:
                     btn_ModalSave As Button:
                         Align: =Align.Justify
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: |-
                             =If(
                                 inp_rezQty_2.ValidationState = "Error" || inp_potrebnoQty_2.ValidationState = "Error" || ((inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity && !com_Modal.IsInventura),

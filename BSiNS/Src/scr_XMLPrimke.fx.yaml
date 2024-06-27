@@ -1075,6 +1075,7 @@
                     txt_PrimkeModalHeaderTitle As Text:
                         Align: ='TextCanvas.Align'.Center
                         AutoHeight: =true
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FillPortions: =1
                         FontColor: =RGBA(255, 255, 255, 1)
@@ -1093,6 +1094,7 @@
                     btn_PrimkeModalClose As Button:
                         Appearance: ='ButtonCanvas.Appearance'.Transparent
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FontColor: =RGBA(255, 255, 255, 1)
                         FontWeight: =
@@ -1154,6 +1156,7 @@
 
                         txt_PrimkeQuantity As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1167,6 +1170,7 @@
                         "inp_PrimkeQuantity As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1197,6 +1201,7 @@
 
                         txt_PrimkeExpDate As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1246,6 +1251,7 @@
 
                         txt_PrimkeLOTNo As Text:
                             AutoHeight: =true
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             LayoutMinHeight: =32
@@ -1259,6 +1265,7 @@
                         "inp_PrimkeLOTNo As 'Text input'":
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1292,6 +1299,7 @@
 
                     btn_PrimkeModalSave As Button:
                         BasePaletteColor: =
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         Icon: ="Save"

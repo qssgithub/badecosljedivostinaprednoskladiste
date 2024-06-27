@@ -381,6 +381,7 @@
 
                     TextCanvas5 As Text:
                         AutoHeight: =false
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =40
                         LayoutMinHeight: =32
@@ -536,8 +537,6 @@
                     LayoutMinWidth: =250
                     LineLabels: |-
                         ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina", Line4: "Količina za slanje:"}
-                    LineValueVisibility: |-
-                        ={Line_No: false, Item_No: true, Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
                     NumberOfLinesToDisplay: =4
                     Visible: =true
                     ZIndex: =4
@@ -561,6 +560,7 @@
                 ButtonCanvas8 As Button:
                     Align: =Align.Left
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
                     FontSize: =0
                     Height: =20

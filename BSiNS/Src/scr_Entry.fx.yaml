@@ -194,6 +194,7 @@
 
                     txt_EntryStatus As Text:
                         AutoHeight: =true
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         LayoutMinHeight: =32
@@ -216,6 +217,7 @@
                         ZIndex: =3
 
                         dd_EntryStatus As Dropdown.pcfdataset:
+                            BorderStyle: =""
                             DefaultSelectedItems: |-
                                 ={Id: "All", Text: "Svi statusi"}
                             DisplayMode: =DisplayMode.Edit
@@ -311,6 +313,7 @@
 
                     txt_EntryFileType As Text:
                         AutoHeight: =true
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         LayoutMinHeight: =32
@@ -335,6 +338,7 @@
                         ZIndex: =3
 
                         dd_EntryFileType As Dropdown.pcfdataset:
+                            BorderStyle: =""
                             DefaultSelectedItems: |-
                                 ={
                                     Id: "0",
@@ -438,6 +442,7 @@
                     Align: =Align.Center
                     AlignInContainer: =AlignInContainer.End
                     Appearance: ='ButtonCanvas.Appearance'.Transparent
+                    BorderStyle: =""
                     DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                     FontSize: =40
                     Height: =dd_EntryFileType.Height
@@ -697,6 +702,7 @@
                 txt_EntryNoData As Text:
                     Align: ='TextCanvas.Align'.Center
                     AutoHeight: =false
+                    BorderStyle: =""
                     DisplayMode: =DisplayMode.Edit
                     Height: =Parent.Height
                     Size: =20

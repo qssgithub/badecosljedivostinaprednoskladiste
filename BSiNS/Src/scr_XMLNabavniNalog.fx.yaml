@@ -427,7 +427,7 @@
                 PaddingBottom: =10
                 PaddingLeft: =10
                 PaddingRight: =10
-                PaddingTop: =5
+                PaddingTop: =10
                 RadiusBottomLeft: =4
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
@@ -437,7 +437,6 @@
                 ZIndex: =1
 
                 com_NabHeaderData As com_HeaderData:
-                    AlignInContainer: =AlignInContainer.Center
                     LayoutMinHeight: =640
                     LayoutMinWidth: =250
                     Line1Label: |-
@@ -478,6 +477,7 @@
 
                     TextCanvas2 As Text:
                         AutoHeight: =true
+                        BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         Height: =32
                         LayoutMinHeight: =32
@@ -638,8 +638,6 @@
                     LayoutMinWidth: =250
                     LineLabels: |-
                         ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
-                    LineValueVisibility: |-
-                        ={Line_No: false, Item_No: true, Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: true, 'Qty-to_Ship': false}
                     Visible: =true
                     ZIndex: =5
 
@@ -1037,6 +1035,7 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
+                                BorderStyle: =""
                                 DelayOutput: =true
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
@@ -1077,6 +1076,7 @@
                                 Align: ='TextInputCanvas.Align'.Start
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
+                                BorderStyle: =""
                                 DelayOutput: =true
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
@@ -1210,6 +1210,7 @@
                             ZIndex: =2
 
                         "TextInputCanvas1_1 As 'Text input'":
+                            BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
                             Height: =32
                             Value: =tempValue

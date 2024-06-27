@@ -4783,7 +4783,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -4865,6 +4866,11 @@
         {
           "Category": "Data",
           "PropertyName": "Icon",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4954,7 +4960,8 @@
           "InvariantPropertyName": "OnSelect",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -5029,6 +5036,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "X",
           "RuleProviderType": "Unknown"
@@ -5067,7 +5079,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Footer_3": {
+    "com_PreFooter": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5159,29 +5171,34 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Footer_3",
+      "Name": "com_PreFooter",
       "OptimizeForDevices": "Off",
       "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
+          "PropertyName": "JSONData",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "JSONData",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "IsInventura",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5191,24 +5208,19 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Galleries_2": {
+    "com_PreGalleries": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5242,7 +5254,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: true, 'Qty-to_Ship'}",
+          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
           "InvariantPropertyName": "LineValueVisibility",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -5288,7 +5300,8 @@
           "InvariantPropertyName": "Visible",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "LineValuePosition"
       ],
       "DynamicProperties": [
         {
@@ -5370,30 +5383,20 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Galleries_2",
+      "Name": "com_PreGalleries",
       "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "SelectedLine",
-          "RuleProviderType": "System"
+          "PropertyName": "NumberOfLinesToDisplay",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "LineLabels",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "EntriesToDisplay",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "EntryLabels",
-          "RuleProviderType": "User"
+          "PropertyName": "SelectedEntry",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
@@ -5402,37 +5405,32 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "SelectedEntry",
-          "RuleProviderType": "System"
+          "PropertyName": "EntryLabels",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "NumberOfLinesToDisplay",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "EntriesToDisplay",
           "RuleProviderType": "Unknown"
         },
         {
-          "Category": "Design",
-          "PropertyName": "Width",
+          "Category": "Data",
+          "PropertyName": "LineLabels",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "SelectedLine",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LineValuePosition",
           "RuleProviderType": "System"
         },
         {
           "Category": "Design",
-          "PropertyName": "X",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5442,19 +5440,39 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Behavior",
           "PropertyName": "OnReset",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Header_1": {
+    "com_PreHeader": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5540,39 +5558,24 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Header_1",
+      "Name": "com_PreHeader",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Title",
+          "PropertyName": "IsEntryScreen",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "IsEntryScreen",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Title",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
+          "PropertyName": "ZIndex",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5582,19 +5585,34 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Behavior",
           "PropertyName": "OnReset",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_HeaderData_1": {
+    "com_PreHeaderData": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5772,29 +5790,34 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_HeaderData_1",
+      "Name": "com_PreHeaderData",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "Line1Label",
+          "PropertyName": "Line5Value",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line2Label",
+          "PropertyName": "Line4Value",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line3Label",
+          "PropertyName": "Line3Value",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line4Label",
+          "PropertyName": "Line2Value",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Line1Value",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5804,37 +5827,42 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "Line1Value",
-          "RuleProviderType": "User"
+          "PropertyName": "Line4Label",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line2Value",
-          "RuleProviderType": "User"
+          "PropertyName": "Line3Label",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line3Value",
-          "RuleProviderType": "User"
+          "PropertyName": "Line2Label",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Line4Value",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "Line5Value",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "ZIndex",
+          "PropertyName": "Line1Label",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -5844,29 +5872,19 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Y",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_Modal_1": {
+    "com_PreModal": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -5968,49 +5986,64 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_Modal_1",
+      "Name": "com_PreModal",
       "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "LineId",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "Quantity",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "QuantityNewLOT",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LineId",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Quantity",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "ResEntryId",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         },
         {
-          "Category": "Design",
-          "PropertyName": "ZIndex",
+          "Category": "Data",
+          "PropertyName": "IsInventura",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ChildTabPriority",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
@@ -6020,28 +6053,13 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "ChildTabPriority",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
@@ -10257,7 +10275,8 @@
           "InvariantPropertyName": "FontSize",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -10342,6 +10361,11 @@
           "Category": "Data",
           "PropertyName": "Value",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -10447,7 +10471,8 @@
           "InvariantPropertyName": "FontSize",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -10531,6 +10556,11 @@
         {
           "Category": "Data",
           "PropertyName": "FontSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -10635,7 +10665,8 @@
           "InvariantPropertyName": "OnChange",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -10720,6 +10751,11 @@
           "Category": "Data",
           "PropertyName": "Value",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -15202,7 +15238,7 @@
       "StyleName": "dividerStyle2020",
       "Type": "ControlInfo"
     },
-    "Spinner2_2": {
+    "spn_PreLoading": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "X",
@@ -15298,7 +15334,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "Spinner2_2",
+      "Name": "spn_PreLoading",
       "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
@@ -15351,7 +15387,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
@@ -15648,7 +15684,8 @@
           "InvariantPropertyName": "AutoHeight",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -15720,6 +15757,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -15777,7 +15819,8 @@
           "InvariantPropertyName": "AutoHeight",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -15849,6 +15892,11 @@
           "RuleProviderType": "Unknown"
         },
         {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
           "Category": "Design",
           "PropertyName": "Height",
           "RuleProviderType": "Unknown"
@@ -15906,7 +15954,8 @@
           "InvariantPropertyName": "AutoHeight",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -15975,6 +16024,11 @@
         {
           "Category": "Data",
           "PropertyName": "AutoHeight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -16048,7 +16102,8 @@
           "InvariantPropertyName": "Value",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "HasDynamicProperties": false,
       "IsAutoGenerated": false,
@@ -16068,6 +16123,11 @@
           "Category": "Data",
           "PropertyName": "Value",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",

@@ -3948,7 +3948,8 @@
           "InvariantPropertyName": "Align",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -4069,6 +4070,11 @@
         {
           "Category": "Data",
           "PropertyName": "Align",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
@@ -4282,14 +4288,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
-          "InvariantPropertyName": "LineValueVisibility",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "LineValueVisibility",
         "EntriesToDisplay",
         {
           "AFDDataSourceName": "",
@@ -4317,7 +4316,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "Visible"
+        "Visible",
+        "LineValuePosition"
       ],
       "DynamicProperties": [
         {
@@ -4420,7 +4420,7 @@
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "User"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Data",
@@ -4431,6 +4431,11 @@
           "Category": "Data",
           "PropertyName": "NumberOfLinesToDisplay",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LineValuePosition",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -4602,7 +4607,7 @@
         {
           "Category": "Design",
           "PropertyName": "Width",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -8122,7 +8127,8 @@
           "InvariantPropertyName": "PaddingRight",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "BorderStyle"
       ],
       "DynamicProperties": [
         {
@@ -8228,6 +8234,11 @@
         {
           "Category": "Data",
           "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "BorderStyle",
           "RuleProviderType": "Unknown"
         },
         {
