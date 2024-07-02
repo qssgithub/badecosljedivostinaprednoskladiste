@@ -43,14 +43,14 @@
             {
                 XMLFiles: Table(
                     ForAll(
-                        Files.ReadyForProcessing As file,
+                        Files.readyForProcessing As file,
                         {
-                            FileName: Text(file.Name),
+                            FileName: Text(file),
                             FileType: Text(
                                 First(
                                     LastN(
                                         Split(
-                                            file.Name,
+                                            file,
                                             "_"
                                         ),
                                         2
@@ -61,14 +61,14 @@
                         }
                     ),
                     ForAll(
-                        Files.InProgress As file,
+                        Files.inProgress As file,
                         {
-                            FileName: file.Name,
+                            FileName: file,
                             FileType: Text(
                                 First(
                                     LastN(
                                         Split(
-                                            file.Name,
+                                            file,
                                             "_"
                                         ),
                                         2
@@ -461,14 +461,14 @@
                             {
                                 XMLFiles: Table(
                                     ForAll(
-                                        Files.ReadyForProcessing As file,
+                                        Files.readyForProcessing As file,
                                         {
-                                            FileName: Text(file.Name),
+                                            FileName: Text(file),
                                             FileType: Text(
                                                 First(
                                                     LastN(
                                                         Split(
-                                                            file.Name,
+                                                            file,
                                                             "_"
                                                         ),
                                                         2
@@ -479,14 +479,14 @@
                                         }
                                     ),
                                     ForAll(
-                                        Files.InProgress As file,
+                                        Files.inProgress As file,
                                         {
-                                            FileName: file.Name,
+                                            FileName: file,
                                             FileType: Text(
                                                 First(
                                                     LastN(
                                                         Split(
-                                                            file.Name,
+                                                            file,
                                                             "_"
                                                         ),
                                                         2
