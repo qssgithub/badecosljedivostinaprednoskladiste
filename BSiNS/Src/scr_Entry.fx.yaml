@@ -38,6 +38,7 @@
             ),
             true
         );
+        /*
         UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {
@@ -104,6 +105,10 @@
                 }
             )
         );
+        */
+        UpdateContext({documents: ForAll(ParseJSON(GetAll.Run().outputfiles), {
+            
+        })});
         Set(
             isLoading,
             false

@@ -1,20 +1,4 @@
 {
-  "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-    "connectionRef": {
-      "displayName": "File System",
-      "gatewayObjectIdHint": "e421089c-6bde-41a5-a2c4-0f0052f4b799",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1677/1.0.1677.3637/filesystem/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_filesystem",
-      "isOnPremiseConnection": true
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "83a5e72d-31cf-4207-8bb8-041ebb02dce7"
-    ],
-    "id": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-  },
   "67bba9e1-7f90-4731-9c75-063e8ec266fb": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -102,50 +86,6 @@
     },
     "dependents": [],
     "id": "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
-  },
-  "83a5e72d-31cf-4207-8bb8-041ebb02dce7": {
-    "connectionRef": {
-      "displayName": "Logic flows",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
-      "parameterHints": {
-        "51754cca-0eda-4beb-8c39-d1cb638ce80f": {
-          "value": "shared_filesystem_1"
-        },
-        "workflowDisplayName": {
-          "value": "GetAll - Muhamed"
-        },
-        "workflowEntityId": {
-          "value": "3fc564b1-3935-ef11-8409-6045bd9ac15f"
-        },
-        "workflowName": {
-          "value": "63b5d9cf-40f4-7bab-fc68-aed70c847aa4"
-        }
-      },
-      "parameterHintsV2": {
-        "shared_filesystem_1": {
-          "value": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-        },
-        "workflowDisplayName": {
-          "value": "GetAll - Muhamed"
-        },
-        "workflowEntityId": {
-          "value": "3fc564b1-3935-ef11-8409-6045bd9ac15f"
-        },
-        "workflowName": {
-          "value": "63b5d9cf-40f4-7bab-fc68-aed70c847aa4"
-        }
-      }
-    },
-    "datasets": {},
-    "dataSources": [
-      "GetAll-Muhamed"
-    ],
-    "dependencies": {
-      "shared_filesystem_1": "51754cca-0eda-4beb-8c39-d1cb638ce80f"
-    },
-    "dependents": [],
-    "id": "83a5e72d-31cf-4207-8bb8-041ebb02dce7"
   },
   "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1": {
     "connectionRef": {
