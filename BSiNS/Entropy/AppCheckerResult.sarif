@@ -94,36 +94,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "com_Header",
-                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.hrz_ModalHeader.btn_ModalClose.AccessibleLabel"
                 }
               ],
@@ -437,6 +407,36 @@
                 "member": "AccessibleLabel",
                 "module": "com_Modal",
                 "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.hrz_ModalFooter.btn_ModalSave"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Header",
+                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
               }
             }
           ],
