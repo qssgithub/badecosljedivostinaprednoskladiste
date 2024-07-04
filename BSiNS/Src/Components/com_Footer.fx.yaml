@@ -96,7 +96,7 @@ com_Footer As CanvasComponent:
                         UpdateXML.Run(
                             com_Footer.JSONData,
                             SelectedFile,
-                            SelectedFolder
+                            SelectedQueue
                         ),
                         Notify(
                             "Došlo je do greške!",
@@ -112,7 +112,7 @@ com_Footer As CanvasComponent:
                             chb_ReadyForNav.Checked,
                             ChangeXmlStatus.Run(
                                 SelectedFile,
-                                SelectedFolder,
+                                SelectedQueue,
                                 ReadyForNAVProcessing
                             );
                             Navigate(
@@ -123,7 +123,7 @@ com_Footer As CanvasComponent:
                                 chb_Dorada.Checked,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
-                                    SelectedFolder,
+                                    SelectedQueue,
                                     NAVChanges
                                 );
                                 Navigate(
@@ -138,7 +138,7 @@ com_Footer As CanvasComponent:
                         );
                     ),
                     Set(
-                        SelectedFolder,
+                        SelectedQueue,
                         ReadyForProcessing
                     );
                     Notify(

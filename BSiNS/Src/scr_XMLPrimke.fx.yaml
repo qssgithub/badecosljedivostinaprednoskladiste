@@ -13,7 +13,7 @@
                     xmlFile: ParseJSON(
                         GetXml.Run(
                             SelectedFile,
-                            SelectedFolder
+                            SelectedQueue
                         ).response
                     )
                 }
@@ -226,14 +226,14 @@
             false
         );
         If(
-            SelectedFolder = ReadyForProcessing,
+            SelectedQueue = ReadyForProcessing,
             ChangeXmlStatus.Run(
                 SelectedFile,
-                SelectedFolder,
+                SelectedQueue,
                 InProgress
             );
             Set(
-                SelectedFolder,
+                SelectedQueue,
                 InProgress
             )
         );
@@ -946,7 +946,7 @@
                                     )
                                 ) & "}",
                                 SelectedFile,
-                                SelectedFolder
+                                SelectedQueue
                             ),
                             Notify(
                                 "Došlo je do greške!",
@@ -962,7 +962,7 @@
                                 primkeReadyForNavCheckbox.Checked,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
-                                    SelectedFolder,
+                                    SelectedQueue,
                                     ReadyForNAVProcessing
                                 );
                                 Navigate(
@@ -976,7 +976,7 @@
                             )
                         ),
                         Set(
-                            SelectedFolder,
+                            SelectedQueue,
                             ReadyForProcessing
                         );
                         Notify(
@@ -1178,6 +1178,7 @@
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
+                            TriggerOutput: ="FocusOut"
                             Value: =Warehouse_Receipt_ResEntryGallery.Selected.Quantity
                             Width: =150
                             X: =40
@@ -1272,6 +1273,7 @@
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
+                            TriggerOutput: ="FocusOut"
                             Value: =Warehouse_Receipt_ResEntryGallery.Selected.LOT_No
                             Width: =150
                             X: =40

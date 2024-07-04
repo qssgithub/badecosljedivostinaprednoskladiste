@@ -15,7 +15,7 @@
                         xmlData: (ParseJSON(
                             GetXml.Run(
                                 SelectedFile,
-                                SelectedFolder
+                                SelectedQueue
                             ).response
                         ).Lines )
                     }
@@ -88,14 +88,14 @@
             )
         );
         If(
-            SelectedFolder = ReadyForProcessing,
+            SelectedQueue = ReadyForProcessing,
             ChangeXmlStatus.Run(
                 SelectedFile,
-                SelectedFolder,
+                SelectedQueue,
                 InProgress
             );
             Set(
-                SelectedFolder,
+                SelectedQueue,
                 InProgress
             )
         );

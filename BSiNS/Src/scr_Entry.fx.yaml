@@ -16,7 +16,7 @@
             Blank()
         );
         Set(
-            SelectedFolder,
+            SelectedQueue,
             Blank()
         );
         Set(
@@ -38,77 +38,24 @@
             ),
             true
         );
-        /*
-        UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
         UpdateContext(
             {
-                XMLFiles: Table(
-                    ForAll(
-                        Files.readyForProcessing As file,
-                        {
-                            FileName: Text(file),
-                            FileType: Text(
-                                First(
-                                    LastN(
-                                        Split(
-                                            file,
-                                            "_"
-                                        ),
-                                        2
-                                    )
-                                ).Value
-                            ),
-                            FolderName: "ReadyForProcessing"
-                        }
+                documents: ForAll(
+                    ParseJSON(
+                        GetAll.Run(
+                            dd_EntryStatus.Selected.Id,
+                            dd_EntryFileType.Selected.Id
+                        ).outputfiles
                     ),
-                    ForAll(
-                        Files.inProgress As file,
-                        {
-                            FileName: file,
-                            FileType: Text(
-                                First(
-                                    LastN(
-                                        Split(
-                                            file,
-                                            "_"
-                                        ),
-                                        2
-                                    )
-                                ).Value
-                            ),
-                            FolderName: "InProgress"
-                        }
-                    )
+                    {
+                        FileName: Text(ThisRecord.fileName),
+                        DocumentType: Text(ThisRecord.documentType),
+                        DocumentName: Text(ThisRecord.documentName),
+                        QueueName: Text(ThisRecord.queueName)
+                    }
                 )
             }
         );
-        UpdateContext({filteredFiles: XMLFiles});
-        If(
-            Not(dd_EntryStatus.Selected.Id = "All"),
-            UpdateContext(
-                {
-                    filteredFiles: Filter(
-                        filteredFiles,
-                        dd_EntryStatus.Selected.Id = ThisRecord.FolderName
-                    )
-                }
-            )
-        );
-        If(
-            Not(dd_EntryFileType.Selected.Id = "0"),
-            UpdateContext(
-                {
-                    filteredFiles: Filter(
-                        filteredFiles,
-                        dd_EntryFileType.Selected.Id = ThisRecord.FileType
-                    )
-                }
-            )
-        );
-        */
-        UpdateContext({documents: ForAll(ParseJSON(GetAll.Run().outputfiles), {
-            
-        })});
         Set(
             isLoading,
             false
@@ -224,47 +171,50 @@
                         dd_EntryStatus As Dropdown.pcfdataset:
                             BorderStyle: =""
                             DefaultSelectedItems: |-
-                                ={Id: "All", Text: "Svi statusi"}
+                                ={Id: 0, Text: "Svi statusi"}
                             DisplayMode: =DisplayMode.Edit
                             Height: =Parent.Height
                             Items: |-
                                 =[
                                     {
-                                        Id: "All",
+                                        Id: 0,
                                         Text: "Svi statusi"
                                     },
                                     {
-                                        Id: "ReadyForProcessing",
+                                        Id: 1,
                                         Text: "Za obradu"
                                     },
                                     {
-                                        Id: "InProgress",
+                                        Id: 2,
                                         Text: "U obradi"
                                     }
                                 ]
-                            OnChange: |-
-                                =If(
-                                    Not(dd_EntryStatus.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_EntryStatus.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
+                            OnChange: |
+                                =Set(
+                                    isLoading,
+                                    true
                                 );
-                                If(
-                                    Not(dd_EntryFileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_EntryFileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    )
+                                UpdateContext(
+                                    {
+                                        documents: ForAll(
+                                            ParseJSON(
+                                                GetAll.Run(
+                                                    dd_EntryStatus.Selected.Id,
+                                                    dd_EntryFileType.Selected.Id
+                                                ).outputfiles
+                                            ),
+                                            {
+                                                FileName: Text(ThisRecord.fileName),
+                                                DocumentType: Text(ThisRecord.documentType),
+                                                DocumentName: Text(ThisRecord.documentName),
+                                                QueueName: Text(ThisRecord.queueName)
+                                            }
+                                        )
+                                    }
+                                );
+                                Set(
+                                    isLoading,
+                                    false
                                 );
                             Width: =Parent.Width
                             X: =0
@@ -346,7 +296,7 @@
                             BorderStyle: =""
                             DefaultSelectedItems: |-
                                 ={
-                                    Id: "0",
+                                    Id: 0,
                                     Text: "Svi tipovi"
                                 }
                             DisplayMode: =DisplayMode.Edit
@@ -354,65 +304,68 @@
                             Items: |-
                                 =[
                                     {
-                                        Id: "0",
+                                        Id: 0,
                                         Text: "Svi tipovi"
                                     },
                                     {
-                                        Id: "01",
+                                        Id: 1,
                                         Text: "Temeljnice inventure"
                                     },
                                     {
-                                        Id: "02",
+                                        Id: 2,
                                         Text: "Nabavni nalozi"
                                     },
                                     {
-                                        Id: "03",
+                                        Id: 3,
                                         Text: "Prodajni nalozi"
                                     },
                                     {
-                                        Id: "04",
+                                        Id: 4,
                                         Text: "Nalozi za prenos"
                                     },
                                     {
-                                        Id: "05",
+                                        Id: 5,
                                         Text: "Skladišne primke"
                                     },
                                     {
-                                        Id: "06",
+                                        Id: 6,
                                         Text: "Skladišne otpremnice"
                                     },
                                     {
-                                        Id: "07",
+                                        Id: 7,
                                         Text: "Put-Away Request"
                                     },
                                     {
-                                        Id: "08",
+                                        Id: 8,
                                         Text: "Pick Request"
                                     }
                                 ]
                             OnChange: |
-                                =If(
-                                    Not(dd_EntryFileType.Selected.Id = "0"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                XMLFiles,
-                                                dd_EntryFileType.Selected.Id = ThisRecord.FileType
-                                            )
-                                        }
-                                    ),
-                                    UpdateContext({filteredFiles: XMLFiles})
+                                =Set(
+                                    isLoading,
+                                    true
                                 );
-                                If(
-                                    Not(dd_EntryStatus.Selected.Id = "All"),
-                                    UpdateContext(
-                                        {
-                                            filteredFiles: Filter(
-                                                filteredFiles,
-                                                dd_EntryStatus.Selected.Id = ThisRecord.FolderName
-                                            )
-                                        }
-                                    )
+                                UpdateContext(
+                                    {
+                                        documents: ForAll(
+                                            ParseJSON(
+                                                GetAll.Run(
+                                                    dd_EntryStatus.Selected.Id,
+                                                    dd_EntryFileType.Selected.Id
+                                                ).outputfiles
+                                            ),
+                                            {
+                                                FileName: Text(ThisRecord.fileName),
+                                                DocumentType: Text(ThisRecord.documentType),
+                                                DocumentName: Text(ThisRecord.documentName),
+                                                QueueName: Text(ThisRecord.queueName)
+                                            }
+                                        )
+                                    }
+                                );
+                                Set(
+                                    isLoading,
+                                    false
                                 );
                             Width: =Parent.Width
                             X: =0
@@ -461,71 +414,23 @@
                             isLoading,
                             true
                         );
-                        UpdateContext({Files: ParseJSON(GetAll.Run().outputfiles)});
                         UpdateContext(
                             {
-                                XMLFiles: Table(
-                                    ForAll(
-                                        Files.readyForProcessing As file,
-                                        {
-                                            FileName: Text(file),
-                                            FileType: Text(
-                                                First(
-                                                    LastN(
-                                                        Split(
-                                                            file,
-                                                            "_"
-                                                        ),
-                                                        2
-                                                    )
-                                                ).Value
-                                            ),
-                                            FolderName: "ReadyForProcessing"
-                                        }
+                                documents: ForAll(
+                                    ParseJSON(
+                                        GetAll.Run(
+                                            dd_EntryStatus.Selected.Id,
+                                            dd_EntryFileType.Selected.Id
+                                        ).outputfiles
                                     ),
-                                    ForAll(
-                                        Files.inProgress As file,
-                                        {
-                                            FileName: file,
-                                            FileType: Text(
-                                                First(
-                                                    LastN(
-                                                        Split(
-                                                            file,
-                                                            "_"
-                                                        ),
-                                                        2
-                                                    )
-                                                ).Value
-                                            ),
-                                            FolderName: "InProgress"
-                                        }
-                                    )
+                                    {
+                                        FileName: Text(ThisRecord.fileName),
+                                        DocumentType: Text(ThisRecord.documentType),
+                                        DocumentName: Text(ThisRecord.documentName),
+                                        QueueName: Text(ThisRecord.queueName)
+                                    }
                                 )
                             }
-                        );
-                        UpdateContext({filteredFiles: XMLFiles});
-                        If(
-                            Not(dd_EntryStatus.Selected.Id = "All"),
-                            UpdateContext(
-                                {
-                                    filteredFiles: Filter(
-                                        filteredFiles,
-                                        dd_EntryStatus.Selected.Id = ThisRecord.FolderName
-                                    )
-                                }
-                            )
-                        );
-                        If(
-                            Not(dd_EntryFileType.Selected.Id = "0"),
-                            UpdateContext(
-                                {
-                                    filteredFiles: Filter(
-                                        filteredFiles,
-                                        dd_EntryFileType.Selected.Id = ThisRecord.FileType
-                                    )
-                                }
-                            )
                         );
                         Set(
                             isLoading,
@@ -556,7 +461,7 @@
                     BorderColor: =App.Theme.Colors.Darker40
                     DelayItemLoading: =true
                     Height: =Parent.Height
-                    Items: =filteredFiles
+                    Items: =documents
                     Layout: =Layout.Vertical
                     LoadingSpinner: =LoadingSpinner.Data
                     OnSelect: |
@@ -565,7 +470,7 @@
                             true
                         );
                         Switch(
-                            Parent.Selected.FileType,
+                            Parent.Selected.DocumentType,
                             "01",
                             Navigate(
                                 scr_XMLTemeljniceInventure,
@@ -599,33 +504,19 @@
                         );
                         Set(
                             SelectedFile,
-                            Substitute(
-                                ThisItem.FileName,
-                                ".xml",
-                                ""
-                            )
+                            ThisItem.FileName
                         );
                         Set(
-                            SelectedFolder,
-                            ThisItem.FolderName
+                            SelectedQueue,
+                            ThisItem.QueueName
                         );
                         Set(
                             SelectedDocumentName,
-                            First(
-                                Split(
-                                    Last(
-                                        Split(
-                                            ThisItem.FileName,
-                                            "_"
-                                        )
-                                    ).Value,
-                                    "."
-                                )
-                            ).Value
+                            ThisItem.DocumentName
                         );
                     TemplatePadding: =0
                     TemplateSize: =80
-                    Visible: =!isLoading && !IsEmpty(filteredFiles)
+                    Visible: =!isLoading && !IsEmpty(documents)
                     Width: =Parent.Width
                     ZIndex: =1
 
@@ -707,7 +598,7 @@
                     Size: =20
                     Text: ="Nema dokumenata..."
                     VerticalAlign: ='TextCanvas.VerticalAlign'.Top
-                    Visible: =!isLoading && IsEmpty(filteredFiles)
+                    Visible: =!isLoading && IsEmpty(documents)
                     Width: =Parent.Width
                     X: =0
                     Y: =0

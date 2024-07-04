@@ -94,6 +94,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Header",
+                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.hrz_ModalHeader.btn_ModalClose.AccessibleLabel"
                 }
               ],
@@ -407,36 +437,6 @@
                 "member": "AccessibleLabel",
                 "module": "com_Modal",
                 "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.hrz_ModalFooter.btn_ModalSave"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "com_Header",
-                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
               }
             }
           ],
@@ -2158,36 +2158,6 @@
           },
           "ruleId": "acc-AccessibleLabelNeeded",
           "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_Entry.documents"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_Entry.documents",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "documents",
-                "module": "scr_Entry",
-                "type": "scr_Entry"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 4
         }
       ],
       "tool": {
@@ -2262,23 +2232,6 @@
                 "level": "Medium",
                 "primaryCategory": "accessibility",
                 "whyFix": "People who use the keyboard with your app will not be able to access this element without a tab stop."
-              }
-            },
-            {
-              "id": "app-UnusedVariables",
-              "messageStrings": {
-                "issue": {
-                  "text": "Unused variable"
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "Remove the unused variable."
-                ],
-                "level": "Medium",
-                "primaryCategory": "performance",
-                "whyFix": "This variable is declared but is not referenced by any control, so it is not needed."
               }
             }
           ],
