@@ -87,6 +87,20 @@
     "dependents": [],
     "id": "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
   },
+  "9874c7bd-4f4e-4271-8a99-fe9ac9d98307": {
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/jayawan/releases/v1.0.1697/1.0.1697.3786/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "bc59b768-00f3-40df-bc43-677a6a689995"
+    ],
+    "id": "9874c7bd-4f4e-4271-8a99-fe9ac9d98307"
+  },
   "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -131,6 +145,45 @@
     "dependents": [],
     "id": "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
   },
+  "bc59b768-00f3-40df-bc43-677a6a689995": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "PrintDoc"
+        },
+        "workflowEntityId": {
+          "value": "76f2bdd6-a724-ef11-840b-00224887e568"
+        },
+        "workflowName": {
+          "value": "eb6f768d-ed00-43cd-8930-dfae461751f4"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "PrintDoc"
+        },
+        "workflowEntityId": {
+          "value": "76f2bdd6-a724-ef11-840b-00224887e568"
+        },
+        "workflowName": {
+          "value": "eb6f768d-ed00-43cd-8930-dfae461751f4"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "PrintDoc"
+    ],
+    "dependencies": {
+      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7",
+      "shared_sharepointonline": "9874c7bd-4f4e-4271-8a99-fe9ac9d98307"
+    },
+    "dependents": [],
+    "id": "bc59b768-00f3-40df-bc43-677a6a689995"
+  },
   "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7": {
     "connectionRef": {
       "displayName": "BadecoTestConnector",
@@ -146,7 +199,8 @@
       "e8881786-c8c5-4028-a337-24a2d24fded3",
       "67bba9e1-7f90-4731-9c75-063e8ec266fb",
       "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa",
-      "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
+      "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1",
+      "bc59b768-00f3-40df-bc43-677a6a689995"
     ],
     "id": "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7"
   },
