@@ -1171,6 +1171,7 @@
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             BorderStyle: =""
+                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1178,7 +1179,6 @@
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
-                            TriggerOutput: ="FocusOut"
                             Value: =Warehouse_Receipt_ResEntryGallery.Selected.Quantity
                             Width: =150
                             X: =40
@@ -1267,13 +1267,13 @@
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             BorderStyle: =""
+                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
-                            TriggerOutput: ="FocusOut"
                             Value: =Warehouse_Receipt_ResEntryGallery.Selected.LOT_No
                             Width: =150
                             X: =40
