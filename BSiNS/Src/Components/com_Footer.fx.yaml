@@ -32,6 +32,7 @@ com_Footer As CanvasComponent:
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
+            Visible: =false
             Width: =Parent.Width
             ZIndex: =1
 
@@ -74,91 +75,210 @@ com_Footer As CanvasComponent:
                 Y: =0
                 ZIndex: =2
 
-        btn_Save As Button:
-            BasePaletteColor: =
-            BorderStyle: =""
-            DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
-            Height: =32
-            Layout: ='ButtonCanvas.Layout'.TextOnly
-            LayoutMinHeight: =32
-            LayoutMinWidth: =96
-            OnSelect: |
-                =Set(
-                    isLoading,
-                    true
-                );
-                IfError(
-                    GetXml.Run(
-                        SelectedFile,
-                        ReadyForProcessing
-                    ),
-                    IfError(
-                        UpdateXML.Run(
-                            com_Footer.JSONData,
-                            SelectedFile,
-                            SelectedQueue
-                        ),
-                        Notify(
-                            "Došlo je do greške!",
-                            NotificationType.Error,
-                            2000
-                        ),
-                        Notify(
-                            "Uspješno ažuriranje!",
-                            NotificationType.Success,
-                            2000
+        hrz_Buttons As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutJustifyContent: =LayoutJustifyContent.End
+            LayoutMinHeight: =50
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width
+            ZIndex: =5
+
+            Container3 As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DropShadow: =DropShadow.Light
+                Height: =Parent.Height
+                LayoutMinHeight: =50
+                LayoutMinWidth: =250
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Y: =
+                ZIndex: =1
+
+                btn_Nav As Button:
+                    BasePaletteColor: =
+                    BorderStyle: =""
+                    DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                    Height: =32
+                    Icon: ="Database"
+                    Layout: ='ButtonCanvas.Layout'.IconAfter
+                    OnSelect: |
+                        =Set(
+                            isLoading,
+                            true
                         );
-                        If(
-                            chb_ReadyForNav.Checked,
-                            ChangeXmlStatus.Run(
+                        IfError(
+                            GetXml.Run(
                                 SelectedFile,
-                                SelectedQueue,
-                                ReadyForNAVProcessing
-                            );
-                            PrintDoc.Run(com_Footer.JSONData);
-                            Navigate(
-                                scr_Entry,
-                                ScreenTransition.Fade
+                                ReadyForProcessing
                             ),
+                            IfError(
+                                UpdateXML.Run(
+                                    com_Footer.JSONData,
+                                    SelectedFile,
+                                    SelectedQueue
+                                ),
+                                Notify(
+                                    "Došlo je do greške!",
+                                    NotificationType.Error,
+                                    2000
+                                ),
+                                Notify(
+                                    "Uspješno ažuriranje!",
+                                    NotificationType.Success,
+                                    2000
+                                );
+                                If(
+                                    chb_ReadyForNav.Checked,
+                                    ChangeXmlStatus.Run(
+                                        SelectedFile,
+                                        SelectedQueue,
+                                        ReadyForNAVProcessing
+                                    );
+                                    PrintDoc.Run(com_Footer.JSONData);
+                                    Navigate(
+                                        scr_Entry,
+                                        ScreenTransition.Fade
+                                    ),
+                                    If(
+                                        chb_Dorada.Checked,
+                                        ChangeXmlStatus.Run(
+                                            SelectedFile,
+                                            SelectedQueue,
+                                            ReadyForNAVProcessing
+                                        );
+                                        Navigate(
+                                            scr_Entry,
+                                            ScreenTransition.Fade
+                                        ),
+                                        Navigate(
+                                            App.ActiveScreen,
+                                            ScreenTransition.Fade
+                                        )
+                                    )
+                                );
+                            ),
+                            Set(
+                                SelectedQueue,
+                                ReadyForProcessing
+                            );
+                            Notify(
+                                "Postoje izmjene u ovom fajlu.",
+                                NotificationType.Information,
+                                2000
+                            );
+                            Navigate(
+                                App.ActiveScreen,
+                                ScreenTransition.Fade
+                            )
+                        );
+                        Set(
+                            isLoading,
+                            false
+                        );
+                    PaddingBottom: =
+                    PaddingRight: =
+                    PaddingTop: =
+                    Text: ="NAV"
+                    VerticalAlign: =VerticalAlign.Middle
+                    Width: =96
+                    X: =15
+                    Y: =12
+                    ZIndex: =1
+
+            btn_Save As Button:
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                Height: =32
+                Layout: ='ButtonCanvas.Layout'.TextOnly
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |
+                    =Set(
+                        isLoading,
+                        true
+                    );
+                    IfError(
+                        GetXml.Run(
+                            SelectedFile,
+                            ReadyForProcessing
+                        ),
+                        IfError(
+                            UpdateXML.Run(
+                                com_Footer.JSONData,
+                                SelectedFile,
+                                SelectedQueue
+                            ),
+                            Notify(
+                                "Došlo je do greške!",
+                                NotificationType.Error,
+                                2000
+                            ),
+                            Notify(
+                                "Uspješno ažuriranje!",
+                                NotificationType.Success,
+                                2000
+                            );
                             If(
-                                chb_Dorada.Checked,
+                                chb_ReadyForNav.Checked,
                                 ChangeXmlStatus.Run(
                                     SelectedFile,
                                     SelectedQueue,
                                     ReadyForNAVProcessing
                                 );
+                                PrintDoc.Run(com_Footer.JSONData);
                                 Navigate(
                                     scr_Entry,
                                     ScreenTransition.Fade
                                 ),
-                                Navigate(
-                                    App.ActiveScreen,
-                                    ScreenTransition.Fade
+                                If(
+                                    chb_Dorada.Checked,
+                                    ChangeXmlStatus.Run(
+                                        SelectedFile,
+                                        SelectedQueue,
+                                        ReadyForNAVProcessing
+                                    );
+                                    Navigate(
+                                        scr_Entry,
+                                        ScreenTransition.Fade
+                                    ),
+                                    Navigate(
+                                        App.ActiveScreen,
+                                        ScreenTransition.Fade
+                                    )
                                 )
-                            )
+                            );
+                        ),
+                        Set(
+                            SelectedQueue,
+                            ReadyForProcessing
                         );
-                    ),
+                        Notify(
+                            "Postoje izmjene u ovom fajlu.",
+                            NotificationType.Information,
+                            2000
+                        );
+                        Navigate(
+                            App.ActiveScreen,
+                            ScreenTransition.Fade
+                        )
+                    );
                     Set(
-                        SelectedQueue,
-                        ReadyForProcessing
+                        isLoading,
+                        false
                     );
-                    Notify(
-                        "Postoje izmjene u ovom fajlu.",
-                        NotificationType.Information,
-                        2000
-                    );
-                    Navigate(
-                        App.ActiveScreen,
-                        ScreenTransition.Fade
-                    )
-                );
-                Set(
-                    isLoading,
-                    false
-                );
-            Text: ="Sačuvaj"
-            Width: =96
-            X: =0
-            Y: =0
-            ZIndex: =3
+                Text: ="Sačuvaj"
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =2
 
