@@ -191,10 +191,10 @@ com_Footer As CanvasComponent:
                             SelectedQueue,
                             ReadyForNAVProcessing
                         );
-                        Navigate(
+                        /*Navigate(
                             App.ActiveScreen,
                             ScreenTransition.Fade
-                        )
+                        )*/
                     );
                     Set(
                         isLoading,
