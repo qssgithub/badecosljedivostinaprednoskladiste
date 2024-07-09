@@ -599,6 +599,17 @@
                     Y: =0
                     ZIndex: =3
 
+            com_Galleries_1 As com_Galleries:
+                EntriesToDisplay: =0
+                EntryLabels: =
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                LineValuePosition: |-
+                    ={Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 2, Quantity: 5, Unit_Of_Measure: Blank(), 'Qty-to_Ship': Blank(), Line_No: 1, Lot_No: 3, Exp_Date: 4 }
+                LineValueVisibility: |-
+                    ={Item_No: false, Posting_Group: false, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': false, Line_No: true, Lot_No: true, Exp_Date: true }
+                ZIndex: =5
+
         com_InvFooter As com_Footer:
             IsInventura: =true
             JSONData: |-

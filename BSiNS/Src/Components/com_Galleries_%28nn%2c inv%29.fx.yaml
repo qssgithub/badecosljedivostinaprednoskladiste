@@ -1,0 +1,624 @@
+"'com_Galleries_(nn, inv)' As CanvasComponent":
+    EntriesToDisplay: =5
+    EntryLabels: |-
+        ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =300
+    LineLabels: |-
+        ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
+    LineValuePosition: |-
+        ={Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4}
+    LineValueVisibility: |-
+        ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
+    NumberOfLinesToDisplay: =5
+    OnReset: =
+    SelectedEntry: ='glr_Entries_(nn, inv)'.Selected
+    SelectedLine: ='glr_Lines_(nn, inv)'.Selected
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "'con_Galleries_(nn, inv)' As groupContainer.manualLayoutContainer":
+        Height: =Parent.Height
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =1
+
+        "'vrt_Galleries_(nn, inv)' As groupContainer.verticalAutoLayoutContainer":
+            DropShadow: =DropShadow.Light
+            Height: =Parent.Height - 10
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width - 10
+            X: =5
+            Y: =5
+            ZIndex: =1
+
+            txt_Lines_1 As Text:
+                AutoHeight: =false
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                Height: =32
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                PaddingBottom: =0
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =0
+                Size: =18
+                Text: ="Stavke"
+                Visible: =wizardStep = 1
+                Weight: ='TextCanvas.Weight'.Semibold
+                Width: =96
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+            "'glr_Lines_(nn, inv)' As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =App.Theme.Colors.Darker40
+                Default: |-
+                    =LookUp(
+                        colLines,
+                        Item_No = ScannedItem
+                    )
+                DelayItemLoading: =true
+                Items: =colLines
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LoadingSpinner: =LoadingSpinner.Data
+                OnSelect: |
+                    =Set(
+                        wizardStep,
+                        2
+                    );
+                    Set(
+                        ScannedItem,
+                        Blank()
+                    );
+                TemplatePadding: =0
+                TemplateSize: =32 * 'com_Galleries_(nn, inv)'.NumberOfLinesToDisplay
+                Visible: =wizardStep = 1
+                ZIndex: =2
+
+                rct_LineSeparator_1 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =6
+
+                rct_LineSelected_1 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =App.Theme.Colors.Darker30
+                    Height: =Parent.TemplateHeight - rct_LineSeparator_1.Height
+                    OnSelect: =Select(Parent)
+                    Visible: =ThisItem.IsSelected
+                    Width: =4
+                    ZIndex: =7
+
+                grp_LinesLabels_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =9
+
+                    lbl_Line1_1 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.LineLabels.Line1
+                        VerticalAlign: =VerticalAlign.Top
+                        X: =16
+                        Y: =10
+                        ZIndex: =3
+
+                    lbl_Line2_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.LineLabels.Line2
+                        VerticalAlign: =VerticalAlign.Top
+                        X: =lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + lbl_Line1_1.Height + 5
+                        ZIndex: =4
+
+                    lbl_Line3_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.LineLabels.Line3
+                        VerticalAlign: =VerticalAlign.Top
+                        X: =lbl_Line1_1.X
+                        Y: =lbl_Line2_1.Y + lbl_Line2_1.Height + 5
+                        ZIndex: =5
+
+                    lbl_Line4_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.LineLabels.Line4
+                        VerticalAlign: =VerticalAlign.Top
+                        X: =lbl_Line1_1.X
+                        Y: =lbl_Line3_1.Y + lbl_Line3_1.Height + 5
+                        ZIndex: =8
+
+                    lbl_Line5_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.LineLabels.Line5
+                        VerticalAlign: =VerticalAlign.Top
+                        X: =lbl_Line1_1.X
+                        Y: =lbl_Line4_1.Y + lbl_Line4_1.Height + 5
+                        ZIndex: =9
+
+                grp_LinesValues_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =16
+
+                    lbl_LineQtyToShip_1 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.'Qty-to_Ship'
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.'Qty-to_Ship'
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.'Qty-to_Ship') + ('com_Galleries_(nn, inv)'.LineValuePosition.'Qty-to_Ship' * 5)
+                        ZIndex: =1
+
+                    lbl_LineUnitOfMeasure_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Unit_Of_Measure
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Unit_Of_Measure
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Unit_Of_Measure) + ('com_Galleries_(nn, inv)'.LineValuePosition.Unit_Of_Measure * 5)
+                        ZIndex: =2
+
+                    lbl_LineQuantity_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Quantity
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Quantity
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Quantity) + ('com_Galleries_(nn, inv)'.LineValuePosition.Quantity * 5)
+                        ZIndex: =10
+
+                    lbl_LineDescription_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Description
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Description
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Description) + ('com_Galleries_(nn, inv)'.LineValuePosition.Description * 5)
+                        ZIndex: =11
+
+                    lbl_LineInvPostingGroup_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Inv_Posting_Group
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Inv_Posting_Group
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Inv_Posting_Group) + ('com_Galleries_(nn, inv)'.LineValuePosition.Inv_Posting_Group * 5)
+                        ZIndex: =12
+
+                    lbl_LinePostingGroup_1 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =If(Self.Visible, Self.Size * 1.8, 0)
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Posting_Group
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Posting_Group
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Posting_Group) + ('com_Galleries_(nn, inv)'.LineValuePosition.Posting_Group * 5)
+                        ZIndex: =13
+
+                    lbl_LineItemNo_1 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Item_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Visible: ='com_Galleries_(nn, inv)'.LineValueVisibility.Item_No
+                        Width: =Parent.TemplateWidth - 175
+                        X: =lbl_Line1_1.Width + lbl_Line1_1.X
+                        Y: =lbl_Line1_1.Y + (lbl_Line1_1.Height * 'com_Galleries_(nn, inv)'.LineValuePosition.Item_No) + ('com_Galleries_(nn, inv)'.LineValuePosition.Item_No * 5)
+                        ZIndex: =14
+
+            btn_BackToLines_1 As Button:
+                Align: =Align.Left
+                Appearance: ='ButtonCanvas.Appearance'.Transparent
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: =DisplayMode.Edit
+                FontColor: =
+                FontSize: =18
+                Height: =32
+                Icon: ="ArrowLeft"
+                IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                Layout: ='ButtonCanvas.Layout'.IconBefore
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: =Set(wizardStep, 1)
+                PaddingBottom: =0
+                PaddingLeft: =5
+                PaddingRight: =5
+                PaddingTop: =0
+                Text: ="Rezervacijski unosi"
+                Visible: =wizardStep = 2
+                Width: =170
+                X: =0
+                Y: =0
+                ZIndex: =3
+
+            "'glr_Entries_(nn, inv)' As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                AlignInContainer: =AlignInContainer.SetByContainer
+                BorderColor: =App.Theme.Colors.Darker40
+                DelayItemLoading: =true
+                Items: =Filter(colEntries, ThisRecord.Source_Ref_No = 'glr_Lines_(nn, inv)'.Selected.Line_No)
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LoadingSpinner: =LoadingSpinner.Data
+                OnSelect: =Set(isModalOpen, true)
+                TemplatePadding: =0
+                TemplateSize: =32 * 'com_Galleries_(nn, inv)'.EntriesToDisplay
+                Visible: =wizardStep = 2
+                ZIndex: =4
+
+                rct_EntrySeparator_2 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =7
+
+                rct_EntrySelected_1 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =App.Theme.Colors.Darker30
+                    Height: =Parent.TemplateHeight - rct_EntrySeparator_2.Height
+                    OnSelect: =Select(Parent)
+                    Visible: =ThisItem.IsSelected
+                    Width: =4
+                    ZIndex: =10
+
+                Group4_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =12
+
+                    lbl_EntryQuantityNewLOT_1 As label:
+                        Align: =Align.Justify
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =Abs(ThisItem.Quantity_NewLOT)
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 150
+                        X: =Title3_3.Width + Title3_3.X
+                        Y: =lbl_EntryQuantityCompleted_1.Y + lbl_EntryQuantityCompleted_1.Height + 5
+                        ZIndex: =2
+
+                    lbl_EntryQuantityCompleted_1 As label:
+                        Align: =Align.Justify
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =Abs(ThisItem.Quantity_Completed)
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 150
+                        X: =Title3_3.Width + Title3_3.X
+                        Y: =lbl_EntryLOTNo_1.Y + lbl_EntryItemNo_1.Height + 5
+                        ZIndex: =3
+
+                    lbl_EntryLOTNo_1 As label:
+                        Align: =Align.Justify
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.LOT_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 150
+                        X: =Title3_3.Width + Title3_3.X
+                        Y: =lbl_EntryExpDate_1.Y + lbl_EntryExpDate_1.Height + 5
+                        ZIndex: =4
+
+                    lbl_EntryExpDate_1 As label:
+                        Align: =Align.Justify
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Exp_Date
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 150
+                        X: =Title3_3.Width + Title3_3.X
+                        Y: =lbl_EntryItemNo_1.Y + lbl_EntryItemNo_1.Height + 5
+                        ZIndex: =9
+
+                    lbl_EntryItemNo_1 As label:
+                        Align: =Align.Justify
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =Self.Size * 1.8
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: =ThisItem.Entry_No
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.TemplateWidth - 150
+                        X: =Title3_3.Width + Title3_3.X
+                        Y: =Title3_3.Y
+                        ZIndex: =11
+
+                Group8_1 As group:
+                    Height: =5
+                    Width: =5
+                    X: =40
+                    Y: =40
+                    ZIndex: =13
+
+                    Body2_11 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =21
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line5
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =200
+                        X: =Title3_3.X
+                        Y: =116
+                        ZIndex: =1
+
+                    Body2_10 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =21
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line4
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =200
+                        X: =Title3_3.X
+                        Y: =89
+                        ZIndex: =5
+
+                    Body2_9 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =21
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line3
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =200
+                        X: =Title3_3.X
+                        Y: =63
+                        ZIndex: =6
+
+                    Subtitle2_3 As label:
+                        Color: =RGBA(0, 0, 0, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =21
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line2
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =200
+                        X: =Title3_3.X
+                        Y: =Title3_3.Y + Title3_3.Height + 5
+                        ZIndex: =8
+
+                    Title3_3 As label:
+                        Color: =RGBA(50, 49, 48, 1)
+                        DisabledColor: =RGBA(166, 166, 166, 1)
+                        Font: =App.Theme.Font
+                        FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                        Height: =21
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =0
+                        PaddingLeft: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        Size: =12
+                        Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line1
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =200
+                        X: =16
+                        Y: =10
+                        ZIndex: =12
+
