@@ -992,9 +992,9 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\n\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n/*\nIf(\n    chb_ReadyForNav.Checked,\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    PrintDoc.Run(com_Footer.JSONData);\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    ),\n    If(\n        chb_Dorada.Checked,\n        ChangeXmlStatus.Run(\n            SelectedFile,\n            SelectedQueue,\n            ReadyForNAVProcessing\n        );\n        Navigate(\n            scr_Entry,\n            ScreenTransition.Fade\n        ),\n        Navigate(\n            App.ActiveScreen,\n            ScreenTransition.Fade\n        )\n    )\n);\n*/",
+                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    Navigate(\n        App.ActiveScreen,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n",
                     "Property": "OnSelect",
-                    "RuleProviderType": "Unknown"
+                    "RuleProviderType": "User"
                   }
                 ],
                 "StyleName": "",
@@ -1249,7 +1249,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\n\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    PrintDoc.Run(com_Footer.JSONData);\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n/*\nIf(\n    chb_ReadyForNav.Checked,\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    PrintDoc.Run(com_Footer.JSONData);\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    ),\n    If(\n        chb_Dorada.Checked,\n        ChangeXmlStatus.Run(\n            SelectedFile,\n            SelectedQueue,\n            ReadyForNAVProcessing\n        );\n        Navigate(\n            scr_Entry,\n            ScreenTransition.Fade\n        ),\n        Navigate(\n            App.ActiveScreen,\n            ScreenTransition.Fade\n        )\n    )\n);\n*/",
+                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    PrintDoc.Run(com_Footer.JSONData);\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -2935,7 +2935,7 @@
       },
       "JSONData"
     ],
-    "LastModifiedTimestamp": "638561223439153871",
+    "LastModifiedTimestamp": "638561224031125003",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3025,7 +3025,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638561223439153871",
+  "LastModifiedTimestamp": "638561224031125003",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
