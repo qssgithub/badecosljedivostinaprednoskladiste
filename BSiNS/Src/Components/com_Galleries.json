@@ -7975,9 +7975,9 @@
                       },
                       {
                         "Category": "Data",
-                        "InvariantScript": "ThisItem.Quantity_Completed",
+                        "InvariantScript": "Abs(ThisItem.Quantity_Completed)",
                         "Property": "Text",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -8597,9 +8597,9 @@
                       },
                       {
                         "Category": "Data",
-                        "InvariantScript": "ThisItem.Quantity_NewLOT",
+                        "InvariantScript": "Abs(ThisItem.Quantity_NewLOT)",
                         "Property": "Text",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -10023,7 +10023,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638561225222912995",
+    "LastModifiedTimestamp": "638561280183073869",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10212,7 +10212,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638561225222912995",
+  "LastModifiedTimestamp": "638561280183073869",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

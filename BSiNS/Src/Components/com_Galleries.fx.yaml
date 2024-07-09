@@ -433,7 +433,7 @@ com_Galleries As CanvasComponent:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =12
-                        Text: =ThisItem.Quantity_NewLOT
+                        Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.TemplateWidth - 150
                         X: =Title3_2.Width + Title3_2.X
@@ -453,7 +453,7 @@ com_Galleries As CanvasComponent:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =12
-                        Text: =ThisItem.Quantity_Completed
+                        Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.TemplateWidth - 150
                         X: =Title3_2.Width + Title3_2.X

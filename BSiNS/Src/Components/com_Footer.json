@@ -1443,7 +1443,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    \n);\nSet(\n    isLoading,\n    false\n);\n",
+                    "InvariantScript": "Set(nesto,\n        com_Footer.JSONData\n    )\n\n/*Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    \n);\nSet(\n    isLoading,\n    false\n);\n*/",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -2935,7 +2935,7 @@
       },
       "JSONData"
     ],
-    "LastModifiedTimestamp": "638561278443550220",
+    "LastModifiedTimestamp": "638561282261919030",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3025,7 +3025,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638561278443550220",
+  "LastModifiedTimestamp": "638561282261919030",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
