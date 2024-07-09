@@ -136,6 +136,7 @@ com_Modal As CanvasComponent:
                             AutoHeight: =true
                             BorderStyle: =""
                             DisplayMode: =DisplayMode.Edit
+                            FontColor: =
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =80
@@ -459,6 +460,7 @@ com_Modal As CanvasComponent:
                                 LayoutMinHeight: =32
                                 LayoutMinWidth: =96
                                 OnSelect: =
+                                Visible: =true
                                 Width: =96
                                 X: =0
                                 Y: =0
@@ -496,7 +498,7 @@ com_Modal As CanvasComponent:
                         Text: |-
                             =If(
                                 (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
-                                "Rezervisano i potrebno su veči od količine (" & com_Modal.Quantity & ")!",
+                                "Rezervisano i potrebno su veći od količine (" & com_Modal.Quantity & ")!",
                                 ""
                             )
                         Visible: =!com_Modal.IsInventura

@@ -865,7 +865,15 @@
                                 "IsLockable": false,
                                 "NameMapSourceSchema": "?"
                               },
-                              "BorderStyle"
+                              "BorderStyle",
+                              {
+                                "AFDDataSourceName": "",
+                                "AutoRuleBindingEnabled": false,
+                                "AutoRuleBindingString": "",
+                                "InvariantPropertyName": "FontColor",
+                                "IsLockable": false,
+                                "NameMapSourceSchema": "?"
+                              }
                             ],
                             "ControlUniqueId": "13",
                             "DynamicProperties": [
@@ -968,6 +976,12 @@
                                 "Category": "Data",
                                 "InvariantScript": "\"\"",
                                 "Property": "BorderStyle",
+                                "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "",
+                                "Property": "FontColor",
                                 "RuleProviderType": "Unknown"
                               },
                               {
@@ -4003,6 +4017,14 @@
                             "InvariantPropertyName": "PaddingRight",
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
+                          },
+                          {
+                            "AFDDataSourceName": "",
+                            "AutoRuleBindingEnabled": false,
+                            "AutoRuleBindingString": "",
+                            "InvariantPropertyName": "Visible",
+                            "IsLockable": false,
+                            "NameMapSourceSchema": "?"
                           }
                         ],
                         "ControlUniqueId": "18",
@@ -4238,6 +4260,12 @@
                             "InvariantScript": "0",
                             "Property": "PaddingRight",
                             "RuleProviderType": "Unknown"
+                          },
+                          {
+                            "Category": "Design",
+                            "InvariantScript": "true",
+                            "Property": "Visible",
+                            "RuleProviderType": "Unknown"
                           }
                         ],
                         "StyleName": "defaultGroupContainerStyle",
@@ -4304,7 +4332,15 @@
                                     "IsLockable": false,
                                     "NameMapSourceSchema": "?"
                                   },
-                                  "BorderStyle"
+                                  "BorderStyle",
+                                  {
+                                    "AFDDataSourceName": "",
+                                    "AutoRuleBindingEnabled": false,
+                                    "AutoRuleBindingString": "",
+                                    "InvariantPropertyName": "Visible",
+                                    "IsLockable": false,
+                                    "NameMapSourceSchema": "?"
+                                  }
                                 ],
                                 "ControlUniqueId": "27",
                                 "DynamicProperties": [
@@ -4429,6 +4465,12 @@
                                     "Category": "Design",
                                     "InvariantScript": "1",
                                     "Property": "ZIndex",
+                                    "RuleProviderType": "Unknown"
+                                  },
+                                  {
+                                    "Category": "Design",
+                                    "InvariantScript": "true",
+                                    "Property": "Visible",
                                     "RuleProviderType": "Unknown"
                                   },
                                   {
@@ -6190,7 +6232,7 @@
                           },
                           {
                             "Category": "Data",
-                            "InvariantScript": "If(\n    (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n    \"Rezervisano i potrebno su veči od količine (\" & com_Modal.Quantity & \")!\",\n    \"\"\n)",
+                            "InvariantScript": "If(\n    (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n    \"Rezervisano i potrebno su veći od količine (\" & com_Modal.Quantity & \")!\",\n    \"\"\n)",
                             "Property": "Text",
                             "RuleProviderType": "User"
                           },
@@ -8054,7 +8096,7 @@
       "QuantityCompleted",
       "Quantity"
     ],
-    "LastModifiedTimestamp": "638561051238660816",
+    "LastModifiedTimestamp": "638561097964044288",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -8210,7 +8252,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638561051238660816",
+  "LastModifiedTimestamp": "638561097964044288",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

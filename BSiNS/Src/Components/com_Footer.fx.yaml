@@ -104,74 +104,68 @@ com_Footer As CanvasComponent:
                         isLoading,
                         true
                     );
+                    
+                    //com_ProGalleries
+                    
                     IfError(
-                        GetXml.Run(
+                        UpdateXML.Run(
+                            com_Footer.JSONData,
                             SelectedFile,
-                            ReadyForProcessing
+                            SelectedQueue
                         ),
-                        IfError(
-                            UpdateXML.Run(
-                                com_Footer.JSONData,
-                                SelectedFile,
-                                SelectedQueue
-                            ),
-                            Notify(
-                                "Došlo je do greške!",
-                                NotificationType.Error,
-                                2000
-                            ),
-                            Notify(
-                                "Uspješno ažuriranje!",
-                                NotificationType.Success,
-                                2000
-                            );
-                            If(
-                                chb_ReadyForNav.Checked,
-                                ChangeXmlStatus.Run(
-                                    SelectedFile,
-                                    SelectedQueue,
-                                    ReadyForNAVProcessing
-                                );
-                                PrintDoc.Run(com_Footer.JSONData);
-                                Navigate(
-                                    scr_Entry,
-                                    ScreenTransition.Fade
-                                ),
-                                If(
-                                    chb_Dorada.Checked,
-                                    ChangeXmlStatus.Run(
-                                        SelectedFile,
-                                        SelectedQueue,
-                                        ReadyForNAVProcessing
-                                    );
-                                    Navigate(
-                                        scr_Entry,
-                                        ScreenTransition.Fade
-                                    ),
-                                    Navigate(
-                                        App.ActiveScreen,
-                                        ScreenTransition.Fade
-                                    )
-                                )
-                            );
-                        ),
-                        Set(
-                            SelectedQueue,
-                            ReadyForProcessing
-                        );
                         Notify(
-                            "Postoje izmjene u ovom fajlu.",
-                            NotificationType.Information,
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Uspješno ažuriranje!",
+                            NotificationType.Success,
                             2000
                         );
-                        Navigate(
-                            App.ActiveScreen,
-                            ScreenTransition.Fade
-                        )
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
                     );
                     Set(
                         isLoading,
                         false
+                    );
+                    If(
+                        chb_ReadyForNav.Checked,
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
+                        PrintDoc.Run(com_Footer.JSONData);
+                        Navigate(
+                            scr_Entry,
+                            ScreenTransition.Fade
+                        ),
+                        If(
+                            chb_Dorada.Checked,
+                            ChangeXmlStatus.Run(
+                                SelectedFile,
+                                SelectedQueue,
+                                ReadyForNAVProcessing
+                            );
+                            Navigate(
+                                scr_Entry,
+                                ScreenTransition.Fade
+                            ),
+                            Navigate(
+                                App.ActiveScreen,
+                                ScreenTransition.Fade
+                            )
+                        )
                     );
                 PaddingBottom: =
                 PaddingRight: =
@@ -208,69 +202,22 @@ com_Footer As CanvasComponent:
                         true
                     );
                     IfError(
-                        GetXml.Run(
+                        UpdateXML.Run(
+                            com_Footer.JSONData,
                             SelectedFile,
-                            ReadyForProcessing
+                            SelectedQueue
                         ),
-                        IfError(
-                            UpdateXML.Run(
-                                com_Footer.JSONData,
-                                SelectedFile,
-                                SelectedQueue
-                            ),
-                            Notify(
-                                "Došlo je do greške!",
-                                NotificationType.Error,
-                                2000
-                            ),
-                            Notify(
-                                "Uspješno ažuriranje!",
-                                NotificationType.Success,
-                                2000
-                            );
-                            If(
-                                chb_ReadyForNav.Checked,
-                                ChangeXmlStatus.Run(
-                                    SelectedFile,
-                                    SelectedQueue,
-                                    ReadyForNAVProcessing
-                                );
-                                PrintDoc.Run(com_Footer.JSONData);
-                                Navigate(
-                                    scr_Entry,
-                                    ScreenTransition.Fade
-                                ),
-                                If(
-                                    chb_Dorada.Checked,
-                                    ChangeXmlStatus.Run(
-                                        SelectedFile,
-                                        SelectedQueue,
-                                        ReadyForNAVProcessing
-                                    );
-                                    Navigate(
-                                        scr_Entry,
-                                        ScreenTransition.Fade
-                                    ),
-                                    Navigate(
-                                        App.ActiveScreen,
-                                        ScreenTransition.Fade
-                                    )
-                                )
-                            );
-                        ),
-                        Set(
-                            SelectedQueue,
-                            ReadyForProcessing
-                        );
                         Notify(
-                            "Postoje izmjene u ovom fajlu.",
-                            NotificationType.Information,
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Uspješno ažuriranje!",
+                            NotificationType.Success,
                             2000
                         );
-                        Navigate(
-                            App.ActiveScreen,
-                            ScreenTransition.Fade
-                        )
+                        
                     );
                     Set(
                         isLoading,
