@@ -40,7 +40,6 @@ com_Header As CanvasComponent:
             ZIndex: =1
 
         hrz_InvTitle_1 As groupContainer.horizontalAutoLayoutContainer:
-            AlignInContainer: =AlignInContainer.SetByContainer
             FillPortions: =0
             Height: =50
             LayoutAlignItems: =LayoutAlignItems.Stretch
@@ -62,7 +61,6 @@ com_Header As CanvasComponent:
 
             btn_InvBack_1 As Button:
                 Align: =Align.Left
-                AlignInContainer: =AlignInContainer.Center
                 Appearance: ='ButtonCanvas.Appearance'.Transparent
                 BorderStyle: =""
                 DisplayMode: =DisplayMode.Edit
@@ -91,8 +89,8 @@ com_Header As CanvasComponent:
                 DisabledFillColor: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.Edit
                 FillColor: =RGBA(189, 49, 51, 1)
-                FontSize: =16
-                Height: =70
+                FontSize: =14
+                Height: =60
                 HoverBorderColor: =RGBA(189, 49, 51, 1)
                 HoverContentColor: =RGBA(189, 49, 51, 1)
                 HoverFillColor: =RGBA(255, 255, 255, 1)
@@ -124,7 +122,9 @@ com_Header As CanvasComponent:
                 PressedFillColor: =RGBA(255, 255, 255, 1)
                 ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
                 Text: ="Skener"
+                TextAlignment: =Align.Center
                 TextColor: =RGBA(255, 255, 255, 1)
+                VerticalAlign: =VerticalAlign.Middle
                 Visible: =isMobile
                 Width: =100
                 X: =0

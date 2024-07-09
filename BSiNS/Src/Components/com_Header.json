@@ -67,7 +67,7 @@
                 "NameMapSourceSchema": "?"
               }
             ],
-            "ControlUniqueId": "82",
+            "ControlUniqueId": "85",
             "DynamicProperties": [
               {
                 "ControlPropertyState": "FillPortions",
@@ -314,7 +314,14 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "Height",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "70",
+                    "InvariantPropertyName": "Height",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
                   "DisplayMode",
                   {
                     "AFDDataSourceName": "",
@@ -389,9 +396,25 @@
                     "InvariantPropertyName": "Visible",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "TextAlignment",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "VerticalAlign",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "84",
+                "ControlUniqueId": "87",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -404,7 +427,14 @@
                     }
                   },
                   {
-                    "ControlPropertyState": "AlignInContainer",
+                    "ControlPropertyState": {
+                      "AFDDataSourceName": "",
+                      "AutoRuleBindingEnabled": false,
+                      "AutoRuleBindingString": "",
+                      "InvariantPropertyName": "AlignInContainer",
+                      "IsLockable": false,
+                      "NameMapSourceSchema": "?"
+                    },
                     "PropertyName": "AlignInContainer",
                     "Rule": {
                       "Category": "Design",
@@ -560,9 +590,9 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "70",
+                    "InvariantScript": "60",
                     "Property": "Height",
-                    "RuleProviderType": "Unknown"
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Design",
@@ -578,7 +608,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "16",
+                    "InvariantScript": "14",
                     "Property": "FontSize",
                     "RuleProviderType": "Unknown"
                   },
@@ -611,6 +641,18 @@
                     "InvariantScript": "isMobile",
                     "Property": "Visible",
                     "RuleProviderType": "User"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "Align.Center",
+                    "Property": "TextAlignment",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "VerticalAlign.Middle",
+                    "Property": "VerticalAlign",
+                    "RuleProviderType": "Unknown"
                   },
                   {
                     "Category": "Behavior",
@@ -794,7 +836,7 @@
                   },
                   "BorderStyle"
                 ],
-                "ControlUniqueId": "85",
+                "ControlUniqueId": "88",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": {
@@ -825,7 +867,7 @@
                     "PropertyName": "AlignInContainer",
                     "Rule": {
                       "Category": "Design",
-                      "InvariantScript": "AlignInContainer.Center",
+                      "InvariantScript": "AlignInContainer.SetByContainer",
                       "Property": "AlignInContainer",
                       "RuleProviderType": "Unknown"
                     }
@@ -1121,7 +1163,7 @@
                 "NameMapSourceSchema": "?"
               }
             ],
-            "ControlUniqueId": "83",
+            "ControlUniqueId": "86",
             "DynamicProperties": [
               {
                 "ControlPropertyState": {
@@ -1141,11 +1183,18 @@
                 }
               },
               {
-                "ControlPropertyState": "AlignInContainer",
+                "ControlPropertyState": {
+                  "AFDDataSourceName": "",
+                  "AutoRuleBindingEnabled": false,
+                  "AutoRuleBindingString": "",
+                  "InvariantPropertyName": "AlignInContainer",
+                  "IsLockable": false,
+                  "NameMapSourceSchema": "?"
+                },
                 "PropertyName": "AlignInContainer",
                 "Rule": {
                   "Category": "Design",
-                  "InvariantScript": "AlignInContainer.SetByContainer",
+                  "InvariantScript": "AlignInContainer.Stretch",
                   "Property": "AlignInContainer",
                   "RuleProviderType": "Unknown"
                 }
@@ -1446,7 +1495,7 @@
           "RadiusBottomLeft",
           "RadiusBottomRight"
         ],
-        "ControlUniqueId": "81",
+        "ControlUniqueId": "84",
         "HasDynamicProperties": false,
         "Index": 0,
         "IsAutoGenerated": false,
@@ -1643,7 +1692,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638560436106619689",
+    "LastModifiedTimestamp": "638561063553339478",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1739,7 +1788,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638560436106619689",
+  "LastModifiedTimestamp": "638561063553339478",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"
