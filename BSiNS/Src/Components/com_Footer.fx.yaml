@@ -90,71 +90,6 @@ com_Footer As CanvasComponent:
             Width: =Parent.Width
             ZIndex: =5
 
-            btn_Prelot As Button:
-                BasePaletteColor: =
-                BorderStyle: =""
-                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
-                Height: =32
-                Icon: ="AppsListDetail"
-                Layout: ='ButtonCanvas.Layout'.IconAfter
-                LayoutMinHeight: =32
-                LayoutMinWidth: =96
-                OnSelect: |
-                    =Set(
-                        isLoading,
-                        true
-                    );
-                    IfError(
-                        UpdateXML.Run(
-                            com_Footer.JSONData,
-                            SelectedFile,
-                            SelectedQueue
-                        ),
-                        Notify(
-                            "Došlo je do greške!",
-                            NotificationType.Error,
-                            2000
-                        ),
-                        Notify(
-                            "Dokument poslan na prelotiranje.",
-                            NotificationType.Success,
-                            2000
-                        );
-                        ChangeXmlStatus.Run(
-                            SelectedFile,
-                            SelectedQueue,
-                            ReadyForNAVProcessing
-                        );
-                        Navigate(
-                            App.ActiveScreen,
-                            ScreenTransition.Fade
-                        )
-                    );
-                    Set(
-                        isLoading,
-                        false
-                    );
-                PaddingBottom: =
-                PaddingRight: =
-                PaddingTop: =
-                Text: ="Lotiranje"
-                VerticalAlign: =VerticalAlign.Middle
-                Width: =96
-                X: =15
-                Y: =12
-                ZIndex: =1
-
-            Label1_1 As label:
-                BorderColor: =App.Theme.Colors.Darker40
-                Color: =RGBA(0, 0, 0, 1)
-                DisabledColor: =RGBA(166, 166, 166, 1)
-                Font: =App.Theme.Font
-                Height: =Parent.Height
-                Size: =13
-                Text: =""
-                Width: =15
-                ZIndex: =2
-
             btn_Nav As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
@@ -208,9 +143,74 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =15
                 Y: =12
-                ZIndex: =3
+                ZIndex: =1
 
             Label1 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =Parent.Height
+                Size: =13
+                Text: =""
+                Width: =15
+                ZIndex: =2
+
+            btn_Prelot As Button:
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                Height: =32
+                Icon: ="AppsListDetail"
+                Layout: ='ButtonCanvas.Layout'.IconAfter
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |
+                    =Set(
+                        isLoading,
+                        true
+                    );
+                    IfError(
+                        UpdateXML.Run(
+                            com_Footer.JSONData,
+                            SelectedFile,
+                            SelectedQueue
+                        ),
+                        Notify(
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Dokument poslan na prelotiranje.",
+                            NotificationType.Success,
+                            2000
+                        );
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
+                        Navigate(
+                            App.ActiveScreen,
+                            ScreenTransition.Fade
+                        )
+                    );
+                    Set(
+                        isLoading,
+                        false
+                    );
+                PaddingBottom: =
+                PaddingRight: =
+                PaddingTop: =
+                Text: ="Lotiranje"
+                VerticalAlign: =VerticalAlign.Middle
+                Width: =96
+                X: =15
+                Y: =12
+                ZIndex: =3
+
+            Label1_1 As label:
                 BorderColor: =App.Theme.Colors.Darker40
                 Color: =RGBA(0, 0, 0, 1)
                 DisabledColor: =RGBA(166, 166, 166, 1)
