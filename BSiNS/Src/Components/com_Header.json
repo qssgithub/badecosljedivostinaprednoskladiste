@@ -412,6 +412,22 @@
                     "InvariantPropertyName": "VerticalAlign",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "BorderThickness",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "BorderRadius",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
                 "ControlUniqueId": "87",
@@ -500,13 +516,13 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "RGBA(189, 49, 51, 1)",
+                    "InvariantScript": "RGBA(255, 255, 255, 1)",
                     "Property": "FillColor",
                     "RuleProviderType": "Unknown"
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "RGBA(255, 255, 255, 1)",
+                    "InvariantScript": "RGBA(184, 0, 0, 1)",
                     "Property": "TextColor",
                     "RuleProviderType": "Unknown"
                   },
@@ -554,13 +570,13 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "RGBA(189, 49, 51, 1)",
+                    "InvariantScript": "RGBA(255, 255, 255, 1)",
                     "Property": "HoverContentColor",
                     "RuleProviderType": "Unknown"
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "RGBA(255, 255, 255, 1)",
+                    "InvariantScript": "RGBA(184, 0, 0, 1)",
                     "Property": "HoverFillColor",
                     "RuleProviderType": "Unknown"
                   },
@@ -652,6 +668,18 @@
                     "Category": "Design",
                     "InvariantScript": "VerticalAlign.Middle",
                     "Property": "VerticalAlign",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "1.5",
+                    "Property": "BorderThickness",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "5",
+                    "Property": "BorderRadius",
                     "RuleProviderType": "Unknown"
                   },
                   {
@@ -1692,7 +1720,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638561063553339478",
+    "LastModifiedTimestamp": "638561218699074151",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1788,7 +1816,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638561063553339478",
+  "LastModifiedTimestamp": "638561218699074151",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

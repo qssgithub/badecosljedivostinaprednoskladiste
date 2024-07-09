@@ -90,22 +90,20 @@ com_Footer As CanvasComponent:
             Width: =Parent.Width
             ZIndex: =5
 
-            btn_Nav As Button:
+            btn_Prelot As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
                 DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
-                Icon: ="Database"
+                Icon: ="AppsListDetail"
                 Layout: ='ButtonCanvas.Layout'.IconAfter
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
-                OnSelect: |
+                OnSelect: |-
                     =Set(
                         isLoading,
                         true
                     );
-                    
-                    //com_ProGalleries
                     
                     IfError(
                         UpdateXML.Run(
@@ -128,16 +126,16 @@ com_Footer As CanvasComponent:
                             SelectedQueue,
                             ReadyForNAVProcessing
                         );
-                        ChangeXmlStatus.Run(
-                            SelectedFile,
-                            SelectedQueue,
-                            ReadyForNAVProcessing
-                        );
+                        Navigate(
+                            scr_Entry,
+                            ScreenTransition.Fade
+                        )
                     );
                     Set(
                         isLoading,
                         false
                     );
+                    /*
                     If(
                         chb_ReadyForNav.Checked,
                         ChangeXmlStatus.Run(
@@ -167,6 +165,104 @@ com_Footer As CanvasComponent:
                             )
                         )
                     );
+                    */
+                PaddingBottom: =
+                PaddingRight: =
+                PaddingTop: =
+                Text: ="Lotiranje"
+                VerticalAlign: =VerticalAlign.Middle
+                Width: =96
+                X: =15
+                Y: =12
+                ZIndex: =1
+
+            Label1_1 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Height: =Parent.Height
+                Size: =13
+                Text: =""
+                Width: =15
+                ZIndex: =2
+
+            btn_Nav As Button:
+                BasePaletteColor: =
+                BorderStyle: =""
+                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                Height: =32
+                Icon: ="Database"
+                Layout: ='ButtonCanvas.Layout'.IconAfter
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =Set(
+                        isLoading,
+                        true
+                    );
+                    
+                    IfError(
+                        UpdateXML.Run(
+                            com_Footer.JSONData,
+                            SelectedFile,
+                            SelectedQueue
+                        ),
+                        Notify(
+                            "Došlo je do greške!",
+                            NotificationType.Error,
+                            2000
+                        ),
+                        Notify(
+                            "Uspješno ažuriranje!",
+                            NotificationType.Success,
+                            2000
+                        );
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
+                        Navigate(
+                            scr_Entry,
+                            ScreenTransition.Fade
+                        )
+                    );
+                    Set(
+                        isLoading,
+                        false
+                    );
+                    /*
+                    If(
+                        chb_ReadyForNav.Checked,
+                        ChangeXmlStatus.Run(
+                            SelectedFile,
+                            SelectedQueue,
+                            ReadyForNAVProcessing
+                        );
+                        PrintDoc.Run(com_Footer.JSONData);
+                        Navigate(
+                            scr_Entry,
+                            ScreenTransition.Fade
+                        ),
+                        If(
+                            chb_Dorada.Checked,
+                            ChangeXmlStatus.Run(
+                                SelectedFile,
+                                SelectedQueue,
+                                ReadyForNAVProcessing
+                            );
+                            Navigate(
+                                scr_Entry,
+                                ScreenTransition.Fade
+                            ),
+                            Navigate(
+                                App.ActiveScreen,
+                                ScreenTransition.Fade
+                            )
+                        )
+                    );
+                    */
                 PaddingBottom: =
                 PaddingRight: =
                 PaddingTop: =
@@ -175,7 +271,7 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =15
                 Y: =12
-                ZIndex: =1
+                ZIndex: =3
 
             Label1 As label:
                 BorderColor: =App.Theme.Colors.Darker40
@@ -186,7 +282,7 @@ com_Footer As CanvasComponent:
                 Size: =13
                 Text: =""
                 Width: =15
-                ZIndex: =2
+                ZIndex: =4
 
             btn_Save As Button:
                 BasePaletteColor: =
@@ -227,5 +323,5 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =39
                 Y: =12
-                ZIndex: =3
+                ZIndex: =5
 

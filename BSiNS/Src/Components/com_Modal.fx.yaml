@@ -279,7 +279,7 @@ com_Modal As CanvasComponent:
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: =false
+                            OnChange: =If(inp_rezQty_2.ValidationState = inp_rezQty_2.ValidationState.Error, ErrorMsg.Text = "nesto");
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             Type: ="Text"
@@ -481,28 +481,31 @@ com_Modal As CanvasComponent:
                                 Y: =0
                                 ZIndex: =2
 
-                    TextCanvas1_9 As Text:
-                        AlignInContainer: =AlignInContainer.Center
+                    ErrorMsg As Text:
+                        AlignInContainer: =AlignInContainer.Stretch
                         AutoHeight: =false
-                        BorderStyle: =""
+                        BorderColor: =
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =
                         DisplayMode: =DisplayMode.Edit
                         FontColor: =RGBA(215, 58, 60, 1)
                         Height: =35
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         PaddingBottom: =0
-                        PaddingLeft: =0
-                        PaddingRight: =0
+                        PaddingLeft: =5
+                        PaddingRight: =5
                         PaddingTop: =0
                         Size: =11
                         Text: |-
                             =If(
                                 (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
-                                "Rezervisano i potrebno su veći od količine (" & com_Modal.Quantity & ")!",
+                                "'Rezervisano' i 'Potrebno' su veći od količine za otpremu (" & com_Modal.Quantity & ") !",
                                 ""
                             )
+                        VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
                         Visible: =!com_Modal.IsInventura
-                        Width: =200
+                        Width: =Parent.Width
                         X: =0
                         Y: =0
                         ZIndex: =4

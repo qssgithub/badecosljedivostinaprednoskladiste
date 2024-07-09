@@ -84,16 +84,18 @@ com_Header As CanvasComponent:
 
             "BarcodeReader2 As 'Barcode Reader'":
                 BorderFillColor: =RGBA(189, 49, 51, 1)
+                BorderRadius: =5
+                BorderThickness: =1.5
                 DisabledBorderColor: =RGBA(166, 166, 166, 1)
                 DisabledContentColor: =RGBA(166, 166, 166, 1)
                 DisabledFillColor: =RGBA(244, 244, 244, 1)
                 DisplayMode: =DisplayMode.Edit
-                FillColor: =RGBA(189, 49, 51, 1)
+                FillColor: =RGBA(255, 255, 255, 1)
                 FontSize: =14
                 Height: =60
                 HoverBorderColor: =RGBA(189, 49, 51, 1)
-                HoverContentColor: =RGBA(189, 49, 51, 1)
-                HoverFillColor: =RGBA(255, 255, 255, 1)
+                HoverContentColor: =RGBA(255, 255, 255, 1)
+                HoverFillColor: =RGBA(184, 0, 0, 1)
                 LayoutMinHeight: =20
                 LayoutMinWidth: =280
                 OnCancel: =false
@@ -123,7 +125,7 @@ com_Header As CanvasComponent:
                 ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
                 Text: ="Skener"
                 TextAlignment: =Align.Center
-                TextColor: =RGBA(255, 255, 255, 1)
+                TextColor: =RGBA(184, 0, 0, 1)
                 VerticalAlign: =VerticalAlign.Middle
                 Visible: =isMobile
                 Width: =100
