@@ -992,7 +992,6 @@
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
                                 BorderStyle: =""
-                                DelayOutput: =false
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
                                 FontColor: =
@@ -1000,6 +999,7 @@
                                 Height: =31
                                 OnChange: |-
                                     =UpdateIf(OtpremniceLines.Selected.Res_Entry, Otpremnice_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{Quantity: Value(OtpremniceResEntryQty.Value)});
+                                TriggerOutput: ="FocusOut"
                                 Value: =ThisItem.Quantity
                                 Width: =113
                                 X: =112
@@ -1035,7 +1035,6 @@
                                 Appearance: ="FilledDarker"
                                 BasePaletteColor: =
                                 BorderStyle: =""
-                                DelayOutput: =false
                                 DisplayMode: =DisplayMode.Edit
                                 Fill: =
                                 FontColor: =
@@ -1043,6 +1042,7 @@
                                 Height: =31
                                 OnChange: |-
                                     =UpdateIf(OtpremniceLines.Selected.Res_Entry, Otpremnice_ResEntryGallery.Selected.Entry_No = ThisRecord.Entry_No ,{LOT_No: Text(OtpremniceLot.Value)})
+                                TriggerOutput: ="FocusOut"
                                 Value: =ThisItem.LOT_No
                                 Width: =113
                                 X: =80
@@ -1367,7 +1367,6 @@
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             BorderStyle: =""
-                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
@@ -1375,6 +1374,7 @@
                             LayoutMinWidth: =320
                             OnChange: =
                             Placeholder: ="Količina"
+                            TriggerOutput: ="FocusOut"
                             Value: =Otpremnice_ResEntryGallery.Selected.Quantity
                             Width: =150
                             X: =40
@@ -1477,13 +1477,13 @@
                             Align: ='TextInputCanvas.Align'.End
                             BasePaletteColor: =
                             BorderStyle: =""
-                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =12
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Unesite LOT"
+                            TriggerOutput: ="FocusOut"
                             Value: =Otpremnice_ResEntryGallery.Selected.LOT_No
                             Width: =150
                             X: =40
