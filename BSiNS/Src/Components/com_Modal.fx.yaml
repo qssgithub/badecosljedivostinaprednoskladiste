@@ -152,7 +152,6 @@ com_Modal As CanvasComponent:
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             BorderStyle: =""
-                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -182,6 +181,7 @@ com_Modal As CanvasComponent:
                                 );*/
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
+                            TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             Value: =LotNo
                             Visible: =true
@@ -273,7 +273,6 @@ com_Modal As CanvasComponent:
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             BorderStyle: =""
-                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -282,6 +281,7 @@ com_Modal As CanvasComponent:
                             OnChange: =If(inp_rezQty_2.ValidationState = inp_rezQty_2.ValidationState.Error, ErrorMsg.Text = "nesto");
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
+                            TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             ValidationState: =If(!IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0, "Error", "None")
                             Value: =Abs(com_Modal.QuantityCompleted)
@@ -394,7 +394,6 @@ com_Modal As CanvasComponent:
                             Appearance: ='TextInputCanvas.Appearance'.Outline
                             BasePaletteColor: =
                             BorderStyle: =""
-                            DelayOutput: =false
                             DisplayMode: =DisplayMode.Edit
                             FontSize: =0
                             Height: =32
@@ -402,6 +401,7 @@ com_Modal As CanvasComponent:
                             LayoutMinWidth: =320
                             OnChange: =false
                             Placeholder: ="Unesite potrebnu količinu"
+                            TriggerOutput: ="FocusOut"
                             ValidationState: =If(!IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0, "Error", "None")
                             Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
                             Width: =200
