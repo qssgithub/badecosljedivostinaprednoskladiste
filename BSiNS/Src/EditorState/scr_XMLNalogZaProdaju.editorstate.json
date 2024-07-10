@@ -215,7 +215,8 @@
           "InvariantPropertyName": "LineValuePosition",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "AddNew"
       ],
       "DynamicProperties": [
         {
@@ -334,6 +335,11 @@
           "Category": "Data",
           "PropertyName": "SelectedLine",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "AddNew",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",

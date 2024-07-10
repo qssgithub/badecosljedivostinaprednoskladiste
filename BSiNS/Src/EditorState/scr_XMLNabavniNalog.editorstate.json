@@ -215,6 +215,14 @@
           "InvariantPropertyName": "LineValuePosition",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "AddNew",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "DynamicProperties": [
@@ -334,6 +342,11 @@
           "Category": "Data",
           "PropertyName": "EntryLabels",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "AddNew",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",

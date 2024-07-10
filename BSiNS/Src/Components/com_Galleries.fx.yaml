@@ -1,4 +1,5 @@
 com_Galleries As CanvasComponent:
+    AddNew: =false
     EntriesToDisplay: =5
     EntryLabels: |-
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
@@ -435,8 +436,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1194
-                        X: =150
+                        Width: =1128
+                        X: =216
                         Y: =116
                         ZIndex: =2
 
@@ -455,8 +456,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1194
-                        X: =150
+                        Width: =1128
+                        X: =216
                         Y: =89
                         ZIndex: =3
 
@@ -475,8 +476,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1194
-                        X: =150
+                        Width: =1128
+                        X: =216
                         Y: =63
                         ZIndex: =4
 
@@ -495,8 +496,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1194
-                        X: =150
+                        Width: =1128
+                        X: =216
                         Y: =lbl_EntryItemNo.Y + lbl_EntryItemNo.Height + 5
                         ZIndex: =9
 
@@ -515,10 +516,57 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1194
-                        X: =150
+                        Width: =1128
+                        X: =216
                         Y: =Title3_2.Y
                         ZIndex: =11
+
+                icn_InvAdd_1 As icon.AddDocument:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Color: =App.Theme.Colors.Darker30
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =32
+                    Icon: =Icon.AddDocument
+                    OnSelect: |-
+                        =Collect(
+                            colEntries,
+                            {
+                                Created_By: ThisItem.Created_By,
+                                Creation_Date: ThisItem.Creation_Date,
+                                Entry_No: Text(CountRows(colEntries) + 1),
+                                Exp_Date: ThisItem.Exp_Date,
+                                Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,
+                                Item_No: ThisItem.Item_No,
+                                Item_Tracking: ThisItem.Item_Tracking,
+                                LOT_No: Blank(),
+                                Location_Code: ThisItem.Location_Code,
+                                Positive: ThisItem.Positive,
+                                'Qty-to-Handle_Base': ThisItem.'Qty-to-Handle_Base',
+                                'Qty-to-Invoice_Base': ThisItem.'Qty-to-Invoice_Base',
+                                Quantity: ThisItem.Quantity,
+                                Quantity_Base: ThisItem.Quantity_Base,
+                                Quantity_Completed: Blank(),
+                                Quantity_NewLOT: ThisItem.Quantity_NewLOT,
+                                Res_Status: ThisItem.Res_Status,
+                                Shipment_Date: ThisItem.Shipment_Date,
+                                Source_ID: ThisItem.Source_ID,
+                                Source_Ref_No: ThisItem.Source_Ref_No,
+                                Source_SubType: ThisItem.Source_SubType,
+                                Source_Type: ThisItem.Source_Type
+                            }
+                        );
+                        Set(
+                            ScannedItem,
+                            Blank()
+                        );
+                        Reset(glr_Entries);
+                        //Set(isModalOpen, true);
+                    Visible: =true//com_Galleries.AddNew
+                    Width: =32
+                    X: =Parent.TemplateWidth - 50
+                    Y: =Body2_7.Y - 10
+                    ZIndex: =13
 
                 Group8 As group:
                     Height: =5
