@@ -94,6 +94,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv.Value"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv.Value",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 18,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "Qty_Phys_Inventory"
+                  }
+                }
+              },
+              "properties": {
+                "member": "Value",
+                "module": "com_Modal",
+                "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Qty_Phys_Inventory"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "High"
+          },
+          "ruleId": "app-ErrInvalidName",
+          "ruleIndex": 1
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
                 }
               ],
@@ -2398,6 +2438,96 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_9.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_9.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Modal",
+                "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_9"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_8.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_8.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Modal",
+                "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.Container8_4.ButtonCanvas9_8"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Modal",
+                "type": "com_Modal.con_ModalFade.con_Modal.vrt_Modal.vrt_ModalBody.Container13_13.inp_QtyInv"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
         }
       ],
       "tool": {
