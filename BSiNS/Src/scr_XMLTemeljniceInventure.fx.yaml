@@ -289,10 +289,61 @@
                                 Blank()
                             );
                             Reset(glr_Inv);
+                        Visible: =false
                         Width: =32
                         X: =Parent.TemplateWidth - 50
                         Y: =lbl_InvBarcode.Y - 10
                         ZIndex: =10
+
+                    ButtonCanvas6 As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =RGBA(184, 0, 0, 1)
+                        FontSize: =32
+                        Height: =32
+                        Icon: ="DocumentAdd"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                        OnSelect: |-
+                            =UpdateContext({newResEntryLineNo: Text((CountRows(colLines) + 1) * 10000)});
+                            Collect(
+                                colLines,
+                                {
+                                    Journal_Template_Name: ThisItem.Journal_Template_Name,
+                                    Journal_Batch_Name: ThisItem.Journal_Batch_Name,
+                                    'Line_No.': newResEntryLineNo,
+                                    'Document_No.': ThisItem.'Document_No.',
+                                    Description: ThisItem.Description,
+                                    Source_Type: ThisItem.Source_Type,
+                                    'Source_No.': ThisItem.'Source_No.',
+                                    Source_Code: ThisItem.Source_Code,
+                                    Item_No: ThisItem.Item_No,
+                                    'Phys._Inventory': ThisItem.'Phys._Inventory',
+                                    Location_Code: ThisItem.Location_Code,
+                                    Posting_Date: ThisItem.Posting_Date,
+                                    Document_Date: ThisItem.Document_Date,
+                                    Sales_Price: ThisItem.Sales_Price,
+                                    Qty_Calculated: Text(0),
+                                    Qty_Calculated_Ext: Text(0),
+                                    Quantity: Text(0),
+                                    Entry_Type: ThisItem.Entry_Type,
+                                    Qty_Phys_Inventory: Text(0),
+                                    Qty_Phys_Inventory_Ext: Text(0),
+                                    Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,
+                                    Lot_No: Blank(),
+                                    Item_Expiration_Date: ThisItem.Item_Expiration_Date,
+                                    Barcode: ThisItem.Barcode
+                                }
+                            );
+                            Set(
+                                ScannedItem,
+                                Blank()
+                            );
+                            Reset(glr_Inv);
+                        Text: =
+                        Width: =32
+                        X: =Parent.TemplateWidth - 50
+                        Y: =lbl_InvBarcode.Y - 10
+                        ZIndex: =17
 
                     grp_InvBarcode As group:
                         Height: =5
@@ -579,7 +630,7 @@
                     Width: =Parent.Width
                     X: =0
                     Y: =0
-                    ZIndex: =2
+                    ZIndex: =3
 
                 txt_InvDocumentName As Text:
                     Align: ='TextCanvas.Align'.Start
@@ -597,7 +648,7 @@
                     Wrap: =true
                     X: =0   
                     Y: =0
-                    ZIndex: =3
+                    ZIndex: =4
 
         com_InvFooter As com_Footer:
             IsInventura: =true

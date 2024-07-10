@@ -179,7 +179,7 @@ com_Modal As CanvasComponent:
                                         UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
                                     )
                                 );*/
-                            Placeholder: ="Unesite rezervisano količinu"
+                            Placeholder: ="Unesite vrijednost LOT-a"
                             Required: =true
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
