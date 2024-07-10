@@ -9727,28 +9727,35 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsInventura",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
+      "IsInventura",
       "LineId",
       "ResEntryId",
       "QuantityNewLOT",
       "QuantityCompleted",
       "Quantity",
-      "LotNo",
-      "Qty_Phys_Inventory"
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "\"Text\"",
+        "InvariantPropertyName": "LotNo",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "Qty_Phys_Inventory",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638562045445024842",
+    "LastModifiedTimestamp": "638562052918749203",
     "Name": "com_Modal",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "false",
+        "InvariantScript": "true",
         "Property": "IsInventura",
         "RuleProviderType": "System"
       },
@@ -9784,13 +9791,13 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "\"Text\"",
+        "InvariantScript": "",
         "Property": "LotNo",
         "RuleProviderType": "System"
       },
       {
         "Category": "Data",
-        "InvariantScript": "100",
+        "InvariantScript": "1005",
         "Property": "Qty_Phys_Inventory",
         "RuleProviderType": "System"
       },
@@ -9929,7 +9936,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562045445024842",
+  "LastModifiedTimestamp": "638562052918749203",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
