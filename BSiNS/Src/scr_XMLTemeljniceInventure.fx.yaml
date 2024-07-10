@@ -196,10 +196,10 @@
                                 isModalOpen,
                                 true
                             );
-                            Set(
+                            /*Set(
                                 LotNo,
                                 glr_Inv.Selected.Lot_No
-                            );
+                            );*/
                             
                         );
                         Set(
@@ -289,6 +289,7 @@
                                 Blank()
                             );
                             Reset(glr_Inv);
+                            Set(isModalOpen, true);
                         Visible: =false
                         Width: =32
                         X: =Parent.TemplateWidth - 50

@@ -410,6 +410,7 @@
             ZIndex: =4
 
     com_ProModal As com_Modal:
+        IsInventura: =false
         LineId: =com_ProGalleries.SelectedLine.Line_No
         Quantity: =Abs(com_ProGalleries.SelectedEntry.Quantity)
         QuantityCompleted: =Abs(com_ProGalleries.SelectedEntry.Quantity_Completed)

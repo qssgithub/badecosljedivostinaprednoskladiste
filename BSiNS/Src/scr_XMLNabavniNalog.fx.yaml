@@ -365,6 +365,7 @@
             ZIndex: =4
 
     com_NabModal As com_Modal:
+        IsInventura: =false
         LineId: =com_NabGalleries.SelectedLine.Line_No
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
