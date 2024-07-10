@@ -1661,7 +1661,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(IsBlank(com_Modal.LotNo) && com_Modal.IsInventura, true, false)",
+                            "InvariantScript": "If((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -2083,7 +2083,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "Abs(com_Modal.q)",
+                                "InvariantScript": "If(IsBlank(com_Modal.QuantityCompleted),0,Abs(com_Modal.QuantityCompleted))",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -3855,7 +3855,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "!com_Modal.IsInventura",
+                            "InvariantScript": "!com_Modal.IsInventura && !com_Modal.IsNabavniNalog",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -5631,7 +5631,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value), Qty_Calculated: 0}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value),\n            Quantity_Completed: Value(-inp_rezQty_2.Value)\n        }\n    )\n);\nNotify(inp_LotNo.Value & \" , \" & inp_QtyInv.Value & \" , \" & inp_rezQty_2.Value & \" , \" & inp_potrebnoQty_2.Value);\n\n/*Patch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);*/\nSet(\n    isModalOpen,\n    false\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nReset(inp_LotNo);\nReset(inp_QtyInv);",
+                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value), Qty_Calculated: 0}\n    ),\n    If(com_Modal.IsNabavniNalog,\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            LOT_No: Text(inp_LotNo.Value),\n            Quantity_Completed: Value(-inp_rezQty_2.Value)\n        }\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value),\n            Quantity_Completed: Value(-inp_rezQty_2.Value)\n        }\n    ))\n);\n\nNotify(inp_LotNo.Value & \" , \" & inp_QtyInv.Value & \" , \" & inp_rezQty_2.Value & \" , \" & inp_potrebnoQty_2.Value);\nSet(\n    isModalOpen,\n    false\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nReset(inp_LotNo);\nReset(inp_QtyInv);",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -6871,9 +6871,17 @@
         "InvariantPropertyName": "Qty_Phys_Inventory",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsNabavniNalog",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562123300250330",
+    "LastModifiedTimestamp": "638562137987908460",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6922,6 +6930,12 @@
         "Category": "Data",
         "InvariantScript": "1005",
         "Property": "Qty_Phys_Inventory",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "false",
+        "Property": "IsNabavniNalog",
         "RuleProviderType": "System"
       },
       {
@@ -7049,6 +7063,15 @@
       "PropertyDataTypeKey": "Number",
       "Tooltip": "A custom property",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "IsNabavniNalog",
+      "Hidden": false,
+      "Name": "IsNabavniNalog",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -7059,7 +7082,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562123300250330",
+  "LastModifiedTimestamp": "638562137987908460",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

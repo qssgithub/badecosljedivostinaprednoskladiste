@@ -3,6 +3,7 @@ com_Modal As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
     IsInventura: =true
+    IsNabavniNalog: =false
     LineId: ="Text"
     LotNo: =Blank()
     Qty_Phys_Inventory: =1005
@@ -132,7 +133,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(com_Modal.LotNo) && com_Modal.IsInventura, true, false)
+                        Visible: =If((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -315,7 +316,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             ValidationState: =If(!IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0, "Error", "None")
-                            Value: =Abs(com_Modal.q)
+                            Value: =If(IsBlank(com_Modal.QuantityCompleted),0,Abs(com_Modal.QuantityCompleted))
                             Visible: =true
                             Width: =200
                             X: =40
@@ -356,7 +357,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =!com_Modal.IsInventura
+                        Visible: =!com_Modal.IsInventura && !com_Modal.IsNabavniNalog
                         ZIndex: =4
 
                         TextCanvas3_13 As Text:
@@ -484,6 +485,18 @@ com_Modal As CanvasComponent:
                                     ),
                                     {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value), Qty_Calculated: 0}
                                 ),
+                                If(com_Modal.IsNabavniNalog,
+                                Patch(
+                                    colEntries,
+                                    LookUp(
+                                        colEntries,
+                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                    ),
+                                    {
+                                        LOT_No: Text(inp_LotNo.Value),
+                                        Quantity_Completed: Value(-inp_rezQty_2.Value)
+                                    }
+                                ),
                                 Patch(
                                     colEntries,
                                     LookUp(
@@ -494,25 +507,10 @@ com_Modal As CanvasComponent:
                                         Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value),
                                         Quantity_Completed: Value(-inp_rezQty_2.Value)
                                     }
-                                )
+                                ))
                             );
-                            Notify(inp_LotNo.Value & " , " & inp_QtyInv.Value & " , " & inp_rezQty_2.Value & " , " & inp_potrebnoQty_2.Value);
                             
-                            /*Patch(
-                                lockedItems,
-                                LookUp(
-                                    Filter(
-                                        lockedItems,
-                                        ThisRecord.documentId = SelectedDocumentName
-                                    ),
-                                    If(
-                                        com_Modal.IsInventura,
-                                        lineId = com_Modal.LineId,
-                                        lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId
-                                    )
-                                ),
-                                {isLocked: true}
-                            );*/
+                            Notify(inp_LotNo.Value & " , " & inp_QtyInv.Value & " , " & inp_rezQty_2.Value & " , " & inp_potrebnoQty_2.Value);
                             Set(
                                 isModalOpen,
                                 false
