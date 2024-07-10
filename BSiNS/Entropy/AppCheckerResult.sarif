@@ -94,6 +94,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Header",
+                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'com_Galleries_(nn, inv)'.'con_Galleries_(nn, inv)'.'vrt_Galleries_(nn, inv)'.btn_BackToLines_1.AccessibleLabel"
                 }
               ],
@@ -868,36 +898,6 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "com_Header",
-                "type": "com_Header.Container1.hrz_InvTitle_1.btn_InvBack_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2314,6 +2314,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_XMLTemeljniceInventure",
+                "type": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.icn_InvAdd.AccessibleLabel"
                 }
               ],
@@ -2368,36 +2398,6 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scr_XMLTemeljniceInventure",
-                "type": "scr_XMLTemeljniceInventure.vrt_Inv.con_InvBody.Container4.glr_Inv.ButtonCanvas6"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
         }
       ],
       "tool": {
