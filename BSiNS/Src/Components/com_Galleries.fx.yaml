@@ -1,4 +1,5 @@
 com_Galleries As CanvasComponent:
+    AddNew: =false
     EntriesToDisplay: =5
     EntryLabels: |-
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
@@ -426,18 +427,22 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =12
-                        Text: =Abs(ThisItem.Quantity_NewLOT)
+                        Text: |-
+                            =If(
+                                !IsBlank(com_Galleries.EntryLabels.Line5),
+                                Abs(ThisItem.Quantity_NewLOT)
+                            )
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_2.Width + Title3_2.X
-                        Y: =lbl_EntryQuantityCompleted.Y + lbl_EntryQuantityCompleted.Height + 5
+                        Width: =1128
+                        X: =216
+                        Y: =116
                         ZIndex: =2
 
                     lbl_EntryQuantityCompleted As label:
@@ -446,7 +451,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -455,9 +460,9 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_2.Width + Title3_2.X
-                        Y: =lbl_EntryLOTNo.Y + lbl_EntryItemNo.Height + 5
+                        Width: =1128
+                        X: =216
+                        Y: =89
                         ZIndex: =3
 
                     lbl_EntryLOTNo As label:
@@ -466,7 +471,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -475,9 +480,9 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_2.Width + Title3_2.X
-                        Y: =lbl_EntryExpDate.Y + lbl_EntryExpDate.Height + 5
+                        Width: =1128
+                        X: =216
+                        Y: =63
                         ZIndex: =4
 
                     lbl_EntryExpDate As label:
@@ -486,7 +491,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -495,9 +500,9 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_2.Width + Title3_2.X
-                        Y: =lbl_EntryItemNo.Y + lbl_EntryItemNo.Height + 5
+                        Width: =1128
+                        X: =216
+                        Y: =36
                         ZIndex: =9
 
                     lbl_EntryItemNo As label:
@@ -506,7 +511,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -515,8 +520,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_2.Width + Title3_2.X
+                        Width: =1128
+                        X: =216
                         Y: =Title3_2.Y
                         ZIndex: =11
 
@@ -532,7 +537,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =21
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -551,7 +556,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =21
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -570,7 +575,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =21
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -589,7 +594,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =21
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -608,7 +613,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =21
+                        Height: =20
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -621,4 +626,51 @@ com_Galleries As CanvasComponent:
                         X: =16
                         Y: =10
                         ZIndex: =12
+
+                icn_InvAdd_1 As icon.AddDocument:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Color: =App.Theme.Colors.Darker30
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =32
+                    Icon: =Icon.AddDocument
+                    OnSelect: |-
+                        =Collect(
+                            colEntries,
+                            {
+                                Created_By: ThisItem.Created_By,
+                                Creation_Date: ThisItem.Creation_Date,
+                                Entry_No: Text(CountRows(colEntries) + 1),
+                                Exp_Date: ThisItem.Exp_Date,
+                                Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,
+                                Item_No: ThisItem.Item_No,
+                                Item_Tracking: ThisItem.Item_Tracking,
+                                LOT_No: Blank(),
+                                Location_Code: ThisItem.Location_Code,
+                                Positive: ThisItem.Positive,
+                                'Qty-to-Handle_Base': ThisItem.'Qty-to-Handle_Base',
+                                'Qty-to-Invoice_Base': ThisItem.'Qty-to-Invoice_Base',
+                                Quantity: ThisItem.Quantity,
+                                Quantity_Base: ThisItem.Quantity_Base,
+                                Quantity_Completed: Blank(),
+                                Quantity_NewLOT: ThisItem.Quantity_NewLOT,
+                                Res_Status: ThisItem.Res_Status,
+                                Shipment_Date: ThisItem.Shipment_Date,
+                                Source_ID: ThisItem.Source_ID,
+                                Source_Ref_No: ThisItem.Source_Ref_No,
+                                Source_SubType: ThisItem.Source_SubType,
+                                Source_Type: ThisItem.Source_Type
+                            }
+                        );
+                        Set(
+                            ScannedItem,
+                            Blank()
+                        );
+                        Reset(glr_Entries);
+                        //Set(isModalOpen, true);
+                    Visible: =com_Galleries.AddNew
+                    Width: =32
+                    X: =Parent.TemplateWidth - 50
+                    Y: =Body2_7.Y - 10
+                    ZIndex: =13
 

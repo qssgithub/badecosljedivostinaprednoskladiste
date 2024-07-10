@@ -3,7 +3,10 @@ com_Modal As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
     IsInventura: =false
+    IsNabavniNalog: =false
     LineId: ="Text"
+    LotNo: =Blank()
+    Qty_Phys_Inventory: =1005
     Quantity: =100
     QuantityCompleted: =100
     QuantityNewLOT: =100
@@ -119,6 +122,7 @@ com_Modal As CanvasComponent:
 
                     Container13_12 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =150
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
                         LayoutJustifyContent: =LayoutJustifyContent.Center
@@ -129,7 +133,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
+                        Visible: =If((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -179,72 +183,25 @@ com_Modal As CanvasComponent:
                                         UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
                                     )
                                 );*/
-                            Placeholder: ="Unesite rezervisano količinu"
+                            Placeholder: ="Unesite vrijednost LOT-a"
                             Required: =true
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
-                            Value: =LotNo
+                            Value: |-
+                                =//If(IsBlank(com_Modal.LotNo), Blank(), com_Modal.LotNo)
+                                com_Modal.LotNo
                             Visible: =true
                             Width: =200
                             X: =40
                             Y: =40
                             ZIndex: =3
 
-                        Container8_3 As groupContainer.verticalAutoLayoutContainer:
-                            AlignInContainer: =AlignInContainer.SetByContainer
-                            FillPortions: =0
-                            LayoutAlignItems: =LayoutAlignItems.Center
-                            LayoutDirection: =LayoutDirection.Vertical
-                            LayoutGap: =5
-                            LayoutJustifyContent: =LayoutJustifyContent.Center
-                            LayoutMinHeight: =100
-                            LayoutMinWidth: =250
-                            LayoutMode: =LayoutMode.Auto
-                            RadiusBottomLeft: =4
-                            RadiusBottomRight: =4
-                            RadiusTopLeft: =4
-                            RadiusTopRight: =4
-                            Visible: =false
-                            Width: =100
-                            ZIndex: =4
-
-                            ButtonCanvas9_6 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronUp"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, QuantityCompleted + 1);
-                                Width: =96
-                                X: =0
-                                Y: =0
-                                ZIndex: =1
-
-                            ButtonCanvas9_7 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronDown"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, QuantityCompleted - 1);
-                                Width: =96
-                                X: =0
-                                Y: =0
-                                ZIndex: =2
-
-                    Container13_10 As groupContainer.verticalAutoLayoutContainer:
+                    Container13_13 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =150
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =If(IsBlank(LotNo) && com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -252,7 +209,82 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
+                        Visible: =com_Modal.IsInventura
                         ZIndex: =2
+
+                        TextCanvas3_14 As Text:
+                            AutoHeight: =true
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =80
+                            Size: =20
+                            Text: ="Količina"
+                            Width: =200
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                        "inp_QtyInv As 'Text input'":
+                            Align: ='TextInputCanvas.Align'.Center
+                            Appearance: ='TextInputCanvas.Appearance'.Outline
+                            BasePaletteColor: =
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            FontSize: =0
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =320
+                            OnChange: |
+                                =/*If(
+                                    (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,
+                                    Notify(
+                                        "Unesite pozitivan broj.",
+                                        NotificationType.Error,
+                                        2000
+                                    );
+                                    Reset(inp_rezQty_2);
+                                    UpdateContext({potrebnaKolicina: 0}),
+                                    If(
+                                        Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                        Reset(inp_rezQty_2);
+                                        UpdateContext({potrebnaKolicina: 0});
+                                        Notify(
+                                            "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
+                                            NotificationType.Information,
+                                            2000
+                                        ),
+                                        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
+                                    )
+                                );*/
+                            Placeholder: =0
+                            Required: =true
+                            TriggerOutput: ="FocusOut"
+                            Type: ="Text"
+                            Value: =com_Modal.Qty_Phys_Inventory
+                            Visible: =true
+                            Width: =200
+                            X: =40
+                            Y: =40
+                            ZIndex: =3
+
+                    Container13_10 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =150
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Visible: =!com_Modal.IsInventura
+                        ZIndex: =3
 
                         TextCanvas3_11 As Text:
                             AutoHeight: =true
@@ -284,7 +316,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             ValidationState: =If(!IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0, "Error", "None")
-                            Value: =Abs(com_Modal.QuantityCompleted)
+                            Value: =If(IsBlank(com_Modal.QuantityCompleted),0,Abs(com_Modal.QuantityCompleted))
                             Visible: =true
                             Width: =200
                             X: =40
@@ -312,59 +344,12 @@ com_Modal As CanvasComponent:
                             Y: =0
                             ZIndex: =3
 
-                        Container8_1 As groupContainer.verticalAutoLayoutContainer:
-                            AlignInContainer: =AlignInContainer.SetByContainer
-                            FillPortions: =0
-                            Height: =0
-                            LayoutAlignItems: =LayoutAlignItems.Center
-                            LayoutDirection: =LayoutDirection.Vertical
-                            LayoutGap: =5
-                            LayoutJustifyContent: =LayoutJustifyContent.Center
-                            LayoutMinHeight: =100
-                            LayoutMinWidth: =250
-                            LayoutMode: =LayoutMode.Auto
-                            RadiusBottomLeft: =4
-                            RadiusBottomRight: =4
-                            RadiusTopLeft: =4
-                            RadiusTopRight: =4
-                            Visible: =false
-                            Width: =0
-                            ZIndex: =4
-
-                            ButtonCanvas9_2 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronUp"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, QuantityCompleted + 1);
-                                Width: =0
-                                X: =0
-                                Y: =0
-                                ZIndex: =1
-
-                            ButtonCanvas9_3 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronDown"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinWidth: =96
-                                OnSelect: =Set(QuantityCompleted, QuantityCompleted - 1);
-                                Width: =0
-                                X: =0
-                                Y: =0
-                                ZIndex: =2
-
                     Container13_11 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
+                        Height: =150
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -372,8 +357,8 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =!com_Modal.IsInventura
-                        ZIndex: =3
+                        Visible: =!com_Modal.IsInventura && !com_Modal.IsNabavniNalog
+                        ZIndex: =4
 
                         TextCanvas3_13 As Text:
                             AutoHeight: =true
@@ -430,57 +415,6 @@ com_Modal As CanvasComponent:
                             Y: =0
                             ZIndex: =3
 
-                        Container8_2 As groupContainer.verticalAutoLayoutContainer:
-                            AlignInContainer: =AlignInContainer.SetByContainer
-                            FillPortions: =0
-                            Height: =0
-                            LayoutAlignItems: =LayoutAlignItems.Center
-                            LayoutDirection: =LayoutDirection.Vertical
-                            LayoutGap: =5
-                            LayoutJustifyContent: =LayoutJustifyContent.Center
-                            LayoutMinHeight: =100
-                            LayoutMinWidth: =250
-                            LayoutMode: =LayoutMode.Auto
-                            RadiusBottomLeft: =4
-                            RadiusBottomRight: =4
-                            RadiusTopLeft: =4
-                            RadiusTopRight: =4
-                            Visible: =false
-                            Width: =0
-                            ZIndex: =5
-
-                            ButtonCanvas9_4 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronUp"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                OnSelect: =
-                                Visible: =true
-                                Width: =96
-                                X: =0
-                                Y: =0
-                                ZIndex: =1
-
-                            ButtonCanvas9_5 As Button:
-                                BorderStyle: =""
-                                DisplayMode: =DisplayMode.Edit
-                                FillPortions: =1
-                                FontSize: =60
-                                Height: =32
-                                Icon: ="ChevronDown"
-                                Layout: ='ButtonCanvas.Layout'.IconOnly
-                                LayoutMinHeight: =32
-                                LayoutMinWidth: =96
-                                Width: =96
-                                X: =0
-                                Y: =0
-                                ZIndex: =2
-
                     ErrorMsg As Text:
                         AlignInContainer: =AlignInContainer.Stretch
                         AutoHeight: =false
@@ -508,7 +442,7 @@ com_Modal As CanvasComponent:
                         Width: =Parent.Width
                         X: =0
                         Y: =0
-                        ZIndex: =4
+                        ZIndex: =5
 
                 hrz_ModalFooter As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
@@ -540,7 +474,7 @@ com_Modal As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.IconAfter
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |
+                        OnSelect: |-
                             =If(
                                 com_Modal.IsInventura,
                                 Patch(
@@ -549,7 +483,19 @@ com_Modal As CanvasComponent:
                                         colLines,
                                         'Line_No.' = com_Modal.LineId
                                     ),
-                                    {Qty_Phys_Inventory: inp_rezQty_2.Value}
+                                    {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value), Qty_Calculated: 0}
+                                ),
+                                If(com_Modal.IsNabavniNalog,
+                                Patch(
+                                    colEntries,
+                                    LookUp(
+                                        colEntries,
+                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                    ),
+                                    {
+                                        LOT_No: Text(inp_LotNo.Value),
+                                        Quantity_Completed: Value(-inp_rezQty_2.Value)
+                                    }
                                 ),
                                 Patch(
                                     colEntries,
@@ -558,32 +504,21 @@ com_Modal As CanvasComponent:
                                         Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
                                     ),
                                     {
-                                        Quantity_Completed: Value(-inp_rezQty_2.Value),
-                                        Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
+                                        Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value),
+                                        Quantity_Completed: Value(-inp_rezQty_2.Value)
                                     }
-                                )
+                                ))
                             );
-                            Reset(inp_rezQty_2);
-                            Reset(inp_potrebnoQty_2);
-                            /*Patch(
-                                lockedItems,
-                                LookUp(
-                                    Filter(
-                                        lockedItems,
-                                        ThisRecord.documentId = SelectedDocumentName
-                                    ),
-                                    If(
-                                        com_Modal.IsInventura,
-                                        lineId = com_Modal.LineId,
-                                        lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId
-                                    )
-                                ),
-                                {isLocked: true}
-                            );*/
+                            
+                            Notify(inp_LotNo.Value & " , " & inp_QtyInv.Value & " , " & inp_rezQty_2.Value & " , " & inp_potrebnoQty_2.Value);
                             Set(
                                 isModalOpen,
                                 false
                             );
+                            Reset(inp_rezQty_2);
+                            Reset(inp_potrebnoQty_2);
+                            Reset(inp_LotNo);
+                            Reset(inp_QtyInv);
                         Text: ="Spasi"
                         Width: =96
                         X: =0

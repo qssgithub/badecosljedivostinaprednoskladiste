@@ -1,119 +1,93 @@
 {
   "ControlStates": {
-    "com_Galleries_1": {
+    "ButtonCanvas6": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
-        "Fill",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "640",
-          "InvariantPropertyName": "Height",
+          "AutoRuleBindingString": "1179",
+          "InvariantPropertyName": "X",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "640",
+          "AutoRuleBindingString": "107",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "Width",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "X",
-        "Y",
+        "Height",
+        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Select(Parent)",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "ZIndex",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line4: \"Line4\"}",
-          "InvariantPropertyName": "EntryLabels",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Text",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Grup: true, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
-          "InvariantPropertyName": "LineValueVisibility",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Icon",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "100",
-          "InvariantPropertyName": "EntriesToDisplay",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "LineLabels",
-        "SelectedLine",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "glr_Entries.",
-          "InvariantPropertyName": "SelectedEntry",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
-        "OnReset",
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "100",
-          "InvariantPropertyName": "NumberOfLinesToDisplay",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Appearance",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank, 'Qty-to_Ship': 5}",
-          "InvariantPropertyName": "LineValuePosition",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "IconStyle",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "FontColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "FontSize",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
       ],
-      "DynamicProperties": [
-        {
-          "ControlPropertyState": "FillPortions",
-          "Property": {
-            "Category": "Design",
-            "PropertyName": "FillPortions",
-            "RuleProviderType": "Unknown"
-          },
-          "PropertyName": "FillPortions"
-        },
-        {
-          "ControlPropertyState": "AlignInContainer",
-          "Property": {
-            "Category": "Design",
-            "PropertyName": "AlignInContainer",
-            "RuleProviderType": "Unknown"
-          },
-          "PropertyName": "AlignInContainer"
-        },
-        {
-          "ControlPropertyState": "LayoutMinWidth",
-          "Property": {
-            "Category": "Design",
-            "PropertyName": "LayoutMinWidth",
-            "RuleProviderType": "Unknown"
-          },
-          "PropertyName": "LayoutMinWidth"
-        },
-        {
-          "ControlPropertyState": "LayoutMinHeight",
-          "Property": {
-            "Category": "Design",
-            "PropertyName": "LayoutMinHeight",
-            "RuleProviderType": "Unknown"
-          },
-          "PropertyName": "LayoutMinHeight"
-        }
-      ],
-      "HasDynamicProperties": true,
+      "HasDynamicProperties": false,
       "IsAutoGenerated": false,
       "IsComponentDefinition": false,
       "IsDataControl": false,
@@ -121,61 +95,56 @@
       "IsGroupControl": false,
       "IsLocked": false,
       "LayoutName": "",
-      "Metadata": {
-        "AllowAccessToGlobals": true,
-        "AllowCustomization": true,
-        "Description": ""
-      },
       "MetaDataIDKey": "",
-      "Name": "com_Galleries_1",
+      "Name": "ButtonCanvas6",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 0,
+      "ParentIndex": 14,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "SelectedLine",
-          "RuleProviderType": "System"
+          "PropertyName": "Text",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "LineLabels",
-          "RuleProviderType": "System"
+          "PropertyName": "Icon",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "EntriesToDisplay",
-          "RuleProviderType": "User"
+          "PropertyName": "Appearance",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "EntryLabels",
-          "RuleProviderType": "User"
+          "PropertyName": "IconStyle",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "User"
+          "PropertyName": "FontColor",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "SelectedEntry",
-          "RuleProviderType": "System"
+          "PropertyName": "FontSize",
+          "RuleProviderType": "Unknown"
         },
         {
-          "Category": "Data",
-          "PropertyName": "NumberOfLinesToDisplay",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "LineValuePosition",
+          "Category": "Design",
+          "PropertyName": "X",
           "RuleProviderType": "User"
         },
         {
           "Category": "Design",
-          "PropertyName": "Fill",
-          "RuleProviderType": "System"
+          "PropertyName": "Y",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -184,17 +153,7 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "X",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Design",
-          "PropertyName": "Y",
+          "PropertyName": "DisplayMode",
           "RuleProviderType": "Unknown"
         },
         {
@@ -204,8 +163,8 @@
         },
         {
           "Category": "Behavior",
-          "PropertyName": "OnReset",
-          "RuleProviderType": "System"
+          "PropertyName": "OnSelect",
+          "RuleProviderType": "User"
         }
       ],
       "StyleName": "",

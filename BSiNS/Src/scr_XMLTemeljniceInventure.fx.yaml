@@ -196,10 +196,8 @@
                                 isModalOpen,
                                 true
                             );
-                            Set(
-                                LotNo,
-                                glr_Inv.Selected.Lot_No
-                            );
+                            Notify(glr_Inv.Selected.Lot_No)    
+                        
                             
                         );
                         Set(
@@ -284,15 +282,68 @@
                                     Barcode: ThisItem.Barcode
                                 }
                             );
+                            
                             Set(
                                 ScannedItem,
                                 Blank()
                             );
                             Reset(glr_Inv);
+                            Set(isModalOpen, true);
+                        Visible: =false
                         Width: =32
                         X: =Parent.TemplateWidth - 50
                         Y: =lbl_InvBarcode.Y - 10
                         ZIndex: =10
+
+                    ButtonCanvas6 As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =RGBA(184, 0, 0, 1)
+                        FontSize: =32
+                        Height: =32
+                        Icon: ="DocumentAdd"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                        OnSelect: |-
+                            =UpdateContext({newResEntryLineNo: Text((CountRows(colLines) + 1) * 10000)});
+                            Collect(
+                                colLines,
+                                {
+                                    Journal_Template_Name: ThisItem.Journal_Template_Name,
+                                    Journal_Batch_Name: ThisItem.Journal_Batch_Name,
+                                    'Line_No.': newResEntryLineNo,
+                                    'Document_No.': ThisItem.'Document_No.',
+                                    Description: ThisItem.Description,
+                                    Source_Type: ThisItem.Source_Type,
+                                    'Source_No.': ThisItem.'Source_No.',
+                                    Source_Code: ThisItem.Source_Code,
+                                    Item_No: ThisItem.Item_No,
+                                    'Phys._Inventory': ThisItem.'Phys._Inventory',
+                                    Location_Code: ThisItem.Location_Code,
+                                    Posting_Date: ThisItem.Posting_Date,
+                                    Document_Date: ThisItem.Document_Date,
+                                    Sales_Price: ThisItem.Sales_Price,
+                                    Qty_Calculated: Text(0),
+                                    Qty_Calculated_Ext: Text(0),
+                                    Quantity: Text(0),
+                                    Entry_Type: ThisItem.Entry_Type,
+                                    Qty_Phys_Inventory: Text(0),
+                                    Qty_Phys_Inventory_Ext: Text(0),
+                                    Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,
+                                    Lot_No: Blank(),
+                                    Item_Expiration_Date: ThisItem.Item_Expiration_Date,
+                                    Barcode: ThisItem.Barcode
+                                }
+                            );
+                            Set(
+                                ScannedItem,
+                                Blank()
+                            );
+                            Reset(glr_Inv);
+                        Text: =
+                        Width: =32
+                        X: =Parent.TemplateWidth - 50
+                        Y: =lbl_InvBarcode.Y - 10
+                        ZIndex: =17
 
                     grp_InvBarcode As group:
                         Height: =5
@@ -424,7 +475,7 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =12
-                            Text: =ThisItem.'Item_No.'
+                            Text: =ThisItem.'Line_No.'
                             Width: =Parent.TemplateWidth - 150
                             Wrap: =false
                             X: =lbl_InvItemNo.Width
@@ -579,7 +630,7 @@
                     Width: =Parent.Width
                     X: =0
                     Y: =0
-                    ZIndex: =2
+                    ZIndex: =3
 
                 txt_InvDocumentName As Text:
                     Align: ='TextCanvas.Align'.Start
@@ -597,18 +648,7 @@
                     Wrap: =true
                     X: =0   
                     Y: =0
-                    ZIndex: =3
-
-            com_Galleries_1 As com_Galleries:
-                EntriesToDisplay: =0
-                EntryLabels: =
-                LayoutMinHeight: =640
-                LayoutMinWidth: =640
-                LineValuePosition: |-
-                    ={Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 2, Quantity: 5, Unit_Of_Measure: Blank(), 'Qty-to_Ship': Blank(), Line_No: 1, Lot_No: 3, Exp_Date: 4 }
-                LineValueVisibility: |-
-                    ={Item_No: false, Posting_Group: false, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': false, Line_No: true, Lot_No: true, Exp_Date: true }
-                ZIndex: =5
+                    ZIndex: =4
 
         com_InvFooter As com_Footer:
             IsInventura: =true
@@ -619,8 +659,9 @@
             ZIndex: =5
 
     com_InvModal As com_Modal:
-        IsInventura: =true
         LineId: =glr_Inv.Selected.'Line_No.'
+        LotNo: =glr_Inv.Selected.Lot_No
+        Qty_Phys_Inventory: =glr_Inv.Selected.Qty_Phys_Inventory
         Quantity: =glr_Inv.Selected.Qty_Phys_Inventory
         QuantityCompleted: =glr_Inv.Selected.Qty_Phys_Inventory
         QuantityNewLOT: =0

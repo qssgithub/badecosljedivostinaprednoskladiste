@@ -120,6 +120,8 @@
                                 'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                                 Quantity: Text(entry.Quantity),
                                 Quantity_Base: Text(entry.Quantity_Base),
+                                Quantity_Completed: Value(entry.Quantity_Completed),
+                                Quantity_NewLOT: Value(entry.Quantity_NewLOT),
                                 Res_Status: Text(entry.Res_Status),
                                 Shipment_Date: Text(entry.Shipment_Date),
                                 Source_ID: Text(entry.Source_ID),
@@ -146,6 +148,8 @@
                             'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
                             Quantity: Text(line.Res_Entry.Quantity),
                             Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                            Quantity_Completed: Value(line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(line.Res_Entry.Quantity_NewLOT),
                             Res_Status: Text(line.Res_Entry.Res_Status),
                             Shipment_Date: Text(line.Res_Entry.Shipment_Date),
                             Source_ID: Text(line.Res_Entry.Source_ID),
@@ -192,6 +196,8 @@
                             'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
                             Quantity: Text(entry.Quantity),
                             Quantity_Base: Text(entry.Quantity_Base),
+                            Quantity_Completed: Value(entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(entry.Quantity_NewLOT),
                             Res_Status: Text(entry.Res_Status),
                             Shipment_Date: Text(entry.Shipment_Date),
                             Source_ID: Text(entry.Source_ID),
@@ -218,6 +224,8 @@
                         'Qty-to-Invoice_Base': Text(xmlData.Purchase_Line.Res_Entry.'Qty-to-Invoice_Base'),
                         Quantity: Text(xmlData.Purchase_Line.Res_Entry.Quantity),
                         Quantity_Base: Text(xmlData.Purchase_Line.Res_Entry.Quantity_Base),
+                        Quantity_Completed: Value(xmlData.Purchase_Line.Res_Entry.Quantity_Completed),
+                        Quantity_NewLOT: Value(xmlData.Purchase_Line.Res_Entry.Quantity_NewLOT),
                         Res_Status: Text(xmlData.Purchase_Line.Res_Entry.Res_Status),
                         Shipment_Date: Text(xmlData.Purchase_Line.Res_Entry.Shipment_Date),
                         Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
@@ -310,8 +318,10 @@
                 Visible: =wizardStep = 1
 
             com_NabGalleries As com_Galleries:
+                AddNew: =true
+                EntriesToDisplay: =4
                 EntryLabels: |-
-                    ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina:"}
+                    ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5:""}
                 FillPortions: =1
                 LayoutMinHeight: =250
                 LayoutMinWidth: =350
@@ -365,7 +375,10 @@
             ZIndex: =4
 
     com_NabModal As com_Modal:
+        IsInventura: =false
+        IsNabavniNalog: =true
         LineId: =com_NabGalleries.SelectedLine.Line_No
+        LotNo: =com_NabGalleries.SelectedEntry.LOT_No
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
