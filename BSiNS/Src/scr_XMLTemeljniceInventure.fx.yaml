@@ -196,10 +196,8 @@
                                 isModalOpen,
                                 true
                             );
-                            /*Set(
-                                LotNo,
-                                glr_Inv.Selected.Lot_No
-                            );*/
+                            Notify(glr_Inv.Selected.Lot_No)    
+                        
                             
                         );
                         Set(
@@ -284,6 +282,7 @@
                                     Barcode: ThisItem.Barcode
                                 }
                             );
+                            
                             Set(
                                 ScannedItem,
                                 Blank()
