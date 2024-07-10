@@ -315,7 +315,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             ValidationState: =If(!IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0, "Error", "None")
-                            Value: =Abs(com_Modal.QuantityCompleted)
+                            Value: =Abs(com_Modal.q)
                             Visible: =true
                             Width: =200
                             X: =40
@@ -482,7 +482,7 @@ com_Modal As CanvasComponent:
                                         colLines,
                                         'Line_No.' = com_Modal.LineId
                                     ),
-                                    {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value)}
+                                    {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_QtyInv.Value), Qty_Calculated: 0}
                                 ),
                                 Patch(
                                     colEntries,
