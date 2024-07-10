@@ -4,6 +4,8 @@ com_Modal As CanvasComponent:
     Height: =App.Height
     IsInventura: =false
     LineId: ="Text"
+    LotNo: ="Text"
+    Qty_Phys_Inventory: =100
     Quantity: =100
     QuantityCompleted: =100
     QuantityNewLOT: =100
@@ -129,7 +131,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
+                        Visible: =If(IsBlank(com_Modal.LotNo) && com_Modal.IsInventura, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -183,7 +185,7 @@ com_Modal As CanvasComponent:
                             Required: =true
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
-                            Value: =LotNo
+                            Value: =com_Modal.LotNo
                             Visible: =true
                             Width: =200
                             X: =40
@@ -252,7 +254,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)
+                        Visible: =If(IsBlank(com_Modal.Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)
                         ZIndex: =2
 
                         TextCanvas3_14 As Text:
@@ -306,7 +308,7 @@ com_Modal As CanvasComponent:
                             Required: =true
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
-                            Value: =Qty_Phys_Inventory
+                            Value: =If(IsBlank(com_Modal.Qty_Phys_Inventory),0,com_Modal.Qty_Phys_Inventory)
                             Visible: =true
                             Width: =200
                             X: =40
@@ -673,7 +675,7 @@ com_Modal As CanvasComponent:
                                         colLines,
                                         'Line_No.' = com_Modal.LineId
                                     ),
-                                    {Lot_No: inp_LotNo.Value, Qty_Phys_Inventory: inp_rezQty_2.Value}
+                                    {Lot_No: inp_LotNo.Value, Qty_Phys_Inventory: inp_QtyInv.Value}
                                 ),
                                 Patch(
                                     colEntries,

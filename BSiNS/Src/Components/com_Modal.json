@@ -107,7 +107,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "80",
+                        "ControlUniqueId": "119",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -332,7 +332,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "81",
+                        "ControlUniqueId": "120",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": {
@@ -586,7 +586,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "79",
+                    "ControlUniqueId": "118",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -875,7 +875,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "84",
+                            "ControlUniqueId": "123",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -1125,7 +1125,7 @@
                               "BorderStyle",
                               "TriggerOutput"
                             ],
-                            "ControlUniqueId": "85",
+                            "ControlUniqueId": "124",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -1198,9 +1198,9 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "LotNo",
+                                "InvariantScript": "com_Modal.LotNo",
                                 "Property": "Value",
-                                "RuleProviderType": "Unknown"
+                                "RuleProviderType": "User"
                               },
                               {
                                 "Category": "Data",
@@ -1364,7 +1364,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "87",
+                                "ControlUniqueId": "126",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -1558,7 +1558,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "88",
+                                "ControlUniqueId": "127",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -1800,7 +1800,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "86",
+                            "ControlUniqueId": "125",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -2146,7 +2146,7 @@
                             "NameMapSourceSchema": "?"
                           }
                         ],
-                        "ControlUniqueId": "83",
+                        "ControlUniqueId": "122",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -2382,9 +2382,9 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)",
+                            "InvariantScript": "If(IsBlank(com_Modal.LotNo) && com_Modal.IsInventura, true, false)",
                             "Property": "Visible",
-                            "RuleProviderType": "Unknown"
+                            "RuleProviderType": "User"
                           }
                         ],
                         "StyleName": "defaultGroupContainerStyle",
@@ -2457,7 +2457,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "377",
+                            "ControlUniqueId": "129",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -2707,7 +2707,7 @@
                               "BorderStyle",
                               "TriggerOutput"
                             ],
-                            "ControlUniqueId": "378",
+                            "ControlUniqueId": "130",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -2822,7 +2822,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "Qty_Phys_Inventory",
+                                "InvariantScript": "If(IsBlank(com_Modal.Qty_Phys_Inventory),0,com_Modal.Qty_Phys_Inventory)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -2946,7 +2946,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "380",
+                                "ControlUniqueId": "132",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -3140,7 +3140,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "381",
+                                "ControlUniqueId": "133",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -3382,7 +3382,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "379",
+                            "ControlUniqueId": "131",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -3728,7 +3728,7 @@
                             "NameMapSourceSchema": "?"
                           }
                         ],
-                        "ControlUniqueId": "376",
+                        "ControlUniqueId": "128",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -3964,7 +3964,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(IsBlank(Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)",
+                            "InvariantScript": "If(IsBlank(com_Modal.Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -4042,7 +4042,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "91",
+                                "ControlUniqueId": "136",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -4250,7 +4250,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "92",
+                                "ControlUniqueId": "137",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -4506,7 +4506,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "90",
+                            "ControlUniqueId": "135",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -4794,7 +4794,7 @@
                               },
                               "BorderStyle"
                             ],
-                            "ControlUniqueId": "93",
+                            "ControlUniqueId": "138",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -5046,7 +5046,7 @@
                               "BorderStyle",
                               "TriggerOutput"
                             ],
-                            "ControlUniqueId": "94",
+                            "ControlUniqueId": "139",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -5335,7 +5335,7 @@
                               "Visible",
                               "BorderStyle"
                             ],
-                            "ControlUniqueId": "95",
+                            "ControlUniqueId": "140",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -5616,7 +5616,7 @@
                             "NameMapSourceSchema": "?"
                           }
                         ],
-                        "ControlUniqueId": "89",
+                        "ControlUniqueId": "134",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -5931,7 +5931,7 @@
                                     "NameMapSourceSchema": "?"
                                   }
                                 ],
-                                "ControlUniqueId": "98",
+                                "ControlUniqueId": "143",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -6123,7 +6123,7 @@
                                   },
                                   "BorderStyle"
                                 ],
-                                "ControlUniqueId": "99",
+                                "ControlUniqueId": "144",
                                 "DynamicProperties": [
                                   {
                                     "ControlPropertyState": {
@@ -6343,7 +6343,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "97",
+                            "ControlUniqueId": "142",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -6612,7 +6612,7 @@
                               },
                               "BorderStyle"
                             ],
-                            "ControlUniqueId": "100",
+                            "ControlUniqueId": "145",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -6833,7 +6833,7 @@
                               "BorderStyle",
                               "TriggerOutput"
                             ],
-                            "ControlUniqueId": "101",
+                            "ControlUniqueId": "146",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -7104,7 +7104,7 @@
                               "Visible",
                               "BorderStyle"
                             ],
-                            "ControlUniqueId": "102",
+                            "ControlUniqueId": "147",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -7369,7 +7369,7 @@
                             "NameMapSourceSchema": "?"
                           }
                         ],
-                        "ControlUniqueId": "96",
+                        "ControlUniqueId": "141",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -7743,7 +7743,7 @@
                             "NameMapSourceSchema": "?"
                           }
                         ],
-                        "ControlUniqueId": "103",
+                        "ControlUniqueId": "148",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": {
@@ -8055,7 +8055,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "82",
+                    "ControlUniqueId": "121",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -8369,7 +8369,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "105",
+                        "ControlUniqueId": "150",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -8508,7 +8508,7 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Lot_No: inp_LotNo.Value, Qty_Phys_Inventory: inp_rezQty_2.Value}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(-inp_rezQty_2.Value),\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\n/*Patch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);*/\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Lot_No: inp_LotNo.Value, Qty_Phys_Inventory: inp_QtyInv.Value}\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(-inp_rezQty_2.Value),\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n        }\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\n/*Patch(\n    lockedItems,\n    LookUp(\n        Filter(\n            lockedItems,\n            ThisRecord.documentId = SelectedDocumentName\n        ),\n        If(\n            com_Modal.IsInventura,\n            lineId = com_Modal.LineId,\n            lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId\n        )\n    ),\n    {isLocked: true}\n);*/\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
                             "RuleProviderType": "User"
                           }
@@ -8645,7 +8645,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "104",
+                    "ControlUniqueId": "149",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -8999,7 +8999,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "78",
+                "ControlUniqueId": "117",
                 "HasDynamicProperties": false,
                 "Index": 0,
                 "IsAutoGenerated": false,
@@ -9259,7 +9259,7 @@
               },
               "Visible"
             ],
-            "ControlUniqueId": "77",
+            "ControlUniqueId": "116",
             "HasDynamicProperties": false,
             "Index": 0,
             "IsAutoGenerated": false,
@@ -9526,7 +9526,7 @@
           },
           "Visible"
         ],
-        "ControlUniqueId": "76",
+        "ControlUniqueId": "115",
         "HasDynamicProperties": false,
         "Index": 0,
         "IsAutoGenerated": false,
@@ -9739,9 +9739,11 @@
       "ResEntryId",
       "QuantityNewLOT",
       "QuantityCompleted",
-      "Quantity"
+      "Quantity",
+      "LotNo",
+      "Qty_Phys_Inventory"
     ],
-    "LastModifiedTimestamp": "638562017290487692",
+    "LastModifiedTimestamp": "638562027119217101",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -9778,6 +9780,18 @@
         "Category": "Data",
         "InvariantScript": "100",
         "Property": "Quantity",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "\"Text\"",
+        "Property": "LotNo",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "100",
+        "Property": "Qty_Phys_Inventory",
         "RuleProviderType": "System"
       },
       {
@@ -9887,6 +9901,24 @@
       "PropertyDataTypeKey": "Number",
       "Tooltip": "Quantity",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "LotNo",
+      "Hidden": false,
+      "Name": "LotNo",
+      "PropertyDataTypeKey": "String",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "Qty_Phys_Inventory",
+      "Hidden": false,
+      "Name": "Qty_Phys_Inventory",
+      "PropertyDataTypeKey": "Number",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -9897,7 +9929,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562017290487692",
+  "LastModifiedTimestamp": "638562027119217101",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
