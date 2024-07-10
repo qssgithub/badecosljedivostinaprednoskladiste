@@ -3964,7 +3964,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "true//If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)",
+                            "InvariantScript": "If(IsBlank(Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -9741,7 +9741,7 @@
       "QuantityCompleted",
       "Quantity"
     ],
-    "LastModifiedTimestamp": "638562017085295285",
+    "LastModifiedTimestamp": "638562017290487692",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -9897,7 +9897,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562017085295285",
+  "LastModifiedTimestamp": "638562017290487692",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

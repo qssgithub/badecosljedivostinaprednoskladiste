@@ -252,7 +252,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =true//If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
+                        Visible: =If(IsBlank(Qty_Phys_Inventory) && com_Modal.IsInventura, true, false)
                         ZIndex: =2
 
                         TextCanvas3_14 As Text:
