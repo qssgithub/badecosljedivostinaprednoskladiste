@@ -563,7 +563,7 @@ com_Galleries As CanvasComponent:
                         );
                         Reset(glr_Entries);
                         //Set(isModalOpen, true);
-                    Visible: =true//com_Galleries.AddNew
+                    Visible: =com_Galleries.AddNew
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =Body2_7.Y - 10
@@ -590,6 +590,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line5
                         VerticalAlign: =VerticalAlign.Top
+                        Visible: =!IsBlank(com_Galleries.EntryLabels.Line5)
                         Width: =108
                         X: =Title3_2.X
                         Y: =116

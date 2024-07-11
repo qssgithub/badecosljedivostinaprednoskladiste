@@ -5467,14 +5467,7 @@
                       "Height",
                       "Icon",
                       "OnSelect",
-                      {
-                        "AFDDataSourceName": "",
-                        "AutoRuleBindingEnabled": false,
-                        "AutoRuleBindingString": "com_Galleries.AddNew",
-                        "InvariantPropertyName": "Visible",
-                        "IsLockable": false,
-                        "NameMapSourceSchema": "?"
-                      },
+                      "Visible",
                       "Width",
                       "X",
                       "Y",
@@ -5580,7 +5573,7 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "true//com_Galleries.AddNew",
+                        "InvariantScript": "com_Galleries.AddNew",
                         "Property": "Visible",
                         "RuleProviderType": "User"
                       },
@@ -8572,7 +8565,15 @@
                       "PaddingBottom",
                       "PaddingLeft",
                       "TabIndex",
-                      "Size"
+                      "Size",
+                      {
+                        "AFDDataSourceName": "",
+                        "AutoRuleBindingEnabled": false,
+                        "AutoRuleBindingString": "true",
+                        "InvariantPropertyName": "Visible",
+                        "IsLockable": false,
+                        "NameMapSourceSchema": "?"
+                      }
                     ],
                     "ControlUniqueId": "87",
                     "HasDynamicProperties": false,
@@ -8793,6 +8794,12 @@
                         "InvariantScript": "Self.Fill",
                         "Property": "HoverFill",
                         "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Design",
+                        "InvariantScript": "!IsBlank(com_Galleries.EntryLabels.Line5)",
+                        "Property": "Visible",
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Behavior",
@@ -10370,7 +10377,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562883106313652",
+    "LastModifiedTimestamp": "638562889700640199",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10574,7 +10581,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562883106313652",
+  "LastModifiedTimestamp": "638562889700640199",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
