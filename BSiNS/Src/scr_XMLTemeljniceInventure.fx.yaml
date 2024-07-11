@@ -608,7 +608,9 @@
             ZIndex: =5
 
     com_InvModal As com_Modal:
+        IsInventura: =true
         LineId: =glr_Inv.Selected.'Line_No.'
+        LotNo: =glr_Inv.Selected.Lot_No
         Quantity: =glr_Inv.Selected.Qty_Phys_Inventory
         QuantityCompleted: =glr_Inv.Selected.Qty_Phys_Inventory
         QuantityNewLOT: =0
