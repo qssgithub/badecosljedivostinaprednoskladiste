@@ -130,7 +130,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
+                        Visible: =If((IsBlank(LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -184,80 +184,7 @@ com_Modal As CanvasComponent:
                             Required: =true
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
-                            Value: =LotNo
-                            Visible: =true
-                            Width: =200
-                            X: =40
-                            Y: =40
-                            ZIndex: =3
-
-                    Container13_13 As groupContainer.verticalAutoLayoutContainer:
-                        AlignInContainer: =AlignInContainer.SetByContainer
-                        LayoutAlignItems: =LayoutAlignItems.Center
-                        LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =LayoutJustifyContent.Center
-                        LayoutMinHeight: =30
-                        LayoutMinWidth: =250
-                        LayoutMode: =LayoutMode.Auto
-                        RadiusBottomLeft: =4
-                        RadiusBottomRight: =4
-                        RadiusTopLeft: =4
-                        RadiusTopRight: =4
-                        Visible: =If(IsBlank(LotNo) && com_Modal.IsInventura, true, false)
-                        ZIndex: =2
-
-                        TextCanvas3_14 As Text:
-                            AutoHeight: =true
-                            BorderStyle: =""
-                            DisplayMode: =DisplayMode.Edit
-                            FontColor: =
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =80
-                            Size: =20
-                            Text: ="Količina"
-                            Width: =200
-                            X: =40
-                            Y: =40
-                            ZIndex: =1
-
-                        "inp_QtyInv As 'Text input'":
-                            Align: ='TextInputCanvas.Align'.Center
-                            Appearance: ='TextInputCanvas.Appearance'.Outline
-                            BasePaletteColor: =
-                            BorderStyle: =""
-                            DisplayMode: =DisplayMode.Edit
-                            FontSize: =0
-                            Height: =32
-                            LayoutMinHeight: =32
-                            LayoutMinWidth: =320
-                            OnChange: |
-                                =/*If(
-                                    (!IsNumeric(inp_rezQty_2.Value) && !IsBlank(inp_rezQty_2.Value)) || Value(inp_rezQty_2.Value) < 0,
-                                    Notify(
-                                        "Unesite pozitivan broj.",
-                                        NotificationType.Error,
-                                        2000
-                                    );
-                                    Reset(inp_rezQty_2);
-                                    UpdateContext({potrebnaKolicina: 0}),
-                                    If(
-                                        Value(inp_rezQty_2.Value) > Abs(glr_ProResEntries.Selected.Quantity_Completed),
-                                        Reset(inp_rezQty_2);
-                                        UpdateContext({potrebnaKolicina: 0});
-                                        Notify(
-                                            "Maksimalna količina za isporuku je " & Abs(glr_ProResEntries.Selected.Quantity_Completed),
-                                            NotificationType.Information,
-                                            2000
-                                        ),
-                                        UpdateContext({potrebnaKolicina: Abs(glr_ProResEntries.Selected.Quantity) - inp_rezQty_2.Value})
-                                    )
-                                );*/
-                            Placeholder: ="Unesite količinu"
-                            Required: =true
-                            TriggerOutput: ="FocusOut"
-                            Type: ="Text"
-                            Value: =LotNo
+                            Value: =com_Modal.LotNo
                             Visible: =true
                             Width: =200
                             X: =40
@@ -268,7 +195,7 @@ com_Modal As CanvasComponent:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center
                         LayoutDirection: =LayoutDirection.Vertical
-                        LayoutJustifyContent: =If(IsBlank(LotNo) && com_Modal.IsInventura, LayoutJustifyContent.Start, LayoutJustifyContent.Center)
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
                         LayoutMinHeight: =30
                         LayoutMinWidth: =250
                         LayoutMode: =LayoutMode.Auto
@@ -286,7 +213,7 @@ com_Modal As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =80
                             Size: =20
-                            Text: =If(com_Modal.IsInventura, "Količina", "Rezervisano")
+                            Text: =If(com_Modal.IsInventura,"Količina","Rezervisano")
                             Width: =200
                             X: =40
                             Y: =40
@@ -308,7 +235,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ="FocusOut"
                             Type: ="Text"
                             ValidationState: =If(!IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0, "Error", "None")
-                            Value: =Abs(com_Modal.QuantityCompleted)
+                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))
                             Visible: =true
                             Width: =200
                             X: =40
@@ -347,7 +274,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =!com_Modal.IsInventura
+                        Visible: =!com_Modal.IsInventura && !com_Modal.IsNabavniNalog
                         ZIndex: =4
 
                         TextCanvas3_13 As Text:
@@ -378,7 +305,7 @@ com_Modal As CanvasComponent:
                             Placeholder: ="Unesite potrebnu količinu"
                             TriggerOutput: ="FocusOut"
                             ValidationState: =If(!IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0, "Error", "None")
-                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,com_Modal.QuantityNewLOT)
+                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))
                             Width: =200
                             X: =40
                             Y: =40
@@ -473,7 +400,19 @@ com_Modal As CanvasComponent:
                                         colLines,
                                         'Line_No.' = com_Modal.LineId
                                     ),
-                                    {Qty_Phys_Inventory: inp_rezQty_2.Value}
+                                    {Lot_No: Text(inp_LotNo.Value),Qty_Phys_Inventory: Value(inp_rezQty_2.Value)}
+                                ),
+                                If(com_Modal.IsNabavniNalog,
+                                Patch(
+                                    colEntries,
+                                    LookUp(
+                                        colEntries,
+                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                    ),
+                                    {
+                                        Quantity_Completed: Value(-inp_rezQty_2.Value),
+                                        LOT_No: Text(inp_LotNo.Value)
+                                    }
                                 ),
                                 Patch(
                                     colEntries,
@@ -485,25 +424,12 @@ com_Modal As CanvasComponent:
                                         Quantity_Completed: Value(-inp_rezQty_2.Value),
                                         Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
                                     }
-                                )
+                                ))
                             );
+                            Notify(inp_LotNo.Value & "  "  & inp_rezQty_2.Value &  "  "  & inp_potrebnoQty_2.Value);
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
-                            /*Patch(
-                                lockedItems,
-                                LookUp(
-                                    Filter(
-                                        lockedItems,
-                                        ThisRecord.documentId = SelectedDocumentName
-                                    ),
-                                    If(
-                                        com_Modal.IsInventura,
-                                        lineId = com_Modal.LineId,
-                                        lineId = com_Modal.LineId && entryId = com_Modal.ResEntryId
-                                    )
-                                ),
-                                {isLocked: true}
-                            );*/
+                            Reset(inp_LotNo);
                             Set(
                                 isModalOpen,
                                 false
