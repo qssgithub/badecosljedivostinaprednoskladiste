@@ -677,7 +677,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    )\n);\nSet(\n    ScannedItem,\n    Blank()\n);\n",
+                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    );\n    Set(\n        isModalOpen,\n        true\n    )\n);\nSet(\n    ScannedItem,\n    Blank()\n);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -11398,7 +11398,7 @@
       },
       "VisibleResEntryList"
     ],
-    "LastModifiedTimestamp": "638562924114149632",
+    "LastModifiedTimestamp": "638562927596430997",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -11617,7 +11617,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562924114149632",
+  "LastModifiedTimestamp": "638562927596430997",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

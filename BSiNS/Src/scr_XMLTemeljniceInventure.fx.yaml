@@ -154,14 +154,17 @@
             PaddingLeft: =10
             PaddingRight: =10
             Visible: =!isLoading
+            Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =2
 
             com_InvGalleries As com_Galleries:
                 EntriesToDisplay: =5
-                LayoutMinHeight: =640
-                LayoutMinWidth: =640
+                FillPortions: =1
+                LayoutMinHeight: =200
+                LayoutMinWidth: =350
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "LOT", Line4: "Rok trajanja:", Line5: "Količina"}
+                VisibleResEntryList: =false
 
             Container4 As groupContainer.manualLayoutContainer:
                 DropShadow: =DropShadow.Light
@@ -171,6 +174,7 @@
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
+                Visible: =false
                 ZIndex: =2
 
                 "glr_Inv As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
