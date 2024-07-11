@@ -1124,7 +1124,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Grup: true, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
+          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}",
           "InvariantPropertyName": "LineValueVisibility",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -1159,7 +1159,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank, 'Qty-to_Ship': 5}",
+          "AutoRuleBindingString": "{Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 4, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4, Line_No: 0, LotNo: 3, Exp_Date: 2}",
           "InvariantPropertyName": "LineValuePosition",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -6003,7 +6003,7 @@
         {
           "Category": "Data",
           "PropertyName": "Text",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
@@ -6043,7 +6043,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",

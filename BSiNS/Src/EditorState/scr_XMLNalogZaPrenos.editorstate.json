@@ -179,14 +179,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
-          "InvariantPropertyName": "LineValueVisibility",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "LineValueVisibility",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -323,7 +316,7 @@
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "User"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Data",

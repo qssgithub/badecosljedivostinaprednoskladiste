@@ -677,7 +677,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(\n    wizardStep,\n    2\n));\nSet(\n    ScannedItem,\n    Blank()\n);",
+                        "InvariantScript": "Set(\n    wizardStep,\n    2\n);\nSet(\n    ScannedItem,\n    Blank()\n);",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -1971,9 +1971,9 @@
                       },
                       {
                         "Category": "Data",
-                        "InvariantScript": "ThisItem.Item_No",
+                        "InvariantScript": "If(com_Galleries.LineValueVisibility.Line_No, ThisItem.Line_No, ThisItem.Item_No)",
                         "Property": "Text",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2019,9 +2019,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "com_Galleries.LineValueVisibility.Item_No",
+                        "InvariantScript": "com_Galleries.LineValueVisibility.Item_No || com_Galleries.LineValueVisibility.Line_No",
                         "Property": "Visible",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -10328,7 +10328,7 @@
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Grup: true, Description: false, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false}",
+        "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}",
         "InvariantPropertyName": "LineValueVisibility",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
@@ -10363,7 +10363,7 @@
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank, 'Qty-to_Ship': 5}",
+        "AutoRuleBindingString": "{Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 4, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4, Line_No: 0, LotNo: 3, Exp_Date: 2}",
         "InvariantPropertyName": "LineValuePosition",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
@@ -10377,7 +10377,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562901894266968",
+    "LastModifiedTimestamp": "638562916198501678",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10406,7 +10406,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}",
+        "InvariantScript": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true, LotNo: true, Exp_Date: true}",
         "Property": "LineValueVisibility",
         "RuleProviderType": "System"
       },
@@ -10424,7 +10424,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4}",
+        "InvariantScript": "{Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': Blank(), Line_No: 0, LotNo: 2, Exp_Date: 3}",
         "Property": "LineValuePosition",
         "RuleProviderType": "System"
       },
@@ -10534,7 +10534,7 @@
       "Name": "LineValueVisibility",
       "PropertyDataTypeKey": "Record",
       "Tooltip": "Line item value visibility",
-      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Description\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Inv_Posting_Group\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Item_No\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Line_No\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Posting_Group\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Qty-to_Ship\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Quantity\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Unit_Of_Measure\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}]}}"
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Description\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Exp_Date\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Inv_Posting_Group\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Item_No\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Line_No\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"LotNo\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Posting_Group\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Qty-to_Ship\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Quantity\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Unit_Of_Measure\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}]}}"
     },
     {
       "Category": 0,
@@ -10561,7 +10561,7 @@
       "Name": "LineValuePosition",
       "PropertyDataTypeKey": "Record",
       "Tooltip": "Line value item position",
-      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Description\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Inv_Posting_Group\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Item_No\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Posting_Group\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]},{\"Name\":\"Qty-to_Ship\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Quantity\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Unit_Of_Measure\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]}]}}"
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Record\",\"EnumString\":\"\",\"Type\":[{\"Name\":\"Description\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Exp_Date\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Inv_Posting_Group\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]},{\"Name\":\"Item_No\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]},{\"Name\":\"Line_No\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"LotNo\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Posting_Group\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]},{\"Name\":\"Qty-to_Ship\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]},{\"Name\":\"Quantity\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]},{\"Name\":\"Unit_Of_Measure\",\"Kind\":\"ObjNull\",\"EnumString\":\"N\",\"Type\":[]}]}}"
     },
     {
       "Category": 0,
@@ -10581,7 +10581,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562901894266968",
+  "LastModifiedTimestamp": "638562916198501678",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

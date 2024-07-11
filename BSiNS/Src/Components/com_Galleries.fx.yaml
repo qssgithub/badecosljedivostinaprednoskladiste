@@ -8,9 +8,9 @@ com_Galleries As CanvasComponent:
     LineLabels: |-
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
     LineValuePosition: |-
-        ={Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4}
+        ={Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': Blank(), Line_No: 0, LotNo: 2, Exp_Date: 3}
     LineValueVisibility: |-
-        ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}
+        ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true, LotNo: true, Exp_Date: true}
     NumberOfLinesToDisplay: =5
     OnReset: =
     SelectedEntry: =glr_Entries.Selected
@@ -83,7 +83,7 @@ com_Galleries As CanvasComponent:
                     =Set(
                         wizardStep,
                         2
-                    ));
+                    );
                     Set(
                         ScannedItem,
                         Blank()
@@ -347,9 +347,9 @@ com_Galleries As CanvasComponent:
                         PaddingRight: =0
                         PaddingTop: =0
                         Size: =12
-                        Text: =ThisItem.Item_No
+                        Text: =If(com_Galleries.LineValueVisibility.Line_No, ThisItem.Line_No, ThisItem.Item_No)
                         VerticalAlign: =VerticalAlign.Top
-                        Visible: =com_Galleries.LineValueVisibility.Item_No
+                        Visible: =com_Galleries.LineValueVisibility.Item_No || com_Galleries.LineValueVisibility.Line_No
                         Width: =Parent.TemplateWidth - 175
                         X: =lbl_Line1.Width + lbl_Line1.X
                         Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Item_No) + (com_Galleries.LineValuePosition.Item_No * 5)
