@@ -54,662 +54,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 2958,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1438,
-                  "charOffset": 3019,
-                  "snippet": {
-                    "text": "{\n                        Created_By: Text(entry.Created_By),\n                        Creation_Date: Text(entry.Creation_Date),\n                        Entry_No: Text(entry.Entry_No),\n                        Exp_Date: Text(entry.Exp_Date),\n                        Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),\n                        Item_No: Text(entry.Item_No),\n                        Item_Tracking: Text(entry.Item_Tracking),\n                        LOT_No: Text(entry.LOT_No),\n                        Location_Code: Text(entry.Location_Code),\n                        Positive: Text(entry.Positive),\n                        'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),\n                        'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),\n                        Quantity: Text(entry.Quantity),\n                        Quantity_Base: Text(entry.Quantity_Base),\n                        Quantity_Completed: Value(entry.Quantity_Completed),\n                        Quantity_NewLOT: Value(entry.Quantity_NewLOT),\n                        Res_Status: Text(entry.Res_Status),\n                        Shipment_Date: Text(entry.Shipment_Date),\n                        Source_ID: Text(entry.Source_ID),\n                        Source_Ref_No: Text(entry.Source_Ref_No),\n                        Source_SubType: Text(entry.Source_SubType),\n                        Source_Type: Text(entry.Source_Type)\n                    }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 4503,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1544,
-                  "charOffset": 4556,
-                  "snippet": {
-                    "text": "{\n                    Created_By: Text(line.Res_Entry.Created_By),\n                    Creation_Date: Text(line.Res_Entry.Creation_Date),\n                    Entry_No: Text(line.Res_Entry.Entry_No),\n                    Exp_Date: Text(line.Res_Entry.Exp_Date),\n                    Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),\n                    Item_No: Text(line.Res_Entry.Item_No),\n                    Item_Tracking: Text(line.Res_Entry.Item_Tracking),\n                    LOT_No: Text(line.Res_Entry.LOT_No),\n                    Location_Code: Text(line.Res_Entry.Location_Code),\n                    Positive: Text(line.Res_Entry.Positive),\n                    'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),\n                    'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),\n                    Quantity: Text(line.Res_Entry.Quantity),\n                    Quantity_Base: Text(line.Res_Entry.Quantity_Base),\n                    Quantity_Completed: Value(line.Res_Entry.Quantity_Completed),\n                    Quantity_NewLOT: Value(line.Res_Entry.Quantity_NewLOT),\n                    Res_Status: Text(line.Res_Entry.Res_Status),\n                    Shipment_Date: Text(line.Res_Entry.Shipment_Date),\n                    Source_ID: Text(line.Res_Entry.Source_ID),\n                    Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),\n                    Source_SubType: Text(line.Res_Entry.Source_SubType),\n                    Source_Type: Text(line.Res_Entry.Source_Type)\n                }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 7644,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1346,
-                  "charOffset": 7697,
-                  "snippet": {
-                    "text": "{\n                    Created_By: Text(entry.Created_By),\n                    Creation_Date: Text(entry.Creation_Date),\n                    Entry_No: Text(entry.Entry_No),\n                    Exp_Date: Text(entry.Exp_Date),\n                    Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),\n                    Item_No: Text(entry.Item_No),\n                    Item_Tracking: Text(entry.Item_Tracking),\n                    LOT_No: Text(entry.LOT_No),\n                    Location_Code: Text(entry.Location_Code),\n                    Positive: Text(entry.Positive),\n                    'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),\n                    'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),\n                    Quantity: Text(entry.Quantity),\n                    Quantity_Base: Text(entry.Quantity_Base),\n                    Quantity_Completed: Value(entry.Quantity_Completed),\n                    Quantity_NewLOT: Value(entry.Quantity_NewLOT),\n                    Res_Status: Text(entry.Res_Status),\n                    Shipment_Date: Text(entry.Shipment_Date),\n                    Source_ID: Text(entry.Source_ID),\n                    Source_Ref_No: Text(entry.Source_Ref_No),\n                    Source_SubType: Text(entry.Source_SubType),\n                    Source_Type: Text(entry.Source_Type)\n                }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 9077,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1826,
-                  "charOffset": 9122,
-                  "snippet": {
-                    "text": "{\n                Created_By: Text(xmlData.Transfer_Line.Res_Entry.Created_By),\n                Creation_Date: Text(xmlData.Transfer_Line.Res_Entry.Creation_Date),\n                Entry_No: Text(xmlData.Transfer_Line.Res_Entry.Entry_No),\n                Exp_Date: Text(xmlData.Transfer_Line.Res_Entry.Exp_Date),\n                Exp_Receipt_Date: Text(xmlData.Transfer_Line.Res_Entry.Exp_Receipt_Date),\n                Item_No: Text(xmlData.Transfer_Line.Res_Entry.Item_No),\n                Item_Tracking: Text(xmlData.Transfer_Line.Res_Entry.Item_Tracking),\n                LOT_No: Text(xmlData.Transfer_Line.Res_Entry.LOT_No),\n                Location_Code: Text(xmlData.Transfer_Line.Res_Entry.Location_Code),\n                Positive: Text(xmlData.Transfer_Line.Res_Entry.Positive),\n                'Qty-to-Handle_Base': Text(xmlData.Transfer_Line.Res_Entry.'Qty-to-Handle_Base'),\n                'Qty-to-Invoice_Base': Text(xmlData.Transfer_Line.Res_Entry.'Qty-to-Invoice_Base'),\n                Quantity: Text(xmlData.Transfer_Line.Res_Entry.Quantity),\n                Quantity_Base: Text(xmlData.Transfer_Line.Res_Entry.Quantity_Base),\n                Quantity_Completed: Value(xmlData.Transfer_Line.Res_Entry.Quantity_Completed),\n                Quantity_NewLOT: Value(xmlData.Transfer_Line.Res_Entry.Quantity_NewLOT),\n                Res_Status: Text(xmlData.Transfer_Line.Res_Entry.Res_Status),\n                Shipment_Date: Text(xmlData.Transfer_Line.Res_Entry.Shipment_Date),\n                Source_ID: Text(xmlData.Transfer_Line.Res_Entry.Source_ID),\n                Source_Ref_No: Text(xmlData.Transfer_Line.Res_Entry.Source_Ref_No),\n                Source_SubType: Text(xmlData.Transfer_Line.Res_Entry.Source_SubType),\n                Source_Type: Text(xmlData.Transfer_Line.Res_Entry.Source_Type)\n            }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaPrenos",
-                "type": "scr_XMLNalogZaPrenos"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 4871,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1438,
-                  "charOffset": 4932,
-                  "snippet": {
-                    "text": "{\n                        Created_By: Text(entry.Created_By),\n                        Creation_Date: Text(entry.Creation_Date),\n                        Entry_No: Text(entry.Entry_No),\n                        Exp_Date: Text(entry.Exp_Date),\n                        Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),\n                        Item_No: Text(entry.Item_No),\n                        Item_Tracking: Text(entry.Item_Tracking),\n                        LOT_No: Text(entry.LOT_No),\n                        Location_Code: Text(entry.Location_Code),\n                        Positive: Text(entry.Positive),\n                        'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),\n                        'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),\n                        Quantity: Text(entry.Quantity),\n                        Quantity_Base: Text(entry.Quantity_Base),\n                        Quantity_Completed: Value(entry.Quantity_Completed),\n                        Quantity_NewLOT: Value(entry.Quantity_NewLOT),\n                        Res_Status: Text(entry.Res_Status),\n                        Shipment_Date: Text(entry.Shipment_Date),\n                        Source_ID: Text(entry.Source_ID),\n                        Source_Ref_No: Text(entry.Source_Ref_No),\n                        Source_SubType: Text(entry.Source_SubType),\n                        Source_Type: Text(entry.Source_Type)\n                    }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 6416,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1544,
-                  "charOffset": 6469,
-                  "snippet": {
-                    "text": "{\n                    Created_By: Text(line.Res_Entry.Created_By),\n                    Creation_Date: Text(line.Res_Entry.Creation_Date),\n                    Entry_No: Text(line.Res_Entry.Entry_No),\n                    Exp_Date: Text(line.Res_Entry.Exp_Date),\n                    Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),\n                    Item_No: Text(line.Res_Entry.Item_No),\n                    Item_Tracking: Text(line.Res_Entry.Item_Tracking),\n                    LOT_No: Text(line.Res_Entry.LOT_No),\n                    Location_Code: Text(line.Res_Entry.Location_Code),\n                    Positive: Text(line.Res_Entry.Positive),\n                    'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),\n                    'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),\n                    Quantity: Text(line.Res_Entry.Quantity),\n                    Quantity_Base: Text(line.Res_Entry.Quantity_Base),\n                    Quantity_Completed: Value(line.Res_Entry.Quantity_Completed),\n                    Quantity_NewLOT: Value(line.Res_Entry.Quantity_NewLOT),\n                    Res_Status: Text(line.Res_Entry.Res_Status),\n                    Shipment_Date: Text(line.Res_Entry.Shipment_Date),\n                    Source_ID: Text(line.Res_Entry.Source_ID),\n                    Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),\n                    Source_SubType: Text(line.Res_Entry.Source_SubType),\n                    Source_Type: Text(line.Res_Entry.Source_Type)\n                }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 7,
-                  "charOffset": 9318,
-                  "snippet": {
-                    "text": "Collect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Collect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1346,
-                  "charOffset": 9371,
-                  "snippet": {
-                    "text": "{\n                    Created_By: Text(entry.Created_By),\n                    Creation_Date: Text(entry.Creation_Date),\n                    Entry_No: Text(entry.Entry_No),\n                    Exp_Date: Text(entry.Exp_Date),\n                    Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),\n                    Item_No: Text(entry.Item_No),\n                    Item_Tracking: Text(entry.Item_Tracking),\n                    LOT_No: Text(entry.LOT_No),\n                    Location_Code: Text(entry.Location_Code),\n                    Positive: Text(entry.Positive),\n                    'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),\n                    'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),\n                    Quantity: Text(entry.Quantity),\n                    Quantity_Base: Text(entry.Quantity_Base),\n                    Quantity_Completed: Value(entry.Quantity_Completed),\n                    Quantity_NewLOT: Value(entry.Quantity_NewLOT),\n                    Res_Status: Text(entry.Res_Status),\n                    Shipment_Date: Text(entry.Shipment_Date),\n                    Source_ID: Text(entry.Source_ID),\n                    Source_Ref_No: Text(entry.Source_Ref_No),\n                    Source_SubType: Text(entry.Source_SubType),\n                    Source_Type: Text(entry.Source_Type)\n                }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 12,
-                  "charOffset": 10751,
-                  "snippet": {
-                    "text": "ClearCollect"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "ClearCollect"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrInvalidArgs-Func",
-          "ruleIndex": 1
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.OnVisible",
-                  "relativeAddress": 0
-                },
-                "region": {
-                  "charLength": 1750,
-                  "charOffset": 10801,
-                  "snippet": {
-                    "text": "{\n                Created_By: Text(xmlData.Sales_Line.Res_Entry.Created_By),\n                Creation_Date: Text(xmlData.Sales_Line.Res_Entry.Creation_Date),\n                Entry_No: Text(xmlData.Sales_Line.Res_Entry.Entry_No),\n                Exp_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Date),\n                Exp_Receipt_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Receipt_Date),\n                Item_No: Text(xmlData.Sales_Line.Res_Entry.Item_No),\n                Item_Tracking: Text(xmlData.Sales_Line.Res_Entry.Item_Tracking),\n                LOT_No: Text(xmlData.Sales_Line.Res_Entry.LOT_No),\n                Location_Code: Text(xmlData.Sales_Line.Res_Entry.Location_Code),\n                Positive: Text(xmlData.Sales_Line.Res_Entry.Positive),\n                'Qty-to-Handle_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Handle_Base'),\n                'Qty-to-Invoice_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Invoice_Base'),\n                Quantity: Text(xmlData.Sales_Line.Res_Entry.Quantity),\n                Quantity_Base: Text(xmlData.Sales_Line.Res_Entry.Quantity_Base),\n                Quantity_Completed: Value(xmlData.Sales_Line.Res_Entry.Quantity_Completed),\n                Quantity_NewLOT: Value(xmlData.Sales_Line.Quantity_NewLOT),\n                Res_Status: Text(xmlData.Sales_Line.Res_Entry.Res_Status),\n                Shipment_Date: Text(xmlData.Sales_Line.Res_Entry.Shipment_Date),\n                Source_ID: Text(xmlData.Sales_Line.Res_Entry.Source_ID),\n                Source_Ref_No: Text(xmlData.Sales_Line.Res_Entry.Source_Ref_No),\n                Source_SubType: Text(xmlData.Sales_Line.Res_Entry.Source_SubType),\n                Source_Type: Text(xmlData.Sales_Line.Res_Entry.Source_Type)\n            }"
-                  }
-                }
-              },
-              "properties": {
-                "member": "OnVisible",
-                "module": "scr_XMLNalogZaProdaju",
-                "type": "scr_XMLNalogZaProdaju"
-              }
-            }
-          ],
-          "message": {
-            "arguments": [
-              "Quantity_Completed",
-              "Text",
-              "Number"
-            ],
-            "id": "issue"
-          },
-          "properties": {
-            "level": "High"
-          },
-          "ruleId": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "scr_XMLOtpremnice.OtpremniceScreenContainer.OtpremniceBody.Otpremnice_Line_Canvas.Otpremnice_Header.TextCanvas6.Text"
                 }
               ],
@@ -743,7 +87,7 @@
             "level": "High"
           },
           "ruleId": "app-ErrInvalidName",
-          "ruleIndex": 3
+          "ruleIndex": 1
         },
         {
           "locations": [
@@ -773,7 +117,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -803,7 +147,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -833,7 +177,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -863,7 +207,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -893,7 +237,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -923,7 +267,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -953,7 +297,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -983,7 +327,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1013,7 +357,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1043,7 +387,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1073,7 +417,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1103,7 +447,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1133,7 +477,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1163,7 +507,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1193,7 +537,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1223,7 +567,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1253,7 +597,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1283,7 +627,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1313,7 +657,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1343,7 +687,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1373,7 +717,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1403,7 +747,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1433,7 +777,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1463,7 +807,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1493,7 +837,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1523,7 +867,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1553,7 +897,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1583,7 +927,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1613,7 +957,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1643,7 +987,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1673,7 +1017,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1703,7 +1047,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1733,7 +1077,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1763,7 +1107,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1793,7 +1137,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -1823,7 +1167,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1853,7 +1197,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1883,7 +1227,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1913,7 +1257,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1943,7 +1287,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -1973,7 +1317,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2003,7 +1347,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2033,7 +1377,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2063,7 +1407,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2093,7 +1437,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2123,7 +1467,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2153,7 +1497,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2183,7 +1527,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2213,7 +1557,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2243,7 +1587,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2273,7 +1617,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2303,7 +1647,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2333,7 +1677,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2363,7 +1707,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2393,7 +1737,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2423,7 +1767,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2453,7 +1797,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2483,7 +1827,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2513,7 +1857,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2543,7 +1887,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2573,7 +1917,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2603,7 +1947,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2633,7 +1977,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2663,7 +2007,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2693,7 +2037,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         },
         {
           "locations": [
@@ -2723,7 +2067,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
+          "ruleIndex": 2
         },
         {
           "locations": [
@@ -2753,7 +2097,7 @@
             "level": "Medium"
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
-          "ruleIndex": 5
+          "ruleIndex": 3
         }
       ],
       "tool": {
@@ -2775,37 +2119,6 @@
                   "Change the structure of the collection being returned to match the expected structure."
                 ],
                 "level": "Medium",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrInvalidArgs-Func",
-              "messageStrings": {
-                "issue": {
-                  "text": "The function '{0}' has some invalid arguments."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "level": "High",
-                "primaryCategory": "formula",
-                "whyFix": ""
-              }
-            },
-            {
-              "id": "app-ErrColumnTypeMismatch-ColName-ExpectedType-ActualType",
-              "messageStrings": {
-                "issue": {
-                  "text": "Incompatible type. The '{0}' column in the data source you’re updating expects a '{1}' type and you’re using a '{2}' type."
-                }
-              },
-              "properties": {
-                "componentType": "app",
-                "howToFix": [
-                  "You might need to convert the value to the same type, such as converting a date string (e.g., \"12/31/2018\") to a date value or a string to a number."
-                ],
-                "level": "High",
                 "primaryCategory": "formula",
                 "whyFix": ""
               }
