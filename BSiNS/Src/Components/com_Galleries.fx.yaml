@@ -258,7 +258,7 @@ com_Galleries As CanvasComponent:
                             ScannedItem,
                             Blank()
                         );
-                        Reset(glr_Entries);
+                        Reset(glr_Lines);
                         //Set(isModalOpen, true);
                     Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew
                     Width: =32

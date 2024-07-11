@@ -5,7 +5,7 @@ com_Modal As CanvasComponent:
     IsInventura: =false
     IsNabavniNalog: =false
     LineId: ="Text"
-    LotNo: =Blank()
+    LotNo: =
     Quantity: =
     QuantityCompleted: =
     QuantityNewLOT: =
@@ -132,7 +132,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If(IsBlank(com_Modal.LotNo) && (com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
+                        Visible: =If( IsBlank(com_Modal.LotNo) && (com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
