@@ -8890,7 +8890,15 @@
                       "PaddingBottom",
                       "PaddingLeft",
                       "TabIndex",
-                      "Size"
+                      "Size",
+                      {
+                        "AFDDataSourceName": "",
+                        "AutoRuleBindingEnabled": false,
+                        "AutoRuleBindingString": "true",
+                        "InvariantPropertyName": "Visible",
+                        "IsLockable": false,
+                        "NameMapSourceSchema": "?"
+                      }
                     ],
                     "ControlUniqueId": "88",
                     "HasDynamicProperties": false,
@@ -9111,6 +9119,12 @@
                         "InvariantScript": "21",
                         "Property": "Height",
                         "RuleProviderType": "Unknown"
+                      },
+                      {
+                        "Category": "Design",
+                        "InvariantScript": "!IsBlank(com_Galleries.EntryLabels.Line5)",
+                        "Property": "Visible",
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Behavior",
@@ -10299,7 +10313,7 @@
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line4: \"Line4\"}",
+        "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line5: bla}",
         "InvariantPropertyName": "EntryLabels",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
@@ -10356,7 +10370,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562871097111232",
+    "LastModifiedTimestamp": "638562883106313652",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -10373,7 +10387,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "5",
+        "InvariantScript": "4",
         "Property": "EntriesToDisplay",
         "RuleProviderType": "System"
       },
@@ -10560,7 +10574,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562871097111232",
+  "LastModifiedTimestamp": "638562883106313652",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

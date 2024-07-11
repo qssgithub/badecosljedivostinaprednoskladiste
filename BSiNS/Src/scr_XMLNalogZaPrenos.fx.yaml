@@ -297,8 +297,9 @@
                     =App.Width
 
             com_PreGalleries As com_Galleries:
+                EntriesToDisplay: =5
                 EntryLabels: |-
-                    ={Line1: "Broj artikla:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana količina:", Line5: "Potrebna količina:"}
+                    ={Line1: "Broj unosa:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana kol.:", Line5: "Porebna kol.:"}
                 FillPortions: =1
                 LayoutMinWidth: =375
                 LineLabels: |-

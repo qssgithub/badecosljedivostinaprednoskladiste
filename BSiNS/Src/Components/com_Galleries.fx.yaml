@@ -1,6 +1,6 @@
 com_Galleries As CanvasComponent:
     AddNew: =false
-    EntriesToDisplay: =5
+    EntriesToDisplay: =4
     EntryLabels: |-
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
     Fill: =RGBA(0, 0, 0, 0)
@@ -436,6 +436,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
+                        Visible: =!IsBlank(com_Galleries.EntryLabels.Line5)
                         Width: =1216
                         X: =138
                         Y: =116
