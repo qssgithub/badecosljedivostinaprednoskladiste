@@ -265,7 +265,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Quantity
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Quantity) + (com_Galleries.LineValuePosition.Quantity * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Quantity) + (com_Galleries.LineValuePosition.Quantity * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =10
 
                 lbl_LineDescription As label:
@@ -285,7 +285,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Description
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Description) + (com_Galleries.LineValuePosition.Description * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Description) + (com_Galleries.LineValuePosition.Description * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =11
 
                 lbl_LineInvPostingGroup As label:
@@ -305,7 +305,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Inv_Posting_Group
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Inv_Posting_Group) + (com_Galleries.LineValuePosition.Inv_Posting_Group * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Inv_Posting_Group) + (com_Galleries.LineValuePosition.Inv_Posting_Group * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =12
 
                 lbl_LinePostingGroup As label:
@@ -325,7 +325,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Posting_Group
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =13
 
                 lbl_LineItemNo As label:
@@ -345,7 +345,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Item_No
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Item_No) + (com_Galleries.LineValuePosition.Item_No * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Item_No) + (com_Galleries.LineValuePosition.Item_No * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =14
 
                 lbl_LineLineNo As label:
@@ -365,7 +365,7 @@ com_Galleries As CanvasComponent:
                     Visible: =com_Galleries.LineValueVisibility.Line_No
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =15
 
                 lbl_LineLotNo As label:
@@ -380,12 +380,12 @@ com_Galleries As CanvasComponent:
                     PaddingRight: =0
                     PaddingTop: =0
                     Size: =12
-                    Text: =ThisItem.'Line_No.'
+                    Text: =ThisItem.Lot_No
                     VerticalAlign: =VerticalAlign.Top
-                    Visible: =com_Galleries.LineValueVisibility.Line_No
+                    Visible: =com_Galleries.LineValueVisibility.LotNo
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * 5)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.LotNo) + (com_Galleries.LineValuePosition.LotNo * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =16
 
             btn_BackToLines As Button:

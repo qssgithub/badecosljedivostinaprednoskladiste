@@ -1740,9 +1740,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Posting_Group) + (com_Galleries.LineValuePosition.Posting_Group * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2043,9 +2043,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Item_No) + (com_Galleries.LineValuePosition.Item_No * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Item_No) + (com_Galleries.LineValuePosition.Item_No * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2424,9 +2424,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2649,9 +2649,9 @@
                       },
                       {
                         "Category": "Data",
-                        "InvariantScript": "ThisItem.'Line_No.'",
+                        "InvariantScript": "ThisItem.Lot_No",
                         "Property": "Text",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2697,9 +2697,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "com_Galleries.LineValueVisibility.Line_No",
+                        "InvariantScript": "com_Galleries.LineValueVisibility.LotNo",
                         "Property": "Visible",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -2757,9 +2757,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Line_No) + (com_Galleries.LineValuePosition.Line_No * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.LotNo) + (com_Galleries.LineValuePosition.LotNo * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -3479,9 +3479,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Inv_Posting_Group) + (com_Galleries.LineValuePosition.Inv_Posting_Group * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Inv_Posting_Group) + (com_Galleries.LineValuePosition.Inv_Posting_Group * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -3991,9 +3991,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Description) + (com_Galleries.LineValuePosition.Description * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Description) + (com_Galleries.LineValuePosition.Description * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -4725,9 +4725,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Quantity) + (com_Galleries.LineValuePosition.Quantity * 5)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Quantity) + (com_Galleries.LineValuePosition.Quantity * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -10973,7 +10973,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562919974910699",
+    "LastModifiedTimestamp": "638562921092109610",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -11177,7 +11177,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562919974910699",
+  "LastModifiedTimestamp": "638562921092109610",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
