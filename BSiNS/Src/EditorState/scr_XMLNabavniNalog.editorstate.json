@@ -216,14 +216,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "false",
-          "InvariantPropertyName": "AddNew",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        }
+        "AddNew"
       ],
       "DynamicProperties": [
         {
@@ -346,7 +339,7 @@
         {
           "Category": "Data",
           "PropertyName": "AddNew",
-          "RuleProviderType": "User"
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -971,16 +964,6 @@
           "Category": "Data",
           "PropertyName": "Quantity",
           "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "LotNo",
-          "RuleProviderType": "User"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "Qty_Phys_Inventory",
-          "RuleProviderType": "System"
         },
         {
           "Category": "Data",
