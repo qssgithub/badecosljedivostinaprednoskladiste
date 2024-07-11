@@ -187,7 +187,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "EntriesToDisplay",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "EntriesToDisplay",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -206,6 +213,14 @@
           "AutoRuleBindingEnabled": false,
           "AutoRuleBindingString": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4}",
           "InvariantPropertyName": "LineValuePosition",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "AddNew",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         }
@@ -326,6 +341,11 @@
         {
           "Category": "Data",
           "PropertyName": "EntryLabels",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "AddNew",
           "RuleProviderType": "User"
         },
         {
@@ -832,7 +852,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "IsInventura",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -884,6 +904,23 @@
           "InvariantPropertyName": "Quantity",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Blank()",
+          "InvariantPropertyName": "LotNo",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Qty_Phys_Inventory",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "IsNabavniNalog",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "HasDynamicProperties": false,
@@ -918,7 +955,7 @@
         {
           "Category": "Data",
           "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
@@ -933,6 +970,21 @@
         {
           "Category": "Data",
           "PropertyName": "Quantity",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LotNo",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Qty_Phys_Inventory",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsNabavniNalog",
           "RuleProviderType": "User"
         },
         {
@@ -1197,7 +1249,7 @@
       "MetaDataIDKey": "",
       "Name": "spn_NabLoader",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 1,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -1745,7 +1797,7 @@
       "MetaDataIDKey": "",
       "Name": "vrt_NabBody",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 2,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
