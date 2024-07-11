@@ -179,14 +179,7 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        {
-          "AFDDataSourceName": "",
-          "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "{Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true}",
-          "InvariantPropertyName": "LineValueVisibility",
-          "IsLockable": false,
-          "NameMapSourceSchema": "?"
-        },
+        "LineValueVisibility",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -309,12 +302,12 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "SelectedLine",
+          "PropertyName": "SelectedEntry",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "SelectedEntry",
+          "PropertyName": "SelectedLine",
           "RuleProviderType": "Unknown"
         },
         {
@@ -936,27 +929,7 @@
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "LotNo",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "Quantity",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "QuantityNewLOT",
+          "PropertyName": "LineId",
           "RuleProviderType": "Unknown"
         },
         {
@@ -966,12 +939,32 @@
         },
         {
           "Category": "Data",
+          "PropertyName": "IsInventura",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityNewLOT",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityCompleted",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Quantity",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
           "PropertyName": "IsNabavniNalog",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "LineId",
+          "PropertyName": "LotNo",
           "RuleProviderType": "Unknown"
         },
         {
