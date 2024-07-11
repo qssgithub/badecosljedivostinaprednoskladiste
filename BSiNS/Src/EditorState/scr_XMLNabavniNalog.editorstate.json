@@ -179,7 +179,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "LineValueVisibility",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line_No: true, Item_No: true, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': true, LotNo: true, Exp_Date: true, QtyInv: true}",
+          "InvariantPropertyName": "LineValueVisibility",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -201,7 +208,14 @@
         "SelectedEntry",
         "OnReset",
         "NumberOfLinesToDisplay",
-        "LineValuePosition",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Item_No: Blank(), Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: Blank(), Unit_Of_Measure: Blank(), 'Qty-to_Ship': Blank(), Line_No: 0, LotNo: 2, Exp_Date: 3, QtyInv: 4}",
+          "InvariantPropertyName": "LineValuePosition",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -293,7 +307,7 @@
         {
           "Category": "Data",
           "PropertyName": "LineValuePosition",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -318,12 +332,12 @@
         {
           "Category": "Data",
           "PropertyName": "EntriesToDisplay",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "LineValueVisibility",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",

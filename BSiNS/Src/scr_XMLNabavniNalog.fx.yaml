@@ -320,12 +320,16 @@
             com_NabGalleries As com_Galleries:
                 AddNew: =true
                 EntryLabels: |-
-                    ={Line1: "Broj unosa:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana kol.:", Line5: Blank()}
+                    ={Line1: "Broj unosa:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana kol.:", Line5: "Potrebna kol.:"}
                 FillPortions: =1
                 LayoutMinHeight: =250
                 LayoutMinWidth: =350
                 LineLabels: |-
                     ={Line1: "Broj artikla:", Line2: "Kategorija artikla:", Line3: "Naziv artikla:", Line4: "Količina:", Line5: "Jedinica mjere:"}
+                LineValuePosition: |-
+                    ={Line_No: Blank(), Item_No: 0, Posting_Group: 1, Inv_Posting_Group: Blank(), Description: 2, Quantity: 3, Unit_Of_Measure: 4, 'Qty-to_Ship': Blank(), LotNo: Blank(), Exp_Date: Blank(), QtyInv: Blank()}
+                LineValueVisibility: |-
+                    ={Line_No: false, Item_No: true, Posting_Group: true, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: true, 'Qty-to_Ship': false, LotNo: false, Exp_Date: false, QtyInv: false}
                 Visible: =true
                 ZIndex: =5
 

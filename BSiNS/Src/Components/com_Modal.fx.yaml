@@ -5,7 +5,7 @@ com_Modal As CanvasComponent:
     IsInventura: =false
     IsNabavniNalog: =false
     LineId: ="Text"
-    LotNo: =
+    LotNo: =Blank()
     Quantity: =
     QuantityCompleted: =
     QuantityNewLOT: =
@@ -96,6 +96,7 @@ com_Modal As CanvasComponent:
                         OnSelect: |
                             =Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
+                            Reset(inp_LotNo);
                             Set(
                                 isModalOpen,
                                 false
@@ -131,7 +132,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =If((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
+                        Visible: =If(IsBlank(com_Modal.LotNo) && (com_Modal.IsInventura) || com_Modal.IsNabavniNalog, true, false)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -440,7 +441,8 @@ com_Modal As CanvasComponent:
                                     }
                                 ))
                             );
-                            Notify(inp_LotNo.Value & "  "  & inp_rezQty_2.Value &  "  "  & inp_potrebnoQty_2.Value);
+                            Notify(com_Modal.LotNo & "  "  & inp_rezQty_2.Value &  "  "  & inp_potrebnoQty_2.Value);
+                            If(IsBlank(com_Modal.LotNo), Notify("blank",NotificationType.Error));
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
                             Reset(inp_LotNo);
