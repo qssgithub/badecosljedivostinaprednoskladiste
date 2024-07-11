@@ -93,8 +93,6 @@ com_Galleries As CanvasComponent:
                         )
                     );
                     
-                    Notify(If(IsBlank(ThisItem.Lot_No),"blank",ThisItem.Lot_No) & "  "  & ThisItem.Qty_Phys_Inventory);
-                    
                     Set(
                         ScannedItem,
                         Blank()

@@ -1016,7 +1016,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\n\nNotify(If(IsBlank(ThisItem.Lot_No),\"blank\",ThisItem.Lot_No) & \"  \"  & ThisItem.Qty_Phys_Inventory);\n\nSet(\n    ScannedItem,\n    Blank()\n);\n",
+                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\n\nSet(\n    ScannedItem,\n    Blank()\n);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -12406,7 +12406,7 @@
       },
       "VisibleResEntryList"
     ],
-    "LastModifiedTimestamp": "638563020285800569",
+    "LastModifiedTimestamp": "638563022584111859",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -12625,7 +12625,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638563020285800569",
+  "LastModifiedTimestamp": "638563022584111859",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
