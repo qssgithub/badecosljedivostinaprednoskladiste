@@ -171,7 +171,14 @@
         "X",
         "Y",
         "ZIndex",
-        "EntryLabels",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "{Line1: \"Line1\", Line2: \"Line2\", Line3: \"Line3\", Line4: \"Line4\", Line5: \"Line5\"}",
+          "InvariantPropertyName": "EntryLabels",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -334,7 +341,7 @@
         {
           "Category": "Data",
           "PropertyName": "EntryLabels",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
