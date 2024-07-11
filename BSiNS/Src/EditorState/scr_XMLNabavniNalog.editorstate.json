@@ -216,7 +216,8 @@
           "InvariantPropertyName": "AddNew",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "VisibleResEntryList"
       ],
       "DynamicProperties": [
         {
@@ -340,6 +341,11 @@
           "Category": "Data",
           "PropertyName": "AddNew",
           "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "VisibleResEntryList",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
