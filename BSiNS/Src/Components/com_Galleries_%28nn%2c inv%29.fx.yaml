@@ -435,8 +435,8 @@
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1270
-                        X: =74
+                        Width: =1215
+                        X: =130
                         Y: =116
                         ZIndex: =2
 
@@ -455,8 +455,8 @@
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1270
-                        X: =74
+                        Width: =1215
+                        X: =130
                         Y: =90
                         ZIndex: =3
 
@@ -475,8 +475,8 @@
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1270
-                        X: =74
+                        Width: =1215
+                        X: =130
                         Y: =63
                         ZIndex: =4
 
@@ -495,8 +495,8 @@
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1270
-                        X: =74
+                        Width: =1215
+                        X: =130
                         Y: =37
                         ZIndex: =9
 
@@ -515,9 +515,9 @@
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1270
-                        X: =74
-                        Y: =Title3_3.Y
+                        Width: =1215
+                        X: =130
+                        Y: =10
                         ZIndex: =11
 
                 Group8_1 As group:
@@ -541,7 +541,8 @@
                         Size: =12
                         Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line5
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =58
+                        Width: |
+                            =150
                         X: =Title3_3.X
                         Y: =116
                         ZIndex: =1
@@ -560,7 +561,8 @@
                         Size: =12
                         Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line4
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =58
+                        Width: |
+                            =150
                         X: =Title3_3.X
                         Y: =89
                         ZIndex: =5
@@ -579,7 +581,8 @@
                         Size: =12
                         Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line3
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =58
+                        Width: |
+                            =150
                         X: =Title3_3.X
                         Y: =63
                         ZIndex: =6
@@ -598,7 +601,8 @@
                         Size: =12
                         Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line2
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =58
+                        Width: |
+                            =150
                         X: =Title3_3.X
                         Y: =Title3_3.Y + Title3_3.Height + 5
                         ZIndex: =8
@@ -617,7 +621,8 @@
                         Size: =12
                         Text: ='com_Galleries_(nn, inv)'.EntryLabels.Line1
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =58
+                        Width: |
+                            =150
                         X: =16
                         Y: =10
                         ZIndex: =12
