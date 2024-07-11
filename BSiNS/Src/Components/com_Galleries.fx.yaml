@@ -79,11 +79,11 @@ com_Galleries As CanvasComponent:
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
                 LoadingSpinner: =LoadingSpinner.Data
-                OnSelect: |
+                OnSelect: |-
                     =Set(
                         wizardStep,
                         2
-                    );
+                    ));
                     Set(
                         ScannedItem,
                         Blank()
