@@ -451,12 +451,40 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "IsInventura",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "true",
+          "InvariantPropertyName": "IsInventura",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         "LineId",
         "ResEntryId",
-        "QuantityNewLOT",
-        "QuantityCompleted",
-        "Quantity",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "100",
+          "InvariantPropertyName": "QuantityNewLOT",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "100",
+          "InvariantPropertyName": "QuantityCompleted",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "100",
+          "InvariantPropertyName": "Quantity",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -528,6 +556,11 @@
         {
           "Category": "Data",
           "PropertyName": "IsNabavniNalog",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LotNo",
           "RuleProviderType": "System"
         },
         {

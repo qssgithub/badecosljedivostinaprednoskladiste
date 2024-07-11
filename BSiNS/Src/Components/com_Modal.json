@@ -5989,12 +5989,40 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      "IsInventura",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsInventura",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
       "LineId",
       "ResEntryId",
-      "QuantityNewLOT",
-      "QuantityCompleted",
-      "Quantity",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "QuantityNewLOT",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "QuantityCompleted",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "100",
+        "InvariantPropertyName": "Quantity",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      },
       {
         "AFDDataSourceName": "",
         "AutoRuleBindingEnabled": false,
@@ -6020,18 +6048,18 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562860755070883",
+    "LastModifiedTimestamp": "638562861734036779",
     "Name": "com_Modal",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "true",
+        "InvariantScript": "false",
         "Property": "IsInventura",
         "RuleProviderType": "System"
       },
       {
         "Category": "Data",
-        "InvariantScript": "100",
+        "InvariantScript": "",
         "Property": "QuantityNewLOT",
         "RuleProviderType": "System"
       },
@@ -6043,7 +6071,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "100",
+        "InvariantScript": "",
         "Property": "QuantityCompleted",
         "RuleProviderType": "System"
       },
@@ -6055,7 +6083,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "100",
+        "InvariantScript": "",
         "Property": "Quantity",
         "RuleProviderType": "System"
       },
@@ -6063,6 +6091,12 @@
         "Category": "Data",
         "InvariantScript": "false",
         "Property": "IsNabavniNalog",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "Blank()",
+        "Property": "LotNo",
         "RuleProviderType": "System"
       },
       {
@@ -6209,7 +6243,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562860755070883",
+  "LastModifiedTimestamp": "638562861734036779",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

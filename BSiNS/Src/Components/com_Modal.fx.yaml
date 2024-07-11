@@ -2,12 +2,13 @@ com_Modal As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    IsInventura: =true
+    IsInventura: =false
     IsNabavniNalog: =false
     LineId: ="Text"
-    Quantity: =100
-    QuantityCompleted: =100
-    QuantityNewLOT: =100
+    LotNo: =Blank()
+    Quantity: =
+    QuantityCompleted: =
+    QuantityNewLOT: =
     ResEntryId: ="Text"
     Width: =App.Width
     X: =0
