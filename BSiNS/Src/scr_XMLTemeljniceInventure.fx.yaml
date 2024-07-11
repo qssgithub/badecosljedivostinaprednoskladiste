@@ -158,6 +158,7 @@
             ZIndex: =2
 
             com_InvGalleries As com_Galleries:
+                AddNew: =true
                 EntriesToDisplay: =5
                 FillPortions: =1
                 LayoutMinHeight: =200
@@ -638,11 +639,12 @@
 
     com_InvModal As com_Modal:
         IsInventura: =true
-        LineId: =glr_Inv.Selected.'Line_No.'
-        LotNo: =glr_Inv.Selected.Lot_No
-        Quantity: =glr_Inv.Selected.Qty_Phys_Inventory
-        QuantityCompleted: =glr_Inv.Selected.Qty_Phys_Inventory
-        QuantityNewLOT: =0
+        LineId: =com_InvGalleries.SelectedLine.'Line_No.'
+        LotNo: =com_InvGalleries.SelectedLine.Lot_No
+        Qty_Phys_Inventory: =com_InvGalleries.SelectedLine.Qty_Phys_Inventory
+        Quantity: =com_InvGalleries.SelectedLine.Qty_Phys_Inventory
+        QuantityCompleted: =Blank()
+        QuantityNewLOT: =Blank()
         ResEntryId: =
         Visible: =isModalOpen
         ZIndex: =3

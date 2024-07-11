@@ -86,7 +86,7 @@ com_Galleries As CanvasComponent:
                         Set(
                             wizardStep,
                             2
-                        );
+                        ),
                         Set(
                             isModalOpen,
                             true
@@ -215,6 +215,55 @@ com_Galleries As CanvasComponent:
                         X: =lbl_Line1.X
                         Y: =lbl_Line4.Y + lbl_Line4.Height + 5
                         ZIndex: =9
+
+                icn_InvAdd_2 As icon.AddDocument:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Color: =App.Theme.Colors.Darker30
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =32
+                    Icon: =Icon.AddDocument
+                    OnSelect: |-
+                        =Collect(
+                            colLines,
+                            {
+                                Journal_Template_Name: ThisItem.Journal_Template_Name,
+                                Journal_Batch_Name: ThisItem.Journal_Batch_Name,
+                                'Line_No.': Text((CountRows(colLines) + 1) * 10000),
+                                'Document_No.': ThisItem.'Document_No.',
+                                Description: ThisItem.Description,
+                                Source_Type: ThisItem.Source_Type,
+                                'Source_No.': ThisItem.'Source_No.',
+                                Source_Code: ThisItem.Source_Code,
+                                Item_No: ThisItem.Item_No,
+                                'Phys._Inventory': ThisItem.'Phys._Inventory',
+                                Location_Code: ThisItem.Location_Code,
+                                Posting_Date: ThisItem.Posting_Date,
+                                Document_Date: ThisItem.Document_Date,
+                                Sales_Price: ThisItem.Sales_Price,
+                                Qty_Calculated: Text(0),
+                                Qty_Calculated_Ext: Text(0),
+                                Quantity: Text(0),
+                                Entry_Type: ThisItem.Entry_Type,
+                                Qty_Phys_Inventory: Text(0),
+                                Qty_Phys_Inventory_Ext: Text(0),
+                                Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,
+                                Lot_No: Blank(),
+                                Item_Expiration_Date: ThisItem.Item_Expiration_Date,
+                                Barcode: ThisItem.Barcode
+                            }
+                        );
+                        Set(
+                            ScannedItem,
+                            Blank()
+                        );
+                        Reset(glr_Entries);
+                        //Set(isModalOpen, true);
+                    Visible: =!com_Galleries.EntriesToDisplay && com_Galleries.AddNew
+                    Width: =32
+                    X: =Parent.TemplateWidth - 50
+                    Y: =lbl_Line4.Y - 10
+                    ZIndex: =18
 
                 grp_LinesValues As group:
                     Height: =5
@@ -631,7 +680,7 @@ com_Galleries As CanvasComponent:
                         );
                         Reset(glr_Entries);
                         //Set(isModalOpen, true);
-                    Visible: =com_Galleries.AddNew
+                    Visible: =com_Galleries.EntriesToDisplay && com_Galleries.AddNew
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =Body2_7.Y - 10

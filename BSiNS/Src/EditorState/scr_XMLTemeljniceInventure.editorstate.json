@@ -218,7 +218,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "AddNew",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -618,7 +618,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "Quantity",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "glr_Inv.Selected.Qty_Phys_Inventory",
+          "InvariantPropertyName": "Quantity",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
@@ -664,7 +671,7 @@
         {
           "Category": "Data",
           "PropertyName": "LotNo",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -679,12 +686,12 @@
         {
           "Category": "Data",
           "PropertyName": "LineId",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -694,7 +701,12 @@
         {
           "Category": "Data",
           "PropertyName": "Quantity",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Qty_Phys_Inventory",
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
