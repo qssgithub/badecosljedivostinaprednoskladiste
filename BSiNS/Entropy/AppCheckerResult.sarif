@@ -54,6 +54,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.vrt_Pre.vrt_PreBody.com_PreGalleries.LineValuePosition"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNalogZaPrenos.vrt_Pre.vrt_PreBody.com_PreGalleries.LineValuePosition",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 201,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: 1, Description: 2, Quantity: 3, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 4, Line_No: Blank(), LotNo: Blank(), Exp_Date: Blank(), QtyInv: Blank()}"
+                  }
+                }
+              },
+              "properties": {
+                "member": "LineValuePosition",
+                "module": "scr_XMLNalogZaPrenos",
+                "type": "scr_XMLNalogZaPrenos.vrt_Pre.vrt_PreBody.com_PreGalleries"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Record"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-ErrIncompatibleRulePropSchema-SameKind",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scr_XMLNalogZaProdaju.vrt_Pro.vrt_ProBody.com_ProGalleries.LineValuePosition"
                 }
               ],
