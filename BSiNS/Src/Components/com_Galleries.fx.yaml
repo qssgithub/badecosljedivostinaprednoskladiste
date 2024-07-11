@@ -427,7 +427,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -436,8 +436,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =150
+                        Width: =1216
+                        X: =138
                         Y: =116
                         ZIndex: =2
 
@@ -447,7 +447,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -456,8 +456,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =150
+                        Width: =1216
+                        X: =138
                         Y: =89
                         ZIndex: =3
 
@@ -467,7 +467,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -476,8 +476,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =150
+                        Width: =1216
+                        X: =138
                         Y: =63
                         ZIndex: =4
 
@@ -487,7 +487,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -496,8 +496,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =150
+                        Width: =1216
+                        X: =138
                         Y: =36
                         ZIndex: =9
 
@@ -507,7 +507,7 @@ com_Galleries As CanvasComponent:
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -516,8 +516,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =150
+                        Width: =1216
+                        X: =138
                         Y: =10
                         ZIndex: =11
 
@@ -562,7 +562,7 @@ com_Galleries As CanvasComponent:
                         );
                         Reset(glr_Entries);
                         //Set(isModalOpen, true);
-                    Visible: =com_Galleries.AddNew
+                    Visible: =true//com_Galleries.AddNew
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =Body2_7.Y - 10
@@ -589,7 +589,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line5
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =200
+                        Width: =108
                         X: =Title3_2.X
                         Y: =116
                         ZIndex: =1
@@ -608,7 +608,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line4
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =200
+                        Width: =108
                         X: =Title3_2.X
                         Y: =89
                         ZIndex: =5
@@ -627,7 +627,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line3
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =200
+                        Width: =108
                         X: =Title3_2.X
                         Y: =63
                         ZIndex: =6
@@ -646,7 +646,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line2
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =200
+                        Width: =108
                         X: =Title3_2.X
                         Y: =Title3_2.Y + Title3_2.Height + 5
                         ZIndex: =8
@@ -665,7 +665,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line1
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =200
+                        Width: =108
                         X: =16
                         Y: =10
                         ZIndex: =12
