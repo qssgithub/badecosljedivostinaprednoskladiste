@@ -437,9 +437,9 @@ com_Galleries As CanvasComponent:
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
                         Visible: =!IsBlank(com_Galleries.EntryLabels.Line5)
-                        Width: =1216
-                        X: =138
-                        Y: =116
+                        Width: =1192
+                        X: =162
+                        Y: =107
                         ZIndex: =2
 
                     lbl_EntryQuantityCompleted As label:
@@ -457,8 +457,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1216
-                        X: =138
+                        Width: =1192
+                        X: =162
                         Y: =89
                         ZIndex: =3
 
@@ -477,8 +477,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1216
-                        X: =138
+                        Width: =1192
+                        X: =162
                         Y: =63
                         ZIndex: =4
 
@@ -497,8 +497,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1216
-                        X: =138
+                        Width: =1192
+                        X: =162
                         Y: =36
                         ZIndex: =9
 
@@ -517,8 +517,8 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =1216
-                        X: =138
+                        Width: =1192
+                        X: =162
                         Y: =10
                         ZIndex: =11
 
@@ -591,9 +591,9 @@ com_Galleries As CanvasComponent:
                         Text: =com_Galleries.EntryLabels.Line5
                         VerticalAlign: =VerticalAlign.Top
                         Visible: =!IsBlank(com_Galleries.EntryLabels.Line5)
-                        Width: =108
+                        Width: =146
                         X: =Title3_2.X
-                        Y: =116
+                        Y: =107
                         ZIndex: =1
 
                     Body2_7 As label:
@@ -610,7 +610,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line4
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =108
+                        Width: =146
                         X: =Title3_2.X
                         Y: =89
                         ZIndex: =5
@@ -629,7 +629,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line3
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =108
+                        Width: =146
                         X: =Title3_2.X
                         Y: =63
                         ZIndex: =6
@@ -648,7 +648,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line2
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =108
+                        Width: =146
                         X: =Title3_2.X
                         Y: =Title3_2.Y + Title3_2.Height + 5
                         ZIndex: =8
@@ -667,7 +667,7 @@ com_Galleries As CanvasComponent:
                         Size: =12
                         Text: =com_Galleries.EntryLabels.Line1
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =108
+                        Width: =146
                         X: =16
                         Y: =10
                         ZIndex: =12
