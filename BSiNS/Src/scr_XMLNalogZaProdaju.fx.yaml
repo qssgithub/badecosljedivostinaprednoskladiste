@@ -360,7 +360,11 @@
                 LayoutMinHeight: =200
                 LayoutMinWidth: =350
                 LineLabels: |-
-                    ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina:", Line4: "Količina za slanje:"}
+                    ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina:", Line4: "Količina za slanje:", Line5: ""}
+                LineValuePosition: |-
+                    ={Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 3, Line_No: Blank(), LotNo: Blank(), Exp_Date: Blank(), QtyInv: Blank()}
+                LineValueVisibility: |-
+                    ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true, LotNo: false, Exp_Date: false, QtyInv: false}
                 NumberOfLinesToDisplay: =4
                 Visible: =true
                 ZIndex: =4

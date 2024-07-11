@@ -54,6 +54,46 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.vrt_Pro.vrt_ProBody.com_ProGalleries.LineValuePosition"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_XMLNalogZaProdaju.vrt_Pro.vrt_ProBody.com_ProGalleries.LineValuePosition",
+                  "relativeAddress": 0
+                },
+                "region": {
+                  "charLength": 207,
+                  "charOffset": 0,
+                  "snippet": {
+                    "text": "{Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 3, Line_No: Blank(), LotNo: Blank(), Exp_Date: Blank(), QtyInv: Blank()}"
+                  }
+                }
+              },
+              "properties": {
+                "member": "LineValuePosition",
+                "module": "scr_XMLNalogZaProdaju",
+                "type": "scr_XMLNalogZaProdaju.vrt_Pro.vrt_ProBody.com_ProGalleries"
+              }
+            }
+          ],
+          "message": {
+            "arguments": [
+              "Record"
+            ],
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-ErrIncompatibleRulePropSchema-SameKind",
+          "ruleIndex": 0
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scr_XMLOtpremnice.OtpremniceScreenContainer.OtpremniceBody.Otpremnice_Line_Canvas.Otpremnice_Header.TextCanvas6.Text"
                 }
               ],
