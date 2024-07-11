@@ -2988,9 +2988,9 @@
                       },
                       {
                         "Category": "Data",
-                        "InvariantScript": "ThisItem.Lot_No",
+                        "InvariantScript": "ThisItem.Item_Expiration_Date",
                         "Property": "Text",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -3078,9 +3078,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "com_Galleries.LineValueVisibility.LotNo",
+                        "InvariantScript": "com_Galleries.LineValueVisibility.Exp_Date",
                         "Property": "Visible",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -3156,9 +3156,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.LotNo) + (com_Galleries.LineValuePosition.LotNo * com_Galleries.NumberOfLinesToDisplay)",
+                        "InvariantScript": "lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Exp_Date) + (com_Galleries.LineValuePosition.Exp_Date * com_Galleries.NumberOfLinesToDisplay)",
                         "Property": "Y",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -11312,7 +11312,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638562921662477010",
+    "LastModifiedTimestamp": "638562921959622216",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -11516,7 +11516,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638562921662477010",
+  "LastModifiedTimestamp": "638562921959622216",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

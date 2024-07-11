@@ -400,12 +400,12 @@ com_Galleries As CanvasComponent:
                     PaddingRight: =0
                     PaddingTop: =0
                     Size: =12
-                    Text: =ThisItem.Lot_No
+                    Text: =ThisItem.Item_Expiration_Date
                     VerticalAlign: =VerticalAlign.Top
-                    Visible: =com_Galleries.LineValueVisibility.LotNo
+                    Visible: =com_Galleries.LineValueVisibility.Exp_Date
                     Width: =Parent.TemplateWidth - 175
                     X: =lbl_Line1.Width + lbl_Line1.X
-                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.LotNo) + (com_Galleries.LineValuePosition.LotNo * com_Galleries.NumberOfLinesToDisplay)
+                    Y: =lbl_Line1.Y + (lbl_Line1.Height * com_Galleries.LineValuePosition.Exp_Date) + (com_Galleries.LineValuePosition.Exp_Date * com_Galleries.NumberOfLinesToDisplay)
                     ZIndex: =17
 
             btn_BackToLines As Button:
