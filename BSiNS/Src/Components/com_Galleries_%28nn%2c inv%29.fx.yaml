@@ -426,7 +426,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -435,9 +435,9 @@
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_NewLOT)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_3.Width + Title3_3.X
-                        Y: =lbl_EntryQuantityCompleted_1.Y + lbl_EntryQuantityCompleted_1.Height + 5
+                        Width: =1194
+                        X: =150
+                        Y: =116
                         ZIndex: =2
 
                     lbl_EntryQuantityCompleted_1 As label:
@@ -446,7 +446,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -455,9 +455,9 @@
                         Size: =12
                         Text: =Abs(ThisItem.Quantity_Completed)
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_3.Width + Title3_3.X
-                        Y: =lbl_EntryLOTNo_1.Y + lbl_EntryItemNo_1.Height + 5
+                        Width: =1194
+                        X: =150
+                        Y: =90
                         ZIndex: =3
 
                     lbl_EntryLOTNo_1 As label:
@@ -466,7 +466,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -475,9 +475,9 @@
                         Size: =12
                         Text: =ThisItem.LOT_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_3.Width + Title3_3.X
-                        Y: =lbl_EntryExpDate_1.Y + lbl_EntryExpDate_1.Height + 5
+                        Width: =1194
+                        X: =150
+                        Y: =63
                         ZIndex: =4
 
                     lbl_EntryExpDate_1 As label:
@@ -486,7 +486,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =21
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -495,9 +495,9 @@
                         Size: =12
                         Text: =ThisItem.Exp_Date
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_3.Width + Title3_3.X
-                        Y: =lbl_EntryItemNo_1.Y + lbl_EntryItemNo_1.Height + 5
+                        Width: =1194
+                        X: =150
+                        Y: =37
                         ZIndex: =9
 
                     lbl_EntryItemNo_1 As label:
@@ -506,7 +506,7 @@
                         DisabledColor: =RGBA(166, 166, 166, 1)
                         Font: =App.Theme.Font
                         FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
-                        Height: =Self.Size * 1.8
+                        Height: =22
                         OnSelect: =Select(Parent)
                         PaddingBottom: =0
                         PaddingLeft: =0
@@ -515,8 +515,8 @@
                         Size: =12
                         Text: =ThisItem.Entry_No
                         VerticalAlign: =VerticalAlign.Top
-                        Width: =Parent.TemplateWidth - 150
-                        X: =Title3_3.Width + Title3_3.X
+                        Width: =1194
+                        X: =150
                         Y: =Title3_3.Y
                         ZIndex: =11
 
