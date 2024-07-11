@@ -163,7 +163,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "hrz_ModalHeader",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 220,
+                        "PublishOrderIndex": 194,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -395,7 +395,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "hrz_ModalHeader",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 221,
+                        "PublishOrderIndex": 195,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -649,7 +649,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "vrt_Modal",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 219,
+                    "PublishOrderIndex": 193,
                     "Rules": [
                       {
                         "Category": "Design",
@@ -952,7 +952,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_12",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 227,
+                            "PublishOrderIndex": 198,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -1188,7 +1188,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_12",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 228,
+                            "PublishOrderIndex": 199,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -1495,7 +1495,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "vrt_ModalBody",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 223,
+                        "PublishOrderIndex": 197,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -1661,7 +1661,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If( (IsBlank(com_Modal.LotNo) && (com_Modal.IsInventura)) || com_Modal.IsNabavniNalog, true, false)",
+                            "InvariantScript": "If(((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog), com_Modal.LotNo = \"anisa\", \"suljic\")",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -1805,7 +1805,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_10",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 233,
+                            "PublishOrderIndex": 201,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -2043,7 +2043,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_10",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 234,
+                            "PublishOrderIndex": 202,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -2083,7 +2083,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    com_Modal.IsInventura,\n    If(\n        IsBlank(com_Modal.Qty_Phys_Inventory),\n        1,\n        Abs(com_Modal.Qty_Phys_Inventory)\n    ),\n    If(\n        IsBlank(com_Modal.QuantityCompleted),\n        2,\n        Abs(com_Modal.QuantityCompleted)\n    )\n)",
+                                "InvariantScript": "If(\n    com_Modal.IsInventura,\n    If(\n        IsBlank(com_Modal.Qty_Phys_Inventory),\n        0,\n        Abs(com_Modal.Qty_Phys_Inventory)\n    ),\n    If(\n        IsBlank(com_Modal.QuantityCompleted),\n        0,\n        Abs(com_Modal.QuantityCompleted)\n    )\n)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -2332,7 +2332,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_10",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 235,
+                            "PublishOrderIndex": 203,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -2634,7 +2634,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "vrt_ModalBody",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 229,
+                        "PublishOrderIndex": 200,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -2930,7 +2930,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_11",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 240,
+                            "PublishOrderIndex": 205,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -3151,7 +3151,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_11",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 241,
+                            "PublishOrderIndex": 206,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -3422,7 +3422,7 @@
                             "OptimizeForDevices": "Off",
                             "Parent": "Container13_11",
                             "PersistMetaDataIDKey": false,
-                            "PublishOrderIndex": 242,
+                            "PublishOrderIndex": 207,
                             "Rules": [
                               {
                                 "Category": "Data",
@@ -3701,7 +3701,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "vrt_ModalBody",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 236,
+                        "PublishOrderIndex": 204,
                         "Rules": [
                           {
                             "Category": "Design",
@@ -3777,7 +3777,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "LayoutJustifyContent.Start",
+                            "InvariantScript": "LayoutJustifyContent.Center",
                             "Property": "LayoutJustifyContent",
                             "RuleProviderType": "Unknown"
                           },
@@ -3855,7 +3855,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "!com_Modal.IsInventura && !com_Modal.IsNabavniNalog",
+                            "InvariantScript": "!com_Modal.IsInventura && !com_Modal.IsNabavniNalog\r\n",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -4075,7 +4075,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "vrt_ModalBody",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 249,
+                        "PublishOrderIndex": 208,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -4380,7 +4380,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "vrt_Modal",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 222,
+                    "PublishOrderIndex": 196,
                     "Rules": [
                       {
                         "Category": "Design",
@@ -4694,7 +4694,7 @@
                         "OptimizeForDevices": "Off",
                         "Parent": "hrz_ModalFooter",
                         "PersistMetaDataIDKey": false,
-                        "PublishOrderIndex": 251,
+                        "PublishOrderIndex": 210,
                         "Rules": [
                           {
                             "Category": "Data",
@@ -4977,7 +4977,7 @@
                     "OptimizeForDevices": "Off",
                     "Parent": "vrt_Modal",
                     "PersistMetaDataIDKey": false,
-                    "PublishOrderIndex": 250,
+                    "PublishOrderIndex": 209,
                     "Rules": [
                       {
                         "Category": "Design",
@@ -5275,7 +5275,7 @@
                 "OptimizeForDevices": "Off",
                 "Parent": "con_Modal",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 218,
+                "PublishOrderIndex": 192,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -5535,7 +5535,7 @@
             "OptimizeForDevices": "Off",
             "Parent": "con_ModalFade",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 217,
+            "PublishOrderIndex": 191,
             "Rules": [
               {
                 "Category": "Design",
@@ -5802,7 +5802,7 @@
         "OptimizeForDevices": "Off",
         "Parent": "com_Modal",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 216,
+        "PublishOrderIndex": 190,
         "Rules": [
           {
             "Category": "Design",
@@ -6041,7 +6041,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638563037723083755",
+    "LastModifiedTimestamp": "638563078875148524",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6236,7 +6236,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638563037723083755",
+  "LastModifiedTimestamp": "638563078875148524",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
