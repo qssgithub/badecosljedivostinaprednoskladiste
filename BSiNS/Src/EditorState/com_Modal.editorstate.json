@@ -414,7 +414,7 @@
         {
           "Category": "Behavior",
           "PropertyName": "OnSelect",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "",
@@ -523,22 +523,7 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "QuantityNewLOT",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "LineId",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "QuantityCompleted",
-          "RuleProviderType": "System"
-        },
-        {
-          "Category": "Data",
-          "PropertyName": "ResEntryId",
           "RuleProviderType": "System"
         },
         {
@@ -548,12 +533,27 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "IsNabavniNalog",
+          "PropertyName": "ResEntryId",
           "RuleProviderType": "System"
         },
         {
           "Category": "Data",
           "PropertyName": "LotNo",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityNewLOT",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsNabavniNalog",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "QuantityCompleted",
           "RuleProviderType": "System"
         },
         {
@@ -1980,7 +1980,7 @@
         {
           "Category": "Design",
           "PropertyName": "Visible",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         }
       ],
       "StyleName": "defaultGroupContainerStyle",
