@@ -216,7 +216,14 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "AddNew"
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "false",
+          "InvariantPropertyName": "AddNew",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
       ],
       "DynamicProperties": [
         {
@@ -339,7 +346,7 @@
         {
           "Category": "Data",
           "PropertyName": "AddNew",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",
