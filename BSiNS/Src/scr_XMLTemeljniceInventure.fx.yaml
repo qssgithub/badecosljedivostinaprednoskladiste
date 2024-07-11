@@ -164,7 +164,9 @@
                 LayoutMinHeight: =200
                 LayoutMinWidth: =350
                 LineLabels: |-
-                    ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "LOT", Line4: "Rok trajanja:", Line5: "Količina"}
+                    ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "LOT", Line4: "Rok trajanja:", Line5: "Količina:"}
+                LineValueVisibility: |-
+                    ={Line_No: true, Item_No: false, Posting_Group: false, Inv_Posting_Group: true, Description: true, Quantity: false, Unit_Of_Measure: false, 'Qty-to_Ship': false, LotNo: true, Exp_Date: true, QtyInv: true}
                 VisibleResEntryList: =false
 
             Container4 As groupContainer.manualLayoutContainer:
@@ -642,7 +644,7 @@
         LineId: =com_InvGalleries.SelectedLine.'Line_No.'
         LotNo: =com_InvGalleries.SelectedLine.Lot_No
         Qty_Phys_Inventory: =com_InvGalleries.SelectedLine.Qty_Phys_Inventory
-        Quantity: =com_InvGalleries.SelectedLine.Qty_Phys_Inventory
+        Quantity: =com_InvGalleries.SelectedLine.Quantity
         QuantityCompleted: =Blank()
         QuantityNewLOT: =Blank()
         ResEntryId: =

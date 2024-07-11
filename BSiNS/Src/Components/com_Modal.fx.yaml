@@ -241,12 +241,12 @@ com_Modal As CanvasComponent:
                                     com_Modal.IsInventura,
                                     If(
                                         IsBlank(com_Modal.Qty_Phys_Inventory),
-                                        0,
+                                        1,
                                         Abs(com_Modal.Qty_Phys_Inventory)
                                     ),
                                     If(
                                         IsBlank(com_Modal.QuantityCompleted),
-                                        0,
+                                        2,
                                         Abs(com_Modal.QuantityCompleted)
                                     )
                                 )
