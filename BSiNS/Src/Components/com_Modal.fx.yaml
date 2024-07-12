@@ -367,13 +367,14 @@ com_Modal As CanvasComponent:
                         PaddingTop: =0
                         Size: =11
                         Text: |-
-                            =If(
+                            =/*If(
                                 (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                 "'Rezervisano' i 'Potrebno' su veći od količine za otpremu (" & com_Modal.Quantity & ") !",
                                 ""
-                            )
+                            )*/
+                            com_Modal.LotNoPropVisible
                         VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
-                        Visible: =!com_Modal.IsInventura
+                        Visible: =true//!com_Modal.IsInventura
                         Width: =Parent.Width
                         X: =0
                         Y: =0
