@@ -411,7 +411,6 @@
 
     com_ProModal As com_Modal:
         LineId: =com_ProGalleries.SelectedLine.Line_No
-        LotNoPropVisible: =((IsBlank(com_ProModal.LotNo) && com_ProModal.IsInventura) || com_ProModal.IsNabavniNalog)
         Quantity: =Abs(com_ProGalleries.SelectedEntry.Quantity)
         QuantityCompleted: =Abs(com_ProGalleries.SelectedEntry.Quantity_Completed)
         QuantityNewLOT: =Abs(com_ProGalleries.SelectedEntry.Quantity_NewLOT)

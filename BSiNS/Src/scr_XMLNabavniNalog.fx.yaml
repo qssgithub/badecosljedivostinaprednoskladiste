@@ -377,7 +377,6 @@
         IsNabavniNalog: =true
         LineId: =com_NabGalleries.SelectedLine.Line_No
         LotNo: =com_NabGalleries.SelectedEntry.LOT_No
-        LotNoPropVisible: =((IsBlank(com_NabModal.LotNo) && com_NabModal.IsInventura) || com_NabModal.IsNabavniNalog)
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT

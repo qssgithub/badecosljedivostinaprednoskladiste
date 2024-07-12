@@ -6,7 +6,7 @@ com_Modal As CanvasComponent:
     IsNabavniNalog: =false
     LineId: ="Text"
     LotNo: =
-    LotNoPropVisible: =((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog)
+    LotNoPropVisible: =
     Quantity: =
     QuantityCompleted: =
     QuantityNewLOT: =
@@ -133,7 +133,7 @@ com_Modal As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: =com_Modal.LotNoPropVisible//((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog)
+                        Visible: =((com_Modal.LotNoPropVisible && com_Modal.IsInventura) || com_Modal.IsNabavniNalog)
                         ZIndex: =1
 
                         TextCanvas3_12 As Text:
@@ -367,14 +367,13 @@ com_Modal As CanvasComponent:
                         PaddingTop: =0
                         Size: =11
                         Text: |-
-                            =/*If(
+                            =If(
                                 (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                 "'Rezervisano' i 'Potrebno' su veći od količine za otpremu (" & com_Modal.Quantity & ") !",
                                 ""
-                            )*/
-                            com_Modal.LotNoPropVisible
+                            )
                         VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
-                        Visible: =true//!com_Modal.IsInventura
+                        Visible: =!com_Modal.IsInventura
                         Width: =Parent.Width
                         X: =0
                         Y: =0

@@ -505,7 +505,7 @@
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "true",
+          "AutoRuleBindingString": "((IsBlank(com_Modal.LotNo) && com_Modal.IsInventura) || com_Modal.IsNabavniNalog)",
           "InvariantPropertyName": "LotNoPropVisible",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
