@@ -677,7 +677,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\nSet(\n    ScannedItem,\n    Blank()\n);\n",
+                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\nSet(\n    LotNoPropVisibleCheck,\n    CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0\n);\n/*\nNotify(\"postoji u lockedItems:  \" & LotNoPropVisible & \"   \" & com_Galleries.SelectedLine.'Line_No.');*/\nSet(\n    ScannedItem,\n    Blank()\n);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -5164,7 +5164,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Collect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((CountRows(colLines) + 1) * 10000),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        Item_No: ThisItem.Item_No,\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Text(0),\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: Blank(),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Lines);\n//Set(isModalOpen, true);",
+                        "InvariantScript": "Collect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((CountRows(colLines) + 1) * 10000),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        Item_No: ThisItem.Item_No,\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Text(0),\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: Blank(),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\n//Reset(glr_Lines);\n//Set(isModalOpen, true);",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -12404,9 +12404,17 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      "VisibleResEntryList"
+      "VisibleResEntryList",
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsCalculatedItem",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638563658533838436",
+    "LastModifiedTimestamp": "638563757351610002",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -12467,6 +12475,12 @@
         "Category": "Data",
         "InvariantScript": "true",
         "Property": "VisibleResEntryList",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "false",
+        "Property": "IsCalculatedItem",
         "RuleProviderType": "System"
       },
       {
@@ -12615,6 +12629,15 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "A custom property",
       "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "IsCalculatedItem",
+      "Hidden": false,
+      "Name": "IsCalculatedItem",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.342\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -12625,7 +12648,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638563658533838436",
+  "LastModifiedTimestamp": "638563757351610002",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

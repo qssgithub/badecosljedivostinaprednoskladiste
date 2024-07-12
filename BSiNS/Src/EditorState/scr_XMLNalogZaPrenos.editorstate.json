@@ -231,7 +231,8 @@
           "NameMapSourceSchema": "?"
         },
         "AddNew",
-        "VisibleResEntryList"
+        "VisibleResEntryList",
+        "IsCalculatedItem"
       ],
       "DynamicProperties": [
         {
@@ -366,6 +367,11 @@
         {
           "Category": "Data",
           "PropertyName": "VisibleResEntryList",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsCalculatedItem",
           "RuleProviderType": "System"
         },
         {

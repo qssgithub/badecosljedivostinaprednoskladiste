@@ -5,6 +5,7 @@ com_Galleries As CanvasComponent:
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
     Fill: =RGBA(0, 0, 0, 0)
     Height: =300
+    IsCalculatedItem: =false
     LineLabels: |-
         ={Line1: "Line1", Line2: "Line2", Line3: "Line3", Line4: "Line4", Line5: "Line5"}
     LineValuePosition: |-
@@ -92,6 +93,12 @@ com_Galleries As CanvasComponent:
                             true
                         )
                     );
+                    Set(
+                        LotNoPropVisibleCheck,
+                        CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0
+                    );
+                    /*
+                    Notify("postoji u lockedItems:  " & LotNoPropVisible & "   " & com_Galleries.SelectedLine.'Line_No.');*/
                     Set(
                         ScannedItem,
                         Blank()
@@ -257,7 +264,7 @@ com_Galleries As CanvasComponent:
                             ScannedItem,
                             Blank()
                         );
-                        Reset(glr_Lines);
+                        //Reset(glr_Lines);
                         //Set(isModalOpen, true);
                     Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew
                     Width: =32
