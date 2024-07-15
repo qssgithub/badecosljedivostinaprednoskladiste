@@ -411,6 +411,7 @@
 
     com_ProModal As com_Modal:
         LineId: =com_ProGalleries.SelectedLine.Line_No
+        LotNoPropVisible: =false
         Quantity: =Abs(com_ProGalleries.SelectedEntry.Quantity)
         QuantityCompleted: =Abs(com_ProGalleries.SelectedEntry.Quantity_Completed)
         QuantityNewLOT: =Abs(com_ProGalleries.SelectedEntry.Quantity_NewLOT)
