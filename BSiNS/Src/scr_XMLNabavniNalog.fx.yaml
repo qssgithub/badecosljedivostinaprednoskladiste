@@ -378,6 +378,14 @@
         IsNabavniNalog: =true
         LineId: =com_NabGalleries.SelectedLine.Line_No
         LotNo: =com_NabGalleries.SelectedEntry.LOT_No
+        LotNoPropVisible: |-
+            =/*IsEmpty(
+                    Filter(
+                        lockedItems,
+                        ThisRecord.lineId = com_Modal.LineId
+                    )
+                )*/
+            LotNoPropVisibleCheck
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
