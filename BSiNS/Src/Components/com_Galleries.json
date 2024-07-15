@@ -677,7 +677,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\nSet(\n    LotNoPropVisibleCheck,\n    CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0\n);\n/*\nNotify(\"postoji u lockedItems:  \" & LotNoPropVisible & \"   \" & com_Galleries.SelectedLine.'Line_No.');*/\nSet(\n    ScannedItem,\n    Blank()\n);\n",
+                        "InvariantScript": "If(\n    com_Galleries.VisibleResEntryList,\n    Set(\n        wizardStep,\n        2\n    ),\n    Set(\n        isModalOpen,\n        true\n    )\n);\nSet(\n    LotNoPropVisibleCheck,\n    CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0\n);\n\nNotify(\"postoji u lockedItems:  \" & LotNoPropVisibleCheck );\nSet(\n    ScannedItem,\n    Blank()\n);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -12414,7 +12414,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638563757351610002",
+    "LastModifiedTimestamp": "638566504279278256",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -12648,7 +12648,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638563757351610002",
+  "LastModifiedTimestamp": "638566504279278256",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

@@ -97,8 +97,8 @@ com_Galleries As CanvasComponent:
                         LotNoPropVisibleCheck,
                         CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0
                     );
-                    /*
-                    Notify("postoji u lockedItems:  " & LotNoPropVisible & "   " & com_Galleries.SelectedLine.'Line_No.');*/
+                    
+                    Notify("postoji u lockedItems:  " & LotNoPropVisibleCheck );
                     Set(
                         ScannedItem,
                         Blank()
