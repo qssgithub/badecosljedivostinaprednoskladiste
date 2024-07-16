@@ -6,14 +6,7 @@ com_Modal As CanvasComponent:
     IsNabavniNalog: =false
     LineId: ="Text"
     LotNo: =
-    LotNoPropVisible: |-
-        =/*IsEmpty(
-                Filter(
-                    lockedItems,
-                    ThisRecord.lineId = com_Modal.LineId
-                )
-            )*/
-        !LotNoPropVisibleCheck
+    LotNoPropVisible: =!LotNoPropVisibleCheck
     Quantity: =
     QuantityCompleted: =
     QuantityNewLOT: =
@@ -249,7 +242,7 @@ com_Modal As CanvasComponent:
                                     !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0,
                                     "Value_Error",
                                     If(
-                                        !(com_Modal.IsInventura && com_Modal.IsNabavniNalog),
+                                        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),
                                         If(
                                             Value(inp_rezQty_2.Value) > com_Modal.Quantity,
                                             "Quantity_Error",
@@ -292,7 +285,7 @@ com_Modal As CanvasComponent:
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =14
-                            Text: =If(inp_rezQty_2.ValidationState = inp_rezQty_2.ValidationState.Value_Error, "Unesite pozitivan broj", "")
+                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti veću količinu od " & com_Modal.Quantity),"")
                             Visible: =true
                             Width: =200
                             X: =0
