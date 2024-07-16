@@ -236,7 +236,7 @@ com_Galleries As CanvasComponent:
                             {
                                 Journal_Template_Name: ThisItem.Journal_Template_Name,
                                 Journal_Batch_Name: ThisItem.Journal_Batch_Name,
-                                'Line_No.': Text(Counter * 10000),
+                                'Line_No.': Text((Counter * 10000) + 1),
                                 'Document_No.': ThisItem.'Document_No.',
                                 Description: ThisItem.Description,
                                 Source_Type: ThisItem.Source_Type,
