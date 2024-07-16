@@ -98,7 +98,6 @@ com_Galleries As CanvasComponent:
                         CountIf(lockedItems, lineId = com_Galleries.SelectedLine.'Line_No.') > 0
                     );
                     
-                    Notify("postoji u lockedItems:  " & LotNoPropVisibleCheck );
                     Set(
                         ScannedItem,
                         Blank()
