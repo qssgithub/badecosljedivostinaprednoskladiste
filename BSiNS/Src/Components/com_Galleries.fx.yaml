@@ -721,7 +721,7 @@ com_Galleries As CanvasComponent:
                         );
                         Reset(glr_Entries);
                         //Set(isModalOpen, true);
-                    Visible: =com_Galleries.EntriesToDisplay && com_Galleries.AddNew
+                    Visible: =com_Galleries.EntriesToDisplay && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =Body2_7.Y - 10
