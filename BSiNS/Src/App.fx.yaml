@@ -1,6 +1,6 @@
 App As appinfo:
     BackEnabled: =true
-    Formulas: |
+    Formulas: |-
         =conPrimary = ColorValue("#0AA9FF");
         conAccent = ColorValue("#676767");
         conUser = LookUp(
@@ -16,7 +16,7 @@ App As appinfo:
         ReadyForProcessing = "ReadyForProcessing";
         InProgress = "InProgress";
         ReadyForNAVProcessing = "ReadyForNavProcessing";
-        //NAVChanges = "NAVChanges";
+        Counter = 0;
     OnStart: =
     StartScreen: =
     Theme: =RedTheme

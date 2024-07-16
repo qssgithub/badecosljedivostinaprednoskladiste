@@ -230,12 +230,13 @@ com_Galleries As CanvasComponent:
                     Height: =32
                     Icon: =Icon.AddDocument
                     OnSelect: |-
-                        =Collect(
+                        =Counter = Counter + 1;
+                        Collect(
                             colLines,
                             {
                                 Journal_Template_Name: ThisItem.Journal_Template_Name,
                                 Journal_Batch_Name: ThisItem.Journal_Batch_Name,
-                                'Line_No.': Text((CountRows(colLines) + 1) * 10000),
+                                'Line_No.': Text(Counter * 10000),
                                 'Document_No.': ThisItem.'Document_No.',
                                 Description: ThisItem.Description,
                                 Source_Type: ThisItem.Source_Type,
@@ -687,13 +688,14 @@ com_Galleries As CanvasComponent:
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     Height: =32
                     Icon: =Icon.AddDocument
-                    OnSelect: |-
-                        =Collect(
+                    OnSelect: |
+                        =Counter = Counter + 1;
+                        Collect(
                             colEntries,
                             {
                                 Created_By: ThisItem.Created_By,
                                 Creation_Date: ThisItem.Creation_Date,
-                                Entry_No: Text(CountRows(colEntries) + 1),
+                                Entry_No: Text(Counter),
                                 Exp_Date: ThisItem.Exp_Date,
                                 Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,
                                 Item_No: ThisItem.Item_No,
@@ -720,7 +722,6 @@ com_Galleries As CanvasComponent:
                             Blank()
                         );
                         Reset(glr_Entries);
-                        //Set(isModalOpen, true);
                     Visible: =com_Galleries.EntriesToDisplay && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))
                     Width: =32
                     X: =Parent.TemplateWidth - 50

@@ -2,7 +2,7 @@
     Fill: =RGBA(45, 128, 40, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnHidden: =
-    OnVisible: |
+    OnVisible: |-
         =Set(
             isLoading,
             true
@@ -60,6 +60,7 @@
             isLoading,
             false
         );
+        Counter = 0;
 
     vrt_Entry As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
