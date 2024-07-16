@@ -194,6 +194,27 @@ com_Modal As CanvasComponent:
                             Y: =40
                             ZIndex: =3
 
+                        TextCanvas1_1 As Text:
+                            AlignInContainer: =AlignInContainer.Center
+                            AutoHeight: =false
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            FontColor: =RGBA(215, 58, 60, 1)
+                            Height: =20
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            PaddingBottom: =0
+                            PaddingLeft: =0
+                            PaddingRight: =0
+                            PaddingTop: =0
+                            Size: =14
+                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu veću od " & com_Modal.Quantity),"")
+                            Visible: =true
+                            Width: =200
+                            X: =0
+                            Y: =0
+                            ZIndex: =4
+
                     Container13_10 As groupContainer.verticalAutoLayoutContainer:
                         AlignInContainer: =AlignInContainer.SetByContainer
                         LayoutAlignItems: =LayoutAlignItems.Center

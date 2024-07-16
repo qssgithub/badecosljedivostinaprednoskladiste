@@ -162,7 +162,7 @@
             );
             IfError(
                 ForAll(
-                    xmlData.Purchase_Line.Res_Entry As entry,
+                    xmlData.Transfer_Line.Res_Entry As entry,
                     Collect(
                         colEntries,
                         {
