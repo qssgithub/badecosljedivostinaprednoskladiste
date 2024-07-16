@@ -43,7 +43,7 @@
                     'Buy-from_Vendor_Name': Text(xmlData.'Buy-from_Vendor_Name'),
                     'Buy-from_Vendor_Name_2': Text(xmlData.'Buy-from_Vendor_Name_2'),
                     'Buy-from_Vendor_No.': Text(xmlData.'Buy-from_Vendor_No.'),
-                    Campaign_No: Text(xmlData.Campaign_No),
+                    'Campaign_No.': Text(xmlData.Campaign_No),
                     Currency_Code: Text(xmlData.Currency_Code),
                     Document_Date: Text(xmlData.Document_Date),
                     Document_Type: Text(xmlData.Document_Type),
@@ -52,7 +52,7 @@
                     'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
                     Language_Code: Text(xmlData.Language_Code),
                     Location_Code: Text(xmlData.Location_Code),
-                    No: Text(xmlData.'No.'),
+                    'No.': Text(xmlData.'No.'),
                     Order_Date: Text(xmlData.Order_Date),
                     Promised_Receipt_Date: Text(xmlData.Promised_Receipt_Date),
                     Purchaser_Code: Text(xmlData.Purchaser_Code),
@@ -302,7 +302,7 @@
                 LayoutMinWidth: =350
                 Line1Label: |-
                     ="Broj naloga:"
-                Line1Value: =header.No
+                Line1Value: =header.'No.'
                 Line2Label: |-
                     ="Datum dokumenta:"
                 Line2Value: =header.Document_Date
@@ -378,14 +378,7 @@
         IsNabavniNalog: =true
         LineId: =com_NabGalleries.SelectedLine.Line_No
         LotNo: =com_NabGalleries.SelectedEntry.LOT_No
-        LotNoPropVisible: |-
-            =/*IsEmpty(
-                    Filter(
-                        lockedItems,
-                        ThisRecord.lineId = com_Modal.LineId
-                    )
-                )*/
-            LotNoPropVisibleCheck
+        LotNoPropVisible: =true
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
