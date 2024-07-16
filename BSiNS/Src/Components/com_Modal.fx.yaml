@@ -285,7 +285,7 @@ com_Modal As CanvasComponent:
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =14
-                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti veću količinu od " & com_Modal.Quantity),"")
+                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu ve od " & com_Modal.Quantity),"")
                             Visible: =true
                             Width: =200
                             X: =0
