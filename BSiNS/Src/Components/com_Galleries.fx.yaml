@@ -230,7 +230,7 @@ com_Galleries As CanvasComponent:
                     Height: =32
                     Icon: =Icon.AddDocument
                     OnSelect: |-
-                        =Counter = Counter + 1;
+                        =Set(Counter, Counter + 1);
                         Collect(
                             colLines,
                             {
@@ -264,8 +264,7 @@ com_Galleries As CanvasComponent:
                             ScannedItem,
                             Blank()
                         );
-                        //Reset(glr_Lines);
-                        //Set(isModalOpen, true);
+                        Reset(glr_Lines);
                     Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))
                     Width: =32
                     X: =Parent.TemplateWidth - 50
@@ -689,7 +688,7 @@ com_Galleries As CanvasComponent:
                     Height: =32
                     Icon: =Icon.AddDocument
                     OnSelect: |
-                        =Counter = Counter + 1;
+                        =Set(Counter, Counter + 1);
                         Collect(
                             colEntries,
                             {
