@@ -232,7 +232,7 @@ com_Modal As CanvasComponent:
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: =If(inp_rezQty_2.ValidationState = inp_rezQty_2.ValidationState.Error, ErrorMsg.Text = "nesto");
+                            OnChange: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu veću od " & com_Modal.Quantity),"")
                             Placeholder: ="Unesite rezervisano količinu"
                             Required: =true
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
@@ -244,7 +244,7 @@ com_Modal As CanvasComponent:
                                     If(
                                         !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),
                                         If(
-                                            Value(inp_rezQty_2.Value) > com_Modal.Quantity,
+                                            (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                             "Quantity_Error",
                                             "None"
                                         ),
@@ -285,7 +285,7 @@ com_Modal As CanvasComponent:
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =14
-                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu ve od " & com_Modal.Quantity),"")
+                            Text: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu veću od " & com_Modal.Quantity),"")
                             Visible: =true
                             Width: =200
                             X: =0
@@ -332,10 +332,23 @@ com_Modal As CanvasComponent:
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: =false
+                            OnChange: =If(inp_rezQty_2.ValidationState = "Value_Error", "Unesite pozitivan broj", If(inp_rezQty_2.ValidationState = "Quantity_Error", "Nije moguće unijeti količinu veću od " & com_Modal.Quantity),"")
                             Placeholder: ="Unesite potrebnu količinu"
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
-                            ValidationState: =If(!IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0, "Error", "None")
+                            ValidationState: |-
+                                =If(
+                                    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0,
+                                    "Value_Error",
+                                    /*If(
+                                        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),*/
+                                        If(
+                                            (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
+                                            "Quantity_Error",
+                                            "None"
+                                        )/*,
+                                        "None"
+                                    )*/
+                                )
                             Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))
                             Width: =200
                             X: =40
@@ -363,35 +376,6 @@ com_Modal As CanvasComponent:
                             Y: =0
                             ZIndex: =3
 
-                    ErrorMsg As Text:
-                        AlignInContainer: =AlignInContainer.Stretch
-                        AutoHeight: =false
-                        BorderColor: =
-                        BorderStyle: =BorderStyle.None
-                        BorderThickness: =
-                        DisplayMode: =DisplayMode.Edit
-                        FontColor: =RGBA(215, 58, 60, 1)
-                        Height: =35
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
-                        PaddingBottom: =0
-                        PaddingLeft: =5
-                        PaddingRight: =5
-                        PaddingTop: =0
-                        Size: =11
-                        Text: |-
-                            =If(
-                                (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
-                                "'Rezervisano' i 'Potrebno' su veći od količine za otpremu (" & com_Modal.Quantity & ") !",
-                                ""
-                            )
-                        VerticalAlign: ='TextCanvas.VerticalAlign'.Middle
-                        Visible: =!com_Modal.IsInventura
-                        Width: =Parent.Width
-                        X: =0
-                        Y: =0
-                        ZIndex: =5
-
                 hrz_ModalFooter As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
@@ -412,8 +396,13 @@ com_Modal As CanvasComponent:
                         BasePaletteColor: =
                         BorderStyle: =""
                         DisplayMode: |-
-                            =If(
+                            =/*If(
                                 inp_rezQty_2.ValidationState = "Error" || inp_potrebnoQty_2.ValidationState = "Error" || ((inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity && !com_Modal.IsInventura),
+                                DisplayMode.Disabled,
+                                DisplayMode.Edit
+                            )*/
+                            If(
+                                inp_rezQty_2.ValidationState = "Value_Error" || inp_rezQty_2.ValidationState = "Quantity_Error" || inp_potrebnoQty_2.ValidationState = "Value_Error" || inp_potrebnoQty_2.ValidationState = "Quantity_Error",
                                 DisplayMode.Disabled,
                                 DisplayMode.Edit
                             )
