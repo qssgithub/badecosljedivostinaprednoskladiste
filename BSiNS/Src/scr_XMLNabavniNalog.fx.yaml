@@ -1,7 +1,7 @@
 "scr_XMLNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: |
+    OnVisible: |-
         =Set(
             isLoading,
             true
@@ -250,6 +250,26 @@
             Set(
                 SelectedQueue,
                 InProgress
+            )
+        );
+        If(
+            IsEmpty(
+                Filter(
+                    lockedItems,
+                    ThisRecord.documentId = SelectedDocumentName
+                )
+            ),
+            Collect(
+                lockedItems,
+                ForAll(
+                    colEntries As entry,
+                    {
+                        documentId: SelectedDocumentName,
+                        lineId: entry.Source_Ref_No,
+                        entryId: entry.Entry_No,
+                        isLocked: false
+                    }
+                )
             )
         );
 
