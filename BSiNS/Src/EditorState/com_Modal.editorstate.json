@@ -2696,6 +2696,14 @@
           "InvariantPropertyName": "TriggerOutput",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"None\"",
+          "InvariantPropertyName": "ValidationState",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
         }
       ],
       "DynamicProperties": [
@@ -2806,6 +2814,11 @@
           "Category": "Data",
           "PropertyName": "TriggerOutput",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ValidationState",
+          "RuleProviderType": "User"
         },
         {
           "Category": "Design",

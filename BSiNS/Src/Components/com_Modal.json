@@ -1130,6 +1130,14 @@
                                 "InvariantPropertyName": "TriggerOutput",
                                 "IsLockable": false,
                                 "NameMapSourceSchema": "?"
+                              },
+                              {
+                                "AFDDataSourceName": "",
+                                "AutoRuleBindingEnabled": false,
+                                "AutoRuleBindingString": "\"None\"",
+                                "InvariantPropertyName": "ValidationState",
+                                "IsLockable": false,
+                                "NameMapSourceSchema": "?"
                               }
                             ],
                             "ControlUniqueId": "30",
@@ -1256,6 +1264,12 @@
                                 "InvariantScript": "'TextInputCanvas.TriggerOutput'.Keypress",
                                 "Property": "TriggerOutput",
                                 "RuleProviderType": "Unknown"
+                              },
+                              {
+                                "Category": "Data",
+                                "InvariantScript": "If(IsBlank(inp_LotNo.Value),\"EmptyField_Error\", \"None\")",
+                                "Property": "ValidationState",
+                                "RuleProviderType": "User"
                               },
                               {
                                 "Category": "Design",
@@ -6014,7 +6028,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638567287280993756",
+    "LastModifiedTimestamp": "638567294138451810",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6224,7 +6238,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638567287280993756",
+  "LastModifiedTimestamp": "638567294138451810",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
