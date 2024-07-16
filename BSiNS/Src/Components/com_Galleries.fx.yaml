@@ -265,11 +265,26 @@ com_Galleries As CanvasComponent:
                         );
                         //Reset(glr_Lines);
                         //Set(isModalOpen, true);
-                    Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew
+                    Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =lbl_Line4.Y - 10
                     ZIndex: =18
+
+                icn_InvRemove As icon.AddDocument:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Color: =App.Theme.Colors.Darker30
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =32
+                    Icon: =Icon.Trash
+                    OnSelect: |
+                        =Remove(colLines, LookUp(colLines, 'Line_No.' = glr_Lines.Selected.'Line_No.'))
+                    Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))
+                    Width: =32
+                    X: =Parent.TemplateWidth - 50
+                    Y: =lbl_Line4.Y - 10
+                    ZIndex: =20
 
                 Group1 As group:
                     Height: =5
@@ -809,4 +824,19 @@ com_Galleries As CanvasComponent:
                         X: =16
                         Y: =12
                         ZIndex: =12
+
+                icn_InvRemove_3 As icon.AddDocument:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Color: =App.Theme.Colors.Darker30
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(244, 244, 244, 1)
+                    Height: =32
+                    Icon: =Icon.Trash
+                    OnSelect: |
+                        =Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No))
+                    Visible: =com_Galleries.EntriesToDisplay && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))
+                    Width: =32
+                    X: =Parent.TemplateWidth - 50
+                    Y: =Body2_7.Y - 10
+                    ZIndex: =14
 
