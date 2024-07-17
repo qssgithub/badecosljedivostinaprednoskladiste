@@ -99,7 +99,7 @@ com_Footer As CanvasComponent:
                 Layout: ='ButtonCanvas.Layout'.IconAfter
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
-                OnSelect: |
+                OnSelect: |-
                     =Set(
                         isLoading,
                         true

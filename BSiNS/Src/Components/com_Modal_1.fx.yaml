@@ -1,0 +1,205 @@
+com_Modal_1 As CanvasComponent:
+    ChildTabPriority: =
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =App.Height
+    IsInventura: =false
+    IsNabavniNalog: =false
+    LineId: ="Text"
+    LotNo: =
+    LotNoPropVisible: =!LotNoPropVisibleCheck
+    Quantity: =
+    QuantityCompleted: =
+    QuantityNewLOT: =
+    ResEntryId: ="Text"
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    con_ModalFade_1 As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 0, 0, 0.5)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+        con_Modal_1 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.ExtraBold
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =298
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =If(isMobile, Parent.Width * 80%, Parent.Width * 25%)
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+            ZIndex: =1
+
+            vrt_Modal_1 As groupContainer.verticalAutoLayoutContainer:
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =299
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =1
+
+                hrz_ModalHeader_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    Fill: |
+                        =RGBA(189, 49, 51, 1)
+                    FillPortions: =0
+                    Height: =50
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =5
+                    PaddingRight: =5
+                    ZIndex: =1
+
+                    txt_ModalHeader_1 As Text:
+                        Align: ='TextCanvas.Align'.Center
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FillPortions: =1
+                        FontColor: =RGBA(255, 255, 255, 1)
+                        Height: =32
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        Size: =20
+                        Text: =
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btn_ModalClose_1 As Button:
+                        Appearance: ='ButtonCanvas.Appearance'.Transparent
+                        BasePaletteColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        FontColor: =RGBA(255, 255, 255, 1)
+                        FontSize: =32
+                        Height: =32
+                        Icon: ="DismissCircle"
+                        IconStyle: ='ButtonCanvas.IconStyle'.Filled
+                        Layout: ='ButtonCanvas.Layout'.IconOnly
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =Set(
+                                isModalOpen,
+                                false
+                            );
+                        Text: ="Zatvori"
+                        Width: =32
+                        X: =40
+                        Y: =40
+                        ZIndex: =2
+
+                vrt_ModalBody_1 As groupContainer.verticalAutoLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =0
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingBottom: =10
+                    ZIndex: =2
+
+                    Container13_14 As groupContainer.verticalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =30
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Visible: |
+                            =!com_Modal_1.IsInventura && !com_Modal_1.IsNabavniNalog
+                        ZIndex: =4
+
+                        TextCanvas3_15 As Text:
+                            Align: ='TextCanvas.Align'.Center
+                            AutoHeight: =true
+                            BorderStyle: =""
+                            DisplayMode: =DisplayMode.Edit
+                            Height: =32
+                            LayoutMinHeight: =32
+                            LayoutMinWidth: =96
+                            Size: =20
+                            Text: ="Jeste li sigurni da želite poslati na obradu u navision?"
+                            Width: =200
+                            X: =40
+                            Y: =40
+                            ZIndex: =1
+
+                hrz_ModalFooter_1 As groupContainer.horizontalAutoLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    DropShadow: =DropShadow.Light
+                    FillPortions: =0
+                    Height: =50
+                    LayoutAlignItems: =LayoutAlignItems.Center
+                    LayoutGap: =10
+                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    ZIndex: =3
+
+                    btn_ModalSave_1 As Button:
+                        Align: =Align.Justify
+                        BasePaletteColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="Save"
+                        Layout: ='ButtonCanvas.Layout'.TextOnly
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: |
+                            =Set(
+                                isModalOpen,
+                                false
+                            );
+                        Text: ="Odustani"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+                    btn_ModalSave_2 As Button:
+                        Align: =Align.Justify
+                        BasePaletteColor: =
+                        BorderStyle: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="Save"
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        LayoutMinHeight: =32
+                        LayoutMinWidth: =96
+                        OnSelect: =
+                        Text: ="Spasi"
+                        Width: =96
+                        X: =0
+                        Y: =0
+                        ZIndex: =2
+
