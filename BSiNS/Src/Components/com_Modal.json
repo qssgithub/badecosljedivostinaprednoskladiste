@@ -4805,9 +4805,9 @@
                           },
                           {
                             "Category": "Behavior",
-                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_rezQty_2.Value)}\n    ),\n    If(com_Modal.IsNabavniNalog,\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(inp_rezQty_2.Value),\n            LOT_No: Text(inp_LotNo.Value)\n        }\n    ),\n    Patch(\n        colEntries,\n        LookUp(\n            colEntries,\n            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n        ),\n        {\n            Quantity_Completed: Value(-inp_rezQty_2.Value),\n            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n        }\n    ))\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nReset(inp_LotNo);\nSet(\n    isModalOpen,\n    false\n);\n",
+                            "InvariantScript": "If(\n    com_Modal.IsInventura,\n    Patch(\n        colLines,\n        LookUp(\n            colLines,\n            'Line_No.' = com_Modal.LineId\n        ),\n        {\n            Lot_No: Text(inp_LotNo.Value),\n            Qty_Phys_Inventory: Value(inp_rezQty_2.Value)\n        }\n    ),\n    If(\n        com_Modal.IsNabavniNalog,\n        Patch(\n            colEntries,\n            LookUp(\n                colEntries,\n                Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n            ),\n            {\n                Quantity_Completed: Value(inp_rezQty_2.Value),\n                LOT_No: Text(inp_LotNo.Value)\n            }\n        ),\n        Patch(\n            colEntries,\n            LookUp(\n                colEntries,\n                Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId\n            ),\n            {\n                Quantity_Completed: Value(-inp_rezQty_2.Value),\n                Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)\n            }\n        );\n        If(Value(inp_potrebnoQty_2.Value) > 0, Set(Prelot, true))\n    )\n);\nReset(inp_rezQty_2);\nReset(inp_potrebnoQty_2);\nReset(inp_LotNo);\nSet(\n    isModalOpen,\n    false\n);\n",
                             "Property": "OnSelect",
-                            "RuleProviderType": "Unknown"
+                            "RuleProviderType": "User"
                           }
                         ],
                         "StyleName": "",
@@ -6084,7 +6084,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638567962419977969",
+    "LastModifiedTimestamp": "638568011005330424",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6294,7 +6294,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638567962419977969",
+  "LastModifiedTimestamp": "638568011005330424",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

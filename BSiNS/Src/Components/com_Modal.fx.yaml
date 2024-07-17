@@ -445,31 +445,37 @@ com_Modal As CanvasComponent:
                                         colLines,
                                         'Line_No.' = com_Modal.LineId
                                     ),
-                                    {Lot_No: Text(inp_LotNo.Value), Qty_Phys_Inventory: Value(inp_rezQty_2.Value)}
-                                ),
-                                If(com_Modal.IsNabavniNalog,
-                                Patch(
-                                    colEntries,
-                                    LookUp(
-                                        colEntries,
-                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
-                                    ),
                                     {
-                                        Quantity_Completed: Value(inp_rezQty_2.Value),
-                                        LOT_No: Text(inp_LotNo.Value)
+                                        Lot_No: Text(inp_LotNo.Value),
+                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
                                     }
                                 ),
-                                Patch(
-                                    colEntries,
-                                    LookUp(
+                                If(
+                                    com_Modal.IsNabavniNalog,
+                                    Patch(
                                         colEntries,
-                                        Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                        LookUp(
+                                            colEntries,
+                                            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                        ),
+                                        {
+                                            Quantity_Completed: Value(inp_rezQty_2.Value),
+                                            LOT_No: Text(inp_LotNo.Value)
+                                        }
                                     ),
-                                    {
-                                        Quantity_Completed: Value(-inp_rezQty_2.Value),
-                                        Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
-                                    }
-                                ))
+                                    Patch(
+                                        colEntries,
+                                        LookUp(
+                                            colEntries,
+                                            Entry_No = com_Modal.ResEntryId && Source_Ref_No = com_Modal.LineId
+                                        ),
+                                        {
+                                            Quantity_Completed: Value(-inp_rezQty_2.Value),
+                                            Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
+                                        }
+                                    );
+                                    If(Value(inp_potrebnoQty_2.Value) > 0, Set(Prelot, true))
+                                )
                             );
                             Reset(inp_rezQty_2);
                             Reset(inp_potrebnoQty_2);
