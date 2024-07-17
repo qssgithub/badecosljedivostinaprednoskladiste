@@ -7321,7 +7321,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "LookUp(\n    colLines,\n    Item_No = ScannedItem\n)",
+                    "InvariantScript": "LookUp(\n    colLines,\n    'Line_No.' = ScannedItem\n)",
                     "Property": "Default",
                     "RuleProviderType": "Unknown"
                   },
@@ -13106,7 +13106,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638568126627705171",
+    "LastModifiedTimestamp": "638568131880696754",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -13340,7 +13340,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638568126627705171",
+  "LastModifiedTimestamp": "638568131880696754",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

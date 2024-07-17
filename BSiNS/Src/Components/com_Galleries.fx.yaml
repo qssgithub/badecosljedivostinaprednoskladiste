@@ -73,7 +73,7 @@ com_Galleries As CanvasComponent:
                 Default: |-
                     =LookUp(
                         colLines,
-                        Item_No = ScannedItem
+                        'Line_No.' = ScannedItem
                     )
                 DelayItemLoading: =true
                 Items: =colLines
