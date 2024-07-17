@@ -1273,7 +1273,15 @@
                   "PaddingTop",
                   "PaddingRight",
                   "PaddingBottom",
-                  "PaddingLeft"
+                  "PaddingLeft",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  }
                 ],
                 "ControlUniqueId": "34",
                 "DynamicProperties": [
@@ -1566,6 +1574,12 @@
                     "InvariantScript": "5",
                     "Property": "PaddingLeft",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "Prelot",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   }
                 ],
                 "StyleName": "defaultLabelStyle",
@@ -1923,7 +1937,15 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "PaddingRight"
+                  "PaddingRight",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  }
                 ],
                 "ControlUniqueId": "36",
                 "DynamicProperties": [
@@ -2072,6 +2094,12 @@
                     "InvariantScript": "15",
                     "Property": "X",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "Prelot",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Behavior",
@@ -2935,7 +2963,7 @@
       },
       "JSONData"
     ],
-    "LastModifiedTimestamp": "638567962419980580",
+    "LastModifiedTimestamp": "638568012273132496",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3025,7 +3053,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638567962419980580",
+  "LastModifiedTimestamp": "638568012273132496",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"

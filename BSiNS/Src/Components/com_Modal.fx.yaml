@@ -474,7 +474,7 @@ com_Modal As CanvasComponent:
                                             Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
                                         }
                                     );
-                                    If(Value(inp_potrebnoQty_2.Value) > 0 && !Prelot, Set(Prelot, true))
+                                    If(Value(inp_potrebnoQty_2.Value) > 0 && !Prelot, Set(Prelot, true), Set(Prelot,false)
                                 )
                             );
                             Reset(inp_rezQty_2);
