@@ -424,8 +424,14 @@ com_Modal As CanvasComponent:
                         BasePaletteColor: =
                         BorderStyle: =""
                         DisplayMode: |-
-                            =If(
+                            =/*If(
                                 inp_rezQty_2.ValidationState = "Value_Error" || inp_rezQty_2.ValidationState = "Quantity_Error" || inp_potrebnoQty_2.ValidationState = "Value_Error" || (inp_potrebnoQty_2.ValidationState = "Quantity_Error" && !com_Modal.IsInventura) || inp_LotNo.ValidationState = "RequiredField_Error" || inp_rezQty_2.ValidationState = "RequiredField_Error",
+                                DisplayMode.Disabled,
+                                DisplayMode.Edit
+                            )*/
+                            
+                            If(
+                                inp_rezQty_2.ValidationState = "Value_Error" || inp_rezQty_2.ValidationState = "Quantity_Error"  || inp_rezQty_2.ValidationState = "RequiredField_Error" || inp_potrebnoQty_2.ValidationState = "Value_Error" || inp_potrebnoQty_2.ValidationState = "Quantity_Error" || inp_LotNo.ValidationState = "RequiredField_Error",
                                 DisplayMode.Disabled,
                                 DisplayMode.Edit
                             )
