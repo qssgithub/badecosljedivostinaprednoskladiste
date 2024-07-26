@@ -145,7 +145,7 @@ com_Modal As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =80
                             Size: =20
-                            Text: ="LOT"
+                            Text: ="LOT- " & inp_LotNo.ValidationState
                             Width: =200
                             X: =40
                             Y: =40
@@ -240,7 +240,7 @@ com_Modal As CanvasComponent:
                             Type: ="Text"
                             ValidationState: |-
                                 =If(
-                                    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0,
+                                    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0 || (com_Modal.IsNabavniNalog && Value(inp_rezQty_2.Value) = 0),
                                     "Value_Error",
                                     If(
                                         com_Modal.IsInventura && (IsBlank(inp_rezQty_2.Value) || (IsBlank(LookUp(lockedItems, lineId = com_Modal.LineId)) && Value(inp_rezQty_2.Value) = 0)),
@@ -357,15 +357,16 @@ com_Modal As CanvasComponent:
                                 =If(
                                     !IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0,
                                     "Value_Error",
-                                    /*If(
-                                        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),*/
+                                    If(
+                                        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),
                                         If(
                                             (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                             "Quantity_Error",
                                             "None"
-                                        )/*,
+                                        ),
                                         "None"
-                                    )*/
+                                    ),
+                                    "None"
                                 )
                             Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))
                             Width: =200
@@ -431,9 +432,9 @@ com_Modal As CanvasComponent:
                             )*/
                             
                             If(
-                                inp_rezQty_2.ValidationState = "Value_Error" || inp_rezQty_2.ValidationState = "Quantity_Error"  || inp_rezQty_2.ValidationState = "RequiredField_Error" || inp_potrebnoQty_2.ValidationState = "Value_Error" || inp_potrebnoQty_2.ValidationState = "Quantity_Error" || inp_LotNo.ValidationState = "RequiredField_Error",
-                                DisplayMode.Disabled,
-                                DisplayMode.Edit
+                                inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None",
+                                DisplayMode.Edit,
+                                DisplayMode.Disabled
                             )
                         Height: =32
                         Icon: ="Save"
