@@ -518,7 +518,7 @@
                         PaddingRight: =0
                         PaddingTop: =0
                         Text: =First(Split(Last(Split(ThisItem.FileName, "_")).Value, ".")).Value
-                        Width: =Parent.TemplateWidth - 86
+                        Width: =Parent.TemplateWidth - 150
                         X: =16
                         Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
                         ZIndex: =1
@@ -537,6 +537,7 @@
                         PaddingRight: =12
                         PaddingTop: =12
                         Tooltip: ="View item details"
+                        Visible: =false
                         Width: =50
                         X: =Parent.TemplateWidth - Self.Width - 12
                         Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
@@ -559,6 +560,27 @@
                         Visible: =ThisItem.IsSelected
                         Width: =4
                         ZIndex: =4
+
+                    icn_EntryNext_1 As icon.ChevronRight:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =App.Theme.Colors.Darker40
+                        Color: =RGBA(201, 128, 0, 1)
+                        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                        DisabledColor: =RGBA(244, 244, 244, 1)
+                        FocusedBorderThickness: =0
+                        Height: =50
+                        Icon: =Icon.Enhance
+                        OnSelect: =Select(Parent)
+                        PaddingBottom: =12
+                        PaddingLeft: =12
+                        PaddingRight: =12
+                        PaddingTop: =12
+                        Tooltip: ="View item details"
+                        Visible: =ThisItem.QueueName = ReadyForProcessing
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width - 15
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                        ZIndex: =5
 
                 spn_EntryLoader As Spinner:
                     Appearance: ='Spinner.Appearance'.Primary
