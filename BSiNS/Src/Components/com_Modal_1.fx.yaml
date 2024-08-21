@@ -182,20 +182,22 @@ com_Modal_1 As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.TextOnly
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |+
+                        OnSelect: |
                             =Set(
                                 isLoading,
                                 true
                             );
-                            
                             IfError(
-                                Set(reportFileContent,
-                                    Return.Run(
-                                        "SPO",
-                                        SelectedFile,
-                                        ReadyForProcessing,
-                                        ReadyForNAVProcessing
-                                    )
+                                Set(
+                                    reportFileContent,
+                                    (ParseJSON(
+                                        Return.Run(
+                                            "SPO",
+                                            SelectedFile,
+                                            ReadyForProcessing,
+                                            ReadyForNAVProcessing
+                                        ).response
+                                    ).Sales_Header)
                                 ),
                                 Notify(
                                     "Došlo je do greške!",
@@ -205,9 +207,9 @@ com_Modal_1 As CanvasComponent:
                                 Navigate(
                                     scr_XMLNalogZaProdaju,
                                     ScreenTransition.Fade
-                                )
+                                ),
+                                Set(isModalOpen,false)
                             );
-                            
                         Text: ="Zatraži povrat"
                         Width: =150
                         X: =0
