@@ -1,4 +1,20 @@
 {
+  "39882083-f5b7-44f0-9818-4379865b0e4a": {
+    "connectionRef": {
+      "displayName": "BadecoTestConnector",
+      "gatewayObjectIdHint": "2a4608a9-fe7f-424b-b36e-c711d1da011a",
+      "iconUri": "https://prodapiicons.cdn.powerappscdn.net/20240703t000000z39a30dbfe6904056b01a4b5471222dfe/customconnectoricon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
+    ],
+    "id": "39882083-f5b7-44f0-9818-4379865b0e4a"
+  },
   "67bba9e1-7f90-4731-9c75-063e8ec266fb": {
     "connectionRef": {
       "displayName": "Logic flows",
@@ -229,7 +245,7 @@
       "Return"
     ],
     "dependencies": {
-      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": "ebad923c-4252-450c-971d-040e72fa5467"
+      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": "39882083-f5b7-44f0-9818-4379865b0e4a"
     },
     "dependents": [],
     "id": "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
@@ -297,21 +313,5 @@
     },
     "dependents": [],
     "id": "e8881786-c8c5-4028-a337-24a2d24fded3"
-  },
-  "ebad923c-4252-450c-971d-040e72fa5467": {
-    "connectionRef": {
-      "displayName": "BadecoTestConnector",
-      "gatewayObjectIdHint": "2a4608a9-fe7f-424b-b36e-c711d1da011a",
-      "iconUri": "https://prodapiicons.cdn.powerappscdn.net/20240703t000000z39a30dbfe6904056b01a4b5471222dfe/customconnectoricon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383",
-      "isOnPremiseConnection": true
-    },
-    "datasets": {},
-    "dataSources": [],
-    "dependencies": {},
-    "dependents": [
-      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
-    ],
-    "id": "ebad923c-4252-450c-971d-040e72fa5467"
   }
 }

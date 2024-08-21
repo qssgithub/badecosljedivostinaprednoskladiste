@@ -182,13 +182,14 @@ com_Modal_1 As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.TextOnly
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |-
+                        OnSelect: |+
                             =Set(
                                 isLoading,
                                 true
                             );
+                            
                             IfError(
-                                Set(ReturnFileContent,
+                                Set(reportFileContent,
                                     Return.Run(
                                         "SPO",
                                         SelectedFile,
@@ -203,13 +204,10 @@ com_Modal_1 As CanvasComponent:
                                 ),
                                 Navigate(
                                     scr_XMLNalogZaProdaju,
-                                    ScreenTransition.Fade,{xmlData:ReturnFileContent}
+                                    ScreenTransition.Fade
                                 )
                             );
-                            Set(
-                                isLoading,
-                                false
-                            );
+                            
                         Text: ="Zatraži povrat"
                         Width: =150
                         X: =0
