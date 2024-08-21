@@ -621,3 +621,42 @@
                     Y: =0
                     ZIndex: =3
 
+            hrz_EntryDropdown_1 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =If(isMobile, 200, 40)
+                LayoutAlignItems: =LayoutAlignItems.Stretch
+                LayoutDirection: =If(isMobile, LayoutDirection.Vertical, LayoutDirection.Horizontal)
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                LayoutMinHeight: =80
+                LayoutMinWidth: =350
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                Width: =Parent.Width
+                ZIndex: =5
+
+                Container3 As groupContainer.manualLayoutContainer:
+                    DropShadow: =DropShadow.Light
+                    LayoutMinHeight: =40
+                    LayoutMinWidth: =250
+                    RadiusBottomLeft: =4
+                    RadiusBottomRight: =4
+                    RadiusTopLeft: =4
+                    RadiusTopRight: =4
+                    ZIndex: =1
+
+                    ButtonCanvas1 As Button:
+                        DisplayMode: =DisplayMode.Edit
+                        Height: =32
+                        Icon: ="ArrowReset"
+                        Layout: ='ButtonCanvas.Layout'.IconAfter
+                        Text: ="Povrat"
+                        Width: =105
+                        X: =Parent.Width - ButtonCanvas1.Width
+                        Y: =(Parent.Height - ButtonCanvas1.Height)/2
+                        ZIndex: =1
+
