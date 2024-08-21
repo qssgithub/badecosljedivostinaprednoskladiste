@@ -182,7 +182,33 @@ com_Modal_1 As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.TextOnly
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: =
+                        OnSelect: |
+                            =Set(
+                                isLoading,
+                                true
+                            );
+                            IfError(
+                                Return.Run(
+                                    "SPO",
+                                    SelectedFile,
+                                    ReadyForProcessing,
+                                    ReadyForNAVProcessing
+                                ),
+                                Notify(
+                                    "Došlo je do greške!",
+                                    NotificationType.Error,
+                                    2000
+                                ),
+                                Navigate(
+                                    scr_XMLNalogZaProdaju,
+                                    ScreenTransition.Fade
+                                );
+                                
+                            );
+                            Set(
+                                isLoading,
+                                false
+                            );
                         Text: ="Zatraži povrat"
                         Width: =150
                         X: =0
