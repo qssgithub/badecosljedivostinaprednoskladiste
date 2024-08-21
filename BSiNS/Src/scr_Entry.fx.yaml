@@ -654,6 +654,7 @@
                         Height: =32
                         Icon: ="ArrowReset"
                         Layout: ='ButtonCanvas.Layout'.IconAfter
+                        OnSelect: =Set(isModalOpen, true)
                         Text: ="Povrat"
                         Width: =105
                         X: =Parent.Width - ButtonCanvas1.Width
