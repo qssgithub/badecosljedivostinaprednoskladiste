@@ -78,6 +78,11 @@
         Width: =Parent.Width
         ZIndex: =1
 
+        com_Modal_2 As com_Modal_1:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            Visible: =isModalOpen
+
         com_EntryHeader As com_Header:
             ChildTabPriority: =
             Height: =75
@@ -85,6 +90,7 @@
             LayoutMinHeight: =75
             LayoutMinWidth: =350
             Title: ="BADECO SLJEDIVOST I NAPREDNO SKLADIŠTE"
+            ZIndex: =2
 
         vrt_EntryBody As groupContainer.verticalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
