@@ -10,11 +10,6 @@
         
         If(
             !IsBlank(xmlData),
-            true,
-            false
-        );
-        If(
-            !IsBlank(xmlData),
             UpdateContext({xmlData: xmlData}),
             If(
                 !IsBlank(SelectedFile),

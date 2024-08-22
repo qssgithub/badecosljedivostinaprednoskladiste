@@ -625,7 +625,7 @@
             hrz_EntryDropdown_1 As groupContainer.horizontalAutoLayoutContainer:
                 AlignInContainer: =AlignInContainer.SetByContainer
                 FillPortions: =0
-                Height: =If(isMobile, 200, 40)
+                Height: =40
                 LayoutAlignItems: =LayoutAlignItems.Stretch
                 LayoutDirection: =If(isMobile, LayoutDirection.Vertical, LayoutDirection.Horizontal)
                 LayoutGap: =10

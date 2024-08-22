@@ -87,7 +87,8 @@ com_Modal_1 As CanvasComponent:
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =Set(
+                            =Reset(FileNameNumberInput);
+                            Set(
                                 isModalOpen,
                                 false
                             );
@@ -130,6 +131,7 @@ com_Modal_1 As CanvasComponent:
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Broj naloga"
+                            TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
                             Width: =320
                             X: =0
                             Y: =0
@@ -154,7 +156,7 @@ com_Modal_1 As CanvasComponent:
                         Align: =Align.Justify
                         BasePaletteColor: =
                         BorderStyle: =""
-                        DisplayMode: =DisplayMode.Edit
+                        DisplayMode: =If(IsBlank(FileNameNumberInput.Value), DisplayMode.Disabled, DisplayMode.Edit)
                         Height: =32
                         Icon: ="Save"
                         Layout: ='ButtonCanvas.Layout'.TextOnly
@@ -162,10 +164,6 @@ com_Modal_1 As CanvasComponent:
                         LayoutMinWidth: =96
                         OnSelect: |-
                             =Set(
-                                isLoading,
-                                true
-                            );
-                            Set(
                                 fileName,
                                 FileNameNumberInput.Value
                             );
@@ -193,10 +191,11 @@ com_Modal_1 As CanvasComponent:
                                     //true
                                     Reset(FileNameNumberInput);
                                     Notify(
-                                        "Povrat je već izvršen.",
-                                        NotificationType.Information,
-                                        2000
-                                    ),
+                                    "Povrat je već izvršen.",
+                                    NotificationType.Error,
+                                    2000
+                                )
+                                    ,
                                     //false
                                     Set(
                                         isModalOpen,

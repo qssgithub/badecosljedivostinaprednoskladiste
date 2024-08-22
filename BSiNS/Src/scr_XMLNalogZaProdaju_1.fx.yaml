@@ -1,0 +1,426 @@
+"scr_XMLNalogZaProdaju_1 As screen.'autoLayout_HeaderFooter_ver1.0'":
+    Fill: =RGBA(234, 83, 109, 1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+    OnHidden: =
+    OnVisible: |
+        =Set(
+            isLoading,
+            true
+        );
+        
+        If(
+            !IsBlank(xmlData),
+            UpdateContext({xmlData: xmlData}),
+            If(
+                !IsBlank(SelectedFile),
+                IfError(
+                    UpdateContext(
+                        {
+                            xmlData: (ParseJSON(
+                                GetXml.Run(
+                                    SelectedFile,
+                                    SelectedQueue
+                                ).response
+                            ).Sales_Header)
+                        }
+                    ),
+                    Notify(
+                        "Greška u obradi.",
+                        NotificationType.Error,
+                        2000
+                    )
+                )
+            )
+        );
+        UpdateContext(
+            {
+                header: {
+                    Amount: Text(xmlData.Amount),
+                    Amount_Including_VAT: Text(xmlData.Amount_Including_VAT),
+                    Bank_Name: Text(xmlData.Bank_Name),
+                    Bank_No: Text(xmlData.Bank_No),
+                    'Bill-to_Contact_No.': Text(xmlData.'Bill-to_Contact_No.'),
+                    'Bill-to_Address': Text(xmlData.'Bill-to_Address'),
+                    'Bill-to_City': Text(xmlData.'Bill-to_City'),
+                    'Bill-to_Contact': Text(xmlData.'Bill-to_Contact'),
+                    'Bill-to_Cust_No': Text(xmlData.'Bill-to_Cust_No'),
+                    'Bill-to_Name': Text(xmlData.'Bill-to_Name'),
+                    'Bill-to_PostCode': Text(xmlData.'Bill-to_PostCode'),
+                    Customer_Price_Group: Text(xmlData.Customer_Price_Group),
+                    Document_Date: Text(xmlData.Document_Date),
+                    Document_Type: Text(xmlData.Document_Type),
+                    Due_Date: Text(xmlData.Due_Date),
+                    Ext_Doc_No: Text(xmlData.Ext_Doc_No),
+                    'Gen._Bus._Posting_Group': Text(xmlData.'Gen._Bus._Posting_Group'),
+                    Location_Code: Text(xmlData.Location_Code),
+                    'No.': Text(xmlData.'No.'),
+                    Order_Date: Text(xmlData.Order_Date),
+                    Payement_Disc: Text(xmlData.Payement_Disc),
+                    Payement_Method_Code: Text(xmlData.Payement_Method_Code),
+                    Payment_Terms_Code: Text(xmlData.Payment_Terms_Code),
+                    Posting_Date: Text(xmlData.Posting_Date),
+                    Pmt_Discount_Date: Text(xmlData.Pmt_Discount_Date),
+                    Quote_No: Text(xmlData.Quote_No),
+                    Salesperson_Code: Text(xmlData.Salesperson_Code),
+                    'Sell-To_Contact_No.': Text(xmlData.'Sell-To_Contact_No.'),
+                    'Sell-To_Customer_No.': Text(xmlData.'Sell-To_Customer_No.'),
+                    'Sell-to_Address': Text(xmlData.'Sell-to_Address'),
+                    'Sell-to_City': Text(xmlData.'Sell-to_City'),
+                    'Sell-to_Contact': Text(xmlData.'Sell-to_Contact'),
+                    'Sell-to_Customer_Name': Text(xmlData.'Sell-to_Customer_Name'),
+                    'Sell-to_PostCode': Text(xmlData.'Sell-to_PostCode'),
+                    Shipp_Agent_Code: Text(xmlData.Shipp_Agent_Code),
+                    Shipp_Agent_Service_Code: Text(xmlData.Shipp_Agent_Service_Code),
+                    Shipp_Date: Text(xmlData.Shipp_Date),
+                    Shipp_Method_Code: Text(xmlData.Shipp_Method_Code),
+                    'Ship-to_Address': Text(xmlData.'Ship-to_Address'),
+                    'Ship-to_City': Text(xmlData.'Ship-to_City'),
+                    'Ship-to_Code': Text(xmlData.'Ship-to_Code'),
+                    'Ship-to_Contact': Text(xmlData.'Ship-to_Contact'),
+                    'Ship-to_Name': Text(xmlData.'Ship-to_Name'),
+                    'Ship-to_Post_Code': Text(xmlData.'Ship-to_Post_Code'),
+                    Shortcut_Dimension_1_Code: Text(xmlData.Shortcut_Dimension_1_Code),
+                    Status: Text(xmlData.Status),
+                    Tax_Area_Code: Text(xmlData.Tax_Area_Code),
+                    Transport_Method: Text(xmlData.Transport_Method),
+                    'VAT_Bus._Posting_Group': Text(xmlData.'VAT_Bus._Posting_Group'),
+                    VAT_Country_Code: Text(xmlData.VAT_Country_Code),
+                    'VAT_Registration_No.': Text(xmlData.'VAT_Registration_No.'),
+                    VAT_Date: Text(xmlData.VAT_Date)
+                }
+            }
+        );
+        IfError(
+            ForAll(
+                xmlData.Sales_Line As line,
+                Collect(
+                    colLines,
+                    {
+                        Description: Text(line.Description),
+                        Document_No: Text(line.Document_No),
+                        Document_Type: Text(line.Document_Type),
+                        Item_No: Text(line.Item_No),
+                        Line_Amount: Text(line.Line_Amount),
+                        Line_Discount_Amount: Text(line.Line_Discount_Amount),
+                        Line_No: Text(line.Line_No),
+                        Location_Code: Text(line.Location_Code),
+                        Outstand_Quantity: Text(line.Outstand_Quantity),
+                        Posting_Group: Text(line.Posting_Group),
+                        'Qty-to_Invoice': Text(line.'Qty-to_Invoice'),
+                        'Qty-to_Ship': Text(line.'Qty-to_Ship'),
+                        Quantity: Text(line.Quantity),
+                        'Sell-to_Customer_No.': Text(line.'Sell-to_Customer_No.'),
+                        Type: Text(line.Type),
+                        Unit_Of_Measure: Text(line.Unit_Of_Measure),
+                        Unit_Price: Text(line.Unit_Price)
+                    }
+                );
+                IfError(
+                    ForAll(
+                        line.Res_Entry As entry,
+                        Collect(
+                            colEntries,
+                            {
+                                Created_By: Text(entry.Created_By),
+                                Creation_Date: Text(entry.Creation_Date),
+                                Entry_No: Text(entry.Entry_No),
+                                Exp_Date: Text(entry.Exp_Date),
+                                Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                                Item_No: Text(entry.Item_No),
+                                Item_Tracking: Text(entry.Item_Tracking),
+                                LOT_No: Text(entry.LOT_No),
+                                Location_Code: Text(entry.Location_Code),
+                                Positive: Text(entry.Positive),
+                                'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                                'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                                Quantity: Text(entry.Quantity),
+                                Quantity_Base: Text(entry.Quantity_Base),
+                                Quantity_Completed: Value(entry.Quantity_Completed),
+                                Quantity_NewLOT: Value(entry.Quantity_NewLOT),
+                                Res_Status: Text(entry.Res_Status),
+                                Shipment_Date: Text(entry.Shipment_Date),
+                                Source_ID: Text(entry.Source_ID),
+                                Source_Ref_No: Text(entry.Source_Ref_No),
+                                Source_SubType: Text(entry.Source_SubType),
+                                Source_Type: Text(entry.Source_Type)
+                            }
+                        )
+                    ),
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(line.Res_Entry.Created_By),
+                            Creation_Date: Text(line.Res_Entry.Creation_Date),
+                            Entry_No: Text(line.Res_Entry.Entry_No),
+                            Exp_Date: Text(line.Res_Entry.Exp_Date),
+                            Exp_Receipt_Date: Text(line.Res_Entry.Exp_Receipt_Date),
+                            Item_No: Text(line.Res_Entry.Item_No),
+                            Item_Tracking: Text(line.Res_Entry.Item_Tracking),
+                            LOT_No: Text(line.Res_Entry.LOT_No),
+                            Location_Code: Text(line.Res_Entry.Location_Code),
+                            Positive: Text(line.Res_Entry.Positive),
+                            'Qty-to-Handle_Base': Text(line.Res_Entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(line.Res_Entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(line.Res_Entry.Quantity),
+                            Quantity_Base: Text(line.Res_Entry.Quantity_Base),
+                            Quantity_Completed: Value(line.Res_Entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(line.Res_Entry.Quantity_NewLOT),
+                            Res_Status: Text(line.Res_Entry.Res_Status),
+                            Shipment_Date: Text(line.Res_Entry.Shipment_Date),
+                            Source_ID: Text(line.Res_Entry.Source_ID),
+                            Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
+                            Source_SubType: Text(line.Res_Entry.Source_SubType),
+                            Source_Type: Text(line.Res_Entry.Source_Type)
+                        }
+                    )
+                )
+            ),
+            ClearCollect(
+                colLines,
+                {
+                    Description: Text(xmlData.Sales_Line.Description),
+                    Document_No: Text(xmlData.Sales_Line.Document_No),
+                    Document_Type: Text(xmlData.Sales_Line.Document_Type),
+                    Item_No: Text(xmlData.Sales_Line.Item_No),
+                    Line_Amount: Text(xmlData.Sales_Line.Line_Amount),
+                    Line_Discount_Amount: Text(xmlData.Sales_Line.Line_Discount_Amount),
+                    Line_No: Text(xmlData.Sales_Line.Line_No),
+                    Location_Code: Text(xmlData.Sales_Line.Location_Code),
+                    Outstand_Quantity: Text(xmlData.Sales_Line.Outstand_Quantity),
+                    Posting_Group: Text(xmlData.Sales_Line.Posting_Group),
+                    'Qty-to_Invoice': Text(xmlData.Sales_Line.'Qty-to_Invoice'),
+                    'Qty-to_Ship': Text(xmlData.Sales_Line.'Qty-to_Ship'),
+                    Quantity: Text(xmlData.Sales_Line.Quantity),
+                    'Sell-to_Customer_No.': Text(xmlData.Sales_Line.'Sell-to_Customer_No.'),
+                    Type: Text(xmlData.Sales_Line.Type),
+                    Unit_Of_Measure: Text(xmlData.Sales_Line.Unit_Of_Measure),
+                    Unit_Price: Text(xmlData.Sales_Line.Unit_Price)
+                }
+            );
+            IfError(
+                ForAll(
+                    xmlData.Sales_Line.Res_Entry As entry,
+                    Collect(
+                        colEntries,
+                        {
+                            Created_By: Text(entry.Created_By),
+                            Creation_Date: Text(entry.Creation_Date),
+                            Entry_No: Text(entry.Entry_No),
+                            Exp_Date: Text(entry.Exp_Date),
+                            Exp_Receipt_Date: Text(entry.Exp_Receipt_Date),
+                            Item_No: Text(entry.Item_No),
+                            Item_Tracking: Text(entry.Item_Tracking),
+                            LOT_No: Text(entry.LOT_No),
+                            Location_Code: Text(entry.Location_Code),
+                            Positive: Text(entry.Positive),
+                            'Qty-to-Handle_Base': Text(entry.'Qty-to-Handle_Base'),
+                            'Qty-to-Invoice_Base': Text(entry.'Qty-to-Invoice_Base'),
+                            Quantity: Text(entry.Quantity),
+                            Quantity_Base: Text(entry.Quantity_Base),
+                            Quantity_Completed: Value(entry.Quantity_Completed),
+                            Quantity_NewLOT: Value(entry.Quantity_NewLOT),
+                            Res_Status: Text(entry.Res_Status),
+                            Shipment_Date: Text(entry.Shipment_Date),
+                            Source_ID: Text(entry.Source_ID),
+                            Source_Ref_No: Text(entry.Source_Ref_No),
+                            Source_SubType: Text(entry.Source_SubType),
+                            Source_Type: Text(entry.Source_Type)
+                        }
+                    )
+                ),
+                ClearCollect(
+                    colEntries,
+                    {
+                        Created_By: Text(xmlData.Sales_Line.Res_Entry.Created_By),
+                        Creation_Date: Text(xmlData.Sales_Line.Res_Entry.Creation_Date),
+                        Entry_No: Text(xmlData.Sales_Line.Res_Entry.Entry_No),
+                        Exp_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Date),
+                        Exp_Receipt_Date: Text(xmlData.Sales_Line.Res_Entry.Exp_Receipt_Date),
+                        Item_No: Text(xmlData.Sales_Line.Res_Entry.Item_No),
+                        Item_Tracking: Text(xmlData.Sales_Line.Res_Entry.Item_Tracking),
+                        LOT_No: Text(xmlData.Sales_Line.Res_Entry.LOT_No),
+                        Location_Code: Text(xmlData.Sales_Line.Res_Entry.Location_Code),
+                        Positive: Text(xmlData.Sales_Line.Res_Entry.Positive),
+                        'Qty-to-Handle_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Handle_Base'),
+                        'Qty-to-Invoice_Base': Text(xmlData.Sales_Line.Res_Entry.'Qty-to-Invoice_Base'),
+                        Quantity: Text(xmlData.Sales_Line.Res_Entry.Quantity),
+                        Quantity_Base: Text(xmlData.Sales_Line.Res_Entry.Quantity_Base),
+                        Quantity_Completed: Value(xmlData.Sales_Line.Res_Entry.Quantity_Completed),
+                        Quantity_NewLOT: Value(xmlData.Sales_Line.Quantity_NewLOT),
+                        Res_Status: Text(xmlData.Sales_Line.Res_Entry.Res_Status),
+                        Shipment_Date: Text(xmlData.Sales_Line.Res_Entry.Shipment_Date),
+                        Source_ID: Text(xmlData.Sales_Line.Res_Entry.Source_ID),
+                        Source_Ref_No: Text(xmlData.Sales_Line.Res_Entry.Source_Ref_No),
+                        Source_SubType: Text(xmlData.Sales_Line.Res_Entry.Source_SubType),
+                        Source_Type: Text(xmlData.Sales_Line.Res_Entry.Source_Type)
+                    }
+                )
+            )
+        );
+        Set(
+            isLoading,
+            false
+        );
+        If(
+            SelectedQueue = ReadyForProcessing,
+            ChangeXmlStatus.Run(
+                SelectedFile,
+                SelectedQueue,
+                InProgress
+            );
+            Set(
+                SelectedQueue,
+                InProgress
+            )
+        );
+        If(
+            IsEmpty(
+                Filter(
+                    lockedItems,
+                    ThisRecord.documentId = SelectedDocumentName
+                )
+            ),
+            Collect(
+                lockedItems,
+                ForAll(
+                    colEntries As entry,
+                    {
+                        documentId: SelectedDocumentName,
+                        lineId: entry.Source_Ref_No,
+                        entryId: entry.Entry_No,
+                        isLocked: false
+                    }
+                )
+            )
+        );
+
+    vrt_Pro_1 As groupContainer.verticalAutoLayoutContainer:
+        DropShadow: =DropShadow.Light
+        Fill: =RGBA(245, 245, 245, 1)
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        LayoutOverflowY: =LayoutOverflow.Scroll
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =Parent.Width
+        ZIndex: =2
+
+        com_ProHeader_1 As com_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =App.Width
+            Title: ="NALOG ZA PRODAJU"
+
+        vrt_ProBody_1 As groupContainer.horizontalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =RGBA(214, 221, 224, 1)
+            Height: =49
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =5
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMinHeight: =100
+            LayoutMinWidth: =App.Width
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingRight: =5
+            PaddingTop: =5
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =!isLoading
+            Width: =Max(App.Width, App.MinScreenWidth)
+            ZIndex: =2
+
+            com_ProHeaderData_1 As com_HeaderData:
+                LayoutMinHeight: =640
+                LayoutMinWidth: =350
+                Line1Label: |-
+                    ="Broj naloga:"
+                Line1Value: =header.'No.'
+                Line2Label: |-
+                    ="Datum dokumenta:"
+                Line2Value: =header.Document_Date
+                Line3Label: |-
+                    ="Kupac:"
+                Line3Value: =header.'Bill-to_Name'
+                Line4Label: |-
+                    ="Datum narudžbe:"
+                Line4Value: =header.Order_Date
+                Line5Label: |-
+                    ="Datum knjiženja:"
+                Line5Value: =header.Posting_Date
+                Visible: =wizardStep = 1
+                Width: =
+
+            com_ProGalleries_1 As com_Galleries:
+                EntryLabels: |-
+                    ={Line1: "Broj unosa:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana kol.:", Line5: "Porebna kol.:"}
+                FillPortions: =1
+                LayoutMinHeight: =200
+                LayoutMinWidth: =350
+                LineLabels: |-
+                    ={Line1: "Broj artikla:", Line2: "Naziv artikla:", Line3: "Količina:", Line4: "Količina za slanje:", Line5: ""}
+                LineValuePosition: |-
+                    ={Item_No: 0, Posting_Group: Blank(), Inv_Posting_Group: Blank(), Description: 1, Quantity: 2, Unit_Of_Measure: Blank(), 'Qty-to_Ship': 3, Line_No: Blank(), LotNo: Blank(), Exp_Date: Blank(), QtyInv: Blank()}
+                LineValueVisibility: |-
+                    ={Line_No: false, Item_No: true, Posting_Group: false, Inv_Posting_Group: false, Description: true, Quantity: true, Unit_Of_Measure: false, 'Qty-to_Ship': true, LotNo: false, Exp_Date: false, QtyInv: false}
+                NumberOfLinesToDisplay: =4
+                Visible: =true
+                ZIndex: =2
+
+        spn_ProLoader_2 As Spinner:
+            BasePaletteColor: =
+            DisplayMode: =DisplayMode.Edit
+            FillPortions: =1
+            FontColor: =
+            Height: =200
+            Label: ="Učitavam dokument..."
+            LabelPosition: ='Spinner.LabelPosition'.Below
+            LayoutMinHeight: =200
+            LayoutMinWidth: =350
+            SpinnerSize: ='Spinner.SpinnerSize'.Huge
+            Visible: =isLoading
+            Width: =200
+            X: =0
+            Y: =0
+            ZIndex: =3
+
+        com_ProFooter_1 As com_Footer:
+            JSONData: |-
+                ="{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
+                    AddColumns(
+                        header,
+                        Sales_Line,
+                        ForAll(
+                            colLines As line,
+                            AddColumns(
+                                line,
+                                Res_Entry,
+                                Filter(
+                                    colEntries,
+                                    ThisRecord.Source_Ref_No = line.Line_No
+                                )
+                            )
+                        )
+                    )
+                ) & "}"
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ZIndex: =4
+
+    com_ProModal_1 As com_Modal:
+        LineId: =com_ProGalleries_1.SelectedLine.Line_No
+        LotNoPropVisible: =false
+        Quantity: =Abs(com_ProGalleries_1.SelectedEntry.Quantity)
+        QuantityCompleted: =Abs(com_ProGalleries_1.SelectedEntry.Quantity_Completed)
+        QuantityNewLOT: =Abs(com_ProGalleries_1.SelectedEntry.Quantity_NewLOT)
+        ResEntryId: =com_ProGalleries_1.SelectedEntry.Entry_No
+        Visible: =isModalOpen
+        ZIndex: =3
+
