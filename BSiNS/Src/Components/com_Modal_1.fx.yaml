@@ -2,15 +2,6 @@ com_Modal_1 As CanvasComponent:
     ChildTabPriority: =
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
-    IsInventura: =false
-    IsNabavniNalog: =false
-    LineId: ="Text"
-    LotNo: =
-    LotNoPropVisible: =!LotNoPropVisibleCheck
-    Quantity: =
-    QuantityCompleted: =
-    QuantityNewLOT: =
-    ResEntryId: ="Text"
     Width: =App.Width
     X: =0
     Y: =0
@@ -131,8 +122,6 @@ com_Modal_1 As CanvasComponent:
                         RadiusBottomRight: =4
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
-                        Visible: |
-                            =!com_Modal_1.IsInventura && !com_Modal_1.IsNabavniNalog
                         ZIndex: =4
 
                         "TextInputCanvas1 As 'Text input'":
@@ -151,6 +140,7 @@ com_Modal_1 As CanvasComponent:
                             FontColor: =RGBA(255, 0, 0, 1)
                             Height: =32
                             LayoutMinHeight: =32
+                            LayoutMinWidth: =96
                             Text: =
                             Width: =320
                             X: =0

@@ -78,11 +78,6 @@
         Width: =Parent.Width
         ZIndex: =1
 
-        com_Modal_2 As com_Modal_1:
-            LayoutMinHeight: =640
-            LayoutMinWidth: =640
-            Visible: =isModalOpen
-
         com_EntryHeader As com_Header:
             ChildTabPriority: =
             Height: =75
@@ -666,4 +661,8 @@
                         X: =Parent.Width - ButtonCanvas1.Width
                         Y: =(Parent.Height - ButtonCanvas1.Height)/2
                         ZIndex: =1
+
+    com_Modal_2 As com_Modal_1:
+        Visible: =isModalOpen
+        ZIndex: =2
 

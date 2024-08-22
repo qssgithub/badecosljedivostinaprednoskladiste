@@ -1074,6 +1074,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "scr_Entry",
+                "type": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "scr_Entry.vrt_Entry.vrt_EntryBody.con_EntryData.glr_EntryXMLFiles.AccessibleLabel"
                 }
               ],
@@ -2317,36 +2347,6 @@
                 "member": "AccessibleLabel",
                 "module": "scr_XMLTemeljniceInventure",
                 "type": "scr_XMLTemeljniceInventure.vrt_Inv.spn_ProLoader_1"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 2
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
-                  "fullyQualifiedName": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "scr_Entry",
-                "type": "scr_Entry.vrt_Entry.vrt_EntryBody.hrz_EntryDropdown_1.Container3.ButtonCanvas1"
               }
             }
           ],

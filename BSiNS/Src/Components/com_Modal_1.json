@@ -68,7 +68,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "35",
+                        "ControlUniqueId": "20",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": {
@@ -315,7 +315,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "36",
+                        "ControlUniqueId": "21",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -586,7 +586,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "34",
+                    "ControlUniqueId": "19",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -843,7 +843,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "352",
+                            "ControlUniqueId": "24",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": "FillPortions",
@@ -996,7 +996,7 @@
                                 "NameMapSourceSchema": "?"
                               }
                             ],
-                            "ControlUniqueId": "353",
+                            "ControlUniqueId": "25",
                             "DynamicProperties": [
                               {
                                 "ControlPropertyState": {
@@ -1016,10 +1016,24 @@
                                 }
                               },
                               {
-                                "PropertyName": "AlignInContainer"
+                                "ControlPropertyState": "AlignInContainer",
+                                "PropertyName": "AlignInContainer",
+                                "Rule": {
+                                  "Category": "Design",
+                                  "InvariantScript": "AlignInContainer.SetByContainer",
+                                  "Property": "AlignInContainer",
+                                  "RuleProviderType": "Unknown"
+                                }
                               },
                               {
-                                "PropertyName": "LayoutMinWidth"
+                                "ControlPropertyState": "LayoutMinWidth",
+                                "PropertyName": "LayoutMinWidth",
+                                "Rule": {
+                                  "Category": "Design",
+                                  "InvariantScript": "96",
+                                  "Property": "LayoutMinWidth",
+                                  "RuleProviderType": "Unknown"
+                                }
                               },
                               {
                                 "ControlPropertyState": {
@@ -1204,16 +1218,9 @@
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
                           },
-                          {
-                            "AFDDataSourceName": "",
-                            "AutoRuleBindingEnabled": false,
-                            "AutoRuleBindingString": "true",
-                            "InvariantPropertyName": "Visible",
-                            "IsLockable": false,
-                            "NameMapSourceSchema": "?"
-                          }
+                          "Visible"
                         ],
-                        "ControlUniqueId": "38",
+                        "ControlUniqueId": "23",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": {
@@ -1444,7 +1451,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "!com_Modal_1.IsInventura && !com_Modal_1.IsNabavniNalog\n",
+                            "InvariantScript": "true",
                             "Property": "Visible",
                             "RuleProviderType": "User"
                           }
@@ -1579,7 +1586,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "37",
+                    "ControlUniqueId": "22",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -1900,7 +1907,7 @@
                           },
                           "BorderStyle"
                         ],
-                        "ControlUniqueId": "42",
+                        "ControlUniqueId": "27",
                         "DynamicProperties": [
                           {
                             "ControlPropertyState": "FillPortions",
@@ -2176,7 +2183,7 @@
                         "NameMapSourceSchema": "?"
                       }
                     ],
-                    "ControlUniqueId": "40",
+                    "ControlUniqueId": "26",
                     "DynamicProperties": [
                       {
                         "ControlPropertyState": {
@@ -2537,7 +2544,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "33",
+                "ControlUniqueId": "18",
                 "HasDynamicProperties": false,
                 "Index": 0,
                 "IsAutoGenerated": false,
@@ -2797,7 +2804,7 @@
               },
               "Visible"
             ],
-            "ControlUniqueId": "32",
+            "ControlUniqueId": "17",
             "HasDynamicProperties": false,
             "Index": 0,
             "IsAutoGenerated": false,
@@ -2975,7 +2982,7 @@
           {
             "AFDDataSourceName": "",
             "AutoRuleBindingEnabled": false,
-            "AutoRuleBindingString": "RGBA(0, 0, 0, 0)",
+            "AutoRuleBindingString": "",
             "InvariantPropertyName": "Fill",
             "IsLockable": false,
             "NameMapSourceSchema": "?"
@@ -3064,7 +3071,7 @@
           },
           "Visible"
         ],
-        "ControlUniqueId": "31",
+        "ControlUniqueId": "16",
         "HasDynamicProperties": false,
         "Index": 0,
         "IsAutoGenerated": false,
@@ -3264,124 +3271,11 @@
         "InvariantPropertyName": "ChildTabPriority",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
-      },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsInventura",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      "LineId",
-      "ResEntryId",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "100",
-        "InvariantPropertyName": "QuantityNewLOT",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "100",
-        "InvariantPropertyName": "QuantityCompleted",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      "Quantity",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "\"Text\"",
-        "InvariantPropertyName": "LotNo",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "100",
-        "InvariantPropertyName": "Qty_Phys_Inventory",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsNabavniNalog",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      },
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "((IsBlank(com_Modal_1.LotNo) && com_Modal_1.IsInventura) || com_Modal_1.IsNabavniNalog)",
-        "InvariantPropertyName": "LotNoPropVisible",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638598526709159496",
+    "LastModifiedTimestamp": "638599082084545116",
     "Name": "com_Modal_1",
     "Rules": [
-      {
-        "Category": "Data",
-        "InvariantScript": "false",
-        "Property": "IsInventura",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "",
-        "Property": "QuantityNewLOT",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "\"Text\"",
-        "Property": "LineId",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "",
-        "Property": "QuantityCompleted",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "\"Text\"",
-        "Property": "ResEntryId",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "",
-        "Property": "LotNo",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "false",
-        "Property": "IsNabavniNalog",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "!LotNoPropVisibleCheck",
-        "Property": "LotNoPropVisible",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "",
-        "Property": "Quantity",
-        "RuleProviderType": "System"
-      },
       {
         "Category": "Design",
         "InvariantScript": "1",
@@ -3435,98 +3329,7 @@
   },
   "ComponentType": "CanvasComponent",
   "CustomGroupControlTemplateName": "",
-  "CustomProperties": [
-    {
-      "Category": 0,
-      "DisplayName": "IsInventura",
-      "Hidden": false,
-      "Name": "IsInventura",
-      "PropertyDataTypeKey": "Boolean",
-      "Tooltip": "Is Inventura screen",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "LineId",
-      "Hidden": false,
-      "Name": "LineId",
-      "PropertyDataTypeKey": "String",
-      "Tooltip": "Line Id",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "ResEntryId",
-      "Hidden": false,
-      "Name": "ResEntryId",
-      "PropertyDataTypeKey": "String",
-      "Tooltip": "Res Entry Id",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "QuantityNewLOT",
-      "Hidden": false,
-      "Name": "QuantityNewLOT",
-      "PropertyDataTypeKey": "Number",
-      "Tooltip": "Quantity New LOT",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "QuantityCompleted",
-      "Hidden": false,
-      "Name": "QuantityCompleted",
-      "PropertyDataTypeKey": "Number",
-      "Tooltip": "Quantity Completed",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "Quantity",
-      "Hidden": false,
-      "Name": "Quantity",
-      "PropertyDataTypeKey": "Number",
-      "Tooltip": "Quantity",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "LotNo",
-      "Hidden": false,
-      "Name": "LotNo",
-      "PropertyDataTypeKey": "String",
-      "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"String\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "Qty_Phys_Inventory",
-      "Hidden": false,
-      "Name": "Qty_Phys_Inventory",
-      "PropertyDataTypeKey": "Number",
-      "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Number\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "IsNabavniNalog",
-      "Hidden": false,
-      "Name": "IsNabavniNalog",
-      "PropertyDataTypeKey": "Boolean",
-      "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "LotNoPropVisible",
-      "Hidden": false,
-      "Name": "LotNoPropVisible",
-      "PropertyDataTypeKey": "Boolean",
-      "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
-    }
-  ],
+  "CustomProperties": [],
   "FirstParty": true,
   "Id": "http://microsoft.com/appmagic/Component",
   "IsComponentLocked": false,
@@ -3535,7 +3338,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638598526709159496",
+  "LastModifiedTimestamp": "638599082084545116",
   "Name": "a8f898543d684b218fac4358ee328aa0",
   "OverridableProperties": {},
   "TemplateOriginalName": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
