@@ -135,17 +135,6 @@ com_Modal_1 As CanvasComponent:
                             Y: =0
                             ZIndex: =1
 
-                        Label2 As label:
-                            BorderColor: =App.Theme.Colors.Darker40
-                            Color: =RGBA(255, 0, 0, 1)
-                            DisabledColor: =RGBA(166, 166, 166, 1)
-                            Font: =App.Theme.Font
-                            Size: =13
-                            Text: ="Povrat za navedeni nalog je izvršen ili nalog uopšte ne postoji."
-                            Visible: =false
-                            Width: =320
-                            ZIndex: =2
-
                 hrz_ModalFooter_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer
                     DropShadow: =DropShadow.Light
@@ -171,48 +160,59 @@ com_Modal_1 As CanvasComponent:
                         Layout: ='ButtonCanvas.Layout'.TextOnly
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
-                        OnSelect: |
+                        OnSelect: |-
                             =Set(
                                 isLoading,
                                 true
                             );
                             Set(
-                                doc,
+                                fileName,
                                 FileNameNumberInput.Value
                             );
                             IfError(
+                                //condition
                                 Set(
                                     reportFileContent,
-                                    //ParseJSON(
-                                        Return.Run(
-                                            "SPO",
-                                            doc,
-                                            ReadyForProcessing,
-                                            ReadyForNAVProcessing
-                                        ).response
-                                    //)
+                                    Return.Run(
+                                        "SPO",
+                                        fileName,
+                                        ReadyForProcessing,
+                                        ReadyForNAVProcessing
+                                    ).response
                                 ),
+                                //true
                                 Notify(
                                     "Došlo je do greške!",
                                     NotificationType.Error,
                                     2000
                                 ),
-                                
+                                //false
                                 If(
+                                    //condition
                                     reportFileContent = "{}",
+                                    //true
                                     Reset(FileNameNumberInput);
-                                    Label2.Visible = true,
+                                    Notify(
+                                        "Povrat je već izvršen.",
+                                        NotificationType.Information,
+                                        2000
+                                    ),
+                                    //false
                                     Set(
                                         isModalOpen,
                                         false
                                     );
-                                    Label2.Visible = true;
                                     Navigate(
                                         scr_XMLNalogZaProdaju,
                                         ScreenTransition.Fade,
                                         {xmlData: ParseJSON(reportFileContent).Sales_Header}
                                     )
                                 )
+                            );
+                            
+                            Set(
+                                fileName,
+                                Blank()
                             );
                         Text: ="Zatraži povrat"
                         Width: =150
