@@ -202,7 +202,7 @@ com_Modal_1 As CanvasComponent:
                                         false
                                     );
                                     Navigate(
-                                        scr_XMLNalogZaProdaju,
+                                        scr_XMLNalogZaProdaju_1,
                                         ScreenTransition.Fade,
                                         {xmlData: ParseJSON(reportFileContent).Sales_Header}
                                     )

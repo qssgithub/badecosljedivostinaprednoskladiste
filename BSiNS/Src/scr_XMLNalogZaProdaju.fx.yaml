@@ -7,28 +7,23 @@
             isLoading,
             true
         );
-        
         If(
-            !IsBlank(xmlData),
-            UpdateContext({xmlData: xmlData}),
-            If(
-                !IsBlank(SelectedFile),
-                IfError(
-                    UpdateContext(
-                        {
-                            xmlData: (ParseJSON(
-                                GetXml.Run(
-                                    SelectedFile,
-                                    SelectedQueue
-                                ).response
-                            ).Sales_Header)
-                        }
-                    ),
-                    Notify(
-                        "Greška u obradi.",
-                        NotificationType.Error,
-                        2000
-                    )
+            !IsBlank(SelectedFile),
+            IfError(
+                UpdateContext(
+                    {
+                        xmlData: (ParseJSON(
+                            GetXml.Run(
+                                SelectedFile,
+                                SelectedQueue
+                            ).response
+                        ).Sales_Header)
+                    }
+                ),
+                Notify(
+                    "Greška u obradi.",
+                    NotificationType.Error,
+                    2000
                 )
             )
         );
