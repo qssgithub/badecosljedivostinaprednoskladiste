@@ -1,6 +1,6 @@
 {
   "ControlStates": {
-    "com_ProFooter_1": {
+    "com_PovFooter": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -92,7 +92,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_ProFooter_1",
+      "Name": "com_PovFooter",
       "OptimizeForDevices": "Off",
       "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
@@ -141,7 +141,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_ProGalleries_1": {
+    "com_PovGalleries": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -314,7 +314,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_ProGalleries_1",
+      "Name": "com_PovGalleries",
       "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
@@ -418,7 +418,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_ProHeader_1": {
+    "com_PovHeader": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -511,7 +511,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_ProHeader_1",
+      "Name": "com_PovHeader",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -565,7 +565,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_ProHeaderData_1": {
+    "com_PovHeaderData": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -743,7 +743,7 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_ProHeaderData_1",
+      "Name": "com_PovHeaderData",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -837,7 +837,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "com_ProModal_1": {
+    "com_PovModal": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "Fill",
@@ -943,14 +943,14 @@
         "Description": ""
       },
       "MetaDataIDKey": "",
-      "Name": "com_ProModal_1",
+      "Name": "com_PovModal",
       "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
           "Category": "Data",
-          "PropertyName": "LineId",
+          "PropertyName": "Quantity",
           "RuleProviderType": "Unknown"
         },
         {
@@ -960,17 +960,17 @@
         },
         {
           "Category": "Data",
-          "PropertyName": "QuantityNewLOT",
-          "RuleProviderType": "Unknown"
-        },
-        {
-          "Category": "Data",
           "PropertyName": "QuantityCompleted",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
-          "PropertyName": "Quantity",
+          "PropertyName": "QuantityNewLOT",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "LineId",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1037,7 +1037,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "scr_XMLNalogZaProdaju_1": {
+    "scr_XMLNalogPovrata": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         {
@@ -1073,7 +1073,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "scr_XMLNalogZaProdaju_1",
+      "Name": "scr_XMLNalogPovrata",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -1110,12 +1110,12 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Orientation",
+          "PropertyName": "Size",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Size",
+          "PropertyName": "Orientation",
           "RuleProviderType": "Unknown"
         },
         {
@@ -1132,7 +1132,7 @@
       "StyleName": "defaultScreenStyle",
       "Type": "ControlInfo"
     },
-    "spn_ProLoader_2": {
+    "spn_PovLoader": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "X",
@@ -1251,7 +1251,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "spn_ProLoader_2",
+      "Name": "spn_PovLoader",
       "OptimizeForDevices": "Off",
       "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
@@ -1320,7 +1320,7 @@
       "StyleName": "",
       "Type": "ControlInfo"
     },
-    "vrt_Pro_1": {
+    "vrt_Pov": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         "BorderColor",
@@ -1409,7 +1409,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "%ScreenContainer.ID%",
-      "Name": "vrt_Pro_1",
+      "Name": "vrt_Pov",
       "OptimizeForDevices": "Off",
       "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
@@ -1516,13 +1516,13 @@
         },
         {
           "Category": "Design",
-          "PropertyName": "Height",
+          "PropertyName": "Width",
           "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
-          "PropertyName": "Width",
-          "RuleProviderType": "User"
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",
@@ -1553,7 +1553,7 @@
       "StyleName": "defaultGroupContainerStyle",
       "Type": "ControlInfo"
     },
-    "vrt_ProBody_1": {
+    "vrt_PovBody": {
       "AllowAccessToGlobals": true,
       "ControlPropertyState": [
         {
@@ -1773,7 +1773,7 @@
       "IsLocked": false,
       "LayoutName": "",
       "MetaDataIDKey": "",
-      "Name": "vrt_ProBody_1",
+      "Name": "vrt_PovBody",
       "OptimizeForDevices": "Off",
       "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
@@ -1928,5 +1928,5 @@
       "Type": "ControlInfo"
     }
   },
-  "TopParentName": "scr_XMLNalogZaProdaju_1"
+  "TopParentName": "scr_XMLNalogPovrata"
 }

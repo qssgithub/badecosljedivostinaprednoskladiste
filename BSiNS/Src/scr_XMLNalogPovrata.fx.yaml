@@ -1,4 +1,4 @@
-"scr_XMLNalogZaProdaju_1 As screen.'autoLayout_HeaderFooter_ver1.0'":
+"scr_XMLNalogPovrata As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
     OnHidden: =
@@ -294,7 +294,7 @@
             )
         );
 
-    vrt_Pro_1 As groupContainer.verticalAutoLayoutContainer:
+    vrt_Pov As groupContainer.verticalAutoLayoutContainer:
         DropShadow: =DropShadow.Light
         Fill: =RGBA(245, 245, 245, 1)
         Height: =Parent.Height
@@ -309,12 +309,12 @@
         Width: =Parent.Width
         ZIndex: =2
 
-        com_ProHeader_1 As com_Header:
+        com_PovHeader As com_Header:
             LayoutMinHeight: =640
             LayoutMinWidth: =App.Width
             Title: ="NALOG ZA POVRAT"
 
-        vrt_ProBody_1 As groupContainer.horizontalAutoLayoutContainer:
+        vrt_PovBody As groupContainer.horizontalAutoLayoutContainer:
             AlignInContainer: =AlignInContainer.SetByContainer
             BorderColor: =RGBA(214, 221, 224, 1)
             Height: =49
@@ -337,7 +337,7 @@
             Width: =Max(App.Width, App.MinScreenWidth)
             ZIndex: =2
 
-            com_ProHeaderData_1 As com_HeaderData:
+            com_PovHeaderData As com_HeaderData:
                 LayoutMinHeight: =640
                 LayoutMinWidth: =350
                 Line1Label: |-
@@ -358,7 +358,7 @@
                 Visible: =wizardStep = 1
                 Width: =
 
-            com_ProGalleries_1 As com_Galleries:
+            com_PovGalleries As com_Galleries:
                 EntryLabels: |-
                     ={Line1: "Broj unosa:", Line2: "Rok trajanja:", Line3: "LOT:", Line4: "Rezervisana kol.:", Line5: "Porebna kol.:"}
                 FillPortions: =1
@@ -374,7 +374,7 @@
                 Visible: =true
                 ZIndex: =2
 
-        spn_ProLoader_2 As Spinner:
+        spn_PovLoader As Spinner:
             BasePaletteColor: =
             DisplayMode: =DisplayMode.Edit
             FillPortions: =1
@@ -391,7 +391,7 @@
             Y: =0
             ZIndex: =3
 
-        com_ProFooter_1 As com_Footer:
+        com_PovFooter As com_Footer:
             JSONData: |-
                 ="{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
                     AddColumns(
@@ -414,13 +414,13 @@
             LayoutMinWidth: =640
             ZIndex: =4
 
-    com_ProModal_1 As com_Modal:
-        LineId: =com_ProGalleries_1.SelectedLine.Line_No
+    com_PovModal As com_Modal:
+        LineId: =com_PovGalleries.SelectedLine.Line_No
         LotNoPropVisible: =false
-        Quantity: =Abs(com_ProGalleries_1.SelectedEntry.Quantity)
-        QuantityCompleted: =Abs(com_ProGalleries_1.SelectedEntry.Quantity_Completed)
-        QuantityNewLOT: =Abs(com_ProGalleries_1.SelectedEntry.Quantity_NewLOT)
-        ResEntryId: =com_ProGalleries_1.SelectedEntry.Entry_No
+        Quantity: =Abs(com_PovGalleries.SelectedEntry.Quantity)
+        QuantityCompleted: =Abs(com_PovGalleries.SelectedEntry.Quantity_Completed)
+        QuantityNewLOT: =Abs(com_PovGalleries.SelectedEntry.Quantity_NewLOT)
+        ResEntryId: =com_PovGalleries.SelectedEntry.Entry_No
         Visible: =isModalOpen
         ZIndex: =3
 
