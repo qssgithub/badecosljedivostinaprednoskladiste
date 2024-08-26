@@ -149,10 +149,10 @@ com_Modal_1 As CanvasComponent:
                             ZIndex: =2
 
                             DropdownCanvas1 As Dropdown.pcfdataset:
-                                DefaultSelectedItems: =["SPO"]
+                                DefaultSelectedItems: =First(ReturnTypes)
                                 DisplayMode: =DisplayMode.Edit
                                 Height: =40
-                                Items: =["SPO", "Ostalo"]
+                                Items: =ReturnTypes
                                 Width: =250
                                 X: =(Container2.Width-DropdownCanvas1.Width)/2
                                 Y: =(Container2.Height-DropdownCanvas1.Height)/2
