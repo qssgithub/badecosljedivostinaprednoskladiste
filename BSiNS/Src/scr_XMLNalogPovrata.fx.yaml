@@ -394,6 +394,7 @@
             ZIndex: =3
 
         com_PovFooter As com_Footer:
+            IsPovrat: =true
             JSONData: |-
                 ="{" & Char(34) & "Sales_Header" & Char(34) & ": " & JSON(
                     AddColumns(

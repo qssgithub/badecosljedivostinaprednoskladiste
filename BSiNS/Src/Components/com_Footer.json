@@ -901,7 +901,14 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "Visible"
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  }
                 ],
                 "ControlUniqueId": "25",
                 "DynamicProperties": [
@@ -1023,7 +1030,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "true",
+                    "InvariantScript": "com_Footer.IsPovrat",
                     "Property": "Visible",
                     "RuleProviderType": "User"
                   },
@@ -3193,7 +3200,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638602783400173185",
+    "LastModifiedTimestamp": "638602784985101499",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3298,7 +3305,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638602783400173185",
+  "LastModifiedTimestamp": "638602784985101499",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
