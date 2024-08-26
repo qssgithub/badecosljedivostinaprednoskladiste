@@ -38,7 +38,8 @@
           "InvariantPropertyName": "JSONData",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "IsPovrat"
       ],
       "DynamicProperties": [
         {
@@ -106,6 +107,11 @@
           "Category": "Data",
           "PropertyName": "IsInventura",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsPovrat",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",

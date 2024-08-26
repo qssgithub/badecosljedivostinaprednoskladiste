@@ -38,7 +38,8 @@
           "InvariantPropertyName": "JSONData",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
-        }
+        },
+        "IsPovrat"
       ],
       "DynamicProperties": [
         {
@@ -106,6 +107,11 @@
           "Category": "Data",
           "PropertyName": "IsInventura",
           "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsPovrat",
+          "RuleProviderType": "System"
         },
         {
           "Category": "Design",
@@ -917,13 +923,27 @@
           "NameMapSourceSchema": "?"
         },
         "Quantity",
-        "LotNo",
-        "Qty_Phys_Inventory",
-        "IsNabavniNalog",
         {
           "AFDDataSourceName": "",
           "AutoRuleBindingEnabled": false,
-          "AutoRuleBindingString": "/*IsEmpty(\n        Filter(\n            lockedItems,\n            ThisRecord.lineId = com_Modal.LineId\n        )\n    )*/\n!LotNoPropVisibleCheck",
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "LotNo",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Qty_Phys_Inventory",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "IsNabavniNalog",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
           "InvariantPropertyName": "LotNoPropVisible",
           "IsLockable": false,
           "NameMapSourceSchema": "?"
@@ -966,7 +986,7 @@
         {
           "Category": "Data",
           "PropertyName": "QuantityNewLOT",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
@@ -976,22 +996,22 @@
         {
           "Category": "Data",
           "PropertyName": "IsInventura",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "IsNabavniNalog",
-          "RuleProviderType": "System"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Data",
           "PropertyName": "LotNo",
-          "RuleProviderType": "System"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
           "PropertyName": "LotNoPropVisible",
-          "RuleProviderType": "User"
+          "RuleProviderType": "Unknown"
         },
         {
           "Category": "Design",

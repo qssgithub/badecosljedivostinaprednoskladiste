@@ -2,6 +2,7 @@ com_Footer As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     IsInventura: =false
+    IsPovrat: =true
     JSONData: ="Text"
     Width: =App.Width
     X: =0
@@ -90,6 +91,20 @@ com_Footer As CanvasComponent:
             Width: =Parent.Width
             ZIndex: =5
 
+            CheckboxCanvas1 As Checkbox:
+                CheckboxSize: =32
+                Checked: =true
+                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                FontSize: =20
+                Height: =32
+                Label: ="SPO"
+                OnCheck: =false
+                OnUncheck: =false
+                Width: =160
+                X: =
+                Y: =0
+                ZIndex: =1
+
             btn_Nav As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
@@ -143,7 +158,7 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =15
                 Y: =12
-                ZIndex: =1
+                ZIndex: =2
 
             Label1 As label:
                 BorderColor: =App.Theme.Colors.Darker40
@@ -154,7 +169,7 @@ com_Footer As CanvasComponent:
                 Size: =13
                 Text: =""
                 Width: =15
-                ZIndex: =2
+                ZIndex: =3
 
             btn_Prelot As Button:
                 BasePaletteColor: =
@@ -209,7 +224,7 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =15
                 Y: =12
-                ZIndex: =3
+                ZIndex: =4
 
             Label1_1 As label:
                 BorderColor: =App.Theme.Colors.Darker40
@@ -221,7 +236,7 @@ com_Footer As CanvasComponent:
                 Text: =""
                 Visible: =Prelot
                 Width: =15
-                ZIndex: =4
+                ZIndex: =5
 
             btn_Save As Button:
                 BasePaletteColor: =
@@ -262,5 +277,5 @@ com_Footer As CanvasComponent:
                 Width: =96
                 X: =39
                 Y: =12
-                ZIndex: =5
+                ZIndex: =6
 
