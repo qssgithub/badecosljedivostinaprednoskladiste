@@ -900,7 +900,8 @@
                     "InvariantPropertyName": "FontSize",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
-                  }
+                  },
+                  "Visible"
                 ],
                 "ControlUniqueId": "25",
                 "DynamicProperties": [
@@ -1019,6 +1020,12 @@
                     "InvariantScript": "1",
                     "Property": "ZIndex",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "true",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Behavior",
@@ -3177,9 +3184,16 @@
         "NameMapSourceSchema": "?"
       },
       "JSONData",
-      "IsPovrat"
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsPovrat",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638602774183816768",
+    "LastModifiedTimestamp": "638602783400173185",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3196,7 +3210,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "true",
+        "InvariantScript": "false",
         "Property": "IsPovrat",
         "RuleProviderType": "System"
       },
@@ -3284,7 +3298,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638602774183816768",
+  "LastModifiedTimestamp": "638602783400173185",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
