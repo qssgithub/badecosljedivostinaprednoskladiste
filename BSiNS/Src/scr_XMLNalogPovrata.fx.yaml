@@ -8,8 +8,10 @@
             true
         );
         
+        Set(reportFileContent, Blank());
+        
         If(
-            !(reportFileContent = "{}"),
+            !IsBlank(reportFileContent),
             UpdateContext({xmlData: ParseJSON(reportFileContent).Sales_Header}),
             If(
                 !IsBlank(SelectedFile),
