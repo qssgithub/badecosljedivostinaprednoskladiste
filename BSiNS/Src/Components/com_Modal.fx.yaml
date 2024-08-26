@@ -161,7 +161,7 @@ com_Modal As CanvasComponent:
                             Height: =32
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
-                            OnChange: =
+                            OnChange: =If(!IsBlank(inp_LotNo.Value) && Left(inp_LotNo.Value, 3) <> "LOT", inp_LotNo.Value = "LOT" & inp_LotNo.Value)
                             Placeholder: ="Unesite LOT"
                             Required: =true
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
