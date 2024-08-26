@@ -2,7 +2,6 @@ com_Footer As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     IsInventura: =false
-    IsPovrat: =false
     JSONData: ="Text"
     Width: =App.Width
     X: =0
@@ -102,7 +101,7 @@ com_Footer As CanvasComponent:
                 LayoutMinWidth: =160
                 OnCheck: =false
                 OnUncheck: =false
-                Visible: =com_Footer.IsPovrat
+                Visible: =false
                 Width: =160
                 X: =
                 Y: =0

@@ -1030,7 +1030,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "com_Footer.IsPovrat",
+                    "InvariantScript": "false",
                     "Property": "Visible",
                     "RuleProviderType": "User"
                   },
@@ -3190,17 +3190,9 @@
         "IsLockable": false,
         "NameMapSourceSchema": "?"
       },
-      "JSONData",
-      {
-        "AFDDataSourceName": "",
-        "AutoRuleBindingEnabled": false,
-        "AutoRuleBindingString": "true",
-        "InvariantPropertyName": "IsPovrat",
-        "IsLockable": false,
-        "NameMapSourceSchema": "?"
-      }
+      "JSONData"
     ],
-    "LastModifiedTimestamp": "638602784985101499",
+    "LastModifiedTimestamp": "638602786697546073",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3213,12 +3205,6 @@
         "Category": "Data",
         "InvariantScript": "\"Text\"",
         "Property": "JSONData",
-        "RuleProviderType": "System"
-      },
-      {
-        "Category": "Data",
-        "InvariantScript": "false",
-        "Property": "IsPovrat",
         "RuleProviderType": "System"
       },
       {
@@ -3286,15 +3272,6 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "Is Inventura screen",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
-    },
-    {
-      "Category": 0,
-      "DisplayName": "IsPovrat",
-      "Hidden": false,
-      "Name": "IsPovrat",
-      "PropertyDataTypeKey": "Boolean",
-      "Tooltip": "A custom property",
-      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -3305,7 +3282,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638602784985101499",
+  "LastModifiedTimestamp": "638602786697546073",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
