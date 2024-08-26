@@ -127,15 +127,36 @@ com_Modal_1 As CanvasComponent:
 
                         "FileNameNumberInput As 'Text input'":
                             DisplayMode: =DisplayMode.Edit
-                            Height: =32
+                            Height: =40
                             LayoutMinHeight: =32
                             LayoutMinWidth: =320
                             Placeholder: ="Broj naloga"
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
-                            Width: =320
+                            Width: =250
                             X: =0
                             Y: =0
                             ZIndex: =1
+
+                        Container2 As groupContainer.manualLayoutContainer:
+                            FillPortions: =0
+                            Height: =80
+                            LayoutMinHeight: =40
+                            LayoutMinWidth: =250
+                            RadiusBottomLeft: =4
+                            RadiusBottomRight: =4
+                            RadiusTopLeft: =4
+                            RadiusTopRight: =4
+                            ZIndex: =2
+
+                            DropdownCanvas1 As Dropdown.pcfdataset:
+                                DefaultSelectedItems: =["SPO"]
+                                DisplayMode: =DisplayMode.Edit
+                                Height: =40
+                                Items: =["SPO", "Ostalo"]
+                                Width: =250
+                                X: =(Container2.Width-DropdownCanvas1.Width)/2
+                                Y: =(Container2.Height-DropdownCanvas1.Height)/2
+                                ZIndex: =1
 
                 hrz_ModalFooter_1 As groupContainer.horizontalAutoLayoutContainer:
                     AlignInContainer: =AlignInContainer.SetByContainer

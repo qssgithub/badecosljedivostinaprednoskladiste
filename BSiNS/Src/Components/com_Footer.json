@@ -108,7 +108,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "34",
+                "ControlUniqueId": "22",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -371,7 +371,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "35",
+                "ControlUniqueId": "23",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -600,7 +600,7 @@
                 "NameMapSourceSchema": "?"
               }
             ],
-            "ControlUniqueId": "33",
+            "ControlUniqueId": "21",
             "DynamicProperties": [
               {
                 "ControlPropertyState": {
@@ -902,19 +902,47 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "330",
+                "ControlUniqueId": "25",
                 "DynamicProperties": [
                   {
-                    "PropertyName": "FillPortions"
+                    "ControlPropertyState": "FillPortions",
+                    "PropertyName": "FillPortions",
+                    "Rule": {
+                      "Category": "Design",
+                      "InvariantScript": "0",
+                      "Property": "FillPortions",
+                      "RuleProviderType": "Unknown"
+                    }
                   },
                   {
-                    "PropertyName": "AlignInContainer"
+                    "ControlPropertyState": "AlignInContainer",
+                    "PropertyName": "AlignInContainer",
+                    "Rule": {
+                      "Category": "Design",
+                      "InvariantScript": "AlignInContainer.SetByContainer",
+                      "Property": "AlignInContainer",
+                      "RuleProviderType": "Unknown"
+                    }
                   },
                   {
-                    "PropertyName": "LayoutMinWidth"
+                    "ControlPropertyState": "LayoutMinWidth",
+                    "PropertyName": "LayoutMinWidth",
+                    "Rule": {
+                      "Category": "Design",
+                      "InvariantScript": "160",
+                      "Property": "LayoutMinWidth",
+                      "RuleProviderType": "Unknown"
+                    }
                   },
                   {
-                    "PropertyName": "LayoutMinHeight"
+                    "ControlPropertyState": "LayoutMinHeight",
+                    "PropertyName": "LayoutMinHeight",
+                    "Rule": {
+                      "Category": "Design",
+                      "InvariantScript": "32",
+                      "Property": "LayoutMinHeight",
+                      "RuleProviderType": "Unknown"
+                    }
                   }
                 ],
                 "HasDynamicProperties": true,
@@ -1115,7 +1143,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "37",
+                "ControlUniqueId": "26",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -1367,7 +1395,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "38",
+                "ControlUniqueId": "27",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -1747,7 +1775,7 @@
                   "PaddingBottom",
                   "PaddingLeft"
                 ],
-                "ControlUniqueId": "39",
+                "ControlUniqueId": "28",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -2140,7 +2168,7 @@
                   },
                   "PaddingRight"
                 ],
-                "ControlUniqueId": "40",
+                "ControlUniqueId": "29",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -2364,7 +2392,7 @@
                   },
                   "BorderStyle"
                 ],
-                "ControlUniqueId": "41",
+                "ControlUniqueId": "30",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -2568,7 +2596,7 @@
               "RadiusBottomLeft",
               "RadiusBottomRight"
             ],
-            "ControlUniqueId": "36",
+            "ControlUniqueId": "24",
             "DynamicProperties": [
               {
                 "ControlPropertyState": "FillPortions",
@@ -2929,7 +2957,7 @@
             "NameMapSourceSchema": "?"
           }
         ],
-        "ControlUniqueId": "32",
+        "ControlUniqueId": "20",
         "HasDynamicProperties": false,
         "Index": 0,
         "IsAutoGenerated": false,
@@ -3151,7 +3179,7 @@
       "JSONData",
       "IsPovrat"
     ],
-    "LastModifiedTimestamp": "638602658341650517",
+    "LastModifiedTimestamp": "638602774183816768",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3256,7 +3284,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638602658341650517",
+  "LastModifiedTimestamp": "638602774183816768",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
