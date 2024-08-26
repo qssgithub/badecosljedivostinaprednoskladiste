@@ -167,7 +167,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
                             Type: ="Text"
                             ValidationState: =If(com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),"RequiredField_Error", "None")
-                            Value: =com_Modal.LotNo
+                            Value: =If(IsBlank(com_Modal.LotNo), "LOT" & Text(Today(), "ddmmyy"), com_Modal.LotNo)
                             Visible: =true
                             Width: =200
                             X: =40

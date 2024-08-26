@@ -1213,7 +1213,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "com_Modal.LotNo",
+                                "InvariantScript": "If(IsBlank(com_Modal.LotNo), \"LOT\" & Text(Today(), \"ddmmyy\"), com_Modal.LotNo)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -6084,7 +6084,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638602774183818543",
+    "LastModifiedTimestamp": "638602803853825455",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6294,7 +6294,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638602774183818543",
+  "LastModifiedTimestamp": "638602803853825455",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
