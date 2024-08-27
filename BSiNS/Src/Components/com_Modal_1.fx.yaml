@@ -221,6 +221,8 @@ com_Modal_1 As CanvasComponent:
                                         isModalOpen,
                                         false
                                     );
+                                    Set(SelectedFile, fileName);
+                                    Set(SelectedQueue, InProgress);
                                     Navigate(
                                         scr_XMLNalogPovrata,
                                         ScreenTransition.Fade,
