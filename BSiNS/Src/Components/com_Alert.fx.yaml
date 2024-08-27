@@ -30,19 +30,18 @@ com_Alert As CanvasComponent:
         Height: =40
         Width: =Parent.Width - 20
         X: =App.ActiveScreen.Width - TimerShowControl.Value
-        Y: =40
         ZIndex: =1
 
         Container8 As groupContainer.horizontalAutoLayoutContainer:
             DropShadow: =DropShadow.Light
+            Height: =40
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMode: =LayoutMode.Auto
             RadiusBottomLeft: =4
             RadiusBottomRight: =4
             RadiusTopLeft: =4
             RadiusTopRight: =4
-            X: =60
-            Y: =40
+            Width: =330
             ZIndex: =3
 
             Container6 As groupContainer.manualLayoutContainer:
@@ -105,17 +104,17 @@ com_Alert As CanvasComponent:
                 RadiusBottomRight: =4
                 RadiusTopLeft: =4
                 RadiusTopRight: =4
-                Width: =300
+                Width: =280
                 X: =40
                 Y: =40
                 ZIndex: =3
 
                 NotificationText As Text:
                     DisplayMode: =DisplayMode.Edit
-                    Height: =30
+                    Height: =31
                     Text: =com_Alert.Message
                     Weight: ="Regular"
-                    Width: =296
+                    Width: =273
                     Wrap: =true
                     X: =0
                     Y: =(Container7.Height-NotificationText.Height)/2
@@ -132,8 +131,8 @@ com_Alert As CanvasComponent:
         HoverBorderColor: =App.Theme.Colors.Darker10
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =App.Theme.Colors.Darker10
-        OnTimerEnd: =Set(timerHideShow, true);
-        OnTimerStart: =Set(timerHideShow, false);
+        OnTimerEnd: =Set(timerHideShow, false);Set(timerHideShow, true);
+        OnTimerStart: =
         PressedBorderColor: =App.Theme.Colors.Darker40
         PressedColor: =Self.Color
         PressedFill: =App.Theme.Colors.Darker40
@@ -154,8 +153,8 @@ com_Alert As CanvasComponent:
         HoverBorderColor: =App.Theme.Colors.Darker10
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =App.Theme.Colors.Darker10
-        OnTimerEnd: =Set(timerReset, true);
-        OnTimerStart: =Set(timerReset, false);
+        OnTimerEnd: =Set(timerReset, false);Set(timerReset, true);
+        OnTimerStart: =
         PressedBorderColor: =App.Theme.Colors.Darker40
         PressedColor: =Self.Color
         PressedFill: =App.Theme.Colors.Darker40
