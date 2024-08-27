@@ -211,6 +211,10 @@ com_Modal_1 As CanvasComponent:
                                     reportFileContent = "{}",
                                     //true
                                     Reset(FileNameNumberInput);
+                                    Set(alertDuration, 600);
+                                    Set(alertType, "Error");
+                                    Set(alertMsg, "Povrat je već izvršen");
+                                    Set(alertShow, true);
                                     Notify(
                                     "Povrat je već izvršen.",
                                     NotificationType.Error,
