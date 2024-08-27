@@ -428,12 +428,27 @@
                     "InvariantPropertyName": "BorderRadius",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "BorderStyle",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "71",
+                "ControlUniqueId": "340",
                 "DynamicProperties": [
                   {
-                    "ControlPropertyState": "FillPortions",
+                    "ControlPropertyState": {
+                      "AFDDataSourceName": "",
+                      "AutoRuleBindingEnabled": false,
+                      "AutoRuleBindingString": "",
+                      "InvariantPropertyName": "FillPortions",
+                      "IsLockable": false,
+                      "NameMapSourceSchema": "?"
+                    },
                     "PropertyName": "FillPortions",
                     "Rule": {
                       "Category": "Design",
@@ -454,7 +469,7 @@
                     "PropertyName": "AlignInContainer",
                     "Rule": {
                       "Category": "Design",
-                      "InvariantScript": "AlignInContainer.SetByContainer",
+                      "InvariantScript": "AlignInContainer.Stretch",
                       "Property": "AlignInContainer",
                       "RuleProviderType": "Unknown"
                     }
@@ -481,7 +496,7 @@
                     "PropertyName": "LayoutMinHeight",
                     "Rule": {
                       "Category": "Design",
-                      "InvariantScript": "20",
+                      "InvariantScript": "45",
                       "Property": "LayoutMinHeight",
                       "RuleProviderType": "Unknown"
                     }
@@ -588,13 +603,13 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "0",
+                    "InvariantScript": "40",
                     "Property": "X",
-                    "RuleProviderType": "Unknown"
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "0",
+                    "InvariantScript": "40",
                     "Property": "Y",
                     "RuleProviderType": "Unknown"
                   },
@@ -618,7 +633,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "2",
+                    "InvariantScript": "5",
                     "Property": "ZIndex",
                     "RuleProviderType": "Unknown"
                   },
@@ -654,7 +669,7 @@
                   },
                   {
                     "Category": "Design",
-                    "InvariantScript": "isMobile",
+                    "InvariantScript": "true//isMobile",
                     "Property": "Visible",
                     "RuleProviderType": "User"
                   },
@@ -683,8 +698,14 @@
                     "RuleProviderType": "Unknown"
                   },
                   {
+                    "Category": "Design",
+                    "InvariantScript": "BorderStyle.Solid",
+                    "Property": "BorderStyle",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\nIf(\n    App.ActiveScreen = scr_Entry,\n    Set(\n        isModalOpen,\n        true\n    ),\n    Set(\n        wizardStep,\n        2\n    )\n);\n",
+                    "InvariantScript": "Set(\n    ScannedItem,\n    First(BarcodeReader2.Barcodes).Value\n);\n\nClearCollect(\n    colSortedItems,\n    SortByColumns(\n        Filter(\n            colLines,\n            Barcode = ScannedItem\n        ), \n        \"Barcode\"\n    )\n);\n\nClearCollect(\n    colFinalList,\n    colSortedItems,\n    SortByColumns(\n        Filter(\n            colLines,\n            Barcode <> ScannedItem\n        ),\n        \"Barcode\"\n    )\n);\n\nIf(\n    App.ActiveScreen = scr_Entry,\n    Set(\n        isModalOpen,\n        true\n    ),\n    Set(\n        wizardStep,\n        2\n    )\n);\n",
                     "Property": "OnScan",
                     "RuleProviderType": "User"
                   },
@@ -1720,7 +1741,7 @@
       "IsEntryScreen",
       "OnReset"
     ],
-    "LastModifiedTimestamp": "638603387749523986",
+    "LastModifiedTimestamp": "638603498218337186",
     "Name": "com_Header",
     "Rules": [
       {
@@ -1816,7 +1837,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638603387749523986",
+  "LastModifiedTimestamp": "638603498218337186",
   "Name": "e7070bbb755e4438b9bc8a6da223f326",
   "OverridableProperties": {},
   "Version": "1.0"

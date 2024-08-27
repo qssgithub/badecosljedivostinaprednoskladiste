@@ -70,7 +70,7 @@ com_Galleries As CanvasComponent:
             "glr_Lines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: |-
+                Default: |
                     =LookUp(
                         colLines,
                         Barcode = ScannedItem
