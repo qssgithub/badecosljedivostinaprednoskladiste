@@ -1,6 +1,6 @@
 com_Alert As CanvasComponent:
-    Duration: =600
-    Fill: =RGBA(0, 0, 0, 0)
+    Duration: =2000
+    Fill: =RGBA(255, 255, 255, 1)
     Height: =40
     Message: =""
     ShowAlert: =false
@@ -12,21 +12,7 @@ com_Alert As CanvasComponent:
 
     Container5 As groupContainer.manualLayoutContainer:
         BorderColor: =RGBA(255, 255, 255, 1)
-        Fill: |-
-            =Switch(
-                com_Alert.Type,
-                //case : Info
-                "Info",
-                RGBA(40, 134, 222, 0.15),
-                "Success",
-                RGBA(153, 214, 152, 0.15),
-                //case : Warning
-                "Warning",
-                RGBA(245, 218, 120, 0.15),
-                //case : Error
-                "Error",
-                RGBA(215, 58, 60, 0.15)
-            )
+        Fill: =RGBA(255, 255, 255, 1)
         Height: =40
         Width: =Parent.Width - 20
         X: =App.ActiveScreen.Width - TimerShowControl.Value
@@ -34,6 +20,21 @@ com_Alert As CanvasComponent:
 
         Container8 As groupContainer.horizontalAutoLayoutContainer:
             DropShadow: =DropShadow.Light
+            Fill: |-
+                =Switch(
+                    com_Alert.Type,
+                    //case : Info
+                    "Info",
+                    RGBA(40, 134, 222, 0.15),
+                    "Success",
+                    RGBA(153, 214, 152, 0.15),
+                    //case : Warning
+                    "Warning",
+                    RGBA(245, 218, 120, 0.15),
+                    //case : Error
+                    "Error",
+                    RGBA(215, 58, 60, 0.15)
+                )
             Height: =40
             LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
             LayoutMode: =LayoutMode.Auto
@@ -121,25 +122,26 @@ com_Alert As CanvasComponent:
                     ZIndex: =1
 
     TimerShowControl As timer:
+        AutoStart: =true
         BorderColor: =App.Theme.Colors.Primary
         DisabledBorderColor: =RGBA(244, 244, 244, 1)
         DisabledColor: =RGBA(166, 166, 166, 1)
         DisabledFill: =RGBA(244, 244, 244, 1)
-        Duration: =App.ActiveScreen.Width - 20
+        Duration: =com_Alert.Duration
         Fill: =App.Theme.Colors.Primary
         Font: =App.Theme.Font
         HoverBorderColor: =App.Theme.Colors.Darker10
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =App.Theme.Colors.Darker10
         OnTimerEnd: =Set(timerHideShow, false);Set(timerHideShow, true);
-        OnTimerStart: =
+        OnTimerStart: =true
         PressedBorderColor: =App.Theme.Colors.Darker40
         PressedColor: =Self.Color
         PressedFill: =App.Theme.Colors.Darker40
         Reset: =timerReset
         Start: =com_Alert.ShowAlert
-        Visible: =false
-        Width: =Parent.Width
+        Width: =94
+        X: =256
         ZIndex: =2
 
     TimerHideControl As timer:
@@ -159,7 +161,6 @@ com_Alert As CanvasComponent:
         PressedColor: =Self.Color
         PressedFill: =App.Theme.Colors.Darker40
         Start: =timerHideShow
-        Visible: =false
-        Width: =Parent.Width
+        Width: =95
         ZIndex: =3
 
