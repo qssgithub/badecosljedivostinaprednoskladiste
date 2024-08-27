@@ -1,6 +1,7 @@
 com_Alert As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =40
+    Message: ="Text"
     Type: ="Info"
     Width: =350
     X: =0
@@ -8,8 +9,22 @@ com_Alert As CanvasComponent:
     ZIndex: =1
 
     Container5 As groupContainer.manualLayoutContainer:
-        BorderColor: =RGBA(215, 58, 60, 1)
-        Fill: =
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: |-
+            =Switch(
+                com_Alert.Type,
+                //case : Info
+                "Info",
+                RGBA(40, 134, 222, 0.15),
+                "Success",
+                RGBA(153, 214, 152, 0.15),
+                //case : Warning
+                "Warning",
+                RGBA(245, 218, 120, 0.15),
+                //case : Error
+                "Error",
+                RGBA(215, 58, 60, 0.15)
+            )
         Height: =40
         Width: =Parent.Width
         Y: =40
@@ -29,7 +44,21 @@ com_Alert As CanvasComponent:
 
             Container6 As groupContainer.manualLayoutContainer:
                 BorderColor: =RGBA(215, 58, 60, 1)
-                Fill: = RGBA(245, 218, 120, 1)
+                Fill: |-
+                    =Switch(
+                        com_Alert.Type,
+                        //case : Info
+                        "Info",
+                        RGBA(40, 134, 222, 1),
+                        "Success",
+                        RGBA(153, 214, 152, 1),
+                        //case : Warning
+                        "Warning",
+                        RGBA(245, 218, 120, 1),
+                        //case : Error
+                        "Error",
+                        RGBA(215, 58, 60, 1)
+                    )
                 FillPortions: =0
                 Height: =40
                 LayoutMinHeight: =40
@@ -46,6 +75,9 @@ com_Alert As CanvasComponent:
                             com_Alert.Type,
                             //case : Info
                             "Info",
+                            "Info",
+                            //case : Success
+                            "Success",
                             "Checkmark",
                             //case : Warning
                             "Warning",
@@ -78,6 +110,7 @@ com_Alert As CanvasComponent:
                 NotificationText As Text:
                     DisplayMode: =DisplayMode.Edit
                     Height: =30
+                    Text: =com_Alert.Message
                     Weight: ="Regular"
                     Width: =296
                     Wrap: =true
