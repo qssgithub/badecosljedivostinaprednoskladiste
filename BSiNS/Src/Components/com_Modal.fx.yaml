@@ -65,15 +65,14 @@ com_Modal As CanvasComponent:
                     ZIndex: =1
 
                     txt_ModalHeader As Text:
-                        Align: ='TextCanvas.Align'.Center
+                        Align: ='TextCanvas.Align'.Start
+                        AlignInContainer: =AlignInContainer.Center
                         AutoHeight: =true
                         BorderStyle: =""
                         DisplayMode: =DisplayMode.Edit
                         FillPortions: =1
                         FontColor: =RGBA(255, 255, 255, 1)
                         Height: =32
-                        LayoutMinHeight: =32
-                        LayoutMinWidth: =96
                         Size: =20
                         Text: ="Unesite podatke"
                         Width: =96
@@ -166,8 +165,49 @@ com_Modal As CanvasComponent:
                             Required: =true
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
                             Type: ="Text"
-                            ValidationState: =If(com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),"RequiredField_Error", "None")
-                            Value: =If(IsBlank(com_Modal.LotNo), "LOT" & Text(Today(), "ddmmyy"), com_Modal.LotNo)
+                            ValidationState: |-
+                                =If(
+                                    com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),
+                                    "RequiredField_Error",
+                                    If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)
+                                        IsMatch(
+                                            inp_LotNo.Value,
+                                            "^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$"
+                                        ),
+                                        If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!
+                                            DateValue(
+                                                Mid(
+                                                    inp_LotNo.Value,
+                                                    4,
+                                                    2
+                                                ) & "/" & Mid(
+                                                    inp_LotNo.Value,
+                                                    6,
+                                                    2
+                                                ) & "/" & "20" & Mid(
+                                                    inp_LotNo.Value,
+                                                    8,
+                                                    2
+                                                )
+                                            ) > Today(),
+                                            "None",
+                                            "IncorrectDateRange"
+                                        ),
+                                        "IncorrectFormat"
+                                    )
+                                )
+                            Value: |-
+                                =If(
+                                    IsBlank(com_Modal.LotNo),
+                                    "LOT" & Text(
+                                        DateAdd(
+                                            Today(),
+                                            1
+                                        ),
+                                        "ddmmyy"
+                                    ),
+                                    com_Modal.LotNo
+                                )
                             Visible: =true
                             Width: =200
                             X: =40
@@ -188,7 +228,19 @@ com_Modal As CanvasComponent:
                             PaddingRight: =0
                             PaddingTop: =0
                             Size: =14
-                            Text: =If(inp_LotNo.ValidationState = "RequiredField_Error", "LOT je obavezno polje","")
+                            Text: |-
+                                =If(
+                                    inp_LotNo.ValidationState = "RequiredField_Error",
+                                    "LOT je obavezno polje",
+                                    If(
+                                        inp_LotNo.ValidationState = "IncorrectFormat",
+                                        "Format nije ispravan",
+                                        If(
+                                            inp_LotNo.ValidationState = "IncorrectDateRange",
+                                            "Odabrani datum je istekao"
+                                        )
+                                    )
+                                )
                             Visible: =true
                             Width: =200
                             X: =0
