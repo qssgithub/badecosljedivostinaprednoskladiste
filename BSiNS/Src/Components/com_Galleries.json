@@ -3487,7 +3487,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(Counter, Counter + 1);\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: 1, //mijenja se\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\n",
+                        "InvariantScript": "Set(Counter, Counter + 1);\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: 1, //mijenja se\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\nSet(\n    SelectedEntry,\n    LookUp(colEntries, Entry_No = Text(Counter))\n);",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -3730,7 +3730,7 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))",
+                        "InvariantScript": "com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(\n    LookUp(\n        lockedItems,\n        entryId = ThisItem.Entry_No\n    )\n)",
                         "Property": "Visible",
                         "RuleProviderType": "User"
                       },
@@ -3826,7 +3826,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No))\n",
+                        "InvariantScript": "Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No));\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -5771,6 +5771,14 @@
                     "InvariantPropertyName": "Visible",
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
+                  },
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "",
+                    "InvariantPropertyName": "Default",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
                   }
                 ],
                 "ControlUniqueId": "87",
@@ -5869,6 +5877,12 @@
                     "Category": "Data",
                     "InvariantScript": "Filter(colEntries, ThisRecord.Source_Ref_No = glr_Lines.Selected.Line_No)",
                     "Property": "Items",
+                    "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Data",
+                    "InvariantScript": "LookUp(\r\n    colEntries,\r\n    If(\r\n        !IsBlank(SelectedEntry.Entry_No),\r\n        Entry_No = SelectedEntry.Entry_No\r\n    )\r\n)",
+                    "Property": "Default",
                     "RuleProviderType": "Unknown"
                   },
                   {
@@ -11071,7 +11085,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(\n    Counter,\n    Counter + 1\n);\nCollect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((Counter * 10000) + 1),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        'Item_No.': ThisItem.'Item_No.',\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Text(1),//mijenja se\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Lines);\n",
+                        "InvariantScript": "Set(\n    Counter,\n    Counter + 1\n);\nCollect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((Counter * 10000) + 1),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        'Item_No.': ThisItem.'Item_No.',\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Text(1),//mijenja se\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\n\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Lines);\nSet(\n    SelectedLine,\n    LookUp(colLines, 'Line_No.' = Text((Counter * 10000) + 1))\n);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -11321,9 +11335,9 @@
                       },
                       {
                         "Category": "Design",
-                        "InvariantScript": "!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))",
+                        "InvariantScript": "!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(\n    LookUp(\n        lockedItems,\n        lineId = ThisItem.'Line_No.'\n    )\n)",
                         "Property": "Visible",
-                        "RuleProviderType": "Unknown"
+                        "RuleProviderType": "User"
                       },
                       {
                         "Category": "Design",
@@ -11417,7 +11431,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Remove(colLines, LookUp(colLines, 'Line_No.' = glr_Lines.Selected.'Line_No.'))\n",
+                        "InvariantScript": "Remove(colLines, LookUp(colLines, 'Line_No.' = glr_Lines.Selected.'Line_No.'));\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -13403,7 +13417,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "LookUp(\n    colLines,\n    Barcode = ScannedItem\n)\n",
+                    "InvariantScript": "LookUp(\n    colLines,\n    If(\n        !IsBlank(SelectedLine.'Line_No.'),\n        'Line_No.' = SelectedLine.'Line_No.',\n        Barcode = ScannedItem\n    )\n)",
                     "Property": "Default",
                     "RuleProviderType": "Unknown"
                   },
@@ -14191,7 +14205,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638604001162861040",
+    "LastModifiedTimestamp": "638604023951091894",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -14425,7 +14439,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638604001162861040",
+  "LastModifiedTimestamp": "638604023951091894",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

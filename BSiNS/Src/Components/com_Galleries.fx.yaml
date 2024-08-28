@@ -70,10 +70,14 @@ com_Galleries As CanvasComponent:
             "glr_Lines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: |
+                Default: |-
                     =LookUp(
                         colLines,
-                        Barcode = ScannedItem
+                        If(
+                            !IsBlank(SelectedLine.'Line_No.'),
+                            'Line_No.' = SelectedLine.'Line_No.',
+                            Barcode = ScannedItem
+                        )
                     )
                 DelayItemLoading: =true
                 Items: =colLines
@@ -269,11 +273,16 @@ com_Galleries As CanvasComponent:
                                 Barcode: ThisItem.Barcode
                             }
                         );
+                        
                         Set(
                             ScannedItem,
                             Blank()
                         );
                         Reset(glr_Lines);
+                        Set(
+                            SelectedLine,
+                            LookUp(colLines, 'Line_No.' = Text((Counter * 10000) + 1))
+                        );
                     Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))
                     Width: =32
                     X: =Parent.TemplateWidth - 50
@@ -288,8 +297,14 @@ com_Galleries As CanvasComponent:
                     Height: =32
                     Icon: =Icon.Trash
                     OnSelect: |
-                        =Remove(colLines, LookUp(colLines, 'Line_No.' = glr_Lines.Selected.'Line_No.'))
-                    Visible: =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, lineId = ThisItem.'Line_No.'))
+                        =Remove(colLines, LookUp(colLines, 'Line_No.' = glr_Lines.Selected.'Line_No.'));
+                    Visible: |-
+                        =!com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(
+                            LookUp(
+                                lockedItems,
+                                lineId = ThisItem.'Line_No.'
+                            )
+                        )
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =lbl_Line4.Y - 10
@@ -550,6 +565,14 @@ com_Galleries As CanvasComponent:
 
             "glr_Entries As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 BorderColor: =App.Theme.Colors.Darker40
+                Default: |-
+                    =LookUp(
+                        colEntries,
+                        If(
+                            !IsBlank(SelectedEntry.Entry_No),
+                            Entry_No = SelectedEntry.Entry_No
+                        )
+                    )
                 DelayItemLoading: =true
                 FillPortions: =0
                 Items: =Filter(colEntries, ThisRecord.Source_Ref_No = glr_Lines.Selected.Line_No)
@@ -696,7 +719,7 @@ com_Galleries As CanvasComponent:
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     Height: =32
                     Icon: =Icon.AddDocument
-                    OnSelect: |
+                    OnSelect: |-
                         =Set(Counter, Counter + 1);
                         Collect(
                             colEntries,
@@ -736,6 +759,10 @@ com_Galleries As CanvasComponent:
                             Blank()
                         );
                         Reset(glr_Entries);
+                        Set(
+                            SelectedEntry,
+                            LookUp(colEntries, Entry_No = Text(Counter))
+                        );
                     Visible: =com_Galleries.VisibleResEntryList && com_Galleries.AddNew && !IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))
                     Width: =32
                     X: =Parent.TemplateWidth - 50
@@ -848,8 +875,14 @@ com_Galleries As CanvasComponent:
                     Height: =32
                     Icon: =Icon.Trash
                     OnSelect: |
-                        =Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No))
-                    Visible: =com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(LookUp(lockedItems, entryId = ThisItem.Entry_No))
+                        =Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No));
+                    Visible: |-
+                        =com_Galleries.VisibleResEntryList && com_Galleries.AddNew && IsBlank(
+                            LookUp(
+                                lockedItems,
+                                entryId = ThisItem.Entry_No
+                            )
+                        )
                     Width: =32
                     X: =Parent.TemplateWidth - 50
                     Y: =Body2_7.Y - 10
