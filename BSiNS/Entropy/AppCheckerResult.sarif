@@ -2524,6 +2524,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.SelectedLine"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.SelectedLine",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "SelectedLine",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.alertShow"
                 }
               ],

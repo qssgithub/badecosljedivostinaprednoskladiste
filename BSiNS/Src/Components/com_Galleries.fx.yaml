@@ -70,15 +70,16 @@ com_Galleries As CanvasComponent:
             "glr_Lines As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
                 AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
-                Default: |-
-                    =LookUp(
+                Default: |
+                    =/*LookUp(
                         colLines,
                         If(
                             !IsBlank(SelectedLine.'Line_No.'),
                             'Line_No.' = SelectedLine.'Line_No.',
                             Barcode = ScannedItem
                         )
-                    )
+                    )*/
+                    LookUp(colLines, Barcode = ScannedItem)
                 DelayItemLoading: =true
                 Items: =colLines
                 Layout: =Layout.Vertical
