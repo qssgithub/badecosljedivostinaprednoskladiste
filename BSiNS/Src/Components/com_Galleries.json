@@ -13417,7 +13417,7 @@
                   },
                   {
                     "Category": "Data",
-                    "InvariantScript": "LookUp(\n    colLines,\n    If(\n        !IsBlank(SelectedLine.'Line_No.'),\n        'Line_No.' = SelectedLine.'Line_No.',\n        Barcode = ScannedItem\n    )\n)\n\n",
+                    "InvariantScript": "LookUp(\n    colLines,\n    If(\n        !IsBlank(SelectedLine.'Line_No.'),\n        'Line_No.' = SelectedLine.'Line_No.'\n    )\n)\n\n",
                     "Property": "Default",
                     "RuleProviderType": "Unknown"
                   },
@@ -14205,7 +14205,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638604282251535272",
+    "LastModifiedTimestamp": "638604288142217696",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -14439,7 +14439,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638604282251535272",
+  "LastModifiedTimestamp": "638604288142217696",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
