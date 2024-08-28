@@ -3191,9 +3191,16 @@
         "NameMapSourceSchema": "?"
       },
       "JSONData",
-      "ErrorBaseOnModalExists"
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "ErrorBaseOnModalExists",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
+      }
     ],
-    "LastModifiedTimestamp": "638604253436260588",
+    "LastModifiedTimestamp": "638604256827637083",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3210,7 +3217,7 @@
       },
       {
         "Category": "Data",
-        "InvariantScript": "true",
+        "InvariantScript": "false",
         "Property": "ErrorBaseOnModalExists",
         "RuleProviderType": "System"
       },
@@ -3298,7 +3305,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638604253436260588",
+  "LastModifiedTimestamp": "638604256827637083",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
