@@ -354,7 +354,11 @@ com_Modal As CanvasComponent:
                                     "Unesite pozitivan broj",
                                     If(
                                         inp_rezQty_2.ValidationState = "RequiredField_Error",
-                                        "Količina je obavezno polje"
+                                        "Količina je obavezno polje",
+                                        If(
+                                            inp_rezQty_2.ValidationState = "Quantity_Error",
+                                            "Količina veća od dozvoljene"
+                                        )
                                     )
                                 )
                             VerticalAlign: ='TextCanvas.VerticalAlign'.Top
