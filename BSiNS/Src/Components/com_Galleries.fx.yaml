@@ -81,8 +81,7 @@ com_Galleries As CanvasComponent:
                     )
                     
                 DelayItemLoading: =true
-                Items: |
-                    =If(!IsBlank(ScannedItem), Filter(colLines, Barcode = Text(ScannedItem)), colLines)
+                Items: =colLines
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =100
                 LayoutMinWidth: =250
