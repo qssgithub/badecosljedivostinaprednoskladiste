@@ -229,8 +229,11 @@ com_Galleries As CanvasComponent:
                     DisabledColor: =RGBA(244, 244, 244, 1)
                     Height: =32
                     Icon: =Icon.AddDocument
-                    OnSelect: |-
-                        =Set(Counter, Counter + 1);
+                    OnSelect: |
+                        =Set(
+                            Counter,
+                            Counter + 1
+                        );
                         Collect(
                             colLines,
                             {
@@ -252,10 +255,16 @@ com_Galleries As CanvasComponent:
                                 Qty_Calculated_Ext: Text(0),
                                 Quantity: Text(0),
                                 Entry_Type: ThisItem.Entry_Type,
-                                Qty_Phys_Inventory: Blank(),
+                                Qty_Phys_Inventory: Text(1),//mijenja se
                                 Qty_Phys_Inventory_Ext: Text(0),
                                 Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,
-                                Lot_No: Blank(),
+                                Lot_No: "LOT" & Text(//mijenja se
+                                    DateAdd(
+                                        Today(),
+                                        1
+                                    ),
+                                    "ddmmyy"
+                                ),
                                 Item_Expiration_Date: ThisItem.Item_Expiration_Date,
                                 Barcode: ThisItem.Barcode
                             }
@@ -699,14 +708,20 @@ com_Galleries As CanvasComponent:
                                 Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,
                                 Item_No: ThisItem.Item_No,
                                 Item_Tracking: ThisItem.Item_Tracking,
-                                LOT_No: Blank(),
+                                LOT_No: "LOT" & Text(//mijenja se
+                                    DateAdd(
+                                        Today(),
+                                        1
+                                    ),
+                                    "ddmmyy"
+                                ),
                                 Location_Code: ThisItem.Location_Code,
                                 Positive: ThisItem.Positive,
                                 'Qty-to-Handle_Base': Text(0),
                                 'Qty-to-Invoice_Base': Text(0),
                                 Quantity: Text(0),
                                 Quantity_Base: Text(0),
-                                Quantity_Completed: Blank(),
+                                Quantity_Completed: 1, //mijenja se
                                 Quantity_NewLOT: 0,
                                 Res_Status: ThisItem.Res_Status,
                                 Shipment_Date: ThisItem.Shipment_Date,

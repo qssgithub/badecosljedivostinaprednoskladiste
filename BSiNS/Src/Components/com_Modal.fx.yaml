@@ -1,5 +1,11 @@
 com_Modal As CanvasComponent:
     ChildTabPriority: =
+    ErrorExist: |-
+        =If(
+            btn_ModalSave.DisplayMode = DisplayMode.Disabled,
+            true,
+            false
+        )
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
     IsInventura: =false
@@ -349,11 +355,6 @@ com_Modal As CanvasComponent:
                                     If(
                                         inp_rezQty_2.ValidationState = "RequiredField_Error",
                                         "Količina je obavezno polje"
-                                        /*,
-                                        If(
-                                            inp_rezQty_2.ValidationState = "Quantity_Error",
-                                            "Nije moguće unijeti količinu veću od " & com_Modal.Quantity
-                                        )*/
                                     )
                                 )
                             VerticalAlign: ='TextCanvas.VerticalAlign'.Top
@@ -479,13 +480,7 @@ com_Modal As CanvasComponent:
                         BasePaletteColor: =
                         BorderStyle: =""
                         DisplayMode: |-
-                            =/*If(
-                                inp_rezQty_2.ValidationState = "Value_Error" || inp_rezQty_2.ValidationState = "Quantity_Error" || inp_potrebnoQty_2.ValidationState = "Value_Error" || (inp_potrebnoQty_2.ValidationState = "Quantity_Error" && !com_Modal.IsInventura) || inp_LotNo.ValidationState = "RequiredField_Error" || inp_rezQty_2.ValidationState = "RequiredField_Error",
-                                DisplayMode.Disabled,
-                                DisplayMode.Edit
-                            )*/
-                            
-                            If(
+                            =If(
                                 inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None",
                                 DisplayMode.Edit,
                                 DisplayMode.Disabled

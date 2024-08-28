@@ -186,6 +186,7 @@
             ZIndex: =3
 
         com_InvFooter As com_Footer:
+            ErrorBaseOnModalExists: =com_InvModal.ErrorExist
             IsInventura: =true
             JSONData: |-
                 ="{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}"

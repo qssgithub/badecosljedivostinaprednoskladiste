@@ -3487,7 +3487,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(Counter, Counter + 1);\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: Blank(),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: Blank(),\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\n",
+                        "InvariantScript": "Set(Counter, Counter + 1);\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: 1, //mijenja se\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -11071,7 +11071,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(Counter, Counter + 1);\nCollect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((Counter * 10000) + 1),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        'Item_No.': ThisItem.'Item_No.',\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Blank(),\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: Blank(),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Lines);",
+                        "InvariantScript": "Set(\n    Counter,\n    Counter + 1\n);\nCollect(\n    colLines,\n    {\n        Journal_Template_Name: ThisItem.Journal_Template_Name,\n        Journal_Batch_Name: ThisItem.Journal_Batch_Name,\n        'Line_No.': Text((Counter * 10000) + 1),\n        'Document_No.': ThisItem.'Document_No.',\n        Description: ThisItem.Description,\n        Source_Type: ThisItem.Source_Type,\n        'Source_No.': ThisItem.'Source_No.',\n        Source_Code: ThisItem.Source_Code,\n        'Item_No.': ThisItem.'Item_No.',\n        'Phys._Inventory': ThisItem.'Phys._Inventory',\n        Location_Code: ThisItem.Location_Code,\n        Posting_Date: ThisItem.Posting_Date,\n        Document_Date: ThisItem.Document_Date,\n        Sales_Price: ThisItem.Sales_Price,\n        Qty_Calculated: Text(0),\n        Qty_Calculated_Ext: Text(0),\n        Quantity: Text(0),\n        Entry_Type: ThisItem.Entry_Type,\n        Qty_Phys_Inventory: Text(1),//mijenja se\n        Qty_Phys_Inventory_Ext: Text(0),\n        Gen_Bus_Posting_Group: ThisItem.Gen_Bus_Posting_Group,\n        Lot_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Item_Expiration_Date: ThisItem.Item_Expiration_Date,\n        Barcode: ThisItem.Barcode\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Lines);\n",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -14191,7 +14191,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638603967927266772",
+    "LastModifiedTimestamp": "638604001162861040",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -14425,7 +14425,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638603967927266772",
+  "LastModifiedTimestamp": "638604001162861040",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"

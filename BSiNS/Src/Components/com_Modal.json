@@ -2714,7 +2714,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Value_Error\",\n    \"Unesite pozitivan broj\",\n    If(\n        inp_rezQty_2.ValidationState = \"RequiredField_Error\",\n        \"Količina je obavezno polje\"\n        /*,\n        If(\n            inp_rezQty_2.ValidationState = \"Quantity_Error\",\n            \"Nije moguće unijeti količinu veću od \" & com_Modal.Quantity\n        )*/\n    )\n)",
+                                "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Value_Error\",\n    \"Unesite pozitivan broj\",\n    If(\n        inp_rezQty_2.ValidationState = \"RequiredField_Error\",\n        \"Količina je obavezno polje\"\n    )\n)",
                                 "Property": "Text",
                                 "RuleProviderType": "User"
                               },
@@ -4796,7 +4796,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "/*If(\n    inp_rezQty_2.ValidationState = \"Value_Error\" || inp_rezQty_2.ValidationState = \"Quantity_Error\" || inp_potrebnoQty_2.ValidationState = \"Value_Error\" || (inp_potrebnoQty_2.ValidationState = \"Quantity_Error\" && !com_Modal.IsInventura) || inp_LotNo.ValidationState = \"RequiredField_Error\" || inp_rezQty_2.ValidationState = \"RequiredField_Error\",\n    DisplayMode.Disabled,\n    DisplayMode.Edit\n)*/\n\nIf(\n    inp_rezQty_2.ValidationState = \"None\" && inp_LotNo.ValidationState = \"None\",\n    DisplayMode.Edit,\n    DisplayMode.Disabled\n)",
+                            "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"None\" && inp_LotNo.ValidationState = \"None\",\n    DisplayMode.Edit,\n    DisplayMode.Disabled\n)",
                             "Property": "DisplayMode",
                             "RuleProviderType": "User"
                           },
@@ -6103,9 +6103,17 @@
         "InvariantPropertyName": "LotNoPropVisible",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "ErrorExist",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638603926049040323",
+    "LastModifiedTimestamp": "638603993463371625",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -6160,6 +6168,12 @@
         "Category": "Data",
         "InvariantScript": "",
         "Property": "Quantity",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "If(\n    btn_ModalSave.DisplayMode = DisplayMode.Disabled,\n    true,\n    false\n)",
+        "Property": "ErrorExist",
         "RuleProviderType": "System"
       },
       {
@@ -6305,6 +6319,15 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "A custom property",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "ErrorExist",
+      "Hidden": true,
+      "Name": "ErrorExist",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -6315,7 +6338,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638603926049040323",
+  "LastModifiedTimestamp": "638603993463371625",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"

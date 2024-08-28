@@ -373,6 +373,7 @@
             ZIndex: =3
 
         com_NabFooter As com_Footer:
+            ErrorBaseOnModalExists: =com_NabModal.ErrorExist
             JSONData: |-
                 ="{" & Char(34) & "Purchase_Header" & Char(34) & ": " & JSON(
                     AddColumns(

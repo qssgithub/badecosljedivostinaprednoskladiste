@@ -1,4 +1,5 @@
 com_Footer As CanvasComponent:
+    ErrorBaseOnModalExists: =true
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     IsInventura: =false
@@ -110,7 +111,7 @@ com_Footer As CanvasComponent:
             btn_Nav As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
-                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                DisplayMode: =If(isLoading || com_Footer.ErrorBaseOnModalExists, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
                 Icon: ="Database"
                 Layout: ='ButtonCanvas.Layout'.IconAfter
@@ -176,7 +177,7 @@ com_Footer As CanvasComponent:
             btn_Prelot As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
-                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                DisplayMode: =If(isLoading || com_Footer.ErrorBaseOnModalExists, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
                 Icon: ="AppsListDetail"
                 Layout: ='ButtonCanvas.Layout'.IconAfter
@@ -243,7 +244,7 @@ com_Footer As CanvasComponent:
             btn_Save As Button:
                 BasePaletteColor: =
                 BorderStyle: =""
-                DisplayMode: =If(isLoading, DisplayMode.Disabled, DisplayMode.Edit)
+                DisplayMode: =If(isLoading || com_Footer.ErrorBaseOnModalExists, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
                 Layout: ='ButtonCanvas.Layout'.TextOnly
                 LayoutMinHeight: =32
