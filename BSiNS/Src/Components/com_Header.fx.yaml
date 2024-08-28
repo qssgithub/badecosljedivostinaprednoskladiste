@@ -107,30 +107,6 @@ com_Header As CanvasComponent:
                         First(BarcodeReader2.Barcodes).Value
                     );
                     
-                    /*
-                    ClearCollect(
-                        colSortedItems,
-                        SortByColumns(
-                            Filter(
-                                colLines,
-                                Barcode = ScannedItem
-                            ), 
-                            "Barcode"
-                        )
-                    );
-                    
-                    ClearCollect(
-                        colFinalList,
-                        colSortedItems,
-                        SortByColumns(
-                            Filter(
-                                colLines,
-                                Barcode <> ScannedItem
-                            ),
-                            "Barcode"
-                        )
-                    );*/
-                    
                     If(
                         App.ActiveScreen = scr_Entry,
                         Set(
