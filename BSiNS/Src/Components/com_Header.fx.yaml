@@ -107,6 +107,7 @@ com_Header As CanvasComponent:
                         First(BarcodeReader2.Barcodes).Value
                     );
                     
+                    /*
                     ClearCollect(
                         colSortedItems,
                         SortByColumns(
@@ -128,7 +129,7 @@ com_Header As CanvasComponent:
                             ),
                             "Barcode"
                         )
-                    );
+                    );*/
                     
                     If(
                         App.ActiveScreen = scr_Entry,
