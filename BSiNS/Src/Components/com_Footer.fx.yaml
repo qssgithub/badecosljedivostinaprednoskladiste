@@ -255,6 +255,7 @@ com_Footer As CanvasComponent:
                         isLoading,
                         true
                     );
+                    Set(anisa, com_Footer.JSONData);
                     IfError(
                         UpdateXML.Run(
                             com_Footer.JSONData,

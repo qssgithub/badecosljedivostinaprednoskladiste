@@ -2554,6 +2554,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.anisa"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.anisa",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "anisa",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "App.alertShow"
                 }
               ],
