@@ -623,45 +623,36 @@ com_Modal As CanvasComponent:
                         OnSelect: |
                             =If(
                                 com_Modal.IsInventura,
-                                Patch(
-                                    colLines,
-                                    LookUp(
+                                Concurrent(
+                                    IfError(
+                                        UpdateXML.Run(
+                                            "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}",
+                                            SelectedFile,
+                                            SelectedQueue
+                                        ),
+                                        Notify(
+                                            "Došlo je do greške!",
+                                            NotificationType.Error,
+                                            500
+                                        ),
+                                        Notify(
+                                            "Uspješno ažuriranje!",
+                                            NotificationType.Success,
+                                            500
+                                        );
+                                    ),
+                                    Patch(
                                         colLines,
-                                        'Line_No.' = com_Modal.LineId
-                                    ),
-                                    {
-                                        Lot_No: Text(inp_LotNo.Value),
-                                        Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
-                                    }
-                                );
-                                Set(
-                                isLoading,
-                                true
-                            );
-                            Set(JsonData1, "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}");
-                                IfError(
-                                    UpdateXML.Run(
-                                        JsonData1,
-                                        SelectedFile,
-                                        SelectedQueue
-                                    ),
-                                    Notify(
-                                        "Došlo je do greške!",
-                                        NotificationType.Error,
-                                        500
-                                    ),
-                                    Notify(
-                                        "Uspješno ažuriranje!",
-                                        NotificationType.Success,
-                                        500
-                                    );
-                                    
-                                );
-                                Set(
-                                    isLoading,
-                                    false
-                                );
-                                ,
+                                        LookUp(
+                                            colLines,
+                                            'Line_No.' = com_Modal.LineId
+                                        ),
+                                        {
+                                            Lot_No: Text(inp_LotNo.Value),
+                                            Qty_Phys_Inventory: Value(inp_rezQty_2.Value)
+                                        }
+                                    )        
+                                ),
                                 If(
                                     com_Modal.IsNabavniNalog,
                                     Patch(
@@ -686,7 +677,17 @@ com_Modal As CanvasComponent:
                                             Quantity_NewLOT: Value(-inp_potrebnoQty_2.Value)
                                         }
                                     );
-                                    If(Value(inp_potrebnoQty_2.Value) > 0 && !Prelot, Set(Prelot, true), Set(Prelot,false));
+                                    If(
+                                        Value(inp_potrebnoQty_2.Value) > 0 && !Prelot,
+                                        Set(
+                                            Prelot,
+                                            true
+                                        ),
+                                        Set(
+                                            Prelot,
+                                            false
+                                        )
+                                    );
                                 )
                             );
                             Reset(inp_rezQty_2);
