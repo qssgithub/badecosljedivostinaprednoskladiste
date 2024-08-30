@@ -3,10 +3,13 @@ App As appinfo:
     Formulas: |
         =conPrimary = ColorValue("#0AA9FF");
         conAccent = ColorValue("#676767");
-        conUser = LookUp(
+        /*conUser = LookUp(
             Contacts,
             Email = User().Email
-        );
+        );*/
+        
+        logedUser = LookUp(Contacts, User().Email = Email).'User Name';
+        
         warehouseCode = "SGP-DZ";
         isMobile = If(
             App.Width > 600,
