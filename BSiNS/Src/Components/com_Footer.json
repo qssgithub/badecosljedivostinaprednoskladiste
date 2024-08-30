@@ -1149,7 +1149,7 @@
                   },
                   "PaddingRight"
                 ],
-                "ControlUniqueId": "52",
+                "ControlUniqueId": "49",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -1385,9 +1385,17 @@
                   "PaddingTop",
                   "PaddingRight",
                   "PaddingBottom",
-                  "PaddingLeft"
+                  "PaddingLeft",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  }
                 ],
-                "ControlUniqueId": "51",
+                "ControlUniqueId": "50",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -1678,6 +1686,12 @@
                     "InvariantScript": "5",
                     "Property": "PaddingLeft",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "!com_Footer.IsInventura",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   }
                 ],
                 "StyleName": "defaultLabelStyle",
@@ -1788,7 +1802,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "49",
+                "ControlUniqueId": "51",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -2040,7 +2054,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "50",
+                "ControlUniqueId": "52",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -2404,7 +2418,15 @@
                     "IsLockable": false,
                     "NameMapSourceSchema": "?"
                   },
-                  "BorderStyle"
+                  "BorderStyle",
+                  {
+                    "AFDDataSourceName": "",
+                    "AutoRuleBindingEnabled": false,
+                    "AutoRuleBindingString": "true",
+                    "InvariantPropertyName": "Visible",
+                    "IsLockable": false,
+                    "NameMapSourceSchema": "?"
+                  }
                 ],
                 "ControlUniqueId": "53",
                 "DynamicProperties": [
@@ -2523,6 +2545,12 @@
                     "InvariantScript": "6",
                     "Property": "ZIndex",
                     "RuleProviderType": "Unknown"
+                  },
+                  {
+                    "Category": "Design",
+                    "InvariantScript": "!com_Footer.IsInventura",
+                    "Property": "Visible",
+                    "RuleProviderType": "User"
                   },
                   {
                     "Category": "Behavior",
@@ -3200,7 +3228,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638604287049379664",
+    "LastModifiedTimestamp": "638606017140987343",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3305,7 +3333,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638604287049379664",
+  "LastModifiedTimestamp": "638606017140987343",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
