@@ -628,7 +628,8 @@ com_Modal As CanvasComponent:
                                         UpdateXML.Run(
                                             "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}",
                                             SelectedFile,
-                                            SelectedQueue
+                                            SelectedQueue,
+                                            logedUser
                                         ),
                                         Notify(
                                             "Došlo je do greške!",

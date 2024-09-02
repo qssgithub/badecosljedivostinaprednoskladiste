@@ -11,7 +11,8 @@
     "dataSources": [],
     "dependencies": {},
     "dependents": [
-      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
+      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb",
+      "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
     ],
     "id": "39882083-f5b7-44f0-9818-4379865b0e4a"
   },
@@ -65,9 +66,6 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7": {
-          "value": "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -79,9 +77,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": {
-          "value": "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -98,7 +93,7 @@
       "UpdateXML"
     ],
     "dependencies": {
-      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7"
+      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1": "39882083-f5b7-44f0-9818-4379865b0e4a"
     },
     "dependents": [],
     "id": "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
@@ -270,7 +265,6 @@
     "dependents": [
       "e8881786-c8c5-4028-a337-24a2d24fded3",
       "67bba9e1-7f90-4731-9c75-063e8ec266fb",
-      "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa",
       "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1",
       "bc59b768-00f3-40df-bc43-677a6a689995"
     ],

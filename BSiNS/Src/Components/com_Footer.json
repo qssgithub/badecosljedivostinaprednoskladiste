@@ -2554,7 +2554,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nSet(anisa, com_Footer.JSONData);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    \n);\nSet(\n    isLoading,\n    false\n);",
+                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nSet(anisa, com_Footer.JSONData);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue,\n        logedUser\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    \n);\nSet(\n    isLoading,\n    false\n);",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -3228,7 +3228,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638606262119610038",
+    "LastModifiedTimestamp": "638608602666512922",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -3333,7 +3333,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638606262119610038",
+  "LastModifiedTimestamp": "638608602666512922",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"
