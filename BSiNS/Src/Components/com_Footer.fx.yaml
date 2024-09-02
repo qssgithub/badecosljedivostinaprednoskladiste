@@ -126,7 +126,8 @@ com_Footer As CanvasComponent:
                         UpdateXML.Run(
                             com_Footer.JSONData,
                             SelectedFile,
-                            SelectedQueue
+                            SelectedQueue,
+                            logedUser
                         ),
                         Notify(
                             "Došlo je do greške!",
@@ -193,7 +194,8 @@ com_Footer As CanvasComponent:
                         UpdateXML.Run(
                             com_Footer.JSONData,
                             SelectedFile,
-                            SelectedQueue
+                            SelectedQueue,
+                            logedUser
                         ),
                         Notify(
                             "Došlo je do greške!",
@@ -255,7 +257,6 @@ com_Footer As CanvasComponent:
                         isLoading,
                         true
                     );
-                    Set(anisa, com_Footer.JSONData);
                     IfError(
                         UpdateXML.Run(
                             com_Footer.JSONData,

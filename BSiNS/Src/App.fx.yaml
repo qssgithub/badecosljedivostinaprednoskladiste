@@ -8,7 +8,8 @@ App As appinfo:
             Email = User().Email
         );*/
         
-        logedUser = LookUp(Contacts, User().Email = Email).'User Name';
+        logedUser = "anisaaa";
+        //LookUp(Contacts, User().Email = Email).'User Name';
         
         warehouseCode = "SGP-DZ";
         isMobile = If(

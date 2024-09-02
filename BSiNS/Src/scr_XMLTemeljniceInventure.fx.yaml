@@ -195,6 +195,18 @@
             LayoutMinWidth: =640
             ZIndex: =4
 
+        TextCanvas4 As Text:
+            DisplayMode: =DisplayMode.Edit
+            Height: =32
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            Text: |-
+                ="{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =5
+
     com_InvModal As com_Modal:
         IsInventura: =true
         LineId: =com_InvGalleries.SelectedLine.'Line_No.'

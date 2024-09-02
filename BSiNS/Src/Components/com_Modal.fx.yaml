@@ -621,12 +621,21 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         OnSelect: |
-                            =If(
+                            =Set(data, "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}");
+                            
+                            Set(result, UpdateXML.Run(
+                                            data,
+                                            SelectedFile,
+                                            SelectedQueue,
+                                            logedUser
+                                        ));
+                                        
+                            If(
                                 com_Modal.IsInventura,
                                 Concurrent(
                                     IfError(
                                         UpdateXML.Run(
-                                            "{" & Char(34) & "Lines" & Char(34) & ": " & "{" & Char(34) & "Item_Journal_Line" & Char(34) & ":" & JSON(colLines) & "}" & "}",
+                                            data,
                                             SelectedFile,
                                             SelectedQueue,
                                             logedUser
