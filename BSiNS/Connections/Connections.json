@@ -13,8 +13,7 @@
     ],
     "dependencies": {},
     "dependents": [
-      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb",
-      "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
+      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
     ],
     "id": "39882083-f5b7-44f0-9818-4379865b0e4a"
   },
@@ -68,9 +67,6 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
-        "39882083-f5b7-44f0-9818-4379865b0e4a": {
-          "value": "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -82,9 +78,6 @@
         }
       },
       "parameterHintsV2": {
-        "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1": {
-          "value": "39882083-f5b7-44f0-9818-4379865b0e4a"
-        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -101,7 +94,7 @@
       "UpdateXML"
     ],
     "dependencies": {
-      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1": "39882083-f5b7-44f0-9818-4379865b0e4a"
+      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1": "cbfed75e-da0c-4035-a1c8-9648859626c8"
     },
     "dependents": [],
     "id": "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
@@ -258,6 +251,22 @@
     },
     "dependents": [],
     "id": "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
+  },
+  "cbfed75e-da0c-4035-a1c8-9648859626c8": {
+    "connectionRef": {
+      "displayName": "BadecoTestConnector",
+      "gatewayObjectIdHint": "2a4608a9-fe7f-424b-b36e-c711d1da011a",
+      "iconUri": "https://prodapiicons.cdn.powerappscdn.net/20240703t000000z39a30dbfe6904056b01a4b5471222dfe/customconnectoricon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383",
+      "isOnPremiseConnection": true
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "73f5b170-bce3-4cfc-859f-b59e5cb2c0fa"
+    ],
+    "id": "cbfed75e-da0c-4035-a1c8-9648859626c8"
   },
   "db51aa06-9bc8-4e5c-b08c-1e13013d7fa7": {
     "connectionRef": {
