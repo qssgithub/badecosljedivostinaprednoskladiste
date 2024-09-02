@@ -8,7 +8,9 @@
       "isOnPremiseConnection": true
     },
     "datasets": {},
-    "dataSources": [],
+    "dataSources": [
+      "BadecoTestConnector"
+    ],
     "dependencies": {},
     "dependents": [
       "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb",
@@ -66,6 +68,9 @@
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
       "parameterHints": {
+        "39882083-f5b7-44f0-9818-4379865b0e4a": {
+          "value": "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },
@@ -77,6 +82,9 @@
         }
       },
       "parameterHintsV2": {
+        "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383_1": {
+          "value": "39882083-f5b7-44f0-9818-4379865b0e4a"
+        },
         "workflowDisplayName": {
           "value": "UpdateXML"
         },

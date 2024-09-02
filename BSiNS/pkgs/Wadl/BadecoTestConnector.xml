@@ -1,0 +1,188 @@
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://europe002-002.azure-apihub.net/apim/badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="BadecoTestConnector" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="BadecoTestConnector">On-premises data gateway Badeco Services connector</doc>
+  <grammars>
+    <jsonTypes targetNamespace="https://europe002-002.azure-apihub.net/apim/badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+      <string name="GetAllActiveMessages_responses_default_def_items_def_fileName_def" />
+      <string name="GetAllActiveMessages_responses_default_def_items_def_documentName_def" />
+      <string name="GetAllActiveMessages_responses_default_def_items_def_documentType_def" />
+      <string name="GetAllActiveMessages_responses_default_def_items_def_queueName_def" />
+      <object name="GetAllActiveMessages_responses_default_def_items_def">
+        <property name="fileName" type="string" />
+        <property name="documentName" type="string" />
+        <property name="documentType" type="string" />
+        <property name="queueName" type="string" />
+      </object>
+      <array typeRef="GetAllActiveMessages_responses_default_def_items_def" name="GetAllActiveMessages_responses_default_def" />
+      <string name="GetMessage_responses_200_def" />
+      <string name="ChangeMessageQueue_param_body_def_destinationQueueName_def" />
+      <string name="ChangeMessageQueue_param_body_def_sourceQueueName_def" />
+      <string name="ChangeMessageQueue_param_body_def_fileName_def" />
+      <object name="ChangeMessageQueue_param_body_def">
+        <property name="destinationQueueName" type="string" />
+        <property name="sourceQueueName" type="string" />
+        <property name="fileName" type="string" />
+      </object>
+      <string name="ChangeMessageQueue_responses_200_def" />
+      <string name="UpdateMessage_param_body_def_FileName_def" />
+      <string name="UpdateMessage_param_body_def_QueueName_def" />
+      <string name="UpdateMessage_param_body_def_Content_def" />
+      <string name="UpdateMessage_param_body_def_UserName_def" />
+      <object name="UpdateMessage_param_body_def">
+        <property name="FileName" type="string" />
+        <property name="QueueName" type="string" />
+        <property name="Content" type="string" />
+        <property name="UserName" type="string" />
+      </object>
+      <string name="UpdateMessage_responses_200_def" />
+      <string name="PrintPDF_param_body_def_printerName_def" />
+      <string name="PrintPDF_param_body_def_File_def" />
+      <object name="PrintPDF_param_body_def">
+        <property name="printerName" type="string" />
+        <property name="File" type="string" />
+      </object>
+      <string name="PrintPDF_responses_200_def" />
+      <string name="Return_param_body_def_FileNameNumber_def" />
+      <string name="Return_param_body_def_QueueNameToGet_def" />
+      <string name="Return_param_body_def_QueueNameToSend_def" />
+      <string name="Return_param_body_def_ReturnType_def" />
+      <object name="Return_param_body_def">
+        <property name="FileNameNumber" type="string" />
+        <property name="QueueNameToGet" type="string" />
+        <property name="QueueNameToSend" type="string" />
+        <property name="ReturnType" type="string" />
+      </object>
+      <untypedObject name="Return_responses_default_def" />
+    </jsonTypes>
+  </grammars>
+  <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://europe002-002.azure-apihub.net/apim/badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383">
+    <resource path="/{connectionId}/MSMQ/GetAllActiveMessages">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetAllActiveMessages" actionName="GetAllActiveMessages" visibility="important" siena:isDeprecated="false">
+        <doc title="Get All Active Messages&#xA;Gets all active messages in the queues" />
+        <request>
+          <param style="query" name="queueName" type="xs:int" default="0">
+            <doc title="Queue name to filter" />
+          </param>
+          <param style="query" name="documentType" type="xs:int" default="0">
+            <doc title="Document type to filter" />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:GetAllActiveMessages_responses_default_def" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/MSMQ/GetMessage">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="GET" id="GetMessage" actionName="GetMessage" visibility="important" siena:isDeprecated="false">
+        <doc title="Get Message&#xA;Get message from a queue by label name" />
+        <request>
+          <param style="query" name="fileName" type="xs:string" required="true">
+            <doc title="File Name" />
+          </param>
+          <param style="query" name="queueName" type="xs:string" required="true">
+            <doc title="The source queue name to target the wanted queue" />
+          </param>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="xs:string" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/MSMQ/ChangeXMLQueue">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="PATCH" id="ChangeMessageQueue" actionName="ChangeMessageQueue" visibility="important" siena:isDeprecated="false">
+        <doc title="Change Message Queue&#xA;Changes the message source queue" />
+        <request>
+          <representation mediaType="application/json">
+            <param style="plain" name="destinationQueueName" path="/destinationQueueName" type="xs:string" required="true">
+              <doc title="Destination Queue Name" />
+            </param>
+            <param style="plain" name="sourceQueueName" path="/sourceQueueName" type="xs:string" required="true">
+              <doc title="Source Queue Name" />
+            </param>
+            <param style="plain" name="fileName" path="/fileName" type="xs:string" required="true">
+              <doc title="File Name" />
+            </param>
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="xs:string" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/MSMQ/UpdateMessage">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="PATCH" id="UpdateMessage" actionName="UpdateMessage" visibility="important" siena:isDeprecated="false">
+        <doc title="Update Message&#xA;Update the XML message" />
+        <request>
+          <representation mediaType="application/json">
+            <param style="plain" name="FileName" path="/FileName" type="xs:string">
+              <doc title="FileName" />
+            </param>
+            <param style="plain" name="QueueName" path="/QueueName" type="xs:string">
+              <doc title="QueueName" />
+            </param>
+            <param style="plain" name="Content" path="/Content" type="xs:string">
+              <doc title="Content" />
+            </param>
+            <param style="plain" name="UserName" path="/UserName" type="xs:string">
+              <doc title="UserName" />
+            </param>
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="xs:string" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/Print/PrintPdf/printFromDocument">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="PrintPDF" actionName="PrintPDF" visibility="important" siena:isDeprecated="false">
+        <doc title="Print PDF File&#xA;Print PDF File" />
+        <request>
+          <representation mediaType="application/json">
+            <param style="plain" name="printerName" path="/printerName" type="xs:string" />
+            <param style="plain" name="File" path="/File" type="xs:string" />
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="xs:string" />
+        </response>
+      </method>
+    </resource>
+    <resource path="/{connectionId}/MSMQ/Return">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="Return" actionName="Return" visibility="important" siena:isDeprecated="false">
+        <doc title="Return&#xA;Return of goods" />
+        <request>
+          <representation mediaType="application/json">
+            <param style="plain" name="FileNameNumber" path="/FileNameNumber" type="xs:string" required="true">
+              <doc title="FileNameNumber" />
+            </param>
+            <param style="plain" name="QueueNameToGet" path="/QueueNameToGet" type="xs:string" required="true">
+              <doc title="QueueNameToGet" />
+            </param>
+            <param style="plain" name="QueueNameToSend" path="/QueueNameToSend" type="xs:string" required="true">
+              <doc title="QueueNameToSend" />
+            </param>
+            <param style="plain" name="ReturnType" path="/ReturnType" type="xs:string" required="true">
+              <doc title="ReturnType" />
+            </param>
+          </representation>
+        </request>
+        <response>
+          <representation mediaType="application/json" element="service:Return_responses_default_def" />
+        </response>
+      </method>
+    </resource>
+  </resources>
+  <authenticationProviders xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <connectionProvider id="PowerAppAuth" siena:connectionProviderId="shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383" />
+  </authenticationProviders>
+  <template xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <variable name="connectionId">
+      <modifyParams style="template" name="connectionId" attribute="fixed" />
+    </variable>
+  </template>
+</application>
