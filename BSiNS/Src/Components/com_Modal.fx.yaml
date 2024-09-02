@@ -82,7 +82,7 @@ com_Modal As CanvasComponent:
                         LayoutMinHeight: =32
                         LayoutMinWidth: =96
                         Size: =20
-                        Text: ="Unesite podatke"
+                        Text: =
                         Width: =96
                         X: =0
                         Y: =0
@@ -175,34 +175,39 @@ com_Modal As CanvasComponent:
                             Type: ="Text"
                             ValidationState: |-
                                 =If(
-                                    com_Modal.LotNoPropVisible && IsBlank(inp_LotNo_1.Value),
-                                    "RequiredField_Error",
-                                    If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)
-                                        IsMatch(
-                                            inp_LotNo_1.Value,
-                                            "^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$"
+                                    Container13_13.Visible,
+                                    If(
+                                        com_Modal.LotNoPropVisible && IsBlank(inp_LotNo_1.Value),
+                                        "RequiredField_Error",
+                                        If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)
+                                            IsMatch(
+                                                inp_LotNo_1.Value,
+                                                "^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$"
+                                            ),
+                                            If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!
+                                                DateValue(
+                                                    Mid(
+                                                        inp_LotNo_1.Value,
+                                                        4,
+                                                        2
+                                                    ) & "/" & Mid(
+                                                        inp_LotNo_1.Value,
+                                                        6,
+                                                        2
+                                                    ) & "/" & "20" & Mid(
+                                                        inp_LotNo_1.Value,
+                                                        8,
+                                                        2
+                                                    )
+                                                ) > Today(),
+                                                "None",
+                                                "IncorrectDateRange"
+                                            ),
+                                            "IncorrectFormat"
                                         ),
-                                        If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!
-                                            DateValue(
-                                                Mid(
-                                                    inp_LotNo_1.Value,
-                                                    4,
-                                                    2
-                                                ) & "/" & Mid(
-                                                    inp_LotNo_1.Value,
-                                                    6,
-                                                    2
-                                                ) & "/" & "20" & Mid(
-                                                    inp_LotNo_1.Value,
-                                                    8,
-                                                    2
-                                                )
-                                            ) > Today(),
-                                            "None",
-                                            "IncorrectDateRange"
-                                        ),
-                                        "IncorrectFormat"
-                                    )
+                                        "None"
+                                    ),
+                                    "None"
                                 )
                             Value: |-
                                 =If(
@@ -302,34 +307,40 @@ com_Modal As CanvasComponent:
                             Type: ="Text"
                             ValidationState: |-
                                 =If(
-                                    com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),
-                                    "RequiredField_Error",
-                                    If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)
-                                        IsMatch(
-                                            inp_LotNo.Value,
-                                            "^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$"
+                                    Container13_12.Visible,
+                                    If(
+                                        com_Modal.IsNabavniNalog & com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),
+                                    //(com_Modal.LotNoPropVisible || (com_Modal.IsNabavniNalog && com_Modal.LotNoPropVisible)) && IsBlank(inp_LotNo.Value),
+                                        "RequiredField_Error",
+                                        If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)
+                                            IsMatch(
+                                                inp_LotNo.Value,
+                                                "^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$"
+                                            ),
+                                            If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!
+                                                DateValue(
+                                                    Mid(
+                                                        inp_LotNo.Value,
+                                                        4,
+                                                        2
+                                                    ) & "/" & Mid(
+                                                        inp_LotNo.Value,
+                                                        6,
+                                                        2
+                                                    ) & "/" & "20" & Mid(
+                                                        inp_LotNo.Value,
+                                                        8,
+                                                        2
+                                                    )
+                                                ) > Today(),
+                                                "None",
+                                                "IncorrectDateRange"
+                                            ),
+                                            "IncorrectFormat"
                                         ),
-                                        If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!
-                                            DateValue(
-                                                Mid(
-                                                    inp_LotNo.Value,
-                                                    4,
-                                                    2
-                                                ) & "/" & Mid(
-                                                    inp_LotNo.Value,
-                                                    6,
-                                                    2
-                                                ) & "/" & "20" & Mid(
-                                                    inp_LotNo.Value,
-                                                    8,
-                                                    2
-                                                )
-                                            ) > Today(),
-                                            "None",
-                                            "IncorrectDateRange"
-                                        ),
-                                        "IncorrectFormat"
-                                    )
+                                        "None"
+                                    ),
+                                    "None"
                                 )
                             Value: |-
                                 =If(
@@ -427,7 +438,7 @@ com_Modal As CanvasComponent:
                             Type: ="Text"
                             ValidationState: |-
                                 =If(
-                                    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0 /*|| (com_Modal.IsNabavniNalog && Value(inp_rezQty_2.Value) = 0)*/,
+                                    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0,
                                     "Value_Error",
                                     If(
                                         com_Modal.IsInventura && (IsBlank(inp_rezQty_2.Value) || (IsBlank(LookUp(lockedItems, lineId = com_Modal.LineId)) && Value(inp_rezQty_2.Value) = 0)),
@@ -483,7 +494,7 @@ com_Modal As CanvasComponent:
                                         inp_rezQty_2.ValidationState = "RequiredField_Error",
                                         "Količina je obavezno polje",
                                         If(
-                                            inp_rezQty_2.ValidationState = "Quantity_Error",
+                                            inp_rezQty_2.ValidationState = "Quantity_Error" && inp_potrebnoQty_2.ValidationState <> "Quantity_Error",
                                             "Količina veća od dozvoljene"
                                         )
                                     )
@@ -548,12 +559,15 @@ com_Modal As CanvasComponent:
                                             (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                             "Quantity_Error",
                                             "None"
-                                        ),
-                                        "None"
-                                    ),
-                                    "None"
+                                        )
+                                    )
                                 )
-                            Value: =If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))
+                            Value: |-
+                                =If(
+                                    IsBlank(com_Modal.QuantityNewLOT),
+                                    0,
+                                    Abs(com_Modal.QuantityNewLOT)
+                                )
                             Width: =200
                             X: =40
                             Y: =40
@@ -611,7 +625,7 @@ com_Modal As CanvasComponent:
                         BorderStyle: =""
                         DisplayMode: |-
                             =If(
-                                inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None",
+                                inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None" && inp_LotNo_1.ValidationState = "None" && inp_potrebnoQty_2.ValidationState = "None", 
                                 DisplayMode.Edit,
                                 DisplayMode.Disabled
                             )

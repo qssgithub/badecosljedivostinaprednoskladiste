@@ -306,14 +306,7 @@
                             "IsLockable": false,
                             "NameMapSourceSchema": "?"
                           },
-                          {
-                            "AFDDataSourceName": "",
-                            "AutoRuleBindingEnabled": false,
-                            "AutoRuleBindingString": "",
-                            "InvariantPropertyName": "Text",
-                            "IsLockable": false,
-                            "NameMapSourceSchema": "?"
-                          },
+                          "Text",
                           {
                             "AFDDataSourceName": "",
                             "AutoRuleBindingEnabled": false,
@@ -412,7 +405,7 @@
                           },
                           {
                             "Category": "Data",
-                            "InvariantScript": "\"Unesite podatke\"",
+                            "InvariantScript": "",
                             "Property": "Text",
                             "RuleProviderType": "User"
                           },
@@ -1274,7 +1267,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),\n    \"RequiredField_Error\",\n    If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)\n        IsMatch(\n            inp_LotNo.Value,\n            \"^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$\"\n        ),\n        If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!\n            DateValue(\n                Mid(\n                    inp_LotNo.Value,\n                    4,\n                    2\n                ) & \"/\" & Mid(\n                    inp_LotNo.Value,\n                    6,\n                    2\n                ) & \"/\" & \"20\" & Mid(\n                    inp_LotNo.Value,\n                    8,\n                    2\n                )\n            ) > Today(),\n            \"None\",\n            \"IncorrectDateRange\"\n        ),\n        \"IncorrectFormat\"\n    )\n)",
+                                "InvariantScript": "If(\n    Container13_12.Visible,\n    If(\n        com_Modal.IsNabavniNalog & com_Modal.LotNoPropVisible && IsBlank(inp_LotNo.Value),\n    //(com_Modal.LotNoPropVisible || (com_Modal.IsNabavniNalog && com_Modal.LotNoPropVisible)) && IsBlank(inp_LotNo.Value),\n        \"RequiredField_Error\",\n        If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)\n            IsMatch(\n                inp_LotNo.Value,\n                \"^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$\"\n            ),\n            If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!\n                DateValue(\n                    Mid(\n                        inp_LotNo.Value,\n                        4,\n                        2\n                    ) & \"/\" & Mid(\n                        inp_LotNo.Value,\n                        6,\n                        2\n                    ) & \"/\" & \"20\" & Mid(\n                        inp_LotNo.Value,\n                        8,\n                        2\n                    )\n                ) > Today(),\n                \"None\",\n                \"IncorrectDateRange\"\n            ),\n            \"IncorrectFormat\"\n        ),\n        \"None\"\n    ),\n    \"None\"\n)",
                                 "Property": "ValidationState",
                                 "RuleProviderType": "User"
                               },
@@ -2434,7 +2427,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    com_Modal.LotNoPropVisible && IsBlank(inp_LotNo_1.Value),\n    \"RequiredField_Error\",\n    If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)\n        IsMatch(\n            inp_LotNo_1.Value,\n            \"^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$\"\n        ),\n        If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!\n            DateValue(\n                Mid(\n                    inp_LotNo_1.Value,\n                    4,\n                    2\n                ) & \"/\" & Mid(\n                    inp_LotNo_1.Value,\n                    6,\n                    2\n                ) & \"/\" & \"20\" & Mid(\n                    inp_LotNo_1.Value,\n                    8,\n                    2\n                )\n            ) > Today(),\n            \"None\",\n            \"IncorrectDateRange\"\n        ),\n        \"IncorrectFormat\"\n    )\n)",
+                                "InvariantScript": "If(\n    Container13_13.Visible,\n    If(\n        com_Modal.LotNoPropVisible && IsBlank(inp_LotNo_1.Value),\n        \"RequiredField_Error\",\n        If(//provjera da je u formatu LOT050824 (LOT + Datum u formatu ddMMyy)\n            IsMatch(\n                inp_LotNo_1.Value,\n                \"^LOT(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])([0-9]{2})$\"\n            ),\n            If(//provjerava da odabrani datum nije danasnji ili neki raniji - mora biti u buducnosti!\n                DateValue(\n                    Mid(\n                        inp_LotNo_1.Value,\n                        4,\n                        2\n                    ) & \"/\" & Mid(\n                        inp_LotNo_1.Value,\n                        6,\n                        2\n                    ) & \"/\" & \"20\" & Mid(\n                        inp_LotNo_1.Value,\n                        8,\n                        2\n                    )\n                ) > Today(),\n                \"None\",\n                \"IncorrectDateRange\"\n            ),\n            \"IncorrectFormat\"\n        ),\n        \"None\"\n    ),\n    \"None\"\n)",
                                 "Property": "ValidationState",
                                 "RuleProviderType": "User"
                               },
@@ -3568,7 +3561,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0 /*|| (com_Modal.IsNabavniNalog && Value(inp_rezQty_2.Value) = 0)*/,\n    \"Value_Error\",\n    If(\n        com_Modal.IsInventura && (IsBlank(inp_rezQty_2.Value) || (IsBlank(LookUp(lockedItems, lineId = com_Modal.LineId)) && Value(inp_rezQty_2.Value) = 0)),\n        \"RequiredField_Error\",\n        If(\n            !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),\n            If(\n                (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n                \"Quantity_Error\",\n                \"None\"\n            ),\n            \"None\"\n        )\n    )\n)",
+                                "InvariantScript": "If(\n    !IsNumeric(inp_rezQty_2.Value) || Value(inp_rezQty_2.Value) < 0,\n    \"Value_Error\",\n    If(\n        com_Modal.IsInventura && (IsBlank(inp_rezQty_2.Value) || (IsBlank(LookUp(lockedItems, lineId = com_Modal.LineId)) && Value(inp_rezQty_2.Value) = 0)),\n        \"RequiredField_Error\",\n        If(\n            !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),\n            If(\n                (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n                \"Quantity_Error\",\n                \"None\"\n            ),\n            \"None\"\n        )\n    )\n)",
                                 "Property": "ValidationState",
                                 "RuleProviderType": "User"
                               },
@@ -3874,7 +3867,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Value_Error\",\n    \"Unesite pozitivan broj\",\n    If(\n        inp_rezQty_2.ValidationState = \"RequiredField_Error\",\n        \"Količina je obavezno polje\",\n        If(\n            inp_rezQty_2.ValidationState = \"Quantity_Error\",\n            \"Količina veća od dozvoljene\"\n        )\n    )\n)",
+                                "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"Value_Error\",\n    \"Unesite pozitivan broj\",\n    If(\n        inp_rezQty_2.ValidationState = \"RequiredField_Error\",\n        \"Količina je obavezno polje\",\n        If(\n            inp_rezQty_2.ValidationState = \"Quantity_Error\" && inp_potrebnoQty_2.ValidationState <> \"Quantity_Error\",\n            \"Količina veća od dozvoljene\"\n        )\n    )\n)",
                                 "Property": "Text",
                                 "RuleProviderType": "User"
                               },
@@ -4701,7 +4694,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(IsBlank(com_Modal.QuantityNewLOT),0,Abs(com_Modal.QuantityNewLOT))",
+                                "InvariantScript": "If(\n    IsBlank(com_Modal.QuantityNewLOT),\n    0,\n    Abs(com_Modal.QuantityNewLOT)\n)",
                                 "Property": "Value",
                                 "RuleProviderType": "User"
                               },
@@ -4713,7 +4706,7 @@
                               },
                               {
                                 "Category": "Data",
-                                "InvariantScript": "If(\n    !IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0,\n    \"Value_Error\",\n    If(\n        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),\n        If(\n            (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n            \"Quantity_Error\",\n            \"None\"\n        ),\n        \"None\"\n    ),\n    \"None\"\n)",
+                                "InvariantScript": "If(\n    !IsNumeric(inp_potrebnoQty_2.Value) || Value(inp_potrebnoQty_2.Value) < 0,\n    \"Value_Error\",\n    If(\n        !(com_Modal.IsInventura || com_Modal.IsNabavniNalog),\n        If(\n            (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,\n            \"Quantity_Error\",\n            \"None\"\n        )\n    )\n)",
                                 "Property": "ValidationState",
                                 "RuleProviderType": "User"
                               },
@@ -5956,7 +5949,7 @@
                           },
                           {
                             "Category": "Design",
-                            "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"None\" && inp_LotNo.ValidationState = \"None\",\n    DisplayMode.Edit,\n    DisplayMode.Disabled\n)",
+                            "InvariantScript": "If(\n    inp_rezQty_2.ValidationState = \"None\" && inp_LotNo.ValidationState = \"None\" && inp_LotNo_1.ValidationState = \"None\" && inp_potrebnoQty_2.ValidationState = \"None\", \n    DisplayMode.Edit,\n    DisplayMode.Disabled\n)",
                             "Property": "DisplayMode",
                             "RuleProviderType": "User"
                           },
@@ -7273,7 +7266,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638608678074053051",
+    "LastModifiedTimestamp": "638608859918457125",
     "Name": "com_Modal",
     "Rules": [
       {
@@ -7498,7 +7491,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638608678074053051",
+  "LastModifiedTimestamp": "638608859918457125",
   "Name": "31ac25c2c0ea4c6682a8a0b24dfcdec9",
   "OverridableProperties": {},
   "Version": "1.0"
