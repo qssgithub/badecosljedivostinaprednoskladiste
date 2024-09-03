@@ -880,6 +880,7 @@ com_Galleries As CanvasComponent:
                     Icon: =Icon.Trash
                     OnSelect: |-
                         =Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No));
+                        Reset(glr_Entries);
                         Set(
                             SelectedEntry,
                             Last(colEntries)

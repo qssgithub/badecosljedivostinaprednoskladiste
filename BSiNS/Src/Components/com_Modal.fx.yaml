@@ -188,11 +188,11 @@ com_Modal As CanvasComponent:
                                                 DateValue(
                                                     Mid(
                                                         inp_LotNo_1.Value,
-                                                        4,
+                                                        6,
                                                         2
                                                     ) & "/" & Mid(
                                                         inp_LotNo_1.Value,
-                                                        6,
+                                                        4,
                                                         2
                                                     ) & "/" & "20" & Mid(
                                                         inp_LotNo_1.Value,
@@ -204,8 +204,7 @@ com_Modal As CanvasComponent:
                                                 "IncorrectDateRange"
                                             ),
                                             "IncorrectFormat"
-                                        ),
-                                        "None"
+                                        )
                                     ),
                                     "None"
                                 )
@@ -321,11 +320,11 @@ com_Modal As CanvasComponent:
                                                 DateValue(
                                                     Mid(
                                                         inp_LotNo.Value,
-                                                        4,
+                                                        6,
                                                         2
                                                     ) & "/" & Mid(
                                                         inp_LotNo.Value,
-                                                        6,
+                                                        4,
                                                         2
                                                     ) & "/" & "20" & Mid(
                                                         inp_LotNo.Value,
@@ -337,8 +336,7 @@ com_Modal As CanvasComponent:
                                                 "IncorrectDateRange"
                                             ),
                                             "IncorrectFormat"
-                                        ),
-                                        "None"
+                                        )
                                     ),
                                     "None"
                                 )
@@ -559,7 +557,8 @@ com_Modal As CanvasComponent:
                                             (inp_rezQty_2.Value + inp_potrebnoQty_2.Value) > com_Modal.Quantity,
                                             "Quantity_Error",
                                             "None"
-                                        )
+                                        ),
+                                        "None"
                                     )
                                 )
                             Value: |-

@@ -3826,7 +3826,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No));\nSet(\n    SelectedEntry,\n    Last(colEntries)\n);",
+                        "InvariantScript": "Remove(colEntries, LookUp(colEntries, Entry_No = glr_Entries.Selected.Entry_No));\nReset(glr_Entries);\nSet(\n    SelectedEntry,\n    Last(colEntries)\n);",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -14205,7 +14205,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638608769527006170",
+    "LastModifiedTimestamp": "638609566414591071",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -14439,7 +14439,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638608769527006170",
+  "LastModifiedTimestamp": "638609566414591071",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
