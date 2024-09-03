@@ -128,7 +128,8 @@
                                 Source_ID: Text(entry.Source_ID),
                                 Source_Ref_No: Text(entry.Source_Ref_No),
                                 Source_SubType: Text(entry.Source_SubType),
-                                Source_Type: Text(entry.Source_Type)
+                                Source_Type: Text(entry.Source_Type),
+                                Vendoir_LOT_No : Text(entry.Vendoir_LOT_No)
                             }
                         )
                     ),
@@ -156,7 +157,8 @@
                             Source_ID: Text(line.Res_Entry.Source_ID),
                             Source_Ref_No: Text(line.Res_Entry.Source_Ref_No),
                             Source_SubType: Text(line.Res_Entry.Source_SubType),
-                            Source_Type: Text(line.Res_Entry.Source_Type)
+                            Source_Type: Text(line.Res_Entry.Source_Type),
+                            Vendoir_LOT_No: Text(line.Res_Entry.Vendoir_LOT_No)
                         }
                     )
                 )
@@ -204,7 +206,8 @@
                             Source_ID: Text(entry.Source_ID),
                             Source_Ref_No: Text(entry.Source_Ref_No),
                             Source_SubType: Text(entry.Source_SubType),
-                            Source_Type: Text(entry.Source_Type)
+                            Source_Type: Text(entry.Source_Type),
+                            Vendoir_LOT_No: Text(entry.Vendoir_LOT_No)
                         }
                     )
                 ),
@@ -232,7 +235,8 @@
                         Source_ID: Text(xmlData.Purchase_Line.Res_Entry.Source_ID),
                         Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
                         Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
-                        Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type)
+                        Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type),
+                        Vendoir_LOT_No:Text(xmlData.Purchase_Line.Res_Entry.Vendoir_LOT_No)
                     }
                 )
             )
@@ -405,6 +409,7 @@
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
         ResEntryId: =com_NabGalleries.SelectedEntry.Entry_No
+        VendorLotNo: =com_NabGalleries.SelectedEntry.Vendoir_LOT_No
         Visible: =isModalOpen
         ZIndex: =2
 

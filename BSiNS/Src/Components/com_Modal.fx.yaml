@@ -10,6 +10,7 @@ com_Modal As CanvasComponent:
     Height: =App.Height
     IsInventura: =false
     IsNabavniNalog: =false
+    IsPovrat: =false
     LineId: ="Text"
     LotNo: =
     LotNoPropVisible: =!LotNoPropVisibleCheck
@@ -17,6 +18,7 @@ com_Modal As CanvasComponent:
     QuantityCompleted: =
     QuantityNewLOT: =
     ResEntryId: ="Text"
+    VendorLotNo: =
     Width: =App.Width
     X: =0
     Y: =0
@@ -174,7 +176,7 @@ com_Modal As CanvasComponent:
                             TriggerOutput: ='TextInputCanvas.TriggerOutput'.Keypress
                             Type: ="Text"
                             ValidationState: |-
-                                =If(
+                                =/*If(
                                     Container13_13.Visible,
                                     If(
                                         com_Modal.LotNoPropVisible && IsBlank(inp_LotNo_1.Value),
@@ -207,18 +209,18 @@ com_Modal As CanvasComponent:
                                         )
                                     ),
                                     "None"
-                                )
+                                )*/
                             Value: |-
                                 =If(
-                                    IsBlank(com_Modal.LotNo),
-                                    "LOT" & Text(
+                                    IsBlank(com_Modal.VendorLotNo),
+                                    "LOT dobavljača" & Text(
                                         DateAdd(
                                             Today(),
                                             1
                                         ),
                                         "ddmmyy"
                                     ),
-                                    com_Modal.LotNo
+                                    com_Modal.VendorLotNo
                                 )
                             Visible: =true
                             Width: =200
@@ -241,7 +243,7 @@ com_Modal As CanvasComponent:
                             PaddingTop: =0
                             Size: =14
                             Text: |-
-                                =If(
+                                =/*If(
                                     inp_LotNo_1.ValidationState = "RequiredField_Error",
                                     "LOT dobavljača je obavezno polje",
                                     If(
@@ -252,7 +254,7 @@ com_Modal As CanvasComponent:
                                             "Odabrani datum je istekao"
                                         )
                                     )
-                                )
+                                )*/
                             Visible: =true
                             Width: =200
                             X: =0
@@ -517,7 +519,7 @@ com_Modal As CanvasComponent:
                         RadiusTopLeft: =4
                         RadiusTopRight: =4
                         Visible: |
-                            =!com_Modal.IsInventura && !com_Modal.IsNabavniNalog
+                            =!com_Modal.IsInventura && !com_Modal.IsNabavniNalog && !com_Modal.IsPovrat
                         ZIndex: =4
 
                         TextCanvas3_13 As Text:
@@ -624,7 +626,7 @@ com_Modal As CanvasComponent:
                         BorderStyle: =""
                         DisplayMode: |-
                             =If(
-                                inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None" && inp_LotNo_1.ValidationState = "None" && inp_potrebnoQty_2.ValidationState = "None", 
+                                inp_rezQty_2.ValidationState = "None" && inp_LotNo.ValidationState = "None" && inp_potrebnoQty_2.ValidationState = "None", 
                                 DisplayMode.Edit,
                                 DisplayMode.Disabled
                             )
@@ -686,7 +688,8 @@ com_Modal As CanvasComponent:
                                         ),
                                         {
                                             Quantity_Completed: Value(inp_rezQty_2.Value),
-                                            LOT_No: Text(inp_LotNo.Value)
+                                            LOT_No: Text(inp_LotNo.Value),
+                                            Vendoir_LOT_No:Text(inp_LotNo_1.Value)
                                         }
                                     ),
                                     Patch(
