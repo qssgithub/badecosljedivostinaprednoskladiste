@@ -1,11 +1,12 @@
 com_Modal As CanvasComponent:
     ChildTabPriority: =
     ErrorExist: |-
-        =If(
+        =/*If(
             btn_ModalSave.DisplayMode = DisplayMode.Disabled,
             true,
             false
-        )
+        )*/
+        false
     Fill: =RGBA(0, 0, 0, 0)
     Height: =App.Height
     IsInventura: =false
