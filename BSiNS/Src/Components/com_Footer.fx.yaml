@@ -113,11 +113,11 @@ com_Footer As CanvasComponent:
                 BorderStyle: =""
                 DisplayMode: =If(isLoading || com_Footer.ErrorBaseOnModalExists, DisplayMode.Disabled, DisplayMode.Edit)
                 Height: =32
-                Icon: ="Database"
+                Icon: =If(Prelot,"AppsListDetail", "Database")
                 Layout: ='ButtonCanvas.Layout'.IconAfter
                 LayoutMinHeight: =32
                 LayoutMinWidth: =96
-                OnSelect: |-
+                OnSelect: |
                     =Set(
                         isLoading,
                         true
@@ -134,17 +134,25 @@ com_Footer As CanvasComponent:
                             NotificationType.Error,
                             2000
                         ),
-                        Notify(
-                            "Dokument uspješno procesiran.",
-                            NotificationType.Success,
-                            2000
-                        );
                         ChangeXmlStatus.Run(
                             SelectedFile,
                             SelectedQueue,
                             ReadyForNAVProcessing
                         );
-                        PrintDoc.Run(com_Footer.JSONData);
+                        If(
+                            Prelot,
+                            Notify(
+                                "Dokument poslan na prelotiranje.",
+                                NotificationType.Success,
+                                2000
+                            ),
+                            Notify(
+                                "Dokument uspješno procesiran.",
+                                NotificationType.Success,
+                                2000
+                            );
+                            PrintDoc.Run(com_Footer.JSONData);
+                        );
                         Navigate(
                             scr_Entry,
                             ScreenTransition.Fade
@@ -157,7 +165,12 @@ com_Footer As CanvasComponent:
                 PaddingBottom: =
                 PaddingRight: =
                 PaddingTop: =
-                Text: ="NAV"
+                Text: |-
+                    =If(
+                        Prelot,
+                        "Lotiranje",
+                        "NAV"
+                    )
                 VerticalAlign: =VerticalAlign.Middle
                 Width: =96
                 X: =15
