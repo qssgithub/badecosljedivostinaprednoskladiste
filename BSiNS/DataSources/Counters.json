@@ -1,0 +1,97 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr5df_counters",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr5df_counter",
+    "MaxGetRowsCount": 500,
+    "Name": "Counters",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr5df_counter": "CounterValue",
+      "cr5df_counter_AsyncOperations": "System Jobs",
+      "cr5df_counter_BulkDeleteFailures": "Bulk Delete Failures",
+      "cr5df_counter_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cr5df_counter_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cr5df_counter_ProcessSession": "Process Sessions",
+      "cr5df_counter_SyncErrors": "Sync Errors",
+      "cr5df_counterid": "Counter",
+      "cr5df_countervalue": "Id",
+      "cr5df_filename": "FileName",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Counters",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Counters (Views)",
+    "Name": "_cr5df_counter_views",
+    "RelatedEntityName": "Counters",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "137ddb03-9e00-4f8a-ada5-bd966d18b710": "Counter Advanced Find View",
+      "34c33a97-9652-472c-8523-2873ba2b2ab6": "Counter Lookup View",
+      "7e57d62e-9c79-4087-81a9-f46979bb18e4": "Counter Associated View",
+      "d14f15fd-76ce-4500-9af2-44db38ce36be": "Active Counters",
+      "f1f8b0ff-0b17-4b47-93e6-e854e95e6774": "Inactive Counters"
+    }
+  },
+  {
+    "DisplayName": "Status (Counters)",
+    "Name": "cr5df_counter_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Counters"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Counters",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Counters)",
+    "Name": "cr5df_counter_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Counters"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Counters",
+    "Type": "OptionSetInfo"
+  }
+]

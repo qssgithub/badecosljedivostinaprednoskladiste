@@ -7,7 +7,6 @@
             isLoading,
             true
         );
-        
         If(
             !IsBlank(SelectedFile),
             IfError(
@@ -119,6 +118,23 @@
                 )
             )
         );
+        // Tražite zapis u tabeli Counters koji ima FileName jednak SelectedDocumentName
+        Set(varExistingRecord, LookUp(Counters, FileName = SelectedDocumentName));
+        
+        // Ako zapis ne postoji, dodajte novi zapis sa CounterValue = 0
+        If(
+            IsBlank(varExistingRecord), 
+            // Ako zapis ne postoji, dodajte novi
+            Patch(
+                Counters, 
+                Defaults(Counters), 
+                { FileName: SelectedDocumentName, CounterValue: 0 }
+            )
+        );
+        
+        // Na kraju, postavite Counter na trenutnu vrednost iz baze
+        Set(Counter, LookUp(Counters, FileName = SelectedDocumentName).CounterValue);
+        
         Set(
             isLoading,
             false
