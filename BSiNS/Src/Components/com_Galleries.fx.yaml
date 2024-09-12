@@ -568,6 +568,7 @@ com_Galleries As CanvasComponent:
                 ZIndex: =3
 
             "glr_Entries As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+                AlignInContainer: =AlignInContainer.SetByContainer
                 BorderColor: =App.Theme.Colors.Darker40
                 Default: |-
                     =LookUp(
@@ -578,7 +579,6 @@ com_Galleries As CanvasComponent:
                         )
                     )
                 DelayItemLoading: =true
-                FillPortions: =0
                 Items: =Filter(colEntries, ThisRecord.Source_Ref_No = glr_Lines.Selected.Line_No)
                 Layout: =Layout.Vertical
                 LayoutMinHeight: =100
