@@ -725,6 +725,7 @@ com_Galleries As CanvasComponent:
                     Icon: =Icon.AddDocument
                     OnSelect: |-
                         =Set(Counter, Counter + 1);
+                        Notify(Counter, NotificationType.Warning, 2000);
                         Collect(
                             colEntries,
                             {
@@ -758,6 +759,7 @@ com_Galleries As CanvasComponent:
                                 Source_Type: ThisItem.Source_Type
                             }
                         );
+                        Patch(Counters, LookUp(Counters, FileName = SelectedDocumentName), { CounterValue: Counter });
                         Set(
                             ScannedItem,
                             Blank()
