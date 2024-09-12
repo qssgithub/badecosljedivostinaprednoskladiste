@@ -13,7 +13,8 @@
     ],
     "dependencies": {},
     "dependents": [
-      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb"
+      "c0eabf2d-5f78-4d9b-976c-8cd015b1a8cb",
+      "b5d24c6f-8c69-418a-9e13-d4472c36e118"
     ],
     "id": "39882083-f5b7-44f0-9818-4379865b0e4a"
   },
@@ -162,6 +163,45 @@
     },
     "dependents": [],
     "id": "9d65da70-fcef-4c5b-bbc2-f0facd2b12c1"
+  },
+  "b5d24c6f-8c69-418a-9e13-d4472c36e118": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1697/1.0.1697.3784/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowDisplayName": {
+          "value": "PrintLOT"
+        },
+        "workflowEntityId": {
+          "value": "700d5fd1-d970-ef11-a670-6045bd9718a8"
+        },
+        "workflowName": {
+          "value": "302b03bf-2750-181c-08e7-a83abc52c25d"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowDisplayName": {
+          "value": "PrintLOT"
+        },
+        "workflowEntityId": {
+          "value": "700d5fd1-d970-ef11-a670-6045bd9718a8"
+        },
+        "workflowName": {
+          "value": "302b03bf-2750-181c-08e7-a83abc52c25d"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "PrintLOT"
+    ],
+    "dependencies": {
+      "shared_badecotestconnector-5f070a5a4c520680e2-5f0707ed232723a383": "39882083-f5b7-44f0-9818-4379865b0e4a",
+      "shared_sharepointonline": "fa47b8bc-11ac-4d92-94d9-426ff7b61f75"
+    },
+    "dependents": [],
+    "id": "b5d24c6f-8c69-418a-9e13-d4472c36e118"
   },
   "bc59b768-00f3-40df-bc43-677a6a689995": {
     "connectionRef": {
@@ -336,5 +376,19 @@
     },
     "dependents": [],
     "id": "e8881786-c8c5-4028-a337-24a2d24fded3"
+  },
+  "fa47b8bc-11ac-4d92-94d9-426ff7b61f75": {
+    "connectionRef": {
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/jayawan/releases/v1.0.1697/1.0.1697.3786/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline"
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "b5d24c6f-8c69-418a-9e13-d4472c36e118"
+    ],
+    "id": "fa47b8bc-11ac-4d92-94d9-426ff7b61f75"
   }
 }

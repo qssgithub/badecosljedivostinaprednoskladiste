@@ -3,6 +3,7 @@ com_Footer As CanvasComponent:
     Fill: =RGBA(0, 0, 0, 0)
     Height: =50
     IsInventura: =false
+    IsNabava: =false
     JSONData: ="Text"
     Width: =App.Width
     X: =0
@@ -151,7 +152,11 @@ com_Footer As CanvasComponent:
                                 NotificationType.Success,
                                 2000
                             );
-                            PrintDoc.Run(com_Footer.JSONData);
+                            If(
+                                com_Footer.IsNabava,
+                                PrintLOT.Run(com_Footer.JSONData),
+                                PrintDoc.Run(com_Footer.JSONData)
+                            )
                         );
                         Navigate(
                             scr_Entry,
@@ -219,6 +224,7 @@ com_Footer As CanvasComponent:
                             NotificationType.Success,
                             2000
                         );
+                        PrintLOT.Run(com_Footer.JSONData);
                         
                     );
                     Set(

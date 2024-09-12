@@ -1299,7 +1299,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue,\n        logedUser\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    If(\n        Prelot,\n        Notify(\n            \"Dokument poslan na prelotiranje.\",\n            NotificationType.Success,\n            2000\n        ),\n        Notify(\n            \"Dokument uspješno procesiran.\",\n            NotificationType.Success,\n            2000\n        );\n        PrintDoc.Run(com_Footer.JSONData);\n    );\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n",
+                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue,\n        logedUser\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    ChangeXmlStatus.Run(\n        SelectedFile,\n        SelectedQueue,\n        ReadyForNAVProcessing\n    );\n    If(\n        Prelot,\n        Notify(\n            \"Dokument poslan na prelotiranje.\",\n            NotificationType.Success,\n            2000\n        ),\n        Notify(\n            \"Dokument uspješno procesiran.\",\n            NotificationType.Success,\n            2000\n        );\n        If(\n            com_Footer.IsNabava,\n            PrintLOT.Run(com_Footer.JSONData),\n            PrintDoc.Run(com_Footer.JSONData)\n        )\n    );\n    Navigate(\n        scr_Entry,\n        ScreenTransition.Fade\n    )\n);\nSet(\n    isLoading,\n    false\n);\n",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -1769,7 +1769,7 @@
                     "NameMapSourceSchema": "?"
                   }
                 ],
-                "ControlUniqueId": "53",
+                "ControlUniqueId": "51",
                 "DynamicProperties": [
                   {
                     "ControlPropertyState": "FillPortions",
@@ -1895,7 +1895,7 @@
                   },
                   {
                     "Category": "Behavior",
-                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue,\n        logedUser\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    \n);\nSet(\n    isLoading,\n    false\n);",
+                    "InvariantScript": "Set(\n    isLoading,\n    true\n);\nIfError(\n    UpdateXML.Run(\n        com_Footer.JSONData,\n        SelectedFile,\n        SelectedQueue,\n        logedUser\n    ),\n    Notify(\n        \"Došlo je do greške!\",\n        NotificationType.Error,\n        2000\n    ),\n    Notify(\n        \"Uspješno ažuriranje!\",\n        NotificationType.Success,\n        2000\n    );\n    PrintLOT.Run(com_Footer.JSONData);\n    \n);\nSet(\n    isLoading,\n    false\n);",
                     "Property": "OnSelect",
                     "RuleProviderType": "User"
                   }
@@ -2567,9 +2567,17 @@
         "InvariantPropertyName": "ErrorBaseOnModalExists",
         "IsLockable": false,
         "NameMapSourceSchema": "?"
+      },
+      {
+        "AFDDataSourceName": "",
+        "AutoRuleBindingEnabled": false,
+        "AutoRuleBindingString": "true",
+        "InvariantPropertyName": "IsNabava",
+        "IsLockable": false,
+        "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638612188642011492",
+    "LastModifiedTimestamp": "638617320854334283",
     "Name": "com_Footer",
     "Rules": [
       {
@@ -2588,6 +2596,12 @@
         "Category": "Data",
         "InvariantScript": "false",
         "Property": "ErrorBaseOnModalExists",
+        "RuleProviderType": "System"
+      },
+      {
+        "Category": "Data",
+        "InvariantScript": "false",
+        "Property": "IsNabava",
         "RuleProviderType": "System"
       },
       {
@@ -2664,6 +2678,15 @@
       "PropertyDataTypeKey": "Boolean",
       "Tooltip": "A custom property",
       "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
+    },
+    {
+      "Category": 0,
+      "DisplayName": "IsNabava",
+      "Hidden": false,
+      "Name": "IsNabava",
+      "PropertyDataTypeKey": "Boolean",
+      "Tooltip": "A custom property",
+      "Type": "{\"Version\":\"1.343\",\"Type\":{\"Name\":\"Root\",\"Kind\":\"Boolean\",\"EnumString\":\"\",\"Type\":[]}}"
     }
   ],
   "FirstParty": true,
@@ -2674,7 +2697,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638612188642011492",
+  "LastModifiedTimestamp": "638617320854334283",
   "Name": "a4d2aa00ad144885ba9d6ac3d0a319a2",
   "OverridableProperties": {},
   "Version": "1.0"

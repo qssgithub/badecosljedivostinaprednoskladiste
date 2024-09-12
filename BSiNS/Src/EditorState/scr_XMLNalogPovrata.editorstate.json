@@ -39,7 +39,8 @@
           "IsLockable": false,
           "NameMapSourceSchema": "?"
         },
-        "ErrorBaseOnModalExists"
+        "ErrorBaseOnModalExists",
+        "IsNabava"
       ],
       "DynamicProperties": [
         {
@@ -111,6 +112,11 @@
         {
           "Category": "Data",
           "PropertyName": "ErrorBaseOnModalExists",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "IsNabava",
           "RuleProviderType": "System"
         },
         {
