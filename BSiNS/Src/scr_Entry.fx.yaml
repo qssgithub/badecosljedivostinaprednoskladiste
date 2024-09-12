@@ -530,7 +530,9 @@
                         PaddingLeft: =0
                         PaddingRight: =0
                         PaddingTop: =0
-                        Text: =First(Split(Last(Split(ThisItem.FileName, "_")).Value, ".")).Value
+                        Text: |-
+                            =//First(Split(Last(Split(ThisItem.FileName, "_")).Value, ".")).Value
+                            ThisItem.DocumentName
                         Width: =Parent.TemplateWidth - 150
                         X: =16
                         Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
