@@ -11035,7 +11035,7 @@
                       },
                       {
                         "Category": "Behavior",
-                        "InvariantScript": "Set(Counter, Counter + 1);\nNotify(Counter, NotificationType.Warning, 2000);\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: 1, //mijenja se\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nPatch(Counters, LookUp(Counters, FileName = SelectedDocumentName), { CounterValue: Counter });\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\nSet(\n    SelectedEntry,\n    LookUp(colEntries, Entry_No = Text(Counter))\n);",
+                        "InvariantScript": "Set(Counter, Counter + 1);\n\nCollect(\n    colEntries,\n    {\n        Created_By: ThisItem.Created_By,\n        Creation_Date: ThisItem.Creation_Date,\n        Entry_No: Text(Counter),\n        Exp_Date: ThisItem.Exp_Date,\n        Exp_Receipt_Date: ThisItem.Exp_Receipt_Date,\n        Item_No: ThisItem.Item_No,\n        Item_Tracking: ThisItem.Item_Tracking,\n        LOT_No: \"LOT\" & Text(//mijenja se\n            DateAdd(\n                Today(),\n                1\n            ),\n            \"ddmmyy\"\n        ),\n        Location_Code: ThisItem.Location_Code,\n        Positive: ThisItem.Positive,\n        'Qty-to-Handle_Base': Text(0),\n        'Qty-to-Invoice_Base': Text(0),\n        Quantity: Text(0),\n        Quantity_Base: Text(0),\n        Quantity_Completed: 1, //mijenja se\n        Quantity_NewLOT: 0,\n        Res_Status: ThisItem.Res_Status,\n        Shipment_Date: ThisItem.Shipment_Date,\n        Source_ID: ThisItem.Source_ID,\n        Source_Ref_No: ThisItem.Source_Ref_No,\n        Source_SubType: ThisItem.Source_SubType,\n        Source_Type: ThisItem.Source_Type\n    }\n);\nSet(\n    ScannedItem,\n    Blank()\n);\nReset(glr_Entries);\nSet(\n    SelectedEntry,\n    LookUp(colEntries, Entry_No = Text(Counter))\n);",
                         "Property": "OnSelect",
                         "RuleProviderType": "User"
                       }
@@ -14205,7 +14205,7 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638617799839331191",
+    "LastModifiedTimestamp": "638617807979162461",
     "Name": "com_Galleries",
     "Rules": [
       {
@@ -14439,7 +14439,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638617799839331191",
+  "LastModifiedTimestamp": "638617807979162461",
   "Name": "d65afd8bddf146cb9dc00fce49a0cbd8",
   "OverridableProperties": {},
   "Version": "1.0"
