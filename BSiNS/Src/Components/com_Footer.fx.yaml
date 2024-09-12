@@ -224,11 +224,6 @@ com_Footer As CanvasComponent:
                             NotificationType.Success,
                             2000
                         );
-                         Patch(
-                            Counters, 
-                            varExistingRecord,
-                            { CounterValue: Counter }
-                        )
                         
                     );
                     
