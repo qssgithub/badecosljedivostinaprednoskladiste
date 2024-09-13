@@ -404,7 +404,9 @@
         IsNabavniNalog: =true
         LineId: =com_NabGalleries.SelectedLine.Line_No
         LotNo: =com_NabGalleries.SelectedEntry.LOT_No
-        LotNoPropVisible: =!(CountIf(lockedItems, entryId = com_NabGalleries.SelectedEntry.Entry_No) > 0)//!LotNoPropVisibleCheck
+        LotNoPropVisible: |-
+            =//!(CountIf(lockedItems, entryId = com_NabGalleries.SelectedEntry.Entry_No) > 0)//!LotNoPropVisibleCheck
+            true
         Quantity: =com_NabGalleries.SelectedEntry.Quantity
         QuantityCompleted: =com_NabGalleries.SelectedEntry.Quantity_Completed
         QuantityNewLOT: =com_NabGalleries.SelectedEntry.Quantity_NewLOT
