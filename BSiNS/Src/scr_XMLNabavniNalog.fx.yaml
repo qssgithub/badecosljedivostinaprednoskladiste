@@ -24,6 +24,8 @@
                     NotificationType.Error,
                     2000
                 ),
+                Notify("source: " & SelectedQueue & " dest: " & ReadyForNAVProcessing);
+        
                 If(
                     SelectedQueue = ReadyForProcessing,
                     ChangeXmlStatus.Run(
