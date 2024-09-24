@@ -1,12 +1,11 @@
 "scr_XMLNabavniNalog As screen.'autoLayout_HeaderFooter_ver1.0'":
     Fill: =RGBA(234, 83, 109, 1)
     LoadingSpinnerColor: =App.Theme.Colors.Primary
-    OnVisible: |-
+    OnVisible: |
         =Set(
             isLoading,
             true
         );
-        
         If(
             !IsBlank(SelectedFile),
             IfError(
@@ -24,7 +23,19 @@
                     "Greška u obradi.",
                     NotificationType.Error,
                     2000
-                )
+                ),
+                If(
+                    SelectedQueue = ReadyForProcessing,
+                    ChangeXmlStatus.Run(
+                        SelectedFile,
+                        SelectedQueue,
+                        InProgress
+                    );
+                    Set(
+                        SelectedQueue,
+                        InProgress
+                    )
+                );
             )
         );
         UpdateContext(
@@ -129,7 +140,7 @@
                                 Source_Ref_No: Text(entry.Source_Ref_No),
                                 Source_SubType: Text(entry.Source_SubType),
                                 Source_Type: Text(entry.Source_Type),
-                                Vendoir_LOT_No : Text(entry.Vendoir_LOT_No)
+                                Vendoir_LOT_No: Text(entry.Vendoir_LOT_No)
                             }
                         )
                     ),
@@ -236,7 +247,7 @@
                         Source_Ref_No: Text(xmlData.Purchase_Line.Res_Entry.Source_Ref_No),
                         Source_SubType: Text(xmlData.Purchase_Line.Res_Entry.Source_SubType),
                         Source_Type: Text(xmlData.Purchase_Line.Res_Entry.Source_Type),
-                        Vendoir_LOT_No:Text(xmlData.Purchase_Line.Res_Entry.Vendoir_LOT_No)
+                        Vendoir_LOT_No: Text(xmlData.Purchase_Line.Res_Entry.Vendoir_LOT_No)
                     }
                 )
             )
@@ -244,18 +255,6 @@
         Set(
             isLoading,
             false
-        );
-        If(
-            SelectedQueue = ReadyForProcessing,
-            ChangeXmlStatus.Run(
-                SelectedFile,
-                SelectedQueue,
-                InProgress
-            );
-            Set(
-                SelectedQueue,
-                InProgress
-            )
         );
         If(
             IsEmpty(
