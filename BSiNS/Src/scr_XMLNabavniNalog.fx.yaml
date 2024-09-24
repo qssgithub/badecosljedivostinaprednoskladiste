@@ -24,7 +24,7 @@
                     NotificationType.Error,
                     2000
                 ),
-                Notify("source: " & SelectedQueue & " dest: " & ReadyForNAVProcessing);
+                Notify("source: " & SelectedQueue & " dest: " & InProgress);
         
                 If(
                     SelectedQueue = ReadyForProcessing,
