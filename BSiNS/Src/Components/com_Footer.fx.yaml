@@ -124,18 +124,18 @@ com_Footer As CanvasComponent:
                         true
                     );
                     IfError(
-                        UpdateXML.Run(
+                        Set(SelectedFile, UpdateXML.Run(
                             com_Footer.JSONData,
                             SelectedFile,
                             SelectedQueue,
                             logedUser
-                        ),
+                        ).filename),
                         Notify(
                             "Došlo je do greške!",
                             NotificationType.Error,
                             2000
                         ),
-                        Notify("source: " & SelectedQueue & " dest: " & ReadyForNAVProcessing);
+                        Notify("source: " & SelectedQueue & " dest: " & ReadyForNAVProcessing & " name" & SelectedFile );
                         ChangeXmlStatus.Run(
                             SelectedFile,
                             SelectedQueue,
