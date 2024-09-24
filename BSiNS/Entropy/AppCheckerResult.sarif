@@ -806,36 +806,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines.AccessibleLabel"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines.AccessibleLabel",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "AccessibleLabel",
-                "module": "com_Galleries",
-                "type": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "acc-AccessibleLabelNeeded",
-          "ruleIndex": 4
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "com_Galleries.con_Galleries.vrt_Galleries.glr_Lines.AccessibleLabel"
                 }
               ],
@@ -1010,6 +980,36 @@
           },
           "ruleId": "acc-TabIndexShouldBeDefinedForInteractiveControl",
           "ruleIndex": 5
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines.AccessibleLabel"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines.AccessibleLabel",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "AccessibleLabel",
+                "module": "com_Galleries",
+                "type": "com_Galleries.con_Galleries.vrt_Galleries.btn_BackToLines"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "acc-AccessibleLabelNeeded",
+          "ruleIndex": 4
         },
         {
           "locations": [
