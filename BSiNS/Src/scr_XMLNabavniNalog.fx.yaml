@@ -24,8 +24,6 @@
                     NotificationType.Error,
                     2000
                 ),
-                Notify("source: " & SelectedQueue & " dest: " & InProgress & " name" & SelectedFile );
-        
                 If(
                     SelectedQueue = ReadyForProcessing,
                     ChangeXmlStatus.Run(
